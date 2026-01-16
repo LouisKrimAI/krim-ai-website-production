@@ -107,7 +107,7 @@ export default function Footer(){
                   <LinkedinLogo className="w-6 h-6" />
                 </a>
                 <a
-                  href="https://x.com/krimai_speaks"
+                  href="https://x.com/TheKrimAI"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-white hover:text-krim-mint transition-colors inline-flex items-center justify-center min-w-[48px] min-h-[48px]"
