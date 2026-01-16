@@ -4,19 +4,19 @@
   
   <!-- Krim AI Triangle Logo -->
   <g id="triangle">
-    <!-- Left side with gaps -->
-    <line x1="200" y1="100" x2="160" y2="169.3" stroke="#00FF88" stroke-width="6" stroke-linecap="round"/>
-    <line x1="140" y1="203.9" x2="100" y2="273.2" stroke="#00FF88" stroke-width="6" stroke-linecap="round"/>
+    <!-- Top horizontal line -->
+    <line x1="120" y1="120" x2="180" y2="120" stroke="#00FF88" stroke-width="4" stroke-linecap="round"/>
+    <line x1="220" y1="120" x2="280" y2="120" stroke="#00FF88" stroke-width="4" stroke-linecap="round"/>
     
-    <!-- Right side with gaps -->
-    <line x1="200" y1="100" x2="240" y2="169.3" stroke="#00FF88" stroke-width="6" stroke-linecap="round"/>
-    <line x1="260" y1="203.9" x2="300" y2="273.2" stroke="#00FF88" stroke-width="6" stroke-linecap="round"/>
+    <!-- Left diagonal line -->
+    <line x1="120" y1="120" x2="160" y2="190" stroke="#00FF88" stroke-width="4" stroke-linecap="round"/>
+    <line x1="170" y1="210" x2="200" y2="260" stroke="#00FF88" stroke-width="4" stroke-linecap="round"/>
     
-    <!-- Bottom side with gaps -->
-    <line x1="100" y1="273.2" x2="180" y2="273.2" stroke="#00FF88" stroke-width="6" stroke-linecap="round"/>
-    <line x1="220" y1="273.2" x2="300" y2="273.2" stroke="#00FF88" stroke-width="6" stroke-linecap="round"/>
+    <!-- Right diagonal line -->
+    <line x1="280" y1="120" x2="240" y2="190" stroke="#00FF88" stroke-width="4" stroke-linecap="round"/>
+    <line x1="230" y1="210" x2="200" y2="260" stroke="#00FF88" stroke-width="4" stroke-linecap="round"/>
   </g>
   
   <!-- Central dot -->
-  <circle cx="200" cy="215.5" r="8" fill="#00FF88"/>
+  <circle cx="200" cy="180" r="6" fill="#00FF88"/>
 </svg>
