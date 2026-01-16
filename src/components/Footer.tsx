@@ -98,7 +98,7 @@ export default function Footer(){
               {/* Social Media Links */}
               <div className="flex items-center gap-4 pt-4">
                 <a
-                  href="https://www.linkedin.com/company/krimai/"
+                  href="https://www.linkedin.com/company/krim/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-white hover:text-krim-mint transition-colors inline-flex items-center justify-center min-w-[48px] min-h-[48px]"
