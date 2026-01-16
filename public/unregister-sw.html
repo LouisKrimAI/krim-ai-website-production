@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unregister Service Worker</title>
+    <style>
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #0a0a0a;
+            color: #fff;
+        }
+        button {
+            background: #00ff88;
+            color: #000;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            margin: 10px 5px;
+        }
+        button:hover {
+            background: #00cc66;
+        }
+        .status {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 8px;
+            background: #111;
+            border: 1px solid #333;
+        }
+        .success { border-color: #00ff88; color: #00ff88; }
+        .error { border-color: #ff3366; color: #ff3366; }
+        .info { border-color: #00ccff; color: #00ccff; }
+    </style>
+</head>
+<body>
+    <h1>Service Worker Management</h1>
+    <p>Use this page to manage service workers and fix reload issues.</p>
+    
+    <div>
+        <button onclick="unregisterAll()">Unregister All Service Workers</button>
+        <button onclick="clearCaches()">Clear All Caches</button>
+        <button onclick="clearEverything()">Clear Everything & Reload</button>
+    </div>
+    
+    <div id="status" class="status info"></div>
+    
+    <script>
+        function log(message, type = 'info') {
+            const status = document.getElementById('status');
+            const timestamp = new Date().toLocaleTimeString();
+            status.className = `status ${type}`;
+            status.innerHTML += `<div>[${timestamp}] ${message}</div>`;
+        }
+        
+        async function unregisterAll() {
+            try {
+                log('Starting service worker unregistration...', 'info');
+                
+                if ('serviceWorker' in navigator) {
+                    const registrations = await navigator.serviceWorker.getRegistrations();
+                    
+                    if (registrations.length === 0) {
+                        log('No service workers found', 'info');
+                        return;
+                    }
+                    
+                    for (const registration of registrations) {
+                        const success = await registration.unregister();
+                        if (success) {
+                            log(`Unregistered: ${registration.scope}`, 'success');
+                        } else {
+                            log(`Failed to unregister: ${registration.scope}`, 'error');
+                        }
+                    }
+                    
+                    log(`Unregistered ${registrations.length} service worker(s)`, 'success');
+                } else {
+                    log('Service workers not supported', 'error');
+                }
+            } catch (error) {
+                log(`Error: ${error.message}`, 'error');
+            }
+        }
+        
+        async function clearCaches() {
+            try {
+                log('Starting cache clearing...', 'info');
+                
+                if ('caches' in window) {
+                    const cacheNames = await caches.keys();
+                    
+                    if (cacheNames.length === 0) {
+                        log('No caches found', 'info');
+                        return;
+                    }
+                    
+                    for (const cacheName of cacheNames) {
+                        const success = await caches.delete(cacheName);
+                        if (success) {
+                            log(`Deleted cache: ${cacheName}`, 'success');
+                        } else {
+                            log(`Failed to delete cache: ${cacheName}`, 'error');
+                        }
+                    }
+                    
+                    log(`Cleared ${cacheNames.length} cache(s)`, 'success');
+                } else {
+                    log('Caches API not supported', 'error');
+                }
+            } catch (error) {
+                log(`Error: ${error.message}`, 'error');
+            }
+        }
+        
+        async function clearEverything() {
+            log('Clearing everything...', 'info');
+            
+            // Unregister service workers
+            await unregisterAll();
+            
+            // Clear caches
+            await clearCaches();
+            
+            // Clear local storage
+            try {
+                localStorage.clear();
+                log('Cleared localStorage', 'success');
+            } catch (e) {
+                log('Failed to clear localStorage', 'error');
+            }
+            
+            // Clear session storage
+            try {
+                sessionStorage.clear();
+                log('Cleared sessionStorage', 'success');
+            } catch (e) {
+                log('Failed to clear sessionStorage', 'error');
+            }
+            
+            // Clear IndexedDB (if needed)
+            if ('indexedDB' in window) {
+                try {
+                    const dbs = await indexedDB.databases();
+                    for (const db of dbs) {
+                        if (db.name) {
+                            indexedDB.deleteDatabase(db.name);
+                            log(`Deleted IndexedDB: ${db.name}`, 'success');
+                        }
+                    }
+                } catch (e) {
+                    log('Could not clear IndexedDB', 'info');
+                }
+            }
+            
+            log('All clear! Reloading in 2 seconds...', 'success');
+            
+            setTimeout(() => {
+                window.location.href = '/';
+            }, 2000);
+        }
+        
+        // Check current status on load
+        window.addEventListener('load', async () => {
+            log('Checking service worker status...', 'info');
+            
+            if ('serviceWorker' in navigator) {
+                const registrations = await navigator.serviceWorker.getRegistrations();
+                if (registrations.length > 0) {
+                    log(`Found ${registrations.length} active service worker(s)`, 'info');
+                    registrations.forEach(reg => {
+                        log(`- Scope: ${reg.scope}`, 'info');
+                    });
+                } else {
+                    log('No active service workers', 'success');
+                }
+            }
+        });
+    </script>
+</body>
+</html>

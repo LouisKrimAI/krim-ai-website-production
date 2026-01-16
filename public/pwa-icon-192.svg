@@ -1,0 +1,27 @@
+<svg width="192" height="192" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+  <!-- Dark background for PWA icon visibility -->
+  <rect width="400" height="400" fill="#0A0A0A" rx="60"/>
+  
+  <!-- Krim AI Triangle Logo optimized for small sizes -->
+  <g id="triangle" transform="translate(0, 20) scale(1.1)">
+    <!-- Left side with gaps -->
+    <line x1="200" y1="100" x2="160" y2="169.3" stroke="#00FF88" stroke-width="8" stroke-linecap="round"/>
+    <line x1="140" y1="203.9" x2="100" y2="273.2" stroke="#00FF88" stroke-width="8" stroke-linecap="round"/>
+    
+    <!-- Right side with gaps -->
+    <line x1="200" y1="100" x2="240" y2="169.3" stroke="#00FF88" stroke-width="8" stroke-linecap="round"/>
+    <line x1="260" y1="203.9" x2="300" y2="273.2" stroke="#00FF88" stroke-width="8" stroke-linecap="round"/>
+    
+    <!-- Bottom side with gaps -->
+    <line x1="100" y1="273.2" x2="180" y2="273.2" stroke="#00FF88" stroke-width="8" stroke-linecap="round"/>
+    <line x1="220" y1="273.2" x2="300" y2="273.2" stroke="#00FF88" stroke-width="8" stroke-linecap="round"/>
+  </g>
+  
+  <!-- Central dot - larger for visibility -->
+  <circle cx="200" cy="235.5" r="12" fill="#00FF88"/>
+  
+  <!-- Subtle KRIM AI text for branding -->
+  <text x="200" y="340" text-anchor="middle" font-family="Montserrat, system-ui, sans-serif" font-size="24" font-weight="bold" fill="#00FF88" opacity="0.8">
+    KRIM AI
+  </text>
+</svg>

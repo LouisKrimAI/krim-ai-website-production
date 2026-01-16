@@ -1,0 +1,49 @@
+/* Header Navbar Fix - Ensure proper behavior on homepage */
+
+/* Base header styling */
+header.navbar-header {
+  position: sticky !important;
+  top: 0;
+  width: 100%;
+  z-index: var(--z6-navigation, 9999) !important;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform, opacity;
+}
+
+/* Hidden state - on homepage hero */
+header.navbar-hidden {
+  opacity: 0 !important;
+  transform: translateY(-100%) !important;
+  pointer-events: none !important;
+}
+
+/* Visible state - scrolled or on other pages */
+header.navbar-visible {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+  pointer-events: auto !important;
+}
+
+/* Ensure smooth transitions */
+@media (prefers-reduced-motion: no-preference) {
+  header.navbar-header {
+    transition-property: opacity, transform;
+    transition-duration: 500ms;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  }
+}
+
+/* Fix for mobile devices */
+@media (max-width: 768px) {
+  header.navbar-header {
+    position: sticky !important;
+    top: 0 !important;
+  }
+}
+
+/* Debug mode - visible borders in development */
+@media (prefers-color-scheme: light) {
+  header.navbar-header[data-debug="true"] {
+    border: 2px solid red !important;
+  }
+}

@@ -1,0 +1,13 @@
+<svg width="180" height="60" viewBox="0 0 180 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="lambda-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#6366F1;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#8B5CF6;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="180" height="60" rx="8" fill="url(#lambda-gradient)" fill-opacity="0.1"/>
+  <text x="20" y="25" font-family="Arial, sans-serif" font-size="16" font-weight="bold" text-anchor="start" fill="#6366F1">λ LAMBDA</text>
+  <text x="20" y="40" font-family="Arial, sans-serif" font-size="12" text-anchor="start" fill="#8B5CF6">GPU CLOUD</text>
+  <circle cx="140" cy="30" r="12" fill="#6366F1" fill-opacity="0.2"/>
+  <text x="140" y="34" font-family="Arial, sans-serif" font-size="14" font-weight="bold" text-anchor="middle" fill="#6366F1">λ</text>
+</svg>

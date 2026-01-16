@@ -1,0 +1,446 @@
+/* 🌌 KRIM AI DEPTH SYSTEM V3.0 - 2035 AESTHETIC
+   Seven-layer Z-axis architecture with glass morphism and aurora effects
+   Inspired by huly.io and neon.com but exceeding their visual sophistication
+*/
+
+:root {
+  /* 🎨 2035 Color Palette - Electric Future */
+  --krim-deep-space: #030207;     /* Infinite void background */
+  --krim-electric-mint: #00FF88;  /* Primary brand - electric energy */
+  --krim-cyan-flow: #00D4FF;      /* Secondary brand - data streams */
+  --krim-coral-heat: #FF4C61;     /* Accent - critical alerts */
+  --krim-purple-void: #8B5CF6;    /* Supporting - deep intelligence */
+  --krim-aurora-pink: #FF6B9D;    /* Aurora gradient start */
+  --krim-aurora-blue: #4ECDC4;    /* Aurora gradient end */
+  
+  /* 🌊 Depth System Z-Index Layers */
+  --z-void: -100;          /* Z0: Deep space background */
+  --z-substrate: -10;      /* Z1: Galaxy substrate */
+  --z-surface: 0;          /* Z2: Primary surface */
+  --z-elevated: 10;        /* Z3: Elevated cards */
+  --z-floating: 100;       /* Z4: Floating elements */
+  --z-modal: 1000;         /* Z5: Modal overlays */
+  --z-navigation: 10000;   /* Z6: Navigation bar */
+  
+  /* 💎 Glass Morphism Progressive Layers */
+  --glass-void: rgba(3, 2, 7, 0.95);           /* Almost opaque */
+  --glass-substrate: rgba(16, 14, 35, 0.85);   /* Heavy blur */
+  --glass-surface: rgba(26, 24, 51, 0.75);     /* Medium blur */
+  --glass-elevated: rgba(42, 40, 78, 0.65);    /* Light blur */
+  --glass-floating: rgba(58, 56, 105, 0.55);   /* Minimal blur */
+  
+  /* 🌈 Aurora Gradient System */
+  --aurora-primary: linear-gradient(135deg, 
+    var(--krim-electric-mint) 0%, 
+    var(--krim-cyan-flow) 50%, 
+    var(--krim-aurora-pink) 100%);
+  --aurora-secondary: linear-gradient(225deg, 
+    var(--krim-purple-void) 0%, 
+    var(--krim-coral-heat) 50%, 
+    var(--krim-aurora-blue) 100%);
+  --aurora-tertiary: linear-gradient(315deg, 
+    var(--krim-cyan-flow) 0%, 
+    var(--krim-electric-mint) 50%, 
+    var(--krim-purple-void) 100%);
+  
+  /* ✨ Energy Glow System */
+  --glow-electric: 0 0 20px rgba(0, 255, 136, 0.5), 
+                   0 0 40px rgba(0, 255, 136, 0.3), 
+                   0 0 60px rgba(0, 255, 136, 0.1);
+  --glow-cyan: 0 0 20px rgba(0, 212, 255, 0.5), 
+               0 0 40px rgba(0, 212, 255, 0.3), 
+               0 0 60px rgba(0, 212, 255, 0.1);
+  --glow-coral: 0 0 20px rgba(255, 76, 97, 0.5), 
+                0 0 40px rgba(255, 76, 97, 0.3), 
+                0 0 60px rgba(255, 76, 97, 0.1);
+                
+  /* 🌊 Blur Progressive System */
+  --blur-minimal: blur(4px);
+  --blur-light: blur(8px);
+  --blur-medium: blur(16px);
+  --blur-heavy: blur(32px);
+  --blur-extreme: blur(64px);
+  
+  /* 🎭 Shadow Depth System */
+  --shadow-void: 0 0 100px rgba(0, 0, 0, 0.8);
+  --shadow-substrate: 0 10px 50px rgba(0, 0, 0, 0.6);
+  --shadow-surface: 0 5px 25px rgba(0, 0, 0, 0.4);
+  --shadow-elevated: 0 15px 35px rgba(0, 0, 0, 0.3);
+  --shadow-floating: 0 25px 50px rgba(0, 0, 0, 0.2);
+}
+
+/* 🌌 Z0 - VOID LAYER: Infinite Deep Space */
+.depth-void {
+  z-index: var(--z-void);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: var(--krim-deep-space);
+  background-image: 
+    radial-gradient(circle at 20% 80%, rgba(0, 255, 136, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(0, 212, 255, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 40% 40%, rgba(139, 92, 246, 0.05) 0%, transparent 50%);
+  animation: cosmicPulse 20s ease-in-out infinite;
+}
+
+@keyframes cosmicPulse {
+  0%, 100% { opacity: 0.8; }
+  50% { opacity: 1; }
+}
+
+/* 🌠 Z1 - SUBSTRATE LAYER: Galaxy Foundation */
+.depth-substrate {
+  z-index: var(--z-substrate);
+  position: relative;
+  background: var(--glass-substrate);
+  backdrop-filter: var(--blur-heavy);
+  border: 1px solid rgba(0, 255, 136, 0.1);
+  border-radius: 24px;
+  box-shadow: var(--shadow-substrate);
+  overflow: hidden;
+}
+
+.depth-substrate::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--aurora-primary);
+  opacity: 0.6;
+  animation: energyFlow 3s linear infinite;
+}
+
+@keyframes energyFlow {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+/* 🏗️ Z2 - SURFACE LAYER: Primary Interface */
+.depth-surface {
+  z-index: var(--z-surface);
+  position: relative;
+  background: var(--glass-surface);
+  backdrop-filter: var(--blur-medium);
+  border: 1px solid rgba(0, 255, 136, 0.2);
+  border-radius: 16px;
+  box-shadow: var(--shadow-surface);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.depth-surface:hover {
+  background: rgba(42, 40, 78, 0.85);
+  border-color: rgba(0, 255, 136, 0.4);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-elevated), var(--glow-electric);
+}
+
+/* 📊 Z3 - ELEVATED LAYER: Interactive Cards */
+.depth-elevated {
+  z-index: var(--z-elevated);
+  position: relative;
+  background: var(--glass-elevated);
+  backdrop-filter: var(--blur-light);
+  border: 1px solid rgba(0, 212, 255, 0.3);
+  border-radius: 12px;
+  box-shadow: var(--shadow-elevated);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.depth-elevated:hover {
+  background: rgba(58, 56, 105, 0.75);
+  border-color: rgba(0, 212, 255, 0.6);
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: var(--shadow-floating), var(--glow-cyan);
+}
+
+/* 🎈 Z4 - FLOATING LAYER: Attention Elements */
+.depth-floating {
+  z-index: var(--z-floating);
+  position: relative;
+  background: var(--glass-floating);
+  backdrop-filter: var(--blur-minimal);
+  border: 1px solid rgba(255, 107, 157, 0.4);
+  border-radius: 8px;
+  box-shadow: var(--shadow-floating);
+  animation: floatingPulse 4s ease-in-out infinite;
+}
+
+@keyframes floatingPulse {
+  0%, 100% { 
+    transform: translateY(0px);
+    box-shadow: var(--shadow-floating);
+  }
+  50% { 
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-floating), 0 0 30px rgba(255, 107, 157, 0.3);
+  }
+}
+
+/* 🪟 Z5 - MODAL LAYER: Overlay Interfaces */
+.depth-modal {
+  z-index: var(--z-modal);
+  position: fixed;
+  background: rgba(3, 2, 7, 0.9);
+  backdrop-filter: var(--blur-extreme);
+  border: 2px solid rgba(0, 255, 136, 0.5);
+  border-radius: 20px;
+  box-shadow: 0 50px 100px rgba(0, 0, 0, 0.8), var(--glow-electric);
+  animation: modalEntrance 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes modalEntrance {
+  0% { 
+    opacity: 0;
+    transform: scale(0.8) translateY(50px);
+  }
+  100% { 
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* 🧭 Z6 - NAVIGATION LAYER: Always Accessible */
+.depth-navigation {
+  z-index: var(--z-navigation);
+  position: sticky;
+  top: 0;
+  background: rgba(3, 2, 7, 0.95);
+  backdrop-filter: var(--blur-heavy);
+  border-bottom: 1px solid rgba(0, 255, 136, 0.3);
+  box-shadow: 0 5px 30px rgba(0, 0, 0, 0.5);
+}
+
+/* 🎆 MAGNETIC BUTTON SYSTEM */
+.magnetic-button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 28px;
+  background: var(--aurora-primary);
+  border: none;
+  border-radius: 50px;
+  color: var(--krim-deep-space);
+  font-weight: 600;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+  z-index: 1;
+}
+
+.magnetic-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--aurora-secondary);
+  border-radius: inherit;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: -1;
+}
+
+.magnetic-button:hover {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: var(--glow-electric);
+  color: white;
+}
+
+.magnetic-button:hover::before {
+  opacity: 1;
+}
+
+.magnetic-button:active {
+  transform: translateY(0) scale(1);
+}
+
+/* 🌈 AURORA ANIMATED BACKGROUNDS */
+.aurora-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--aurora-primary);
+  opacity: 0.1;
+  filter: blur(40px);
+  animation: auroraShift 15s ease-in-out infinite;
+  z-index: -1;
+}
+
+@keyframes auroraShift {
+  0%, 100% { 
+    background: var(--aurora-primary);
+    transform: rotate(0deg) scale(1);
+  }
+  33% { 
+    background: var(--aurora-secondary);
+    transform: rotate(120deg) scale(1.1);
+  }
+  66% { 
+    background: var(--aurora-tertiary);
+    transform: rotate(240deg) scale(0.9);
+  }
+}
+
+/* ✨ SHIMMER TEXT EFFECTS */
+.shimmer-text {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.4) 0%,
+    var(--krim-electric-mint) 50%,
+    rgba(255, 255, 255, 0.4) 100%
+  );
+  background-size: 200% 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmerFlow 3s linear infinite;
+}
+
+@keyframes shimmerFlow {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+/* 🎨 GLOW TEXT VARIANTS */
+.glow-text-electric {
+  color: var(--krim-electric-mint);
+  text-shadow: 0 0 10px rgba(0, 255, 136, 0.5),
+               0 0 20px rgba(0, 255, 136, 0.3),
+               0 0 30px rgba(0, 255, 136, 0.1);
+  animation: electricPulse 2s ease-in-out infinite;
+}
+
+.glow-text-cyan {
+  color: var(--krim-cyan-flow);
+  text-shadow: 0 0 10px rgba(0, 212, 255, 0.5),
+               0 0 20px rgba(0, 212, 255, 0.3),
+               0 0 30px rgba(0, 212, 255, 0.1);
+}
+
+.glow-text-coral {
+  color: var(--krim-coral-heat);
+  text-shadow: 0 0 10px rgba(255, 76, 97, 0.5),
+               0 0 20px rgba(255, 76, 97, 0.3),
+               0 0 30px rgba(255, 76, 97, 0.1);
+}
+
+@keyframes electricPulse {
+  0%, 100% { 
+    text-shadow: 0 0 10px rgba(0, 255, 136, 0.5),
+                 0 0 20px rgba(0, 255, 136, 0.3),
+                 0 0 30px rgba(0, 255, 136, 0.1);
+  }
+  50% { 
+    text-shadow: 0 0 15px rgba(0, 255, 136, 0.8),
+                 0 0 25px rgba(0, 255, 136, 0.5),
+                 0 0 35px rgba(0, 255, 136, 0.3);
+  }
+}
+
+/* 📱 RESPONSIVE DEPTH SYSTEM */
+@media (max-width: 768px) {
+  .depth-elevated:hover {
+    transform: translateY(-2px) scale(1.01);
+  }
+  
+  .magnetic-button:hover {
+    transform: translateY(-1px) scale(1.02);
+  }
+  
+  .aurora-background {
+    filter: blur(20px);
+  }
+}
+
+@media (max-width: 480px) {
+  .depth-substrate,
+  .depth-surface,
+  .depth-elevated {
+    border-radius: 8px;
+  }
+  
+  .magnetic-button {
+    padding: 12px 24px;
+    font-size: 14px;
+  }
+}
+
+/* 🎭 ACCESSIBILITY PREFERENCES */
+@media (prefers-reduced-motion: reduce) {
+  .depth-floating {
+    animation: none;
+  }
+  
+  .aurora-background {
+    animation: none;
+  }
+  
+  .shimmer-text {
+    animation: none;
+    background: var(--krim-electric-mint);
+    background-clip: text;
+    -webkit-background-clip: text;
+  }
+  
+  .glow-text-electric {
+    animation: none;
+  }
+}
+
+/* 🌌 HIGH CONTRAST MODE */
+@media (prefers-contrast: high) {
+  .depth-surface,
+  .depth-elevated {
+    border-width: 2px;
+  }
+  
+  .magnetic-button {
+    border: 2px solid var(--krim-electric-mint);
+  }
+}
+
+/* 🎯 FOCUS STATES FOR ACCESSIBILITY */
+.depth-surface:focus,
+.depth-elevated:focus,
+.magnetic-button:focus {
+  outline: 2px solid var(--krim-electric-mint);
+  outline-offset: 2px;
+}
+
+/* 💫 UTILITY CLASSES */
+.depth-void-bg { background: var(--krim-deep-space); }
+.depth-glass-bg { background: var(--glass-surface); }
+.depth-aurora-bg { background: var(--aurora-primary); }
+
+.depth-blur-light { backdrop-filter: var(--blur-light); }
+.depth-blur-medium { backdrop-filter: var(--blur-medium); }
+.depth-blur-heavy { backdrop-filter: var(--blur-heavy); }
+
+.depth-glow-electric { box-shadow: var(--glow-electric); }
+.depth-glow-cyan { box-shadow: var(--glow-cyan); }
+.depth-glow-coral { box-shadow: var(--glow-coral); }
+
+/* 🚀 PERFORMANCE OPTIMIZATIONS */
+.depth-surface,
+.depth-elevated,
+.depth-floating {
+  will-change: transform;
+  contain: layout style paint;
+}
+
+.aurora-background {
+  will-change: transform, background;
+}
+
+.shimmer-text {
+  will-change: background-position;
+}

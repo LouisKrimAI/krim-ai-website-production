@@ -1,0 +1,22 @@
+<svg width="32" height="32" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+  <!-- Dark background for favicon visibility -->
+  <rect width="400" height="400" fill="#0A0A0A"/>
+  
+  <!-- Krim AI Triangle Logo -->
+  <g id="triangle">
+    <!-- Left side with gaps -->
+    <line x1="200" y1="100" x2="160" y2="169.3" stroke="#00FF88" stroke-width="6" stroke-linecap="round"/>
+    <line x1="140" y1="203.9" x2="100" y2="273.2" stroke="#00FF88" stroke-width="6" stroke-linecap="round"/>
+    
+    <!-- Right side with gaps -->
+    <line x1="200" y1="100" x2="240" y2="169.3" stroke="#00FF88" stroke-width="6" stroke-linecap="round"/>
+    <line x1="260" y1="203.9" x2="300" y2="273.2" stroke="#00FF88" stroke-width="6" stroke-linecap="round"/>
+    
+    <!-- Bottom side with gaps -->
+    <line x1="100" y1="273.2" x2="180" y2="273.2" stroke="#00FF88" stroke-width="6" stroke-linecap="round"/>
+    <line x1="220" y1="273.2" x2="300" y2="273.2" stroke="#00FF88" stroke-width="6" stroke-linecap="round"/>
+  </g>
+  
+  <!-- Central dot -->
+  <circle cx="200" cy="215.5" r="8" fill="#00FF88"/>
+</svg>

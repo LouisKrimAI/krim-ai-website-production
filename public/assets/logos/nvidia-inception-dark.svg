@@ -1,0 +1,21 @@
+<svg width="200" height="60" viewBox="0 0 200 60" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="nvidia-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#76b900" />
+      <stop offset="100%" style="stop-color:#4d7700" />
+    </linearGradient>
+  </defs>
+  
+  <!-- NVIDIA Logo Dark Mode -->
+  <rect width="200" height="60" fill="#1a1a1a" rx="8"/>
+  
+  <!-- NVIDIA Eye Icon -->
+  <circle cx="30" cy="30" r="15" fill="url(#nvidia-gradient)"/>
+  <circle cx="30" cy="30" r="8" fill="#1a1a1a"/>
+  <circle cx="32" cy="28" r="3" fill="url(#nvidia-gradient)"/>
+  
+  <!-- Text -->
+  <text x="55" y="25" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#76b900">NVIDIA</text>
+  <text x="55" y="40" font-family="Arial, sans-serif" font-size="10" fill="#cccccc">INCEPTION</text>
+  <text x="55" y="52" font-family="Arial, sans-serif" font-size="8" fill="#888888">PROGRAM</text>
+</svg>

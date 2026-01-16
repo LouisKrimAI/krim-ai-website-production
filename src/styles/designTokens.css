@@ -1,0 +1,46 @@
+/**
+ * KRIM AI - DESIGN TOKENS
+ * Visual foundation tokens for homepage enhancement
+ */
+
+:root {
+  /* Container widths */
+  --krim-container: 1200px;
+
+  /* Spacing scale */
+  --krim-gap-lg: 3rem;      /* 48px */
+  --krim-gap-xl: 4rem;      /* 64px */
+  --krim-gap-2xl: 6rem;     /* 96px */
+
+  /* Border radius */
+  --krim-radius-lg: 20px;
+  --krim-radius-xl: 28px;
+
+  /* Accent Colors - from Tailwind theme */
+  --accent-mint: rgb(0, 255, 136); /* #00FF88 */
+  --accent-cyan: rgb(0, 255, 255); /* #00FFFF */
+
+  /* Shadow Tokens - Depth System */
+  --shadow-depth-1: 0 2px 8px -2px rgba(0, 0, 0, 0.3), 0 4px 16px -4px rgba(0, 0, 0, 0.2);
+  --shadow-depth-2: 0 4px 16px -2px rgba(0, 0, 0, 0.4), 0 8px 32px -4px rgba(0, 0, 0, 0.3);
+
+  /* Ring & Glow Tokens */
+  --ring-glow-alpha: 0.2;
+  --ring-offset: 1px;
+
+  /* Glow Tokens - for hover effects */
+  --glow-mint: rgba(0, 255, 136, var(--ring-glow-alpha));
+  --glow-cyan: rgba(0, 255, 255, var(--ring-glow-alpha));
+
+  /* Depth Glow - for hero pseudo-element */
+  --depth-glow-opacity: 0.1;
+  --depth-glow-blur: 96px; /* blur-3xl equivalent */
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --motion-duration: 0.01ms;
+    --motion-blur: 0px;
+  }
+}

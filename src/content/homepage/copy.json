@@ -1,0 +1,132 @@
+{
+  "hero": {
+    "headline": "Emergent Intelligence Runtime",
+    "headlineBreak": "For Credit Operations",
+    "subline": "Compliant-First. Outcomes Amplified. Costs Reduced.",
+    "primaryCta": { "label": "Book Demo", "href": "/book-demo" },
+    "secondaryCta": { "label": "Explore KrimOS", "href": "/krimos" },
+    "highlights": ["Runtime"]
+  },
+
+  "problem": {
+    "headline": "Credit Operations Are at Maximum Strain.",
+    "subline": "A perfect storm: Legacy systems, rising delinquencies and tightening regulation.",
+    "cards": [
+      {
+        "title": "40+ Fragmented Tools",
+        "line1": "Blind spots, friction, delays.",
+        "line2": "Data siloes kill efficiency"
+      },
+      {
+        "title": "Surviving on Human Middleware",
+        "line1": "People patch broken workflows",
+        "line2": "65% staff churn = lost expertise"
+      },
+      {
+        "title": "Post-Fact Compliance Risk",
+        "line1": "Only 5% of activity is reviewed.",
+        "line2": "$1.2M avg. penalty"
+      }
+    ],
+    "footer": "Credit leaders are urgently seeking unified, automated, compliant operating models.",
+    "highlights": ["Fragmented", "Human Middleware", "Post-Fact"]
+  },
+
+  "krimos": {
+    "kicker": "Krim AI introduces",
+    "headline": "KrimOS — The Emergent Intelligence Substrate",
+    "subline": "A governed, unified environment where AI systems execute post-disbursal credit workflows.",
+    "highlights": ["Substrate", "Governed"]
+  },
+
+  "pillars": {
+    "pillarsTag": "Autonomy with Governance",
+    "pillars": [
+      { "title": "Expert AI Co-Workers", "body": "Scale output, not cost." },
+      { "title": "Unified Intelligence", "body": "Real-time dashboards, controls, and analytics." },
+      { "title": "Continuous Learning", "body": "Compounding efficiency & outcomes." },
+      { "title": "Compliant-by-Design", "body": "Violations vanish. Proof generated at every step." }
+    ],
+    "highlights": ["Autonomy", "Governance"]
+  },
+
+  "kupa": {
+    "headline": "Kupa Command Centers: Mission Control for Credit Operations",
+    "subline": "Campaign • Support • Legal • Field Ops • Compliance • Risk • Settlements • Enterprise",
+    "lines": [
+      "Live oversight.",
+      "Live intervention.",
+      "Live intelligence."
+    ],
+    "highlights": ["Mission Control", "Oversight", "Intervention", "Intelligence"]
+  },
+
+  "kula": {
+    "headline": "Interactive Intelligence Interface",
+    "subline": "Human-in-the-loop orchestration, design, analysis & approvals — through natural language.",
+    "bullets": [
+      "Build workflows.",
+      "Analyze outcomes.",
+      "Execute policy at scale."
+    ],
+    "highlights": ["Orchestration", "Approvals", "Natural language"]
+  },
+
+  "karta": {
+    "headline": "AI Credit Workforce",
+    "roles": [
+      "Contact Center Co-Workers",
+      "Back-Office Co-Workers"
+    ],
+    "tagline": "Atomic. Composable. Governed.",
+    "subline": "Automate end-to-end workflows with auditable, policy-bound AI agents.",
+    "highlights": ["Atomic", "Composable", "Governed"]
+  },
+
+  "emergent": {
+    "headline": "Emergent Intelligence, Engineered for Credit",
+    "body": [
+      "Each workflow run strengthens decisioning, explainability, and efficiency.",
+      "Intelligence compounds portfolio performance."
+    ],
+    "highlights": ["Compounds", "Explainability"]
+  },
+
+  "security": {
+    "headline": "Secure by Architecture",
+    "bullets": [
+      "Audit-Logging",
+      "Bank-grade encryption",
+      "Isolation & identity enforcement"
+    ],
+    "highlights": ["Audit-Logging", "Encryption", "Isolation"]
+  },
+
+  "deployment": {
+    "headline": "Flexible Deployment",
+    "body": "Cloud • Dedicated VPC • On-Prem",
+    "highlights": ["Cloud", "Dedicated VPC", "On-Prem"]
+  },
+
+  "integrations": {
+    "headline": "Ecosystem Ready",
+    "body": [
+      "Native integrations across core banking, servicing, CRM, telephony, and risk systems."
+    ],
+    "highlights": ["Core banking", "Servicing", "CRM", "Telephony", "Risk"]
+  },
+
+  "closing": {
+    "anchor": "Execution becomes autonomous. Control stays absolute.",
+    "highlights": ["Execution", "Autonomous", "Control", "Absolute"]
+  },
+
+  "highlights": [
+    "KrimOS",
+    "Emergent Intelligence",
+    "Compliance",
+    "Automated",
+    "Unified",
+    "AI Co-Workers"
+  ]
+}

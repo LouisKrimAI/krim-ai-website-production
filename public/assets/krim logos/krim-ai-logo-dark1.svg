@@ -1,0 +1,20 @@
+<!-- Krim Logo - Inverted Triangle Dark Background Version -->
+<svg width="400" height="400" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+  <!-- Inverted triangle with green edges for dark backgrounds -->
+  <g id="inverted-triangle">
+    <!-- Left side with gap -->
+    <line x1="100" y1="100" x2="140" y2="169.3" stroke="#00FF88" stroke-width="2.5" stroke-linecap="round"/>
+    <line x1="160" y1="203.9" x2="200" y2="273.2" stroke="#00FF88" stroke-width="2.5" stroke-linecap="round"/>
+    
+    <!-- Right side with gap -->
+    <line x1="300" y1="100" x2="260" y2="169.3" stroke="#00FF88" stroke-width="2.5" stroke-linecap="round"/>
+    <line x1="240" y1="203.9" x2="200" y2="273.2" stroke="#00FF88" stroke-width="2.5" stroke-linecap="round"/>
+    
+    <!-- Top side with gap -->
+    <line x1="100" y1="100" x2="180" y2="100" stroke="#00FF88" stroke-width="2.5" stroke-linecap="round"/>
+    <line x1="220" y1="100" x2="300" y2="100" stroke="#00FF88" stroke-width="2.5" stroke-linecap="round"/>
+  </g>
+  
+  <!-- Single central dot at exact centroid -->
+  <circle cx="200" cy="157.7" r="5" fill="#00FF88"/>
+</svg>

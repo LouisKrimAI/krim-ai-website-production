@@ -1,0 +1,573 @@
+/*
+ * KRIM AI - ENTERPRISE DESIGN SYSTEM V4.0
+ * Enhanced Visual Authority for Fortune 500 Decision Makers
+ * Builds upon existing brand while adding enterprise credibility
+ */
+
+:root {
+  /* === ENTERPRISE TRUST COLORS === */
+  --enterprise-platinum: #F8F9FA;        /* High contrast backgrounds */
+  --enterprise-steel: #6C757D;           /* Professional neutral */
+  --enterprise-navy: #1E2B37;            /* Authority accent */
+  --enterprise-gold: #FFB800;            /* Premium highlight */
+  
+  /* === CONFIDENCE INTERVALS === */
+  --confidence-high: rgba(0, 255, 136, 0.8);     /* 95%+ confidence */
+  --confidence-medium: rgba(255, 184, 76, 0.8);   /* 80-95% confidence */
+  --confidence-low: rgba(255, 76, 97, 0.6);       /* <80% confidence */
+  
+  /* === MATHEMATICAL PRECISION SYSTEM === */
+  --data-primary: #00FF88;               /* Positive metrics */
+  --data-secondary: #00D4FF;             /* Comparative metrics */
+  --data-tertiary: #8B5CF6;             /* Predictive metrics */
+  --data-risk: #FF4C61;                 /* Risk indicators */
+  --data-baseline: #666666;             /* Baseline/neutral */
+  
+  /* === ENTERPRISE SPACING (12px Grid) === */
+  --enterprise-space-xs: 0.25rem;   /* 4px */
+  --enterprise-space-sm: 0.5rem;    /* 8px */
+  --enterprise-space-md: 0.75rem;   /* 12px */
+  --enterprise-space-lg: 1rem;      /* 16px */
+  --enterprise-space-xl: 1.5rem;    /* 24px */
+  --enterprise-space-2xl: 2rem;     /* 32px */
+  --enterprise-space-3xl: 3rem;     /* 48px */
+  --enterprise-space-4xl: 4rem;     /* 64px */
+  
+  /* === EXECUTIVE ATTENTION HIERARCHY === */
+  --attention-critical: 100;        /* Immediate action required */
+  --attention-high: 80;             /* Executive decision point */
+  --attention-medium: 60;           /* Manager review */
+  --attention-low: 40;              /* Reference information */
+  --attention-background: 20;       /* Context only */
+  
+  /* === TRUST SIGNAL GRADIENTS === */
+  --trust-verified: linear-gradient(135deg, #00FF88, #00D4FF);
+  --trust-certified: linear-gradient(135deg, #FFB800, #FF8C00);
+  --trust-compliant: linear-gradient(135deg, #8B5CF6, #6366F1);
+  
+  /* === DATA VISUALIZATION PALETTE === */
+  --chart-primary: #00FF88;
+  --chart-secondary: #00D4FF;
+  --chart-tertiary: #8B5CF6;
+  --chart-quaternary: #FFB800;
+  --chart-risk: #FF4C61;
+  --chart-baseline: #374151;
+  --chart-grid: rgba(255, 255, 255, 0.1);
+  --chart-axis: rgba(255, 255, 255, 0.3);
+  
+  /* === ENTERPRISE SHADOWS === */
+  --shadow-data-viz: 0 4px 20px rgba(0, 255, 136, 0.15);
+  --shadow-trust-signal: 0 2px 12px rgba(255, 184, 0, 0.2);
+  --shadow-compliance: 0 3px 16px rgba(139, 92, 246, 0.15);
+  --shadow-executive: 0 8px 32px rgba(0, 0, 0, 0.3);
+  
+  /* === PROGRESSIVE DISCLOSURE TIMING === */
+  --disclosure-instant: 150ms;
+  --disclosure-fast: 250ms;
+  --disclosure-normal: 350ms;
+  --disclosure-deliberate: 500ms;
+  --disclosure-reveal: 750ms;
+  
+  /* === MATHEMATICAL PRECISION FONTS === */
+  --font-data: 'JetBrains Mono', 'SF Mono', 'Monaco', monospace;
+  --font-financial: 'Inter', -apple-system, system-ui, sans-serif;
+  --font-technical: 'Space Grotesk', 'Inter Display', system-ui, sans-serif;
+}
+
+/* ========================================
+   ENTERPRISE COMPONENT FOUNDATIONS
+   ======================================== */
+
+/* Executive Dashboard Cards */
+.executive-card {
+  background: linear-gradient(135deg, 
+    rgba(255, 255, 255, 0.08) 0%, 
+    rgba(255, 255, 255, 0.02) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 16px;
+  backdrop-filter: blur(20px);
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  transition: all var(--disclosure-normal) var(--ease-default);
+}
+
+.executive-card:hover {
+  border-color: rgba(0, 255, 136, 0.3);
+  box-shadow: 
+    0 12px 48px rgba(0, 0, 0, 0.4),
+    0 0 24px rgba(0, 255, 136, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  transform: translateY(-2px) scale(1.01);
+}
+
+/* Data Visualization Container */
+.data-viz-container {
+  background: rgba(10, 8, 27, 0.95);
+  border: 1px solid rgba(0, 255, 136, 0.2);
+  border-radius: 12px;
+  padding: var(--enterprise-space-2xl);
+  box-shadow: var(--shadow-data-viz);
+  position: relative;
+  overflow: hidden;
+}
+
+.data-viz-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    rgba(0, 255, 136, 0.5) 50%, 
+    transparent 100%);
+}
+
+/* Trust Signal Badges */
+.trust-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--enterprise-space-sm);
+  padding: var(--enterprise-space-sm) var(--enterprise-space-md);
+  border-radius: 6px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  box-shadow: var(--shadow-trust-signal);
+  transition: all var(--disclosure-fast) var(--ease-default);
+}
+
+.trust-badge--verified {
+  background: var(--trust-verified);
+  color: #000;
+}
+
+.trust-badge--certified {
+  background: var(--trust-certified);
+  color: #000;
+}
+
+.trust-badge--compliant {
+  background: var(--trust-compliant);
+  color: #fff;
+}
+
+.trust-badge:hover {
+  transform: scale(1.05);
+  box-shadow: 
+    var(--shadow-trust-signal),
+    0 0 16px rgba(255, 184, 0, 0.3);
+}
+
+/* Progressive Disclosure System */
+.progressive-section {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all var(--disclosure-reveal) cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.progressive-section.disclosed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.progressive-section[data-priority="critical"] {
+  animation: pulse-attention 2s infinite;
+}
+
+@keyframes pulse-attention {
+  0%, 100% { 
+    box-shadow: 0 0 0 0 rgba(255, 76, 97, 0.4); 
+  }
+  70% { 
+    box-shadow: 0 0 0 8px rgba(255, 76, 97, 0); 
+  }
+}
+
+/* Executive Summary Containers */
+.executive-summary {
+  background: linear-gradient(135deg, 
+    rgba(0, 255, 136, 0.1) 0%, 
+    rgba(0, 212, 255, 0.05) 100%);
+  border: 2px solid rgba(0, 255, 136, 0.2);
+  border-radius: 20px;
+  padding: var(--enterprise-space-3xl);
+  margin: var(--enterprise-space-2xl) 0;
+  box-shadow: var(--shadow-executive);
+  position: relative;
+}
+
+.executive-summary::before {
+  content: 'EXECUTIVE SUMMARY';
+  position: absolute;
+  top: -12px;
+  left: var(--enterprise-space-xl);
+  background: var(--color-background);
+  color: var(--krim-mint);
+  padding: 0 var(--enterprise-space-md);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
+
+/* Mathematical Precision Display */
+.metric-precise {
+  font-family: var(--font-data);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.02em;
+}
+
+.metric-confidence {
+  position: relative;
+  display: inline-block;
+}
+
+.metric-confidence::after {
+  content: attr(data-confidence);
+  position: absolute;
+  bottom: -18px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.625rem;
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  white-space: nowrap;
+}
+
+.metric-confidence[data-confidence-level="high"]::after {
+  color: var(--confidence-high);
+}
+
+.metric-confidence[data-confidence-level="medium"]::after {
+  color: var(--confidence-medium);
+}
+
+.metric-confidence[data-confidence-level="low"]::after {
+  color: var(--confidence-low);
+}
+
+/* Technical Architecture Diagrams */
+.tech-architecture {
+  background: rgba(10, 8, 27, 0.8);
+  border: 1px solid rgba(0, 212, 255, 0.3);
+  border-radius: 16px;
+  padding: var(--enterprise-space-3xl);
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(0, 212, 255, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.tech-architecture::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  background: 
+    linear-gradient(45deg, 
+      rgba(0, 212, 255, 0.03) 25%, 
+      transparent 25%), 
+    linear-gradient(-45deg, 
+      rgba(0, 212, 255, 0.03) 25%, 
+      transparent 25%);
+  background-size: 20px 20px;
+  pointer-events: none;
+}
+
+/* Risk Assessment Indicators */
+.risk-indicator {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: var(--enterprise-space-sm);
+  padding: var(--enterprise-space-sm) var(--enterprise-space-md);
+  border-radius: 8px;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.risk-indicator--low {
+  background: rgba(0, 255, 136, 0.1);
+  border: 1px solid rgba(0, 255, 136, 0.3);
+  color: var(--krim-mint);
+}
+
+.risk-indicator--medium {
+  background: rgba(255, 184, 76, 0.1);
+  border: 1px solid rgba(255, 184, 76, 0.3);
+  color: var(--color-warning);
+}
+
+.risk-indicator--high {
+  background: rgba(255, 76, 97, 0.1);
+  border: 1px solid rgba(255, 76, 97, 0.3);
+  color: var(--color-error);
+}
+
+/* Compliance Audit Trail */
+.compliance-trail {
+  font-family: var(--font-data);
+  font-size: 0.75rem;
+  line-height: 1.4;
+  color: var(--color-text-secondary);
+  background: rgba(139, 92, 246, 0.05);
+  border: 1px solid rgba(139, 92, 246, 0.2);
+  border-radius: 8px;
+  padding: var(--enterprise-space-md);
+  margin-top: var(--enterprise-space-md);
+}
+
+.compliance-trail .audit-line {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2px 0;
+  border-bottom: 1px solid rgba(139, 92, 246, 0.1);
+}
+
+.compliance-trail .audit-line:last-child {
+  border-bottom: none;
+}
+
+.compliance-trail .audit-timestamp {
+  color: var(--krim-purple);
+  font-weight: 600;
+}
+
+/* Decision Tree Navigation */
+.decision-tree {
+  display: flex;
+  flex-direction: column;
+  gap: var(--enterprise-space-lg);
+}
+
+.decision-node {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: var(--enterprise-space-lg);
+  cursor: pointer;
+  transition: all var(--disclosure-normal) var(--ease-default);
+}
+
+.decision-node:hover {
+  background: rgba(0, 255, 136, 0.08);
+  border-color: rgba(0, 255, 136, 0.3);
+  transform: translateX(4px);
+}
+
+.decision-node.active {
+  background: rgba(0, 255, 136, 0.15);
+  border-color: rgba(0, 255, 136, 0.5);
+  box-shadow: 0 0 20px rgba(0, 255, 136, 0.2);
+}
+
+/* ========================================
+   STAKEHOLDER-SPECIFIC INTERFACES
+   ======================================== */
+
+/* CFO Dashboard Elements */
+.cfo-metrics {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--enterprise-space-xl);
+}
+
+.cfo-metric-card {
+  background: linear-gradient(135deg, 
+    rgba(0, 255, 136, 0.1) 0%, 
+    rgba(0, 212, 255, 0.05) 100%);
+  border: 1px solid rgba(0, 255, 136, 0.2);
+  border-radius: 12px;
+  padding: var(--enterprise-space-xl);
+  text-align: center;
+}
+
+.cfo-metric-value {
+  font-family: var(--font-data);
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--krim-mint);
+  line-height: 1;
+  margin-bottom: var(--enterprise-space-sm);
+}
+
+.cfo-metric-label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.cfo-metric-trend {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  margin-top: var(--enterprise-space-sm);
+}
+
+/* CTO Technical Elements */
+.cto-architecture {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--enterprise-space-2xl);
+}
+
+.cto-layer {
+  background: rgba(30, 43, 55, 0.3);
+  border: 1px solid rgba(0, 212, 255, 0.3);
+  border-radius: 16px;
+  padding: var(--enterprise-space-2xl);
+  position: relative;
+}
+
+.cto-layer-title {
+  font-family: var(--font-technical);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--krim-cyan);
+  margin-bottom: var(--enterprise-space-lg);
+}
+
+.cto-tech-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--enterprise-space-sm);
+}
+
+.cto-tech-badge {
+  background: rgba(0, 212, 255, 0.1);
+  border: 1px solid rgba(0, 212, 255, 0.3);
+  border-radius: 6px;
+  padding: var(--enterprise-space-sm) var(--enterprise-space-md);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--krim-cyan);
+}
+
+/* CEO Strategic Overview */
+.ceo-strategic {
+  background: linear-gradient(135deg, 
+    rgba(255, 184, 0, 0.15) 0%, 
+    rgba(255, 140, 0, 0.05) 100%);
+  border: 2px solid rgba(255, 184, 0, 0.3);
+  border-radius: 20px;
+  padding: var(--enterprise-space-4xl);
+  text-align: center;
+  box-shadow: 
+    var(--shadow-executive),
+    0 0 40px rgba(255, 184, 0, 0.1);
+}
+
+.ceo-impact-metric {
+  font-family: var(--font-display);
+  font-size: 3.5rem;
+  font-weight: 900;
+  background: var(--trust-certified);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  line-height: 1;
+  margin-bottom: var(--enterprise-space-lg);
+}
+
+/* ========================================
+   RESPONSIVE ENTERPRISE DESIGN
+   ======================================== */
+
+@media (max-width: 768px) {
+  .executive-card {
+    padding: var(--enterprise-space-lg);
+  }
+  
+  .data-viz-container {
+    padding: var(--enterprise-space-lg);
+  }
+  
+  .executive-summary {
+    padding: var(--enterprise-space-2xl);
+  }
+  
+  .cfo-metric-value {
+    font-size: 2rem;
+  }
+  
+  .ceo-impact-metric {
+    font-size: 2.5rem;
+  }
+}
+
+@media (min-width: 1440px) {
+  .executive-summary {
+    padding: var(--enterprise-space-4xl);
+  }
+  
+  .ceo-strategic {
+    padding: var(--enterprise-space-4xl) var(--enterprise-space-4xl);
+  }
+}
+
+/* ========================================
+   ACCESSIBILITY ENHANCEMENTS
+   ======================================== */
+
+@media (prefers-contrast: high) {
+  .executive-card {
+    border-color: rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.15);
+  }
+  
+  .trust-badge {
+    border: 2px solid currentColor;
+  }
+  
+  .metric-confidence::after {
+    font-weight: 700;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .progressive-section,
+  .decision-node,
+  .executive-card {
+    transition: opacity var(--disclosure-fast) linear;
+    transform: none;
+  }
+  
+  .progressive-section[data-priority="critical"] {
+    animation: none;
+    border: 2px solid var(--data-risk);
+  }
+}
+
+/* Screen Reader Enhancements */
+.sr-metric-context {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* High-DPI Display Optimizations */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .tech-architecture::before {
+    background-size: 10px 10px;
+  }
+  
+  .compliance-trail {
+    font-size: 0.8125rem;
+  }
+}

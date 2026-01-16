@@ -1,0 +1,1405 @@
+'use client';
+
+import React, { useState, useRef, useEffect, useMemo } from 'react';
+import { motion, AnimatePresence, useReducedMotion, useMotionValue, useTransform, useSpring } from 'framer-motion';
+import { 
+  GridFour, 
+  Circle, 
+  ArrowRight, 
+  Lightning,
+  Database,
+  Cloud,
+  Shield,
+  ChartBar,
+  Plugs,
+  Check,
+  X,
+  Plus,
+  Bank,
+  Buildings,
+  CloudArrowUp,
+  Users,
+  CreditCard,
+  Cpu,
+  NetworkX,
+  ChartLineUp,
+  Broadcast,
+  IdentificationCard,
+  Lock,
+  Waves,
+  GitBranch
+} from '@phosphor-icons/react';
+import { duration, easing, distance, glow, stagger } from '@/components/motion/tokens';
+
+// Types
+interface Integration {
+  id: string;
+  name: string;
+  category: string;
+  logo: string;
+  description: string;
+  connected?: boolean;
+  comingSoon?: boolean;
+  relatedTo?: string[]; // IDs of related integrations
+}
+
+interface Category {
+  id: string;
+  name: string;
+  icon: React.ReactElement;
+  color: string;
+  bgGradient: string;
+  count: number;
+}
+
+// Enterprise Integration Data with relationships
+const integrations: Integration[] = [
+  // Core Financial Infrastructure (5)
+  { 
+    id: 'fis', 
+    name: 'FIS', 
+    category: 'financial', 
+    logo: 'FIS', 
+    description: 'Financial technology backbone', 
+    connected: true,
+    relatedTo: ['salesforce', 'aws', 'stripe']
+  },
+  { 
+    id: 'jackhenry', 
+    name: 'Jack Henry', 
+    category: 'financial', 
+    logo: 'jack henry', 
+    description: 'Banking technology solutions', 
+    connected: true,
+    relatedTo: ['oracle', 'azure']
+  },
+  { 
+    id: 'blackknight', 
+    name: 'Black Knight', 
+    category: 'financial', 
+    logo: 'BLK', 
+    description: 'Mortgage & real estate technology',
+    relatedTo: ['salesforce', 'databricks']
+  },
+  { 
+    id: 'fiserv', 
+    name: 'Fiserv', 
+    category: 'financial', 
+    logo: 'FSV', 
+    description: 'Financial services technology', 
+    connected: true,
+    relatedTo: ['stripe', 'razorpay']
+  },
+  { 
+    id: 'temenos', 
+    name: 'Temenos', 
+    category: 'financial', 
+    logo: 'TMN', 
+    description: 'Banking software platform',
+    relatedTo: ['aws', 'azure', 'snowflake']
+  },
+  
+  // Enterprise CRM & Business Apps (4)
+  { 
+    id: 'salesforce', 
+    name: 'Salesforce', 
+    category: 'enterprise', 
+    logo: 'SF', 
+    description: 'CRM platform', 
+    connected: true,
+    relatedTo: ['aws', 'slack', 'hubspot', 'stripe']
+  },
+  { 
+    id: 'oracle', 
+    name: 'Oracle', 
+    category: 'enterprise', 
+    logo: 'ORC', 
+    description: 'Enterprise software',
+    relatedTo: ['aws', 'azure', 'databricks']
+  },
+  { 
+    id: 'dynamics365', 
+    name: 'Microsoft Dynamics 365', 
+    category: 'enterprise', 
+    logo: 'D365', 
+    description: 'Business applications', 
+    connected: true,
+    relatedTo: ['azure', 'teams', 'snowflake']
+  },
+  { 
+    id: 'hubspot', 
+    name: 'HubSpot', 
+    category: 'enterprise', 
+    logo: 'HBS', 
+    description: 'Marketing and sales platform',
+    relatedTo: ['salesforce', 'slack', 'stripe']
+  },
+  
+  // Cloud & Data Infrastructure (5)
+  { 
+    id: 'aws', 
+    name: 'AWS', 
+    category: 'cloud', 
+    logo: 'AWS', 
+    description: 'Amazon Web Services', 
+    connected: true,
+    relatedTo: ['databricks', 'snowflake', 'nvidia']
+  },
+  { 
+    id: 'azure', 
+    name: 'Microsoft Azure', 
+    category: 'cloud', 
+    logo: 'AZ', 
+    description: 'Cloud platform', 
+    connected: true,
+    relatedTo: ['dynamics365', 'teams', 'databricks']
+  },
+  { 
+    id: 'databricks', 
+    name: 'Databricks', 
+    category: 'cloud', 
+    logo: 'DBX', 
+    description: 'Analytics platform',
+    relatedTo: ['aws', 'azure', 'snowflake']
+  },
+  { 
+    id: 'snowflake', 
+    name: 'Snowflake', 
+    category: 'cloud', 
+    logo: 'SF', 
+    description: 'Cloud data warehouse', 
+    connected: true,
+    relatedTo: ['aws', 'azure', 'databricks']
+  },
+  { 
+    id: 'nvidia', 
+    name: 'NVIDIA', 
+    category: 'cloud', 
+    logo: 'NV', 
+    description: 'AI/GPU technology',
+    relatedTo: ['aws', 'azure']
+  },
+  
+  // Communication & Collaboration (5)
+  { 
+    id: 'slack', 
+    name: 'Slack', 
+    category: 'communication', 
+    logo: 'SLK', 
+    description: 'Team communication', 
+    connected: true,
+    relatedTo: ['salesforce', 'hubspot', 'teams']
+  },
+  { 
+    id: 'discord', 
+    name: 'Discord', 
+    category: 'communication', 
+    logo: 'DSC', 
+    description: 'Communication platform',
+    relatedTo: ['slack', 'teams']
+  },
+  { 
+    id: 'teams', 
+    name: 'Microsoft Teams', 
+    category: 'communication', 
+    logo: 'MST', 
+    description: 'Collaboration platform', 
+    connected: true,
+    relatedTo: ['azure', 'dynamics365', 'slack']
+  },
+  { 
+    id: 'zoom', 
+    name: 'Zoom', 
+    category: 'communication', 
+    logo: 'ZM', 
+    description: 'Video conferencing',
+    relatedTo: ['slack', 'teams']
+  },
+  { 
+    id: 'livekit', 
+    name: 'LiveKit', 
+    category: 'communication', 
+    logo: 'LK', 
+    description: 'Real-time communication',
+    relatedTo: ['zoom', 'discord']
+  },
+  
+  // Identity & Payments (5)
+  { 
+    id: 'signzy', 
+    name: 'Signzy', 
+    category: 'identity', 
+    logo: 'SGZ', 
+    description: 'Digital onboarding/KYC',
+    relatedTo: ['idfy', 'stripe']
+  },
+  { 
+    id: 'idfy', 
+    name: 'ID.FY', 
+    category: 'identity', 
+    logo: 'IDF', 
+    description: 'Identity verification', 
+    connected: true,
+    relatedTo: ['signzy', 'razorpay']
+  },
+  { 
+    id: 'stripe', 
+    name: 'Stripe', 
+    category: 'identity', 
+    logo: 'STR', 
+    description: 'Payment processing', 
+    connected: true,
+    relatedTo: ['salesforce', 'hubspot', 'razorpay']
+  },
+  { 
+    id: 'razorpay', 
+    name: 'Razorpay', 
+    category: 'identity', 
+    logo: 'RZP', 
+    description: 'Payment gateway',
+    relatedTo: ['stripe', 'idfy']
+  },
+  { 
+    id: 'zoomio', 
+    name: 'Zoomio', 
+    category: 'identity', 
+    logo: 'ZIO', 
+    description: 'Communication/verification',
+    relatedTo: ['zoom', 'idfy']
+  }
+];
+
+const categories: Category[] = [
+  { 
+    id: 'financial', 
+    name: 'Core Financial Infrastructure', 
+    icon: <Bank className="w-5 h-5" weight="duotone" />, 
+    color: 'from-krim-cyan to-krim-mint',
+    bgGradient: 'from-krim-cyan/10 to-krim-mint/10',
+    count: 5 
+  },
+  { 
+    id: 'enterprise', 
+    name: 'Enterprise CRM & Business Apps', 
+    icon: <Buildings className="w-5 h-5" weight="duotone" />, 
+    color: 'from-indigo-500 to-blue-600',
+    bgGradient: 'from-indigo-500/10 to-blue-600/10',
+    count: 4 
+  },
+  { 
+    id: 'cloud', 
+    name: 'Cloud & Data Infrastructure', 
+    icon: <CloudArrowUp className="w-5 h-5" weight="duotone" />, 
+    color: 'from-purple-500 to-violet-600',
+    bgGradient: 'from-purple-500/10 to-violet-600/10',
+    count: 5 
+  },
+  { 
+    id: 'communication', 
+    name: 'Communication & Collaboration', 
+    icon: <Broadcast className="w-5 h-5" weight="duotone" />, 
+    color: 'from-emerald-500 to-teal-600',
+    bgGradient: 'from-emerald-500/10 to-teal-600/10',
+    count: 5 
+  },
+  { 
+    id: 'identity', 
+    name: 'Identity & Payments', 
+    icon: <IdentificationCard className="w-5 h-5" weight="duotone" />, 
+    color: 'from-amber-500 to-orange-600',
+    bgGradient: 'from-amber-500/10 to-orange-600/10',
+    count: 5 
+  }
+];
+
+// Premium Animation Variants
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: stagger.base / 1000,
+      delayChildren: 0.3,
+      duration: duration.slow / 1000,
+      ease: easing.premium
+    }
+  }
+};
+
+const itemVariants = {
+  hidden: { 
+    opacity: 0, 
+    y: distance.medium,
+    scale: 0.95
+  },
+  visible: { 
+    opacity: 1, 
+    y: 0,
+    scale: 1,
+    transition: {
+      duration: duration.moderate / 1000,
+      ease: easing.premium
+    }
+  }
+};
+
+const hubVariants = {
+  initial: { 
+    scale: 0, 
+    rotate: -180,
+    opacity: 0
+  },
+  animate: { 
+    scale: 1, 
+    rotate: 0,
+    opacity: 1,
+    transition: easing.orbital
+  }
+};
+
+// Data Flow Particle Component
+function DataFlowParticle({ 
+  path, 
+  delay = 0, 
+  duration = 4,
+  color = "rgba(34, 197, 196, 0.8)"
+}: { 
+  path: string; 
+  delay?: number; 
+  duration?: number;
+  color?: string;
+}) {
+  return (
+    <motion.circle
+      r="2"
+      fill={color}
+      filter="url(#glow)"
+      initial={{ opacity: 0, pathLength: 0 }}
+      animate={{
+        opacity: [0, 1, 1, 0],
+        pathLength: [0, 1],
+      }}
+      transition={{
+        duration,
+        delay,
+        repeat: Infinity,
+        ease: "linear",
+        times: [0, 0.1, 0.9, 1]
+      }}
+      style={{
+        offsetPath: `path('${path}')`,
+        offsetDistance: "100%",
+      }}
+    />
+  );
+}
+
+// Orbital Ring Component
+function OrbitRing({ 
+  radius, 
+  duration: orbitDuration, 
+  reverse = false,
+  opacity = 0.1,
+  strokeWidth = 0.5,
+  dashArray = "2 8"
+}: {
+  radius: number;
+  duration: number;
+  reverse?: boolean;
+  opacity?: number;
+  strokeWidth?: number;
+  dashArray?: string;
+}) {
+  const reducedMotion = useReducedMotion();
+  
+  return (
+    <motion.circle
+      r={radius}
+      fill="none"
+      stroke="url(#orbitalGradient)"
+      strokeWidth={strokeWidth}
+      strokeDasharray={dashArray}
+      initial={{ opacity: 0, scale: 0.8, rotate: 0 }}
+      animate={{ 
+        opacity,
+        scale: 1,
+        rotate: reducedMotion ? 0 : (reverse ? -360 : 360)
+      }}
+      transition={{
+        opacity: { duration: duration.slow / 1000, ease: easing.premium },
+        scale: { duration: duration.slow / 1000, ease: "easeOut" },
+        rotate: { duration: orbitDuration / 1000, repeat: Infinity, ease: "linear" }
+      }}
+      style={{
+        transformOrigin: "center",
+        filter: "blur(0.5px)"
+      }}
+    />
+  );
+}
+
+// Pulsing Network Indicator
+function PulseIndicator({ x, y, active = false }: { x: number; y: number; active?: boolean }) {
+  const reducedMotion = useReducedMotion();
+  
+  if (!active) return null;
+  
+  return (
+    <g>
+      <circle
+        cx={x}
+        cy={y}
+        r="3"
+        fill="rgba(160, 203, 196, 0.8)"
+        filter="url(#glow)"
+      />
+      {!reducedMotion && (
+        <motion.circle
+          cx={x}
+          cy={y}
+          r="3"
+          fill="none"
+          stroke="rgba(160, 203, 196, 0.6)"
+          strokeWidth="1"
+          initial={{ scale: 1, opacity: 1 }}
+          animate={{
+            scale: [1, 2.5, 3],
+            opacity: [1, 0.5, 0],
+          }}
+          transition={{
+            duration: duration.pulse / 1000,
+            repeat: Infinity,
+            ease: easing.gentle
+          }}
+        />
+      )}
+    </g>
+  );
+}
+
+// Magnetic Node Component with hover effect
+function MagneticNode({ 
+  integration,
+  x,
+  y,
+  onHover,
+  isHovered,
+  isRelated
+}: {
+  integration: Integration;
+  x: number;
+  y: number;
+  onHover: (id: string | null) => void;
+  isHovered: boolean;
+  isRelated: boolean;
+}) {
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+  
+  const springConfig = easing.magnetic;
+  const magneticX = useSpring(useTransform(mouseX, [-25, 0, 25], [-distance.magneticPull, 0, distance.magneticPull]), springConfig);
+  const magneticY = useSpring(useTransform(mouseY, [-25, 0, 25], [-distance.magneticPull, 0, distance.magneticPull]), springConfig);
+  
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const centerX = rect.left + rect.width / 2;
+    const centerY = rect.top + rect.height / 2;
+    mouseX.set(e.clientX - centerX);
+    mouseY.set(e.clientY - centerY);
+  };
+  
+  const handleMouseLeave = () => {
+    mouseX.set(0);
+    mouseY.set(0);
+  };
+  
+  return (
+    <motion.div
+      className="absolute"
+      style={{
+        left: x - 28,
+        top: y - 28,
+        x: magneticX,
+        y: magneticY
+      }}
+      initial={{ opacity: 0, scale: 0 }}
+      animate={{ 
+        opacity: 1, 
+        scale: isHovered ? 1.15 : (isRelated ? 1.08 : 1),
+        filter: isHovered ? "brightness(1.3)" : (isRelated ? "brightness(1.15)" : "brightness(1)")
+      }}
+      transition={easing.magnetic}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      onHoverStart={() => onHover(integration.id)}
+      onHoverEnd={() => onHover(null)}
+      whileHover={{ zIndex: 100 }}
+    >
+      <div className="relative group cursor-pointer">
+        <motion.div 
+          className="w-14 h-14 rounded-xl bg-gray-900/90 backdrop-blur-xl shadow-xl border border-gray-700/50 flex items-center justify-center overflow-hidden transition-all duration-300"
+          style={{
+            boxShadow: isHovered ? glow.magnetic : (isRelated ? glow.connection : "none")
+          }}
+        >
+          <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-gray-800/50 to-gray-700/50 flex items-center justify-center">
+            <span className="text-[10px] font-bold text-gray-400">{integration.name.substring(0, 3).toUpperCase()}</span>
+          </div>
+          
+          {integration.connected && (
+            <div className="absolute -top-1 -right-1">
+              <PulseIndicator x={6} y={6} active={true} />
+            </div>
+          )}
+        </motion.div>
+
+        {/* Enhanced Tooltip */}
+        <AnimatePresence>
+          {isHovered && (
+            <motion.div 
+              initial={{ opacity: 0, y: 10, scale: 0.9 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: 5, scale: 0.95 }}
+              transition={{ duration: 0.2, ease: easing.premium }}
+              className="absolute bottom-full left-1/2 -translate-x-1/2 mb-3 z-[200]"
+            >
+              <div className="bg-gray-950/95 backdrop-blur-xl border border-gray-800 text-white px-4 py-3 rounded-xl text-xs whitespace-nowrap shadow-2xl">
+                <div className="font-semibold text-sm mb-1 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
+                  {integration.name}
+                </div>
+                <div className="text-gray-400 text-[11px] mb-2">{integration.description}</div>
+                {integration.connected && (
+                  <div className="flex items-center gap-1 text-krim-mint text-[11px]">
+                    <Check className="w-3 h-3" weight="bold" />
+                    <span>Active Integration</span>
+                  </div>
+                )}
+                <div className="absolute top-full left-1/2 -translate-x-1/2 -mt-[1px]">
+                  <div className="border-[6px] border-transparent border-t-gray-950" />
+                </div>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
+    </motion.div>
+  );
+}
+
+export default function IntegrationEcosystem() {
+  const [viewMode, setViewMode] = useState<'ecosystem' | 'grid'>('ecosystem');
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+  const [hoveredIntegration, setHoveredIntegration] = useState<string | null>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const reducedMotion = useReducedMotion();
+  
+  // Get related integrations for hover state
+  const getRelatedIntegrations = (integrationId: string | null): string[] => {
+    if (!integrationId) return [];
+    const integration = integrations.find(i => i.id === integrationId);
+    return integration?.relatedTo || [];
+  };
+  
+  const relatedIntegrations = getRelatedIntegrations(hoveredIntegration);
+  
+  // Filter integrations based on selected category
+  const filteredIntegrations = selectedCategory 
+    ? integrations.filter(i => i.category === selectedCategory)
+    : integrations;
+
+  return (
+    <section className="py-32 overflow-hidden bg-gradient-to-b from-gray-950 via-gray-900 to-gray-950 relative">
+      {/* Premium background effects with animated gradients */}
+      <div className="absolute inset-0">
+        <motion.div 
+          className="absolute top-0 left-1/4 w-96 h-96 bg-krim-cyan/20 rounded-full"
+          animate={{ 
+            x: [0, 50, 0],
+            y: [0, -30, 0],
+            scale: [1, 1.1, 1]
+          }}
+          transition={{
+            duration: 20,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+          style={{ filter: "blur(120px)" }}
+        />
+        <motion.div 
+          className="absolute bottom-0 right-1/4 w-96 h-96 bg-krim-mint/20 rounded-full"
+          animate={{ 
+            x: [0, -50, 0],
+            y: [0, 30, 0],
+            scale: [1, 1.15, 1]
+          }}
+          transition={{
+            duration: 25,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+          style={{ filter: "blur(120px)" }}
+        />
+      </div>
+      
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <motion.div
+          initial="hidden"
+          animate="visible"
+          variants={containerVariants}
+          className="max-w-7xl mx-auto"
+        >
+          {/* Header with staggered entrance */}
+          <div className="text-center mb-16">
+            <motion.div 
+              variants={itemVariants} 
+              className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-krim-cyan/10 to-krim-mint/10 rounded-full mb-6 border border-krim-cyan/20"
+              whileHover={{ scale: 1.02 }}
+              style={{ boxShadow: glow.subtle }}
+            >
+              <NetworkX className="w-5 h-5 text-krim-cyan" weight="duotone" />
+              <span className="text-sm font-medium bg-gradient-to-r from-krim-cyan to-krim-mint bg-clip-text text-transparent">
+                Enterprise Integration Ecosystem
+              </span>
+            </motion.div>
+            
+            <motion.h2 
+              variants={itemVariants} 
+              className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6"
+            >
+              <span className="bg-gradient-to-r from-gray-900 to-gray-700 dark:from-white dark:to-gray-300 bg-clip-text text-transparent">
+                Orchestrating
+              </span>
+              <span className="bg-gradient-to-r from-krim-cyan to-krim-mint bg-clip-text text-transparent">
+                {' '}22+ Enterprise Systems
+              </span>
+            </motion.h2>
+            
+            <motion.p 
+              variants={itemVariants} 
+              className="text-lg text-gray-600 dark:text-gray-400 max-w-3xl mx-auto mb-8"
+            >
+              KrimOS serves as the intelligent orchestration layer, seamlessly connecting core banking platforms, 
+              cloud infrastructure, and business applications into a unified multi-agent operating system.
+            </motion.p>
+
+            {/* View Toggle with morphing animation */}
+            <motion.div 
+              variants={itemVariants} 
+              className="flex items-center justify-center gap-2 mb-12"
+            >
+              <motion.div 
+                className="bg-gray-900/50 backdrop-blur-xl border border-gray-800/50 p-1 rounded-xl inline-flex shadow-xl"
+                layout
+                transition={{ type: "spring", damping: 25, stiffness: 120 }}
+              >
+                <motion.button
+                  onClick={() => setViewMode('ecosystem')}
+                  className={`px-6 py-2 rounded-lg font-medium transition-all duration-200 flex items-center gap-2 ${
+                    viewMode === 'ecosystem'
+                      ? 'bg-gradient-to-r from-krim-cyan/10 to-krim-mint/10 text-white shadow-lg border border-krim-cyan/30'
+                      : 'text-gray-400 hover:text-gray-300 hover:bg-gray-800/50'
+                  }`}
+                  layout
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  style={{
+                    boxShadow: viewMode === 'ecosystem' ? glow.soft : 'none'
+                  }}
+                >
+                  <Circle className="w-4 h-4" />
+                  Ecosystem View
+                </motion.button>
+                <motion.button
+                  onClick={() => setViewMode('grid')}
+                  className={`px-6 py-2 rounded-lg font-medium transition-all duration-200 flex items-center gap-2 ${
+                    viewMode === 'grid'
+                      ? 'bg-gradient-to-r from-krim-cyan/10 to-krim-mint/10 text-white shadow-lg border border-krim-cyan/30'
+                      : 'text-gray-400 hover:text-gray-300 hover:bg-gray-800/50'
+                  }`}
+                  layout
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  style={{
+                    boxShadow: viewMode === 'grid' ? glow.soft : 'none'
+                  }}
+                >
+                  <GridFour className="w-4 h-4" />
+                  Grid View
+                </motion.button>
+              </motion.div>
+            </motion.div>
+
+            {/* Category Filter with magnetic hover */}
+            {viewMode === 'grid' && (
+              <motion.div 
+                variants={itemVariants} 
+                className="flex flex-wrap items-center justify-center gap-3 mb-8"
+              >
+                <motion.button
+                  onClick={() => setSelectedCategory(null)}
+                  className={`px-4 py-2 rounded-lg font-medium transition-all duration-200 ${
+                    !selectedCategory
+                      ? 'bg-gradient-to-r from-cyan-600 to-teal-600 text-white shadow-lg'
+                      : 'bg-gray-900/30 backdrop-blur text-gray-400 hover:text-gray-300 hover:bg-gray-800/50 border border-gray-800/30'
+                  }`}
+                  whileHover={{ scale: 1.05, y: -2 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  All ({integrations.length})
+                </motion.button>
+                {categories.map(category => (
+                  <motion.button
+                    key={category.id}
+                    onClick={() => setSelectedCategory(category.id)}
+                    className={`px-4 py-2 rounded-lg font-medium transition-all duration-200 flex items-center gap-2 ${
+                      selectedCategory === category.id
+                        ? 'bg-gradient-to-r ' + category.color + ' text-white shadow-lg'
+                        : 'bg-gray-900/30 backdrop-blur text-gray-400 hover:text-gray-300 hover:bg-gray-800/50 border border-gray-800/30'
+                    }`}
+                    whileHover={{ scale: 1.05, y: -2 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    {category.icon}
+                    {category.name} ({category.count})
+                  </motion.button>
+                ))}
+              </motion.div>
+            )}
+          </div>
+
+          {/* Views with sophisticated transitions */}
+          <AnimatePresence mode="wait">
+            {viewMode === 'ecosystem' ? (
+              <EcosystemView 
+                key="ecosystem"
+                integrations={integrations}
+                categories={categories}
+                hoveredIntegration={hoveredIntegration}
+                setHoveredIntegration={setHoveredIntegration}
+                relatedIntegrations={relatedIntegrations}
+                reducedMotion={reducedMotion}
+              />
+            ) : (
+              <GridView
+                key="grid"
+                integrations={filteredIntegrations}
+                categories={categories}
+                hoveredIntegration={hoveredIntegration}
+                setHoveredIntegration={setHoveredIntegration}
+                reducedMotion={reducedMotion}
+              />
+            )}
+          </AnimatePresence>
+
+          {/* Animated Stats */}
+          <motion.div 
+            variants={containerVariants}
+            className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-6"
+          >
+            {[
+              { label: 'Enterprise Integrations', value: '22', icon: <NetworkX className="w-5 h-5" weight="duotone" /> },
+              { label: 'Daily Transactions', value: '$2.5B+', icon: <ChartLineUp className="w-5 h-5" weight="duotone" /> },
+              { label: 'System Uptime', value: '99.99%', icon: <Shield className="w-5 h-5" weight="duotone" /> },
+              { label: 'Agent Response Time', value: '<50ms', icon: <Cpu className="w-5 h-5" weight="duotone" /> }
+            ].map((stat, index) => (
+              <motion.div
+                key={index}
+                variants={itemVariants}
+                className="text-center p-6 rounded-2xl bg-gray-900/30 backdrop-blur-xl border border-gray-800/50 hover:border-krim-cyan/30 transition-all duration-300 group"
+                whileHover={{ 
+                  y: -4,
+                  transition: { duration: 0.2 }
+                }}
+              >
+                <motion.div 
+                  className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-gradient-to-r from-cyan-600 to-teal-600 text-white mb-4"
+                  whileHover={{ rotate: [0, -10, 10, -10, 0] }}
+                  transition={{ duration: 0.5 }}
+                >
+                  {stat.icon}
+                </motion.div>
+                <div className="text-3xl font-bold bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent mb-1 group-hover:from-krim-cyan group-hover:to-krim-mint transition-all duration-300">
+                  {stat.value}
+                </div>
+                <div className="text-sm text-gray-500 group-hover:text-gray-400 transition-colors">
+                  {stat.label}
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+        </motion.div>
+      </div>
+    </section>
+  );
+}
+
+// Enhanced Ecosystem View with sophisticated animations
+function EcosystemView({ 
+  integrations, 
+  categories, 
+  hoveredIntegration, 
+  setHoveredIntegration,
+  relatedIntegrations,
+  reducedMotion 
+}: {
+  integrations: Integration[];
+  categories: Category[];
+  hoveredIntegration: string | null;
+  setHoveredIntegration: (id: string | null) => void;
+  relatedIntegrations: string[];
+  reducedMotion: boolean | null;
+}) {
+  const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
+  const svgRef = useRef<SVGSVGElement>(null);
+
+  useEffect(() => {
+    const updateDimensions = () => {
+      if (svgRef.current) {
+        const { width } = svgRef.current.getBoundingClientRect();
+        setDimensions({ width, height: 700 });
+      }
+    };
+
+    updateDimensions();
+    window.addEventListener('resize', updateDimensions);
+    return () => window.removeEventListener('resize', updateDimensions);
+  }, []);
+
+  const centerX = dimensions.width / 2;
+  const centerY = dimensions.height / 2;
+  const categoryRadius = Math.min(dimensions.width, dimensions.height) * 0.35;
+
+  // Calculate positions with memoization
+  const categoryPositions = useMemo(() => {
+    return categories.map((category, index) => {
+      const angle = (index * 2 * Math.PI) / categories.length - Math.PI / 2;
+      return {
+        ...category,
+        x: centerX + Math.cos(angle) * categoryRadius,
+        y: centerY + Math.sin(angle) * categoryRadius
+      };
+    });
+  }, [categories, centerX, centerY, categoryRadius]);
+
+  // Calculate integration positions
+  const integrationPositions = useMemo(() => {
+    return integrations.map(integration => {
+      const category = categoryPositions.find(c => c.id === integration.category);
+      if (!category) return null;
+      
+      const categoryIntegrations = integrations.filter(i => i.category === integration.category);
+      const index = categoryIntegrations.findIndex(i => i.id === integration.id);
+      const angle = (index * 2 * Math.PI) / categoryIntegrations.length;
+      
+      return {
+        ...integration,
+        x: category.x + Math.cos(angle) * 85,
+        y: category.y + Math.sin(angle) * 85
+      };
+    }).filter(Boolean);
+  }, [integrations, categoryPositions]);
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, scale: 0.9 }}
+      animate={{ opacity: 1, scale: 1 }}
+      exit={{ opacity: 0, scale: 0.9 }}
+      transition={{ duration: duration.slow / 1000, ease: easing.premium }}
+      className="relative w-full h-[700px] bg-gradient-to-br from-gray-950 via-gray-900 to-gray-950 rounded-3xl overflow-hidden border border-gray-800/50 shadow-2xl"
+    >
+      {/* Animated background pattern */}
+      <div className="absolute inset-0">
+        <div 
+          className="absolute inset-0 opacity-[0.03]" 
+          style={{
+            backgroundImage: `linear-gradient(rgba(34, 197, 196, 0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(34, 197, 196, 0.3) 1px, transparent 1px)`,
+            backgroundSize: '50px 50px'
+          }} 
+        />
+        <div className="absolute inset-0 bg-gradient-radial from-krim-cyan/5 via-transparent to-krim-mint/5 opacity-50" />
+      </div>
+
+      {/* SVG Canvas for connections and orbits */}
+      <svg
+        ref={svgRef}
+        className="absolute inset-0 w-full h-full"
+        viewBox={`0 0 ${dimensions.width} ${dimensions.height}`}
+      >
+        <defs>
+          {/* Enhanced gradients */}
+          <radialGradient id="hubGradient">
+            <stop offset="0%" stopColor="rgba(34, 197, 196, 0.8)" />
+            <stop offset="50%" stopColor="rgba(160, 203, 196, 0.4)" />
+            <stop offset="100%" stopColor="rgba(34, 197, 196, 0)" />
+          </radialGradient>
+          
+          <linearGradient id="orbitalGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stopColor="rgba(34, 197, 196, 0.4)" />
+            <stop offset="50%" stopColor="rgba(160, 203, 196, 0.2)" />
+            <stop offset="100%" stopColor="rgba(34, 197, 196, 0.1)" />
+          </linearGradient>
+          
+          <linearGradient id="connectionGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stopColor="rgba(34, 197, 196, 0)" />
+            <stop offset="50%" stopColor="rgba(34, 197, 196, 0.6)" />
+            <stop offset="100%" stopColor="rgba(34, 197, 196, 0)" />
+          </linearGradient>
+          
+          {/* Premium glow filter */}
+          <filter id="glow">
+            <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+            <feMerge>
+              <feMergeNode in="coloredBlur"/>
+              <feMergeNode in="SourceGraphic"/>
+            </feMerge>
+          </filter>
+          
+          <filter id="softGlow">
+            <feGaussianBlur stdDeviation="2" result="softBlur"/>
+            <feMerge>
+              <feMergeNode in="softBlur"/>
+              <feMergeNode in="SourceGraphic"/>
+            </feMerge>
+          </filter>
+        </defs>
+
+        {/* Orbital rings with different speeds */}
+        <g className="orbits" transform={`translate(${centerX}, ${centerY})`}>
+          <OrbitRing 
+            radius={distance.orbitRadius.inner} 
+            duration={duration.orbit.inner} 
+            opacity={0.15}
+            strokeWidth={0.5}
+            dashArray="4 12"
+          />
+          <OrbitRing 
+            radius={distance.orbitRadius.middle} 
+            duration={duration.orbit.middle} 
+            reverse 
+            opacity={0.1}
+            strokeWidth={0.4}
+            dashArray="2 10"
+          />
+          <OrbitRing 
+            radius={distance.orbitRadius.outer} 
+            duration={duration.orbit.outer} 
+            opacity={0.08}
+            strokeWidth={0.3}
+            dashArray="1 8"
+          />
+          <OrbitRing 
+            radius={distance.orbitRadius.data} 
+            duration={duration.orbit.data} 
+            reverse
+            opacity={0.05}
+            strokeWidth={0.2}
+            dashArray="1 15"
+          />
+        </g>
+
+        {/* Connection lines with hover states */}
+        <g className="connections">
+          {integrationPositions.map((integration) => {
+            if (!integration) return null;
+            
+            const isHovered = hoveredIntegration === integration.id;
+            const isRelated = relatedIntegrations.includes(integration.id);
+            const shouldHighlight = isHovered || isRelated;
+            
+            // Draw connections to related integrations when hovered
+            if (hoveredIntegration && integration.relatedTo) {
+              return (
+                <g key={`connections-${integration.id}`}>
+                  {/* Main connection to hub */}
+                  <motion.line
+                    x1={centerX}
+                    y1={centerY}
+                    x2={integration.x}
+                    y2={integration.y}
+                    stroke={shouldHighlight ? "url(#connectionGradient)" : "rgba(34, 197, 196, 0.05)"}
+                    strokeWidth={shouldHighlight ? 1.5 : 0.5}
+                    initial={{ pathLength: 0, opacity: 0 }}
+                    animate={{ 
+                      pathLength: 1, 
+                      opacity: shouldHighlight ? 0.6 : 0.1
+                    }}
+                    transition={{ duration: duration.base / 1000, ease: easing.premium }}
+                  />
+                  
+                  {/* Related connections */}
+                  {isHovered && integration.relatedTo.map(relatedId => {
+                    const relatedInt = integrationPositions.find(i => i?.id === relatedId);
+                    if (!relatedInt) return null;
+                    
+                    return (
+                      <motion.path
+                        key={`related-${integration.id}-${relatedId}`}
+                        d={`M ${integration.x} ${integration.y} Q ${centerX} ${centerY} ${relatedInt.x} ${relatedInt.y}`}
+                        fill="none"
+                        stroke="url(#connectionGradient)"
+                        strokeWidth="1"
+                        strokeDasharray="4 4"
+                        initial={{ pathLength: 0, opacity: 0 }}
+                        animate={{ 
+                          pathLength: 1, 
+                          opacity: 0.4,
+                          strokeDashoffset: reducedMotion ? 0 : [0, -8]
+                        }}
+                        transition={{ 
+                          pathLength: { duration: duration.slow / 1000, ease: easing.premium },
+                          strokeDashoffset: { duration: 2, repeat: Infinity, ease: "linear" }
+                        }}
+                      />
+                    );
+                  })}
+                </g>
+              );
+            }
+            
+            return (
+              <motion.line
+                key={`connection-${integration.id}`}
+                x1={centerX}
+                y1={centerY}
+                x2={integration.x}
+                y2={integration.y}
+                stroke={shouldHighlight ? "url(#connectionGradient)" : "rgba(34, 197, 196, 0.05)"}
+                strokeWidth={shouldHighlight ? 1.5 : 0.5}
+                initial={{ pathLength: 0, opacity: 0 }}
+                animate={{ 
+                  pathLength: 1, 
+                  opacity: shouldHighlight ? 0.6 : 0.1
+                }}
+                transition={{ duration: duration.base / 1000, ease: easing.premium }}
+              />
+            );
+          })}
+        </g>
+
+        {/* Data flow particles */}
+        {!reducedMotion && (
+          <g className="data-particles">
+            {integrationPositions.filter(i => i?.connected).slice(0, 5).map((integration, index) => {
+              if (!integration) return null;
+              
+              const path = `M ${centerX} ${centerY} L ${integration.x} ${integration.y}`;
+              return (
+                <DataFlowParticle
+                  key={`particle-${integration.id}`}
+                  path={path}
+                  delay={index * 0.8}
+                  duration={3}
+                  color="rgba(160, 203, 196, 0.8)"
+                />
+              );
+            })}
+          </g>
+        )}
+
+        {/* Pulsing network indicators */}
+        {integrationPositions.filter(i => i?.connected).map(integration => {
+          if (!integration) return null;
+          return (
+            <PulseIndicator
+              key={`pulse-${integration.id}`}
+              x={integration.x}
+              y={integration.y}
+              active={true}
+            />
+          );
+        })}
+      </svg>
+
+      {/* Central Hub with sophisticated animation */}
+      <motion.div
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+        variants={hubVariants}
+        initial="initial"
+        animate="animate"
+      >
+        <div className="relative">
+          {/* Animated glow rings */}
+          {!reducedMotion && (
+            <>
+              <motion.div 
+                className="absolute inset-0 rounded-full bg-gradient-to-br from-krim-cyan/20 to-krim-mint/20"
+                animate={{
+                  scale: [1, 1.3, 1],
+                  opacity: [0.5, 0, 0.5]
+                }}
+                transition={{
+                  duration: duration.pulse / 1000,
+                  repeat: Infinity,
+                  ease: easing.gentle
+                }}
+              />
+              <motion.div 
+                className="absolute -inset-4 rounded-full bg-gradient-to-br from-krim-cyan/10 to-krim-mint/10"
+                animate={{
+                  scale: [1, 1.2, 1],
+                  opacity: [0.3, 0, 0.3]
+                }}
+                transition={{
+                  duration: duration.pulse / 1000,
+                  repeat: Infinity,
+                  ease: easing.gentle,
+                  delay: 0.2
+                }}
+              />
+            </>
+          )}
+          
+          {/* Main hub with glass morphism */}
+          <motion.div 
+            className="w-40 h-40 rounded-full bg-gradient-to-br from-krim-cyan via-krim-mint to-krim-cyan shadow-2xl flex items-center justify-center"
+            style={{ boxShadow: glow.hub }}
+            whileHover={{ scale: 1.05 }}
+            transition={easing.magnetic}
+          >
+            <div className="w-32 h-32 rounded-full bg-gray-950/90 backdrop-blur-xl border border-krim-cyan/30 flex items-center justify-center relative">
+              <div className="text-center">
+                <div className="text-2xl font-bold bg-gradient-to-r from-krim-cyan to-krim-mint bg-clip-text text-transparent">
+                  KrimOS
+                </div>
+                <div className="text-[10px] text-gray-500 uppercase tracking-wider mt-1">
+                  Orchestration Layer
+                </div>
+              </div>
+              
+              {/* Rotating indicator */}
+              {!reducedMotion && (
+                <motion.div 
+                  className="absolute inset-0 rounded-full"
+                  animate={{ rotate: 360 }}
+                  transition={{
+                    duration: 8,
+                    repeat: Infinity,
+                    ease: "linear"
+                  }}
+                >
+                  <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1 h-8 bg-gradient-to-b from-krim-cyan to-transparent" />
+                </motion.div>
+              )}
+            </div>
+          </motion.div>
+        </div>
+      </motion.div>
+
+      {/* Category Hubs with magnetic attraction */}
+      {categoryPositions.map((category, categoryIndex) => (
+        <motion.div
+          key={category.id}
+          className="absolute"
+          style={{
+            left: category.x - 48,
+            top: category.y - 48
+          }}
+          initial={{ opacity: 0, scale: 0 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ 
+            delay: 0.8 + categoryIndex * 0.1,
+            duration: duration.moderate / 1000,
+            ease: "easeOut"
+          }}
+          whileHover={{ scale: 1.1 }}
+        >
+          <motion.div 
+            className={`w-24 h-24 rounded-2xl bg-gradient-to-br ${category.bgGradient} backdrop-blur-xl border border-gray-700/50 shadow-xl flex items-center justify-center cursor-pointer group relative overflow-hidden`}
+            style={{ boxShadow: glow.soft }}
+            whileHover={{ boxShadow: glow.standard }}
+          >
+            {/* Animated background gradient */}
+            {!reducedMotion && (
+              <motion.div 
+                className={`absolute inset-0 bg-gradient-to-br ${category.color} opacity-0`}
+                whileHover={{ opacity: 0.2 }}
+                transition={{ duration: 0.3 }}
+              />
+            )}
+            
+            <div className="relative z-10">
+              {React.cloneElement(category.icon, { className: 'w-8 h-8 text-gray-400 group-hover:text-white transition-colors duration-300' })}
+            </div>
+          </motion.div>
+          
+          <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 whitespace-nowrap text-center">
+            <span className="text-xs font-semibold text-gray-400 block">
+              {category.name.split('&')[0]}
+            </span>
+            {category.name.includes('&') && (
+              <span className="text-[10px] text-gray-600">
+                {category.name.split('&').slice(1).join('&')}
+              </span>
+            )}
+          </div>
+        </motion.div>
+      ))}
+
+      {/* Integration Nodes with magnetic effects */}
+      {integrationPositions.map((integration, index) => {
+        if (!integration) return null;
+        
+        return (
+          <MagneticNode
+            key={integration.id}
+            integration={integration}
+            x={integration.x}
+            y={integration.y}
+            onHover={setHoveredIntegration}
+            isHovered={hoveredIntegration === integration.id}
+            isRelated={relatedIntegrations.includes(integration.id)}
+          />
+        );
+      })}
+    </motion.div>
+  );
+}
+
+// Enhanced Grid View with morphing animations
+function GridView({ 
+  integrations, 
+  categories, 
+  hoveredIntegration, 
+  setHoveredIntegration,
+  reducedMotion 
+}: {
+  integrations: Integration[];
+  categories: Category[];
+  hoveredIntegration: string | null;
+  setHoveredIntegration: (id: string | null) => void;
+  reducedMotion: boolean | null;
+}) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: distance.medium }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -distance.medium }}
+      transition={{ duration: duration.moderate / 1000, ease: easing.premium }}
+      className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4"
+    >
+      <AnimatePresence mode="popLayout">
+        {integrations.map((integration, index) => {
+          const category = categories.find(c => c.id === integration.category);
+          
+          return (
+            <motion.div
+              key={integration.id}
+              layout
+              initial={{ opacity: 0, scale: 0.8, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.8, y: -20 }}
+              transition={{ 
+                duration: duration.base / 1000,
+                delay: index * (stagger.fast / 1000),
+                layout: { type: "spring", damping: 25, stiffness: 120 }
+              }}
+              whileHover={{ 
+                y: -8,
+                transition: { duration: 0.2, ease: easing.premium }
+              }}
+              onHoverStart={() => setHoveredIntegration(integration.id)}
+              onHoverEnd={() => setHoveredIntegration(null)}
+              className="group relative"
+            >
+              <motion.div 
+                className="relative bg-gray-900/50 backdrop-blur-xl rounded-2xl p-6 border border-gray-800/50 shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer overflow-hidden group"
+                style={{
+                  boxShadow: hoveredIntegration === integration.id ? glow.standard : 'none'
+                }}
+              >
+                {/* Premium gradient overlay */}
+                <motion.div 
+                  className={`absolute inset-0 bg-gradient-to-br ${category?.bgGradient} opacity-0`}
+                  animate={{
+                    opacity: hoveredIntegration === integration.id ? 1 : 0
+                  }}
+                  transition={{ duration: 0.3 }}
+                />
+                
+                <div className="absolute inset-0 bg-gradient-to-t from-gray-950/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                
+                {/* Content */}
+                <div className="relative z-10">
+                  {/* Logo with magnetic hover */}
+                  <motion.div 
+                    className="w-16 h-16 mx-auto mb-4 rounded-xl bg-gradient-to-br from-gray-800/50 to-gray-700/50 border border-gray-700/50 flex items-center justify-center"
+                    whileHover={{ scale: 1.1, rotate: [0, -5, 5, 0] }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <span className="text-xs font-bold text-gray-500 group-hover:text-gray-300 transition-colors">
+                      {integration.name.substring(0, 3).toUpperCase()}
+                    </span>
+                  </motion.div>
+                  
+                  {/* Name with gradient animation */}
+                  <h3 className="text-sm font-semibold text-gray-300 group-hover:bg-gradient-to-r group-hover:from-krim-cyan group-hover:to-krim-mint group-hover:bg-clip-text group-hover:text-transparent text-center mb-1 transition-all duration-300">
+                    {integration.name}
+                  </h3>
+                  
+                  <p className="text-xs text-gray-500 text-center line-clamp-2">
+                    {integration.description}
+                  </p>
+                  
+                  {/* Status with spring animation */}
+                  <motion.div 
+                    className="mt-4 flex items-center justify-center"
+                    initial={{ scale: 0 }}
+                    animate={{ scale: 1 }}
+                    transition={{ delay: 0.3 + index * 0.05, type: "spring", damping: 25, stiffness: 120 }}
+                  >
+                    {integration.connected ? (
+                      <motion.span 
+                        className="inline-flex items-center gap-1 px-3 py-1.5 bg-krim-mint/10 border border-krim-mint/30 text-krim-mint rounded-full text-xs font-medium"
+                        whileHover={{ scale: 1.05 }}
+                      >
+                        <Check className="w-3 h-3" weight="bold" />
+                        Active
+                      </motion.span>
+                    ) : integration.comingSoon ? (
+                      <motion.span 
+                        className="inline-flex items-center gap-1 px-3 py-1.5 bg-amber-500/10 border border-amber-500/30 text-amber-400 rounded-full text-xs font-medium"
+                        animate={{ scale: [1, 1.05, 1] }}
+                        transition={{ duration: 2, repeat: Infinity }}
+                      >
+                        <Lightning className="w-3 h-3" weight="bold" />
+                        Soon
+                      </motion.span>
+                    ) : (
+                      <motion.button 
+                        className="inline-flex items-center gap-1 px-3 py-1.5 bg-gray-800/50 border border-gray-700/50 hover:bg-gradient-to-r hover:from-krim-cyan hover:to-krim-mint text-gray-400 hover:text-white rounded-full text-xs font-medium transition-all duration-300 hover:border-transparent"
+                        whileHover={{ scale: 1.05, boxShadow: glow.soft }}
+                        whileTap={{ scale: 0.95 }}
+                      >
+                        <Plus className="w-3 h-3" weight="bold" />
+                        Connect
+                      </motion.button>
+                    )}
+                  </motion.div>
+                </div>
+
+                {/* Category badge with float animation */}
+                <motion.div 
+                  className="absolute top-3 right-3 opacity-60 group-hover:opacity-100 transition-opacity duration-300"
+                  animate={{
+                    y: reducedMotion ? 0 : [0, -4, 0]
+                  }}
+                  transition={{
+                    duration: 3,
+                    repeat: Infinity,
+                    ease: "easeInOut"
+                  }}
+                >
+                  <div className={`w-10 h-10 rounded-xl bg-gradient-to-br ${category?.bgGradient} backdrop-blur-xl border border-gray-700/30 flex items-center justify-center shadow-lg`}>
+                    <div className="text-gray-300">
+                      {React.cloneElement(category?.icon || <Circle />, { className: 'w-5 h-5', weight: 'duotone' })}
+                    </div>
+                  </div>
+                </motion.div>
+              </motion.div>
+            </motion.div>
+          );
+        })}
+      </AnimatePresence>
+    </motion.div>
+  );
+}

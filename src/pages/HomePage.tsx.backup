@@ -1,0 +1,1536 @@
+/**
+ * Krim AI - REFACTORED HOMEPAGE
+ * Clean, enterprise-focused design with new Krim AI Stack tabs section
+ */
+import React, { useState } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
+import { Link } from 'react-router-dom'
+import { KrimAnimatedLogo } from '../components/KrimLogo'
+import StunningIntegrationsSection from '../components/home/StunningIntegrationsSection'
+
+// Import the V2 visual components for enhanced 5-tab section
+import KrimOSVisualV2 from '../components/motion/krim-stack/KrimOSVisualV2'
+import KulaVisualV2 from '../components/motion/krim-stack/KulaVisualV2'
+import KartaVisualV2 from '../components/motion/krim-stack/KartaVisualV2'
+import KupaVisualV2 from '../components/motion/krim-stack/KupaVisualV2'
+import KriyaVisualV2 from '../components/motion/krim-stack/KriyaVisualV2'
+import { 
+  ShieldCheck, 
+  Lightning, 
+  TrendUp, 
+  Headset, 
+  Phone, 
+  ChatCircle,
+  Buildings,
+  ChartBar,
+  Cube,
+  Target,
+  Cpu,
+  Users,
+  Brain,
+  Desktop,
+  Cloud,
+  Lock,
+  FileText,
+  Handshake,
+  File,
+  ArrowsDownUp
+} from '@phosphor-icons/react'
+
+// Shared animation variants
+const fadeInUp = {
+  initial: { opacity: 0, y: 20 },
+  animate: { opacity: 1, y: 0 },
+  transition: { duration: 0.6 }
+}
+
+const stagger = {
+  animate: {
+    transition: {
+      staggerChildren: 0.1
+    }
+  }
+}
+
+// Pill Tab Component - Refined styling
+function PillTab({ 
+  isActive, 
+  children, 
+  onClick 
+}: { 
+  isActive: boolean
+  children: React.ReactNode
+  onClick: () => void 
+}) {
+  return (
+    <motion.button
+      onClick={onClick}
+      whileHover={{ 
+        scale: 1.02,
+        boxShadow: isActive 
+          ? "0 8px 32px rgba(16, 185, 129, 0.3)" 
+          : "0 4px 16px rgba(255, 255, 255, 0.08)"
+      }}
+      whileTap={{ scale: 0.98 }}
+      transition={{ type: "spring", stiffness: 400, damping: 25 }}
+      className={`px-8 py-4 rounded-full text-lg font-semibold whitespace-nowrap relative overflow-hidden transition-all duration-300 ${
+        isActive
+          ? 'text-white border-2 border-emerald-400/60 bg-gradient-to-r from-emerald-400/15 to-cyan-400/10'
+          : 'text-white/70 border border-white/[0.08] bg-white/[0.02] hover:border-white/20 hover:text-white hover:bg-white/[0.05]'
+      }`}
+    >
+      {isActive && (
+        <motion.div
+          layoutId="activeTabIndicator"
+          className="absolute inset-0 rounded-full bg-gradient-to-r from-emerald-400/10 to-cyan-400/10"
+          initial={false}
+          transition={{ type: "spring", stiffness: 500, damping: 30 }}
+        />
+      )}
+      <span className="relative z-10">{children}</span>
+    </motion.button>
+  )
+}
+
+// Feature Card Component - Enhanced with modern glass morphism and animations
+function FeatureCard({ 
+  title, 
+  body, 
+  icon, 
+  accentColor = 'emerald' 
+}: { 
+  title: string
+  body: string
+  icon: React.ReactNode
+  accentColor?: 'emerald' | 'cyan' | 'mint' | 'teal'
+}) {
+  const iconGradients = {
+    emerald: 'from-emerald-500/20 to-emerald-600/10',
+    cyan: 'from-[#00D4FF]/20 to-[#00D4FF]/10',
+    mint: 'from-[#00FF88]/20 to-[#00FF88]/10',
+    teal: 'from-teal-500/20 to-teal-600/10'
+  }
+
+  const iconColors = {
+    emerald: 'text-emerald-400',
+    cyan: 'text-[#00D4FF]',
+    mint: 'text-[#00FF88]',
+    teal: 'text-teal-400'
+  }
+
+  const glowColors = {
+    emerald: 'shadow-emerald-500/15',
+    cyan: 'shadow-[#00D4FF]/15',
+    mint: 'shadow-[#00FF88]/15',
+    teal: 'shadow-teal-500/15'
+  }
+
+  const borderColors = {
+    emerald: 'border-emerald-400/15 group-hover:border-emerald-400/35',
+    cyan: 'border-[#00D4FF]/15 group-hover:border-[#00D4FF]/35',
+    mint: 'border-[#00FF88]/15 group-hover:border-[#00FF88]/35',
+    teal: 'border-teal-400/15 group-hover:border-teal-400/35'
+  }
+
+  const bgGradients = {
+    emerald: 'from-emerald-500/[0.06] to-emerald-600/[0.03]',
+    cyan: 'from-[#00D4FF]/[0.06] to-[#00D4FF]/[0.03]',
+    mint: 'from-[#00FF88]/[0.06] to-[#00FF88]/[0.03]',
+    teal: 'from-teal-500/[0.06] to-teal-600/[0.03]'
+  }
+
+  const hoverGradients = {
+    emerald: 'from-emerald-400/8',
+    cyan: 'from-[#00D4FF]/8',
+    mint: 'from-[#00FF88]/8',
+    teal: 'from-teal-400/8'
+  }
+
+  const accentLines = {
+    emerald: 'via-emerald-400/50',
+    cyan: 'via-[#00D4FF]/50',
+    mint: 'via-[#00FF88]/50',
+    teal: 'via-teal-400/50'
+  }
+
+  return (
+    <motion.div 
+      {...fadeInUp}
+      className="group relative h-full min-h-[320px]"
+      whileHover={{ y: -8, scale: 1.02 }}
+      transition={{ duration: 0.4, type: "spring", stiffness: 300, damping: 20 }}
+    >
+      <div className="relative h-full p-8 rounded-2xl overflow-hidden">
+        {/* Multi-layer background for depth */}
+        <div className={`absolute inset-0 bg-gradient-to-br ${bgGradients[accentColor]} rounded-2xl`} />
+        <div className="absolute inset-0 bg-gradient-to-tr from-white/[0.04] to-transparent rounded-2xl" />
+        <div className="absolute inset-0 backdrop-blur-xl rounded-2xl" />
+        
+        {/* Border with gradient */}
+        <div className={`absolute inset-0 rounded-2xl border ${borderColors[accentColor]} transition-colors duration-500`} />
+        
+        {/* Glow effect on hover */}
+        <div className={`absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br ${hoverGradients[accentColor]} to-transparent`} />
+        
+        {/* Content */}
+        <div className="relative z-10 flex flex-col items-center text-center space-y-4">
+          {/* Icon with enhanced gradient background */}
+          <div className={`w-16 h-16 rounded-xl bg-gradient-to-br ${iconGradients[accentColor]} border border-white/10 flex items-center justify-center group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg ${glowColors[accentColor]}`}>
+            <div className={`${iconColors[accentColor]}`}>
+              {icon}
+            </div>
+          </div>
+          {/* Title with refined typography */}
+          <h3 className="text-2xl font-bold text-white leading-tight tracking-tight">{title}</h3>
+          {/* Body with better readability */}
+          <p className="text-base text-white/70 leading-relaxed max-w-sm mx-auto">{body}</p>
+        </div>
+        
+        {/* Bottom accent line with animation */}
+        <div className={`absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent ${accentLines[accentColor]} to-transparent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 rounded-b-2xl`} />
+      </div>
+    </motion.div>
+  )
+}
+
+// Why It Matters Card Component - Enhanced premium glass design
+function WhyItMattersCard({ 
+  icon, 
+  title, 
+  body 
+}: { 
+  icon: React.ReactNode
+  title: string
+  body: string 
+}) {
+  return (
+    <motion.div 
+      {...fadeInUp}
+      className="group relative h-full"
+      whileHover={{ scale: 1.03, y: -6 }}
+      transition={{ duration: 0.4, type: "spring", stiffness: 300, damping: 20 }}
+    >
+      <div className="relative h-full p-12 rounded-3xl overflow-hidden">
+        {/* Multi-layer background for depth */}
+        <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/[0.06] to-emerald-600/[0.03] rounded-3xl" />
+        <div className="absolute inset-0 bg-gradient-to-tr from-white/[0.04] to-transparent rounded-3xl" />
+        <div className="absolute inset-0 backdrop-blur-xl rounded-3xl" />
+        
+        {/* Border with gradient */}
+        <div className="absolute inset-0 rounded-3xl border border-emerald-400/20 group-hover:border-emerald-400/40 transition-colors duration-500" />
+        
+        {/* Glow effect on hover */}
+        <div className="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br from-emerald-400/10 to-transparent" />
+        
+        {/* Animated glow orb */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 rounded-full bg-emerald-500/[0.15] blur-[80px] opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+        
+        {/* Content */}
+        <div className="relative z-10 flex flex-col items-center text-center space-y-8">
+          <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-emerald-500/25 to-emerald-600/15 border border-emerald-400/30 flex items-center justify-center group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300 shadow-lg shadow-emerald-500/20">
+            {icon}
+          </div>
+          <div>
+            <h3 className="text-3xl font-black text-white mb-4 tracking-tight">{title}</h3>
+            <p className="text-lg text-white/80 leading-relaxed max-w-xs mx-auto">{body}</p>
+          </div>
+        </div>
+        
+        {/* Bottom accent line with pulse */}
+        <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-emerald-400/60 to-transparent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 rounded-b-3xl" />
+      </div>
+    </motion.div>
+  )
+}
+
+// Krim AI Stack Tabs Section - Enhanced with modern styling
+function KrimAIStackSection() {
+  const [activeTab, setActiveTab] = useState('krimos')
+
+  const tabs = [
+    { id: 'krimos', label: 'KrimOS' },
+    { id: 'kula', label: 'Kula' },
+    { id: 'karta', label: 'Karta' },
+    { id: 'kupa', label: 'Kupa' },
+    { id: 'kriya', label: 'Kriya' }
+  ]
+
+  // Headlines content for each tab
+  const tabHeadlines = {
+    krimos: {
+      title: "KrimOS – Governed Runtime for Credit Operations",
+      subtitle: "Turns your fragmented credit stack into one controlled operating layer for humans and AI."
+    },
+    kula: {
+      title: "Kula – Natural-Language Digital Twin for Credit Teams",
+      subtitle: "Lets leaders design, query and adjust operations in plain language, then push governed changes into production."
+    },
+    karta: {
+      title: "Karta – AI Co-Workers for Conversations and Cases",
+      subtitle: "Intelligent multi-modal AI coworkers handling voice, text, and document workflows across contact center and back-office operations."
+    },
+    kupa: {
+      title: "Kupa – Command Centers for Live Oversight",
+      subtitle: "Gives credit teams tailored dashboards for real-time visibility and precise control over every workflow and AI co-worker."
+    },
+    kriya: {
+      title: "Kriya – Building Blocks of Safe Agentic Automation",
+      subtitle: "Building blocks for compliant automation that stays explainable and testable."
+    }
+  }
+
+  return (
+    <section className="py-20 md:py-32 relative overflow-hidden">
+      {/* Background removed for full starfield visibility */}
+      
+      {/* Animated orbs removed for full starfield visibility */}
+      
+      <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
+        {/* Section Header */}
+        <div className="mb-16">
+          <motion.div {...fadeInUp}>
+            <div className="flex justify-center mb-8">
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold text-white tracking-tight text-center leading-tight">
+                The Krim Stack
+              </h2>
+            </div>
+            <p className="text-xl md:text-2xl text-white/70 max-w-4xl mx-auto leading-relaxed text-center">
+              Five layers that turn <span className="text-krim-mint font-semibold">credit operations</span> into 
+              <br />
+              a governed, intelligence runtime.
+            </p>
+          </motion.div>
+        </div>
+
+        {/* Tabs */}
+        <motion.div {...fadeInUp} className="mb-12">
+          <div className="flex flex-wrap justify-center items-center gap-3 md:gap-4 lg:gap-5 overflow-x-auto pb-2">
+            {tabs.map((tab) => (
+              <PillTab
+                key={tab.id}
+                isActive={activeTab === tab.id}
+                onClick={() => setActiveTab(tab.id)}
+              >
+                {tab.label}
+              </PillTab>
+            ))}
+          </div>
+        </motion.div>
+
+        {/* 50/50 Content Layout - Enhanced with glass morphism */}
+        <motion.div 
+          className="grid grid-cols-1 lg:grid-cols-2 gap-6 h-[580px] max-h-[580px] overflow-hidden"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.4 }}
+        >
+          {/* Left: Text Content with subtle glass background */}
+          <div className="flex flex-col justify-center space-y-6 pr-6 relative">
+            <div className="absolute inset-0 bg-gradient-to-br from-white/[0.02] to-transparent rounded-2xl -m-4 blur-xl" />
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={activeTab}
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: 20 }}
+                transition={{ duration: 0.3 }}
+                className="space-y-6"
+              >
+                <h3 className="text-2xl md:text-3xl font-bold text-white leading-tight">
+                  {tabHeadlines[activeTab].title}
+                </h3>
+                <p className="text-lg md:text-xl text-white/80 leading-relaxed">
+                  {tabHeadlines[activeTab].subtitle}
+                </p>
+                
+                {/* Key Benefits for each tab */}
+                <div className="space-y-3">
+                  {activeTab === 'krimos' && (
+                    <>
+                      <div className="flex items-start gap-3">
+                        <ShieldCheck className="w-5 h-5 text-emerald-400 mt-1 flex-shrink-0" />
+                        <span className="text-white/70">Unified intelligence across all credit operations</span>
+                      </div>
+                      <div className="flex items-start gap-3">
+                        <ShieldCheck className="w-5 h-5 text-emerald-400 mt-1 flex-shrink-0" />
+                        <span className="text-white/70">Safe AI with enterprise-grade guardrails</span>
+                      </div>
+                      <div className="flex items-start gap-3">
+                        <ShieldCheck className="w-5 h-5 text-emerald-400 mt-1 flex-shrink-0" />
+                        <span className="text-white/70">Complete audit trail for regulatory compliance</span>
+                      </div>
+                    </>
+                  )}
+                  
+                  {activeTab === 'kula' && (
+                    <>
+                      <div className="flex items-start gap-3">
+                        <Lightning className="w-5 h-5 text-cyan-400 mt-1 flex-shrink-0" />
+                        <span className="text-white/70">Natural language to workflows</span>
+                      </div>
+                      <div className="flex items-start gap-3">
+                        <Lightning className="w-5 h-5 text-cyan-400 mt-1 flex-shrink-0" />
+                        <span className="text-white/70">Runtime policy updates</span>
+                      </div>
+                      <div className="flex items-start gap-3">
+                        <Lightning className="w-5 h-5 text-cyan-400 mt-1 flex-shrink-0" />
+                        <span className="text-white/70">Complete audit trail</span>
+                      </div>
+                    </>
+                  )}
+
+                  {activeTab === 'karta' && (
+                    <>
+                      <div className="flex items-start gap-3">
+                        <Users className="w-5 h-5 text-[#00FF88] mt-1 flex-shrink-0" />
+                        <span className="text-white/70">Handles complex multi-channel interactions</span>
+                      </div>
+                      <div className="flex items-start gap-3">
+                        <Users className="w-5 h-5 text-[#00FF88] mt-1 flex-shrink-0" />
+                        <span className="text-white/70">20+ Pre-built agents plus agent creation for novel workflows</span>
+                      </div>
+                      <div className="flex items-start gap-3">
+                        <Users className="w-5 h-5 text-[#00FF88] mt-1 flex-shrink-0" />
+                        <span className="text-white/70">Real-time decision tracking and intervention controls</span>
+                      </div>
+                    </>
+                  )}
+
+                  {activeTab === 'kupa' && (
+                    <>
+                      <div className="flex items-start gap-3">
+                        <ChartBar className="w-5 h-5 text-teal-400 mt-1 flex-shrink-0" />
+                        <span className="text-white/70">Real-time monitoring</span>
+                      </div>
+                      <div className="flex items-start gap-3">
+                        <ChartBar className="w-5 h-5 text-teal-400 mt-1 flex-shrink-0" />
+                        <span className="text-white/70">Instant override capabilities</span>
+                      </div>
+                      <div className="flex items-start gap-3">
+                        <ChartBar className="w-5 h-5 text-teal-400 mt-1 flex-shrink-0" />
+                        <span className="text-white/70">Complete decision traceability</span>
+                      </div>
+                    </>
+                  )}
+
+                  {activeTab === 'kriya' && (
+                    <>
+                      <div className="flex items-start gap-3">
+                        <Target className="w-5 h-5 text-orange-400 mt-1 flex-shrink-0" />
+                        <span className="text-white/70">Pre-built triggers and conditions for credit workflows</span>
+                      </div>
+                      <div className="flex items-start gap-3">
+                        <Target className="w-5 h-5 text-orange-400 mt-1 flex-shrink-0" />
+                        <span className="text-white/70">Built-in compliance validation for FDCPA/TCPA/State regulations</span>
+                      </div>
+                      <div className="flex items-start gap-3">
+                        <Target className="w-5 h-5 text-orange-400 mt-1 flex-shrink-0" />
+                        <span className="text-white/70">Observable logic chains for full decision transparency</span>
+                      </div>
+                    </>
+                  )}
+                </div>
+              </motion.div>
+            </AnimatePresence>
+          </div>
+
+          {/* Right: V2 Visual - Enhanced container */}
+          <div className="group relative flex items-center justify-center rounded-2xl overflow-hidden">
+            {/* Multi-layer background */}
+            <div className="absolute inset-0 bg-gradient-to-br from-white/[0.04] to-white/[0.01] rounded-2xl" />
+            <div className="absolute inset-0 bg-gradient-to-tr from-teal-500/[0.02] to-transparent rounded-2xl" />
+            <div className="absolute inset-0 backdrop-blur-xl rounded-2xl" />
+            <div className="absolute inset-0 rounded-2xl border border-white/[0.08] group-hover:border-white/[0.12] transition-colors duration-500" />
+            
+            <div className="relative w-full h-full p-6 z-10">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={activeTab}
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 1.05 }}
+                  transition={{ duration: 0.4 }}
+                  className="w-full h-full"
+                >
+                  {activeTab === 'krimos' && <KrimOSVisualV2 />}
+                  {activeTab === 'kula' && <KulaVisualV2 />}
+                  {activeTab === 'karta' && <KartaVisualV2 />}
+                  {activeTab === 'kupa' && <KupaVisualV2 />}
+                  {activeTab === 'kriya' && <KriyaVisualV2 />}
+                </motion.div>
+              </AnimatePresence>
+            </div>
+          </div>
+        </motion.div>
+      </div>
+    </section>
+  )
+}
+
+export default function HomePage() {
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+  const [activeTab, setActiveTab] = useState('governance')
+
+  return (
+    <div className="min-h-screen relative">
+      {/* Content wrapper with transparent backgrounds to show starfield */}
+      <div className="relative z-10 overflow-x-hidden">
+        {/* Hero Section - Enhanced with modern styling */}
+        <section className="relative min-h-[700px] lg:min-h-[800px] xl:min-h-[900px] flex items-center py-20 md:py-32 overflow-hidden">
+          {/* Background removed for full starfield visibility */}
+          
+          {/* Animated orbs removed for full starfield visibility */}
+        
+        <div className="relative w-full max-w-7xl mx-auto px-6 lg:px-8 text-center">
+          {/* Hero Content */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="flex flex-col items-center space-y-8 sm:space-y-10 md:space-y-12 lg:space-y-14 xl:space-y-16"
+          >
+            {/* Krim AI Logo with glow effect */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 1, delay: 0.2 }}
+              className="flex justify-center relative"
+            >
+              <div className="absolute inset-0 flex justify-center items-center">
+                <div className="w-48 h-48 rounded-full bg-gradient-to-br from-emerald-500/20 to-cyan-500/20 blur-[80px] animate-pulse" />
+              </div>
+              <KrimAnimatedLogo size="xl" className="h-16 sm:h-20 md:h-24 lg:h-28 xl:h-32 relative z-10" />
+            </motion.div>
+
+            <div className="space-y-8 lg:space-y-10 text-center max-w-6xl mx-auto">
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.1] tracking-tight text-center">
+                <span className="bg-gradient-to-r from-krim-mint via-krim-cyan to-krim-mint bg-clip-text text-transparent font-black">
+                  Safe Superintelligence
+                </span>
+                {' '}
+                <span className="text-white">
+                  for Autonomous Banks
+                </span>
+              </h1>
+
+              <div className="space-y-4 lg:space-y-6">
+                <p className="text-xl md:text-2xl lg:text-3xl text-white/80 max-w-4xl mx-auto leading-relaxed text-center">
+                  <span className="bg-gradient-to-r from-krim-mint via-krim-cyan to-krim-mint bg-clip-text text-transparent font-semibold">Governed Intelligence</span> <span className="text-white/80">-</span> <span className="bg-gradient-to-r from-krim-mint via-krim-cyan to-krim-mint bg-clip-text text-transparent font-semibold">Controlled Execution</span><br />
+                  <span className="bg-gradient-to-r from-krim-mint via-krim-cyan to-krim-mint bg-clip-text text-transparent font-semibold">Full Audit Trail</span>
+                </p>
+
+              </div>
+            </div>
+
+            {/* CTAs - Enhanced with glass morphism and spring animations */}
+            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center pt-12 lg:pt-16 w-full">
+              <Link to="/contact" className="flex justify-center">
+                <motion.button
+                  whileHover={!prefersReducedMotion ? { 
+                    scale: 1.05,
+                    boxShadow: "0 20px 60px rgba(0,255,136,0.4)"
+                  } : {}}
+                  whileTap={!prefersReducedMotion ? { scale: 0.95 } : {}}
+                  transition={{ type: "spring", stiffness: 400, damping: 25 }}
+                  className="group relative px-8 py-4 bg-gradient-to-r from-krim-mint to-krim-cyan text-black font-bold text-lg rounded-2xl overflow-hidden transition-all duration-300"
+                >
+                  <div className="absolute inset-0 bg-gradient-to-r from-emerald-400 to-cyan-400 opacity-0 group-hover:opacity-20 transition-opacity duration-300" />
+                  <span className="relative z-10">Book a demo</span>
+                </motion.button>
+              </Link>
+              
+              <Link to="/krimos" className="flex justify-center">
+                <motion.button
+                  whileHover={!prefersReducedMotion ? { 
+                    scale: 1.05,
+                    boxShadow: "0 12px 40px rgba(0,255,136,0.2)"
+                  } : {}}
+                  whileTap={!prefersReducedMotion ? { scale: 0.95 } : {}}
+                  transition={{ type: "spring", stiffness: 400, damping: 25 }}
+                  className="group relative px-8 py-4 backdrop-blur-xl bg-white/[0.03] border-2 border-krim-mint/50 text-krim-mint font-bold text-lg rounded-2xl overflow-hidden transition-all duration-300 hover:bg-krim-mint/10 hover:border-krim-mint/70"
+                >
+                  <div className="absolute inset-0 bg-gradient-to-r from-emerald-400/10 to-cyan-400/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <span className="relative z-10">See how Krim works</span>
+                </motion.button>
+              </Link>
+            </div>
+
+          </motion.div>
+        </div>
+      </section>
+
+      
+      {/* Krim AI Stack Tabs Section */}
+      <KrimAIStackSection />
+
+      {/* Stunning Integrations Section */}
+      <StunningIntegrationsSection />
+
+      {/* Safe Superintelligence Section - Enhanced with modern styling */}
+      <section className="py-16 md:py-20 relative overflow-hidden">
+        {/* Background removed for full starfield visibility */}
+        
+        <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
+          <motion.div {...fadeInUp} className="text-center mb-16">
+            <div className="flex justify-center mb-6">
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold text-center leading-tight">
+                <span className="bg-gradient-to-r from-emerald-400 via-krim-mint to-teal-400 bg-clip-text text-transparent font-bold">
+                  Governance
+                </span>
+                {' '}
+                <span className="text-white">
+                  Before Intelligence
+                </span>
+              </h2>
+            </div>
+            <p className="text-xl text-white/70 max-w-4xl mx-auto leading-relaxed">
+              Policies precede actions. Controls fire before decisions. Intelligence operates within bounds.
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <motion.div 
+              {...fadeInUp}
+              className="group relative p-6 rounded-2xl overflow-hidden"
+              whileHover={{ y: -6, scale: 1.02 }}
+              transition={{ type: "spring", stiffness: 300, damping: 20 }}
+            >
+              {/* Multi-layer background */}
+              <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/10 to-emerald-600/5 rounded-2xl" />
+              <div className="absolute inset-0 bg-gradient-to-tr from-white/[0.05] to-transparent rounded-2xl" />
+              <div className="absolute inset-0 backdrop-blur-xl rounded-2xl" />
+              <div className="absolute inset-0 rounded-2xl border border-emerald-400/20 group-hover:border-emerald-400/40 transition-colors duration-500" />
+              <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br from-emerald-400/10 to-transparent" />
+              
+              {/* Content */}
+              <div className="relative z-10">
+              <div className="flex items-center gap-4 mb-4">
+                <div className="w-12 h-12 rounded-xl bg-emerald-500/20 border border-emerald-400/30 flex items-center justify-center">
+                  <ShieldCheck className="w-6 h-6 text-emerald-400" />
+                </div>
+                <h4 className="text-xl font-bold text-emerald-300">Predictable at Scale</h4>
+              </div>
+              <ul className="space-y-2 text-white/80">
+                <li>• Policies enforced exactly</li>
+                <li>• Zero hallucination risk</li>
+                <li>• Controlled automation depth</li>
+              </ul>
+              </div>
+              
+              {/* Bottom accent line */}
+              <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-emerald-400/50 to-transparent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500" />
+            </motion.div>
+            
+            <motion.div 
+              {...fadeInUp}
+              className="group relative p-6 rounded-2xl overflow-hidden"
+              whileHover={{ y: -6, scale: 1.02 }}
+              transition={{ type: "spring", stiffness: 300, damping: 20, delay: 0.1 }}
+            >
+              {/* Multi-layer background */}
+              <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-blue-600/5 rounded-2xl" />
+              <div className="absolute inset-0 bg-gradient-to-tr from-white/[0.05] to-transparent rounded-2xl" />
+              <div className="absolute inset-0 backdrop-blur-xl rounded-2xl" />
+              <div className="absolute inset-0 rounded-2xl border border-blue-400/20 group-hover:border-blue-400/40 transition-colors duration-500" />
+              <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br from-blue-400/10 to-transparent" />
+              
+              {/* Content */}
+              <div className="relative z-10">
+              <div className="flex items-center gap-4 mb-4">
+                <div className="w-12 h-12 rounded-xl bg-blue-500/20 border border-blue-400/30 flex items-center justify-center">
+                  <FileText className="w-6 h-6 text-blue-400" />
+                </div>
+                <h4 className="text-xl font-bold text-blue-300">Regulatory Confidence</h4>
+              </div>
+              <ul className="space-y-2 text-white/80">
+                <li>• Complete explainability</li>
+                <li>• Full traceability</li>
+                <li>• Real-time dashboards</li>
+              </ul>
+              </div>
+              
+              {/* Bottom accent line */}
+              <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-blue-400/50 to-transparent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500" />
+            </motion.div>
+            
+            <motion.div 
+              {...fadeInUp}
+              className="group relative p-6 rounded-2xl overflow-hidden"
+              whileHover={{ y: -6, scale: 1.02 }}
+              transition={{ type: "spring", stiffness: 300, damping: 20, delay: 0.2 }}
+            >
+              {/* Multi-layer background */}
+              <div className="absolute inset-0 bg-gradient-to-br from-teal-500/[0.06] to-teal-600/[0.03] rounded-2xl" />
+              <div className="absolute inset-0 bg-gradient-to-tr from-white/[0.04] to-transparent rounded-2xl" />
+              <div className="absolute inset-0 backdrop-blur-xl rounded-2xl" />
+              <div className="absolute inset-0 rounded-2xl border border-teal-400/15 group-hover:border-teal-400/35 transition-colors duration-500" />
+              <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br from-teal-400/8 to-transparent" />
+              
+              {/* Content */}
+              <div className="relative z-10">
+              <div className="flex items-center gap-4 mb-4">
+                <div className="w-12 h-12 rounded-xl bg-violet-500/20 border border-violet-400/30 flex items-center justify-center">
+                  <Target className="w-6 h-6 text-[#00FF88]" />
+                </div>
+                <h4 className="text-xl font-bold text-violet-300">Operational Control</h4>
+              </div>
+              <ul className="space-y-2 text-white/80">
+                <li>• Runtime policy updates</li>
+                <li>• Granular overrides</li>
+                <li>• Constraint-based optimization</li>
+              </ul>
+              </div>
+              
+              {/* Bottom accent line */}
+              <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-[#00FF88]/50 to-transparent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500" />
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Why Credit Operations Need a New Runtime - Enhanced with modern styling */}
+      <section className="py-20 md:py-32 relative overflow-hidden">
+        {/* Background removed for full starfield visibility */}
+        
+        <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="text-center mb-20">
+            <motion.div {...fadeInUp}>
+              <div className="flex justify-center mb-8">
+                <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight text-center leading-tight">
+                  <span className="text-slate-200">
+                    Why Credit Operations Need a
+                  </span>
+                  <br />
+                  <span className="bg-gradient-to-r from-emerald-400 via-[#00FF88] to-[#00D4FF] bg-clip-text text-transparent font-black">
+                    New Runtime
+                  </span>
+                </h2>
+              </div>
+              <p className="text-xl md:text-2xl text-white/70 max-w-4xl mx-auto leading-relaxed text-center">
+                Legacy systems, manual work and black-box AI no longer keep up with today's credit risk.
+              </p>
+            </motion.div>
+          </div>
+
+          <motion.div 
+            variants={stagger}
+            initial="initial"
+            whileInView="animate"
+            viewport={{ once: true }}
+            className="grid md:grid-cols-3 gap-8 justify-items-center"
+          >
+            <motion.div 
+              {...fadeInUp}
+              className="group relative"
+              whileHover={{ y: -8, scale: 1.02 }}
+              transition={{ duration: 0.4, type: "spring", stiffness: 300, damping: 20 }}
+            >
+              <div className="relative p-8 rounded-2xl h-full overflow-hidden">
+                {/* Multi-layer background */}
+                <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/[0.06] to-emerald-600/[0.03] rounded-2xl" />
+                <div className="absolute inset-0 bg-gradient-to-tr from-white/[0.04] to-transparent rounded-2xl" />
+                <div className="absolute inset-0 backdrop-blur-xl rounded-2xl" />
+                <div className="absolute inset-0 rounded-2xl border border-emerald-400/15 group-hover:border-emerald-400/35 transition-colors duration-500" />
+                <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br from-emerald-400/8 to-transparent" />
+                
+                {/* Content */}
+                <div className="relative z-10">
+              <div className="flex flex-col items-center text-center space-y-6">
+                <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-emerald-500/20 to-emerald-600/10 border border-emerald-400/30 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                  <Cube className="w-8 h-8 text-emerald-400" />
+                </div>
+                <h3 className="text-2xl font-bold text-white tracking-tight">Fragmented Tools</h3>
+                <p className="text-base text-white/70 leading-relaxed">Agents jump between 10+ systems; data sits in silos.</p>
+              </div>
+              </div>
+              
+              {/* Bottom accent line with animation */}
+              <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-red-400/60 to-transparent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 rounded-b-2xl" />
+              </div>
+            </motion.div>
+
+            <motion.div 
+              {...fadeInUp}
+              className="group relative"
+              whileHover={{ y: -8, scale: 1.02 }}
+              transition={{ duration: 0.4, type: "spring", stiffness: 300, damping: 20 }}
+            >
+              <div className="relative p-8 rounded-2xl h-full overflow-hidden">
+                {/* Multi-layer background */}
+                <div className="absolute inset-0 bg-gradient-to-br from-orange-500/[0.08] to-orange-600/[0.04] rounded-2xl" />
+                <div className="absolute inset-0 bg-gradient-to-tr from-white/[0.04] to-transparent rounded-2xl" />
+                <div className="absolute inset-0 backdrop-blur-xl rounded-2xl" />
+                <div className="absolute inset-0 rounded-2xl border border-orange-400/20 group-hover:border-orange-400/40 transition-colors duration-500" />
+                <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br from-orange-400/10 to-transparent" />
+                
+                {/* Content */}
+                <div className="relative z-10">
+              <div className="flex flex-col items-center text-center space-y-6">
+                <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-[#00D4FF]/20 to-[#00D4FF]/10 border border-[#00D4FF]/30 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                  <Users className="w-8 h-8 text-[#00D4FF]" />
+                </div>
+                <h3 className="text-2xl font-bold text-white tracking-tight">Human Middleware</h3>
+                <p className="text-base text-white/70 leading-relaxed">People patch broken workflows and carry institutional memory.</p>
+              </div>
+              </div>
+              
+              {/* Bottom accent line with animation */}
+              <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-orange-400/60 to-transparent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 rounded-b-2xl" />
+              </div>
+            </motion.div>
+
+            <motion.div 
+              {...fadeInUp}
+              className="group relative"
+              whileHover={{ y: -8, scale: 1.02 }}
+              transition={{ duration: 0.4, type: "spring", stiffness: 300, damping: 20 }}
+            >
+              <div className="relative p-8 rounded-2xl h-full overflow-hidden">
+                {/* Multi-layer background */}
+                <div className="absolute inset-0 bg-gradient-to-br from-[#00FF88]/[0.06] to-[#00FF88]/[0.03] rounded-2xl" />
+                <div className="absolute inset-0 bg-gradient-to-tr from-white/[0.04] to-transparent rounded-2xl" />
+                <div className="absolute inset-0 backdrop-blur-xl rounded-2xl" />
+                <div className="absolute inset-0 rounded-2xl border border-[#00FF88]/15 group-hover:border-[#00FF88]/35 transition-colors duration-500" />
+                <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br from-[#00FF88]/8 to-transparent" />
+                
+                {/* Content */}
+                <div className="relative z-10">
+              <div className="flex flex-col items-center text-center space-y-6">
+                <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-[#00FF88]/20 to-[#00FF88]/10 border border-[#00FF88]/25 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                  <ShieldCheck className="w-8 h-8 text-[#00FF88]" />
+                </div>
+                <h3 className="text-2xl font-bold text-white tracking-tight">Post-Fact Compliance</h3>
+                <p className="text-base text-white/70 leading-relaxed">Most activity is checked after the fact – if at all.</p>
+              </div>
+              </div>
+              
+              {/* Bottom accent line with animation */}
+              <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[#00FF88]/50 to-transparent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 rounded-b-2xl" />
+              </div>
+            </motion.div>
+          </motion.div>
+        </div>
+      </section>
+
+      
+      {/* Why It Matters - Enhanced with modern styling */}
+      <section className="py-20 md:py-32 relative overflow-hidden">
+        {/* Background removed for full starfield visibility */}
+        
+        {/* Animated orbs removed for full starfield visibility */
+        
+        <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
+          <motion.div {...fadeInUp} className="text-center mb-20">
+            <div className="flex justify-center mb-8">
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight leading-tight text-center">
+                <span className="bg-gradient-to-r from-emerald-400 via-krim-mint to-cyan-400 bg-clip-text text-transparent font-black">
+                  Why It
+                </span>
+                {' '}
+                <span className="text-slate-200">
+                  Matters
+                </span>
+              </h2>
+            </div>
+            <p className="text-xl md:text-2xl text-white/70 max-w-4xl mx-auto leading-relaxed text-center">
+              Operational outcomes credit leaders actually care about.
+            </p>
+          </motion.div>
+
+          <motion.div 
+            variants={stagger}
+            initial="initial"
+            whileInView="animate"
+            viewport={{ once: true }}
+            className="grid md:grid-cols-3 gap-12 mb-16 justify-items-center"
+          >
+            <WhyItMattersCard
+              icon={<ShieldCheck className="w-10 h-10 text-emerald-400" />}
+              title="Safer"
+              body="Controls fire before actions; every step is defensible."
+            />
+            <WhyItMattersCard
+              icon={<Lightning className="w-10 h-10 text-emerald-400" />}
+              title="Faster"
+              body="Agents and AI coordinate under one runtime; no swivel-chair work."
+            />
+            <WhyItMattersCard
+              icon={<TrendUp className="w-10 h-10 text-emerald-400" />}
+              title="Self-Evolving"
+              body="Policies and playbooks evolve without breaking compliance."
+            />
+          </motion.div>
+
+          <motion.div {...fadeInUp} className="text-center flex justify-center">
+            <Link to="/krimos" className="flex justify-center">
+              <motion.button
+                whileHover={!prefersReducedMotion ? { 
+                  scale: 1.05,
+                  boxShadow: "0 12px 40px rgba(16,185,129,0.3)"
+                } : {}}
+                whileTap={!prefersReducedMotion ? { scale: 0.95 } : {}}
+                transition={{ type: "spring", stiffness: 400, damping: 25 }}
+                className="group relative px-10 py-5 rounded-2xl backdrop-blur-xl bg-white/[0.02] border-2 border-emerald-400/50 text-emerald-400 font-bold text-lg overflow-hidden transition-all duration-300 hover:bg-emerald-400/10 hover:border-emerald-400/70"
+              >
+                <div className="absolute inset-0 bg-gradient-to-r from-emerald-400/10 to-cyan-400/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <span className="relative z-10">See KrimOS Command Centers</span>
+              </motion.button>
+            </Link>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Intelligence Evolution Section - Balanced Modern Design */}
+      <section className="py-16 md:py-24 relative overflow-hidden">
+        {/* Background removed for full starfield visibility */}
+
+        <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
+          {/* Centered header with enhanced typography */}
+          <motion.div 
+            {...fadeInUp} 
+            className="mb-14"
+          >
+            <div className="w-full flex justify-center">
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight leading-tight mb-4 text-center">
+                <span className="bg-gradient-to-r from-emerald-400 via-krim-mint to-cyan-400 bg-clip-text text-transparent font-black">
+                  Intelligence
+                </span>
+                {' '}
+                <span className="text-white">
+                  that evolves with you
+                </span>
+              </h2>
+            </div>
+            <div className="w-full flex justify-center">
+              <p className="text-xl text-white/70 max-w-3xl text-center">
+                Continuous improvement without sacrificing control
+              </p>
+            </div>
+          </motion.div>
+
+          {/* 2x2 Grid Layout - Balanced sizing */}
+          <motion.div 
+            variants={stagger}
+            initial="initial"
+            whileInView="animate"
+            viewport={{ once: true }}
+            className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 max-w-5xl mx-auto"
+          >
+            {/* Card 1 - Performance */}
+            <motion.div 
+              {...fadeInUp}
+              className="group relative"
+              whileHover={{ y: -6, scale: 1.02 }}
+              transition={{ duration: 0.3, type: "spring", stiffness: 300 }}
+            >
+              <div className="relative h-full p-8 lg:p-10 rounded-2xl overflow-hidden">
+                {/* Multi-layer background for depth */}
+                <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/[0.08] to-emerald-600/[0.04] rounded-2xl" />
+                <div className="absolute inset-0 bg-gradient-to-tr from-white/[0.04] to-transparent rounded-2xl" />
+                <div className="absolute inset-0 backdrop-blur-xl rounded-2xl" />
+                
+                {/* Border with gradient */}
+                <div className="absolute inset-0 rounded-2xl border border-emerald-400/20 group-hover:border-emerald-400/40 transition-colors duration-500" />
+                
+                {/* Glow effect on hover */}
+                <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br from-emerald-400/10 to-transparent" />
+                
+                {/* Content */}
+                <div className="relative z-10">
+                  <div className="flex items-start gap-4 mb-4">
+                    <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-emerald-500/25 to-emerald-600/15 border border-emerald-400/30 flex items-center justify-center flex-shrink-0 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg shadow-emerald-500/20">
+                      <TrendUp className="w-7 h-7 text-emerald-400" />
+                    </div>
+                    <div className="flex-1">
+                      <h3 className="text-xl lg:text-2xl font-bold text-white mb-2">Performance compounds</h3>
+                      <p className="text-base text-white/70 leading-relaxed">
+                        Automation becomes continuous optimisation, improving with every interaction
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                
+                {/* Bottom accent line with animation */}
+                <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-emerald-400/60 to-transparent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 rounded-b-2xl" />
+              </div>
+            </motion.div>
+
+            {/* Card 2 - Learning */}
+            <motion.div 
+              {...fadeInUp}
+              className="group relative"
+              whileHover={{ y: -6, scale: 1.02 }}
+              transition={{ duration: 0.3, type: "spring", stiffness: 300 }}
+            >
+              <div className="relative h-full p-8 lg:p-10 rounded-2xl overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/[0.08] to-cyan-600/[0.04] rounded-2xl" />
+                <div className="absolute inset-0 bg-gradient-to-tr from-white/[0.04] to-transparent rounded-2xl" />
+                <div className="absolute inset-0 backdrop-blur-xl rounded-2xl" />
+                <div className="absolute inset-0 rounded-2xl border border-cyan-400/20 group-hover:border-cyan-400/40 transition-colors duration-500" />
+                <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br from-cyan-400/10 to-transparent" />
+                
+                <div className="relative z-10">
+                  <div className="flex items-start gap-4 mb-4">
+                    <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-[#00D4FF]/20 to-[#00D4FF]/10 border border-[#00D4FF]/25 flex items-center justify-center flex-shrink-0 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg shadow-[#00D4FF]/15">
+                      <Brain className="w-7 h-7 text-[#00D4FF]" />
+                    </div>
+                    <div className="flex-1">
+                      <h3 className="text-xl lg:text-2xl font-bold text-white mb-2">Learns locally</h3>
+                      <p className="text-base text-white/70 leading-relaxed">
+                        Outcomes refine behaviour inside your institution, building institutional knowledge
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                
+                <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[#00D4FF]/50 to-transparent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 rounded-b-2xl" />
+              </div>
+            </motion.div>
+
+            {/* Card 3 - Compliance */}
+            <motion.div 
+              {...fadeInUp}
+              className="group relative"
+              whileHover={{ y: -6, scale: 1.02 }}
+              transition={{ duration: 0.3, type: "spring", stiffness: 300 }}
+            >
+              <div className="relative h-full p-8 lg:p-10 rounded-2xl overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-br from-[#00FF88]/[0.06] to-[#00FF88]/[0.03] rounded-2xl" />
+                <div className="absolute inset-0 bg-gradient-to-tr from-white/[0.04] to-transparent rounded-2xl" />
+                <div className="absolute inset-0 backdrop-blur-xl rounded-2xl" />
+                <div className="absolute inset-0 rounded-2xl border border-[#00FF88]/15 group-hover:border-[#00FF88]/35 transition-colors duration-500" />
+                <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br from-[#00FF88]/8 to-transparent" />
+                
+                <div className="relative z-10">
+                  <div className="flex items-start gap-4 mb-4">
+                    <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-[#00FF88]/20 to-[#00FF88]/10 border border-violet-400/30 flex items-center justify-center flex-shrink-0 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg shadow-[#00FF88]/15">
+                      <ShieldCheck className="w-7 h-7 text-[#00FF88]" />
+                    </div>
+                    <div className="flex-1">
+                      <h3 className="text-xl lg:text-2xl font-bold text-white mb-2">Compliance holds</h3>
+                      <p className="text-base text-white/70 leading-relaxed">
+                        Guardrails remain fixed as intelligence advances, ensuring regulatory compliance
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                
+                <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[#00FF88]/50 to-transparent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 rounded-b-2xl" />
+              </div>
+            </motion.div>
+
+            {/* Card 4 - Sharing */}
+            <motion.div 
+              {...fadeInUp}
+              className="group relative"
+              whileHover={{ y: -6, scale: 1.02 }}
+              transition={{ duration: 0.3, type: "spring", stiffness: 300 }}
+            >
+              <div className="relative h-full p-8 lg:p-10 rounded-2xl overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-br from-teal-500/[0.06] to-teal-600/[0.03] rounded-2xl" />
+                <div className="absolute inset-0 bg-gradient-to-tr from-white/[0.04] to-transparent rounded-2xl" />
+                <div className="absolute inset-0 backdrop-blur-xl rounded-2xl" />
+                <div className="absolute inset-0 rounded-2xl border border-teal-400/15 group-hover:border-teal-400/35 transition-colors duration-500" />
+                <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br from-teal-400/8 to-transparent" />
+                
+                <div className="relative z-10">
+                  <div className="flex items-start gap-4 mb-4">
+                    <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-teal-500/20 to-teal-600/10 border border-teal-400/30 flex items-center justify-center flex-shrink-0 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg shadow-teal-500/15">
+                      <Users className="w-7 h-7 text-teal-400" />
+                    </div>
+                    <div className="flex-1">
+                      <h3 className="text-xl lg:text-2xl font-bold text-white mb-2">Shares gains safely</h3>
+                      <p className="text-base text-white/70 leading-relaxed">
+                        Federated learning without sharing raw data, preserving privacy and security
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                
+                <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-teal-400/50 to-transparent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 rounded-b-2xl" />
+              </div>
+            </motion.div>
+          </motion.div>
+
+          {/* Enhanced bottom accent with pulse animation */}
+          <motion.div 
+            initial={{ opacity: 0, scaleX: 0 }}
+            whileInView={{ opacity: 1, scaleX: 1 }}
+            transition={{ delay: 0.6, duration: 0.8 }}
+            className="max-w-3xl mx-auto mt-14"
+          >
+            <div className="relative">
+              <div className="h-px bg-gradient-to-r from-transparent via-emerald-400/30 to-transparent" />
+              <div className="absolute inset-0 h-px bg-gradient-to-r from-transparent via-krim-mint/40 to-transparent animate-pulse" />
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Integration Ecosystem with Actual Logos */}
+      <StunningIntegrationsSection />
+
+      {/* Governance Before Intelligence - Combined Enterprise Section */}
+      <section className="py-20 md:py-32 relative overflow-hidden">
+        {/* Subtle gradient background */}
+        <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/[0.02] via-transparent to-violet-500/[0.02] pointer-events-none" />
+        
+        <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
+          {/* Main Header */}
+          <motion.div {...fadeInUp} className="mb-16">
+            <div className="w-full flex justify-center">
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold mb-6 tracking-tight leading-tight">
+                <span className="bg-gradient-to-r from-emerald-400 via-krim-mint to-[#00FF88] bg-clip-text text-transparent font-black">
+                  Governed Intelligence
+                </span>
+              </h2>
+            </div>
+            <div className="w-full flex justify-center">
+              <p className="text-xl md:text-2xl text-white/70 max-w-3xl leading-relaxed">
+                Enterprise control meets flexible deployment
+              </p>
+            </div>
+          </motion.div>
+
+          {/* Interactive Tab System */}
+          <motion.div {...fadeInUp}>
+            {/* Tab Buttons */}
+            <div className="flex justify-center mb-12">
+              <div className="inline-flex gap-1 p-1 rounded-2xl backdrop-blur-xl bg-white/[0.03] border border-white/[0.08]">
+                <button 
+                  onClick={() => setActiveTab('governance')}
+                  className={`px-8 py-3 rounded-xl font-semibold transition-all duration-300 ${
+                    activeTab === 'governance' 
+                      ? 'bg-gradient-to-r from-emerald-400/20 to-cyan-400/20 border border-emerald-400/30 text-emerald-400' 
+                      : 'text-white/70 hover:text-white hover:bg-white/[0.03]'
+                  }`}
+                >
+                  Control Framework
+                </button>
+                <button 
+                  onClick={() => setActiveTab('deployment')}
+                  className={`px-8 py-3 rounded-xl font-semibold transition-all duration-300 ${
+                    activeTab === 'deployment' 
+                      ? 'bg-gradient-to-r from-[#00FF88]/20 to-teal-400/20 border border-[#00FF88]/30 text-[#00FF88]' 
+                      : 'text-white/70 hover:text-white hover:bg-white/[0.03]'
+                  }`}
+                >
+                  Deployment Options
+                </button>
+              </div>
+            </div>
+
+            {/* Tab Content - Governance */}
+            {activeTab === 'governance' && (
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+                className="space-y-10"
+              >
+                {/* Enhanced Three Pillars Grid - Enterprise Glass Cards Style */}
+                <motion.div 
+                  variants={stagger}
+                  initial="initial"
+                  whileInView="animate"
+                  viewport={{ once: true }}
+                  className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 max-w-6xl mx-auto"
+                >
+                  {/* Semi-Deterministic Card */}
+                  <motion.div 
+                    {...fadeInUp}
+                    className="group relative"
+                    whileHover={{ y: -6, scale: 1.02 }}
+                    transition={{ duration: 0.3, type: "spring", stiffness: 300 }}
+                  >
+                    <div className="relative h-full p-8 lg:p-10 rounded-2xl overflow-hidden">
+                      {/* Multi-layer background for depth */}
+                      <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/[0.06] to-emerald-600/[0.03] rounded-2xl" />
+                      <div className="absolute inset-0 bg-gradient-to-tr from-white/[0.04] to-transparent rounded-2xl" />
+                      <div className="absolute inset-0 backdrop-blur-xl rounded-2xl" />
+                      
+                      {/* Border with gradient */}
+                      <div className="absolute inset-0 rounded-2xl border border-emerald-400/15 group-hover:border-emerald-400/35 transition-colors duration-500" />
+                      
+                      {/* Glow effect on hover */}
+                      <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br from-emerald-400/8 to-transparent" />
+                      
+                      {/* Content */}
+                      <div className="relative z-10 text-center">
+                        <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-emerald-500/20 to-emerald-600/10 border border-emerald-400/25 flex items-center justify-center mx-auto mb-4 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg shadow-emerald-500/15">
+                          <Lightning className="w-7 h-7 text-emerald-400" />
+                        </div>
+                        <h4 className="text-xl lg:text-2xl font-bold text-white mb-2">Semi-Deterministic</h4>
+                        <p className="text-base text-white/70 leading-relaxed">
+                          Predictable paths. No surprises. Full explainability.
+                        </p>
+                      </div>
+                      
+                      {/* Bottom accent line with animation */}
+                      <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-emerald-400/50 to-transparent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 rounded-b-2xl" />
+                    </div>
+                  </motion.div>
+
+                  {/* Human Control Card */}
+                  <motion.div 
+                    {...fadeInUp}
+                    className="group relative"
+                    whileHover={{ y: -6, scale: 1.02 }}
+                    transition={{ duration: 0.3, type: "spring", stiffness: 300, delay: 0.1 }}
+                  >
+                    <div className="relative h-full p-8 lg:p-10 rounded-2xl overflow-hidden">
+                      <div className="absolute inset-0 bg-gradient-to-br from-[#00D4FF]/[0.06] to-[#00D4FF]/[0.03] rounded-2xl" />
+                      <div className="absolute inset-0 bg-gradient-to-tr from-white/[0.04] to-transparent rounded-2xl" />
+                      <div className="absolute inset-0 backdrop-blur-xl rounded-2xl" />
+                      <div className="absolute inset-0 rounded-2xl border border-[#00D4FF]/15 group-hover:border-[#00D4FF]/35 transition-colors duration-500" />
+                      <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br from-[#00D4FF]/8 to-transparent" />
+                      
+                      <div className="relative z-10 text-center">
+                        <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-[#00D4FF]/20 to-[#00D4FF]/10 border border-[#00D4FF]/25 flex items-center justify-center mx-auto mb-4 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg shadow-[#00D4FF]/15">
+                          <Users className="w-7 h-7 text-[#00D4FF]" />
+                        </div>
+                        <h4 className="text-xl lg:text-2xl font-bold text-white mb-2">Human Control</h4>
+                        <p className="text-base text-white/70 leading-relaxed">
+                          Critical decisions stay yours. AI advises, you decide.
+                        </p>
+                      </div>
+                      
+                      <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[#00D4FF]/50 to-transparent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 rounded-b-2xl" />
+                    </div>
+                  </motion.div>
+
+                  {/* Audit Trail Card */}
+                  <motion.div 
+                    {...fadeInUp}
+                    className="group relative"
+                    whileHover={{ y: -6, scale: 1.02 }}
+                    transition={{ duration: 0.3, type: "spring", stiffness: 300, delay: 0.2 }}
+                  >
+                    <div className="relative h-full p-8 lg:p-10 rounded-2xl overflow-hidden">
+                      <div className="absolute inset-0 bg-gradient-to-br from-[#00FF88]/[0.06] to-[#00FF88]/[0.03] rounded-2xl" />
+                      <div className="absolute inset-0 bg-gradient-to-tr from-white/[0.04] to-transparent rounded-2xl" />
+                      <div className="absolute inset-0 backdrop-blur-xl rounded-2xl" />
+                      <div className="absolute inset-0 rounded-2xl border border-[#00FF88]/15 group-hover:border-[#00FF88]/35 transition-colors duration-500" />
+                      <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br from-[#00FF88]/8 to-transparent" />
+                      
+                      <div className="relative z-10 text-center">
+                        <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-[#00FF88]/20 to-[#00FF88]/10 border border-violet-400/30 flex items-center justify-center mx-auto mb-4 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg shadow-[#00FF88]/15">
+                          <FileText className="w-7 h-7 text-[#00FF88]" />
+                        </div>
+                        <h4 className="text-xl lg:text-2xl font-bold text-white mb-2">Audit Trail</h4>
+                        <p className="text-base text-white/70 leading-relaxed">
+                          Complete history. Regulatory confidence. Always defensible.
+                        </p>
+                      </div>
+                      
+                      <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[#00FF88]/50 to-transparent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 rounded-b-2xl" />
+                    </div>
+                  </motion.div>
+                </motion.div>
+
+                {/* Compact Policy-First Architecture Card */}
+                <motion.div 
+                  {...fadeInUp}
+                  className="group relative max-w-2xl mx-auto"
+                  whileHover={{ y: -3, scale: 1.01 }}
+                  transition={{ duration: 0.3, type: "spring", stiffness: 300 }}
+                >
+                  <div className="relative p-4 lg:p-6 rounded-xl overflow-hidden">
+                    {/* Multi-layer background for depth */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/[0.06] to-emerald-600/[0.03] rounded-xl" />
+                    <div className="absolute inset-0 bg-gradient-to-tr from-white/[0.04] to-transparent rounded-xl" />
+                    <div className="absolute inset-0 backdrop-blur-xl rounded-xl" />
+                    
+                    {/* Border with gradient */}
+                    <div className="absolute inset-0 rounded-xl border border-emerald-400/15 group-hover:border-emerald-400/35 transition-colors duration-500" />
+                    
+                    {/* Glow effect on hover */}
+                    <div className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br from-emerald-400/8 to-transparent" />
+                    
+                    <div className="relative z-10 text-center">
+                      <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-emerald-500/20 to-emerald-600/10 border border-emerald-400/25 flex items-center justify-center mx-auto mb-3 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg shadow-emerald-500/15">
+                        <ShieldCheck className="w-5 h-5 text-emerald-400" />
+                      </div>
+                      <h3 className="text-lg lg:text-xl font-bold text-white mb-1">
+                        Policy-First Architecture
+                      </h3>
+                      <p className="text-sm text-white/70 leading-relaxed">
+                        Every action pre-validated. Every decision traceable. Every outcome compliant.
+                      </p>
+                    </div>
+                    
+                    {/* Bottom accent line with animation */}
+                    <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-emerald-400/50 to-transparent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 rounded-b-xl" />
+                  </div>
+                </motion.div>
+              </motion.div>
+            )}
+
+            {/* Tab Content - Deployment */}
+            {activeTab === 'deployment' && (
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+              >
+                {/* Deployment Options - 3 Visible Cards */}
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 max-w-6xl mx-auto">
+                  {/* On-Premise Card */}
+                  <motion.div 
+                    {...fadeInUp}
+                    className="group relative"
+                    whileHover={{ y: -6, scale: 1.02 }}
+                    transition={{ duration: 0.3, type: "spring", stiffness: 300 }}
+                  >
+                    <div className="relative h-full p-8 lg:p-10 rounded-2xl overflow-hidden">
+                      {/* Multi-layer background for depth */}
+                      <div className="absolute inset-0 bg-gradient-to-br from-teal-500/[0.06] to-teal-600/[0.03] rounded-2xl" />
+                      <div className="absolute inset-0 bg-gradient-to-tr from-white/[0.04] to-transparent rounded-2xl" />
+                      <div className="absolute inset-0 backdrop-blur-xl rounded-2xl" />
+                      
+                      {/* Border with gradient */}
+                      <div className="absolute inset-0 rounded-2xl border border-teal-400/15 group-hover:border-teal-400/35 transition-colors duration-500" />
+                      
+                      {/* Glow effect on hover */}
+                      <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br from-teal-400/8 to-transparent" />
+                      
+                      {/* Content */}
+                      <div className="relative z-10 text-center">
+                        <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-teal-500/20 to-teal-600/10 border border-indigo-400/30 flex items-center justify-center mx-auto mb-4 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg shadow-teal-500/15">
+                          <Buildings className="w-7 h-7 text-teal-400" />
+                        </div>
+                        <h3 className="text-xl lg:text-2xl font-bold text-white mb-2">On-Premise</h3>
+                        <p className="text-base text-white/70 leading-relaxed mb-4">
+                          Complete control within your data center
+                        </p>
+                        <div className="space-y-2">
+                          <div className="flex items-center justify-center gap-2">
+                            <div className="w-1.5 h-1.5 rounded-full bg-teal-400" />
+                            <span className="text-sm text-white/60">100% data sovereignty</span>
+                          </div>
+                          <div className="flex items-center justify-center gap-2">
+                            <div className="w-1.5 h-1.5 rounded-full bg-teal-400" />
+                            <span className="text-sm text-white/60">Air-gapped security</span>
+                          </div>
+                          <div className="flex items-center justify-center gap-2">
+                            <div className="w-1.5 h-1.5 rounded-full bg-teal-400" />
+                            <span className="text-sm text-white/60">Custom integrations</span>
+                          </div>
+                        </div>
+                      </div>
+                      
+                      {/* Bottom accent line with animation */}
+                      <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-teal-400/50 to-transparent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 rounded-b-2xl" />
+                    </div>
+                  </motion.div>
+
+                  {/* Single-Tenant Card */}
+                  <motion.div 
+                    {...fadeInUp}
+                    className="group relative"
+                    whileHover={{ y: -6, scale: 1.02 }}
+                    transition={{ duration: 0.3, type: "spring", stiffness: 300, delay: 0.1 }}
+                  >
+                    <div className="relative h-full p-8 lg:p-10 rounded-2xl overflow-hidden">
+                      <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/[0.06] to-emerald-600/[0.03] rounded-2xl" />
+                      <div className="absolute inset-0 bg-gradient-to-tr from-white/[0.04] to-transparent rounded-2xl" />
+                      <div className="absolute inset-0 backdrop-blur-xl rounded-2xl" />
+                      <div className="absolute inset-0 rounded-2xl border border-emerald-400/15 group-hover:border-emerald-400/35 transition-colors duration-500" />
+                      <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br from-emerald-400/8 to-transparent" />
+                      
+                      <div className="relative z-10 text-center">
+                        <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-emerald-500/20 to-emerald-600/10 border border-purple-400/30 flex items-center justify-center mx-auto mb-4 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg shadow-emerald-500/15">
+                          <Cloud className="w-7 h-7 text-emerald-400" />
+                        </div>
+                        <h3 className="text-xl lg:text-2xl font-bold text-white mb-2">Single-Tenant VPC</h3>
+                        <p className="text-base text-white/70 leading-relaxed mb-4">
+                          Isolated cloud environment with dedicated resources
+                        </p>
+                        <div className="space-y-2">
+                          <div className="flex items-center justify-center gap-2">
+                            <div className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+                            <span className="text-sm text-white/60">Dedicated resources</span>
+                          </div>
+                          <div className="flex items-center justify-center gap-2">
+                            <div className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+                            <span className="text-sm text-white/60">Full control</span>
+                          </div>
+                          <div className="flex items-center justify-center gap-2">
+                            <div className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+                            <span className="text-sm text-white/60">High availability</span>
+                          </div>
+                        </div>
+                      </div>
+                      
+                      <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-emerald-400/50 to-transparent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 rounded-b-2xl" />
+                    </div>
+                  </motion.div>
+
+                  {/* Multi-Tenant Card */}
+                  <motion.div 
+                    {...fadeInUp}
+                    className="group relative"
+                    whileHover={{ y: -6, scale: 1.02 }}
+                    transition={{ duration: 0.3, type: "spring", stiffness: 300, delay: 0.2 }}
+                  >
+                    <div className="relative h-full p-8 lg:p-10 rounded-2xl overflow-hidden">
+                      <div className="absolute inset-0 bg-gradient-to-br from-teal-500/[0.06] to-teal-600/[0.03] rounded-2xl" />
+                      <div className="absolute inset-0 bg-gradient-to-tr from-white/[0.04] to-transparent rounded-2xl" />
+                      <div className="absolute inset-0 backdrop-blur-xl rounded-2xl" />
+                      <div className="absolute inset-0 rounded-2xl border border-teal-400/15 group-hover:border-teal-400/35 transition-colors duration-500" />
+                      <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br from-teal-400/8 to-transparent" />
+                      
+                      <div className="relative z-10 text-center">
+                        <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-teal-500/20 to-teal-600/10 border border-teal-400/30 flex items-center justify-center mx-auto mb-4 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg shadow-teal-500/15">
+                          <Lightning className="w-7 h-7 text-teal-400" />
+                        </div>
+                        <h3 className="text-xl lg:text-2xl font-bold text-white mb-2">Multi-Tenant Cloud</h3>
+                        <p className="text-base text-white/70 leading-relaxed mb-4">
+                          Fast deployment with managed infrastructure
+                        </p>
+                        <div className="space-y-2">
+                          <div className="flex items-center justify-center gap-2">
+                            <div className="w-1.5 h-1.5 rounded-full bg-teal-400" />
+                            <span className="text-sm text-white/60">Instant deployment</span>
+                          </div>
+                          <div className="flex items-center justify-center gap-2">
+                            <div className="w-1.5 h-1.5 rounded-full bg-teal-400" />
+                            <span className="text-sm text-white/60">Managed updates</span>
+                          </div>
+                          <div className="flex items-center justify-center gap-2">
+                            <div className="w-1.5 h-1.5 rounded-full bg-teal-400" />
+                            <span className="text-sm text-white/60">Cost-effective</span>
+                          </div>
+                        </div>
+                      </div>
+                      
+                      <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-teal-400/50 to-transparent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 rounded-b-2xl" />
+                    </div>
+                  </motion.div>
+                </div>
+              </motion.div>
+            )}
+          </motion.div>
+
+          {/* Bottom CTA - Unified */}
+          <motion.div 
+            {...fadeInUp}
+            className="mt-16"
+          >
+            <div className="w-full flex justify-center">
+              <Link to="/contact" className="inline-block">
+              <motion.button
+                whileHover={{ 
+                  scale: 1.05,
+                  boxShadow: "0 12px 40px rgba(16,185,129,0.3)"
+                }}
+                whileTap={{ scale: 0.95 }}
+                transition={{ type: "spring", stiffness: 400, damping: 25 }}
+                className="group relative px-10 py-4 rounded-2xl backdrop-blur-xl bg-white/[0.02] border-2 border-emerald-400/50 text-emerald-400 font-bold text-lg overflow-hidden transition-all duration-300 hover:bg-emerald-400/10 hover:border-emerald-400/70"
+              >
+                <div className="absolute inset-0 bg-gradient-to-r from-emerald-400/10 to-cyan-400/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <span className="relative z-10">Learn about Governed Intelligence</span>
+              </motion.button>
+            </Link>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Closing Statement + CTA - Enhanced with modern styling */}
+      <section className="py-20 md:py-32 relative overflow-hidden">
+        {/* Background removed for full starfield visibility */}
+        
+        {/* Animated orbs removed for full starfield visibility */}
+
+        <div className="relative max-w-7xl mx-auto px-6 lg:px-8 text-center">
+          <motion.div {...fadeInUp} className="flex flex-col items-center space-y-16 lg:space-y-20">
+            {/* Main Headlines */}
+            <div className="space-y-6 lg:space-y-8">
+              <div className="w-full flex justify-center">
+                <motion.h2
+                  {...fadeInUp}
+                  className="text-3xl md:text-4xl lg:text-5xl font-semibold mb-6 leading-[1.1] tracking-tight"
+                >
+                  <span className="bg-gradient-to-r from-krim-mint via-krim-cyan to-krim-mint bg-clip-text text-transparent font-black">
+                    Execution becomes
+                  </span>
+                  {' '}
+                  <span className="text-slate-200">
+                    autonomous.
+                  </span>
+                </motion.h2>
+              </div>
+              <div className="w-full flex justify-center">
+                <motion.h2
+                  {...fadeInUp}
+                  transition={{ delay: 0.2 }}
+                  className="text-3xl md:text-4xl lg:text-5xl font-semibold leading-[1.1] tracking-tight"
+                >
+                <span className="bg-gradient-to-r from-krim-cyan via-krim-mint to-krim-cyan bg-clip-text text-transparent font-black">
+                  Control stays
+                </span>
+                {' '}
+                <span className="text-slate-200">
+                  absolute.
+                </span>
+              </motion.h2>
+              </div>
+            </div>
+
+            {/* CTA Section */}
+            <motion.div 
+              {...fadeInUp}
+              transition={{ delay: 0.4 }}
+              className="max-w-4xl mx-auto space-y-12 lg:space-y-14 flex flex-col items-center"
+            >
+              <div className="space-y-6 text-center">
+                <div className="flex justify-center">
+                  <h3 className="text-3xl md:text-4xl font-bold text-white text-center">See it in action</h3>
+                </div>
+                <p className="text-xl md:text-2xl text-white/70 max-w-3xl mx-auto leading-relaxed text-center">
+                  Contact our team to explore how Krim AI can transform your credit operations.
+                </p>
+              </div>
+              
+              <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
+                <Link to="/contact" className="flex justify-center">
+                  <motion.button
+                    whileHover={!prefersReducedMotion ? { 
+                      scale: 1.05,
+                      boxShadow: "0 20px 60px rgba(0,255,136,0.4)"
+                    } : {}}
+                    whileTap={!prefersReducedMotion ? { scale: 0.95 } : {}}
+                    transition={{ type: "spring", stiffness: 400, damping: 25 }}
+                    className="group relative px-10 py-5 rounded-2xl bg-gradient-to-r from-emerald-500 via-krim-mint to-cyan-500 text-black font-bold text-lg overflow-hidden transition-all duration-300"
+                  >
+                    <div className="absolute inset-0 bg-gradient-to-r from-emerald-400 via-cyan-400 to-teal-400 opacity-0 group-hover:opacity-30 transition-opacity duration-300" />
+                    <span className="relative z-10">Book demo</span>
+                  </motion.button>
+                </Link>
+                
+                <Link to="/krimos" className="flex justify-center">
+                  <motion.button
+                    whileHover={!prefersReducedMotion ? { 
+                      scale: 1.05,
+                      boxShadow: "0 12px 40px rgba(16,185,129,0.3)"
+                    } : {}}
+                    whileTap={!prefersReducedMotion ? { scale: 0.95 } : {}}
+                    transition={{ type: "spring", stiffness: 400, damping: 25 }}
+                    className="group relative px-10 py-5 rounded-2xl backdrop-blur-xl bg-white/[0.02] border-2 border-emerald-400/50 text-emerald-400 font-bold text-lg overflow-hidden transition-all duration-300 hover:bg-emerald-400/10 hover:border-emerald-400/70"
+                  >
+                    <div className="absolute inset-0 bg-gradient-to-r from-emerald-400/10 to-cyan-400/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                    <span className="relative z-10">Explore platform</span>
+                  </motion.button>
+                </Link>
+              </div>
+
+              {/* Trust Indicators */}
+            </motion.div>
+          </motion.div>
+        </div>
+      </section>
+      </div>
+    </div>
+  )
+}

@@ -1,0 +1,9 @@
+<svg width="120" height="60" viewBox="0 0 120 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="120" height="60" rx="8" fill="#1E40AF" fill-opacity="0.1" stroke="#1E40AF" stroke-width="1"/>
+  <circle cx="30" cy="30" r="12" fill="#1E40AF" fill-opacity="0.2"/>
+  <text x="30" y="24" font-family="Arial, sans-serif" font-size="10" font-weight="bold" text-anchor="middle" fill="#1E40AF">ISO</text>
+  <text x="30" y="36" font-family="Arial, sans-serif" font-size="8" text-anchor="middle" fill="#1E40AF">27001</text>
+  <text x="50" y="22" font-family="Arial, sans-serif" font-size="11" font-weight="bold" text-anchor="start" fill="#1E40AF">ISO 27001</text>
+  <text x="50" y="34" font-family="Arial, sans-serif" font-size="9" text-anchor="start" fill="#1E40AF">SECURITY</text>
+  <text x="50" y="44" font-family="Arial, sans-serif" font-size="8" text-anchor="start" fill="#1E40AF">CERTIFIED</text>
+</svg>

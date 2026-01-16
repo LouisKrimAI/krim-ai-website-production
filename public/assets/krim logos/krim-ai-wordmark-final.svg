@@ -1,0 +1,21 @@
+<!-- Krim AI Wordmark - Final Minimalist Version -->
+<svg width="400" height="120" viewBox="0 0 400 120" xmlns="http://www.w3.org/2000/svg">
+  <!-- Logo icon on the left -->
+  <g transform="translate(20, 5) scale(0.35)">
+    <!-- Triangle with dark edges and truly equal 40px gaps -->
+    <line x1="200" y1="100" x2="160" y2="169.3" stroke="#00FF88" stroke-width="4" stroke-linecap="round"/>
+    <line x1="140" y1="203.9" x2="100" y2="273.2" stroke="#00FF88" stroke-width="4" stroke-linecap="round"/>
+    <line x1="200" y1="100" x2="240" y2="169.3" stroke="#00FF88" stroke-width="4" stroke-linecap="round"/>
+    <line x1="260" y1="203.9" x2="300" y2="273.2" stroke="#00FF88" stroke-width="4" stroke-linecap="round"/>
+    <line x1="100" y1="273.2" x2="180" y2="273.2" stroke="#00FF88" stroke-width="4" stroke-linecap="round"/>
+    <line x1="220" y1="273.2" x2="300" y2="273.2" stroke="#00FF88" stroke-width="4" stroke-linecap="round"/>
+    
+    <!-- Single center dot at centroid -->
+    <circle cx="200" cy="215.5" r="5" fill="#00FF88"/>
+  </g>
+  
+  <!-- Text adjacent to logo, centered visually -->
+  <text x="150" y="90" font-family="Montserrat, sans-serif" font-size="56" font-weight="bold" fill="#00FF88">
+    KRIM
+  </text>
+</svg>

@@ -1,0 +1,365 @@
+/* ========================================
+   TEXT READABILITY ENHANCEMENT SYSTEM
+   Phase 4: Starfield-Compatible Text Contrast
+   WCAG 2.1 AA Compliant
+   ======================================== */
+
+:root {
+  /* === ENHANCED TEXT SHADOWS === */
+  --text-shadow-subtle: 0 1px 3px rgba(0, 0, 0, 0.5);
+  --text-shadow-medium: 0 2px 6px rgba(0, 0, 0, 0.7);
+  --text-shadow-strong: 0 2px 10px rgba(0, 0, 0, 0.9), 0 4px 20px rgba(0, 0, 0, 0.5);
+  --text-shadow-glow: 0 0 20px rgba(0, 0, 0, 0.8), 0 0 40px rgba(0, 0, 0, 0.4);
+  
+  /* === TEXT CONTRAST BACKGROUNDS === */
+  --text-backing-ultra-light: rgba(10, 8, 27, 0.3);
+  --text-backing-light: rgba(10, 8, 27, 0.5);
+  --text-backing-medium: rgba(10, 8, 27, 0.7);
+  --text-backing-strong: rgba(10, 8, 27, 0.85);
+  --text-backing-solid: rgba(10, 8, 27, 0.95);
+}
+
+/* ========================================
+   HEADING READABILITY CLASSES
+   ======================================== */
+
+/* Primary headings with enhanced contrast */
+.heading-readable {
+  text-shadow: var(--text-shadow-strong);
+  position: relative;
+  z-index: 2;
+}
+
+.heading-readable::before {
+  content: '';
+  position: absolute;
+  inset: -8px -16px;
+  background: linear-gradient(
+    to bottom,
+    var(--text-backing-light) 0%,
+    var(--text-backing-ultra-light) 50%,
+    transparent 100%
+  );
+  backdrop-filter: blur(8px);
+  border-radius: 12px;
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* Hero headings with maximum impact */
+.hero-heading-readable {
+  text-shadow: 
+    0 2px 4px rgba(0, 0, 0, 0.9),
+    0 4px 12px rgba(0, 0, 0, 0.7),
+    0 8px 24px rgba(0, 0, 0, 0.5);
+}
+
+/* Section headings */
+.section-heading-readable {
+  text-shadow: var(--text-shadow-medium);
+  position: relative;
+  padding: 8px 0;
+}
+
+/* ========================================
+   BODY TEXT READABILITY CLASSES
+   ======================================== */
+
+/* Standard body text enhancement */
+.text-readable {
+  text-shadow: var(--text-shadow-subtle);
+  letter-spacing: 0.01em;
+  font-weight: 400;
+}
+
+/* Emphasized body text */
+.text-readable-strong {
+  text-shadow: var(--text-shadow-medium);
+  font-weight: 500;
+}
+
+/* Paragraph containers with backing */
+.paragraph-readable {
+  position: relative;
+  padding: 16px 24px;
+  border-radius: 12px;
+  background: var(--glass-medium);
+  backdrop-filter: blur(16px);
+  border: 1px solid var(--glass-border-light);
+  text-shadow: var(--text-shadow-subtle);
+}
+
+/* Card text optimization */
+.card-text-readable {
+  background: var(--glass-standard);
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border-medium);
+  padding: 24px;
+  border-radius: 16px;
+}
+
+.card-text-readable h3,
+.card-text-readable h4 {
+  text-shadow: var(--text-shadow-medium);
+  margin-bottom: 12px;
+}
+
+.card-text-readable p {
+  text-shadow: var(--text-shadow-subtle);
+  color: rgba(255, 255, 255, 0.95);
+  line-height: 1.7;
+}
+
+/* ========================================
+   CTA & BUTTON READABILITY
+   ======================================== */
+
+/* Enhanced CTA buttons */
+.cta-readable {
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  position: relative;
+  z-index: 2;
+}
+
+/* Primary CTA with strong contrast */
+.cta-primary-readable {
+  background: linear-gradient(
+    135deg,
+    rgba(16, 185, 129, 0.9) 0%,
+    rgba(6, 182, 212, 0.9) 100%
+  );
+  backdrop-filter: blur(12px);
+  border: 2px solid rgba(16, 185, 129, 0.6);
+  color: white;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
+  box-shadow: 
+    0 4px 16px rgba(16, 185, 129, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  padding: 14px 32px;
+}
+
+.cta-primary-readable:hover {
+  background: linear-gradient(
+    135deg,
+    rgba(16, 185, 129, 1) 0%,
+    rgba(6, 182, 212, 1) 100%
+  );
+  box-shadow: 
+    0 8px 24px rgba(16, 185, 129, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  transform: translateY(-1px);
+}
+
+/* Secondary CTA */
+.cta-secondary-readable {
+  background: var(--glass-strong);
+  backdrop-filter: blur(16px);
+  border: 2px solid var(--glass-border-strong);
+  color: white;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
+  padding: 14px 32px;
+}
+
+/* ========================================
+   NAVIGATION READABILITY
+   ======================================== */
+
+/* Navigation items */
+.nav-readable {
+  text-shadow: var(--text-shadow-subtle);
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  transition: all 0.2s ease;
+}
+
+.nav-readable:hover {
+  text-shadow: var(--text-shadow-medium);
+  color: var(--krim-mint);
+}
+
+/* Header with backing */
+.header-readable {
+  background: linear-gradient(
+    to bottom,
+    var(--text-backing-medium) 0%,
+    var(--text-backing-light) 100%
+  );
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--glass-border-light);
+}
+
+/* ========================================
+   FEATURE SECTIONS READABILITY
+   ======================================== */
+
+/* Feature cards with optimal contrast */
+.feature-card-readable {
+  background: var(--glass-standard);
+  backdrop-filter: blur(24px);
+  border: 1px solid var(--glass-border-medium);
+  padding: 32px;
+  border-radius: 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.feature-card-readable::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    transparent 0%,
+    var(--text-backing-ultra-light) 100%
+  );
+  pointer-events: none;
+}
+
+.feature-card-readable > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Stats and metrics */
+.stat-readable {
+  text-shadow: var(--text-shadow-strong);
+  font-weight: 700;
+  background: linear-gradient(
+    135deg,
+    var(--krim-mint) 0%,
+    var(--krim-cyan) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.8));
+}
+
+.stat-label-readable {
+  text-shadow: var(--text-shadow-subtle);
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  font-size: 0.875rem;
+}
+
+/* ========================================
+   CONTENT SECTIONS WITH GLASS LAYERS
+   ======================================== */
+
+/* Hero section optimization */
+.hero-content-readable {
+  background: linear-gradient(
+    to bottom,
+    var(--text-backing-light) 0%,
+    transparent 70%
+  );
+  backdrop-filter: blur(12px);
+  padding: 48px;
+  border-radius: 24px;
+}
+
+/* Platform sections */
+.platform-section-readable {
+  background: var(--glass-light);
+  backdrop-filter: blur(16px);
+  border: 1px solid var(--glass-border-light);
+  padding: 48px;
+  border-radius: 20px;
+}
+
+/* ========================================
+   ACCESSIBILITY ENHANCEMENTS
+   ======================================== */
+
+/* High contrast mode for critical text */
+.high-contrast-text {
+  color: white !important;
+  text-shadow: 
+    0 2px 4px rgba(0, 0, 0, 1),
+    0 4px 8px rgba(0, 0, 0, 0.8),
+    0 0 20px rgba(0, 0, 0, 0.6);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+/* Focus states with enhanced visibility */
+.focus-readable:focus-visible {
+  outline: 3px solid var(--krim-mint);
+  outline-offset: 4px;
+  box-shadow: 0 0 20px rgba(0, 255, 136, 0.4);
+}
+
+/* Skip link enhancement */
+.skip-link-readable {
+  background: var(--krim-mint);
+  color: var(--krim-deep-space);
+  padding: 12px 24px;
+  font-weight: 600;
+  text-shadow: none;
+  border-radius: 8px;
+  box-shadow: 0 4px 16px rgba(0, 255, 136, 0.4);
+}
+
+/* ========================================
+   RESPONSIVE READABILITY ADJUSTMENTS
+   ======================================== */
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+  .heading-readable {
+    text-shadow: var(--text-shadow-medium);
+  }
+  
+  .text-readable {
+    font-size: 1.0625rem;
+    line-height: 1.7;
+  }
+  
+  .paragraph-readable {
+    padding: 12px 16px;
+  }
+  
+  .feature-card-readable {
+    padding: 24px 20px;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .cta-primary-readable:hover,
+  .cta-secondary-readable:hover {
+    transform: none;
+  }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+  :root {
+    --text-shadow-subtle: 0 2px 4px rgba(0, 0, 0, 0.9);
+    --text-shadow-medium: 0 3px 8px rgba(0, 0, 0, 1);
+    --text-shadow-strong: 0 4px 12px rgba(0, 0, 0, 1), 0 8px 24px rgba(0, 0, 0, 0.8);
+    
+    --text-backing-light: rgba(10, 8, 27, 0.8);
+    --text-backing-medium: rgba(10, 8, 27, 0.9);
+    --text-backing-strong: rgba(10, 8, 27, 0.95);
+  }
+  
+  .glass-standard {
+    background: var(--glass-strong) !important;
+  }
+}
+
+/* Dark mode print */
+@media print {
+  .heading-readable::before,
+  .text-readable,
+  .text-shadow-subtle {
+    text-shadow: none !important;
+    background: white !important;
+    color: black !important;
+  }
+}

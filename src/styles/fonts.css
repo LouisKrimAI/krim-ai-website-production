@@ -1,0 +1,81 @@
+/* SELF-HOSTED FONTS - Non-blocking, optimized loading */
+
+/* Inter 400 - Regular */
+@font-face {
+  font-family: 'Inter';
+  src: url('/fonts/inter-400.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* Inter 600 - Semi-bold */
+@font-face {
+  font-family: 'Inter';
+  src: url('/fonts/inter-600.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* Space Grotesk 700 - Bold */
+@font-face {
+  font-family: 'Space Grotesk';
+  src: url('/fonts/space-grotesk-700.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* OPTIMIZED FONT STACKS - Use metric-compatible fallbacks to avoid text reflow */
+:root {
+  /* Inter with size-adjusted fallback to match metrics */
+  --font-inter: 'Inter', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+
+  /* Space Grotesk with geometric fallback */
+  --font-display: 'Space Grotesk', ui-sans-serif, system-ui, 'Segoe UI', Roboto, sans-serif;
+
+  /* System font fallback */
+  --font-system: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* METRIC-COMPATIBLE FALLBACK FONTS - Prevent layout shift */
+@font-face {
+  font-family: 'Inter-fallback';
+  src: local('Arial'), local('Helvetica');
+  font-display: swap;
+  ascent-override: 90%;
+  descent-override: 22%;
+  line-gap-override: 0%;
+  size-adjust: 107%; /* Match Inter's metrics */
+}
+
+@font-face {
+  font-family: 'Space-Grotesk-fallback';
+  src: local('Arial'), local('Helvetica');
+  font-display: swap;
+  ascent-override: 85%;
+  descent-override: 21%;
+  line-gap-override: 0%;
+  size-adjust: 110%; /* Match Space Grotesk's metrics */
+}
+
+/* APPLY FONTS CONSISTENTLY - Early load to prevent FOIT */
+html, body {
+  font-family: var(--font-inter);
+  font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11'; /* Inter's stylistic features */
+}
+
+/* HEADING FONTS */
+h1, h2, h3, h4, h5, h6, .font-display {
+  font-family: var(--font-display);
+  font-feature-settings: 'ss01', 'ss02'; /* Space Grotesk features */
+}
+
+/* PERFORMANCE OPTIMIZATION - Preload critical font weights only */
+.font-inter-400 { font-family: var(--font-inter); font-weight: 400; }
+.font-inter-600 { font-family: var(--font-inter); font-weight: 600; }
+.font-display-700 { font-family: var(--font-display); font-weight: 700; }

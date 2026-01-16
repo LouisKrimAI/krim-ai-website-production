@@ -1,0 +1,30 @@
+<svg width="160" height="60" viewBox="0 0 160 60" xmlns="http://www.w3.org/2000/svg">
+  <!-- Twilio Logo -->
+  <rect width="160" height="60" fill="#f22f46" rx="8"/>
+  
+  <!-- Twilio Dots Pattern -->
+  <g fill="#ffffff">
+    <circle cx="15" cy="15" r="3"/>
+    <circle cx="25" cy="15" r="3"/>
+    <circle cx="35" cy="15" r="3"/>
+    <circle cx="45" cy="15" r="3"/>
+    
+    <circle cx="15" cy="25" r="3"/>
+    <circle cx="25" cy="25" r="3"/>
+    <circle cx="35" cy="25" r="3"/>
+    <circle cx="45" cy="25" r="3"/>
+    
+    <circle cx="15" cy="35" r="3"/>
+    <circle cx="25" cy="35" r="3"/>
+    <circle cx="35" cy="35" r="3"/>
+    <circle cx="45" cy="35" r="3"/>
+    
+    <circle cx="15" cy="45" r="3"/>
+    <circle cx="25" cy="45" r="3"/>
+    <circle cx="35" cy="45" r="3"/>
+    <circle cx="45" cy="45" r="3"/>
+  </g>
+  
+  <!-- Text -->
+  <text x="60" y="35" font-family="Arial, sans-serif" font-size="18" font-weight="600" fill="#ffffff">twilio</text>
+</svg>
