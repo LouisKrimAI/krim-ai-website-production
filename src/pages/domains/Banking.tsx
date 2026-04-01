@@ -58,7 +58,7 @@ function BankingHero() {
               </h1>
 
               <p className="text-lg md:text-xl text-white/80 leading-[1.7] max-w-xl">
-                Autonomous banks demand a new operating system. KrimOS turns fragmented tools, manual workflows, and black-box AI into a governed intelligence runtime for credit operations, loan servicing, debt recovery, and collections—all while maintaining FDCPA, TCPA, and CFPB compliance.
+                Automate credit operations, loan servicing, and compliance with full governance and audit trails.
               </p>
 
               <div className="grid grid-cols-3 gap-4 pt-4">
@@ -157,42 +157,42 @@ function ProblemSection() {
     {
       icon: <Cube className="w-8 h-8" />,
       title: "Fragmented Tools",
-      desc: "40+ disconnected systems force agents to jump between platforms; data stays siloed.",
+      desc: "40+ disconnected systems lock teams into manual context-switching.",
       color: "emerald",
       stat: "40+"
     },
     {
       icon: <Users className="w-8 h-8" />,
       title: "Human Middleware",
-      desc: "People patch broken workflows and carry institutional memory instead of systems.",
+      desc: "Staff patch workflows and carry knowledge that walks out the door at 65% churn.",
       color: "cyan",
       stat: "65%"
     },
     {
       icon: <WarningCircle className="w-8 h-8" />,
       title: "Post-Fact Compliance",
-      desc: "Most activity is checked after the fact—if audited at all. FDCPA violations stack.",
+      desc: "Rules enforced after actions, not before. Violations pile up before caught.",
       color: "mint",
       stat: "100%"
     },
     {
       icon: <TrendUp className="w-8 h-8" />,
       title: "Rising Delinquencies",
-      desc: "Manual collections workflows can't keep pace with loan volumes or borrower complexity.",
+      desc: "Manual workflows can't scale with loan volumes or borrower complexity.",
       color: "amber",
       stat: "↑↑↑"
     },
     {
       icon: <Clock className="w-8 h-8" />,
-      title: "Slow Innovations",
-      desc: "New compliance rules or credit policies take months to implement across systems.",
+      title: "Slow Innovation",
+      desc: "Policy changes take months to propagate across legacy systems.",
       color: "red",
       stat: "3mo+"
     },
     {
       icon: <Building className="w-8 h-8" />,
       title: "Staff Turnover",
-      desc: "65% annual churn in operations teams—knowledge walks out the door constantly.",
+      desc: "65% churn means institutional knowledge leaves with every departing teammate.",
       color: "purple",
       stat: "65%"
     }
@@ -252,7 +252,7 @@ function ProblemSection() {
           </p>
         </Reveal>
 
-        <StaggerGrid className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <StaggerGrid className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
           {problems.map((problem, idx) => {
             const colors = colorClasses[problem.color as keyof typeof colorClasses]
             return (
@@ -300,35 +300,35 @@ function SolutionSection() {
     {
       product: "Kendra",
       title: "Intelligence Runtime",
-      desc: "Unified intelligence across all banking operations—credit scoring, loan servicing, collections workflows",
+      desc: "Governed AI for credit, servicing, and collections with full audit trails.",
       benefits: ["Safe AI with enterprise guardrails", "Complete audit trail", "Real-time policy enforcement"],
       color: "emerald"
     },
     {
       product: "Kula",
       title: "Command Center",
-      desc: "Leaders design and adjust compliance policies, credit rules, and collections workflows in plain language",
+      desc: "Define policies and credit rules in plain language; updates propagate instantly.",
       benefits: ["Natural language operations", "Runtime policy updates", "Instant compliance propagation"],
       color: "cyan"
     },
     {
       product: "Karta",
       title: "AI Co-Workers",
-      desc: "Intelligent agents handling phone calls, emails, and documents across contact center and back-office",
+      desc: "Pre-built agents handle calls, emails, and documents across contact center.",
       benefits: ["Multi-channel interactions", "20+ pre-built agents", "Real-time decision tracking"],
       color: "mint"
     },
     {
       product: "Kupa",
-      title: "Command Center Oversight",
-      desc: "Banking teams monitor every workflow and agent decision in real time; override authority always in hand",
+      title: "Oversight & Control",
+      desc: "Monitor workflows and override agent decisions in real time with full audit trail.",
       benefits: ["Live workflow visibility", "Instant override capability", "Complete decision audit"],
       color: "amber"
     },
     {
       product: "Kriya",
       title: "Automation Blocks",
-      desc: "Pre-built triggers and conditions for banking workflows—FDCPA/TCPA compliant from the start",
+      desc: "Pre-built banking workflows with compliance baked in from day one.",
       benefits: ["Pre-built banking rules", "Built-in compliance validation", "Observable decision logic"],
       color: "purple"
     }
@@ -350,7 +350,7 @@ function SolutionSection() {
           </p>
         </Reveal>
 
-        <StaggerGrid className="grid md:grid-cols-2 lg:grid-cols-5 gap-6">
+        <StaggerGrid className="grid md:grid-cols-2 lg:grid-cols-5 gap-6 items-stretch">
           {solutions.map((solution, idx) => (
             <motion.div
               key={idx}
@@ -424,37 +424,37 @@ function UseCasesSection() {
     {
       icon: <Phone className="w-8 h-8" />,
       title: "Credit Operations",
-      desc: "Automate credit decisions, underwriting, and approval workflows with real-time decisioning and full audit trails.",
+      desc: "Real-time credit decisions and approvals with full audit trails.",
       metrics: ["100% compliant", "Sub-second decisions", "Complete transparency"]
     },
     {
       icon: <Headset className="w-8 h-8" />,
       title: "Loan Servicing",
-      desc: "Manage payment processing, delinquency tracking, and borrower communications at scale without errors.",
+      desc: "Automate payments, delinquency tracking, and borrower communications error-free at scale.",
       metrics: ["Zero manual touch", "24/7 automation", "Compliance-first"]
     },
     {
       icon: <CurrencyDollar className="w-8 h-8" />,
       title: "Debt Recovery",
-      desc: "AI agents handle collections conversations with FDCPA/TCPA compliance built in; humans focus on high-touch cases.",
+      desc: "AI agents run compliant collections; humans handle complex cases.",
       metrics: ["45% uplift", "FDCPA-safe", "Agent-powered"]
     },
     {
       icon: <ChartBar className="w-8 h-8" />,
       title: "Collections",
-      desc: "Orchestrate multi-channel outreach (phone, SMS, email) with compliance enforcement and real-time override.",
+      desc: "Multi-channel outreach (phone, SMS, email) with rule enforcement and instant override.",
       metrics: ["Multi-channel", "Rule-enforced", "Observable"]
     },
     {
       icon: <Eye className="w-8 h-8" />,
       title: "Compliance Monitoring",
-      desc: "Real-time monitoring of all agent interactions against FDCPA, TCPA, CFPB, FCRA, and SCRA regulations.",
+      desc: "All interactions checked against FDCPA, TCPA, CFPB, FCRA, SCRA in real time.",
       metrics: ["Real-time alerts", "Regulation-native", "Audit-ready"]
     },
     {
       icon: <Scales className="w-8 h-8" />,
       title: "Policy Enforcement",
-      desc: "Leaders define policies in plain language; Kendra enforces them instantly across all operations—no re-coding needed.",
+      desc: "Define policies in plain language; enforcement propagates instantly—no redeployment.",
       metrics: ["Runtime updates", "No redeployment", "Instant propagation"]
     }
   ]
@@ -474,12 +474,12 @@ function UseCasesSection() {
           </p>
         </Reveal>
 
-        <StaggerGrid className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <StaggerGrid className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
           {useCases.map((useCase, idx) => (
             <motion.div
               key={idx}
               {...fadeInUp}
-              className="group relative"
+              className="group relative h-full"
               whileHover={{ y: -8 }}
               transition={{ duration: 0.4, type: "spring", stiffness: 300, damping: 20 }}
             >
@@ -522,27 +522,27 @@ function ComplianceSection() {
     {
       acronym: "FDCPA",
       name: "Fair Debt Collection Practices Act",
-      desc: "Enforces compliance with contact restrictions, debt validation, and consumer rights in collections."
+      desc: "Regulates contact frequency, validation timing, and collection practices."
     },
     {
       acronym: "TCPA",
       name: "Telephone Consumer Protection Act",
-      desc: "Regulates autodialer use, Do-Not-Call lists, and consent requirements for voice/SMS outreach."
+      desc: "Controls autodialer use, Do-Not-Call compliance, and consent for voice/SMS."
     },
     {
       acronym: "CFPB",
       name: "Consumer Financial Protection Bureau",
-      desc: "Oversees unfair, deceptive, abusive practices and requires consumer complaint resolution."
+      desc: "Prevents unfair, deceptive, or abusive practices; mandates complaint resolution."
     },
     {
       acronym: "FCRA",
       name: "Fair Credit Reporting Act",
-      desc: "Governs credit reporting accuracy, dispute resolution, and permissible purpose requirements."
+      desc: "Ensures credit accuracy, dispute handling, and legitimate purpose requirements."
     },
     {
       acronym: "SCRA",
       name: "Servicemembers Civil Relief Act",
-      desc: "Protects active military members with interest rate caps and foreclosure limitations."
+      desc: "Protects active service members with rate caps and foreclosure restrictions."
     }
   ]
 
@@ -562,12 +562,12 @@ function ComplianceSection() {
           </p>
         </Reveal>
 
-        <StaggerGrid className="grid md:grid-cols-2 lg:grid-cols-5 gap-6 mb-16">
+        <StaggerGrid className="grid md:grid-cols-2 lg:grid-cols-5 gap-6 mb-16 items-stretch">
           {regulations.map((reg, idx) => (
             <motion.div
               key={idx}
               {...fadeInUp}
-              className="group relative"
+              className="group relative h-full"
               whileHover={{ y: -6 }}
               transition={{ duration: 0.4, type: "spring", stiffness: 300, damping: 20 }}
             >
@@ -587,28 +587,28 @@ function ComplianceSection() {
         </StaggerGrid>
 
         {/* Key Compliance Features */}
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-3 gap-8 items-stretch">
           <Reveal delay={0.2}>
-            <div className="relative p-8 rounded-2xl overflow-hidden">
+            <div className="relative p-8 rounded-2xl overflow-hidden h-full flex flex-col">
               <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/[0.08] to-transparent rounded-2xl" />
               <div className="absolute inset-0 backdrop-blur-xl rounded-2xl" />
               <div className="absolute inset-0 rounded-2xl border border-emerald-400/20" />
 
-              <div className="relative z-10">
+              <div className="relative z-10 flex-1">
                 <ShieldCheck className="w-8 h-8 text-emerald-400 mb-4" />
                 <h3 className="text-xl font-bold text-white mb-3">Pre-Action Compliance</h3>
-                <p className="text-white/70">KrimOS blocks non-compliant actions before they happen, not after audit.</p>
+                <p className="text-white/70">Block non-compliant actions before they happen, not after audit.</p>
               </div>
             </div>
           </Reveal>
 
           <Reveal delay={0.3}>
-            <div className="relative p-8 rounded-2xl overflow-hidden">
+            <div className="relative p-8 rounded-2xl overflow-hidden h-full flex flex-col">
               <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/[0.08] to-transparent rounded-2xl" />
               <div className="absolute inset-0 backdrop-blur-xl rounded-2xl" />
               <div className="absolute inset-0 rounded-2xl border border-cyan-400/20" />
 
-              <div className="relative z-10">
+              <div className="relative z-10 flex-1">
                 <FileText className="w-8 h-8 text-cyan-400 mb-4" />
                 <h3 className="text-xl font-bold text-white mb-3">Audit-Ready Logs</h3>
                 <p className="text-white/70">Every decision, every interaction, every rule enforcement is logged for regulators.</p>
@@ -617,15 +617,15 @@ function ComplianceSection() {
           </Reveal>
 
           <Reveal delay={0.4}>
-            <div className="relative p-8 rounded-2xl overflow-hidden">
+            <div className="relative p-8 rounded-2xl overflow-hidden h-full flex flex-col">
               <div className="absolute inset-0 bg-gradient-to-br from-[#00FF88]/[0.08] to-transparent rounded-2xl" />
               <div className="absolute inset-0 backdrop-blur-xl rounded-2xl" />
               <div className="absolute inset-0 rounded-2xl border border-[#00FF88]/20" />
 
-              <div className="relative z-10">
+              <div className="relative z-10 flex-1">
                 <Target className="w-8 h-8 text-[#00FF88] mb-4" />
                 <h3 className="text-xl font-bold text-white mb-3">Rule Evolution</h3>
-                <p className="text-white/70">Compliance rules adapt instantly when regulations change—no code redeployment.</p>
+                <p className="text-white/70">Rules adapt instantly to regulation changes—no redeployment needed.</p>
               </div>
             </div>
           </Reveal>
@@ -640,9 +640,9 @@ function ComplianceSection() {
  */
 function SecuritySection() {
   const deploymentOptions = [
-    { name: "Cloud", desc: "Fully managed SaaS deployment with auto-scaling and 99.99% uptime SLA." },
-    { name: "VPC", desc: "Dedicated VPC within your AWS or GCP account; bank-owned infrastructure." },
-    { name: "On-Premise", desc: "Kubernetes cluster in your data center; complete air-gapped deployment." }
+    { name: "Cloud", desc: "Fully managed SaaS with auto-scaling and 99.99% uptime SLA." },
+    { name: "VPC", desc: "Dedicated VPC in your AWS/GCP account; bank-owned infrastructure." },
+    { name: "On-Premise", desc: "Kubernetes in your data center with air-gapped deployment." }
   ]
 
   return (
@@ -669,7 +669,7 @@ function SecuritySection() {
                   <Lock className="w-6 h-6 text-krim-mint mt-1 flex-shrink-0" />
                   <div>
                     <h3 className="text-lg font-bold text-white mb-2">AES-256 Encryption</h3>
-                    <p className="text-white/70">All data encrypted in transit and at rest; HSM key management.</p>
+                    <p className="text-white/70">Data encrypted in transit and at rest with HSM key management.</p>
                   </div>
                 </div>
               </div>
@@ -679,7 +679,7 @@ function SecuritySection() {
                   <Database className="w-6 h-6 text-krim-cyan mt-1 flex-shrink-0" />
                   <div>
                     <h3 className="text-lg font-bold text-white mb-2">Audit Logging</h3>
-                    <p className="text-white/70">Immutable transaction logs; real-time monitoring dashboards.</p>
+                    <p className="text-white/70">Immutable logs with real-time monitoring dashboards.</p>
                   </div>
                 </div>
               </div>
@@ -689,7 +689,7 @@ function SecuritySection() {
                   <CheckCircle className="w-6 h-6 text-[#00FF88] mt-1 flex-shrink-0" />
                   <div>
                     <h3 className="text-lg font-bold text-white mb-2">SOC2 Type II</h3>
-                    <p className="text-white/70">Annual audit; compliance certifications for regulated industries.</p>
+                    <p className="text-white/70">Annual audit and compliance certification for regulated industries.</p>
                   </div>
                 </div>
               </div>
@@ -747,7 +747,7 @@ function CTASection() {
           </h2>
 
           <p className="text-lg md:text-xl text-white/70 mb-12 max-w-2xl mx-auto">
-            See how leading banks are replacing 40+ fragmented tools with a unified intelligence runtime. Book a demo with our team.
+            See how banks replace 40+ tools with a unified intelligence runtime.
           </p>
 
           <Link to="/contact">
@@ -761,7 +761,7 @@ function CTASection() {
           </Link>
 
           <p className="text-white/60 text-sm">
-            Get a personalized walkthrough of KrimOS for your credit operations, loan servicing, and collections workflows.
+            Get a personalized walkthrough of KrimOS in action.
           </p>
         </Reveal>
       </div>

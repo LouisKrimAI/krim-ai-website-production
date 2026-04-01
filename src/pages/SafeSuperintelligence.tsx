@@ -165,104 +165,104 @@ export default function SafeSuperintelligence() {
               
               <div className="space-y-12">
                 {/* Core Reasons */}
-                <div className="grid md:grid-cols-3 gap-6">
-                  <motion.div 
-                    className="group relative"
+                <div className="grid md:grid-cols-3 gap-6 items-stretch">
+                  <motion.div
+                    className="group relative h-full"
                     whileHover={{ y: -6, scale: 1.02 }}
                     transition={{ duration: 0.3, type: "spring", stiffness: 300 }}
                   >
-                    <div className="relative h-full p-6 rounded-xl overflow-hidden">
+                    <div className="relative h-full p-6 rounded-xl overflow-hidden flex flex-col">
                       {/* Multi-layer background for depth */}
                       <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/[0.06] to-emerald-600/[0.03] rounded-xl" />
                       <div className="absolute inset-0 bg-gradient-to-tr from-white/[0.04] to-transparent rounded-xl" />
                       <div className="absolute inset-0 backdrop-blur-xl rounded-xl" />
-                      
+
                       {/* Border with gradient */}
                       <div className="absolute inset-0 rounded-xl border border-emerald-400/15 group-hover:border-emerald-400/35 transition-colors duration-500" />
-                      
+
                       {/* Glow effect on hover - THE HIGHLIGHTING AURA */}
                       <div className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br from-emerald-400/8 to-transparent" />
-                      
+
                       {/* Content */}
-                      <div className="relative z-10">
+                      <div className="relative z-10 flex flex-col flex-1">
                         <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-emerald-500/20 to-emerald-600/10 border border-emerald-400/25 flex items-center justify-center mb-4 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg shadow-emerald-500/15">
                           <Brain className="w-6 h-6 text-emerald-400" />
                         </div>
                         <h3 className="text-lg font-semibold text-white mb-4">Models lack context</h3>
-                        <p className="text-sm text-white/70 leading-relaxed">
-                          Foundation models don't understand your specific business rules, 
+                        <p className="text-sm text-white/70 leading-relaxed flex-1">
+                          Foundation models don't understand your specific business rules,
                           regulatory requirements, or operational constraints.
                         </p>
                       </div>
-                      
+
                       {/* Bottom accent line with animation */}
                       <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-emerald-400/50 to-transparent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 rounded-b-xl" />
                     </div>
                   </motion.div>
                   
-                  <motion.div 
-                    className="group relative"
+                  <motion.div
+                    className="group relative h-full"
                     whileHover={{ y: -6, scale: 1.02 }}
                     transition={{ duration: 0.3, type: "spring", stiffness: 300, delay: 0.1 }}
                   >
-                    <div className="relative h-full p-6 rounded-xl overflow-hidden">
+                    <div className="relative h-full p-6 rounded-xl overflow-hidden flex flex-col">
                       {/* Multi-layer background for depth */}
                       <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/[0.06] to-cyan-600/[0.03] rounded-xl" />
                       <div className="absolute inset-0 bg-gradient-to-tr from-white/[0.04] to-transparent rounded-xl" />
                       <div className="absolute inset-0 backdrop-blur-xl rounded-xl" />
-                      
+
                       {/* Border with gradient */}
                       <div className="absolute inset-0 rounded-xl border border-cyan-400/15 group-hover:border-cyan-400/35 transition-colors duration-500" />
-                      
+
                       {/* Glow effect on hover - THE HIGHLIGHTING AURA */}
                       <div className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br from-cyan-400/8 to-transparent" />
-                      
+
                       {/* Content */}
-                      <div className="relative z-10">
+                      <div className="relative z-10 flex flex-col flex-1">
                         <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-cyan-500/20 to-cyan-600/10 border border-cyan-400/25 flex items-center justify-center mb-4 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg shadow-cyan-500/15">
                           <WarningCircle className="w-6 h-6 text-cyan-400" />
                         </div>
                         <h3 className="text-lg font-semibold text-white mb-4">Failures are costly</h3>
-                        <p className="text-sm text-white/70 leading-relaxed">
+                        <p className="text-sm text-white/70 leading-relaxed flex-1">
                           A single AI error in regulated operations can trigger regulatory violations,
                           customer complaints, and significant financial losses.
                         </p>
                       </div>
-                      
+
                       {/* Bottom accent line with animation */}
                       <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-cyan-400/50 to-transparent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 rounded-b-xl" />
                     </div>
                   </motion.div>
                   
-                  <motion.div 
-                    className="group relative"
+                  <motion.div
+                    className="group relative h-full"
                     whileHover={{ y: -6, scale: 1.02 }}
                     transition={{ duration: 0.3, type: "spring", stiffness: 300, delay: 0.2 }}
                   >
-                    <div className="relative h-full p-6 rounded-xl overflow-hidden">
+                    <div className="relative h-full p-6 rounded-xl overflow-hidden flex flex-col">
                       {/* Multi-layer background for depth */}
                       <div className="absolute inset-0 bg-gradient-to-br from-teal-500/[0.06] to-teal-600/[0.03] rounded-xl" />
                       <div className="absolute inset-0 bg-gradient-to-tr from-white/[0.04] to-transparent rounded-xl" />
                       <div className="absolute inset-0 backdrop-blur-xl rounded-xl" />
-                      
+
                       {/* Border with gradient */}
                       <div className="absolute inset-0 rounded-xl border border-teal-400/15 group-hover:border-teal-400/35 transition-colors duration-500" />
-                      
+
                       {/* Glow effect on hover - THE HIGHLIGHTING AURA */}
                       <div className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br from-teal-400/8 to-transparent" />
-                      
+
                       {/* Content */}
-                      <div className="relative z-10">
+                      <div className="relative z-10 flex flex-col flex-1">
                         <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-teal-500/20 to-teal-600/10 border border-teal-400/25 flex items-center justify-center mb-4 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg shadow-teal-500/15">
                           <Shield className="w-6 h-6 text-teal-400" />
                         </div>
                         <h3 className="text-lg font-semibold text-white mb-4">Trust requires validation</h3>
-                        <p className="text-sm text-white/70 leading-relaxed">
-                          To deploy AI at scale, every action must be validated against policies 
+                        <p className="text-sm text-white/70 leading-relaxed flex-1">
+                          To deploy AI at scale, every action must be validated against policies
                           before execution, not discovered after damage is done.
                         </p>
                       </div>
-                      
+
                       {/* Bottom accent line with animation */}
                       <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-teal-400/50 to-transparent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 rounded-b-xl" />
                     </div>
@@ -330,7 +330,7 @@ export default function SafeSuperintelligence() {
               </div>
               
               {/* 8 Defect Cards in Grid */}
-              <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+              <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
                 {[
                   {
                     title: 'Hallucination & Fabrication',
@@ -423,30 +423,30 @@ export default function SafeSuperintelligence() {
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: index * 0.05, duration: 0.3 }}
-                      className="group relative"
+                      className="group relative h-full"
                       whileHover={{ y: -6, scale: 1.02 }}
                     >
-                      <div className="relative h-full p-5 rounded-lg overflow-hidden">
+                      <div className="relative h-full p-6 rounded-lg overflow-hidden flex flex-col">
                         {/* Multi-layer background for depth */}
                         <div className={`absolute inset-0 bg-gradient-to-br ${bgGradientClass} rounded-lg`} />
                         <div className="absolute inset-0 bg-gradient-to-tr from-white/[0.04] to-transparent rounded-lg" />
                         <div className="absolute inset-0 backdrop-blur-xl rounded-lg" />
-                        
+
                         {/* Border with gradient */}
                         <div className={`absolute inset-0 rounded-lg border ${borderClass} transition-colors duration-500`} />
-                        
+
                         {/* Glow effect on hover - THE HIGHLIGHTING AURA */}
                         <div className={`absolute inset-0 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br ${glowClass} to-transparent`} />
-                        
+
                         {/* Content */}
-                        <div className="relative z-10">
-                          <div className={`w-10 h-10 rounded-lg bg-gradient-to-br ${iconBgClass} flex items-center justify-center mb-3 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg`}>
-                            <defect.icon className={`w-5 h-5 ${iconColorClass}`} />
+                        <div className="relative z-10 flex flex-col flex-1">
+                          <div className={`w-12 h-12 rounded-lg bg-gradient-to-br ${iconBgClass} flex items-center justify-center mb-4 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg`}>
+                            <defect.icon className={`w-6 h-6 ${iconColorClass}`} />
                           </div>
                           <h3 className="text-base font-semibold text-white mb-3">{defect.title}</h3>
-                          <p className="text-sm text-white/80 leading-relaxed">{defect.desc}</p>
+                          <p className="text-sm text-white/80 leading-relaxed flex-1">{defect.desc}</p>
                         </div>
-                        
+
                         {/* Bottom accent line with animation */}
                         <div className={`absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent ${accentClass} to-transparent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 rounded-b-lg`} />
                       </div>
@@ -473,7 +473,7 @@ export default function SafeSuperintelligence() {
               </div>
               
               {/* Research Solutions Grid */}
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch">
                 {[
                   { 
                     title: 'Epistemological validation', 
@@ -543,15 +543,15 @@ export default function SafeSuperintelligence() {
                       animate={{ opacity: 1, y: 0 }}
                       whileHover={{ y: -6, scale: 1.02 }}
                       transition={{ delay: index * 0.05, duration: 0.3, type: "spring", stiffness: 300 }}
-                      className={`group relative p-6 rounded-xl bg-gradient-to-br ${colorClass} backdrop-blur-xl border transition-all duration-300`}
+                      className={`group relative h-full p-6 rounded-xl bg-gradient-to-br ${colorClass} backdrop-blur-xl border transition-all duration-300 flex flex-col`}
                     >
                       <div className="absolute inset-0 rounded-xl bg-gradient-to-tr from-white/[0.04] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                      <div className="relative">
-                        <div className={`w-10 h-10 rounded-lg bg-gradient-to-br ${iconBgClass} border flex items-center justify-center mb-4`}>
+                      <div className="relative flex flex-col flex-1">
+                        <div className={`w-12 h-12 rounded-lg bg-gradient-to-br ${iconBgClass} border flex items-center justify-center mb-4`}>
                           <solution.icon className={`w-6 h-6 ${iconColorClass}`} />
                         </div>
                         <h3 className="text-lg font-semibold text-white mb-4">{solution.title}</h3>
-                        <p className="text-base text-white/80 leading-relaxed">{solution.desc}</p>
+                        <p className="text-base text-white/80 leading-relaxed flex-1">{solution.desc}</p>
                       </div>
                     </motion.div>
                   );
@@ -581,22 +581,22 @@ export default function SafeSuperintelligence() {
               
               <div className="space-y-12">
                 {/* Three Pillars */}
-                <div className="grid md:grid-cols-3 gap-6 lg:gap-8">
-                  <motion.div 
+                <div className="grid md:grid-cols-3 gap-6 lg:gap-8 items-stretch">
+                  <motion.div
                     whileHover={{ y: -6, scale: 1.02 }}
                     transition={{ duration: 0.3, type: "spring", stiffness: 300 }}
-                    className="group relative p-6 rounded-xl bg-gradient-to-br from-green-500/[0.06] to-green-600/[0.03] backdrop-blur-xl border border-green-400/15 hover:border-green-400/35 transition-all duration-300"
+                    className="group relative h-full p-6 rounded-xl bg-gradient-to-br from-green-500/[0.06] to-green-600/[0.03] backdrop-blur-xl border border-green-400/15 hover:border-green-400/35 transition-all duration-300 flex flex-col"
                   >
                     <div className="absolute inset-0 rounded-xl bg-gradient-to-tr from-white/[0.04] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                    <div className="relative">
-                      <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-green-500/20 to-green-600/10 border border-green-400/25 shadow-green-500/15 flex items-center justify-center mb-4">
+                    <div className="relative flex flex-col flex-1">
+                      <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-green-500/20 to-green-600/10 border border-green-400/25 shadow-green-500/15 flex items-center justify-center mb-4">
                         <Shield className="w-6 h-6 text-green-400" />
                       </div>
                       <h3 className="font-semibold text-white mb-3"><span className="bg-gradient-to-r from-krim-mint to-krim-cyan bg-clip-text text-transparent font-bold">Safety</span> by construction</h3>
                       <p className="text-sm text-white/70 mb-4 leading-relaxed">
                         Build safety into the architecture, not bolt it on after
                       </p>
-                      <ul className="space-y-3 text-sm text-white/70">
+                      <ul className="space-y-3 text-sm text-white/70 flex-1">
                         <li>• Typed action primitives</li>
                         <li>• Formal policy constraints</li>
                         <li>• Capability boundaries</li>
@@ -604,21 +604,21 @@ export default function SafeSuperintelligence() {
                     </div>
                   </motion.div>
                   
-                  <motion.div 
+                  <motion.div
                     whileHover={{ y: -6, scale: 1.02 }}
                     transition={{ duration: 0.3, type: "spring", stiffness: 300 }}
-                    className="group relative p-6 rounded-xl bg-gradient-to-br from-cyan-500/[0.06] to-cyan-600/[0.03] backdrop-blur-xl border border-cyan-400/15 hover:border-cyan-400/35 transition-all duration-300"
+                    className="group relative h-full p-6 rounded-xl bg-gradient-to-br from-cyan-500/[0.06] to-cyan-600/[0.03] backdrop-blur-xl border border-cyan-400/15 hover:border-cyan-400/35 transition-all duration-300 flex flex-col"
                   >
                     <div className="absolute inset-0 rounded-xl bg-gradient-to-tr from-white/[0.04] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                    <div className="relative">
-                      <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-cyan-500/20 to-cyan-600/10 border border-cyan-400/25 shadow-cyan-500/15 flex items-center justify-center mb-4">
+                    <div className="relative flex flex-col flex-1">
+                      <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-cyan-500/20 to-cyan-600/10 border border-cyan-400/25 shadow-cyan-500/15 flex items-center justify-center mb-4">
                         <Compass className="w-6 h-6 text-cyan-400" />
                       </div>
                       <h3 className="font-semibold text-white mb-3">Runtime <span className="bg-gradient-to-r from-krim-mint to-krim-cyan bg-clip-text text-transparent font-bold">alignment</span></h3>
                       <p className="text-sm text-white/70 mb-4 leading-relaxed">
                         Continuous validation and correction during execution
                       </p>
-                      <ul className="space-y-3 text-sm text-white/70">
+                      <ul className="space-y-3 text-sm text-white/70 flex-1">
                         <li>• Pre-execution validation</li>
                         <li>• Dynamic policy injection</li>
                         <li>• Rollback mechanisms</li>
@@ -626,21 +626,21 @@ export default function SafeSuperintelligence() {
                     </div>
                   </motion.div>
                   
-                  <motion.div 
+                  <motion.div
                     whileHover={{ y: -6, scale: 1.02 }}
                     transition={{ duration: 0.3, type: "spring", stiffness: 300 }}
-                    className="group relative p-6 rounded-xl bg-gradient-to-br from-emerald-500/[0.06] to-emerald-600/[0.03] backdrop-blur-xl border border-emerald-400/15 hover:border-emerald-400/35 transition-all duration-300"
+                    className="group relative h-full p-6 rounded-xl bg-gradient-to-br from-emerald-500/[0.06] to-emerald-600/[0.03] backdrop-blur-xl border border-emerald-400/15 hover:border-emerald-400/35 transition-all duration-300 flex flex-col"
                   >
                     <div className="absolute inset-0 rounded-xl bg-gradient-to-tr from-white/[0.04] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                    <div className="relative">
-                      <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-emerald-500/20 to-emerald-600/10 border border-emerald-400/25 shadow-emerald-500/15 flex items-center justify-center mb-4">
+                    <div className="relative flex flex-col flex-1">
+                      <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-emerald-500/20 to-emerald-600/10 border border-emerald-400/25 shadow-emerald-500/15 flex items-center justify-center mb-4">
                         <Eye className="w-6 h-6 text-emerald-400" />
                       </div>
                       <h3 className="font-semibold text-white mb-3">Full-stack <span className="bg-gradient-to-r from-krim-mint to-krim-cyan bg-clip-text text-transparent font-bold">observability</span></h3>
                       <p className="text-sm text-white/70 mb-4 leading-relaxed">
                         Complete visibility from request to outcome
                       </p>
-                      <ul className="space-y-3 text-sm text-white/70">
+                      <ul className="space-y-3 text-sm text-white/70 flex-1">
                         <li>• Decision tracing</li>
                         <li>• Audit logging</li>
                         <li>• Performance metrics</li>
@@ -685,104 +685,104 @@ export default function SafeSuperintelligence() {
               
               <div className="space-y-12">
                 {/* Key Impacts Grid */}
-                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                  <motion.div 
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch">
+                  <motion.div
                     whileHover={{ y: -6, scale: 1.02 }}
                     transition={{ duration: 0.3, type: "spring", stiffness: 300 }}
-                    className="group relative p-6 rounded-xl bg-gradient-to-br from-green-500/[0.06] to-green-600/[0.03] backdrop-blur-xl border border-green-400/15 hover:border-green-400/35 transition-all duration-300"
+                    className="group relative h-full p-6 rounded-xl bg-gradient-to-br from-green-500/[0.06] to-green-600/[0.03] backdrop-blur-xl border border-green-400/15 hover:border-green-400/35 transition-all duration-300 flex flex-col"
                   >
                     <div className="absolute inset-0 rounded-xl bg-gradient-to-tr from-white/[0.04] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                    <div className="relative">
-                      <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-green-500/20 to-green-600/10 border border-green-400/25 shadow-green-500/15 flex items-center justify-center mb-4">
+                    <div className="relative flex flex-col flex-1">
+                      <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-green-500/20 to-green-600/10 border border-green-400/25 shadow-green-500/15 flex items-center justify-center mb-4">
                         <Lightning className="w-6 h-6 text-green-400" />
                       </div>
                       <h3 className="text-lg font-semibold text-white mb-4">Instant validation</h3>
-                      <p className="text-base text-white/80 leading-relaxed">
+                      <p className="text-base text-white/80 leading-relaxed flex-1">
                         Sub-millisecond validation of every AI decision before it reaches your systems
                       </p>
                     </div>
                   </motion.div>
                   
-                  <motion.div 
+                  <motion.div
                     whileHover={{ y: -6, scale: 1.02 }}
                     transition={{ duration: 0.3, type: "spring", stiffness: 300 }}
-                    className="group relative p-6 rounded-xl bg-gradient-to-br from-cyan-500/[0.06] to-cyan-600/[0.03] backdrop-blur-xl border border-cyan-400/15 hover:border-cyan-400/35 transition-all duration-300"
+                    className="group relative h-full p-6 rounded-xl bg-gradient-to-br from-cyan-500/[0.06] to-cyan-600/[0.03] backdrop-blur-xl border border-cyan-400/15 hover:border-cyan-400/35 transition-all duration-300 flex flex-col"
                   >
                     <div className="absolute inset-0 rounded-xl bg-gradient-to-tr from-white/[0.04] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                    <div className="relative">
-                      <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-cyan-500/20 to-cyan-600/10 border border-cyan-400/25 shadow-cyan-500/15 flex items-center justify-center mb-4">
+                    <div className="relative flex flex-col flex-1">
+                      <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-cyan-500/20 to-cyan-600/10 border border-cyan-400/25 shadow-cyan-500/15 flex items-center justify-center mb-4">
                         <Database className="w-6 h-6 text-cyan-400" />
                       </div>
                       <h3 className="text-lg font-semibold text-white mb-4">Complete audit trail</h3>
-                      <p className="text-base text-white/80 leading-relaxed">
+                      <p className="text-base text-white/80 leading-relaxed flex-1">
                         Every decision logged with full context for compliance and debugging
                       </p>
                     </div>
                   </motion.div>
                   
-                  <motion.div 
+                  <motion.div
                     whileHover={{ y: -6, scale: 1.02 }}
                     transition={{ duration: 0.3, type: "spring", stiffness: 300 }}
-                    className="group relative p-6 rounded-xl bg-gradient-to-br from-emerald-500/[0.06] to-emerald-600/[0.03] backdrop-blur-xl border border-emerald-400/15 hover:border-emerald-400/35 transition-all duration-300"
+                    className="group relative h-full p-6 rounded-xl bg-gradient-to-br from-emerald-500/[0.06] to-emerald-600/[0.03] backdrop-blur-xl border border-emerald-400/15 hover:border-emerald-400/35 transition-all duration-300 flex flex-col"
                   >
                     <div className="absolute inset-0 rounded-xl bg-gradient-to-tr from-white/[0.04] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                    <div className="relative">
-                      <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-emerald-500/20 to-emerald-600/10 border border-emerald-400/25 shadow-emerald-500/15 flex items-center justify-center mb-4">
+                    <div className="relative flex flex-col flex-1">
+                      <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-emerald-500/20 to-emerald-600/10 border border-emerald-400/25 shadow-emerald-500/15 flex items-center justify-center mb-4">
                         <GitBranch className="w-6 h-6 text-emerald-400" />
                       </div>
                       <h3 className="text-lg font-semibold text-white mb-4">Version control</h3>
-                      <p className="text-base text-white/80 leading-relaxed">
+                      <p className="text-base text-white/80 leading-relaxed flex-1">
                         Roll back AI behaviors when issues are discovered, just like code deployments
                       </p>
                     </div>
                   </motion.div>
                   
-                  <motion.div 
+                  <motion.div
                     whileHover={{ y: -6, scale: 1.02 }}
                     transition={{ duration: 0.3, type: "spring", stiffness: 300 }}
-                    className="group relative p-6 rounded-xl bg-gradient-to-br from-teal-500/[0.06] to-teal-600/[0.03] backdrop-blur-xl border border-teal-400/15 hover:border-teal-400/35 transition-all duration-300"
+                    className="group relative h-full p-6 rounded-xl bg-gradient-to-br from-teal-500/[0.06] to-teal-600/[0.03] backdrop-blur-xl border border-teal-400/15 hover:border-teal-400/35 transition-all duration-300 flex flex-col"
                   >
                     <div className="absolute inset-0 rounded-xl bg-gradient-to-tr from-white/[0.04] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                    <div className="relative">
-                      <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-teal-500/20 to-teal-600/10 border border-teal-400/25 shadow-teal-500/15 flex items-center justify-center mb-4">
+                    <div className="relative flex flex-col flex-1">
+                      <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-teal-500/20 to-teal-600/10 border border-teal-400/25 shadow-teal-500/15 flex items-center justify-center mb-4">
                         <Stack className="w-6 h-6 text-teal-400" />
                       </div>
                       <h3 className="text-lg font-semibold text-white mb-4">Model agnostic</h3>
-                      <p className="text-base text-white/80 leading-relaxed">
+                      <p className="text-base text-white/80 leading-relaxed flex-1">
                         Works with any foundation model - GPT, Claude, Gemini, or open source
                       </p>
                     </div>
                   </motion.div>
                   
-                  <motion.div 
+                  <motion.div
                     whileHover={{ y: -6, scale: 1.02 }}
                     transition={{ duration: 0.3, type: "spring", stiffness: 300 }}
-                    className="group relative p-6 rounded-xl bg-gradient-to-br from-cyan-500/[0.06] to-cyan-600/[0.03] backdrop-blur-xl border border-cyan-400/15 hover:border-cyan-400/35 transition-all duration-300"
+                    className="group relative h-full p-6 rounded-xl bg-gradient-to-br from-cyan-500/[0.06] to-cyan-600/[0.03] backdrop-blur-xl border border-cyan-400/15 hover:border-cyan-400/35 transition-all duration-300 flex flex-col"
                   >
                     <div className="absolute inset-0 rounded-xl bg-gradient-to-tr from-white/[0.04] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                    <div className="relative">
-                      <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-cyan-500/20 to-cyan-600/10 border border-cyan-400/25 shadow-cyan-500/15 flex items-center justify-center mb-4">
+                    <div className="relative flex flex-col flex-1">
+                      <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-cyan-500/20 to-cyan-600/10 border border-cyan-400/25 shadow-cyan-500/15 flex items-center justify-center mb-4">
                         <Scales className="w-6 h-6 text-cyan-400" />
                       </div>
                       <h3 className="text-lg font-semibold text-white mb-4">Policy as code</h3>
-                      <p className="text-base text-white/80 leading-relaxed">
+                      <p className="text-base text-white/80 leading-relaxed flex-1">
                         Define business rules once, enforce them everywhere AI operates
                       </p>
                     </div>
                   </motion.div>
                   
-                  <motion.div 
+                  <motion.div
                     whileHover={{ y: -6, scale: 1.02 }}
                     transition={{ duration: 0.3, type: "spring", stiffness: 300 }}
-                    className="group relative p-6 rounded-xl bg-gradient-to-br from-emerald-500/[0.06] to-emerald-600/[0.03] backdrop-blur-xl border border-emerald-400/15 hover:border-emerald-400/35 transition-all duration-300"
+                    className="group relative h-full p-6 rounded-xl bg-gradient-to-br from-emerald-500/[0.06] to-emerald-600/[0.03] backdrop-blur-xl border border-emerald-400/15 hover:border-emerald-400/35 transition-all duration-300 flex flex-col"
                   >
                     <div className="absolute inset-0 rounded-xl bg-gradient-to-tr from-white/[0.04] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                    <div className="relative">
-                      <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-emerald-500/20 to-emerald-600/10 border border-emerald-400/25 shadow-emerald-500/15 flex items-center justify-center mb-4">
+                    <div className="relative flex flex-col flex-1">
+                      <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-emerald-500/20 to-emerald-600/10 border border-emerald-400/25 shadow-emerald-500/15 flex items-center justify-center mb-4">
                         <Certificate className="w-6 h-6 text-emerald-400" />
                       </div>
                       <h3 className="text-lg font-semibold text-white mb-4">Compliance ready</h3>
-                      <p className="text-base text-white/80 leading-relaxed">
+                      <p className="text-base text-white/80 leading-relaxed flex-1">
                         Built-in support for FDCPA, FCRA, and other regulatory requirements
                       </p>
                     </div>

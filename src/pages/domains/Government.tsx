@@ -60,9 +60,7 @@ export default function Government() {
                     </h1>
 
                     <p className="text-lg md:text-xl text-white/70 leading-[1.8] max-w-xl font-light">
-                      Autonomous governance infrastructure that serves citizens, enforces regulations,
-                      and operates with government-grade security, sovereignty, and auditability.
-                      Built for the unique demands of federal, state, and local agencies.
+                      Automate citizen services, regulatory enforcement, and inter-agency coordination—with sovereign control.
                     </p>
                   </div>
 
@@ -154,51 +152,51 @@ export default function Government() {
               </Reveal>
 
               {/* Problem Cards Grid */}
-              <StaggerGrid staggerDelay={100} className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <StaggerGrid staggerDelay={100} className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch">
                 {[
                   {
-                    title: 'Legacy IT Systems',
-                    description: 'Siloed mainframes, incompatible protocols, and decades-old infrastructure that cannot integrate with modern AI capabilities',
+                    title: 'Legacy Systems',
+                    description: 'Siloed mainframes block modern AI integration.',
                     icon: Cpu,
                     color: 'from-emerald-500/[0.06] to-emerald-600/[0.03]',
                     borderColor: 'border-emerald-400/15 group-hover:border-emerald-400/35',
                     iconColor: 'text-emerald-400'
                   },
                   {
-                    title: 'Manual Casework Backlogs',
-                    description: 'Benefits processing, permit approvals, and citizen requests handled manually, causing service delays and citizen dissatisfaction',
+                    title: 'Manual Processing',
+                    description: 'Benefits and permits processed slowly, frustrating citizens.',
                     icon: FileText,
                     color: 'from-cyan-500/[0.06] to-cyan-600/[0.03]',
                     borderColor: 'border-cyan-400/15 group-hover:border-cyan-400/35',
                     iconColor: 'text-cyan-400'
                   },
                   {
-                    title: 'Siloed Agencies',
-                    description: 'Lack of inter-agency coordination prevents unified citizen view and duplicates work across federal, state, and local levels',
+                    title: 'Agency Silos',
+                    description: 'Disconnected agencies duplicate work and lack unified citizen view.',
                     icon: Building,
                     color: 'from-teal-500/[0.06] to-teal-600/[0.03]',
                     borderColor: 'border-teal-400/15 group-hover:border-teal-400/35',
                     iconColor: 'text-teal-400'
                   },
                   {
-                    title: 'Citizen Service Delays',
-                    description: 'Multi-week processing times for applications, claims, and disputes reduce trust and create compliance burden for citizens',
+                    title: 'Slow Processing',
+                    description: 'Multi-week delays erode citizen trust and agency compliance.',
                     icon: Users,
                     color: 'from-blue-500/[0.06] to-blue-600/[0.03]',
                     borderColor: 'border-blue-400/15 group-hover:border-blue-400/35',
                     iconColor: 'text-blue-400'
                   },
                   {
-                    title: 'Compliance & Audit Burden',
-                    description: 'Manual documentation, limited audit trails, and difficulty proving compliance with FedRAMP, FISMA, and NIST requirements',
+                    title: 'Compliance Risk',
+                    description: 'Manual tracking makes FedRAMP and FISMA audits difficult.',
                     icon: ClipboardText,
                     color: 'from-purple-500/[0.06] to-purple-600/[0.03]',
                     borderColor: 'border-purple-400/15 group-hover:border-purple-400/35',
                     iconColor: 'text-purple-400'
                   },
                   {
-                    title: 'Data Sovereignty Risks',
-                    description: 'Citizen data stored on commercial clouds, foreign servers, or third-party platforms without government control or guarantees',
+                    title: 'Data Exposure',
+                    description: 'Citizen data on commercial clouds without government control.',
                     icon: Globe,
                     color: 'from-red-500/[0.06] to-red-600/[0.03]',
                     borderColor: 'border-red-400/15 group-hover:border-red-400/35',
@@ -207,11 +205,11 @@ export default function Government() {
                 ].map((problem, index) => (
                   <motion.div
                     key={index}
-                    className="group relative"
+                    className="group relative h-full"
                     whileHover={{ y: -6, scale: 1.02 }}
                     transition={{ duration: 0.3, type: "spring", stiffness: 300, delay: index * 0.05 }}
                   >
-                    <div className="relative h-full p-6 rounded-xl overflow-hidden">
+                    <div className="relative h-full p-6 rounded-xl overflow-hidden flex flex-col">
                       {/* Multi-layer background for depth */}
                       <div className={`absolute inset-0 bg-gradient-to-br ${problem.color} rounded-xl`} />
                       <div className="absolute inset-0 bg-gradient-to-tr from-white/[0.04] to-transparent rounded-xl" />
@@ -224,12 +222,12 @@ export default function Government() {
                       <div className={`absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br from-${problem.iconColor}/8 to-transparent`} />
 
                       {/* Content */}
-                      <div className="relative z-10">
+                      <div className="relative z-10 flex flex-col flex-1">
                         <div className={`w-10 h-10 rounded-lg bg-gradient-to-br from-slate-800 to-slate-900 border border-slate-700 flex items-center justify-center mb-4 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 ${problem.iconColor}`}>
                           <problem.icon className="w-5 h-5" />
                         </div>
                         <h3 className="text-lg font-semibold text-white mb-3">{problem.title}</h3>
-                        <p className="text-sm text-white/70 leading-relaxed">
+                        <p className="text-sm text-white/70 leading-relaxed flex-1">
                           {problem.description}
                         </p>
                       </div>
@@ -258,40 +256,40 @@ export default function Government() {
               </Reveal>
 
               {/* Five Products Grid */}
-              <StaggerGrid staggerDelay={120} className="grid lg:grid-cols-5 gap-4">
+              <StaggerGrid staggerDelay={120} className="grid lg:grid-cols-5 gap-4 items-stretch">
                 {[
                   {
                     name: 'Kendra',
                     title: 'Governed Runtime',
-                    description: 'Intelligence and governance layer for agency operations. Controls policy enforcement, audits all decisions, validates every action before execution.',
+                    description: 'Policy enforcement engine that audits every decision and validates actions before execution.',
                     icon: Cpu,
                     color: 'from-emerald-400 to-teal-400'
                   },
                   {
                     name: 'Kula',
                     title: 'Policy Interface',
-                    description: 'Natural language policy configuration for government teams. Define agency regulations, compliance rules, and operational constraints in plain English.',
+                    description: 'Define agency regulations and compliance rules in plain English without code.',
                     icon: FileText,
                     color: 'from-cyan-400 to-blue-400'
                   },
                   {
                     name: 'Karta',
                     title: 'Government AI',
-                    description: 'AI co-workers for citizen services and casework. Autonomous benefits processing, permit reviews, and citizen request handling with full auditability.',
+                    description: 'AI agents handle benefits processing, permits, and citizen requests with full auditability.',
                     icon: Users,
                     color: 'from-blue-400 to-purple-400'
                   },
                   {
                     name: 'Kupa',
                     title: 'Command Centers',
-                    description: 'Real-time oversight dashboards for program management. Monitor agency performance, citizen satisfaction metrics, and compliance status in unified view.',
+                    description: 'Real-time dashboards for performance, citizen satisfaction, and compliance monitoring.',
                     icon: Eye,
                     color: 'from-purple-400 to-pink-400'
                   },
                   {
                     name: 'Kriya',
                     title: 'Automation Blocks',
-                    description: 'Low-code building blocks for government-compliant automation. Assemble secure, auditable workflows without custom code or vendor lock-in.',
+                    description: 'Low-code workflows for secure, auditable automation without vendor lock-in.',
                     icon: Network,
                     color: 'from-pink-400 to-red-400'
                   }
@@ -302,8 +300,8 @@ export default function Government() {
                       liftDistance={6}
                       scale={1.05}
                     >
-                      <GlassContainer glassLevel="medium" className="h-full p-6 rounded-xl">
-                        <div className="space-y-4 h-full flex flex-col">
+                      <GlassContainer glassLevel="medium" className="h-full p-6 rounded-xl flex flex-col">
+                        <div className="space-y-4 h-full flex flex-col flex-1">
                           <div>
                             <div className={`w-10 h-10 rounded-lg bg-gradient-to-br ${product.color} opacity-20 flex items-center justify-center mb-3`}>
                               <product.icon className={`w-5 h-5 bg-gradient-to-r ${product.color} bg-clip-text text-transparent`} />
@@ -400,53 +398,53 @@ export default function Government() {
               </Reveal>
 
               {/* Use Cases Grid */}
-              <StaggerGrid staggerDelay={100} className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <StaggerGrid staggerDelay={100} className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch">
                 {[
                   {
                     title: 'Citizen Services',
-                    description: 'Benefits applications, passport requests, license renewals. Same-day processing with personalized guidance and transparent status tracking.',
+                    description: 'Benefits, passports, license renewals processed same-day with transparent tracking.',
                     icon: IdentificationCard,
                     metrics: '80% faster approvals'
                   },
                   {
                     title: 'Regulatory Enforcement',
-                    description: 'Environmental compliance monitoring, safety inspections, tax compliance audits. Consistent enforcement with complete audit trails.',
+                    description: 'Environmental, safety, and tax compliance monitoring with complete audit trails.',
                     icon: Scales,
                     metrics: '100% documented'
                   },
                   {
                     title: 'Benefits Administration',
-                    description: 'Determine eligibility, manage enrollment, track ongoing compliance. Unified experience across SNAP, Medicaid, housing benefits.',
+                    description: 'Unified eligibility, enrollment, and compliance across SNAP, Medicaid, housing.',
                     icon: CreditCard,
                     metrics: '50M+ cases/year'
                   },
                   {
                     title: 'Procurement',
-                    description: 'Vendor evaluation, contract compliance monitoring, payment processing. Transparent selection criteria with government oversight.',
+                    description: 'Vendor evaluation, contract monitoring, and payments with transparent oversight.',
                     icon: Briefcase,
                     metrics: '$B+ in contracts'
                   },
                   {
                     title: 'Inter-Agency Coordination',
-                    description: 'Unified citizen identity across federal, state, local systems. Shared data with compliance controls and audit logging.',
+                    description: 'Unified citizen identity across all government levels with audit logging.',
                     icon: Handshake,
                     metrics: 'All agencies'
                   },
                   {
                     title: 'Compliance Monitoring',
-                    description: 'Real-time tracking of FedRAMP, FISMA, NIST 800-53, state-specific regulations. Automatic evidence collection for audits.',
+                    description: 'Real-time tracking of FedRAMP, FISMA, NIST 800-53 with automatic audit evidence.',
                     icon: CheckCircle,
                     metrics: 'Zero gaps'
                   }
                 ].map((useCase, index) => (
                   <Reveal key={index} direction="up" delay={index * 0.05}>
                     <HoverLiftCard className="h-full">
-                      <GlassContainer glassLevel="medium" className="h-full p-6 rounded-xl">
-                        <div className="space-y-4 h-full flex flex-col">
+                      <GlassContainer glassLevel="medium" className="h-full p-6 rounded-xl flex flex-col">
+                        <div className="space-y-4 h-full flex flex-col flex-1">
                           <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-slate-800 to-slate-900 border border-slate-700 flex items-center justify-center text-krim-mint">
                             <useCase.icon className="w-5 h-5" />
                           </div>
-                          <div>
+                          <div className="flex-1">
                             <h3 className="text-lg font-semibold text-white mb-2">{useCase.title}</h3>
                             <p className="text-sm text-white/70 leading-relaxed">
                               {useCase.description}
@@ -490,25 +488,25 @@ export default function Government() {
                       {
                         standard: 'FedRAMP',
                         subtitle: 'Moderate & High baseline',
-                        description: 'Cloud computing security framework for federal agencies. Continuous monitoring and assessment.',
+                        description: 'Federal cloud security framework with continuous monitoring.',
                         icon: Certificate
                       },
                       {
                         standard: 'FISMA',
                         subtitle: 'Federal Information Security Modernization',
-                        description: 'Information security framework for federal information systems. Built-in controls and documentation.',
+                        description: 'Federal security framework with built-in controls and documentation.',
                         icon: Shield
                       },
                       {
                         standard: 'NIST 800-53',
                         subtitle: 'Security controls catalog',
-                        description: 'Comprehensive security and privacy controls. Every KrimOS component maps to required controls.',
+                        description: 'Every KrimOS component maps to required security controls.',
                         icon: Lock
                       },
                       {
                         standard: 'SOC 2 Type II',
                         subtitle: 'Security, availability, processing integrity',
-                        description: 'Annual third-party audit confirming operational controls and security practices.',
+                        description: 'Annual third-party audit of controls and security practices.',
                         icon: Eye
                       }
                     ].map((item, index) => (
@@ -543,32 +541,32 @@ export default function Government() {
                     {[
                       {
                         feature: 'On-Premise Deployment',
-                        description: 'Deploy KrimOS entirely within government data centers. No cloud dependency, full physical control.',
+                        description: 'Deploy in government data centers with full physical control.',
                         icon: Building
                       },
                       {
                         feature: 'Sovereign Cloud',
-                        description: 'Use GovCloud, FedRAMP-authorized clouds, or government-operated cloud infrastructure.',
+                        description: 'GovCloud, FedRAMP-authorized, or government-operated infrastructure.',
                         icon: Globe
                       },
                       {
                         feature: 'Air-Gapped Operations',
-                        description: 'Completely disconnected operation for highest-security agencies. Updates via secure channels.',
+                        description: 'Completely disconnected for highest-security agencies with secure updates.',
                         icon: Lock
                       },
                       {
                         feature: 'Government-Grade Encryption',
-                        description: 'FIPS 140-2 validated cryptography. End-to-end encryption for all data in transit and at rest.',
+                        description: 'FIPS 140-2 encryption for all data in transit and at rest.',
                         icon: Shield
                       },
                       {
                         feature: 'Complete Audit Logging',
-                        description: 'Immutable logs of every decision, action, and data access for compliance and investigation.',
+                        description: 'Immutable logs of every decision, action, and data access.',
                         icon: FileText
                       },
                       {
                         feature: 'No Third-Party Dependencies',
-                        description: 'Fully controlled supply chain. No reliance on commercial vendors or foreign cloud providers.',
+                        description: 'Fully controlled supply chain with no vendor or cloud provider reliance.',
                         icon: CheckCircle
                       }
                     ].map((item, index) => (
@@ -611,7 +609,7 @@ export default function Government() {
                 </div>
               </Reveal>
 
-              <StaggerGrid staggerDelay={100} className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+              <StaggerGrid staggerDelay={100} className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
                 {[
                   {
                     metric: '99.99%',
@@ -639,9 +637,9 @@ export default function Government() {
                   }
                 ].map((stat, index) => (
                   <Reveal key={index} direction="up" delay={index * 0.1}>
-                    <HoverLiftCard>
-                      <GlassContainer glassLevel="medium" className="p-8 rounded-xl text-center">
-                        <div className="space-y-4">
+                    <HoverLiftCard className="h-full">
+                      <GlassContainer glassLevel="medium" className="h-full p-8 rounded-xl text-center flex flex-col">
+                        <div className="space-y-4 flex flex-col flex-1 justify-center">
                           <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-slate-800 to-slate-900 border border-slate-700 flex items-center justify-center mx-auto text-krim-mint">
                             <stat.icon className="w-6 h-6" />
                           </div>
@@ -661,33 +659,33 @@ export default function Government() {
 
               {/* Deployment Options */}
               <Reveal direction="up" delay={0.5} className="mt-16">
-                <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+                <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto items-stretch">
                   {[
                     {
                       name: 'On-Premise',
-                      description: 'Deploy in government data centers. Full control, no cloud dependency.',
+                      description: 'Full control in government data centers.',
                       features: ['Physical control', 'Air-gapped ready', 'No internet required']
                     },
                     {
                       name: 'GovCloud',
-                      description: 'AWS GovCloud or Azure Government. FedRAMP-authorized infrastructure.',
+                      description: 'FedRAMP-authorized AWS or Azure Government.',
                       features: ['FedRAMP compliance', 'Scalable', 'Managed operations']
                     },
                     {
                       name: 'Hybrid',
-                      description: 'Combine on-premise and cloud. Flexible deployments per agency need.',
+                      description: 'On-premise plus cloud for flexible agency-specific deployments.',
                       features: ['Agency choice', 'Disaster recovery', 'Geographic distribution']
                     }
                   ].map((option, index) => (
                     <Reveal key={index} direction="up" delay={0.5 + index * 0.1}>
-                      <HoverLiftCard>
-                        <GlassContainer glassLevel="medium" className="p-6 rounded-xl h-full">
-                          <div className="space-y-4 h-full flex flex-col">
+                      <HoverLiftCard className="h-full">
+                        <GlassContainer glassLevel="medium" className="h-full p-6 rounded-xl flex flex-col">
+                          <div className="space-y-4 h-full flex flex-col flex-1">
                             <div>
                               <h4 className="text-lg font-semibold text-white mb-2">{option.name}</h4>
                               <p className="text-sm text-white/70">{option.description}</p>
                             </div>
-                            <ul className="space-y-2 pt-4 border-t border-white/10 flex-grow">
+                            <ul className="space-y-2 pt-4 border-t border-white/10 flex-1">
                               {option.features.map((feature, i) => (
                                 <li key={i} className="flex items-center gap-2 text-xs text-white/60">
                                   <CheckCircle className="w-3 h-3 text-krim-mint" />
@@ -717,8 +715,7 @@ export default function Government() {
                     </h2>
 
                     <p className="text-lg md:text-xl text-white/70 leading-relaxed max-w-2xl mx-auto font-light">
-                      See how KrimOS can help your agency automate citizen services, accelerate approvals,
-                      and achieve compliance with government-grade security.
+                      Automate citizen services, accelerate approvals, and achieve compliance with government-grade security.
                     </p>
                   </div>
 

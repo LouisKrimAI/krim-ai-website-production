@@ -161,20 +161,20 @@ function FeatureCard({
       whileHover={{ y: -8, scale: 1.02 }}
       transition={{ duration: 0.4, type: "spring", stiffness: 300, damping: 20 }}
     >
-      <div className="relative h-full p-8 rounded-2xl overflow-hidden">
+      <div className="relative h-full flex flex-col p-8 rounded-2xl overflow-hidden">
         {/* Multi-layer background for depth */}
         <div className={`absolute inset-0 bg-gradient-to-br ${bgGradients[accentColor]} rounded-2xl`} />
         <div className="absolute inset-0 bg-gradient-to-tr from-white/[0.04] to-transparent rounded-2xl" />
         <div className="absolute inset-0 backdrop-blur-xl rounded-2xl" />
-        
+
         {/* Border with gradient */}
         <div className={`absolute inset-0 rounded-2xl border ${borderColors[accentColor]} transition-colors duration-500`} />
-        
+
         {/* Glow effect on hover */}
         <div className={`absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br ${hoverGradients[accentColor]} to-transparent`} />
-        
+
         {/* Content */}
-        <div className="relative z-10 flex flex-col items-center text-center space-y-4">
+        <div className="relative z-10 flex flex-col flex-1 items-center text-center space-y-4">
           {/* Icon with enhanced gradient background */}
           <div className={`w-16 h-16 rounded-xl bg-gradient-to-br ${iconGradients[accentColor]} border border-white/10 flex items-center justify-center group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg ${glowColors[accentColor]}`}>
             <div className={`${iconColors[accentColor]}`}>
@@ -211,23 +211,23 @@ function WhyItMattersCard({
       whileHover={{ scale: 1.03, y: -6 }}
       transition={{ duration: 0.4, type: "spring", stiffness: 300, damping: 20 }}
     >
-      <div className="relative h-full p-12 rounded-3xl overflow-hidden">
+      <div className="relative h-full flex flex-col p-12 rounded-3xl overflow-hidden">
         {/* Multi-layer background for depth */}
         <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/[0.06] to-emerald-600/[0.03] rounded-3xl" />
         <div className="absolute inset-0 bg-gradient-to-tr from-white/[0.04] to-transparent rounded-3xl" />
         <div className="absolute inset-0 backdrop-blur-xl rounded-3xl" />
-        
+
         {/* Border with gradient */}
         <div className="absolute inset-0 rounded-3xl border border-emerald-400/20 group-hover:border-emerald-400/40 transition-colors duration-500" />
-        
+
         {/* Glow effect on hover */}
         <div className="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br from-emerald-400/10 to-transparent" />
-        
+
         {/* Animated glow orb */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 rounded-full bg-emerald-500/[0.15] blur-[80px] opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-        
+
         {/* Content */}
-        <div className="relative z-10 flex flex-col items-center text-center space-y-8">
+        <div className="relative z-10 flex flex-col flex-1 items-center text-center space-y-8">
           <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-emerald-500/25 to-emerald-600/15 border border-emerald-400/30 flex items-center justify-center group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300 shadow-lg shadow-emerald-500/20">
             {icon}
           </div>
@@ -301,9 +301,7 @@ function KrimAIStackSection() {
               </h2>
             </div>
             <p className="text-xl md:text-2xl text-white/70 max-w-4xl mx-auto leading-relaxed text-center">
-              Five layers that turn <span className="text-krim-mint font-semibold">complex operations</span> into
-              <br />
-              a governed, intelligence runtime.
+              Five layers. One governed intelligence runtime.
             </p>
           </motion.div>
         </div>
@@ -324,8 +322,8 @@ function KrimAIStackSection() {
         </motion.div>
 
         {/* 50/50 Content Layout - Enhanced with glass morphism */}
-        <motion.div 
-          className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:h-[580px] lg:max-h-[580px] overflow-hidden"
+        <motion.div
+          className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:h-[580px] lg:max-h-[580px] overflow-hidden items-stretch"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.4 }}
@@ -487,7 +485,7 @@ function KrimAIStackSection() {
           </div>
 
           {/* Right: V2 Visual - Enhanced container (Hidden on mobile, visible on desktop) */}
-          <div className="hidden lg:block group relative flex items-center justify-center rounded-2xl overflow-hidden">
+          <div className="hidden lg:flex items-center justify-center group relative rounded-2xl overflow-hidden">
             {/* Multi-layer background */}
             <div className="absolute inset-0 bg-gradient-to-br from-white/[0.04] to-white/[0.01] rounded-2xl" />
             <div className="absolute inset-0 bg-gradient-to-tr from-teal-500/[0.02] to-transparent rounded-2xl" />
@@ -565,9 +563,6 @@ export default function HomePage() {
                       Infrastructure
                     </span>
                   </h1>
-                  <p className="text-xl md:text-2xl text-white/70 max-w-4xl leading-relaxed text-center">
-                    For Highly-Regulated Domains
-                  </p>
                 </div>
 
                 <div className="space-y-4 lg:space-y-6 w-full flex justify-center">
@@ -628,10 +623,10 @@ export default function HomePage() {
             initial="initial"
             whileInView="animate"
             viewport={{ once: true }}
-            className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto"
+            className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto items-stretch"
           >
             {/* Banking Card */}
-            <Link to="/banking" className="flex justify-center">
+            <Link to="/banking" className="block h-full">
               <motion.div
                 {...fadeInUp}
                 className="group relative h-full w-full"
@@ -652,7 +647,7 @@ export default function HomePage() {
                       <Handshake className="w-6 h-6 text-emerald-400" />
                     </div>
                     <h3 className="text-2xl font-bold text-white">Banking & Financial Services</h3>
-                    <p className="text-white/70 leading-relaxed">Govern autonomous banking operations with safe superintelligence.</p>
+                    <p className="text-white/70 leading-relaxed">Credit operations, loan servicing, compliance automation.</p>
                     <div className="flex items-center gap-2 pt-2">
                       <span className="text-emerald-400 font-semibold">Explore Banking</span>
                       <span className="text-emerald-400">→</span>
@@ -666,7 +661,7 @@ export default function HomePage() {
             </Link>
 
             {/* Government Card */}
-            <Link to="/government" className="flex justify-center">
+            <Link to="/government" className="block h-full">
               <motion.div
                 {...fadeInUp}
                 className="group relative h-full w-full"
@@ -687,7 +682,7 @@ export default function HomePage() {
                       <Buildings className="w-6 h-6 text-cyan-400" />
                     </div>
                     <h3 className="text-2xl font-bold text-white">Government & Public Sector</h3>
-                    <p className="text-white/70 leading-relaxed">Deliver governed intelligence for public sector operations.</p>
+                    <p className="text-white/70 leading-relaxed">Citizen services, regulatory enforcement, sovereign infrastructure.</p>
                     <div className="flex items-center gap-2 pt-2">
                       <span className="text-cyan-400 font-semibold">Explore Government</span>
                       <span className="text-cyan-400">→</span>
@@ -732,10 +727,10 @@ export default function HomePage() {
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            <motion.div 
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
+            <motion.div
               {...fadeInUp}
-              className="group relative p-6 rounded-2xl overflow-hidden"
+              className="group relative h-full flex flex-col p-6 rounded-2xl overflow-hidden"
               whileHover={{ y: -6, scale: 1.02 }}
               transition={{ type: "spring", stiffness: 300, damping: 20 }}
             >
@@ -745,9 +740,9 @@ export default function HomePage() {
               <div className="absolute inset-0 backdrop-blur-xl rounded-2xl" />
               <div className="absolute inset-0 rounded-2xl border border-emerald-400/20 group-hover:border-emerald-400/40 transition-colors duration-500" />
               <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br from-emerald-400/10 to-transparent" />
-              
+
               {/* Content */}
-              <div className="relative z-10">
+              <div className="relative z-10 flex flex-col flex-1">
               <div className="flex items-center gap-4 mb-4">
                 <div className="w-12 h-12 rounded-xl bg-emerald-500/20 border border-emerald-400/30 flex items-center justify-center">
                   <ShieldCheck className="w-6 h-6 text-emerald-400" />
@@ -765,9 +760,9 @@ export default function HomePage() {
               <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-emerald-400/50 to-transparent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500" />
             </motion.div>
             
-            <motion.div 
+            <motion.div
               {...fadeInUp}
-              className="group relative p-6 rounded-2xl overflow-hidden"
+              className="group relative h-full flex flex-col p-6 rounded-2xl overflow-hidden"
               whileHover={{ y: -6, scale: 1.02 }}
               transition={{ type: "spring", stiffness: 300, damping: 20, delay: 0.1 }}
             >
@@ -777,9 +772,9 @@ export default function HomePage() {
               <div className="absolute inset-0 backdrop-blur-xl rounded-2xl" />
               <div className="absolute inset-0 rounded-2xl border border-blue-400/20 group-hover:border-blue-400/40 transition-colors duration-500" />
               <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br from-blue-400/10 to-transparent" />
-              
+
               {/* Content */}
-              <div className="relative z-10">
+              <div className="relative z-10 flex flex-col flex-1">
               <div className="flex items-center gap-4 mb-4">
                 <div className="w-12 h-12 rounded-xl bg-blue-500/20 border border-blue-400/30 flex items-center justify-center">
                   <FileText className="w-6 h-6 text-blue-400" />
@@ -797,9 +792,9 @@ export default function HomePage() {
               <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-blue-400/50 to-transparent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500" />
             </motion.div>
             
-            <motion.div 
+            <motion.div
               {...fadeInUp}
-              className="group relative p-6 rounded-2xl overflow-hidden"
+              className="group relative h-full flex flex-col p-6 rounded-2xl overflow-hidden"
               whileHover={{ y: -6, scale: 1.02 }}
               transition={{ type: "spring", stiffness: 300, damping: 20, delay: 0.2 }}
             >
@@ -809,9 +804,9 @@ export default function HomePage() {
               <div className="absolute inset-0 backdrop-blur-xl rounded-2xl" />
               <div className="absolute inset-0 rounded-2xl border border-teal-400/15 group-hover:border-teal-400/35 transition-colors duration-500" />
               <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br from-teal-400/8 to-transparent" />
-              
+
               {/* Content */}
-              <div className="relative z-10">
+              <div className="relative z-10 flex flex-col flex-1">
               <div className="flex items-center gap-4 mb-4">
                 <div className="w-12 h-12 rounded-xl bg-violet-500/20 border border-violet-400/30 flex items-center justify-center">
                   <Target className="w-6 h-6 text-[#00FF88]" />
@@ -842,7 +837,7 @@ export default function HomePage() {
               <div className="flex justify-center mb-8">
                 <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight text-center leading-tight">
                   <span className="text-slate-200">
-                    Why Regulated Industries Need a
+                    Why You Need a
                   </span>
                   <br />
                   <span className="bg-gradient-to-r from-emerald-400 via-[#00FF88] to-[#00D4FF] bg-clip-text text-transparent font-black">
@@ -851,25 +846,25 @@ export default function HomePage() {
                 </h2>
               </div>
               <p className="text-xl md:text-2xl text-white/70 max-w-4xl mx-auto leading-relaxed text-center">
-                Legacy systems, manual work and black-box AI no longer keep up with today's regulatory and operational challenges.
+                Legacy systems, manual processes, and black-box AI can't keep up.
               </p>
             </motion.div>
           </div>
 
-          <motion.div 
+          <motion.div
             variants={stagger}
             initial="initial"
             whileInView="animate"
             viewport={{ once: true }}
-            className="grid md:grid-cols-3 gap-8 justify-items-center"
+            className="grid md:grid-cols-3 gap-8 items-stretch"
           >
-            <motion.div 
+            <motion.div
               {...fadeInUp}
-              className="group relative"
+              className="group relative h-full"
               whileHover={{ y: -8, scale: 1.02 }}
               transition={{ duration: 0.4, type: "spring", stiffness: 300, damping: 20 }}
             >
-              <div className="relative p-8 rounded-2xl h-full overflow-hidden">
+              <div className="relative h-full flex flex-col p-8 rounded-2xl overflow-hidden">
                 {/* Multi-layer background */}
                 <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/[0.06] to-emerald-600/[0.03] rounded-2xl" />
                 <div className="absolute inset-0 bg-gradient-to-tr from-white/[0.04] to-transparent rounded-2xl" />
@@ -878,8 +873,8 @@ export default function HomePage() {
                 <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br from-emerald-400/8 to-transparent" />
                 
                 {/* Content */}
-                <div className="relative z-10">
-              <div className="flex flex-col items-center text-center space-y-6">
+                <div className="relative z-10 flex flex-col flex-1">
+              <div className="flex flex-col items-center text-center space-y-6 flex-1">
                 <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-emerald-500/20 to-emerald-600/10 border border-emerald-400/30 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                   <Cube className="w-8 h-8 text-emerald-400" />
                 </div>
@@ -893,23 +888,23 @@ export default function HomePage() {
               </div>
             </motion.div>
 
-            <motion.div 
+            <motion.div
               {...fadeInUp}
-              className="group relative"
+              className="group relative h-full"
               whileHover={{ y: -8, scale: 1.02 }}
               transition={{ duration: 0.4, type: "spring", stiffness: 300, damping: 20 }}
             >
-              <div className="relative p-8 rounded-2xl h-full overflow-hidden">
+              <div className="relative h-full flex flex-col p-8 rounded-2xl overflow-hidden">
                 {/* Multi-layer background */}
                 <div className="absolute inset-0 bg-gradient-to-br from-orange-500/[0.08] to-orange-600/[0.04] rounded-2xl" />
                 <div className="absolute inset-0 bg-gradient-to-tr from-white/[0.04] to-transparent rounded-2xl" />
                 <div className="absolute inset-0 backdrop-blur-xl rounded-2xl" />
                 <div className="absolute inset-0 rounded-2xl border border-orange-400/20 group-hover:border-orange-400/40 transition-colors duration-500" />
                 <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br from-orange-400/10 to-transparent" />
-                
+
                 {/* Content */}
-                <div className="relative z-10">
-              <div className="flex flex-col items-center text-center space-y-6">
+                <div className="relative z-10 flex flex-col flex-1">
+              <div className="flex flex-col items-center text-center space-y-6 flex-1">
                 <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-[#00D4FF]/20 to-[#00D4FF]/10 border border-[#00D4FF]/30 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                   <Users className="w-8 h-8 text-[#00D4FF]" />
                 </div>
@@ -923,23 +918,23 @@ export default function HomePage() {
               </div>
             </motion.div>
 
-            <motion.div 
+            <motion.div
               {...fadeInUp}
-              className="group relative"
+              className="group relative h-full"
               whileHover={{ y: -8, scale: 1.02 }}
               transition={{ duration: 0.4, type: "spring", stiffness: 300, damping: 20 }}
             >
-              <div className="relative p-8 rounded-2xl h-full overflow-hidden">
+              <div className="relative h-full flex flex-col p-8 rounded-2xl overflow-hidden">
                 {/* Multi-layer background */}
                 <div className="absolute inset-0 bg-gradient-to-br from-[#00FF88]/[0.06] to-[#00FF88]/[0.03] rounded-2xl" />
                 <div className="absolute inset-0 bg-gradient-to-tr from-white/[0.04] to-transparent rounded-2xl" />
                 <div className="absolute inset-0 backdrop-blur-xl rounded-2xl" />
                 <div className="absolute inset-0 rounded-2xl border border-[#00FF88]/15 group-hover:border-[#00FF88]/35 transition-colors duration-500" />
                 <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br from-[#00FF88]/8 to-transparent" />
-                
+
                 {/* Content */}
-                <div className="relative z-10">
-              <div className="flex flex-col items-center text-center space-y-6">
+                <div className="relative z-10 flex flex-col flex-1">
+              <div className="flex flex-col items-center text-center space-y-6 flex-1">
                 <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-[#00FF88]/20 to-[#00FF88]/10 border border-[#00FF88]/25 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                   <ShieldCheck className="w-8 h-8 text-[#00FF88]" />
                 </div>
@@ -1053,21 +1048,21 @@ export default function HomePage() {
           </motion.div>
 
           {/* 2x2 Grid Layout - Balanced sizing */}
-          <motion.div 
+          <motion.div
             variants={stagger}
             initial="initial"
             whileInView="animate"
             viewport={{ once: true }}
-            className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 max-w-5xl mx-auto"
+            className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 max-w-5xl mx-auto items-stretch"
           >
             {/* Card 1 - Performance */}
-            <motion.div 
+            <motion.div
               {...fadeInUp}
-              className="group relative"
+              className="group relative h-full"
               whileHover={{ y: -6, scale: 1.02 }}
               transition={{ duration: 0.3, type: "spring", stiffness: 300 }}
             >
-              <div className="relative h-full p-8 lg:p-10 rounded-2xl overflow-hidden">
+              <div className="relative h-full flex flex-col p-8 lg:p-10 rounded-2xl overflow-hidden">
                 {/* Multi-layer background for depth */}
                 <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/[0.08] to-emerald-600/[0.04] rounded-2xl" />
                 <div className="absolute inset-0 bg-gradient-to-tr from-white/[0.04] to-transparent rounded-2xl" />
@@ -1080,8 +1075,8 @@ export default function HomePage() {
                 <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br from-emerald-400/10 to-transparent" />
                 
                 {/* Content */}
-                <div className="relative z-10">
-                  <div className="flex items-start gap-4 mb-4">
+                <div className="relative z-10 flex flex-col flex-1">
+                  <div className="flex items-start gap-4">
                     <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-emerald-500/25 to-emerald-600/15 border border-emerald-400/30 flex items-center justify-center flex-shrink-0 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg shadow-emerald-500/20">
                       <TrendUp className="w-7 h-7 text-emerald-400" />
                     </div>
@@ -1100,21 +1095,21 @@ export default function HomePage() {
             </motion.div>
 
             {/* Card 2 - Learning */}
-            <motion.div 
+            <motion.div
               {...fadeInUp}
-              className="group relative"
+              className="group relative h-full"
               whileHover={{ y: -6, scale: 1.02 }}
               transition={{ duration: 0.3, type: "spring", stiffness: 300 }}
             >
-              <div className="relative h-full p-8 lg:p-10 rounded-2xl overflow-hidden">
+              <div className="relative h-full flex flex-col p-8 lg:p-10 rounded-2xl overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/[0.08] to-cyan-600/[0.04] rounded-2xl" />
                 <div className="absolute inset-0 bg-gradient-to-tr from-white/[0.04] to-transparent rounded-2xl" />
                 <div className="absolute inset-0 backdrop-blur-xl rounded-2xl" />
                 <div className="absolute inset-0 rounded-2xl border border-cyan-400/20 group-hover:border-cyan-400/40 transition-colors duration-500" />
                 <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br from-cyan-400/10 to-transparent" />
                 
-                <div className="relative z-10">
-                  <div className="flex items-start gap-4 mb-4">
+                <div className="relative z-10 flex flex-col flex-1">
+                  <div className="flex items-start gap-4">
                     <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-[#00D4FF]/20 to-[#00D4FF]/10 border border-[#00D4FF]/25 flex items-center justify-center flex-shrink-0 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg shadow-[#00D4FF]/15">
                       <Brain className="w-7 h-7 text-[#00D4FF]" />
                     </div>
@@ -1126,27 +1121,27 @@ export default function HomePage() {
                     </div>
                   </div>
                 </div>
-                
+
                 <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[#00D4FF]/50 to-transparent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 rounded-b-2xl" />
               </div>
             </motion.div>
 
             {/* Card 3 - Compliance */}
-            <motion.div 
+            <motion.div
               {...fadeInUp}
-              className="group relative"
+              className="group relative h-full"
               whileHover={{ y: -6, scale: 1.02 }}
               transition={{ duration: 0.3, type: "spring", stiffness: 300 }}
             >
-              <div className="relative h-full p-8 lg:p-10 rounded-2xl overflow-hidden">
+              <div className="relative h-full flex flex-col p-8 lg:p-10 rounded-2xl overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-br from-[#00FF88]/[0.06] to-[#00FF88]/[0.03] rounded-2xl" />
                 <div className="absolute inset-0 bg-gradient-to-tr from-white/[0.04] to-transparent rounded-2xl" />
                 <div className="absolute inset-0 backdrop-blur-xl rounded-2xl" />
                 <div className="absolute inset-0 rounded-2xl border border-[#00FF88]/15 group-hover:border-[#00FF88]/35 transition-colors duration-500" />
                 <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br from-[#00FF88]/8 to-transparent" />
                 
-                <div className="relative z-10">
-                  <div className="flex items-start gap-4 mb-4">
+                <div className="relative z-10 flex flex-col flex-1">
+                  <div className="flex items-start gap-4">
                     <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-[#00FF88]/20 to-[#00FF88]/10 border border-violet-400/30 flex items-center justify-center flex-shrink-0 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg shadow-[#00FF88]/15">
                       <ShieldCheck className="w-7 h-7 text-[#00FF88]" />
                     </div>
@@ -1158,27 +1153,27 @@ export default function HomePage() {
                     </div>
                   </div>
                 </div>
-                
+
                 <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[#00FF88]/50 to-transparent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 rounded-b-2xl" />
               </div>
             </motion.div>
 
             {/* Card 4 - Sharing */}
-            <motion.div 
+            <motion.div
               {...fadeInUp}
-              className="group relative"
+              className="group relative h-full"
               whileHover={{ y: -6, scale: 1.02 }}
               transition={{ duration: 0.3, type: "spring", stiffness: 300 }}
             >
-              <div className="relative h-full p-8 lg:p-10 rounded-2xl overflow-hidden">
+              <div className="relative h-full flex flex-col p-8 lg:p-10 rounded-2xl overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-br from-teal-500/[0.06] to-teal-600/[0.03] rounded-2xl" />
                 <div className="absolute inset-0 bg-gradient-to-tr from-white/[0.04] to-transparent rounded-2xl" />
                 <div className="absolute inset-0 backdrop-blur-xl rounded-2xl" />
                 <div className="absolute inset-0 rounded-2xl border border-teal-400/15 group-hover:border-teal-400/35 transition-colors duration-500" />
                 <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br from-teal-400/8 to-transparent" />
                 
-                <div className="relative z-10">
-                  <div className="flex items-start gap-4 mb-4">
+                <div className="relative z-10 flex flex-col flex-1">
+                  <div className="flex items-start gap-4">
                     <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-teal-500/20 to-teal-600/10 border border-teal-400/30 flex items-center justify-center flex-shrink-0 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg shadow-teal-500/15">
                       <Users className="w-7 h-7 text-teal-400" />
                     </div>
@@ -1190,7 +1185,7 @@ export default function HomePage() {
                     </div>
                   </div>
                 </div>
-                
+
                 <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-teal-400/50 to-transparent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 rounded-b-2xl" />
               </div>
             </motion.div>
@@ -1273,21 +1268,21 @@ export default function HomePage() {
                 className="space-y-10"
               >
                 {/* Enhanced Three Pillars Grid - Enterprise Glass Cards Style */}
-                <motion.div 
+                <motion.div
                   variants={stagger}
                   initial="initial"
                   whileInView="animate"
                   viewport={{ once: true }}
-                  className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 max-w-6xl mx-auto"
+                  className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 max-w-6xl mx-auto items-stretch"
                 >
                   {/* Semi-Deterministic Card */}
-                  <motion.div 
+                  <motion.div
                     {...fadeInUp}
-                    className="group relative"
+                    className="group relative h-full"
                     whileHover={{ y: -6, scale: 1.02 }}
                     transition={{ duration: 0.3, type: "spring", stiffness: 300 }}
                   >
-                    <div className="relative h-full p-8 lg:p-10 rounded-2xl overflow-hidden">
+                    <div className="relative h-full flex flex-col p-8 lg:p-10 rounded-2xl overflow-hidden">
                       {/* Multi-layer background for depth */}
                       <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/[0.06] to-emerald-600/[0.03] rounded-2xl" />
                       <div className="absolute inset-0 bg-gradient-to-tr from-white/[0.04] to-transparent rounded-2xl" />
@@ -1300,7 +1295,7 @@ export default function HomePage() {
                       <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br from-emerald-400/8 to-transparent" />
                       
                       {/* Content */}
-                      <div className="relative z-10 text-center">
+                      <div className="relative z-10 flex flex-col flex-1 text-center">
                         <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-emerald-500/20 to-emerald-600/10 border border-emerald-400/25 flex items-center justify-center mx-auto mb-4 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg shadow-emerald-500/15">
                           <Lightning className="w-7 h-7 text-emerald-400" />
                         </div>
@@ -1309,27 +1304,27 @@ export default function HomePage() {
                           Intercepts hallucinations before they reach production.
                         </p>
                       </div>
-                      
+
                       {/* Bottom accent line with animation */}
                       <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-emerald-400/50 to-transparent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 rounded-b-2xl" />
                     </div>
                   </motion.div>
 
                   {/* Human Control Card */}
-                  <motion.div 
+                  <motion.div
                     {...fadeInUp}
-                    className="group relative"
+                    className="group relative h-full"
                     whileHover={{ y: -6, scale: 1.02 }}
                     transition={{ duration: 0.3, type: "spring", stiffness: 300, delay: 0.1 }}
                   >
-                    <div className="relative h-full p-8 lg:p-10 rounded-2xl overflow-hidden">
+                    <div className="relative h-full flex flex-col p-8 lg:p-10 rounded-2xl overflow-hidden">
                       <div className="absolute inset-0 bg-gradient-to-br from-[#00D4FF]/[0.06] to-[#00D4FF]/[0.03] rounded-2xl" />
                       <div className="absolute inset-0 bg-gradient-to-tr from-white/[0.04] to-transparent rounded-2xl" />
                       <div className="absolute inset-0 backdrop-blur-xl rounded-2xl" />
                       <div className="absolute inset-0 rounded-2xl border border-[#00D4FF]/15 group-hover:border-[#00D4FF]/35 transition-colors duration-500" />
                       <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br from-[#00D4FF]/8 to-transparent" />
                       
-                      <div className="relative z-10 text-center">
+                      <div className="relative z-10 flex flex-col flex-1 text-center">
                         <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-[#00D4FF]/20 to-[#00D4FF]/10 border border-[#00D4FF]/25 flex items-center justify-center mx-auto mb-4 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg shadow-[#00D4FF]/15">
                           <Users className="w-7 h-7 text-[#00D4FF]" />
                         </div>
@@ -1338,26 +1333,26 @@ export default function HomePage() {
                           Critical decisions stay yours. AI advises, you decide.
                         </p>
                       </div>
-                      
+
                       <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[#00D4FF]/50 to-transparent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 rounded-b-2xl" />
                     </div>
                   </motion.div>
 
                   {/* Audit Trail Card */}
-                  <motion.div 
+                  <motion.div
                     {...fadeInUp}
-                    className="group relative"
+                    className="group relative h-full"
                     whileHover={{ y: -6, scale: 1.02 }}
                     transition={{ duration: 0.3, type: "spring", stiffness: 300, delay: 0.2 }}
                   >
-                    <div className="relative h-full p-8 lg:p-10 rounded-2xl overflow-hidden">
+                    <div className="relative h-full flex flex-col p-8 lg:p-10 rounded-2xl overflow-hidden">
                       <div className="absolute inset-0 bg-gradient-to-br from-[#00FF88]/[0.06] to-[#00FF88]/[0.03] rounded-2xl" />
                       <div className="absolute inset-0 bg-gradient-to-tr from-white/[0.04] to-transparent rounded-2xl" />
                       <div className="absolute inset-0 backdrop-blur-xl rounded-2xl" />
                       <div className="absolute inset-0 rounded-2xl border border-[#00FF88]/15 group-hover:border-[#00FF88]/35 transition-colors duration-500" />
                       <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br from-[#00FF88]/8 to-transparent" />
                       
-                      <div className="relative z-10 text-center">
+                      <div className="relative z-10 flex flex-col flex-1 text-center">
                         <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-[#00FF88]/20 to-[#00FF88]/10 border border-violet-400/30 flex items-center justify-center mx-auto mb-4 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg shadow-[#00FF88]/15">
                           <FileText className="w-7 h-7 text-[#00FF88]" />
                         </div>
@@ -1366,7 +1361,7 @@ export default function HomePage() {
                           Complete history. Regulatory confidence. Always defensible.
                         </p>
                       </div>
-                      
+
                       <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[#00FF88]/50 to-transparent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 rounded-b-2xl" />
                     </div>
                   </motion.div>
