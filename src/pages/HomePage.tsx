@@ -94,12 +94,12 @@ function PillTab({
 }
 
 // Feature Card Component - Enhanced with modern glass morphism and animations
-function FeatureCard({ 
-  title, 
-  body, 
-  icon, 
-  accentColor = 'emerald' 
-}: { 
+function FeatureCard({
+  title,
+  body,
+  icon,
+  accentColor = 'emerald'
+}: {
   title: string
   body: string
   icon: React.ReactNode
@@ -155,7 +155,7 @@ function FeatureCard({
   }
 
   return (
-    <motion.div 
+    <motion.div
       {...fadeInUp}
       className="group relative h-full min-h-[320px]"
       whileHover={{ y: -8, scale: 1.02 }}
@@ -174,19 +174,21 @@ function FeatureCard({
         <div className={`absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br ${hoverGradients[accentColor]} to-transparent`} />
 
         {/* Content */}
-        <div className="relative z-10 flex flex-col items-center text-center h-full">
+        <div className="relative z-10 flex flex-col h-full">
           {/* Icon with enhanced gradient background */}
-          <div className={`w-16 h-16 rounded-xl bg-gradient-to-br ${iconGradients[accentColor]} border border-white/10 flex items-center justify-center group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg ${glowColors[accentColor]} mb-6`}>
-            <div className={`${iconColors[accentColor]}`}>
-              {icon}
+          <div className="h-16 mb-6 flex items-center justify-center">
+            <div className={`w-16 h-16 rounded-xl bg-gradient-to-br ${iconGradients[accentColor]} border border-white/10 flex items-center justify-center group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg ${glowColors[accentColor]}`}>
+              <div className={`${iconColors[accentColor]}`}>
+                {icon}
+              </div>
             </div>
           </div>
           {/* Title with refined typography */}
-          <h3 className="text-2xl font-bold text-white leading-tight tracking-tight mb-4">{title}</h3>
+          <h3 className="text-2xl font-bold text-white leading-tight tracking-tight text-center mb-4">{title}</h3>
           {/* Body with better readability */}
-          <p className="text-base text-white/70 leading-relaxed max-w-sm mx-auto flex-1">{body}</p>
+          <p className="text-base text-white/70 leading-relaxed text-center flex-1">{body}</p>
         </div>
-        
+
         {/* Bottom accent line with animation */}
         <div className={`absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent ${accentLines[accentColor]} to-transparent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 rounded-b-2xl`} />
       </div>
@@ -195,17 +197,17 @@ function FeatureCard({
 }
 
 // Why It Matters Card Component - Enhanced premium glass design
-function WhyItMattersCard({ 
-  icon, 
-  title, 
-  body 
-}: { 
+function WhyItMattersCard({
+  icon,
+  title,
+  body
+}: {
   icon: React.ReactNode
   title: string
-  body: string 
+  body: string
 }) {
   return (
-    <motion.div 
+    <motion.div
       {...fadeInUp}
       className="group relative h-full"
       whileHover={{ scale: 1.03, y: -6 }}
@@ -227,14 +229,16 @@ function WhyItMattersCard({
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 rounded-full bg-emerald-500/[0.15] blur-[80px] opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
 
         {/* Content */}
-        <div className="relative z-10 flex flex-col items-center text-center h-full">
-          <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-emerald-500/25 to-emerald-600/15 border border-emerald-400/30 flex items-center justify-center group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300 shadow-lg shadow-emerald-500/20 mb-6">
-            {icon}
+        <div className="relative z-10 flex flex-col h-full">
+          <div className="h-20 mb-6 flex items-center justify-center">
+            <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-emerald-500/25 to-emerald-600/15 border border-emerald-400/30 flex items-center justify-center group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300 shadow-lg shadow-emerald-500/20">
+              {icon}
+            </div>
           </div>
-          <h3 className="text-3xl font-black text-white tracking-tight mb-4">{title}</h3>
-          <p className="text-lg text-white/80 leading-relaxed max-w-xs mx-auto flex-1">{body}</p>
+          <h3 className="text-3xl font-black text-white tracking-tight text-center mb-4">{title}</h3>
+          <p className="text-lg text-white/80 leading-relaxed text-center flex-1">{body}</p>
         </div>
-        
+
         {/* Bottom accent line with pulse */}
         <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-emerald-400/60 to-transparent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 rounded-b-3xl" />
       </div>
@@ -291,16 +295,18 @@ function KrimAIStackSection() {
       
       <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
         {/* Section Header */}
-        <div className="mb-16">
+        <div className="mb-16 text-center">
           <motion.div {...fadeInUp}>
             <div className="flex justify-center mb-8">
               <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold text-white tracking-tight text-center leading-tight">
                 The KrimOS™ Stack
               </h2>
             </div>
-            <p className="text-xl md:text-2xl text-white/70 max-w-4xl mx-auto leading-relaxed text-center">
-              Five layers. One governed intelligence runtime.
-            </p>
+            <div className="flex justify-center">
+              <p className="text-xl md:text-2xl text-white/70 max-w-4xl leading-relaxed text-center">
+                Five layers. One governed intelligence runtime.
+              </p>
+            </div>
           </motion.div>
         </div>
 
@@ -610,10 +616,12 @@ export default function HomePage() {
       {/* Domains Section */}
       <section id="domains" className="py-16 md:py-24 relative overflow-hidden">
         <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
-          <motion.div {...fadeInUp} className="mb-12">
-            <h2 className="text-2xl md:text-3xl lg:text-4xl font-semibold text-white tracking-tight text-center">
-              Built for Highly-Regulated Domains
-            </h2>
+          <motion.div {...fadeInUp} className="text-center mb-12">
+            <div className="flex justify-center">
+              <h2 className="text-2xl md:text-3xl lg:text-4xl font-semibold text-white tracking-tight text-center">
+                Built for Highly-Regulated Domains
+              </h2>
+            </div>
           </motion.div>
 
           <motion.div
@@ -621,17 +629,17 @@ export default function HomePage() {
             initial="initial"
             whileInView="animate"
             viewport={{ once: true }}
-            className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto"
+            className="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch max-w-4xl mx-auto"
           >
             {/* Banking Card */}
-            <Link to="/banking" className="block">
+            <Link to="/banking" className="block h-full">
               <motion.div
                 {...fadeInUp}
                 className="group relative h-full"
                 whileHover={{ y: -8, scale: 1.02 }}
                 transition={{ duration: 0.4, type: "spring", stiffness: 300, damping: 20 }}
               >
-                <div className="relative h-full p-8 rounded-2xl overflow-hidden cursor-pointer flex flex-col">
+                <div className="relative h-full p-8 rounded-2xl overflow-hidden cursor-pointer">
                   {/* Multi-layer background */}
                   <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/[0.08] to-emerald-600/[0.04] rounded-2xl" />
                   <div className="absolute inset-0 bg-gradient-to-tr from-white/[0.04] to-transparent rounded-2xl" />
@@ -639,14 +647,16 @@ export default function HomePage() {
                   <div className="absolute inset-0 rounded-2xl border border-emerald-400/20 group-hover:border-emerald-400/40 transition-colors duration-500" />
                   <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br from-emerald-400/10 to-transparent" />
 
-                  {/* Content */}
+                  {/* Content — fixed-height slots for pixel-perfect alignment */}
                   <div className="relative z-10 flex flex-col h-full">
-                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-emerald-500/20 to-emerald-600/10 border border-emerald-400/30 flex items-center justify-center group-hover:scale-110 transition-transform duration-300 mb-5">
-                      <Handshake className="w-6 h-6 text-emerald-400" />
+                    <div className="h-12 mb-5">
+                      <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-emerald-500/20 to-emerald-600/10 border border-emerald-400/30 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                        <Handshake className="w-6 h-6 text-emerald-400" />
+                      </div>
                     </div>
                     <h3 className="text-xl font-bold text-white mb-3">AI for Banking</h3>
-                    <p className="text-white/70 leading-relaxed flex-1">Safe superintelligence for credit, loan servicing, compliance.</p>
-                    <div className="flex items-center gap-2 mt-6">
+                    <p className="text-white/70 leading-relaxed flex-1">Safe superintelligence for credit, loan servicing, and compliance automation.</p>
+                    <div className="flex items-center gap-2 pt-6">
                       <span className="text-emerald-400 font-semibold">Explore Banking</span>
                       <span className="text-emerald-400">→</span>
                     </div>
@@ -659,14 +669,14 @@ export default function HomePage() {
             </Link>
 
             {/* Government Card */}
-            <Link to="/government" className="block">
+            <Link to="/government" className="block h-full">
               <motion.div
                 {...fadeInUp}
                 className="group relative h-full"
                 whileHover={{ y: -8, scale: 1.02 }}
                 transition={{ duration: 0.4, type: "spring", stiffness: 300, damping: 20 }}
               >
-                <div className="relative h-full p-8 rounded-2xl overflow-hidden cursor-pointer flex flex-col">
+                <div className="relative h-full p-8 rounded-2xl overflow-hidden cursor-pointer">
                   {/* Multi-layer background */}
                   <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/[0.08] to-cyan-600/[0.04] rounded-2xl" />
                   <div className="absolute inset-0 bg-gradient-to-tr from-white/[0.04] to-transparent rounded-2xl" />
@@ -674,14 +684,16 @@ export default function HomePage() {
                   <div className="absolute inset-0 rounded-2xl border border-cyan-400/20 group-hover:border-cyan-400/40 transition-colors duration-500" />
                   <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br from-cyan-400/10 to-transparent" />
 
-                  {/* Content */}
+                  {/* Content — fixed-height slots for pixel-perfect alignment */}
                   <div className="relative z-10 flex flex-col h-full">
-                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-cyan-500/20 to-cyan-600/10 border border-cyan-400/30 flex items-center justify-center group-hover:scale-110 transition-transform duration-300 mb-5">
-                      <Buildings className="w-6 h-6 text-cyan-400" />
+                    <div className="h-12 mb-5">
+                      <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-cyan-500/20 to-cyan-600/10 border border-cyan-400/30 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                        <Buildings className="w-6 h-6 text-cyan-400" />
+                      </div>
                     </div>
                     <h3 className="text-xl font-bold text-white mb-3">AI for Government</h3>
-                    <p className="text-white/70 leading-relaxed flex-1">Governed AI for citizen services, enforcement, sovereign infrastructure.</p>
-                    <div className="flex items-center gap-2 mt-6">
+                    <p className="text-white/70 leading-relaxed flex-1">Governed AI for citizen services, enforcement, and sovereign infrastructure.</p>
+                    <div className="flex items-center gap-2 pt-6">
                       <span className="text-cyan-400 font-semibold">Explore Government</span>
                       <span className="text-cyan-400">→</span>
                     </div>
@@ -702,11 +714,11 @@ export default function HomePage() {
       {/* Safe Superintelligence Section - Enhanced with modern styling */}
       <section className="py-16 md:py-20 relative overflow-hidden">
         {/* Background removed for full starfield visibility */}
-        
+
         <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
           <motion.div {...fadeInUp} className="text-center mb-16">
             <div className="flex justify-center mb-6">
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold text-center leading-tight">
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold text-center leading-tight text-center">
                 <span className="bg-gradient-to-r from-emerald-400 via-krim-mint to-teal-400 bg-clip-text text-transparent font-bold">
                   Governance
                 </span>
@@ -720,106 +732,114 @@ export default function HomePage() {
                 </span>
               </h2>
             </div>
-            <p className="text-lg text-white/70 max-w-4xl mx-auto leading-relaxed">
-              Policies precede actions. Controls fire before decisions.
-            </p>
+            <div className="flex justify-center">
+              <p className="text-lg text-white/70 max-w-4xl leading-relaxed text-center">
+                Policies precede actions. Controls fire before decisions.
+              </p>
+            </div>
           </motion.div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch max-w-6xl mx-auto">
             <motion.div
               {...fadeInUp}
-              className="group relative h-full flex flex-col p-6 rounded-2xl overflow-hidden"
+              className="group relative h-full"
               whileHover={{ y: -6, scale: 1.02 }}
               transition={{ type: "spring", stiffness: 300, damping: 20 }}
             >
-              {/* Multi-layer background */}
-              <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/10 to-emerald-600/5 rounded-2xl" />
-              <div className="absolute inset-0 bg-gradient-to-tr from-white/[0.05] to-transparent rounded-2xl" />
-              <div className="absolute inset-0 backdrop-blur-xl rounded-2xl" />
-              <div className="absolute inset-0 rounded-2xl border border-emerald-400/20 group-hover:border-emerald-400/40 transition-colors duration-500" />
-              <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br from-emerald-400/10 to-transparent" />
+              <div className="relative h-full flex flex-col p-8 rounded-2xl overflow-hidden">
+                {/* Multi-layer background */}
+                <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/10 to-emerald-600/5 rounded-2xl" />
+                <div className="absolute inset-0 bg-gradient-to-tr from-white/[0.05] to-transparent rounded-2xl" />
+                <div className="absolute inset-0 backdrop-blur-xl rounded-2xl" />
+                <div className="absolute inset-0 rounded-2xl border border-emerald-400/20 group-hover:border-emerald-400/40 transition-colors duration-500" />
+                <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br from-emerald-400/10 to-transparent" />
 
-              {/* Content */}
-              <div className="relative z-10 flex flex-col h-full">
-              <div className="flex items-center gap-4 mb-6">
-                <div className="w-12 h-12 rounded-xl bg-emerald-500/20 border border-emerald-400/30 flex items-center justify-center">
-                  <ShieldCheck className="w-6 h-6 text-emerald-400" />
+                {/* Content */}
+                <div className="relative z-10 flex flex-col h-full">
+                  <div className="h-12 mb-5">
+                    <div className="w-12 h-12 rounded-xl bg-emerald-500/20 border border-emerald-400/30 flex items-center justify-center">
+                      <ShieldCheck className="w-6 h-6 text-emerald-400" />
+                    </div>
+                  </div>
+                  <h4 className="text-xl font-bold text-white mb-3">Predictable at Scale</h4>
+                  <ul className="space-y-2 text-white/70 leading-relaxed flex-1">
+                    <li>• Policies enforced precisely</li>
+                    <li>• Pre-execution validation</li>
+                    <li>• Controlled automation</li>
+                  </ul>
                 </div>
-                <h4 className="text-xl font-bold text-emerald-300">Predictable at Scale</h4>
+
+                {/* Bottom accent line */}
+                <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-emerald-400/50 to-transparent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500" />
               </div>
-              <ul className="space-y-2 text-white/80 flex-1">
-                <li>• Policies enforced precisely</li>
-                <li>• Pre-execution validation</li>
-                <li>• Controlled automation</li>
-              </ul>
-              </div>
-              
-              {/* Bottom accent line */}
-              <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-emerald-400/50 to-transparent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500" />
             </motion.div>
             
             <motion.div
               {...fadeInUp}
-              className="group relative h-full flex flex-col p-6 rounded-2xl overflow-hidden"
+              className="group relative h-full"
               whileHover={{ y: -6, scale: 1.02 }}
               transition={{ type: "spring", stiffness: 300, damping: 20, delay: 0.1 }}
             >
-              {/* Multi-layer background */}
-              <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-blue-600/5 rounded-2xl" />
-              <div className="absolute inset-0 bg-gradient-to-tr from-white/[0.05] to-transparent rounded-2xl" />
-              <div className="absolute inset-0 backdrop-blur-xl rounded-2xl" />
-              <div className="absolute inset-0 rounded-2xl border border-blue-400/20 group-hover:border-blue-400/40 transition-colors duration-500" />
-              <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br from-blue-400/10 to-transparent" />
+              <div className="relative h-full flex flex-col p-8 rounded-2xl overflow-hidden">
+                {/* Multi-layer background */}
+                <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/10 to-cyan-600/5 rounded-2xl" />
+                <div className="absolute inset-0 bg-gradient-to-tr from-white/[0.05] to-transparent rounded-2xl" />
+                <div className="absolute inset-0 backdrop-blur-xl rounded-2xl" />
+                <div className="absolute inset-0 rounded-2xl border border-cyan-400/20 group-hover:border-cyan-400/40 transition-colors duration-500" />
+                <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br from-cyan-400/10 to-transparent" />
 
-              {/* Content */}
-              <div className="relative z-10 flex flex-col h-full">
-              <div className="flex items-center gap-4 mb-6">
-                <div className="w-12 h-12 rounded-xl bg-blue-500/20 border border-blue-400/30 flex items-center justify-center">
-                  <FileText className="w-6 h-6 text-blue-400" />
+                {/* Content */}
+                <div className="relative z-10 flex flex-col h-full">
+                  <div className="h-12 mb-5">
+                    <div className="w-12 h-12 rounded-xl bg-cyan-500/20 border border-cyan-400/30 flex items-center justify-center">
+                      <FileText className="w-6 h-6 text-cyan-400" />
+                    </div>
+                  </div>
+                  <h4 className="text-xl font-bold text-white mb-3">Regulatory Confidence</h4>
+                  <ul className="space-y-2 text-white/70 leading-relaxed flex-1">
+                    <li>• Complete explainability</li>
+                    <li>• Full traceability</li>
+                    <li>• Real-time dashboards</li>
+                  </ul>
                 </div>
-                <h4 className="text-xl font-bold text-blue-300">Regulatory Confidence</h4>
+
+                {/* Bottom accent line */}
+                <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-cyan-400/50 to-transparent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500" />
               </div>
-              <ul className="space-y-2 text-white/80 flex-1">
-                <li>• Complete explainability</li>
-                <li>• Full traceability</li>
-                <li>• Real-time dashboards</li>
-              </ul>
-              </div>
-              
-              {/* Bottom accent line */}
-              <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-blue-400/50 to-transparent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500" />
             </motion.div>
-            
+
             <motion.div
               {...fadeInUp}
-              className="group relative h-full flex flex-col p-6 rounded-2xl overflow-hidden"
+              className="group relative h-full"
               whileHover={{ y: -6, scale: 1.02 }}
               transition={{ type: "spring", stiffness: 300, damping: 20, delay: 0.2 }}
             >
-              {/* Multi-layer background */}
-              <div className="absolute inset-0 bg-gradient-to-br from-teal-500/[0.06] to-teal-600/[0.03] rounded-2xl" />
-              <div className="absolute inset-0 bg-gradient-to-tr from-white/[0.04] to-transparent rounded-2xl" />
-              <div className="absolute inset-0 backdrop-blur-xl rounded-2xl" />
-              <div className="absolute inset-0 rounded-2xl border border-teal-400/15 group-hover:border-teal-400/35 transition-colors duration-500" />
-              <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br from-teal-400/8 to-transparent" />
+              <div className="relative h-full flex flex-col p-8 rounded-2xl overflow-hidden">
+                {/* Multi-layer background */}
+                <div className="absolute inset-0 bg-gradient-to-br from-teal-500/[0.06] to-teal-600/[0.03] rounded-2xl" />
+                <div className="absolute inset-0 bg-gradient-to-tr from-white/[0.04] to-transparent rounded-2xl" />
+                <div className="absolute inset-0 backdrop-blur-xl rounded-2xl" />
+                <div className="absolute inset-0 rounded-2xl border border-teal-400/15 group-hover:border-teal-400/35 transition-colors duration-500" />
+                <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br from-teal-400/8 to-transparent" />
 
-              {/* Content */}
-              <div className="relative z-10 flex flex-col h-full">
-              <div className="flex items-center gap-4 mb-6">
-                <div className="w-12 h-12 rounded-xl bg-violet-500/20 border border-violet-400/30 flex items-center justify-center">
-                  <Target className="w-6 h-6 text-[#00FF88]" />
+                {/* Content */}
+                <div className="relative z-10 flex flex-col h-full">
+                  <div className="h-12 mb-5">
+                    <div className="w-12 h-12 rounded-xl bg-teal-500/20 border border-teal-400/30 flex items-center justify-center">
+                      <Target className="w-6 h-6 text-teal-400" />
+                    </div>
+                  </div>
+                  <h4 className="text-xl font-bold text-white mb-3">Operational Control</h4>
+                  <ul className="space-y-2 text-white/70 leading-relaxed flex-1">
+                    <li>• Runtime policy updates</li>
+                    <li>• Granular overrides</li>
+                    <li>• Constraint-based optimization</li>
+                  </ul>
                 </div>
-                <h4 className="text-xl font-bold text-violet-300">Operational Control</h4>
+
+                {/* Bottom accent line */}
+                <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-teal-400/50 to-transparent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500" />
               </div>
-              <ul className="space-y-2 text-white/80 flex-1">
-                <li>• Runtime policy updates</li>
-                <li>• Granular overrides</li>
-                <li>• Constraint-based optimization</li>
-              </ul>
-              </div>
-              
-              {/* Bottom accent line */}
-              <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-[#00FF88]/50 to-transparent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500" />
             </motion.div>
           </div>
         </div>
@@ -854,7 +874,7 @@ export default function HomePage() {
             initial="initial"
             whileInView="animate"
             viewport={{ once: true }}
-            className="grid md:grid-cols-3 gap-8 items-stretch"
+            className="grid md:grid-cols-3 gap-8 items-stretch max-w-6xl mx-auto"
           >
             <motion.div
               {...fadeInUp}
@@ -869,18 +889,20 @@ export default function HomePage() {
                 <div className="absolute inset-0 backdrop-blur-xl rounded-2xl" />
                 <div className="absolute inset-0 rounded-2xl border border-emerald-400/15 group-hover:border-emerald-400/35 transition-colors duration-500" />
                 <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br from-emerald-400/8 to-transparent" />
-                
+
                 {/* Content */}
-                <div className="relative z-10 flex flex-col items-center text-center h-full">
-                <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-emerald-500/20 to-emerald-600/10 border border-emerald-400/30 flex items-center justify-center group-hover:scale-110 transition-transform duration-300 mb-6">
-                  <Cube className="w-8 h-8 text-emerald-400" />
+                <div className="relative z-10 flex flex-col h-full">
+                  <div className="h-16 mb-5 flex items-center justify-center">
+                    <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-emerald-500/20 to-emerald-600/10 border border-emerald-400/30 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                      <Cube className="w-8 h-8 text-emerald-400" />
+                    </div>
+                  </div>
+                  <h3 className="text-2xl font-bold text-white text-center mb-3">Fragmented Tools</h3>
+                  <p className="text-base text-white/70 leading-relaxed text-center flex-1">Agents jump between 10+ systems; data sits in silos.</p>
                 </div>
-                <h3 className="text-2xl font-bold text-white tracking-tight mb-4">Fragmented Tools</h3>
-                <p className="text-base text-white/70 leading-relaxed flex-1">Agents jump between 10+ systems; data sits in silos.</p>
-              </div>
-              
-              {/* Bottom accent line with animation */}
-              <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-red-400/60 to-transparent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 rounded-b-2xl" />
+
+                {/* Bottom accent line with animation */}
+                <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-emerald-400/60 to-transparent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 rounded-b-2xl" />
               </div>
             </motion.div>
 
@@ -899,16 +921,18 @@ export default function HomePage() {
                 <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br from-orange-400/10 to-transparent" />
 
                 {/* Content */}
-                <div className="relative z-10 flex flex-col items-center text-center h-full">
-                <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-[#00D4FF]/20 to-[#00D4FF]/10 border border-[#00D4FF]/30 flex items-center justify-center group-hover:scale-110 transition-transform duration-300 mb-6">
-                  <Users className="w-8 h-8 text-[#00D4FF]" />
+                <div className="relative z-10 flex flex-col h-full">
+                  <div className="h-16 mb-5 flex items-center justify-center">
+                    <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#00D4FF]/20 to-[#00D4FF]/10 border border-[#00D4FF]/30 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                      <Users className="w-8 h-8 text-[#00D4FF]" />
+                    </div>
+                  </div>
+                  <h3 className="text-2xl font-bold text-white text-center mb-3">Human Middleware</h3>
+                  <p className="text-base text-white/70 leading-relaxed text-center flex-1">People patch broken workflows and carry institutional memory.</p>
                 </div>
-                <h3 className="text-2xl font-bold text-white tracking-tight mb-4">Human Middleware</h3>
-                <p className="text-base text-white/70 leading-relaxed flex-1">People patch broken workflows and carry institutional memory.</p>
-              </div>
-              
-              {/* Bottom accent line with animation */}
-              <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-orange-400/60 to-transparent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 rounded-b-2xl" />
+
+                {/* Bottom accent line with animation */}
+                <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-orange-400/60 to-transparent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 rounded-b-2xl" />
               </div>
             </motion.div>
 
@@ -927,16 +951,18 @@ export default function HomePage() {
                 <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br from-[#00FF88]/8 to-transparent" />
 
                 {/* Content */}
-                <div className="relative z-10 flex flex-col items-center text-center h-full">
-                <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-[#00FF88]/20 to-[#00FF88]/10 border border-[#00FF88]/25 flex items-center justify-center group-hover:scale-110 transition-transform duration-300 mb-6">
-                  <ShieldCheck className="w-8 h-8 text-[#00FF88]" />
+                <div className="relative z-10 flex flex-col h-full">
+                  <div className="h-16 mb-5 flex items-center justify-center">
+                    <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#00FF88]/20 to-[#00FF88]/10 border border-[#00FF88]/25 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                      <ShieldCheck className="w-8 h-8 text-[#00FF88]" />
+                    </div>
+                  </div>
+                  <h3 className="text-2xl font-bold text-white text-center mb-3">Post-Fact Compliance</h3>
+                  <p className="text-base text-white/70 leading-relaxed text-center flex-1">Most activity is checked after the fact – if at all.</p>
                 </div>
-                <h3 className="text-2xl font-bold text-white tracking-tight mb-4">Post-Fact Compliance</h3>
-                <p className="text-base text-white/70 leading-relaxed flex-1">Most activity is checked after the fact – if at all.</p>
-              </div>
-              
-              {/* Bottom accent line with animation */}
-              <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[#00FF88]/50 to-transparent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 rounded-b-2xl" />
+
+                {/* Bottom accent line with animation */}
+                <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[#00FF88]/50 to-transparent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 rounded-b-2xl" />
               </div>
             </motion.div>
           </motion.div>
@@ -947,9 +973,9 @@ export default function HomePage() {
       {/* Why It Matters - Enhanced with modern styling */}
       <section className="py-20 md:py-32 relative overflow-hidden">
         {/* Background removed for full starfield visibility */}
-        
+
         {/* Animated orbs removed for full starfield visibility */}
-        
+
         <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
           <motion.div {...fadeInUp} className="text-center mb-20">
             <div className="flex justify-center mb-8">
@@ -963,17 +989,19 @@ export default function HomePage() {
                 </span>
               </h2>
             </div>
-            <p className="text-xl md:text-2xl text-white/70 max-w-4xl mx-auto leading-relaxed text-center">
-              Operational outcomes executives actually care about.
-            </p>
+            <div className="flex justify-center">
+              <p className="text-xl md:text-2xl text-white/70 max-w-4xl leading-relaxed text-center">
+                Operational outcomes executives actually care about.
+              </p>
+            </div>
           </motion.div>
 
-          <motion.div 
+          <motion.div
             variants={stagger}
             initial="initial"
             whileInView="animate"
             viewport={{ once: true }}
-            className="grid md:grid-cols-3 gap-12 mb-16 justify-items-center"
+            className="grid md:grid-cols-3 gap-12 mb-16 max-w-6xl mx-auto items-stretch"
           >
             <WhyItMattersCard
               icon={<ShieldCheck className="w-10 h-10 text-emerald-400" />}
@@ -1017,9 +1045,9 @@ export default function HomePage() {
 
         <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
           {/* Centered header with enhanced typography */}
-          <motion.div 
-            {...fadeInUp} 
-            className="mb-14"
+          <motion.div
+            {...fadeInUp}
+            className="mb-14 text-center"
           >
             <div className="w-full flex justify-center">
               <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight leading-tight mb-4 text-center">
@@ -1208,16 +1236,16 @@ export default function HomePage() {
         
         <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
           {/* Main Header */}
-          <motion.div {...fadeInUp} className="mb-16">
+          <motion.div {...fadeInUp} className="mb-16 text-center">
             <div className="w-full flex justify-center">
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold mb-6 tracking-tight leading-tight">
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold mb-6 tracking-tight leading-tight text-center">
                 <span className="bg-gradient-to-r from-emerald-400 via-krim-mint to-[#00FF88] bg-clip-text text-transparent font-black">
                   Governed Intelligence
                 </span>
               </h2>
             </div>
             <div className="w-full flex justify-center">
-              <p className="text-xl md:text-2xl text-white/70 max-w-3xl leading-relaxed">
+              <p className="text-xl md:text-2xl text-white/70 max-w-3xl leading-relaxed text-center">
                 Enterprise control meets flexible deployment
               </p>
             </div>
@@ -1405,15 +1433,15 @@ export default function HomePage() {
                 transition={{ duration: 0.5 }}
               >
                 {/* Deployment Options - 3 Visible Cards */}
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 max-w-6xl mx-auto">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 max-w-6xl mx-auto items-stretch">
                   {/* On-Premise Card */}
-                  <motion.div 
+                  <motion.div
                     {...fadeInUp}
-                    className="group relative"
+                    className="group relative h-full"
                     whileHover={{ y: -6, scale: 1.02 }}
                     transition={{ duration: 0.3, type: "spring", stiffness: 300 }}
                   >
-                    <div className="relative h-full p-8 lg:p-10 rounded-2xl overflow-hidden">
+                    <div className="relative h-full flex flex-col p-8 lg:p-10 rounded-2xl overflow-hidden">
                       {/* Multi-layer background for depth */}
                       <div className="absolute inset-0 bg-gradient-to-br from-teal-500/[0.06] to-teal-600/[0.03] rounded-2xl" />
                       <div className="absolute inset-0 bg-gradient-to-tr from-white/[0.04] to-transparent rounded-2xl" />
@@ -1424,14 +1452,16 @@ export default function HomePage() {
                       
                       {/* Glow effect on hover */}
                       <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br from-teal-400/8 to-transparent" />
-                      
+
                       {/* Content */}
-                      <div className="relative z-10 text-center">
-                        <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-teal-500/20 to-teal-600/10 border border-indigo-400/30 flex items-center justify-center mx-auto mb-4 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg shadow-teal-500/15">
-                          <Buildings className="w-7 h-7 text-teal-400" />
+                      <div className="relative z-10 flex flex-col h-full">
+                        <div className="h-14 mb-4 flex items-center justify-center">
+                          <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-teal-500/20 to-teal-600/10 border border-teal-400/30 flex items-center justify-center group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg shadow-teal-500/15">
+                            <Buildings className="w-7 h-7 text-teal-400" />
+                          </div>
                         </div>
-                        <h3 className="text-xl lg:text-2xl font-bold text-white mb-2">On-Premise</h3>
-                        <p className="text-base text-white/70 leading-relaxed mb-4">
+                        <h3 className="text-xl lg:text-2xl font-bold text-white text-center mb-3">On-Premise</h3>
+                        <p className="text-base text-white/70 leading-relaxed text-center mb-4 flex-1">
                           Sovereign AI in your data center.
                         </p>
                         <div className="space-y-2">
@@ -1456,25 +1486,27 @@ export default function HomePage() {
                   </motion.div>
 
                   {/* Single-Tenant Card */}
-                  <motion.div 
+                  <motion.div
                     {...fadeInUp}
-                    className="group relative"
+                    className="group relative h-full"
                     whileHover={{ y: -6, scale: 1.02 }}
                     transition={{ duration: 0.3, type: "spring", stiffness: 300, delay: 0.1 }}
                   >
-                    <div className="relative h-full p-8 lg:p-10 rounded-2xl overflow-hidden">
+                    <div className="relative h-full flex flex-col p-8 lg:p-10 rounded-2xl overflow-hidden">
                       <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/[0.06] to-emerald-600/[0.03] rounded-2xl" />
                       <div className="absolute inset-0 bg-gradient-to-tr from-white/[0.04] to-transparent rounded-2xl" />
                       <div className="absolute inset-0 backdrop-blur-xl rounded-2xl" />
                       <div className="absolute inset-0 rounded-2xl border border-emerald-400/15 group-hover:border-emerald-400/35 transition-colors duration-500" />
                       <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br from-emerald-400/8 to-transparent" />
-                      
-                      <div className="relative z-10 text-center">
-                        <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-emerald-500/20 to-emerald-600/10 border border-purple-400/30 flex items-center justify-center mx-auto mb-4 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg shadow-emerald-500/15">
-                          <Cloud className="w-7 h-7 text-emerald-400" />
+
+                      <div className="relative z-10 flex flex-col h-full">
+                        <div className="h-14 mb-4 flex items-center justify-center">
+                          <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-emerald-500/20 to-emerald-600/10 border border-emerald-400/30 flex items-center justify-center group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg shadow-emerald-500/15">
+                            <Cloud className="w-7 h-7 text-emerald-400" />
+                          </div>
                         </div>
-                        <h3 className="text-xl lg:text-2xl font-bold text-white mb-2">Single-Tenant VPC</h3>
-                        <p className="text-base text-white/70 leading-relaxed mb-4">
+                        <h3 className="text-xl lg:text-2xl font-bold text-white text-center mb-3">Single-Tenant VPC</h3>
+                        <p className="text-base text-white/70 leading-relaxed text-center mb-4 flex-1">
                           Isolated, governed cloud deployment.
                         </p>
                         <div className="space-y-2">
@@ -1498,25 +1530,27 @@ export default function HomePage() {
                   </motion.div>
 
                   {/* Multi-Tenant Card */}
-                  <motion.div 
+                  <motion.div
                     {...fadeInUp}
-                    className="group relative"
+                    className="group relative h-full"
                     whileHover={{ y: -6, scale: 1.02 }}
                     transition={{ duration: 0.3, type: "spring", stiffness: 300, delay: 0.2 }}
                   >
-                    <div className="relative h-full p-8 lg:p-10 rounded-2xl overflow-hidden">
+                    <div className="relative h-full flex flex-col p-8 lg:p-10 rounded-2xl overflow-hidden">
                       <div className="absolute inset-0 bg-gradient-to-br from-teal-500/[0.06] to-teal-600/[0.03] rounded-2xl" />
                       <div className="absolute inset-0 bg-gradient-to-tr from-white/[0.04] to-transparent rounded-2xl" />
                       <div className="absolute inset-0 backdrop-blur-xl rounded-2xl" />
                       <div className="absolute inset-0 rounded-2xl border border-teal-400/15 group-hover:border-teal-400/35 transition-colors duration-500" />
                       <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br from-teal-400/8 to-transparent" />
-                      
-                      <div className="relative z-10 text-center">
-                        <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-teal-500/20 to-teal-600/10 border border-teal-400/30 flex items-center justify-center mx-auto mb-4 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg shadow-teal-500/15">
-                          <Lightning className="w-7 h-7 text-teal-400" />
+
+                      <div className="relative z-10 flex flex-col h-full">
+                        <div className="h-14 mb-4 flex items-center justify-center">
+                          <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-teal-500/20 to-teal-600/10 border border-teal-400/30 flex items-center justify-center group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg shadow-teal-500/15">
+                            <Lightning className="w-7 h-7 text-teal-400" />
+                          </div>
                         </div>
-                        <h3 className="text-xl lg:text-2xl font-bold text-white mb-2">Multi-Tenant Cloud</h3>
-                        <p className="text-base text-white/70 leading-relaxed mb-4">
+                        <h3 className="text-xl lg:text-2xl font-bold text-white text-center mb-3">Multi-Tenant Cloud</h3>
+                        <p className="text-base text-white/70 leading-relaxed text-center mb-4 flex-1">
                           Fast, managed deployment. Scale instantly.
                         </p>
                         <div className="space-y-2">
@@ -1574,14 +1608,14 @@ export default function HomePage() {
         
         {/* Animated orbs removed for full starfield visibility */}
 
-        <div className="relative max-w-7xl mx-auto px-6 lg:px-8 text-center">
-          <motion.div {...fadeInUp} className="flex flex-col items-center space-y-16 lg:space-y-20">
+        <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
+          <motion.div {...fadeInUp} className="flex flex-col items-center space-y-16 lg:space-y-20 text-center">
             {/* Main Headlines */}
             <div className="space-y-6 lg:space-y-8">
               <div className="w-full flex justify-center">
                 <motion.h2
                   {...fadeInUp}
-                  className="text-3xl md:text-4xl lg:text-5xl font-semibold mb-6 leading-[1.1] tracking-tight"
+                  className="text-3xl md:text-4xl lg:text-5xl font-semibold mb-6 leading-[1.1] tracking-tight text-center"
                 >
                   <span className="bg-gradient-to-r from-krim-mint via-krim-cyan to-krim-mint bg-clip-text text-transparent font-black">
                     Execution becomes
@@ -1596,16 +1630,16 @@ export default function HomePage() {
                 <motion.h2
                   {...fadeInUp}
                   transition={{ delay: 0.2 }}
-                  className="text-3xl md:text-4xl lg:text-5xl font-semibold leading-[1.1] tracking-tight"
+                  className="text-3xl md:text-4xl lg:text-5xl font-semibold leading-[1.1] tracking-tight text-center"
                 >
-                <span className="bg-gradient-to-r from-krim-cyan via-krim-mint to-krim-cyan bg-clip-text text-transparent font-black">
-                  Control stays
-                </span>
-                {' '}
-                <span className="text-slate-200">
-                  absolute.
-                </span>
-              </motion.h2>
+                  <span className="bg-gradient-to-r from-krim-cyan via-krim-mint to-krim-cyan bg-clip-text text-transparent font-black">
+                    Control stays
+                  </span>
+                  {' '}
+                  <span className="text-slate-200">
+                    absolute.
+                  </span>
+                </motion.h2>
               </div>
             </div>
 

@@ -270,15 +270,15 @@ function ProblemSection() {
                   <div className={`absolute inset-0 rounded-2xl border ${colors.border} transition-colors duration-500`} />
 
                   <div className="relative z-10 flex flex-col items-center text-center h-full">
-                    <div className={`w-16 h-16 rounded-xl bg-gradient-to-br from-white/10 to-white/5 border border-white/20 flex items-center justify-center group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 ${colors.icon} mb-6`}>
-                      {problem.icon}
+                    <div className="h-[64px] mb-5">
+                      <div className={`w-16 h-16 rounded-xl bg-gradient-to-br from-white/10 to-white/5 border border-white/20 flex items-center justify-center group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 ${colors.icon}`}>
+                        {problem.icon}
+                      </div>
                     </div>
-                    <div className="mb-6">
-                      <h3 className="text-2xl font-bold text-white mb-3">{problem.title}</h3>
-                      <p className="text-base text-white/70 leading-relaxed flex-1">{problem.desc}</p>
-                    </div>
+                    <h3 className="text-2xl font-bold text-white mb-3">{problem.title}</h3>
+                    <p className="text-base text-white/70 leading-relaxed flex-1">{problem.desc}</p>
                     {problem.stat && (
-                      <div className="mt-auto pt-4 text-3xl font-black text-white/40">{problem.stat}</div>
+                      <div className="pt-6 text-3xl font-black text-white/40">{problem.stat}</div>
                     )}
                   </div>
                   <div className={`absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent ${colors.accent} to-transparent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 rounded-b-2xl`} />
@@ -380,19 +380,21 @@ function SolutionSection() {
 
                 {/* Content */}
                 <div className="relative z-10 flex flex-col h-full">
-                  <div className={`text-sm font-bold font-mono tracking-widest mb-5 ${
-                    solution.color === 'emerald' ? 'text-emerald-400' :
-                    solution.color === 'cyan' ? 'text-cyan-400' :
-                    solution.color === 'mint' ? 'text-[#00FF88]' :
-                    solution.color === 'amber' ? 'text-amber-400' :
-                    'text-purple-400'
-                  }`}>
-                    {solution.product}
+                  <div className="h-[28px] mb-5">
+                    <div className={`text-sm font-bold font-mono tracking-widest ${
+                      solution.color === 'emerald' ? 'text-emerald-400' :
+                      solution.color === 'cyan' ? 'text-cyan-400' :
+                      solution.color === 'mint' ? 'text-[#00FF88]' :
+                      solution.color === 'amber' ? 'text-amber-400' :
+                      'text-purple-400'
+                    }`}>
+                      {solution.product}
+                    </div>
                   </div>
                   <h3 className="text-xl font-bold text-white mb-3 leading-tight">{solution.title}</h3>
                   <p className="text-sm text-white/70 flex-1 leading-relaxed">{solution.desc}</p>
 
-                  <div className="space-y-2 mt-6">
+                  <div className="space-y-2 pt-6">
                     {solution.benefits.map((benefit, i) => (
                       <div key={i} className="flex items-start gap-2">
                         <CheckCircle className={`w-4 h-4 mt-0.5 flex-shrink-0 ${
@@ -489,14 +491,16 @@ function UseCasesSection() {
                 <div className="absolute inset-0 rounded-2xl border border-white/[0.08] group-hover:border-white/[0.15] transition-colors duration-500" />
 
                 <div className="relative z-10 flex flex-col h-full">
-                  <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-krim-mint/20 to-krim-cyan/10 border border-white/10 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300 text-krim-mint">
-                    {useCase.icon}
+                  <div className="h-[56px] mb-5">
+                    <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-krim-mint/20 to-krim-cyan/10 border border-white/10 flex items-center justify-center group-hover:scale-110 transition-transform duration-300 text-krim-mint">
+                      {useCase.icon}
+                    </div>
                   </div>
 
                   <h3 className="text-2xl font-bold text-white mb-3">{useCase.title}</h3>
                   <p className="text-base text-white/70 flex-1 leading-relaxed">{useCase.desc}</p>
 
-                  <div className="space-y-2 mt-6">
+                  <div className="space-y-2 pt-6">
                     {useCase.metrics.map((metric, i) => (
                       <div key={i} className="flex items-center gap-2">
                         <div className="w-1 h-1 rounded-full bg-krim-mint" />
@@ -577,7 +581,9 @@ function ComplianceSection() {
                 <div className="absolute inset-0 rounded-2xl border border-krim-cyan/20 group-hover:border-krim-cyan/40 transition-colors duration-500" />
 
                 <div className="relative z-10 flex flex-col h-full">
-                  <div className="text-3xl font-black text-krim-cyan mb-5 tracking-tight">{reg.acronym}</div>
+                  <div className="h-[42px] mb-5">
+                    <div className="text-3xl font-black text-krim-cyan tracking-tight">{reg.acronym}</div>
+                  </div>
                   <h3 className="text-lg font-bold text-white mb-3 leading-tight">{reg.name}</h3>
                   <p className="text-sm text-white/70 flex-1">{reg.desc}</p>
                 </div>
@@ -595,7 +601,9 @@ function ComplianceSection() {
               <div className="absolute inset-0 rounded-2xl border border-emerald-400/20" />
 
               <div className="relative z-10 flex flex-col h-full">
-                <ShieldCheck className="w-8 h-8 text-emerald-400 mb-5" />
+                <div className="h-[32px] mb-5">
+                  <ShieldCheck className="w-8 h-8 text-emerald-400" />
+                </div>
                 <h3 className="text-xl font-bold text-white mb-3">Block Before Harm</h3>
                 <p className="text-white/70 flex-1">Stop non-compliant actions before they happen, not after audit.</p>
               </div>
@@ -609,7 +617,9 @@ function ComplianceSection() {
               <div className="absolute inset-0 rounded-2xl border border-cyan-400/20" />
 
               <div className="relative z-10 flex flex-col h-full">
-                <FileText className="w-8 h-8 text-cyan-400 mb-5" />
+                <div className="h-[32px] mb-5">
+                  <FileText className="w-8 h-8 text-cyan-400" />
+                </div>
                 <h3 className="text-xl font-bold text-white mb-3">Complete Audit Trail</h3>
                 <p className="text-white/70 flex-1">Every decision, interaction, and rule enforcement logged for regulators.</p>
               </div>
@@ -623,7 +633,9 @@ function ComplianceSection() {
               <div className="absolute inset-0 rounded-2xl border border-[#00FF88]/20" />
 
               <div className="relative z-10 flex flex-col h-full">
-                <Target className="w-8 h-8 text-[#00FF88] mb-5" />
+                <div className="h-[32px] mb-5">
+                  <Target className="w-8 h-8 text-[#00FF88]" />
+                </div>
                 <h3 className="text-xl font-bold text-white mb-3">Instant Rule Updates</h3>
                 <p className="text-white/70 flex-1">Regulation changes deploy instantly—no code, no redeployment needed.</p>
               </div>

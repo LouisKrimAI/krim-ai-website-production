@@ -185,8 +185,10 @@ export default function SafeSuperintelligence() {
 
                       {/* Content */}
                       <div className="relative z-10 flex flex-col h-full">
-                        <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-emerald-500/20 to-emerald-600/10 border border-emerald-400/25 flex items-center justify-center mb-5 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg shadow-emerald-500/15">
-                          <Brain className="w-6 h-6 text-emerald-400" />
+                        <div className="h-[48px] mb-5">
+                          <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-emerald-500/20 to-emerald-600/10 border border-emerald-400/25 flex items-center justify-center group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg shadow-emerald-500/15">
+                            <Brain className="w-6 h-6 text-emerald-400" />
+                          </div>
                         </div>
                         <h3 className="text-lg font-semibold text-white mb-3">Models lack context</h3>
                         <p className="text-sm text-white/70 leading-relaxed flex-1">
@@ -219,8 +221,10 @@ export default function SafeSuperintelligence() {
 
                       {/* Content */}
                       <div className="relative z-10 flex flex-col h-full">
-                        <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-cyan-500/20 to-cyan-600/10 border border-cyan-400/25 flex items-center justify-center mb-5 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg shadow-cyan-500/15">
-                          <WarningCircle className="w-6 h-6 text-cyan-400" />
+                        <div className="h-[48px] mb-5">
+                          <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-cyan-500/20 to-cyan-600/10 border border-cyan-400/25 flex items-center justify-center group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg shadow-cyan-500/15">
+                            <WarningCircle className="w-6 h-6 text-cyan-400" />
+                          </div>
                         </div>
                         <h3 className="text-lg font-semibold text-white mb-3">Failures are costly</h3>
                         <p className="text-sm text-white/70 leading-relaxed flex-1">
@@ -253,8 +257,10 @@ export default function SafeSuperintelligence() {
 
                       {/* Content */}
                       <div className="relative z-10 flex flex-col h-full">
-                        <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-teal-500/20 to-teal-600/10 border border-teal-400/25 flex items-center justify-center mb-5 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg shadow-teal-500/15">
-                          <Shield className="w-6 h-6 text-teal-400" />
+                        <div className="h-[48px] mb-5">
+                          <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-teal-500/20 to-teal-600/10 border border-teal-400/25 flex items-center justify-center group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg shadow-teal-500/15">
+                            <Shield className="w-6 h-6 text-teal-400" />
+                          </div>
                         </div>
                         <h3 className="text-lg font-semibold text-white mb-3">Trust requires validation</h3>
                         <p className="text-sm text-white/70 leading-relaxed flex-1">
@@ -440,8 +446,10 @@ export default function SafeSuperintelligence() {
 
                         {/* Content */}
                         <div className="relative z-10 flex flex-col h-full">
-                          <div className={`w-12 h-12 rounded-lg bg-gradient-to-br ${iconBgClass} flex items-center justify-center mb-5 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg`}>
-                            <defect.icon className={`w-6 h-6 ${iconColorClass}`} />
+                          <div className="h-[48px] mb-5">
+                            <div className={`w-12 h-12 rounded-lg bg-gradient-to-br ${iconBgClass} flex items-center justify-center group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg`}>
+                              <defect.icon className={`w-6 h-6 ${iconColorClass}`} />
+                            </div>
                           </div>
                           <h3 className="text-base font-semibold text-white mb-3">{defect.title}</h3>
                           <p className="text-sm text-white/80 leading-relaxed flex-1">{defect.desc}</p>
@@ -461,13 +469,11 @@ export default function SafeSuperintelligence() {
           <StarfieldSection glassLevel="standard" className="relative py-24 border-t border-slate-800/50">
             <div className="container max-w-6xl mx-auto px-6">
               {/* Header - Center aligned */}
-              <div className="mb-16">
-                <div className="flex justify-center mb-6">
-                  <h2 className="text-3xl md:text-4xl lg:text-5xl font-light leading-tight text-center">
-                    <span className="text-white">Research-driven </span><span className="bg-gradient-to-r from-krim-mint to-krim-cyan bg-clip-text text-transparent font-semibold">solutions</span>
-                  </h2>
-                </div>
-                <p className="text-lg md:text-xl text-white/70 leading-relaxed max-w-3xl mx-auto text-center">
+              <div className="text-center mb-16">
+                <h2 className="text-3xl md:text-4xl lg:text-5xl font-light leading-tight mb-6">
+                  <span className="text-white">Research-driven </span><span className="bg-gradient-to-r from-krim-mint to-krim-cyan bg-clip-text text-transparent font-semibold">solutions</span>
+                </h2>
+                <p className="text-lg md:text-xl text-white/70 leading-relaxed max-w-3xl mx-auto">
                   Transforming AI safety challenges into solvable engineering problems
                 </p>
               </div>
@@ -547,8 +553,10 @@ export default function SafeSuperintelligence() {
                     >
                       <div className="absolute inset-0 rounded-xl bg-gradient-to-tr from-white/[0.04] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                       <div className="relative flex flex-col h-full">
-                        <div className={`w-12 h-12 rounded-lg bg-gradient-to-br ${iconBgClass} border flex items-center justify-center mb-5`}>
-                          <solution.icon className={`w-6 h-6 ${iconColorClass}`} />
+                        <div className="h-[48px] mb-5">
+                          <div className={`w-12 h-12 rounded-lg bg-gradient-to-br ${iconBgClass} border flex items-center justify-center`}>
+                            <solution.icon className={`w-6 h-6 ${iconColorClass}`} />
+                          </div>
                         </div>
                         <h3 className="text-lg font-semibold text-white mb-3">{solution.title}</h3>
                         <p className="text-base text-white/80 leading-relaxed flex-1">{solution.desc}</p>
@@ -589,8 +597,10 @@ export default function SafeSuperintelligence() {
                   >
                     <div className="absolute inset-0 rounded-xl bg-gradient-to-tr from-white/[0.04] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                     <div className="relative flex flex-col h-full">
-                      <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-green-500/20 to-green-600/10 border border-green-400/25 shadow-green-500/15 flex items-center justify-center mb-5">
-                        <Shield className="w-6 h-6 text-green-400" />
+                      <div className="h-[48px] mb-5">
+                        <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-green-500/20 to-green-600/10 border border-green-400/25 shadow-green-500/15 flex items-center justify-center">
+                          <Shield className="w-6 h-6 text-green-400" />
+                        </div>
                       </div>
                       <h3 className="font-semibold text-white mb-3"><span className="bg-gradient-to-r from-krim-mint to-krim-cyan bg-clip-text text-transparent font-bold">Safety</span> by construction</h3>
                       <p className="text-sm text-white/70 mb-3 leading-relaxed">
@@ -611,8 +621,10 @@ export default function SafeSuperintelligence() {
                   >
                     <div className="absolute inset-0 rounded-xl bg-gradient-to-tr from-white/[0.04] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                     <div className="relative flex flex-col h-full">
-                      <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-cyan-500/20 to-cyan-600/10 border border-cyan-400/25 shadow-cyan-500/15 flex items-center justify-center mb-5">
-                        <Compass className="w-6 h-6 text-cyan-400" />
+                      <div className="h-[48px] mb-5">
+                        <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-cyan-500/20 to-cyan-600/10 border border-cyan-400/25 shadow-cyan-500/15 flex items-center justify-center">
+                          <Compass className="w-6 h-6 text-cyan-400" />
+                        </div>
                       </div>
                       <h3 className="font-semibold text-white mb-3">Runtime <span className="bg-gradient-to-r from-krim-mint to-krim-cyan bg-clip-text text-transparent font-bold">alignment</span></h3>
                       <p className="text-sm text-white/70 mb-3 leading-relaxed">
@@ -633,8 +645,10 @@ export default function SafeSuperintelligence() {
                   >
                     <div className="absolute inset-0 rounded-xl bg-gradient-to-tr from-white/[0.04] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                     <div className="relative flex flex-col h-full">
-                      <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-emerald-500/20 to-emerald-600/10 border border-emerald-400/25 shadow-emerald-500/15 flex items-center justify-center mb-5">
-                        <Eye className="w-6 h-6 text-emerald-400" />
+                      <div className="h-[48px] mb-5">
+                        <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-emerald-500/20 to-emerald-600/10 border border-emerald-400/25 shadow-emerald-500/15 flex items-center justify-center">
+                          <Eye className="w-6 h-6 text-emerald-400" />
+                        </div>
                       </div>
                       <h3 className="font-semibold text-white mb-3">Full-stack <span className="bg-gradient-to-r from-krim-mint to-krim-cyan bg-clip-text text-transparent font-bold">observability</span></h3>
                       <p className="text-sm text-white/70 mb-3 leading-relaxed">
@@ -693,8 +707,10 @@ export default function SafeSuperintelligence() {
                   >
                     <div className="absolute inset-0 rounded-xl bg-gradient-to-tr from-white/[0.04] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                     <div className="relative flex flex-col h-full">
-                      <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-green-500/20 to-green-600/10 border border-green-400/25 shadow-green-500/15 flex items-center justify-center mb-5">
-                        <Lightning className="w-6 h-6 text-green-400" />
+                      <div className="h-[48px] mb-5">
+                        <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-green-500/20 to-green-600/10 border border-green-400/25 shadow-green-500/15 flex items-center justify-center">
+                          <Lightning className="w-6 h-6 text-green-400" />
+                        </div>
                       </div>
                       <h3 className="text-lg font-semibold text-white mb-3">Instant validation</h3>
                       <p className="text-base text-white/80 leading-relaxed flex-1">
@@ -710,8 +726,10 @@ export default function SafeSuperintelligence() {
                   >
                     <div className="absolute inset-0 rounded-xl bg-gradient-to-tr from-white/[0.04] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                     <div className="relative flex flex-col h-full">
-                      <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-cyan-500/20 to-cyan-600/10 border border-cyan-400/25 shadow-cyan-500/15 flex items-center justify-center mb-5">
-                        <Database className="w-6 h-6 text-cyan-400" />
+                      <div className="h-[48px] mb-5">
+                        <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-cyan-500/20 to-cyan-600/10 border border-cyan-400/25 shadow-cyan-500/15 flex items-center justify-center">
+                          <Database className="w-6 h-6 text-cyan-400" />
+                        </div>
                       </div>
                       <h3 className="text-lg font-semibold text-white mb-3">Complete audit trail</h3>
                       <p className="text-base text-white/80 leading-relaxed flex-1">
@@ -727,8 +745,10 @@ export default function SafeSuperintelligence() {
                   >
                     <div className="absolute inset-0 rounded-xl bg-gradient-to-tr from-white/[0.04] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                     <div className="relative flex flex-col h-full">
-                      <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-emerald-500/20 to-emerald-600/10 border border-emerald-400/25 shadow-emerald-500/15 flex items-center justify-center mb-5">
-                        <GitBranch className="w-6 h-6 text-emerald-400" />
+                      <div className="h-[48px] mb-5">
+                        <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-emerald-500/20 to-emerald-600/10 border border-emerald-400/25 shadow-emerald-500/15 flex items-center justify-center">
+                          <GitBranch className="w-6 h-6 text-emerald-400" />
+                        </div>
                       </div>
                       <h3 className="text-lg font-semibold text-white mb-3">Version control</h3>
                       <p className="text-base text-white/80 leading-relaxed flex-1">
@@ -744,8 +764,10 @@ export default function SafeSuperintelligence() {
                   >
                     <div className="absolute inset-0 rounded-xl bg-gradient-to-tr from-white/[0.04] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                     <div className="relative flex flex-col h-full">
-                      <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-teal-500/20 to-teal-600/10 border border-teal-400/25 shadow-teal-500/15 flex items-center justify-center mb-5">
-                        <Stack className="w-6 h-6 text-teal-400" />
+                      <div className="h-[48px] mb-5">
+                        <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-teal-500/20 to-teal-600/10 border border-teal-400/25 shadow-teal-500/15 flex items-center justify-center">
+                          <Stack className="w-6 h-6 text-teal-400" />
+                        </div>
                       </div>
                       <h3 className="text-lg font-semibold text-white mb-3">Model agnostic</h3>
                       <p className="text-base text-white/80 leading-relaxed flex-1">
@@ -761,8 +783,10 @@ export default function SafeSuperintelligence() {
                   >
                     <div className="absolute inset-0 rounded-xl bg-gradient-to-tr from-white/[0.04] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                     <div className="relative flex flex-col h-full">
-                      <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-cyan-500/20 to-cyan-600/10 border border-cyan-400/25 shadow-cyan-500/15 flex items-center justify-center mb-5">
-                        <Scales className="w-6 h-6 text-cyan-400" />
+                      <div className="h-[48px] mb-5">
+                        <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-cyan-500/20 to-cyan-600/10 border border-cyan-400/25 shadow-cyan-500/15 flex items-center justify-center">
+                          <Scales className="w-6 h-6 text-cyan-400" />
+                        </div>
                       </div>
                       <h3 className="text-lg font-semibold text-white mb-3">Policy as code</h3>
                       <p className="text-base text-white/80 leading-relaxed flex-1">
@@ -778,8 +802,10 @@ export default function SafeSuperintelligence() {
                   >
                     <div className="absolute inset-0 rounded-xl bg-gradient-to-tr from-white/[0.04] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                     <div className="relative flex flex-col h-full">
-                      <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-emerald-500/20 to-emerald-600/10 border border-emerald-400/25 shadow-emerald-500/15 flex items-center justify-center mb-5">
-                        <Certificate className="w-6 h-6 text-emerald-400" />
+                      <div className="h-[48px] mb-5">
+                        <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-emerald-500/20 to-emerald-600/10 border border-emerald-400/25 shadow-emerald-500/15 flex items-center justify-center">
+                          <Certificate className="w-6 h-6 text-emerald-400" />
+                        </div>
                       </div>
                       <h3 className="text-lg font-semibold text-white mb-3">Compliance ready</h3>
                       <p className="text-base text-white/80 leading-relaxed flex-1">

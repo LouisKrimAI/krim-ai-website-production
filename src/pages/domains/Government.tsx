@@ -223,8 +223,10 @@ export default function Government() {
 
                       {/* Content */}
                       <div className="relative z-10 flex flex-col h-full">
-                        <div className={`w-10 h-10 rounded-lg bg-gradient-to-br from-slate-800 to-slate-900 border border-slate-700 flex items-center justify-center mb-5 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 ${problem.iconColor}`}>
-                          <problem.icon className="w-5 h-5" />
+                        <div className="h-[48px] mb-5">
+                          <div className={`w-10 h-10 rounded-lg bg-gradient-to-br from-slate-800 to-slate-900 border border-slate-700 flex items-center justify-center group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 ${problem.iconColor}`}>
+                            <problem.icon className="w-5 h-5" />
+                          </div>
                         </div>
                         <h3 className="text-lg font-semibold text-white mb-3">{problem.title}</h3>
                         <p className="text-sm text-white/70 leading-relaxed flex-1">
@@ -302,10 +304,12 @@ export default function Government() {
                     >
                       <GlassContainer glassLevel="medium" className="h-full p-6 rounded-xl flex flex-col">
                         <div className="flex flex-col h-full">
-                          <div className={`w-10 h-10 rounded-lg bg-gradient-to-br ${product.color} opacity-20 flex items-center justify-center mb-5`}>
-                            <product.icon className={`w-5 h-5 bg-gradient-to-r ${product.color} bg-clip-text text-transparent`} />
+                          <div className="h-[48px] mb-5">
+                            <div className={`w-10 h-10 rounded-lg bg-gradient-to-br ${product.color} opacity-20 flex items-center justify-center`}>
+                              <product.icon className={`w-5 h-5 bg-gradient-to-r ${product.color} bg-clip-text text-transparent`} />
+                            </div>
                           </div>
-                          <div className="mb-4">
+                          <div className="mb-3">
                             <p className={`text-xs font-mono font-bold bg-gradient-to-r ${product.color} bg-clip-text text-transparent uppercase tracking-widest`}>
                               {product.name}
                             </p>
@@ -314,7 +318,7 @@ export default function Government() {
                           <p className="text-sm text-white/70 leading-relaxed flex-1">
                             {product.description}
                           </p>
-                          <div className="flex items-center gap-2 text-xs text-white/50 mt-6 pt-4 border-t border-white/10">
+                          <div className="flex items-center gap-2 text-xs text-white/50 pt-6 border-t border-white/10">
                             <CheckCircle className="w-3 h-3 text-krim-mint" />
                             <span>Government-grade</span>
                           </div>
@@ -439,16 +443,16 @@ export default function Government() {
                     <HoverLiftCard className="h-full">
                       <GlassContainer glassLevel="medium" className="h-full p-6 rounded-xl flex flex-col">
                         <div className="flex flex-col h-full">
-                          <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-slate-800 to-slate-900 border border-slate-700 flex items-center justify-center text-krim-mint mb-5">
-                            <useCase.icon className="w-5 h-5" />
+                          <div className="h-[48px] mb-5">
+                            <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-slate-800 to-slate-900 border border-slate-700 flex items-center justify-center text-krim-mint">
+                              <useCase.icon className="w-5 h-5" />
+                            </div>
                           </div>
-                          <div className="mb-4">
-                            <h3 className="text-lg font-semibold text-white mb-3">{useCase.title}</h3>
-                            <p className="text-sm text-white/70 leading-relaxed flex-1">
-                              {useCase.description}
-                            </p>
-                          </div>
-                          <div className="mt-auto pt-4 border-t border-white/10">
+                          <h3 className="text-lg font-semibold text-white mb-3">{useCase.title}</h3>
+                          <p className="text-sm text-white/70 leading-relaxed flex-1">
+                            {useCase.description}
+                          </p>
+                          <div className="pt-6 border-t border-white/10">
                             <p className="text-xs font-mono text-krim-mint font-semibold tracking-wider">
                               {useCase.metrics}
                             </p>
@@ -638,8 +642,10 @@ export default function Government() {
                     <HoverLiftCard className="h-full">
                       <GlassContainer glassLevel="medium" className="h-full p-8 rounded-xl text-center flex flex-col justify-center">
                         <div className="flex flex-col h-full justify-center">
-                          <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-slate-800 to-slate-900 border border-slate-700 flex items-center justify-center mx-auto text-krim-mint mb-5">
-                            <stat.icon className="w-6 h-6" />
+                          <div className="h-[56px] mb-5 flex justify-center items-start">
+                            <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-slate-800 to-slate-900 border border-slate-700 flex items-center justify-center text-krim-mint">
+                              <stat.icon className="w-6 h-6" />
+                            </div>
                           </div>
                           <div>
                             <p className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-krim-mint to-krim-cyan bg-clip-text text-transparent mb-3">
@@ -679,11 +685,11 @@ export default function Government() {
                       <HoverLiftCard className="h-full">
                         <GlassContainer glassLevel="medium" className="h-full p-6 rounded-xl flex flex-col">
                           <div className="flex flex-col h-full">
-                            <div className="mb-6">
+                            <div className="mb-3">
                               <h4 className="text-lg font-semibold text-white mb-3">{option.name}</h4>
-                              <p className="text-sm text-white/70">{option.description}</p>
+                              <p className="text-sm text-white/70 flex-1">{option.description}</p>
                             </div>
-                            <ul className="space-y-2 mt-auto pt-4 border-t border-white/10">
+                            <ul className="space-y-2 pt-6 border-t border-white/10">
                               {option.features.map((feature, i) => (
                                 <li key={i} className="flex items-center gap-2 text-xs text-white/60">
                                   <CheckCircle className="w-3 h-3 text-krim-mint" />
