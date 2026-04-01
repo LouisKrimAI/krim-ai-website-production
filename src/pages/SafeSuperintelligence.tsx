@@ -117,17 +117,17 @@ export default function SafeSuperintelligence() {
                   <div className="space-y-8">
                     <h1 className="text-4xl md:text-5xl lg:text-6xl font-light tracking-tight leading-[1.15]">
                       <span className="bg-gradient-to-r from-krim-mint to-krim-cyan bg-clip-text text-transparent font-bold">
-                        Safe Superintelligence
+                        Sovereign Safe Superintelligence Infrastructure
                       </span>
                       <br />
                       <span className="text-white text-3xl md:text-4xl lg:text-5xl">
-                        for Bank Operations
+                        for Highly-Regulated Domains
                       </span>
                     </h1>
                     
                     <p className="text-lg md:text-xl text-white/80 leading-[1.7] max-w-xl">
-                      Kendra is the intelligence runtime between foundation models and AI co-workers, 
-                      so you can automate complex banking workflows at scale while staying in full control.
+                      Kendra is the intelligence runtime between foundation models and AI co-workers,
+                      so you can automate complex workflows in regulated industries at scale while staying in full control.
                     </p>
                   </div>
                   
@@ -155,11 +155,11 @@ export default function SafeSuperintelligence() {
             <div className="container max-w-5xl mx-auto px-6">
               <div className="text-center mb-16">
                 <h2 className="text-3xl md:text-4xl lg:text-5xl font-light mb-6 text-white leading-tight">
-                  Why we need <span className="bg-gradient-to-r from-krim-mint to-krim-cyan bg-clip-text text-transparent font-semibold">Safe Superintelligence</span>
+                  Why we need <span className="bg-gradient-to-r from-krim-mint to-krim-cyan bg-clip-text text-transparent font-semibold">Sovereign Safe Superintelligence Infrastructure</span>
                 </h2>
                 <p className="text-lg md:text-xl text-white/70 leading-relaxed max-w-3xl mx-auto">
-                  AI models are powerful but unpredictable. In banking operations, 
-                  that unpredictability becomes a compliance and financial risk.
+                  AI models are powerful but unpredictable. In highly-regulated domains,
+                  that unpredictability becomes a compliance, financial, and operational risk.
                 </p>
               </div>
               
@@ -224,7 +224,7 @@ export default function SafeSuperintelligence() {
                         </div>
                         <h3 className="text-lg font-semibold text-white mb-4">Failures are costly</h3>
                         <p className="text-sm text-white/70 leading-relaxed">
-                          A single AI error in banking decisions can trigger regulatory violations, 
+                          A single AI error in regulated operations can trigger regulatory violations,
                           customer complaints, and significant financial losses.
                         </p>
                       </div>

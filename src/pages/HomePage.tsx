@@ -260,12 +260,12 @@ function KrimAIStackSection() {
   const tabHeadlines = {
     kendra: {
       productName: "Kendra",
-      description: "Governed Runtime for Bank Operations",
-      subtitle: "Turns your fragmented banking infrastructure into one controlled operating layer for humans and AI."
+      description: "Governed Runtime for Regulated Operations",
+      subtitle: "Turns your fragmented operations infrastructure into one controlled operating layer for humans and AI."
     },
     kula: {
       productName: "Kula",
-      description: "Natural-Language Digital Twin for Banking Teams", 
+      description: "Natural-Language Digital Twin for Operations Teams",
       subtitle: "Lets leaders design, query and adjust operations in plain language, then push governed changes into production."
     },
     karta: {
@@ -276,7 +276,7 @@ function KrimAIStackSection() {
     kupa: {
       productName: "Kupa",
       description: "Command Centers for Live Oversight",
-      subtitle: "Gives banking teams tailored dashboards for real-time visibility and precise control over every workflow and AI co-worker."
+      subtitle: "Gives operations teams tailored dashboards for real-time visibility and precise control over every workflow and AI co-worker."
     },
     kriya: {
       productName: "Kriya",
@@ -301,7 +301,7 @@ function KrimAIStackSection() {
               </h2>
             </div>
             <p className="text-xl md:text-2xl text-white/70 max-w-4xl mx-auto leading-relaxed text-center">
-              Five layers that turn <span className="text-krim-mint font-semibold">bank operations</span> into 
+              Five layers that turn <span className="text-krim-mint font-semibold">complex operations</span> into
               <br />
               a governed, intelligence runtime.
             </p>
@@ -358,7 +358,7 @@ function KrimAIStackSection() {
                     <>
                       <div className="flex items-start gap-3">
                         <ShieldCheck className="w-5 h-5 text-emerald-400 mt-1 flex-shrink-0" />
-                        <span className="text-white/70">Unified intelligence across all bank operations</span>
+                        <span className="text-white/70">Unified intelligence across all regulated operations</span>
                       </div>
                       <div className="flex items-start gap-3">
                         <ShieldCheck className="w-5 h-5 text-emerald-400 mt-1 flex-shrink-0" />
@@ -426,11 +426,11 @@ function KrimAIStackSection() {
                     <>
                       <div className="flex items-start gap-3">
                         <Target className="w-5 h-5 text-orange-400 mt-1 flex-shrink-0" />
-                        <span className="text-white/70">Pre-built triggers and conditions for banking workflows</span>
+                        <span className="text-white/70">Pre-built triggers and conditions for regulated workflows</span>
                       </div>
                       <div className="flex items-start gap-3">
                         <Target className="w-5 h-5 text-orange-400 mt-1 flex-shrink-0" />
-                        <span className="text-white/70">Built-in compliance validation for FDCPA/TCPA/State regulations</span>
+                        <span className="text-white/70">Built-in compliance validation for regulatory frameworks</span>
                       </div>
                       <div className="flex items-start gap-3">
                         <Target className="w-5 h-5 text-orange-400 mt-1 flex-shrink-0" />
@@ -558,13 +558,16 @@ export default function HomePage() {
                 <div className="w-full flex justify-center">
                   <h1 className="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-bold leading-[1.1] tracking-tight text-center max-w-6xl">
                     <span className="bg-gradient-to-r from-krim-mint via-krim-cyan to-krim-mint bg-clip-text text-transparent font-black">
-                      Safe Superintelligence
+                      Sovereign Safe Superintelligence
                     </span>
                     {' '}
                     <span className="text-white">
-                      for Autonomous Banks
+                      Infrastructure
                     </span>
                   </h1>
+                  <p className="text-xl md:text-2xl text-white/70 max-w-4xl leading-relaxed text-center">
+                    For Highly-Regulated Domains
+                  </p>
                 </div>
 
                 <div className="space-y-4 lg:space-y-6 w-full flex justify-center">
@@ -591,9 +594,9 @@ export default function HomePage() {
                   </motion.button>
                 </Link>
                 
-                <Link to="/kendra" className="flex justify-center">
+                <a href="#domains" className="flex justify-center">
                   <motion.button
-                    whileHover={!prefersReducedMotion ? { 
+                    whileHover={!prefersReducedMotion ? {
                       scale: 1.05,
                       boxShadow: "0 12px 40px rgba(0,255,136,0.2)"
                     } : {}}
@@ -602,16 +605,104 @@ export default function HomePage() {
                     className="group relative px-8 py-4 backdrop-blur-xl bg-white/[0.03] border-2 border-krim-mint/50 text-krim-mint font-bold text-lg rounded-2xl overflow-hidden transition-all duration-300 hover:bg-krim-mint/10 hover:border-krim-mint/70"
                   >
                     <div className="absolute inset-0 bg-gradient-to-r from-emerald-400/10 to-cyan-400/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                    <span className="relative z-10">See how Krim works</span>
+                    <span className="relative z-10">Explore our domains</span>
                   </motion.button>
-                </Link>
+                </a>
               </div>
 
           </motion.div>
         </div>
       </section>
 
-      
+      {/* Domains Section */}
+      <section id="domains" className="py-16 md:py-24 relative overflow-hidden">
+        <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
+          <motion.div {...fadeInUp} className="text-center mb-12">
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-semibold text-white tracking-tight">
+              Built for Highly-Regulated Domains
+            </h2>
+          </motion.div>
+
+          <motion.div
+            variants={stagger}
+            initial="initial"
+            whileInView="animate"
+            viewport={{ once: true }}
+            className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto"
+          >
+            {/* Banking Card */}
+            <Link to="/banking" className="flex justify-center">
+              <motion.div
+                {...fadeInUp}
+                className="group relative h-full w-full"
+                whileHover={{ y: -8, scale: 1.02 }}
+                transition={{ duration: 0.4, type: "spring", stiffness: 300, damping: 20 }}
+              >
+                <div className="relative h-full p-8 rounded-2xl overflow-hidden cursor-pointer">
+                  {/* Multi-layer background */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/[0.08] to-emerald-600/[0.04] rounded-2xl" />
+                  <div className="absolute inset-0 bg-gradient-to-tr from-white/[0.04] to-transparent rounded-2xl" />
+                  <div className="absolute inset-0 backdrop-blur-xl rounded-2xl" />
+                  <div className="absolute inset-0 rounded-2xl border border-emerald-400/20 group-hover:border-emerald-400/40 transition-colors duration-500" />
+                  <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br from-emerald-400/10 to-transparent" />
+
+                  {/* Content */}
+                  <div className="relative z-10 space-y-4">
+                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-emerald-500/20 to-emerald-600/10 border border-emerald-400/30 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                      <Handshake className="w-6 h-6 text-emerald-400" />
+                    </div>
+                    <h3 className="text-2xl font-bold text-white">Banking & Financial Services</h3>
+                    <p className="text-white/70 leading-relaxed">Govern autonomous banking operations with safe superintelligence.</p>
+                    <div className="flex items-center gap-2 pt-2">
+                      <span className="text-emerald-400 font-semibold">Explore Banking</span>
+                      <span className="text-emerald-400">→</span>
+                    </div>
+                  </div>
+
+                  {/* Bottom accent line */}
+                  <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-emerald-400/60 to-transparent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 rounded-b-2xl" />
+                </div>
+              </motion.div>
+            </Link>
+
+            {/* Government Card */}
+            <Link to="/government" className="flex justify-center">
+              <motion.div
+                {...fadeInUp}
+                className="group relative h-full w-full"
+                whileHover={{ y: -8, scale: 1.02 }}
+                transition={{ duration: 0.4, type: "spring", stiffness: 300, damping: 20 }}
+              >
+                <div className="relative h-full p-8 rounded-2xl overflow-hidden cursor-pointer">
+                  {/* Multi-layer background */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/[0.08] to-cyan-600/[0.04] rounded-2xl" />
+                  <div className="absolute inset-0 bg-gradient-to-tr from-white/[0.04] to-transparent rounded-2xl" />
+                  <div className="absolute inset-0 backdrop-blur-xl rounded-2xl" />
+                  <div className="absolute inset-0 rounded-2xl border border-cyan-400/20 group-hover:border-cyan-400/40 transition-colors duration-500" />
+                  <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br from-cyan-400/10 to-transparent" />
+
+                  {/* Content */}
+                  <div className="relative z-10 space-y-4">
+                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-cyan-500/20 to-cyan-600/10 border border-cyan-400/30 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                      <Buildings className="w-6 h-6 text-cyan-400" />
+                    </div>
+                    <h3 className="text-2xl font-bold text-white">Government & Public Sector</h3>
+                    <p className="text-white/70 leading-relaxed">Deliver governed intelligence for public sector operations.</p>
+                    <div className="flex items-center gap-2 pt-2">
+                      <span className="text-cyan-400 font-semibold">Explore Government</span>
+                      <span className="text-cyan-400">→</span>
+                    </div>
+                  </div>
+
+                  {/* Bottom accent line */}
+                  <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-cyan-400/60 to-transparent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 rounded-b-2xl" />
+                </div>
+              </motion.div>
+            </Link>
+          </motion.div>
+        </div>
+      </section>
+
       {/* Krim AI Stack Tabs Section */}
       <KrimAIStackSection />
 
@@ -751,7 +842,7 @@ export default function HomePage() {
               <div className="flex justify-center mb-8">
                 <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight text-center leading-tight">
                   <span className="text-slate-200">
-                    Why Banks Need a
+                    Why Regulated Industries Need a
                   </span>
                   <br />
                   <span className="bg-gradient-to-r from-emerald-400 via-[#00FF88] to-[#00D4FF] bg-clip-text text-transparent font-black">
@@ -760,7 +851,7 @@ export default function HomePage() {
                 </h2>
               </div>
               <p className="text-xl md:text-2xl text-white/70 max-w-4xl mx-auto leading-relaxed text-center">
-                Legacy systems, manual work and black-box AI no longer keep up with today's banking challenges.
+                Legacy systems, manual work and black-box AI no longer keep up with today's regulatory and operational challenges.
               </p>
             </motion.div>
           </div>
@@ -1542,7 +1633,7 @@ export default function HomePage() {
                   <h3 className="text-3xl md:text-4xl font-bold text-white text-center">See it in action</h3>
                 </div>
                 <p className="text-xl md:text-2xl text-white/70 max-w-3xl mx-auto leading-relaxed text-center">
-                  Contact our team to explore how Krim AI can transform your bank operations.
+                  Contact our team to explore how Krim AI can transform your regulated operations.
                 </p>
               </div>
               

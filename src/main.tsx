@@ -21,6 +21,8 @@ import Karta from './pages/Karta'
 import Kriya from './pages/Kriya'
 import Kupa from './pages/Kupa'
 import SafeSuperintelligence from './pages/SafeSuperintelligence'
+import Banking from './pages/domains/Banking'
+import Government from './pages/domains/Government'
 import Header from './components/Header'
 import Footer from './components/Footer'
 import ScrollToTop from './components/ScrollToTop'
@@ -105,6 +107,8 @@ const router = createBrowserRouter([
       { path: '/kriya', element: <Kriya /> },
       { path: '/kupa', element: <Kupa /> },
       { path: '/safe-superintelligence', element: <SafeSuperintelligence /> },
+      { path: '/banking', element: <Banking /> },
+      { path: '/government', element: <Government /> },
       
       // Secondary pages - Keep lazy loading with seamless fallbacks
       { path: '/agents', element: <LazyComponents.AgentsPage /> },

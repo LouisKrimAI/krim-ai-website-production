@@ -19,8 +19,8 @@ export default function Footer(){
             </div>
             <div className="mb-6">
               <p className="body-regular text-white mb-2">
-                Safe <span className="highlight-superintelligence">Superintelligence</span><br />
-                for <span className="highlight-credit-operations">Autonomous Banks</span>
+                Sovereign Safe <span className="highlight-superintelligence">Superintelligence</span><br />
+                <span className="highlight-credit-operations">Infrastructure</span>
               </p>
               <p className="caption-text">
                 <span className="text-krim-cyan font-semibold">Atomic</span> - <span className="text-krim-mint font-semibold">Composable</span> - <span className="text-krim-cyan font-semibold">Governed</span>
@@ -38,6 +38,15 @@ export default function Footer(){
               <li><Link to="/karta" className="text-white text-readable hover:text-krim-mint transition-colors inline-flex items-center min-h-[32px]">Karta</Link></li>
               <li><Link to="/kupa" className="text-white text-readable hover:text-krim-mint transition-colors inline-flex items-center min-h-[32px]">Kupa</Link></li>
               <li><Link to="/kriya" className="text-white text-readable hover:text-krim-mint transition-colors inline-flex items-center min-h-[32px]">Kriya</Link></li>
+            </ul>
+          </div>
+
+          {/* Domains */}
+          <div className="lg:col-span-2 lg:pt-6">
+            <h2 className="card-heading text-white mb-4">Domains</h2>
+            <ul className="space-y-1 text-sm">
+              <li><Link to="/banking" className="text-white text-readable hover:text-krim-mint transition-colors inline-flex items-center min-h-[32px]">Banking</Link></li>
+              <li><Link to="/government" className="text-white text-readable hover:text-krim-mint transition-colors inline-flex items-center min-h-[32px]">Government</Link></li>
             </ul>
           </div>
 

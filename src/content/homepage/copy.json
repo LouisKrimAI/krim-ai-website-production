@@ -1,16 +1,16 @@
 {
   "hero": {
-    "headline": "Emergent Intelligence Runtime",
-    "headlineBreak": "For Credit Operations",
-    "subline": "Compliant-First. Outcomes Amplified. Costs Reduced.",
-    "primaryCta": { "label": "Book Demo", "href": "/book-demo" },
-    "secondaryCta": { "label": "Explore KrimOS", "href": "/krimos" },
-    "highlights": ["Runtime"]
+    "headline": "Sovereign Safe Superintelligence",
+    "headlineBreak": "Infrastructure",
+    "subline": "Governed Intelligence for Highly-Regulated Domains. Banking. Government.",
+    "primaryCta": { "label": "Book Demo", "href": "/contact" },
+    "secondaryCta": { "label": "Explore Domains", "href": "#domains" },
+    "highlights": ["Sovereign", "Superintelligence", "Infrastructure"]
   },
 
   "problem": {
-    "headline": "Credit Operations Are at Maximum Strain.",
-    "subline": "A perfect storm: Legacy systems, rising delinquencies and tightening regulation.",
+    "headline": "Regulated Operations Are at Maximum Strain.",
+    "subline": "A perfect storm: Legacy systems, rising complexity and tightening regulation.",
     "cards": [
       {
         "title": "40+ Fragmented Tools",
@@ -34,9 +34,9 @@
 
   "krimos": {
     "kicker": "Krim AI introduces",
-    "headline": "KrimOS — The Emergent Intelligence Substrate",
-    "subline": "A governed, unified environment where AI systems execute post-disbursal credit workflows.",
-    "highlights": ["Substrate", "Governed"]
+    "headline": "KrimOS — The Sovereign Intelligence Substrate",
+    "subline": "A governed, unified environment where AI systems execute complex workflows in highly-regulated domains.",
+    "highlights": ["Substrate", "Governed", "Sovereign"]
   },
 
   "pillars": {
@@ -51,7 +51,7 @@
   },
 
   "kupa": {
-    "headline": "Kupa Command Centers: Mission Control for Credit Operations",
+    "headline": "Kupa Command Centers: Mission Control for Regulated Operations",
     "subline": "Campaign • Support • Legal • Field Ops • Compliance • Risk • Settlements • Enterprise",
     "lines": [
       "Live oversight.",
@@ -73,21 +73,21 @@
   },
 
   "karta": {
-    "headline": "AI Credit Workforce",
+    "headline": "AI Co-Worker Workforce",
     "roles": [
       "Contact Center Co-Workers",
       "Back-Office Co-Workers"
     ],
     "tagline": "Atomic. Composable. Governed.",
-    "subline": "Automate end-to-end workflows with auditable, policy-bound AI agents.",
+    "subline": "Automate end-to-end workflows with auditable, policy-bound AI co-workers.",
     "highlights": ["Atomic", "Composable", "Governed"]
   },
 
   "emergent": {
-    "headline": "Emergent Intelligence, Engineered for Credit",
+    "headline": "Emergent Intelligence, Engineered for Regulated Domains",
     "body": [
       "Each workflow run strengthens decisioning, explainability, and efficiency.",
-      "Intelligence compounds portfolio performance."
+      "Intelligence compounds operational performance."
     ],
     "highlights": ["Compounds", "Explainability"]
   },
@@ -111,7 +111,7 @@
   "integrations": {
     "headline": "Ecosystem Ready",
     "body": [
-      "Native integrations across core banking, servicing, CRM, telephony, and risk systems."
+      "Native integrations across core systems, servicing, CRM, telephony, and risk platforms."
     ],
     "highlights": ["Core banking", "Servicing", "CRM", "Telephony", "Risk"]
   },

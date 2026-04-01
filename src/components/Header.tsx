@@ -10,7 +10,9 @@ export default function Header(){
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const [isDesktop, setIsDesktop] = useState(false)
+  const [domainsDropdownOpen, setDomainsDropdownOpen] = useState(false)
   const [solutionsDropdownOpen, setSolutionsDropdownOpen] = useState(false)
+  const domainsDropdownRef = useRef<HTMLDivElement>(null)
   const dropdownRef = useRef<HTMLDivElement>(null)
 
   // Track scroll position to hide/show navbar
@@ -70,22 +72,25 @@ export default function Header(){
     }
   }, [mobileMenuOpen])
 
-  // Handle clicks outside dropdown
+  // Handle clicks outside dropdowns
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
+      if (domainsDropdownRef.current && !domainsDropdownRef.current.contains(event.target as Node)) {
+        setDomainsDropdownOpen(false)
+      }
       if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
         setSolutionsDropdownOpen(false)
       }
     }
 
-    if (solutionsDropdownOpen) {
+    if (domainsDropdownOpen || solutionsDropdownOpen) {
       document.addEventListener('mousedown', handleClickOutside)
     }
 
     return () => {
       document.removeEventListener('mousedown', handleClickOutside)
     }
-  }, [solutionsDropdownOpen])
+  }, [domainsDropdownOpen, solutionsDropdownOpen])
 
   const link = (to:string,label:string, closeDropdown = false)=>(
     <NavLink
@@ -103,6 +108,37 @@ export default function Header(){
     </NavLink>
   )
 
+  // Domains dropdown for desktop
+  const DomainsDropdown = () => (
+    <div className="relative" ref={domainsDropdownRef}>
+      <button
+        onClick={() => setDomainsDropdownOpen(!domainsDropdownOpen)}
+        className={clsx(
+          'nav-link rounded-md transition-all duration-200 min-h-[48px] flex items-center gap-1',
+          domainsDropdownOpen || ['/banking', '/government'].includes(pathname)
+            ? 'nav-link-active text-krim-mint bg-krim-mint/10' : ''
+        )}
+        aria-expanded={domainsDropdownOpen}
+        aria-haspopup="true"
+      >
+        Domains
+        <CaretDown className={clsx(
+          'w-4 h-4 transition-transform duration-200',
+          domainsDropdownOpen ? 'rotate-180' : ''
+        )} />
+      </button>
+
+      {domainsDropdownOpen && (
+        <div className="absolute top-full left-0 mt-1 w-48 bg-black/90 backdrop-blur-xl border border-krim-mint/30 rounded-lg shadow-xl z-50">
+          <nav className="py-2 flex flex-col">
+            {link('/banking','Banking', true)}
+            {link('/government','Government', true)}
+          </nav>
+        </div>
+      )}
+    </div>
+  )
+
   // Solutions dropdown for desktop
   const SolutionsDropdown = () => (
     <div className="relative" ref={dropdownRef}>
@@ -110,7 +146,7 @@ export default function Header(){
         onClick={() => setSolutionsDropdownOpen(!solutionsDropdownOpen)}
         className={clsx(
           'nav-link rounded-md transition-all duration-200 min-h-[48px] flex items-center gap-1',
-          solutionsDropdownOpen || ['/kendra', '/kula', '/karta', '/kriya', '/kupa'].includes(pathname) 
+          solutionsDropdownOpen || ['/kendra', '/kula', '/karta', '/kriya', '/kupa'].includes(pathname)
             ? 'nav-link-active text-krim-mint bg-krim-mint/10' : ''
         )}
         aria-expanded={solutionsDropdownOpen}
@@ -122,7 +158,7 @@ export default function Header(){
           solutionsDropdownOpen ? 'rotate-180' : ''
         )} />
       </button>
-      
+
       {solutionsDropdownOpen && (
         <div className="absolute top-full left-0 mt-1 w-48 bg-black/90 backdrop-blur-xl border border-krim-mint/30 rounded-lg shadow-xl z-50">
           <nav className="py-2 flex flex-col">
@@ -164,6 +200,7 @@ export default function Header(){
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center justify-end gap-2">
           {link('/safe-superintelligence','Safe Superintelligence')}
+          <DomainsDropdown />
           <SolutionsDropdown />
           <Link to="/contact" className="ml-4">
             <button
@@ -199,7 +236,14 @@ export default function Header(){
         >
           <nav className="max-w-7xl mx-auto px-6 py-4 flex flex-col gap-2">
             {link('/safe-superintelligence','Safe Superintelligence')}
-            
+
+            {/* Domains section in mobile */}
+            <div className="mt-2">
+              <div className="text-white/60 text-sm font-medium mb-2 px-3">Domains</div>
+              {link('/banking','Banking')}
+              {link('/government','Government')}
+            </div>
+
             {/* Solutions section in mobile */}
             <div className="mt-2">
               <div className="text-white/60 text-sm font-medium mb-2 px-3">KrimOS</div>
