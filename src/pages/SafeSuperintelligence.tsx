@@ -334,7 +334,7 @@ export default function SafeSuperintelligence() {
                 {[
                   {
                     title: 'Hallucination & Fabrication',
-                    desc: 'Invents facts, capabilities, or actions that don\'t exist',
+                    desc: 'Hallucinated facts, capabilities, and actions',
                     icon: Brain,
                     glassColor: 'emerald' // Critical - use emerald
                   },
@@ -475,39 +475,39 @@ export default function SafeSuperintelligence() {
               {/* Research Solutions Grid */}
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch">
                 {[
-                  { 
-                    title: 'Epistemological validation', 
-                    desc: 'Krim-Nyaya framework for truth verification - validates claims against ground truth before execution',
+                  {
+                    title: 'Epistemological validation',
+                    desc: 'Krim-Nyaya framework validates claims against ground truth before execution',
                     icon: Compass,
                     glassColor: 'mint' // Innovation - mint
                   },
-                  { 
-                    title: 'Compositional safety', 
-                    desc: 'Mathematical proofs for multi-agent systems - ensures safety properties hold as agents interact',
+                  {
+                    title: 'Compositional safety',
+                    desc: 'Mathematical proofs ensure safety properties hold across agent interactions',
                     icon: Network,
                     glassColor: 'cyan' // Research - cyan
                   },
-                  { 
-                    title: 'Continuous validation', 
-                    desc: 'Real-time temporal consistency checks - maintains coherent state across long-running operations',
+                  {
+                    title: 'Continuous validation',
+                    desc: 'Real-time temporal consistency checks maintain coherent state across operations',
                     icon: Timer,
                     glassColor: 'teal' // Information - teal
                   },
-                  { 
-                    title: 'Adversarial resilience', 
-                    desc: 'Automated red-team testing and defense - continuously probes for vulnerabilities',
+                  {
+                    title: 'Adversarial resilience',
+                    desc: 'Red-team testing and continuous vulnerability probing',
                     icon: Shield,
                     glassColor: 'emerald' // Solution - emerald
                   },
-                  { 
-                    title: 'Fairness audits', 
-                    desc: 'Federated bias detection across decisions - ensures equitable treatment without data exposure',
+                  {
+                    title: 'Fairness audits',
+                    desc: 'Federated bias detection ensures equitable treatment without exposing data',
                     icon: Scales,
                     glassColor: 'cyan' // Research - cyan
                   },
-                  { 
-                    title: 'Multi-agent alignment', 
-                    desc: 'State and memory coordination protocols - prevents conflicting actions between AI workers',
+                  {
+                    title: 'Multi-agent alignment',
+                    desc: 'State and memory coordination prevent conflicting actions between AI workers',
                     icon: GitBranch,
                     glassColor: 'emerald' // Solution - emerald
                   }
@@ -869,7 +869,7 @@ export default function SafeSuperintelligence() {
                         <Shield className="w-5 h-5 text-krim-cyan mt-0.5 flex-shrink-0" />
                         <div>
                           <span className="font-medium bg-gradient-to-r from-krim-mint to-krim-cyan bg-clip-text text-transparent">Hallucinated actions</span>
-                          <p className="text-base text-white/70 mt-2">Prevent AI from inventing information, protocols, or capabilities that don't exist</p>
+                          <p className="text-base text-white/70 mt-2">Prevent hallucinated information, protocols, and capabilities</p>
                         </div>
                       </li>
                       <li className="flex items-start gap-3">

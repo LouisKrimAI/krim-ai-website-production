@@ -58,7 +58,7 @@ function BankingHero() {
               </h1>
 
               <p className="text-lg md:text-xl text-white/80 leading-[1.7] max-w-xl">
-                Automate credit operations, loan servicing, and compliance with full governance and audit trails.
+                Automate credit decisions, servicing, and collections. Full governance and audit trails built in.
               </p>
 
               <div className="grid grid-cols-3 gap-4 pt-4">
@@ -157,44 +157,44 @@ function ProblemSection() {
     {
       icon: <Cube className="w-8 h-8" />,
       title: "Fragmented Tools",
-      desc: "40+ disconnected systems lock teams into manual context-switching.",
+      desc: "40+ disconnected systems force manual context-switching.",
       color: "emerald",
       stat: "40+"
     },
     {
       icon: <Users className="w-8 h-8" />,
-      title: "Human Middleware",
-      desc: "Staff patch workflows and carry knowledge that walks out the door at 65% churn.",
+      title: "Knowledge Drain",
+      desc: "65% staff churn means institutional knowledge walks out the door.",
       color: "cyan",
       stat: "65%"
     },
     {
       icon: <WarningCircle className="w-8 h-8" />,
-      title: "Post-Fact Compliance",
-      desc: "Rules enforced after actions, not before. Violations pile up before caught.",
+      title: "Reactive Compliance",
+      desc: "Rules enforced after violations happen, not before.",
       color: "mint",
       stat: "100%"
     },
     {
       icon: <TrendUp className="w-8 h-8" />,
-      title: "Rising Delinquencies",
-      desc: "Manual workflows can't scale with loan volumes or borrower complexity.",
+      title: "Scaling Failures",
+      desc: "Manual workflows break under loan volume and complexity.",
       color: "amber",
       stat: "↑↑↑"
     },
     {
       icon: <Clock className="w-8 h-8" />,
-      title: "Slow Innovation",
-      desc: "Policy changes take months to propagate across legacy systems.",
+      title: "Slow Deployment",
+      desc: "Policy changes take months to roll across legacy systems.",
       color: "red",
       stat: "3mo+"
     },
     {
       icon: <Building className="w-8 h-8" />,
-      title: "Staff Turnover",
-      desc: "65% churn means institutional knowledge leaves with every departing teammate.",
+      title: "System Brittleness",
+      desc: "Knowledge silos in custom code and spreadsheets make changes risky.",
       color: "purple",
-      stat: "65%"
+      stat: "↑Risk"
     }
   ]
 
@@ -299,37 +299,37 @@ function SolutionSection() {
   const solutions = [
     {
       product: "Kendra",
-      title: "Intelligence Runtime",
-      desc: "Governed AI for credit, servicing, and collections with full audit trails.",
-      benefits: ["Safe AI with enterprise guardrails", "Complete audit trail", "Real-time policy enforcement"],
+      title: "Governed Runtime",
+      desc: "AI for credit, servicing, collections with guardrails and audit trails.",
+      benefits: ["Policy enforcement", "Full audit trail", "Real-time observability"],
       color: "emerald"
     },
     {
       product: "Kula",
-      title: "Command Center",
-      desc: "Define policies and credit rules in plain language; updates propagate instantly.",
-      benefits: ["Natural language operations", "Runtime policy updates", "Instant compliance propagation"],
+      title: "Policy Interface",
+      desc: "Define rules in plain language; changes deploy instantly without code.",
+      benefits: ["No-code rule definition", "Instant rollout", "Self-documenting"],
       color: "cyan"
     },
     {
       product: "Karta",
-      title: "AI Co-Workers",
-      desc: "Pre-built agents handle calls, emails, and documents across contact center.",
-      benefits: ["Multi-channel interactions", "20+ pre-built agents", "Real-time decision tracking"],
+      title: "AI Agents",
+      desc: "Handles calls, emails, documents across channels. Observable and auditable.",
+      benefits: ["Multi-channel", "20+ pre-built", "Auditable decisions"],
       color: "mint"
     },
     {
       product: "Kupa",
-      title: "Oversight & Control",
-      desc: "Monitor workflows and override agent decisions in real time with full audit trail.",
-      benefits: ["Live workflow visibility", "Instant override capability", "Complete decision audit"],
+      title: "Command Center",
+      desc: "Live visibility into workflows. Override agent decisions with full audit.",
+      benefits: ["Real-time monitoring", "Instant overrides", "Audit trail"],
       color: "amber"
     },
     {
       product: "Kriya",
-      title: "Automation Blocks",
-      desc: "Pre-built banking workflows with compliance baked in from day one.",
-      benefits: ["Pre-built banking rules", "Built-in compliance validation", "Observable decision logic"],
+      title: "Workflow Blocks",
+      desc: "Pre-built banking automation with compliance baked in.",
+      benefits: ["Compliance built-in", "Pre-tested logic", "Observable"],
       color: "purple"
     }
   ]
@@ -340,13 +340,13 @@ function SolutionSection() {
         <Reveal className="text-center mb-20">
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-8">
             <span className="bg-gradient-to-r from-krim-mint to-krim-cyan bg-clip-text text-transparent">
-              How KrimOS Solves
+              Five Products
             </span>
             <br />
-            <span className="text-white">Banking Challenges</span>
+            <span className="text-white">One Governed Platform</span>
           </h2>
           <p className="text-lg md:text-xl text-white/70 max-w-3xl mx-auto">
-            Five integrated layers turning fragmented banking operations into a governed intelligence runtime.
+            Turn fragmented operations into a unified, governed intelligence runtime.
           </p>
         </Reveal>
 
@@ -423,39 +423,39 @@ function UseCasesSection() {
   const useCases = [
     {
       icon: <Phone className="w-8 h-8" />,
-      title: "Credit Operations",
-      desc: "Real-time credit decisions and approvals with full audit trails.",
-      metrics: ["100% compliant", "Sub-second decisions", "Complete transparency"]
+      title: "Credit Decisions",
+      desc: "Real-time approvals with full audit trails.",
+      metrics: ["100% compliant", "Sub-second", "Full transparency"]
     },
     {
       icon: <Headset className="w-8 h-8" />,
       title: "Loan Servicing",
-      desc: "Automate payments, delinquency tracking, and borrower communications error-free at scale.",
-      metrics: ["Zero manual touch", "24/7 automation", "Compliance-first"]
+      desc: "Automate payments, delinquency, and borrower comms at scale.",
+      metrics: ["Zero manual", "24/7 automation", "Built-in compliance"]
     },
     {
       icon: <CurrencyDollar className="w-8 h-8" />,
-      title: "Debt Recovery",
-      desc: "AI agents run compliant collections; humans handle complex cases.",
-      metrics: ["45% uplift", "FDCPA-safe", "Agent-powered"]
+      title: "Collections",
+      desc: "Multi-channel outreach with rule enforcement and override capability.",
+      metrics: ["FDCPA-safe", "45% uplift", "Auditable"]
     },
     {
       icon: <ChartBar className="w-8 h-8" />,
-      title: "Collections",
-      desc: "Multi-channel outreach (phone, SMS, email) with rule enforcement and instant override.",
-      metrics: ["Multi-channel", "Rule-enforced", "Observable"]
+      title: "Delinquency Management",
+      desc: "Track status and intervene automatically before escalation.",
+      metrics: ["Real-time tracking", "Early intervention", "Compliant"]
     },
     {
       icon: <Eye className="w-8 h-8" />,
-      title: "Compliance Monitoring",
-      desc: "All interactions checked against FDCPA, TCPA, CFPB, FCRA, SCRA in real time.",
-      metrics: ["Real-time alerts", "Regulation-native", "Audit-ready"]
+      title: "Regulatory Compliance",
+      desc: "Real-time checks against FDCPA, TCPA, CFPB, FCRA, SCRA.",
+      metrics: ["Real-time alerts", "Zero violations", "Audit-ready"]
     },
     {
       icon: <Scales className="w-8 h-8" />,
-      title: "Policy Enforcement",
-      desc: "Define policies in plain language; enforcement propagates instantly—no redeployment.",
-      metrics: ["Runtime updates", "No redeployment", "Instant propagation"]
+      title: "Policy Updates",
+      desc: "Change rules in plain language; deploy instantly without redeployment.",
+      metrics: ["Runtime updates", "Instant rollout", "Self-documenting"]
     }
   ]
 
@@ -464,13 +464,13 @@ function UseCasesSection() {
       <div className="max-w-7xl mx-auto px-6">
         <Reveal className="text-center mb-20">
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-8">
-            <span className="text-white">Banking Use Cases </span>
+            <span className="text-white">Mission-Critical </span>
             <span className="bg-gradient-to-r from-krim-mint to-krim-cyan bg-clip-text text-transparent">
-              Solved
+              Banking Workflows
             </span>
           </h2>
           <p className="text-lg md:text-xl text-white/70 max-w-3xl mx-auto">
-            From credit decisions to debt recovery, KrimOS handles mission-critical banking workflows at scale.
+            Credit decisions to collections. Every workflow. At scale.
           </p>
         </Reveal>
 
@@ -596,8 +596,8 @@ function ComplianceSection() {
 
               <div className="relative z-10 flex flex-col h-full">
                 <ShieldCheck className="w-8 h-8 text-emerald-400 mb-5" />
-                <h3 className="text-xl font-bold text-white mb-3">Pre-Action Compliance</h3>
-                <p className="text-white/70 flex-1">Block non-compliant actions before they happen, not after audit.</p>
+                <h3 className="text-xl font-bold text-white mb-3">Block Before Harm</h3>
+                <p className="text-white/70 flex-1">Stop non-compliant actions before they happen, not after audit.</p>
               </div>
             </div>
           </Reveal>
@@ -610,8 +610,8 @@ function ComplianceSection() {
 
               <div className="relative z-10 flex flex-col h-full">
                 <FileText className="w-8 h-8 text-cyan-400 mb-5" />
-                <h3 className="text-xl font-bold text-white mb-3">Audit-Ready Logs</h3>
-                <p className="text-white/70 flex-1">Every decision, every interaction, every rule enforcement is logged for regulators.</p>
+                <h3 className="text-xl font-bold text-white mb-3">Complete Audit Trail</h3>
+                <p className="text-white/70 flex-1">Every decision, interaction, and rule enforcement logged for regulators.</p>
               </div>
             </div>
           </Reveal>
@@ -624,8 +624,8 @@ function ComplianceSection() {
 
               <div className="relative z-10 flex flex-col h-full">
                 <Target className="w-8 h-8 text-[#00FF88] mb-5" />
-                <h3 className="text-xl font-bold text-white mb-3">Rule Evolution</h3>
-                <p className="text-white/70 flex-1">Rules adapt instantly to regulation changes—no redeployment needed.</p>
+                <h3 className="text-xl font-bold text-white mb-3">Instant Rule Updates</h3>
+                <p className="text-white/70 flex-1">Regulation changes deploy instantly—no code, no redeployment needed.</p>
               </div>
             </div>
           </Reveal>
@@ -640,9 +640,9 @@ function ComplianceSection() {
  */
 function SecuritySection() {
   const deploymentOptions = [
-    { name: "Cloud", desc: "Fully managed SaaS with auto-scaling and 99.99% uptime SLA." },
-    { name: "VPC", desc: "Dedicated VPC in your AWS/GCP account; bank-owned infrastructure." },
-    { name: "On-Premise", desc: "Kubernetes in your data center with air-gapped deployment." }
+    { name: "Cloud", desc: "Managed SaaS with 99.99% uptime SLA." },
+    { name: "VPC", desc: "Dedicated VPC in your AWS/GCP account." },
+    { name: "On-Premise", desc: "Kubernetes in your data center." }
   ]
 
   return (

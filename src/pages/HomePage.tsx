@@ -259,27 +259,27 @@ function KrimAIStackSection() {
     kendra: {
       productName: "Kendra",
       description: "Governed Runtime for Regulated Operations",
-      subtitle: "Turns your fragmented operations infrastructure into one controlled operating layer for humans and AI."
+      subtitle: "One controlled layer for all human and AI operations. Safe. Compliant. Auditable."
     },
     kula: {
       productName: "Kula",
       description: "Natural-Language Digital Twin for Operations Teams",
-      subtitle: "Lets leaders design, query and adjust operations in plain language, then push governed changes into production."
+      subtitle: "Design, query, and adjust operations in plain language. Push governed changes instantly."
     },
     karta: {
       productName: "Karta",
       description: "AI Co-Workers for Conversations and Cases",
-      subtitle: "Intelligent multi-modal AI coworkers handling voice, text, and document workflows across contact center and back-office operations."
+      subtitle: "Safe AI agents for voice, text, and documents. Monitored. Compliant. Always controllable."
     },
     kupa: {
       productName: "Kupa",
       description: "Command Centers for Live Oversight",
-      subtitle: "Gives operations teams tailored dashboards for real-time visibility and precise control over every workflow and AI co-worker."
+      subtitle: "Real-time visibility. Instant overrides. Full control over every workflow."
     },
     kriya: {
       productName: "Kriya",
       description: "Building Blocks of Safe Agentic Automation",
-      subtitle: "Building blocks for compliant automation that stays explainable and testable."
+      subtitle: "Compliant automation blocks. Explainable. Testable. Fully governed."
     }
   }
 
@@ -354,15 +354,15 @@ function KrimAIStackSection() {
                     <>
                       <div className="flex items-start gap-3">
                         <ShieldCheck className="w-5 h-5 text-emerald-400 mt-1 flex-shrink-0" />
-                        <span className="text-white/70">Unified intelligence across all regulated operations</span>
+                        <span className="text-white/70">Safe superintelligence with governed runtime</span>
                       </div>
                       <div className="flex items-start gap-3">
                         <ShieldCheck className="w-5 h-5 text-emerald-400 mt-1 flex-shrink-0" />
-                        <span className="text-white/70">Safe AI with enterprise-grade guardrails</span>
+                        <span className="text-white/70">Enterprise-grade compliance controls built-in</span>
                       </div>
                       <div className="flex items-start gap-3">
                         <ShieldCheck className="w-5 h-5 text-emerald-400 mt-1 flex-shrink-0" />
-                        <span className="text-white/70">Complete audit trail for regulatory compliance</span>
+                        <span className="text-white/70">Complete audit trail for regulated operations</span>
                       </div>
                     </>
                   )}
@@ -371,15 +371,15 @@ function KrimAIStackSection() {
                     <>
                       <div className="flex items-start gap-3">
                         <Lightning className="w-5 h-5 text-cyan-400 mt-1 flex-shrink-0" />
-                        <span className="text-white/70">Natural language to workflows</span>
+                        <span className="text-white/70">Design workflows in plain language</span>
                       </div>
                       <div className="flex items-start gap-3">
                         <Lightning className="w-5 h-5 text-cyan-400 mt-1 flex-shrink-0" />
-                        <span className="text-white/70">Runtime policy updates</span>
+                        <span className="text-white/70">Apply governed policy updates instantly</span>
                       </div>
                       <div className="flex items-start gap-3">
                         <Lightning className="w-5 h-5 text-cyan-400 mt-1 flex-shrink-0" />
-                        <span className="text-white/70">Complete audit trail</span>
+                        <span className="text-white/70">Fully traceable compliance audit trail</span>
                       </div>
                     </>
                   )}
@@ -388,15 +388,15 @@ function KrimAIStackSection() {
                     <>
                       <div className="flex items-start gap-3">
                         <Users className="w-5 h-5 text-[#00FF88] mt-1 flex-shrink-0" />
-                        <span className="text-white/70">Handles complex multi-channel interactions</span>
+                        <span className="text-white/70">Safe AI agents across voice, text, documents</span>
                       </div>
                       <div className="flex items-start gap-3">
                         <Users className="w-5 h-5 text-[#00FF88] mt-1 flex-shrink-0" />
-                        <span className="text-white/70">20+ Pre-built agents plus agent creation for novel workflows</span>
+                        <span className="text-white/70">20+ pre-built agents for regulated workflows</span>
                       </div>
                       <div className="flex items-start gap-3">
                         <Users className="w-5 h-5 text-[#00FF88] mt-1 flex-shrink-0" />
-                        <span className="text-white/70">Real-time decision tracking and intervention controls</span>
+                        <span className="text-white/70">Real-time monitoring and override controls</span>
                       </div>
                     </>
                   )}
@@ -422,15 +422,15 @@ function KrimAIStackSection() {
                     <>
                       <div className="flex items-start gap-3">
                         <Target className="w-5 h-5 text-orange-400 mt-1 flex-shrink-0" />
-                        <span className="text-white/70">Pre-built triggers and conditions for regulated workflows</span>
+                        <span className="text-white/70">Pre-built automation blocks for compliance</span>
                       </div>
                       <div className="flex items-start gap-3">
                         <Target className="w-5 h-5 text-orange-400 mt-1 flex-shrink-0" />
-                        <span className="text-white/70">Built-in compliance validation for regulatory frameworks</span>
+                        <span className="text-white/70">Built-in compliance validation and guardrails</span>
                       </div>
                       <div className="flex items-start gap-3">
                         <Target className="w-5 h-5 text-orange-400 mt-1 flex-shrink-0" />
-                        <span className="text-white/70">Observable logic chains for full decision transparency</span>
+                        <span className="text-white/70">Transparent, auditable decision chains</span>
                       </div>
                     </>
                   )}
@@ -441,39 +441,39 @@ function KrimAIStackSection() {
                   {activeTab === 'kendra' && (
                     <Link to="/kendra">
                       <Button variant="primary" size="md" className="bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 text-white">
-                        Explore Kendra
+                        Learn More
                       </Button>
                     </Link>
                   )}
-                  
+
                   {activeTab === 'kula' && (
                     <Link to="/kula">
                       <Button variant="primary" size="md" className="bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white">
-                        Explore Kula
+                        Learn More
                       </Button>
                     </Link>
                   )}
-                  
+
                   {activeTab === 'karta' && (
                     <Link to="/karta">
                       <Button variant="primary" size="md" className="bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 text-white">
-                        Explore Karta
+                        Learn More
                       </Button>
                     </Link>
                   )}
-                  
+
                   {activeTab === 'kupa' && (
                     <Link to="/kupa">
                       <Button variant="primary" size="md" className="bg-gradient-to-r from-teal-500 to-cyan-500 hover:from-teal-600 hover:to-cyan-600 text-white">
-                        Explore Kupa
+                        Learn More
                       </Button>
                     </Link>
                   )}
-                  
+
                   {activeTab === 'kriya' && (
                     <Link to="/kriya">
                       <Button variant="primary" size="md" className="bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 text-white">
-                        Explore Kriya
+                        Learn More
                       </Button>
                     </Link>
                   )}
@@ -565,7 +565,7 @@ export default function HomePage() {
 
                 <div className="space-y-4 lg:space-y-6 w-full flex justify-center">
                   <p className="text-lg md:text-xl lg:text-2xl text-white/80 max-w-6xl leading-relaxed text-center">
-                    <span className="bg-gradient-to-r from-krim-mint via-krim-cyan to-krim-mint bg-clip-text text-transparent font-semibold">Governed Intelligence</span> <span className="text-white/80">-</span> <span className="bg-gradient-to-r from-krim-mint via-krim-cyan to-krim-mint bg-clip-text text-transparent font-semibold">Controlled Execution</span> <span className="text-white/80">-</span> <span className="bg-gradient-to-r from-krim-mint via-krim-cyan to-krim-mint bg-clip-text text-transparent font-semibold">Full Audit Trail</span>
+                    <span className="bg-gradient-to-r from-krim-mint via-krim-cyan to-krim-mint bg-clip-text text-transparent font-semibold">Governed Intelligence</span> <span className="text-white/60 mx-2">•</span> <span className="bg-gradient-to-r from-krim-mint via-krim-cyan to-krim-mint bg-clip-text text-transparent font-semibold">Controlled Execution</span> <span className="text-white/60 mx-2">•</span> <span className="bg-gradient-to-r from-krim-mint via-krim-cyan to-krim-mint bg-clip-text text-transparent font-semibold">Audit Trail</span>
                   </p>
                 </div>
               </div>
@@ -583,7 +583,7 @@ export default function HomePage() {
                     className="group relative px-8 py-4 bg-gradient-to-r from-krim-mint to-krim-cyan text-black font-bold text-lg rounded-2xl overflow-hidden transition-all duration-300"
                   >
                     <div className="absolute inset-0 bg-gradient-to-r from-emerald-400 to-cyan-400 opacity-0 group-hover:opacity-20 transition-opacity duration-300" />
-                    <span className="relative z-10">Book a demo</span>
+                    <span className="relative z-10">Book a Demo</span>
                   </motion.button>
                 </Link>
                 
@@ -644,8 +644,8 @@ export default function HomePage() {
                     <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-emerald-500/20 to-emerald-600/10 border border-emerald-400/30 flex items-center justify-center group-hover:scale-110 transition-transform duration-300 mb-5">
                       <Handshake className="w-6 h-6 text-emerald-400" />
                     </div>
-                    <h3 className="text-xl font-bold text-white mb-3">Banking & Financial Services</h3>
-                    <p className="text-white/70 leading-relaxed flex-1">Credit operations, loan servicing, compliance automation.</p>
+                    <h3 className="text-xl font-bold text-white mb-3">AI for Banking</h3>
+                    <p className="text-white/70 leading-relaxed flex-1">Safe superintelligence for credit, loan servicing, compliance.</p>
                     <div className="flex items-center gap-2 mt-6">
                       <span className="text-emerald-400 font-semibold">Explore Banking</span>
                       <span className="text-emerald-400">→</span>
@@ -679,8 +679,8 @@ export default function HomePage() {
                     <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-cyan-500/20 to-cyan-600/10 border border-cyan-400/30 flex items-center justify-center group-hover:scale-110 transition-transform duration-300 mb-5">
                       <Buildings className="w-6 h-6 text-cyan-400" />
                     </div>
-                    <h3 className="text-xl font-bold text-white mb-3">Government & Public Sector</h3>
-                    <p className="text-white/70 leading-relaxed flex-1">Citizen services, regulatory enforcement, sovereign infrastructure.</p>
+                    <h3 className="text-xl font-bold text-white mb-3">AI for Government</h3>
+                    <p className="text-white/70 leading-relaxed flex-1">Governed AI for citizen services, enforcement, sovereign infrastructure.</p>
                     <div className="flex items-center gap-2 mt-6">
                       <span className="text-cyan-400 font-semibold">Explore Government</span>
                       <span className="text-cyan-400">→</span>
@@ -720,8 +720,8 @@ export default function HomePage() {
                 </span>
               </h2>
             </div>
-            <p className="text-xl text-white/70 max-w-4xl mx-auto leading-relaxed">
-              Policies precede actions. Controls fire before decisions. Intelligence operates within bounds.
+            <p className="text-lg text-white/70 max-w-4xl mx-auto leading-relaxed">
+              Policies precede actions. Controls fire before decisions.
             </p>
           </motion.div>
 
@@ -748,9 +748,9 @@ export default function HomePage() {
                 <h4 className="text-xl font-bold text-emerald-300">Predictable at Scale</h4>
               </div>
               <ul className="space-y-2 text-white/80 flex-1">
-                <li>• Policies enforced exactly</li>
-                <li>• Pre-execution validation catches AI errors</li>
-                <li>• Controlled automation depth</li>
+                <li>• Policies enforced precisely</li>
+                <li>• Pre-execution validation</li>
+                <li>• Controlled automation</li>
               </ul>
               </div>
               
@@ -843,8 +843,8 @@ export default function HomePage() {
                   </span>
                 </h2>
               </div>
-              <p className="text-xl md:text-2xl text-white/70 max-w-4xl mx-auto leading-relaxed text-center">
-                Legacy systems, manual processes, and black-box AI can't keep up.
+              <p className="text-lg text-white/70 max-w-4xl mx-auto leading-relaxed text-center">
+                Legacy systems and unregulated AI don't work. Governed AI does.
               </p>
             </motion.div>
           </div>
@@ -978,17 +978,17 @@ export default function HomePage() {
             <WhyItMattersCard
               icon={<ShieldCheck className="w-10 h-10 text-emerald-400" />}
               title="Safer"
-              body="Controls fire before actions; every step is defensible."
+              body="Governed execution. Every action defensible. Zero hallucinations in production."
             />
             <WhyItMattersCard
               icon={<Lightning className="w-10 h-10 text-emerald-400" />}
               title="Faster"
-              body="Agents and AI coordinate under one runtime; no swivel-chair work."
+              body="One runtime. One truth. No tool-switching, no delays."
             />
             <WhyItMattersCard
               icon={<TrendUp className="w-10 h-10 text-emerald-400" />}
-              title="Self-Evolving"
-              body="Policies and playbooks evolve without breaking compliance."
+              title="Compliant"
+              body="Evolve policies without breaking compliance guardrails."
             />
           </motion.div>
 
@@ -1004,7 +1004,7 @@ export default function HomePage() {
                 className="group relative px-10 py-5 rounded-2xl backdrop-blur-xl bg-white/[0.02] border-2 border-emerald-400/50 text-emerald-400 font-bold text-lg overflow-hidden transition-all duration-300 hover:bg-emerald-400/10 hover:border-emerald-400/70"
               >
                 <div className="absolute inset-0 bg-gradient-to-r from-emerald-400/10 to-cyan-400/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                <span className="relative z-10">See Kendra Command Centers</span>
+                <span className="relative z-10">Learn More</span>
               </motion.button>
             </Link>
           </motion.div>
@@ -1033,8 +1033,8 @@ export default function HomePage() {
               </h2>
             </div>
             <div className="w-full flex justify-center">
-              <p className="text-xl text-white/70 max-w-3xl text-center">
-                Continuous improvement without sacrificing control
+              <p className="text-lg text-white/70 max-w-3xl text-center">
+                Governed improvement. Safe compliance. Always auditable.
               </p>
             </div>
           </motion.div>
@@ -1075,7 +1075,7 @@ export default function HomePage() {
                     <div className="flex-1">
                       <h3 className="text-xl lg:text-2xl font-bold text-white mb-2">Performance compounds</h3>
                       <p className="text-base text-white/70 leading-relaxed">
-                        Automation becomes continuous optimisation, improving with every interaction
+                        Safe AI improves continuously through every interaction.
                       </p>
                     </div>
                   </div>
@@ -1108,7 +1108,7 @@ export default function HomePage() {
                     <div className="flex-1">
                       <h3 className="text-xl lg:text-2xl font-bold text-white mb-2">Learns locally</h3>
                       <p className="text-base text-white/70 leading-relaxed">
-                        Outcomes refine behaviour inside your institution, building institutional knowledge
+                        Refine behavior within your institution. Your data, your knowledge.
                       </p>
                     </div>
                   </div>
@@ -1140,7 +1140,7 @@ export default function HomePage() {
                     <div className="flex-1">
                       <h3 className="text-xl lg:text-2xl font-bold text-white mb-2">Compliance holds</h3>
                       <p className="text-base text-white/70 leading-relaxed">
-                        Guardrails remain fixed as intelligence advances, ensuring regulatory compliance
+                        Guardrails stay fixed. Intelligence evolves safely.
                       </p>
                     </div>
                   </div>
@@ -1172,7 +1172,7 @@ export default function HomePage() {
                     <div className="flex-1">
                       <h3 className="text-xl lg:text-2xl font-bold text-white mb-2">Shares gains safely</h3>
                       <p className="text-base text-white/70 leading-relaxed">
-                        Federated learning without sharing raw data, preserving privacy and security
+                        Federated learning. No shared raw data. Full privacy.
                       </p>
                     </div>
                   </div>
@@ -1293,7 +1293,7 @@ export default function HomePage() {
                         </div>
                         <h4 className="text-xl lg:text-2xl font-bold text-white mb-2">Hallucination Intervention</h4>
                         <p className="text-base text-white/70 leading-relaxed">
-                          Intercepts hallucinations before they reach production.
+                          Catch AI errors before production.
                         </p>
                       </div>
 
@@ -1322,7 +1322,7 @@ export default function HomePage() {
                         </div>
                         <h4 className="text-xl lg:text-2xl font-bold text-white mb-2">Human Control</h4>
                         <p className="text-base text-white/70 leading-relaxed">
-                          Critical decisions stay yours. AI advises, you decide.
+                          Critical decisions stay human. AI advises, you decide.
                         </p>
                       </div>
 
@@ -1350,7 +1350,7 @@ export default function HomePage() {
                         </div>
                         <h4 className="text-xl lg:text-2xl font-bold text-white mb-2">Audit Trail</h4>
                         <p className="text-base text-white/70 leading-relaxed">
-                          Complete history. Regulatory confidence. Always defensible.
+                          Complete history. Always defensible. Regulatory confidence.
                         </p>
                       </div>
 
@@ -1386,7 +1386,7 @@ export default function HomePage() {
                         Policy-First Architecture
                       </h3>
                       <p className="text-sm text-white/70 leading-relaxed">
-                        Every action pre-validated. Every decision traceable. Every outcome compliant.
+                        Pre-validated actions. Traceable decisions. Compliant outcomes.
                       </p>
                     </div>
                     
@@ -1432,7 +1432,7 @@ export default function HomePage() {
                         </div>
                         <h3 className="text-xl lg:text-2xl font-bold text-white mb-2">On-Premise</h3>
                         <p className="text-base text-white/70 leading-relaxed mb-4">
-                          Complete control within your data center
+                          Sovereign AI in your data center.
                         </p>
                         <div className="space-y-2">
                           <div className="flex items-center justify-center gap-2">
@@ -1475,7 +1475,7 @@ export default function HomePage() {
                         </div>
                         <h3 className="text-xl lg:text-2xl font-bold text-white mb-2">Single-Tenant VPC</h3>
                         <p className="text-base text-white/70 leading-relaxed mb-4">
-                          Isolated cloud environment with dedicated resources
+                          Isolated, governed cloud deployment.
                         </p>
                         <div className="space-y-2">
                           <div className="flex items-center justify-center gap-2">
@@ -1517,7 +1517,7 @@ export default function HomePage() {
                         </div>
                         <h3 className="text-xl lg:text-2xl font-bold text-white mb-2">Multi-Tenant Cloud</h3>
                         <p className="text-base text-white/70 leading-relaxed mb-4">
-                          Fast deployment with managed infrastructure
+                          Fast, managed deployment. Scale instantly.
                         </p>
                         <div className="space-y-2">
                           <div className="flex items-center justify-center gap-2">
@@ -1560,7 +1560,7 @@ export default function HomePage() {
                 className="group relative px-10 py-4 rounded-2xl backdrop-blur-xl bg-white/[0.02] border-2 border-emerald-400/50 text-emerald-400 font-bold text-lg overflow-hidden transition-all duration-300 hover:bg-emerald-400/10 hover:border-emerald-400/70"
               >
                 <div className="absolute inset-0 bg-gradient-to-r from-emerald-400/10 to-cyan-400/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                <span className="relative z-10">Learn about Governed Intelligence</span>
+                <span className="relative z-10">Learn More</span>
               </motion.button>
             </Link>
             </div>
@@ -1617,10 +1617,10 @@ export default function HomePage() {
             >
               <div className="space-y-6 text-center">
                 <div className="flex justify-center">
-                  <h3 className="text-3xl md:text-4xl font-bold text-white text-center">See it in action</h3>
+                  <h3 className="text-3xl md:text-4xl font-bold text-white text-center">Ready to get started?</h3>
                 </div>
-                <p className="text-xl md:text-2xl text-white/70 max-w-3xl mx-auto leading-relaxed text-center">
-                  Contact our team to explore how Krim AI can transform your regulated operations.
+                <p className="text-lg md:text-xl text-white/70 max-w-3xl mx-auto leading-relaxed text-center">
+                  Let's explore how governed AI can transform your operations.
                 </p>
               </div>
               
@@ -1636,7 +1636,7 @@ export default function HomePage() {
                     className="group relative px-10 py-5 rounded-2xl bg-gradient-to-r from-emerald-500 via-krim-mint to-cyan-500 text-black font-bold text-lg overflow-hidden transition-all duration-300"
                   >
                     <div className="absolute inset-0 bg-gradient-to-r from-emerald-400 via-cyan-400 to-teal-400 opacity-0 group-hover:opacity-30 transition-opacity duration-300" />
-                    <span className="relative z-10">Book demo</span>
+                    <span className="relative z-10">Book a Demo</span>
                   </motion.button>
                 </Link>
                 
@@ -1651,7 +1651,7 @@ export default function HomePage() {
                     className="group relative px-10 py-5 rounded-2xl backdrop-blur-xl bg-white/[0.02] border-2 border-emerald-400/50 text-emerald-400 font-bold text-lg overflow-hidden transition-all duration-300 hover:bg-emerald-400/10 hover:border-emerald-400/70"
                   >
                     <div className="absolute inset-0 bg-gradient-to-r from-emerald-400/10 to-cyan-400/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                    <span className="relative z-10">Explore platform</span>
+                    <span className="relative z-10">Explore Platform</span>
                   </motion.button>
                 </Link>
               </div>

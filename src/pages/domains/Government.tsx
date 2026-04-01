@@ -143,10 +143,10 @@ export default function Government() {
               <Reveal direction="up" className="mb-20">
                 <div className="text-center">
                   <h2 className="text-4xl md:text-5xl lg:text-6xl font-light mb-8 text-white leading-tight">
-                    Government agencies face <span className="bg-gradient-to-r from-krim-mint to-krim-cyan bg-clip-text text-transparent font-semibold">unprecedented operational challenges</span>
+                    Government agencies trapped by <span className="bg-gradient-to-r from-krim-mint to-krim-cyan bg-clip-text text-transparent font-semibold">legacy operations</span>
                   </h2>
                   <p className="text-lg md:text-xl text-white/70 leading-relaxed max-w-3xl mx-auto font-light">
-                    Legacy systems, fragmented data, manual workflows, and compliance complexity create barriers to modern, citizen-centric governance
+                    Siloed systems, manual work, and compliance complexity block modern citizen-centric governance.
                   </p>
                 </div>
               </Reveal>
@@ -155,8 +155,8 @@ export default function Government() {
               <StaggerGrid staggerDelay={100} className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch">
                 {[
                   {
-                    title: 'Legacy Systems',
-                    description: 'Siloed mainframes block modern AI integration.',
+                    title: 'Siloed Mainframes',
+                    description: 'Legacy systems block modern AI integration.',
                     icon: Cpu,
                     color: 'from-emerald-500/[0.06] to-emerald-600/[0.03]',
                     borderColor: 'border-emerald-400/15 group-hover:border-emerald-400/35',
@@ -164,7 +164,7 @@ export default function Government() {
                   },
                   {
                     title: 'Manual Processing',
-                    description: 'Benefits and permits processed slowly, frustrating citizens.',
+                    description: 'Benefits and permits take weeks. Citizens wait and complain.',
                     icon: FileText,
                     color: 'from-cyan-500/[0.06] to-cyan-600/[0.03]',
                     borderColor: 'border-cyan-400/15 group-hover:border-cyan-400/35',
@@ -172,31 +172,31 @@ export default function Government() {
                   },
                   {
                     title: 'Agency Silos',
-                    description: 'Disconnected agencies duplicate work and lack unified citizen view.',
+                    description: 'Departments duplicate work. No unified citizen view.',
                     icon: Building,
                     color: 'from-teal-500/[0.06] to-teal-600/[0.03]',
                     borderColor: 'border-teal-400/15 group-hover:border-teal-400/35',
                     iconColor: 'text-teal-400'
                   },
                   {
-                    title: 'Slow Processing',
-                    description: 'Multi-week delays erode citizen trust and agency compliance.',
+                    title: 'Multi-Week Delays',
+                    description: 'Backlogs erode citizen trust and agency compliance.',
                     icon: Users,
                     color: 'from-blue-500/[0.06] to-blue-600/[0.03]',
                     borderColor: 'border-blue-400/15 group-hover:border-blue-400/35',
                     iconColor: 'text-blue-400'
                   },
                   {
-                    title: 'Compliance Risk',
-                    description: 'Manual tracking makes FedRAMP and FISMA audits difficult.',
+                    title: 'Audit Gaps',
+                    description: 'Manual tracking makes FedRAMP and FISMA audits risky.',
                     icon: ClipboardText,
                     color: 'from-purple-500/[0.06] to-purple-600/[0.03]',
                     borderColor: 'border-purple-400/15 group-hover:border-purple-400/35',
                     iconColor: 'text-purple-400'
                   },
                   {
-                    title: 'Data Exposure',
-                    description: 'Citizen data on commercial clouds without government control.',
+                    title: 'Uncontrolled Data',
+                    description: 'Citizen data on commercial clouds beyond government control.',
                     icon: Globe,
                     color: 'from-red-500/[0.06] to-red-600/[0.03]',
                     borderColor: 'border-red-400/15 group-hover:border-red-400/35',
@@ -247,10 +247,10 @@ export default function Government() {
               <Reveal direction="up" className="mb-20">
                 <div className="text-center max-w-3xl mx-auto">
                   <h2 className="text-4xl md:text-5xl lg:text-6xl font-light mb-8 text-white leading-tight">
-                    <span className="bg-gradient-to-r from-krim-mint to-krim-cyan bg-clip-text text-transparent font-semibold">KrimOS</span> transforms government operations
+                    <span className="bg-gradient-to-r from-krim-mint to-krim-cyan bg-clip-text text-transparent font-semibold">KrimOS</span> automates government at scale
                   </h2>
                   <p className="text-lg md:text-xl text-white/70 leading-relaxed font-light">
-                    Our five-product stack delivers autonomous governance infrastructure with complete compliance assurance, government-grade security, and transparent auditability
+                    Five products. One platform. Compliance, security, and full auditability built in.
                   </p>
                 </div>
               </Reveal>
@@ -261,35 +261,35 @@ export default function Government() {
                   {
                     name: 'Kendra',
                     title: 'Governed Runtime',
-                    description: 'Policy enforcement engine that audits every decision and validates actions before execution.',
+                    description: 'Enforces policy. Audits every decision. Validates before execution.',
                     icon: Cpu,
                     color: 'from-emerald-400 to-teal-400'
                   },
                   {
                     name: 'Kula',
                     title: 'Policy Interface',
-                    description: 'Define agency regulations and compliance rules in plain English without code.',
+                    description: 'Define regulations and rules in plain English without code.',
                     icon: FileText,
                     color: 'from-cyan-400 to-blue-400'
                   },
                   {
                     name: 'Karta',
                     title: 'Government AI',
-                    description: 'AI agents handle benefits processing, permits, and citizen requests with full auditability.',
+                    description: 'AI agents handle benefits, permits, and citizen requests. Fully auditable.',
                     icon: Users,
                     color: 'from-blue-400 to-purple-400'
                   },
                   {
                     name: 'Kupa',
-                    title: 'Command Centers',
-                    description: 'Real-time dashboards for performance, citizen satisfaction, and compliance monitoring.',
+                    title: 'Command Center',
+                    description: 'Real-time dashboards for performance, satisfaction, and compliance.',
                     icon: Eye,
                     color: 'from-purple-400 to-pink-400'
                   },
                   {
                     name: 'Kriya',
                     title: 'Automation Blocks',
-                    description: 'Low-code workflows for secure, auditable automation without vendor lock-in.',
+                    description: 'Low-code workflows. Secure. Auditable. No vendor lock-in.',
                     icon: Network,
                     color: 'from-pink-400 to-red-400'
                   }
@@ -337,19 +337,19 @@ export default function Government() {
                       <ul className="space-y-3 text-sm text-white/70">
                         <li className="flex items-start gap-3">
                           <span className="text-red-400 text-lg leading-none mt-0.5">→</span>
-                          <span>Manual processing creates multi-week backlogs</span>
+                          <span>Multi-week processing backlogs</span>
                         </li>
                         <li className="flex items-start gap-3">
                           <span className="text-red-400 text-lg leading-none mt-0.5">→</span>
-                          <span>Agencies operate in silos with no unified view</span>
+                          <span>Siloed agencies, no unified view</span>
                         </li>
                         <li className="flex items-start gap-3">
                           <span className="text-red-400 text-lg leading-none mt-0.5">→</span>
-                          <span>Limited audit trails and compliance documentation</span>
+                          <span>Weak audit trails and compliance gaps</span>
                         </li>
                         <li className="flex items-start gap-3">
                           <span className="text-red-400 text-lg leading-none mt-0.5">→</span>
-                          <span>Citizens frustrated by delays and lack of transparency</span>
+                          <span>Citizens blame agencies for delays</span>
                         </li>
                       </ul>
                     </div>
@@ -359,19 +359,19 @@ export default function Government() {
                       <ul className="space-y-3 text-sm text-white/70">
                         <li className="flex items-start gap-3">
                           <span className="text-krim-mint text-lg leading-none mt-0.5">→</span>
-                          <span>Citizens get same-day approvals with zero manual intervention</span>
+                          <span>Same-day approvals. Zero manual work.</span>
                         </li>
                         <li className="flex items-start gap-3">
                           <span className="text-krim-mint text-lg leading-none mt-0.5">→</span>
-                          <span>Unified citizen view across all agencies and programs</span>
+                          <span>Single citizen view across all agencies</span>
                         </li>
                         <li className="flex items-start gap-3">
                           <span className="text-krim-mint text-lg leading-none mt-0.5">→</span>
-                          <span>Complete audit trail proving FedRAMP, FISMA compliance</span>
+                          <span>Complete audit proves FedRAMP and FISMA compliance</span>
                         </li>
                         <li className="flex items-start gap-3">
                           <span className="text-krim-mint text-lg leading-none mt-0.5">→</span>
-                          <span>Transparent, explainable AI decisions citizens understand</span>
+                          <span>Transparent AI decisions citizens trust</span>
                         </li>
                       </ul>
                     </div>
@@ -390,7 +390,7 @@ export default function Government() {
                     KrimOS powers critical <span className="bg-gradient-to-r from-krim-mint to-krim-cyan bg-clip-text text-transparent font-semibold">government operations</span>
                   </h2>
                   <p className="text-lg md:text-xl text-white/70 leading-relaxed max-w-3xl mx-auto font-light">
-                    From citizen services to regulatory enforcement, our platform automates the workflows that matter most
+                    Citizen services to regulatory enforcement. The workflows that matter most.
                   </p>
                 </div>
               </Reveal>
@@ -400,39 +400,39 @@ export default function Government() {
                 {[
                   {
                     title: 'Citizen Services',
-                    description: 'Benefits, passports, license renewals processed same-day with transparent tracking.',
+                    description: 'Benefits, passports, license renewals approved same-day.',
                     icon: IdentificationCard,
-                    metrics: '80% faster approvals'
+                    metrics: '80% faster'
                   },
                   {
                     title: 'Regulatory Enforcement',
-                    description: 'Environmental, safety, and tax compliance monitoring with complete audit trails.',
+                    description: 'Environmental, safety, and tax compliance with audit trails.',
                     icon: Scales,
-                    metrics: '100% documented'
+                    metrics: 'Full coverage'
                   },
                   {
                     title: 'Benefits Administration',
-                    description: 'Unified eligibility, enrollment, and compliance across SNAP, Medicaid, housing.',
+                    description: 'Unified eligibility and enrollment across SNAP, Medicaid, housing.',
                     icon: CreditCard,
                     metrics: '50M+ cases/year'
                   },
                   {
                     title: 'Procurement',
-                    description: 'Vendor evaluation, contract monitoring, and payments with transparent oversight.',
+                    description: 'Vendor evaluation, contracts, and payments with oversight.',
                     icon: Briefcase,
-                    metrics: '$B+ in contracts'
+                    metrics: 'Fully audited'
                   },
                   {
-                    title: 'Inter-Agency Coordination',
-                    description: 'Unified citizen identity across all government levels with audit logging.',
+                    title: 'Unified Citizen Identity',
+                    description: 'Single view across all agencies and program levels.',
                     icon: Handshake,
-                    metrics: 'All agencies'
+                    metrics: 'Cross-agency'
                   },
                   {
                     title: 'Compliance Monitoring',
-                    description: 'Real-time tracking of FedRAMP, FISMA, NIST 800-53 with automatic audit evidence.',
+                    description: 'Real-time FedRAMP, FISMA, NIST 800-53 tracking.',
                     icon: CheckCircle,
-                    metrics: 'Zero gaps'
+                    metrics: 'Continuous'
                   }
                 ].map((useCase, index) => (
                   <Reveal key={index} direction="up" delay={index * 0.05}>
@@ -486,25 +486,25 @@ export default function Government() {
                       {
                         standard: 'FedRAMP',
                         subtitle: 'Moderate & High baseline',
-                        description: 'Federal cloud security framework with continuous monitoring.',
+                        description: 'Federal cloud security with continuous monitoring.',
                         icon: Certificate
                       },
                       {
                         standard: 'FISMA',
-                        subtitle: 'Federal Information Security Modernization',
-                        description: 'Federal security framework with built-in controls and documentation.',
+                        subtitle: 'Federal security framework',
+                        description: 'Built-in controls and documentation.',
                         icon: Shield
                       },
                       {
                         standard: 'NIST 800-53',
                         subtitle: 'Security controls catalog',
-                        description: 'Every KrimOS component maps to required security controls.',
+                        description: 'Every component maps to required controls.',
                         icon: Lock
                       },
                       {
                         standard: 'SOC 2 Type II',
-                        subtitle: 'Security, availability, processing integrity',
-                        description: 'Annual third-party audit of controls and security practices.',
+                        subtitle: 'Third-party verified',
+                        description: 'Annual audit of controls and security.',
                         icon: Eye
                       }
                     ].map((item, index) => (
@@ -539,32 +539,32 @@ export default function Government() {
                     {[
                       {
                         feature: 'On-Premise Deployment',
-                        description: 'Deploy in government data centers with full physical control.',
+                        description: 'Full control in government data centers.',
                         icon: Building
                       },
                       {
                         feature: 'Sovereign Cloud',
-                        description: 'GovCloud, FedRAMP-authorized, or government-operated infrastructure.',
+                        description: 'GovCloud or government-operated infrastructure.',
                         icon: Globe
                       },
                       {
                         feature: 'Air-Gapped Operations',
-                        description: 'Completely disconnected for highest-security agencies with secure updates.',
+                        description: 'Completely isolated for highest-security agencies.',
                         icon: Lock
                       },
                       {
-                        feature: 'Government-Grade Encryption',
-                        description: 'FIPS 140-2 encryption for all data in transit and at rest.',
+                        feature: 'FIPS 140-2 Encryption',
+                        description: 'Data encrypted in transit and at rest.',
                         icon: Shield
                       },
                       {
-                        feature: 'Complete Audit Logging',
-                        description: 'Immutable logs of every decision, action, and data access.',
+                        feature: 'Immutable Audit Logs',
+                        description: 'Every decision, action, and access recorded.',
                         icon: FileText
                       },
                       {
-                        feature: 'No Third-Party Dependencies',
-                        description: 'Fully controlled supply chain with no vendor or cloud provider reliance.',
+                        feature: 'Zero Vendor Lock-In',
+                        description: 'Fully controlled supply chain. No cloud dependency.',
                         icon: CheckCircle
                       }
                     ].map((item, index) => (
@@ -618,19 +618,19 @@ export default function Government() {
                   {
                     metric: '<100ms',
                     label: 'Decision Latency',
-                    sublabel: 'Real-time policy enforcement',
+                    sublabel: 'Real-time enforcement',
                     icon: Lightning
                   },
                   {
                     metric: '1B+',
-                    label: 'Citizen Records',
-                    sublabel: 'Proven scalability',
+                    label: 'Scalable Records',
+                    sublabel: 'Proven at scale',
                     icon: Users
                   },
                   {
                     metric: '24/7',
-                    label: 'Government Support',
-                    sublabel: 'Federal support team',
+                    label: 'Support',
+                    sublabel: 'Federal team',
                     icon: Cpu
                   }
                 ].map((stat, index) => (
@@ -661,18 +661,18 @@ export default function Government() {
                   {[
                     {
                       name: 'On-Premise',
-                      description: 'Full control in government data centers.',
-                      features: ['Physical control', 'Air-gapped ready', 'No internet required']
+                      description: 'Physical control in government data centers.',
+                      features: ['Air-gapped capable', 'No internet required', 'Full ownership']
                     },
                     {
                       name: 'GovCloud',
-                      description: 'FedRAMP-authorized AWS or Azure Government.',
-                      features: ['FedRAMP compliance', 'Scalable', 'Managed operations']
+                      description: 'FedRAMP-authorized managed cloud.',
+                      features: ['FedRAMP ready', 'Scalable', 'Managed']
                     },
                     {
                       name: 'Hybrid',
-                      description: 'On-premise plus cloud for flexible agency-specific deployments.',
-                      features: ['Agency choice', 'Disaster recovery', 'Geographic distribution']
+                      description: 'On-premise and cloud for agency flexibility.',
+                      features: ['Agency choice', 'Disaster recovery', 'Distributed']
                     }
                   ].map((option, index) => (
                     <Reveal key={index} direction="up" delay={0.5 + index * 0.1}>
