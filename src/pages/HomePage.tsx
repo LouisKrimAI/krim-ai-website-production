@@ -964,7 +964,7 @@ export default function HomePage() {
               </h2>
             </div>
             <p className="text-xl md:text-2xl text-white/70 max-w-4xl mx-auto leading-relaxed text-center">
-              Operational outcomes bank executives actually care about.
+              Operational outcomes executives actually care about.
             </p>
           </motion.div>
 

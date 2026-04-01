@@ -325,7 +325,7 @@ export default function SafeSuperintelligence() {
                   The <span className="bg-gradient-to-r from-krim-mint to-krim-cyan bg-clip-text text-transparent font-semibold">validation crisis</span> in production AI
                 </h2>
                 <p className="text-lg md:text-xl text-white/70 leading-relaxed max-w-3xl mx-auto">
-                  Foundation models exhibit cognitive defects that make them unsafe for banking operations
+                  Foundation models have cognitive defects unsuitable for regulated operations
                 </p>
               </div>
               
@@ -679,7 +679,7 @@ export default function SafeSuperintelligence() {
                   The impact of <span className="bg-gradient-to-r from-krim-mint to-krim-cyan bg-clip-text text-transparent font-semibold">Kendra runtime</span>
                 </h2>
                 <p className="text-lg md:text-xl text-white/70 leading-relaxed max-w-3xl mx-auto">
-                  Transform how AI operates in your banking infrastructure
+                  Transform how AI operates in your regulated infrastructure
                 </p>
               </div>
               
@@ -818,7 +818,7 @@ export default function SafeSuperintelligence() {
             <div className="container max-w-5xl mx-auto px-6">
               <div className="text-center mb-16">
                 <h2 className="text-3xl md:text-4xl lg:text-5xl font-light mb-6 leading-tight">
-                  <span className="text-white">What this means for<br /></span><span className="bg-gradient-to-r from-krim-mint to-krim-cyan bg-clip-text text-transparent font-semibold">banking institutions</span>
+                  <span className="text-white">What this means for<br /></span><span className="bg-gradient-to-r from-krim-mint to-krim-cyan bg-clip-text text-transparent font-semibold">regulated organizations</span>
                 </h2>
                 <p className="text-lg md:text-xl text-white/70 leading-relaxed max-w-3xl mx-auto">
                   A validation layer between AI and operations that catches failures before they happen
@@ -894,7 +894,7 @@ export default function SafeSuperintelligence() {
                   Ready for <span className="bg-gradient-to-r from-krim-mint to-krim-cyan bg-clip-text text-transparent font-semibold">validated AI</span> automation?
                 </h2>
                 <p className="text-lg md:text-xl text-white/70 mb-12 leading-relaxed max-w-3xl mx-auto">
-                  See how leading banking institutions deploy AI at scale<br />with <span className="bg-gradient-to-r from-krim-mint to-krim-cyan bg-clip-text text-transparent font-semibold">Kendra runtime</span> protection
+                  See how leading organizations deploy AI at scale<br />with <span className="bg-gradient-to-r from-krim-mint to-krim-cyan bg-clip-text text-transparent font-semibold">Kendra runtime</span> protection
                 </p>
                 
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
