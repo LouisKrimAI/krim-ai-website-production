@@ -184,11 +184,11 @@ export default function SafeSuperintelligence() {
                       <div className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br from-emerald-400/8 to-transparent" />
 
                       {/* Content */}
-                      <div className="relative z-10 flex flex-col flex-1">
-                        <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-emerald-500/20 to-emerald-600/10 border border-emerald-400/25 flex items-center justify-center mb-4 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg shadow-emerald-500/15">
+                      <div className="relative z-10 flex flex-col h-full">
+                        <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-emerald-500/20 to-emerald-600/10 border border-emerald-400/25 flex items-center justify-center mb-5 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg shadow-emerald-500/15">
                           <Brain className="w-6 h-6 text-emerald-400" />
                         </div>
-                        <h3 className="text-lg font-semibold text-white mb-4">Models lack context</h3>
+                        <h3 className="text-lg font-semibold text-white mb-3">Models lack context</h3>
                         <p className="text-sm text-white/70 leading-relaxed flex-1">
                           Foundation models don't understand your specific business rules,
                           regulatory requirements, or operational constraints.
@@ -218,11 +218,11 @@ export default function SafeSuperintelligence() {
                       <div className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br from-cyan-400/8 to-transparent" />
 
                       {/* Content */}
-                      <div className="relative z-10 flex flex-col flex-1">
-                        <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-cyan-500/20 to-cyan-600/10 border border-cyan-400/25 flex items-center justify-center mb-4 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg shadow-cyan-500/15">
+                      <div className="relative z-10 flex flex-col h-full">
+                        <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-cyan-500/20 to-cyan-600/10 border border-cyan-400/25 flex items-center justify-center mb-5 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg shadow-cyan-500/15">
                           <WarningCircle className="w-6 h-6 text-cyan-400" />
                         </div>
-                        <h3 className="text-lg font-semibold text-white mb-4">Failures are costly</h3>
+                        <h3 className="text-lg font-semibold text-white mb-3">Failures are costly</h3>
                         <p className="text-sm text-white/70 leading-relaxed flex-1">
                           A single AI error in regulated operations can trigger regulatory violations,
                           customer complaints, and significant financial losses.
@@ -252,11 +252,11 @@ export default function SafeSuperintelligence() {
                       <div className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br from-teal-400/8 to-transparent" />
 
                       {/* Content */}
-                      <div className="relative z-10 flex flex-col flex-1">
-                        <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-teal-500/20 to-teal-600/10 border border-teal-400/25 flex items-center justify-center mb-4 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg shadow-teal-500/15">
+                      <div className="relative z-10 flex flex-col h-full">
+                        <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-teal-500/20 to-teal-600/10 border border-teal-400/25 flex items-center justify-center mb-5 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg shadow-teal-500/15">
                           <Shield className="w-6 h-6 text-teal-400" />
                         </div>
-                        <h3 className="text-lg font-semibold text-white mb-4">Trust requires validation</h3>
+                        <h3 className="text-lg font-semibold text-white mb-3">Trust requires validation</h3>
                         <p className="text-sm text-white/70 leading-relaxed flex-1">
                           To deploy AI at scale, every action must be validated against policies
                           before execution, not discovered after damage is done.
@@ -439,8 +439,8 @@ export default function SafeSuperintelligence() {
                         <div className={`absolute inset-0 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br ${glowClass} to-transparent`} />
 
                         {/* Content */}
-                        <div className="relative z-10 flex flex-col flex-1">
-                          <div className={`w-12 h-12 rounded-lg bg-gradient-to-br ${iconBgClass} flex items-center justify-center mb-4 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg`}>
+                        <div className="relative z-10 flex flex-col h-full">
+                          <div className={`w-12 h-12 rounded-lg bg-gradient-to-br ${iconBgClass} flex items-center justify-center mb-5 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg`}>
                             <defect.icon className={`w-6 h-6 ${iconColorClass}`} />
                           </div>
                           <h3 className="text-base font-semibold text-white mb-3">{defect.title}</h3>
@@ -546,11 +546,11 @@ export default function SafeSuperintelligence() {
                       className={`group relative h-full p-6 rounded-xl bg-gradient-to-br ${colorClass} backdrop-blur-xl border transition-all duration-300 flex flex-col`}
                     >
                       <div className="absolute inset-0 rounded-xl bg-gradient-to-tr from-white/[0.04] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                      <div className="relative flex flex-col flex-1">
-                        <div className={`w-12 h-12 rounded-lg bg-gradient-to-br ${iconBgClass} border flex items-center justify-center mb-4`}>
+                      <div className="relative flex flex-col h-full">
+                        <div className={`w-12 h-12 rounded-lg bg-gradient-to-br ${iconBgClass} border flex items-center justify-center mb-5`}>
                           <solution.icon className={`w-6 h-6 ${iconColorClass}`} />
                         </div>
-                        <h3 className="text-lg font-semibold text-white mb-4">{solution.title}</h3>
+                        <h3 className="text-lg font-semibold text-white mb-3">{solution.title}</h3>
                         <p className="text-base text-white/80 leading-relaxed flex-1">{solution.desc}</p>
                       </div>
                     </motion.div>
@@ -588,12 +588,12 @@ export default function SafeSuperintelligence() {
                     className="group relative h-full p-6 rounded-xl bg-gradient-to-br from-green-500/[0.06] to-green-600/[0.03] backdrop-blur-xl border border-green-400/15 hover:border-green-400/35 transition-all duration-300 flex flex-col"
                   >
                     <div className="absolute inset-0 rounded-xl bg-gradient-to-tr from-white/[0.04] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                    <div className="relative flex flex-col flex-1">
-                      <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-green-500/20 to-green-600/10 border border-green-400/25 shadow-green-500/15 flex items-center justify-center mb-4">
+                    <div className="relative flex flex-col h-full">
+                      <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-green-500/20 to-green-600/10 border border-green-400/25 shadow-green-500/15 flex items-center justify-center mb-5">
                         <Shield className="w-6 h-6 text-green-400" />
                       </div>
                       <h3 className="font-semibold text-white mb-3"><span className="bg-gradient-to-r from-krim-mint to-krim-cyan bg-clip-text text-transparent font-bold">Safety</span> by construction</h3>
-                      <p className="text-sm text-white/70 mb-4 leading-relaxed">
+                      <p className="text-sm text-white/70 mb-3 leading-relaxed">
                         Build safety into the architecture, not bolt it on after
                       </p>
                       <ul className="space-y-3 text-sm text-white/70 flex-1">
@@ -610,12 +610,12 @@ export default function SafeSuperintelligence() {
                     className="group relative h-full p-6 rounded-xl bg-gradient-to-br from-cyan-500/[0.06] to-cyan-600/[0.03] backdrop-blur-xl border border-cyan-400/15 hover:border-cyan-400/35 transition-all duration-300 flex flex-col"
                   >
                     <div className="absolute inset-0 rounded-xl bg-gradient-to-tr from-white/[0.04] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                    <div className="relative flex flex-col flex-1">
-                      <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-cyan-500/20 to-cyan-600/10 border border-cyan-400/25 shadow-cyan-500/15 flex items-center justify-center mb-4">
+                    <div className="relative flex flex-col h-full">
+                      <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-cyan-500/20 to-cyan-600/10 border border-cyan-400/25 shadow-cyan-500/15 flex items-center justify-center mb-5">
                         <Compass className="w-6 h-6 text-cyan-400" />
                       </div>
                       <h3 className="font-semibold text-white mb-3">Runtime <span className="bg-gradient-to-r from-krim-mint to-krim-cyan bg-clip-text text-transparent font-bold">alignment</span></h3>
-                      <p className="text-sm text-white/70 mb-4 leading-relaxed">
+                      <p className="text-sm text-white/70 mb-3 leading-relaxed">
                         Continuous validation and correction during execution
                       </p>
                       <ul className="space-y-3 text-sm text-white/70 flex-1">
@@ -632,12 +632,12 @@ export default function SafeSuperintelligence() {
                     className="group relative h-full p-6 rounded-xl bg-gradient-to-br from-emerald-500/[0.06] to-emerald-600/[0.03] backdrop-blur-xl border border-emerald-400/15 hover:border-emerald-400/35 transition-all duration-300 flex flex-col"
                   >
                     <div className="absolute inset-0 rounded-xl bg-gradient-to-tr from-white/[0.04] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                    <div className="relative flex flex-col flex-1">
-                      <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-emerald-500/20 to-emerald-600/10 border border-emerald-400/25 shadow-emerald-500/15 flex items-center justify-center mb-4">
+                    <div className="relative flex flex-col h-full">
+                      <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-emerald-500/20 to-emerald-600/10 border border-emerald-400/25 shadow-emerald-500/15 flex items-center justify-center mb-5">
                         <Eye className="w-6 h-6 text-emerald-400" />
                       </div>
                       <h3 className="font-semibold text-white mb-3">Full-stack <span className="bg-gradient-to-r from-krim-mint to-krim-cyan bg-clip-text text-transparent font-bold">observability</span></h3>
-                      <p className="text-sm text-white/70 mb-4 leading-relaxed">
+                      <p className="text-sm text-white/70 mb-3 leading-relaxed">
                         Complete visibility from request to outcome
                       </p>
                       <ul className="space-y-3 text-sm text-white/70 flex-1">
@@ -692,11 +692,11 @@ export default function SafeSuperintelligence() {
                     className="group relative h-full p-6 rounded-xl bg-gradient-to-br from-green-500/[0.06] to-green-600/[0.03] backdrop-blur-xl border border-green-400/15 hover:border-green-400/35 transition-all duration-300 flex flex-col"
                   >
                     <div className="absolute inset-0 rounded-xl bg-gradient-to-tr from-white/[0.04] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                    <div className="relative flex flex-col flex-1">
-                      <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-green-500/20 to-green-600/10 border border-green-400/25 shadow-green-500/15 flex items-center justify-center mb-4">
+                    <div className="relative flex flex-col h-full">
+                      <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-green-500/20 to-green-600/10 border border-green-400/25 shadow-green-500/15 flex items-center justify-center mb-5">
                         <Lightning className="w-6 h-6 text-green-400" />
                       </div>
-                      <h3 className="text-lg font-semibold text-white mb-4">Instant validation</h3>
+                      <h3 className="text-lg font-semibold text-white mb-3">Instant validation</h3>
                       <p className="text-base text-white/80 leading-relaxed flex-1">
                         Sub-millisecond validation of every AI decision before it reaches your systems
                       </p>
@@ -709,11 +709,11 @@ export default function SafeSuperintelligence() {
                     className="group relative h-full p-6 rounded-xl bg-gradient-to-br from-cyan-500/[0.06] to-cyan-600/[0.03] backdrop-blur-xl border border-cyan-400/15 hover:border-cyan-400/35 transition-all duration-300 flex flex-col"
                   >
                     <div className="absolute inset-0 rounded-xl bg-gradient-to-tr from-white/[0.04] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                    <div className="relative flex flex-col flex-1">
-                      <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-cyan-500/20 to-cyan-600/10 border border-cyan-400/25 shadow-cyan-500/15 flex items-center justify-center mb-4">
+                    <div className="relative flex flex-col h-full">
+                      <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-cyan-500/20 to-cyan-600/10 border border-cyan-400/25 shadow-cyan-500/15 flex items-center justify-center mb-5">
                         <Database className="w-6 h-6 text-cyan-400" />
                       </div>
-                      <h3 className="text-lg font-semibold text-white mb-4">Complete audit trail</h3>
+                      <h3 className="text-lg font-semibold text-white mb-3">Complete audit trail</h3>
                       <p className="text-base text-white/80 leading-relaxed flex-1">
                         Every decision logged with full context for compliance and debugging
                       </p>
@@ -726,11 +726,11 @@ export default function SafeSuperintelligence() {
                     className="group relative h-full p-6 rounded-xl bg-gradient-to-br from-emerald-500/[0.06] to-emerald-600/[0.03] backdrop-blur-xl border border-emerald-400/15 hover:border-emerald-400/35 transition-all duration-300 flex flex-col"
                   >
                     <div className="absolute inset-0 rounded-xl bg-gradient-to-tr from-white/[0.04] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                    <div className="relative flex flex-col flex-1">
-                      <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-emerald-500/20 to-emerald-600/10 border border-emerald-400/25 shadow-emerald-500/15 flex items-center justify-center mb-4">
+                    <div className="relative flex flex-col h-full">
+                      <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-emerald-500/20 to-emerald-600/10 border border-emerald-400/25 shadow-emerald-500/15 flex items-center justify-center mb-5">
                         <GitBranch className="w-6 h-6 text-emerald-400" />
                       </div>
-                      <h3 className="text-lg font-semibold text-white mb-4">Version control</h3>
+                      <h3 className="text-lg font-semibold text-white mb-3">Version control</h3>
                       <p className="text-base text-white/80 leading-relaxed flex-1">
                         Roll back AI behaviors when issues are discovered, just like code deployments
                       </p>
@@ -743,11 +743,11 @@ export default function SafeSuperintelligence() {
                     className="group relative h-full p-6 rounded-xl bg-gradient-to-br from-teal-500/[0.06] to-teal-600/[0.03] backdrop-blur-xl border border-teal-400/15 hover:border-teal-400/35 transition-all duration-300 flex flex-col"
                   >
                     <div className="absolute inset-0 rounded-xl bg-gradient-to-tr from-white/[0.04] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                    <div className="relative flex flex-col flex-1">
-                      <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-teal-500/20 to-teal-600/10 border border-teal-400/25 shadow-teal-500/15 flex items-center justify-center mb-4">
+                    <div className="relative flex flex-col h-full">
+                      <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-teal-500/20 to-teal-600/10 border border-teal-400/25 shadow-teal-500/15 flex items-center justify-center mb-5">
                         <Stack className="w-6 h-6 text-teal-400" />
                       </div>
-                      <h3 className="text-lg font-semibold text-white mb-4">Model agnostic</h3>
+                      <h3 className="text-lg font-semibold text-white mb-3">Model agnostic</h3>
                       <p className="text-base text-white/80 leading-relaxed flex-1">
                         Works with any foundation model - GPT, Claude, Gemini, or open source
                       </p>
@@ -760,11 +760,11 @@ export default function SafeSuperintelligence() {
                     className="group relative h-full p-6 rounded-xl bg-gradient-to-br from-cyan-500/[0.06] to-cyan-600/[0.03] backdrop-blur-xl border border-cyan-400/15 hover:border-cyan-400/35 transition-all duration-300 flex flex-col"
                   >
                     <div className="absolute inset-0 rounded-xl bg-gradient-to-tr from-white/[0.04] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                    <div className="relative flex flex-col flex-1">
-                      <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-cyan-500/20 to-cyan-600/10 border border-cyan-400/25 shadow-cyan-500/15 flex items-center justify-center mb-4">
+                    <div className="relative flex flex-col h-full">
+                      <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-cyan-500/20 to-cyan-600/10 border border-cyan-400/25 shadow-cyan-500/15 flex items-center justify-center mb-5">
                         <Scales className="w-6 h-6 text-cyan-400" />
                       </div>
-                      <h3 className="text-lg font-semibold text-white mb-4">Policy as code</h3>
+                      <h3 className="text-lg font-semibold text-white mb-3">Policy as code</h3>
                       <p className="text-base text-white/80 leading-relaxed flex-1">
                         Define business rules once, enforce them everywhere AI operates
                       </p>
@@ -777,11 +777,11 @@ export default function SafeSuperintelligence() {
                     className="group relative h-full p-6 rounded-xl bg-gradient-to-br from-emerald-500/[0.06] to-emerald-600/[0.03] backdrop-blur-xl border border-emerald-400/15 hover:border-emerald-400/35 transition-all duration-300 flex flex-col"
                   >
                     <div className="absolute inset-0 rounded-xl bg-gradient-to-tr from-white/[0.04] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                    <div className="relative flex flex-col flex-1">
-                      <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-emerald-500/20 to-emerald-600/10 border border-emerald-400/25 shadow-emerald-500/15 flex items-center justify-center mb-4">
+                    <div className="relative flex flex-col h-full">
+                      <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-emerald-500/20 to-emerald-600/10 border border-emerald-400/25 shadow-emerald-500/15 flex items-center justify-center mb-5">
                         <Certificate className="w-6 h-6 text-emerald-400" />
                       </div>
-                      <h3 className="text-lg font-semibold text-white mb-4">Compliance ready</h3>
+                      <h3 className="text-lg font-semibold text-white mb-3">Compliance ready</h3>
                       <p className="text-base text-white/80 leading-relaxed flex-1">
                         Built-in support for FDCPA, FCRA, and other regulatory requirements
                       </p>

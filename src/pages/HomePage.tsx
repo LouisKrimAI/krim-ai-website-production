@@ -174,17 +174,17 @@ function FeatureCard({
         <div className={`absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br ${hoverGradients[accentColor]} to-transparent`} />
 
         {/* Content */}
-        <div className="relative z-10 flex flex-col flex-1 items-center text-center space-y-4">
+        <div className="relative z-10 flex flex-col items-center text-center h-full">
           {/* Icon with enhanced gradient background */}
-          <div className={`w-16 h-16 rounded-xl bg-gradient-to-br ${iconGradients[accentColor]} border border-white/10 flex items-center justify-center group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg ${glowColors[accentColor]}`}>
+          <div className={`w-16 h-16 rounded-xl bg-gradient-to-br ${iconGradients[accentColor]} border border-white/10 flex items-center justify-center group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg ${glowColors[accentColor]} mb-6`}>
             <div className={`${iconColors[accentColor]}`}>
               {icon}
             </div>
           </div>
           {/* Title with refined typography */}
-          <h3 className="text-2xl font-bold text-white leading-tight tracking-tight">{title}</h3>
+          <h3 className="text-2xl font-bold text-white leading-tight tracking-tight mb-4">{title}</h3>
           {/* Body with better readability */}
-          <p className="text-base text-white/70 leading-relaxed max-w-sm mx-auto">{body}</p>
+          <p className="text-base text-white/70 leading-relaxed max-w-sm mx-auto flex-1">{body}</p>
         </div>
         
         {/* Bottom accent line with animation */}
@@ -227,14 +227,12 @@ function WhyItMattersCard({
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 rounded-full bg-emerald-500/[0.15] blur-[80px] opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
 
         {/* Content */}
-        <div className="relative z-10 flex flex-col flex-1 items-center text-center space-y-8">
-          <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-emerald-500/25 to-emerald-600/15 border border-emerald-400/30 flex items-center justify-center group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300 shadow-lg shadow-emerald-500/20">
+        <div className="relative z-10 flex flex-col items-center text-center h-full">
+          <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-emerald-500/25 to-emerald-600/15 border border-emerald-400/30 flex items-center justify-center group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300 shadow-lg shadow-emerald-500/20 mb-6">
             {icon}
           </div>
-          <div>
-            <h3 className="text-3xl font-black text-white mb-4 tracking-tight">{title}</h3>
-            <p className="text-lg text-white/80 leading-relaxed max-w-xs mx-auto">{body}</p>
-          </div>
+          <h3 className="text-3xl font-black text-white tracking-tight mb-4">{title}</h3>
+          <p className="text-lg text-white/80 leading-relaxed max-w-xs mx-auto flex-1">{body}</p>
         </div>
         
         {/* Bottom accent line with pulse */}
@@ -612,8 +610,8 @@ export default function HomePage() {
       {/* Domains Section */}
       <section id="domains" className="py-16 md:py-24 relative overflow-hidden">
         <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
-          <motion.div {...fadeInUp} className="text-center mb-12">
-            <h2 className="text-2xl md:text-3xl lg:text-4xl font-semibold text-white tracking-tight">
+          <motion.div {...fadeInUp} className="mb-12">
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-semibold text-white tracking-tight text-center">
               Built for Highly-Regulated Domains
             </h2>
           </motion.div>
@@ -623,17 +621,17 @@ export default function HomePage() {
             initial="initial"
             whileInView="animate"
             viewport={{ once: true }}
-            className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto items-stretch"
+            className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto"
           >
             {/* Banking Card */}
-            <Link to="/banking" className="block h-full">
+            <Link to="/banking" className="block">
               <motion.div
                 {...fadeInUp}
-                className="group relative h-full w-full"
+                className="group relative h-full"
                 whileHover={{ y: -8, scale: 1.02 }}
                 transition={{ duration: 0.4, type: "spring", stiffness: 300, damping: 20 }}
               >
-                <div className="relative h-full p-8 rounded-2xl overflow-hidden cursor-pointer">
+                <div className="relative h-full p-8 rounded-2xl overflow-hidden cursor-pointer flex flex-col">
                   {/* Multi-layer background */}
                   <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/[0.08] to-emerald-600/[0.04] rounded-2xl" />
                   <div className="absolute inset-0 bg-gradient-to-tr from-white/[0.04] to-transparent rounded-2xl" />
@@ -642,13 +640,13 @@ export default function HomePage() {
                   <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br from-emerald-400/10 to-transparent" />
 
                   {/* Content */}
-                  <div className="relative z-10 space-y-4">
-                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-emerald-500/20 to-emerald-600/10 border border-emerald-400/30 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                  <div className="relative z-10 flex flex-col h-full">
+                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-emerald-500/20 to-emerald-600/10 border border-emerald-400/30 flex items-center justify-center group-hover:scale-110 transition-transform duration-300 mb-5">
                       <Handshake className="w-6 h-6 text-emerald-400" />
                     </div>
-                    <h3 className="text-2xl font-bold text-white">Banking & Financial Services</h3>
-                    <p className="text-white/70 leading-relaxed">Credit operations, loan servicing, compliance automation.</p>
-                    <div className="flex items-center gap-2 pt-2">
+                    <h3 className="text-xl font-bold text-white mb-3">Banking & Financial Services</h3>
+                    <p className="text-white/70 leading-relaxed flex-1">Credit operations, loan servicing, compliance automation.</p>
+                    <div className="flex items-center gap-2 mt-6">
                       <span className="text-emerald-400 font-semibold">Explore Banking</span>
                       <span className="text-emerald-400">→</span>
                     </div>
@@ -661,14 +659,14 @@ export default function HomePage() {
             </Link>
 
             {/* Government Card */}
-            <Link to="/government" className="block h-full">
+            <Link to="/government" className="block">
               <motion.div
                 {...fadeInUp}
-                className="group relative h-full w-full"
+                className="group relative h-full"
                 whileHover={{ y: -8, scale: 1.02 }}
                 transition={{ duration: 0.4, type: "spring", stiffness: 300, damping: 20 }}
               >
-                <div className="relative h-full p-8 rounded-2xl overflow-hidden cursor-pointer">
+                <div className="relative h-full p-8 rounded-2xl overflow-hidden cursor-pointer flex flex-col">
                   {/* Multi-layer background */}
                   <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/[0.08] to-cyan-600/[0.04] rounded-2xl" />
                   <div className="absolute inset-0 bg-gradient-to-tr from-white/[0.04] to-transparent rounded-2xl" />
@@ -677,13 +675,13 @@ export default function HomePage() {
                   <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br from-cyan-400/10 to-transparent" />
 
                   {/* Content */}
-                  <div className="relative z-10 space-y-4">
-                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-cyan-500/20 to-cyan-600/10 border border-cyan-400/30 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                  <div className="relative z-10 flex flex-col h-full">
+                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-cyan-500/20 to-cyan-600/10 border border-cyan-400/30 flex items-center justify-center group-hover:scale-110 transition-transform duration-300 mb-5">
                       <Buildings className="w-6 h-6 text-cyan-400" />
                     </div>
-                    <h3 className="text-2xl font-bold text-white">Government & Public Sector</h3>
-                    <p className="text-white/70 leading-relaxed">Citizen services, regulatory enforcement, sovereign infrastructure.</p>
-                    <div className="flex items-center gap-2 pt-2">
+                    <h3 className="text-xl font-bold text-white mb-3">Government & Public Sector</h3>
+                    <p className="text-white/70 leading-relaxed flex-1">Citizen services, regulatory enforcement, sovereign infrastructure.</p>
+                    <div className="flex items-center gap-2 mt-6">
                       <span className="text-cyan-400 font-semibold">Explore Government</span>
                       <span className="text-cyan-400">→</span>
                     </div>
@@ -742,14 +740,14 @@ export default function HomePage() {
               <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br from-emerald-400/10 to-transparent" />
 
               {/* Content */}
-              <div className="relative z-10 flex flex-col flex-1">
-              <div className="flex items-center gap-4 mb-4">
+              <div className="relative z-10 flex flex-col h-full">
+              <div className="flex items-center gap-4 mb-6">
                 <div className="w-12 h-12 rounded-xl bg-emerald-500/20 border border-emerald-400/30 flex items-center justify-center">
                   <ShieldCheck className="w-6 h-6 text-emerald-400" />
                 </div>
                 <h4 className="text-xl font-bold text-emerald-300">Predictable at Scale</h4>
               </div>
-              <ul className="space-y-2 text-white/80">
+              <ul className="space-y-2 text-white/80 flex-1">
                 <li>• Policies enforced exactly</li>
                 <li>• Pre-execution validation catches AI errors</li>
                 <li>• Controlled automation depth</li>
@@ -774,14 +772,14 @@ export default function HomePage() {
               <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br from-blue-400/10 to-transparent" />
 
               {/* Content */}
-              <div className="relative z-10 flex flex-col flex-1">
-              <div className="flex items-center gap-4 mb-4">
+              <div className="relative z-10 flex flex-col h-full">
+              <div className="flex items-center gap-4 mb-6">
                 <div className="w-12 h-12 rounded-xl bg-blue-500/20 border border-blue-400/30 flex items-center justify-center">
                   <FileText className="w-6 h-6 text-blue-400" />
                 </div>
                 <h4 className="text-xl font-bold text-blue-300">Regulatory Confidence</h4>
               </div>
-              <ul className="space-y-2 text-white/80">
+              <ul className="space-y-2 text-white/80 flex-1">
                 <li>• Complete explainability</li>
                 <li>• Full traceability</li>
                 <li>• Real-time dashboards</li>
@@ -806,14 +804,14 @@ export default function HomePage() {
               <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br from-teal-400/8 to-transparent" />
 
               {/* Content */}
-              <div className="relative z-10 flex flex-col flex-1">
-              <div className="flex items-center gap-4 mb-4">
+              <div className="relative z-10 flex flex-col h-full">
+              <div className="flex items-center gap-4 mb-6">
                 <div className="w-12 h-12 rounded-xl bg-violet-500/20 border border-violet-400/30 flex items-center justify-center">
                   <Target className="w-6 h-6 text-[#00FF88]" />
                 </div>
                 <h4 className="text-xl font-bold text-violet-300">Operational Control</h4>
               </div>
-              <ul className="space-y-2 text-white/80">
+              <ul className="space-y-2 text-white/80 flex-1">
                 <li>• Runtime policy updates</li>
                 <li>• Granular overrides</li>
                 <li>• Constraint-based optimization</li>
@@ -873,14 +871,12 @@ export default function HomePage() {
                 <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br from-emerald-400/8 to-transparent" />
                 
                 {/* Content */}
-                <div className="relative z-10 flex flex-col flex-1">
-              <div className="flex flex-col items-center text-center space-y-6 flex-1">
-                <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-emerald-500/20 to-emerald-600/10 border border-emerald-400/30 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                <div className="relative z-10 flex flex-col items-center text-center h-full">
+                <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-emerald-500/20 to-emerald-600/10 border border-emerald-400/30 flex items-center justify-center group-hover:scale-110 transition-transform duration-300 mb-6">
                   <Cube className="w-8 h-8 text-emerald-400" />
                 </div>
-                <h3 className="text-2xl font-bold text-white tracking-tight">Fragmented Tools</h3>
-                <p className="text-base text-white/70 leading-relaxed">Agents jump between 10+ systems; data sits in silos.</p>
-              </div>
+                <h3 className="text-2xl font-bold text-white tracking-tight mb-4">Fragmented Tools</h3>
+                <p className="text-base text-white/70 leading-relaxed flex-1">Agents jump between 10+ systems; data sits in silos.</p>
               </div>
               
               {/* Bottom accent line with animation */}
@@ -903,14 +899,12 @@ export default function HomePage() {
                 <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br from-orange-400/10 to-transparent" />
 
                 {/* Content */}
-                <div className="relative z-10 flex flex-col flex-1">
-              <div className="flex flex-col items-center text-center space-y-6 flex-1">
-                <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-[#00D4FF]/20 to-[#00D4FF]/10 border border-[#00D4FF]/30 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                <div className="relative z-10 flex flex-col items-center text-center h-full">
+                <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-[#00D4FF]/20 to-[#00D4FF]/10 border border-[#00D4FF]/30 flex items-center justify-center group-hover:scale-110 transition-transform duration-300 mb-6">
                   <Users className="w-8 h-8 text-[#00D4FF]" />
                 </div>
-                <h3 className="text-2xl font-bold text-white tracking-tight">Human Middleware</h3>
-                <p className="text-base text-white/70 leading-relaxed">People patch broken workflows and carry institutional memory.</p>
-              </div>
+                <h3 className="text-2xl font-bold text-white tracking-tight mb-4">Human Middleware</h3>
+                <p className="text-base text-white/70 leading-relaxed flex-1">People patch broken workflows and carry institutional memory.</p>
               </div>
               
               {/* Bottom accent line with animation */}
@@ -933,14 +927,12 @@ export default function HomePage() {
                 <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br from-[#00FF88]/8 to-transparent" />
 
                 {/* Content */}
-                <div className="relative z-10 flex flex-col flex-1">
-              <div className="flex flex-col items-center text-center space-y-6 flex-1">
-                <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-[#00FF88]/20 to-[#00FF88]/10 border border-[#00FF88]/25 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                <div className="relative z-10 flex flex-col items-center text-center h-full">
+                <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-[#00FF88]/20 to-[#00FF88]/10 border border-[#00FF88]/25 flex items-center justify-center group-hover:scale-110 transition-transform duration-300 mb-6">
                   <ShieldCheck className="w-8 h-8 text-[#00FF88]" />
                 </div>
-                <h3 className="text-2xl font-bold text-white tracking-tight">Post-Fact Compliance</h3>
-                <p className="text-base text-white/70 leading-relaxed">Most activity is checked after the fact – if at all.</p>
-              </div>
+                <h3 className="text-2xl font-bold text-white tracking-tight mb-4">Post-Fact Compliance</h3>
+                <p className="text-base text-white/70 leading-relaxed flex-1">Most activity is checked after the fact – if at all.</p>
               </div>
               
               {/* Bottom accent line with animation */}

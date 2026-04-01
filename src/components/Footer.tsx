@@ -13,7 +13,7 @@ export default function Footer(){
         {/* Main Footer Content */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-6 mb-12">
           {/* Company Info */}
-          <div className="lg:col-span-3">
+          <div className="lg:col-span-2">
             <div className="mb-4">
               <KrimAnimatedLogo size="lg" />
             </div>

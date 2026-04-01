@@ -222,8 +222,8 @@ export default function Government() {
                       <div className={`absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br from-${problem.iconColor}/8 to-transparent`} />
 
                       {/* Content */}
-                      <div className="relative z-10 flex flex-col flex-1">
-                        <div className={`w-10 h-10 rounded-lg bg-gradient-to-br from-slate-800 to-slate-900 border border-slate-700 flex items-center justify-center mb-4 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 ${problem.iconColor}`}>
+                      <div className="relative z-10 flex flex-col h-full">
+                        <div className={`w-10 h-10 rounded-lg bg-gradient-to-br from-slate-800 to-slate-900 border border-slate-700 flex items-center justify-center mb-5 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 ${problem.iconColor}`}>
                           <problem.icon className="w-5 h-5" />
                         </div>
                         <h3 className="text-lg font-semibold text-white mb-3">{problem.title}</h3>
@@ -301,22 +301,20 @@ export default function Government() {
                       scale={1.05}
                     >
                       <GlassContainer glassLevel="medium" className="h-full p-6 rounded-xl flex flex-col">
-                        <div className="space-y-4 h-full flex flex-col flex-1">
-                          <div>
-                            <div className={`w-10 h-10 rounded-lg bg-gradient-to-br ${product.color} opacity-20 flex items-center justify-center mb-3`}>
-                              <product.icon className={`w-5 h-5 bg-gradient-to-r ${product.color} bg-clip-text text-transparent`} />
-                            </div>
-                            <div className="space-y-2">
-                              <p className={`text-xs font-mono font-bold bg-gradient-to-r ${product.color} bg-clip-text text-transparent uppercase tracking-widest`}>
-                                {product.name}
-                              </p>
-                              <h3 className="text-lg font-semibold text-white">{product.title}</h3>
-                            </div>
+                        <div className="flex flex-col h-full">
+                          <div className={`w-10 h-10 rounded-lg bg-gradient-to-br ${product.color} opacity-20 flex items-center justify-center mb-5`}>
+                            <product.icon className={`w-5 h-5 bg-gradient-to-r ${product.color} bg-clip-text text-transparent`} />
                           </div>
-                          <p className="text-sm text-white/70 leading-relaxed flex-grow">
+                          <div className="mb-4">
+                            <p className={`text-xs font-mono font-bold bg-gradient-to-r ${product.color} bg-clip-text text-transparent uppercase tracking-widest`}>
+                              {product.name}
+                            </p>
+                            <h3 className="text-lg font-semibold text-white mt-2">{product.title}</h3>
+                          </div>
+                          <p className="text-sm text-white/70 leading-relaxed flex-1">
                             {product.description}
                           </p>
-                          <div className="flex items-center gap-2 text-xs text-white/50 pt-4 border-t border-white/10">
+                          <div className="flex items-center gap-2 text-xs text-white/50 mt-6 pt-4 border-t border-white/10">
                             <CheckCircle className="w-3 h-3 text-krim-mint" />
                             <span>Government-grade</span>
                           </div>
@@ -440,17 +438,17 @@ export default function Government() {
                   <Reveal key={index} direction="up" delay={index * 0.05}>
                     <HoverLiftCard className="h-full">
                       <GlassContainer glassLevel="medium" className="h-full p-6 rounded-xl flex flex-col">
-                        <div className="space-y-4 h-full flex flex-col flex-1">
-                          <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-slate-800 to-slate-900 border border-slate-700 flex items-center justify-center text-krim-mint">
+                        <div className="flex flex-col h-full">
+                          <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-slate-800 to-slate-900 border border-slate-700 flex items-center justify-center text-krim-mint mb-5">
                             <useCase.icon className="w-5 h-5" />
                           </div>
-                          <div className="flex-1">
-                            <h3 className="text-lg font-semibold text-white mb-2">{useCase.title}</h3>
-                            <p className="text-sm text-white/70 leading-relaxed">
+                          <div className="mb-4">
+                            <h3 className="text-lg font-semibold text-white mb-3">{useCase.title}</h3>
+                            <p className="text-sm text-white/70 leading-relaxed flex-1">
                               {useCase.description}
                             </p>
                           </div>
-                          <div className="pt-4 border-t border-white/10">
+                          <div className="mt-auto pt-4 border-t border-white/10">
                             <p className="text-xs font-mono text-krim-mint font-semibold tracking-wider">
                               {useCase.metrics}
                             </p>
@@ -638,16 +636,16 @@ export default function Government() {
                 ].map((stat, index) => (
                   <Reveal key={index} direction="up" delay={index * 0.1}>
                     <HoverLiftCard className="h-full">
-                      <GlassContainer glassLevel="medium" className="h-full p-8 rounded-xl text-center flex flex-col">
-                        <div className="space-y-4 flex flex-col flex-1 justify-center">
-                          <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-slate-800 to-slate-900 border border-slate-700 flex items-center justify-center mx-auto text-krim-mint">
+                      <GlassContainer glassLevel="medium" className="h-full p-8 rounded-xl text-center flex flex-col justify-center">
+                        <div className="flex flex-col h-full justify-center">
+                          <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-slate-800 to-slate-900 border border-slate-700 flex items-center justify-center mx-auto text-krim-mint mb-5">
                             <stat.icon className="w-6 h-6" />
                           </div>
                           <div>
-                            <p className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-krim-mint to-krim-cyan bg-clip-text text-transparent">
+                            <p className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-krim-mint to-krim-cyan bg-clip-text text-transparent mb-3">
                               {stat.metric}
                             </p>
-                            <p className="text-sm font-semibold text-white mt-2">{stat.label}</p>
+                            <p className="text-sm font-semibold text-white mb-2">{stat.label}</p>
                             <p className="text-xs text-white/60">{stat.sublabel}</p>
                           </div>
                         </div>
@@ -680,12 +678,12 @@ export default function Government() {
                     <Reveal key={index} direction="up" delay={0.5 + index * 0.1}>
                       <HoverLiftCard className="h-full">
                         <GlassContainer glassLevel="medium" className="h-full p-6 rounded-xl flex flex-col">
-                          <div className="space-y-4 h-full flex flex-col flex-1">
-                            <div>
-                              <h4 className="text-lg font-semibold text-white mb-2">{option.name}</h4>
+                          <div className="flex flex-col h-full">
+                            <div className="mb-6">
+                              <h4 className="text-lg font-semibold text-white mb-3">{option.name}</h4>
                               <p className="text-sm text-white/70">{option.description}</p>
                             </div>
-                            <ul className="space-y-2 pt-4 border-t border-white/10 flex-1">
+                            <ul className="space-y-2 mt-auto pt-4 border-t border-white/10">
                               {option.features.map((feature, i) => (
                                 <li key={i} className="flex items-center gap-2 text-xs text-white/60">
                                   <CheckCircle className="w-3 h-3 text-krim-mint" />
