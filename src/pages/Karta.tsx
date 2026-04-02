@@ -1,7 +1,7 @@
 /**
- * KARTA AI COWORKERS - Individual Specialist Showcase
+ * KARTA AUTONOMOUS WORKERS - Individual Specialist Showcase
  * Redesigned to highlight expertise-based AI specialists
- * Clean, focused structure showcasing individual AI coworkers
+ * Clean, focused structure showcasing individual Autonomous Workers
  */
 
 import React from 'react'
@@ -197,15 +197,15 @@ const contactCenterSpecialists = [
   {
     name: 'Financial Education Agent',
     expertise: 'Financial Literacy & Empowerment',
-    description: 'Provides financial literacy education, budgeting guidance, and empowerment programs to improve customer financial health.',
-    competencies: ['Financial education', 'Budgeting guidance', 'Financial empowerment'],
+    description: 'Provides financial literacy education and budgeting guidance to improve customer financial health.',
+    competencies: ['Financial education', 'Budgeting guidance', 'Financial wellness'],
     icon: Brain,
     category: 'contact' as const
   },
   {
     name: 'Healer Agent',
     expertise: 'Relationship Recovery',
-    description: 'Rebuilds relationships post-payment, provides financial wellness counseling, and transforms collections into customer advocacy.',
+    description: 'Rebuilds relationships post-payment and provides financial wellness counseling.',
     competencies: ['Relationship rebuilding', 'Financial wellness', 'Customer advocacy'],
     icon: Star,
     category: 'contact' as const
@@ -223,7 +223,7 @@ const contactCenterSpecialists = [
   {
     name: 'Collections (1-30)',
     expertise: 'Early Delinquency Specialist',
-    description: 'Early-stage collections expert handling 1-30 day past due accounts with empathy-driven payment arrangements.',
+    description: 'Manages 1-30 day past due accounts with focus on sustainable payment arrangements.',
     competencies: ['Early delinquency', 'Payment arrangements', 'Relationship preservation'],
     icon: Headset,
     category: 'contact' as const
@@ -257,7 +257,7 @@ const contactCenterSpecialists = [
   {
     name: 'Cross-Sell Agent',
     expertise: 'New Products',
-    description: 'Revenue expansion specialist identifying opportunities for new product offerings like credit cards, loans, and insurance.',
+    description: 'Identifies opportunities for additional product offerings and services.',
     competencies: ['Product opportunities', 'Revenue expansion', 'Cross-selling'],
     icon: TrendUp,
     category: 'contact' as const
@@ -286,7 +286,7 @@ const backOfficeSpecialists = [
   {
     name: 'Campaign Manager',
     expertise: 'Orchestration',
-    description: 'Orchestrates multi-channel campaign strategies, coordinates timing, and manages complex collections campaigns across all touchpoints.',
+    description: 'Orchestrates multi-channel campaigns and coordinates case management across all touchpoints.',
     competencies: ['Campaign orchestration', 'Multi-channel strategy', 'Timing optimization'],
     icon: Gear,
     category: 'backoffice' as const
@@ -312,7 +312,7 @@ const backOfficeSpecialists = [
   {
     name: 'Compliance Monitoring',
     expertise: 'Regulatory Oversight',
-    description: 'Real-time compliance guardian monitoring FDCPA, TCPA, and regulatory requirements with perfect audit trails and violation prevention.',
+    description: 'Real-time compliance monitoring with audit trails and violation prevention across all applicable regulations.',
     competencies: ['Real-time monitoring', 'Violation prevention', 'Regulatory compliance'],
     icon: Shield,
     category: 'backoffice' as const
@@ -338,7 +338,7 @@ const backOfficeSpecialists = [
   {
     name: 'Business Intelligence (BIA)',
     expertise: 'Analytics',
-    description: 'Advanced analytics engine generating performance insights, business intelligence, and strategic recommendations from collections data.',
+    description: 'Generates performance insights and strategic recommendations from case management data.',
     competencies: ['Advanced analytics', 'Performance insights', 'Strategic recommendations'],
     icon: ChartBar,
     category: 'backoffice' as const
@@ -421,7 +421,7 @@ export default function Karta() {
                 className="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-bold mb-8 text-center"
               >
                 <span className="bg-gradient-to-r from-krim-cyan to-krim-mint bg-clip-text text-transparent">
-                  Karta™ Coworkers for Bank Operations
+                  Karta™ Autonomous Workers
                 </span>
               </motion.h2>
             </div>
@@ -470,13 +470,13 @@ export default function Karta() {
         </div>
       </StarfieldSection>
 
-      {/* How Karta Co-workers Operate Section */}
+      {/* How Karta Autonomous Workers Operate Section */}
       <StarfieldSection glassLevel="light" className="py-20 lg:py-24 border-t border-slate-800">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <Reveal className="mb-16">
             <div className="w-full flex justify-center">
               <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6">
-                How <span className="bg-gradient-to-r from-krim-cyan to-krim-mint bg-clip-text text-transparent">Karta</span> Co-workers Operate
+                How <span className="bg-gradient-to-r from-krim-cyan to-krim-mint bg-clip-text text-transparent">Karta</span> Works
               </h2>
             </div>
             <div className="w-full flex justify-center">
@@ -657,7 +657,7 @@ export default function Karta() {
             <div className="w-full flex justify-center">
               <GlassContainer glassLevel="ultraLight" className="max-w-3xl mx-auto p-6 text-center">
                 <h3 className="text-lg font-bold text-white mb-3">
-                  <span className="text-krim-mint">Enterprise-Grade</span> AI Co-workers
+                  <span className="text-krim-mint">Enterprise-Grade</span> Autonomous Workers
                 </h3>
                 <p className="text-sm text-gray-300">
                   <strong className="text-white">Autonomous execution</strong> • <strong className="text-white">Built-in compliance</strong> • <strong className="text-white">Multi-modal expertise</strong>
@@ -679,7 +679,7 @@ export default function Karta() {
             </div>
             <div className="w-full flex justify-center">
               <p className="text-lg sm:text-xl text-gray-200 max-w-3xl text-center">
-                Purpose-built SSI Coworkers for every aspect of bank operations
+                Purpose-built Autonomous Workers for regulated operations
               </p>
             </div>
           </Reveal>
@@ -700,7 +700,7 @@ export default function Karta() {
                 </div>
                 
                 <p className="text-base text-gray-100 mb-5 leading-relaxed font-medium">
-                  Operations AI that handles workflows and business processes
+                  Back office Autonomous Workers handling workflows and business processes
                 </p>
                 
                 <ul className="space-y-2.5">
@@ -741,7 +741,7 @@ export default function Karta() {
                 </div>
                 
                 <p className="text-base text-gray-100 mb-5 leading-relaxed font-medium">
-                  Customer-facing AI that handles conversations across all channels
+                  Customer-facing Autonomous Workers handling conversations across all channels
                 </p>
                 
                 <ul className="space-y-2.5">
@@ -782,7 +782,7 @@ export default function Karta() {
                 </div>
                 
                 <p className="text-base text-gray-100 mb-5 leading-relaxed font-medium">
-                  Creative AI that builds, designs, and deploys custom coworkers
+                  AI builder for custom Autonomous Workers and workflows
                 </p>
                 
                 <ul className="space-y-2.5">
@@ -822,7 +822,7 @@ export default function Karta() {
             </div>
             <div className="w-full flex justify-center">
               <p className="text-lg sm:text-xl text-gray-200 max-w-3xl text-center">
-                Operations AI coworkers managing workflows and business processes
+                Operations Autonomous Workers managing workflows and business processes
               </p>
             </div>
           </Reveal>
@@ -888,7 +888,7 @@ export default function Karta() {
             </div>
             <div className="w-full flex justify-center">
               <p className="text-lg sm:text-xl text-gray-200 max-w-3xl text-center">
-                Customer-facing AI coworkers organized by expertise and responsibility
+                Customer-facing Autonomous Workers organized by expertise and responsibility
               </p>
             </div>
           </Reveal>
@@ -945,7 +945,7 @@ export default function Karta() {
             </div>
             <div className="w-full flex justify-center">
               <p className="text-lg sm:text-xl text-gray-200 max-w-3xl text-center">
-                Build, create, and deploy custom coworkers
+                Build, create, and deploy custom Autonomous Workers
               </p>
             </div>
           </Reveal>
@@ -966,7 +966,7 @@ export default function Karta() {
                   </div>
                   
                   <h4 className="text-xl font-bold text-white mb-3">Agent Builder</h4>
-                  <p className="text-sm text-gray-300 mb-4">Design custom AI coworkers with expertise and compliance guardrails</p>
+                  <p className="text-sm text-gray-300 mb-4">Design custom Autonomous Workers with expertise and compliance guardrails</p>
                   <ul className="space-y-2 text-xs text-gray-400">
                     <li>• Configure conversation patterns</li>
                     <li>• Set domain expertise</li>

@@ -1,6 +1,6 @@
 /**
- * KULA - AI ASSISTANT FOR BANK OPERATIONS
- * Natural language interface to Kendra for banking operations teams
+ * KULA - DIGITAL TWINS FOR REGULATED OPERATIONS
+ * Natural language interface to Kendra for operations teams
  */
 
 import React from 'react'
@@ -58,7 +58,7 @@ export default function KulaPage() {
               transition={{ duration: 0.6, delay: 0.6 }}
               className="text-lg md:text-xl lg:text-2xl text-white/70 max-w-4xl mx-auto mb-16 leading-relaxed"
             >
-              Query portfolios in plain English. Surface insights from millions of accounts instantly. Transform strategic intent into governed, executable workflows.
+              Query portfolios in plain English. Surface insights from millions of records. Transform intent into governed, executable workflows.
             </motion.p>
 
             <motion.div
@@ -105,7 +105,7 @@ export default function KulaPage() {
             >
               <div className="flex justify-center">
                 <p className="text-xl md:text-2xl text-white/80 leading-relaxed text-center">
-                  A perfect digital replica of your entire bank operation—every account, every rule, every outcome—that you can query<br />in plain English.
+                  A digital replica of your entire operation—every record, every rule, every outcome—queryable in plain English.
                 </p>
               </div>
               
@@ -147,7 +147,7 @@ export default function KulaPage() {
             className="text-center mb-16"
           >
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-8">
-              Command Your Bank Operations Through{' '}
+              Command Operations Through{' '}
               <span className="bg-gradient-to-r from-krim-cyan via-krim-mint to-krim-cyan bg-clip-text text-transparent">
                 Natural Language
               </span>
@@ -202,15 +202,15 @@ export default function KulaPage() {
               <div className="w-12 h-12 rounded-xl bg-krim-mint/20 flex items-center justify-center mb-6">
                 <Target className="w-6 h-6 text-krim-mint" />
               </div>
-              <h3 className="text-xl font-bold text-white mb-4">Deploy AI Workforce</h3>
+              <h3 className="text-xl font-bold text-white mb-4">Deploy Autonomous Workers</h3>
               <div className="flex-grow">
                 <p className="text-white/70 mb-4">
-                  "Deploy AI for routine payment inquiries but escalate hardship cases"
+                  "Deploy Autonomous Workers for routine inquiries but escalate hardship cases"
                   Configure Karta agents with precise guardrails and human oversight.
                 </p>
               </div>
               <p className="text-sm text-krim-mint mt-auto">
-                Governed AI deployment with complete transparency
+                Governed worker deployment with complete transparency
               </p>
             </div>
 
@@ -242,8 +242,8 @@ export default function KulaPage() {
           >
             <div className="flex flex-col items-center">
               <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-8 text-center">
-                <span className="block text-white">Real Impact for</span>
-                <span className="block bg-gradient-to-r from-krim-mint via-krim-cyan to-krim-mint bg-clip-text text-transparent font-black">Banking Operations Teams</span>
+                <span className="block text-white">Impact for</span>
+                <span className="block bg-gradient-to-r from-krim-mint via-krim-cyan to-krim-mint bg-clip-text text-transparent font-black">Operations Teams</span>
               </h2>
               <div className="flex flex-col items-center">
                 <p className="text-xl md:text-2xl text-white/80 font-medium text-center">
@@ -591,7 +591,7 @@ export default function KulaPage() {
             className="text-center mb-16"
           >
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6">
-              Built for Regulated Bank Operations
+              Built for Regulated Operations
             </h2>
             <p className="text-xl text-white/70 max-w-3xl mx-auto">
               Kula connects to Kendra runtime, not documents.<br />
@@ -606,8 +606,8 @@ export default function KulaPage() {
               </div>
               <h3 className="text-lg font-bold text-white mb-3">Grounded Data</h3>
               <p className="text-white/70 text-sm">
-                Connected to live Kendra accounts, interactions, and outcomes. 
-                Anchored to your real data - nothing executes without system confirmation.
+                Connected to live Kendra records, interactions, and outcomes.
+                Anchored to your actual data—nothing executes without system confirmation.
               </p>
             </div>
 
@@ -617,8 +617,8 @@ export default function KulaPage() {
               </div>
               <h3 className="text-lg font-bold text-white mb-3">Role-Based Access</h3>
               <p className="text-white/70 text-sm">
-                See only your portfolios, regions, and queues. 
-                All actions flow through established Kriya governance.
+                See only your portfolios, regions, and queues.
+                All actions flow through established governance.
               </p>
             </div>
 
@@ -628,8 +628,8 @@ export default function KulaPage() {
               </div>
               <h3 className="text-lg font-bold text-white mb-3">Full Audit Trail</h3>
               <p className="text-white/70 text-sm">
-                Every question, recommendation, and action is logged. 
-                Complete traceability for regulatory requirements.
+                Every question, recommendation, and action is logged.
+                Complete traceability for regulatory compliance.
               </p>
             </div>
           </div>

@@ -199,7 +199,7 @@ export default function Kupa() {
     },
     {
       title: 'Support Queue',
-      description: 'Task routing between AI agents and human specialists',
+      description: 'Task routing between autonomous workers and human specialists',
       icon: Users,
       accentColor: 'rgb(0, 230, 255)', // Brighter Electric Cyan
       accentClass: 'text-krim-cyan'
@@ -280,7 +280,7 @@ export default function Kupa() {
               transition={{ duration: 0.8, delay: 0.5 }}
               className="text-xl md:text-2xl lg:text-3xl text-white/60 max-w-4xl mx-auto font-light tracking-wide mb-10 leading-relaxed"
             >
-              Real-Time Control Interfaces for Operations
+              Real-Time Operational Control Interfaces
             </motion.p>
 
             {/* Description - What it DOES */}
@@ -291,7 +291,7 @@ export default function Kupa() {
               transition={{ duration: 0.6, delay: 0.6 }}
               className="text-lg md:text-xl lg:text-2xl text-white/70 max-w-4xl mx-auto mb-16 leading-relaxed"
             >
-              Monitor agent performance and portfolio health in real-time. Intervene with policy controls when needed. Scale oversight without adding headcount.
+              Monitor worker performance and portfolio health in real-time. Intervene with policy controls when needed. Scale oversight without adding headcount.
             </motion.p>
             
             {/* CTAs */}
@@ -353,10 +353,10 @@ export default function Kupa() {
           <Reveal direction="up" delay={0}>
             <div className="text-center mb-12">
               <h2 className="text-4xl lg:text-5xl xl:text-6xl font-light mb-6 text-center text-white">
-                <span className="bg-gradient-to-r from-krim-mint to-krim-cyan bg-clip-text text-transparent">Operational Possibilities</span> Unlocked
+                <span className="bg-gradient-to-r from-krim-mint to-krim-cyan bg-clip-text text-transparent">Operational Control</span> With Compliance
               </h2>
               <p className="text-lg sm:text-xl text-gray-300 leading-relaxed max-w-4xl mx-auto">
-                Safe, governed control enables new capabilities across your operations
+                Governed control that enables scaled operations
               </p>
             </div>
           </Reveal>
@@ -369,10 +369,10 @@ export default function Kupa() {
                   <div className="p-3 rounded-lg bg-gradient-to-br from-krim-cyan/10 to-krim-cyan/5 border border-krim-cyan/20">
                     <Eye className="w-6 h-6 text-krim-cyan" />
                   </div>
-                  <h3 className="text-xl font-bold text-white pt-1">Real-time Insights</h3>
+                  <h3 className="text-xl font-bold text-white pt-1">Real-Time Visibility</h3>
                 </div>
                 <p className="text-base text-gray-300 leading-relaxed flex-grow">
-                  Spot opportunities and issues instantly across all operational channels
+                  Spot issues instantly across all operational channels
                 </p>
               </GlassContainer>
             </HoverLiftCard>
@@ -383,10 +383,10 @@ export default function Kupa() {
                   <div className="p-3 rounded-lg bg-gradient-to-br from-krim-mint/10 to-krim-mint/5 border border-krim-mint/20">
                     <Lightning className="w-6 h-6 text-krim-mint" />
                   </div>
-                  <h3 className="text-xl font-bold text-white pt-1">Confident Actions</h3>
+                  <h3 className="text-xl font-bold text-white pt-1">Policy-Enforced Action</h3>
                 </div>
                 <p className="text-base text-gray-300 leading-relaxed flex-grow">
-                  Take immediate action with built-in policy protection and approval workflows
+                  Act with built-in policy protection and approval workflows
                 </p>
               </GlassContainer>
             </HoverLiftCard>
@@ -397,10 +397,10 @@ export default function Kupa() {
                   <div className="p-3 rounded-lg bg-gradient-to-br from-emerald-400/10 to-emerald-400/5 border border-emerald-400/20">
                     <Shield className="w-6 h-6 text-emerald-400" />
                   </div>
-                  <h3 className="text-xl font-bold text-white pt-1">Regulatory Confidence</h3>
+                  <h3 className="text-xl font-bold text-white pt-1">Compliance Ready</h3>
                 </div>
                 <p className="text-base text-gray-300 leading-relaxed flex-grow">
-                  Move faster with complete transparency and automatic compliance documentation
+                  Complete transparency and automatic compliance documentation
                 </p>
               </GlassContainer>
             </HoverLiftCard>
@@ -448,7 +448,7 @@ export default function Kupa() {
                     <div className="w-2 h-2 rounded-full bg-krim-mint mt-2 flex-shrink-0"></div>
                     <div className="flex-1">
                       <span className="font-mono text-sm font-bold text-krim-mint uppercase tracking-wider">Workers</span>
-                      <p className="text-gray-200 mt-1">Karta AI (automated task execution)</p>
+                      <p className="text-gray-200 mt-1">Karta Autonomous Workers (automated task execution)</p>
                     </div>
                   </div>
                 </div>

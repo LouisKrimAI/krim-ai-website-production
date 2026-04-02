@@ -536,7 +536,7 @@ function ComplianceSection() {
     {
       acronym: "CFPB",
       name: "Consumer Financial Protection Bureau",
-      desc: "Prevents unfair, deceptive, or abusive practices; mandates complaint resolution."
+      desc: "Prevents unfair, deceptive, or abusive practices."
     },
     {
       acronym: "FCRA",
@@ -752,9 +752,9 @@ function CTASection() {
       <div className="max-w-4xl mx-auto px-6 text-center">
         <Reveal>
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-8">
-            <span className="text-white">Ready to transform </span>
+            <span className="text-white">Consolidate your </span>
             <span className="bg-gradient-to-r from-krim-mint to-krim-cyan bg-clip-text text-transparent">
-              your banking operations?
+              banking operations
             </span>
           </h2>
 

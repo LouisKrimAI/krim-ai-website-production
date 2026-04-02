@@ -48,27 +48,27 @@ function PrimitiveList() {
   return (
     <GlassContainer glassLevel="light" className="relative w-full rounded-2xl p-8">
       <div className="space-y-6">
-        <h3 className="text-xl sm:text-2xl font-bold text-white mb-6">How Kriya Controls AI:</h3>
+        <h3 className="text-xl sm:text-2xl font-bold text-white mb-6">How Kriya Controls Execution:</h3>
         <div className="space-y-4">
           <div className="flex items-start gap-3">
             <div className="w-2 h-2 bg-krim-cyan rounded-full mt-2 flex-shrink-0" />
             <div>
               <div className="text-lg font-semibold text-white">Every action requires a primitive</div>
-              <div className="text-base text-gray-300">AI can only execute pre-defined, approved operations</div>
+              <div className="text-base text-gray-300">Only pre-defined, approved operations execute</div>
             </div>
           </div>
           <div className="flex items-start gap-3">
             <div className="w-2 h-2 bg-krim-cyan rounded-full mt-2 flex-shrink-0" />
             <div>
               <div className="text-lg font-semibold text-white">Policies enforced before execution</div>
-              <div className="text-base text-gray-300">FDCPA, TCPA, and your rules checked in real-time</div>
+              <div className="text-base text-gray-300">Your rules checked in real-time before each action</div>
             </div>
           </div>
           <div className="flex items-start gap-3">
             <div className="w-2 h-2 bg-krim-cyan rounded-full mt-2 flex-shrink-0" />
             <div>
               <div className="text-lg font-semibold text-white">Complete audit trail</div>
-              <div className="text-base text-gray-300">Every decision logged with regulatory traceability</div>
+              <div className="text-base text-gray-300">Every action logged for regulatory compliance</div>
             </div>
           </div>
         </div>
@@ -118,7 +118,7 @@ export default function Kriya() {
               transition={{ duration: 0.8, delay: 0.5 }}
               className="text-xl md:text-2xl lg:text-3xl text-white/60 max-w-4xl mx-auto font-light tracking-wide mb-10 leading-relaxed"
             >
-              Pre-Approved Building Blocks for Safe AI
+              Pre-Approved Operations for Controlled Automation
             </motion.p>
 
             {/* Description - What it DOES */}
@@ -128,7 +128,7 @@ export default function Kriya() {
               transition={{ duration: 0.6, delay: 0.6 }}
               className="text-lg md:text-xl lg:text-2xl text-white/70 max-w-4xl mx-auto mb-16 leading-relaxed"
             >
-              Every AI action maps to compliant, auditable primitives. Change policies once, update everywhere. Never worry about regulatory violations or unauthorized actions.
+              Every action maps to compliant, auditable primitives. Change policies once, update everywhere. No unauthorized actions.
             </motion.p>
 
             <motion.div
@@ -154,7 +154,7 @@ export default function Kriya() {
           <Reveal direction="up" once={true}>
             <div className="text-center mb-10">
               <h2 className="text-3xl lg:text-4xl xl:text-5xl font-light mb-6 text-white">
-                <span className="bg-gradient-to-r from-krim-cyan to-krim-mint bg-clip-text text-transparent font-bold">How Kriya Controls AI</span>
+                <span className="bg-gradient-to-r from-krim-cyan to-krim-mint bg-clip-text text-transparent font-bold">How Kriya Controls Execution</span>
               </h2>
             </div>
           </Reveal>
@@ -408,11 +408,11 @@ export default function Kriya() {
           <Reveal direction="up" once={true}>
             <div className="space-y-6">
               <h2 className="text-4xl lg:text-5xl xl:text-6xl font-light text-center text-white">
-                <span className="bg-gradient-to-r from-krim-cyan to-krim-mint bg-clip-text text-transparent">Your Policies Enable Safe Superintelligence</span>
+                <span className="bg-gradient-to-r from-krim-cyan to-krim-mint bg-clip-text text-transparent">Your Policies Enable Safe Automation</span>
               </h2>
               
               <p className="text-xl sm:text-2xl text-gray-200 leading-relaxed max-w-3xl mx-auto text-center font-medium">
-                See how your existing banking policies become the foundation for AI that stays within your rules.
+                Your policies become the foundation for automated execution that stays within your rules.
               </p>
               
               <Button 

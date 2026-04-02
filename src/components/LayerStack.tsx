@@ -18,7 +18,7 @@ const layers = [
   { id: 2, name: 'Systems & cloud', description: 'Infrastructure layer' },
   { id: 3, name: 'Foundation models', description: 'Large language models' },
   { id: 3.5, name: 'Intelligence runtime', description: 'Kendra', isKendra: true },
-  { id: 4, name: 'Applications & agents', description: 'AI co-workers' },
+  { id: 4, name: 'Applications & agents', description: 'Autonomous Workers' },
   { id: 5, name: 'Data & ecosystems', description: 'Business integration' }
 ]
 

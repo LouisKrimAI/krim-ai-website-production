@@ -126,7 +126,7 @@ export default function SafeSuperintelligence() {
                     </h1>
                     
                     <p className="text-lg md:text-xl text-white/80 leading-[1.7] max-w-xl">
-                      Kendra is the intelligence runtime between foundation models and AI co-workers,
+                      Kendra is the intelligence runtime between foundation models and Autonomous Workers,
                       so you can automate complex workflows in regulated industries at scale while staying in full control.
                     </p>
                   </div>
@@ -513,7 +513,7 @@ export default function SafeSuperintelligence() {
                   },
                   {
                     title: 'Multi-agent alignment',
-                    desc: 'State and memory coordination prevent conflicting actions between AI workers',
+                    desc: 'State and memory coordination prevent conflicting actions between Autonomous Workers',
                     icon: GitBranch,
                     glassColor: 'emerald' // Solution - emerald
                   }

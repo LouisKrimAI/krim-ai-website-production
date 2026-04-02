@@ -69,7 +69,7 @@ export default function Platform(){
                 {/* Description - Centered */}
                 <div className="flex justify-center">
                   <p className="text-base md:text-lg lg:text-xl text-white/60 max-w-3xl text-center leading-relaxed font-light">
-                    Complete operational control from command to execution—three integrated layers with enterprise governance, continuous learning, and autonomous intelligence at every level
+                    Operational control from command to execution—three integrated layers with governance, learning, and autonomous intelligence
                   </p>
                 </div>
               </div>
@@ -110,7 +110,7 @@ export default function Platform(){
                   gradient: 'from-emerald-500/10 to-transparent'
                 },
                 {
-                  title: 'Karta Co-Workers',
+                  title: 'Karta Autonomous Workers',
                   subtitle: 'Autonomous Execution Teams',
                   features: ['Customer-facing specialists', 'Operations specialists', 'Enhanced recovery performance'],
                   color: 'purple',
@@ -175,7 +175,7 @@ export default function Platform(){
                 </span>
               </h3>
               <p className="text-base md:text-lg text-white/50 max-w-2xl mx-auto">
-                The infrastructure services that power autonomous banking operations
+                The infrastructure services that power autonomous regulated operations
               </p>
             </motion.div>
 
@@ -184,7 +184,7 @@ export default function Platform(){
               {[
                 {
                   title: 'Agent Lifecycle Management',
-                  desc: 'Spawns, monitors, and terminates AI agents across banking operations',
+                  desc: 'Spawns, monitors, and terminates agents across regulated operations',
                   icon: Gear,
                   gradient: 'from-krim-mint/12 via-krim-mint/4',
                   glowColor: 'rgba(0, 255, 136, 0.3)',
@@ -202,7 +202,7 @@ export default function Platform(){
                 },
                 {
                   title: 'Policy Validation Engine',
-                  desc: 'Pre-validates every agent action against banking regulations before execution',
+                  desc: 'Pre-validates every agent action against compliance regulations before execution',
                   icon: ShieldCheck,
                   gradient: 'from-purple-500/12 via-purple-500/4',
                   glowColor: 'rgba(139, 92, 246, 0.3)',
@@ -211,7 +211,7 @@ export default function Platform(){
                 },
                 {
                   title: 'Cross-System Data Access',
-                  desc: 'Provides unified API layer for agents to access CRM, core banking, and bureau data',
+                  desc: 'Provides unified API layer for agents to access CRM, core systems, and bureau data',
                   icon: Database,
                   gradient: 'from-krim-coral/12 via-krim-coral/4',
                   glowColor: 'rgba(255, 111, 97, 0.3)',
@@ -220,7 +220,7 @@ export default function Platform(){
                 },
                 {
                   title: 'Workflow State Management',
-                  desc: 'Tracks multi-step banking processes across agent hand-offs and system boundaries',
+                  desc: 'Tracks multi-step regulated processes across agent hand-offs and system boundaries',
                   icon: ArrowsOutSimple,
                   gradient: 'from-cyan-500/12 via-cyan-500/4',
                   glowColor: 'rgba(6, 182, 212, 0.3)',
@@ -354,7 +354,7 @@ export default function Platform(){
                 </span>
               </h2>
               <p className="text-xl text-white/70 max-w-3xl mx-auto">
-                Seven core modules that make autonomous operations possible
+                Seven core modules enabling autonomous operations
               </p>
             </Reveal>
 
@@ -364,7 +364,7 @@ export default function Platform(){
                 {
                   title: 'Krim-Core',
                   subtitle: 'Orchestration engine',
-                  description: 'Routes work through the right Karta co-workers and workflows, and manages context, retries and hand-offs between AI and humans.',
+                  description: 'Routes work through the right Karta Autonomous Workers and workflows, and manages context, retries and hand-offs between AI and humans.',
                   icon: Gear,
                   color: 'mint'
                 },
@@ -392,7 +392,7 @@ export default function Platform(){
                 {
                   title: 'Krim-Learn',
                   subtitle: 'Learning orchestrator',
-                  description: 'Runs learning loops over outcomes and errors so strategies, flows and co-worker behaviour get better over time.',
+                  description: 'Runs learning loops over outcomes and errors so strategies, flows and Autonomous Worker behaviour improve over time.',
                   icon: Brain,
                   color: 'mint'
                 },
@@ -466,7 +466,7 @@ export default function Platform(){
                 </span>
               </h2>
               <p className="text-xl text-white/70 max-w-3xl mx-auto">
-                Four core systems that make autonomous operations possible
+                Four core systems for autonomous operations
               </p>
             </Reveal>
 
@@ -550,7 +550,7 @@ export default function Platform(){
               </span>
             </h2>
             <p className="text-xl md:text-2xl text-white/70 max-w-4xl mx-auto leading-relaxed">
-              One intelligence system powers every AI co-worker, ensuring consistent decisions across all customer interactions—no matter the channel or complexity.
+              One intelligence system powers every Autonomous Worker, ensuring consistent decisions across all customer interactions—no matter the channel or complexity.
             </p>
           </Reveal>
 
@@ -559,7 +559,7 @@ export default function Platform(){
             {[
               {
                 title: 'Shared Context',
-                description: 'Every co-worker knows the full customer history and current situation',
+                description: 'Every Autonomous Worker has access to complete customer history and current situation',
                 icon: Globe
               },
               {
@@ -619,15 +619,15 @@ export default function Platform(){
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
               {[
                 {
-                  title: 'Dramatic Cost Reduction',
-                  description: 'Automate routine tasks to cut operational overhead while maintaining service quality',
+                  title: 'Cost Reduction',
+                  description: 'Automate routine tasks to reduce operational overhead while maintaining service quality',
                   impact: 'Cost Efficiency',
                   icon: CurrencyDollar,
                   color: 'green'
                 },
                 {
-                  title: 'Stress-Free Compliance',
-                  description: 'Built-in policy checks make regulatory requirements feel automatic instead of painful',
+                  title: 'Compliance Automation',
+                  description: 'Built-in policy checks ensure regulatory requirements are enforced automatically',
                   impact: 'Risk Management',
                   icon: ShieldCheck,
                   color: 'emerald'
@@ -641,21 +641,21 @@ export default function Platform(){
                 },
                 {
                   title: 'Accelerated Processing',
-                  description: 'Intelligent workflows compress loan and account processing from weeks to days',
+                  description: 'Intelligent workflows compress account processing from weeks to days',
                   impact: 'Speed to Market',
                   icon: Clock,
                   color: 'orange'
                 },
                 {
-                  title: 'Always-On Service',
-                  description: 'Handle customer needs 24/7 while humans focus on relationship-building and complex cases',
+                  title: '24/7 Operations',
+                  description: 'Handle customer needs around the clock while humans focus on relationship-building and complex cases',
                   impact: 'Workforce Optimization',
                   icon: Users,
                   color: 'indigo'
                 },
                 {
-                  title: 'Real-Time Visibility',
-                  description: 'Every decision and action logged automatically for instant audit readiness and transparency',
+                  title: 'Complete Audit Trail',
+                  description: 'Every decision and action is logged for audit readiness and transparency',
                   impact: 'Operational Control',
                   icon: Eye,
                   color: 'cyan'
@@ -763,7 +763,7 @@ export default function Platform(){
                 </span>
               </h2>
               <p className="text-xl text-white/70 max-w-4xl mx-auto">
-                Kendra is designed so AI can never 'freestyle' in production. Every action is grounded in real data, checked against policy, and executed with strict access controls – so you can automate aggressively without losing control.
+                Kendra ensures agents act within strict boundaries. Every action is grounded in real data, checked against policy, and enforced with strict access controls.
               </p>
             </Reveal>
 
@@ -772,7 +772,7 @@ export default function Platform(){
               {[
                 {
                   title: 'Policy-first execution',
-                  description: 'Workflows and co-workers run through predefined primitives and policies, not raw prompts. Every step is constrained by what\'s explicitly allowed.',
+                  description: 'Workflows and Autonomous Workers run through predefined primitives and policies, not raw prompts. Every step is constrained by what\'s explicitly allowed.',
                   icon: ShieldCheck,
                   color: 'mint'
                 },
@@ -784,13 +784,13 @@ export default function Platform(){
                 },
                 {
                   title: 'Strict data boundaries',
-                  description: 'Each user and co-worker only sees and sends what they are authorised to. Sensitive information cannot leak across products, portfolios or channels.',
+                  description: 'Each user and Autonomous Worker only sees and sends what they are authorised to. Sensitive information cannot leak across products, portfolios or channels.',
                   icon: Scales,
                   color: 'purple'
                 },
                 {
-                  title: 'Full auditability',
-                  description: 'Every interaction, decision and rule check is logged so you can explain what happened to internal audit or regulators.',
+                  title: 'Complete Auditability',
+                  description: 'Every interaction, decision and rule check is logged for regulatory and internal audit purposes.',
                   icon: Globe,
                   color: 'coral'
                 }
@@ -1095,7 +1095,7 @@ export default function Platform(){
                 </span>
                 <br />
                 <span className="text-white">
-                  of Banking Operations
+                  of Regulated Operations
                 </span>
               </motion.h2>
 
@@ -1107,7 +1107,7 @@ export default function Platform(){
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: 0.4 }}
               >
-                The institutions who deploy Intelligence Runtimes first will define the next era of lending.
+                The institutions who deploy Intelligence Runtimes first will lead the future of operations.
               </motion.p>
 
               {/* CTA Button */}

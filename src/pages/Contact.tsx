@@ -275,23 +275,23 @@ export default function Contact() {
     },
     {
       q: "Who should join the demo from our side?",
-      a: "Ideally one business owner for banking / servicing / collections, one technology owner (systems / integrations), and—if possible—someone from risk or compliance."
+      a: "Ideally one business owner for operations / collections, one technology owner (systems / integrations), and—if possible—someone from risk or compliance."
     },
     {
       q: "What type of companies is Krim for?",
-      a: "Banks, auto lenders, NBFCs, credit unions, card and BNPL providers running regulated consumer banking operations with meaningful call and case volumes."
+      a: "Banks, auto lenders, NBFCs, credit unions, card and BNPL providers running regulated operations with meaningful call and case volumes."
     },
     {
       q: "How does pricing work?",
       a: "Pricing combines subscription with usage-based charges, and in some cases value-linked components."
     },
     {
-      q: "Are you safe for regulated banking operations?",
-      a: "Yes—Krim is designed for regulated lenders. Guardrails, policies and data-access boundaries are enforced in Kendra so AI co-workers follow your rules, and sensitive data isn't shown to users or systems that shouldn't see it."
+      q: "Are you safe for regulated operations?",
+      a: "Yes—Krim is designed for regulated organizations. Guardrails, policies and data-access boundaries are enforced in Kendra so Autonomous Workers follow your rules, and sensitive data isn't shown to users or systems that shouldn't see it."
     },
     {
       q: "How do integrations work with existing systems?",
-      a: "We connect Kendra to the systems you already use for banking operations—loan and account servicing platforms, CRMs, dialers and contact-centre tools, payment and messaging providers, and, where useful, your data warehouse or lake. For a pilot we usually start with a small set of systems, using APIs or secure file/event feeds, and expand from there as the scope grows."
+      a: "We connect Kendra to the systems you already use—loan and account servicing platforms, CRMs, dialers and contact-centre tools, payment and messaging providers, and, where useful, your data warehouse or lake. For a pilot we usually start with a small set of systems, using APIs or secure file/event feeds, and expand from there as the scope grows."
     }
   ]
 
@@ -325,7 +325,7 @@ export default function Contact() {
                 </h1>
                 
                 <p className="text-xl text-white/90 mb-12 leading-relaxed">
-                  See how AI co-workers, digital twins and command centers can automate your banking operations while keeping compliance and data safety at the core.
+                  See how Autonomous Workers, digital twins and command centers can automate your regulated operations while keeping compliance and data safety at the core.
                 </p>
               </motion.div>
             </div>

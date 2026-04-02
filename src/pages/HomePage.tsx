@@ -272,8 +272,8 @@ function KrimAIStackSection() {
     },
     karta: {
       productName: "Karta",
-      description: "AI Co-Workers for Conversations and Cases",
-      subtitle: "Safe AI agents for voice, text, and documents. Monitored. Compliant. Always controllable."
+      description: "Autonomous Workers for Conversations and Cases",
+      subtitle: "Autonomous workers for voice, text, and document workflows. Monitored. Compliant. Controllable."
     },
     kupa: {
       productName: "Kupa",

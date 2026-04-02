@@ -1,5 +1,5 @@
 /**
- * Karta Visual V2: Multi-Modal AI Coworkers
+ * Karta Visual V2: Multi-Modal Autonomous Workers
  * Comprehensive agent showcase across business functions
  */
 

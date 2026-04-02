@@ -606,7 +606,7 @@ export default function Government() {
                     Enterprise-grade <span className="bg-gradient-to-r from-krim-mint to-krim-cyan bg-clip-text text-transparent font-semibold">infrastructure for government</span>
                   </h2>
                   <p className="text-lg md:text-xl text-white/70 leading-relaxed max-w-3xl mx-auto font-light">
-                    Mission-critical reliability, scalability, and disaster recovery designed for agencies that cannot afford downtime
+                    Mission-critical reliability and disaster recovery built for government agencies.
                   </p>
                 </div>
               </Reveal>
@@ -714,8 +714,8 @@ export default function Government() {
                 <div className="text-center space-y-12">
                   <div className="space-y-6">
                     <h2 className="text-5xl md:text-6xl lg:text-7xl font-light leading-tight">
-                      <span className="text-white">Ready to transform</span><br />
-                      <span className="bg-gradient-to-r from-krim-mint to-krim-cyan bg-clip-text text-transparent font-bold">government operations?</span>
+                      <span className="text-white">Modernize</span><br />
+                      <span className="bg-gradient-to-r from-krim-mint to-krim-cyan bg-clip-text text-transparent font-bold">government operations</span>
                     </h2>
 
                     <p className="text-lg md:text-xl text-white/70 leading-relaxed max-w-2xl mx-auto font-light">

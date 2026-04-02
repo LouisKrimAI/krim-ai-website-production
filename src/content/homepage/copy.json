@@ -73,13 +73,13 @@
   },
 
   "karta": {
-    "headline": "AI Co-Worker Workforce",
+    "headline": "Autonomous Worker Workforce",
     "roles": [
-      "Contact Center Co-Workers",
-      "Back-Office Co-Workers"
+      "Contact Center Autonomous Workers",
+      "Back-Office Autonomous Workers"
     ],
     "tagline": "Atomic. Composable. Governed.",
-    "subline": "Automate end-to-end workflows with auditable, policy-bound AI co-workers.",
+    "subline": "Automate end-to-end workflows with auditable, policy-bound Autonomous Workers.",
     "highlights": ["Atomic", "Composable", "Governed"]
   },
 
@@ -96,7 +96,7 @@
     "headline": "Secure by Architecture",
     "bullets": [
       "Audit-Logging",
-      "Bank-grade encryption",
+      "Enterprise-grade encryption",
       "Isolation & identity enforcement"
     ],
     "highlights": ["Audit-Logging", "Encryption", "Isolation"]
@@ -127,6 +127,6 @@
     "Compliance",
     "Automated",
     "Unified",
-    "AI Co-Workers"
+    "Autonomous Workers"
   ]
 }
