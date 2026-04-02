@@ -173,7 +173,7 @@ export default function KulaPage() {
               <h3 className="text-xl font-bold text-white mb-4">Cross-System Intelligence Access</h3>
               <div className="flex-grow">
                 <p className="text-white/70 mb-4">
-                  "Why did our Texas collections performance drop 15% last month?"
+                  "Why did our Southwest region performance drop 15% last month?"
                   Query across all systems, surface root causes, recommend specific actions.
                 </p>
               </div>
@@ -189,7 +189,7 @@ export default function KulaPage() {
               <h3 className="text-xl font-bold text-white mb-4">Strategic Workflow Orchestration</h3>
               <div className="flex-grow">
                 <p className="text-white/70 mb-4">
-                  "Reduce early delinquency by improving first-payment success rates"
+                  "Reduce case escalations by improving first-contact resolution rates"
                   Analyze workflows, suggest intervention strategies, build compliant campaigns.
                 </p>
               </div>
@@ -205,7 +205,7 @@ export default function KulaPage() {
               <h3 className="text-xl font-bold text-white mb-4">Deploy Autonomous Workers</h3>
               <div className="flex-grow">
                 <p className="text-white/70 mb-4">
-                  "Deploy Autonomous Workers for routine inquiries but escalate hardship cases"
+                  "Deploy Autonomous Workers for routine inquiries but escalate complex cases"
                   Configure Karta agents with precise guardrails and human oversight.
                 </p>
               </div>
@@ -221,7 +221,7 @@ export default function KulaPage() {
               <h3 className="text-xl font-bold text-white mb-4">Policy-as-Code Management</h3>
               <div className="flex-grow">
                 <p className="text-white/70 mb-4">
-                  "Update contact strategy for new CFPB Reg F guidance"
+                  "Update contact strategy for new regulatory guidance"
                   Translate regulatory requirements into operational rules, implement instantly.
                 </p>
               </div>
@@ -382,7 +382,7 @@ export default function KulaPage() {
                   <div>
                     <p className="text-sm font-medium text-white/50 uppercase tracking-wider mb-1">Asks:</p>
                     <p className="text-sm text-white/90 italic">
-                      "Reduce our cost-to-collect while maintaining recovery rates"
+                      "Reduce operational costs while maintaining service quality"
                     </p>
                   </div>
                   
@@ -417,7 +417,7 @@ export default function KulaPage() {
                 
                 <h4 className="text-lg font-bold mt-2 mb-4">
                   <span className="bg-gradient-to-r from-krim-cyan/90 via-krim-mint/90 to-krim-cyan/90 bg-clip-text text-transparent">
-                    Head of Collections
+                    Head of Operations
                   </span>
                 </h4>
                 
@@ -425,7 +425,7 @@ export default function KulaPage() {
                   <div className="flex-grow">
                     <p className="text-sm font-medium text-white/50 uppercase tracking-wider mb-1">Asks:</p>
                     <p className="text-sm text-white/90 italic">
-                      "Optimize our approach for accounts hitting 30+ days past due"
+                      "Optimize our approach for high-priority case segments"
                     </p>
                   </div>
                   
@@ -511,7 +511,7 @@ export default function KulaPage() {
                   <div>
                     <p className="text-sm font-medium text-white/50 uppercase tracking-wider mb-1">Asks:</p>
                     <p className="text-sm text-white/90 italic">
-                      "Project the impact of extending payment plans for hardship accounts"
+                      "Project the impact of extending alternative resolution timelines for at-risk accounts"
                     </p>
                   </div>
                   

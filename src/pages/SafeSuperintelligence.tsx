@@ -809,7 +809,7 @@ export default function SafeSuperintelligence() {
                       </div>
                       <h3 className="text-lg font-semibold text-white mb-3">Compliance ready</h3>
                       <p className="text-base text-white/80 leading-relaxed flex-1">
-                        Built-in support for FDCPA, FCRA, and other regulatory requirements
+                        Built-in support for regulatory requirements across domains
                       </p>
                     </div>
                   </motion.div>
@@ -839,7 +839,7 @@ export default function SafeSuperintelligence() {
             </div>
           </StarfieldSection>
 
-          {/* SECTION 6: CREDIT INSTITUTIONS IMPACT - Simplified */}
+          {/* SECTION 6: REGULATED ORGANIZATIONS IMPACT - Simplified */}
           <StarfieldSection glassLevel="light" className="relative py-24 border-t border-slate-800/50">
             <div className="container max-w-5xl mx-auto px-6">
               <div className="text-center mb-16">

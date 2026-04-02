@@ -497,7 +497,7 @@ export default function Kupa() {
                 ]
               },
               {
-                role: 'Head of Collections',
+                role: 'Head of Operations',
                 icon: Target,
                 color: 'rgb(0, 212, 255)',
                 points: [

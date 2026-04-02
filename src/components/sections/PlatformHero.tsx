@@ -1,7 +1,7 @@
 /**
  * KRIM AI - PLATFORM HERO SECTION
  * Enterprise-grade AI infrastructure hero
- * Communicates autonomous loan portfolio management
+ * Communicates autonomous regulated operations
  */
 
 import { motion } from 'framer-motion'
@@ -128,7 +128,7 @@ export default function PlatformHero() {
             className="text-2xl md:text-3xl text-white/60 max-w-3xl mx-auto font-light tracking-wide"
             variants={subtextVariants}
           >
-            The Safe Superintelligence Runtime for Autonomous Banks
+            The Safe Superintelligence Runtime for Regulated Operations
           </motion.p>
 
           {/* Description - What it DOES */}
@@ -136,7 +136,7 @@ export default function PlatformHero() {
             className="text-lg md:text-xl text-white/70 max-w-4xl mx-auto leading-relaxed"
             variants={subtextVariants}
           >
-            Unified multi-agentic operating system that orchestrates end-to-end banking operations. 
+            Unified multi-agentic operating system that orchestrates end-to-end regulated operations.
             Every AI action validated before execution, ensuring compliance with built-in safety nets that catch AI errors.
           </motion.p>
 

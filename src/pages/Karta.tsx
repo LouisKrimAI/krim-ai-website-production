@@ -7,10 +7,10 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import {
-  ArrowRight, Shield, Brain, FileText, ChartBar, 
-  Users, Scales, Gear, Lock, CheckCircle, 
+  ArrowRight, Shield, Brain, FileText, ChartBar,
+  Users, Scales, Gear, Lock, CheckCircle,
   Phone, EnvelopeSimple, ChatCircle, Headset,
-  Bank, Calculator, TrendUp, Eye, Pulse, Star,
+  Buildings, Calculator, TrendUp, Eye, Pulse, Star,
   Gavel, ClipboardText, HandCoins, UserCircle,
   DeviceMobile, Globe, Lightning, Cpu
 } from '@phosphor-icons/react'
@@ -211,20 +211,20 @@ const contactCenterSpecialists = [
     category: 'contact' as const
   },
 
-  // Collections Lifecycle (4)
+  // Case Management Lifecycle (4)
   {
     name: 'Nudger Agent',
     expertise: 'Pre-Due & Due Date',
-    description: 'Gentle behavioral timing specialist providing soft reminders and early intervention before accounts become delinquent.',
+    description: 'Gentle behavioral timing specialist providing soft reminders and early intervention before cases escalate.',
     competencies: ['Behavioral timing', 'Early intervention', 'Payment reminders'],
     icon: Pulse,
     category: 'contact' as const
   },
   {
-    name: 'Collections (1-30)',
-    expertise: 'Early Delinquency Specialist',
-    description: 'Manages 1-30 day past due accounts with focus on sustainable payment arrangements.',
-    competencies: ['Early delinquency', 'Payment arrangements', 'Relationship preservation'],
+    name: 'Case Management (Early)',
+    expertise: 'Early Intervention Specialist',
+    description: 'Manages early-stage cases with focus on sustainable payment arrangements and early resolution.',
+    competencies: ['Early intervention', 'Payment arrangements', 'Relationship preservation'],
     icon: Headset,
     category: 'contact' as const
   },
@@ -302,7 +302,7 @@ const backOfficeSpecialists = [
   {
     name: 'Orchestrator Agent',
     expertise: 'Master Data Conductor',
-    description: 'Master conductor connecting customer journey dots, predicting risk before delinquency, and coordinating data flows across the ecosystem.',
+    description: 'Master conductor connecting customer journey dots, predicting risk before escalation, and coordinating data flows across the ecosystem.',
     competencies: ['Data flow coordination', 'Journey mapping', 'Risk prediction'],
     icon: Brain,
     category: 'backoffice' as const
@@ -356,7 +356,7 @@ const backOfficeSpecialists = [
     expertise: 'Processing',
     description: 'Handles payment processing, matching, financial reconciliation, and transaction management with automated workflows.',
     competencies: ['Payment processing', 'Financial reconciliation', 'Transaction management'],
-    icon: Bank,
+    icon: Buildings,
     category: 'backoffice' as const
   },
   {
@@ -755,7 +755,7 @@ export default function Karta() {
                   </li>
                   <li className="flex items-center gap-3">
                     <div className="w-2 h-2 bg-krim-cyan rounded-full" />
-                    <span className="text-gray-200 text-sm">Collections & Recovery</span>
+                    <span className="text-gray-200 text-sm">Case Management & Resolution</span>
                   </li>
                   <li className="flex items-center gap-3">
                     <div className="w-2 h-2 bg-krim-cyan rounded-full" />
@@ -845,7 +845,7 @@ export default function Karta() {
               <h3 className="text-2xl font-bold text-white mb-6">Payment & Financial Operations</h3>
             </div>
             <StaggerGrid staggerDelay={80} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              <SimpleKartaCard name="Payment Processing Karta" expertise="Transaction Management" icon={Bank} category="backoffice" />
+              <SimpleKartaCard name="Transaction Processing Karta" expertise="Transaction Management" icon={Buildings} category="backoffice" />
               <SimpleKartaCard name="Settlement Karta" expertise="Resolution Operations" icon={Calculator} category="backoffice" />
               <SimpleKartaCard name="Revenue Recognition Karta" expertise="Financial Reporting" icon={TrendUp} category="backoffice" />
             </StaggerGrid>
@@ -917,10 +917,10 @@ export default function Karta() {
             </StaggerGrid>
           </div>
 
-          {/* Collections & Recovery */}
+          {/* Case Management & Resolution */}
           <div>
             <div className="w-full flex justify-center">
-              <h3 className="text-2xl font-bold text-white mb-6">Collections & Recovery</h3>
+              <h3 className="text-2xl font-bold text-white mb-6">Case Management & Resolution</h3>
             </div>
             <StaggerGrid staggerDelay={80} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
               <SimpleKartaCard name="Early Stage Karta" expertise="0-30 Days Past Due" icon={UserCircle} category="contact" />

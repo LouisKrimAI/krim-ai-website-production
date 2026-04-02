@@ -328,7 +328,7 @@ export default function Kriya() {
                   </li>
                   <li className="flex items-start gap-3 text-gray-200">
                     <div className="w-1.5 h-1.5 bg-krim-cyan rounded-full mt-2 flex-shrink-0" />
-                    <span className="text-base">Pre-execution validation: FDCPA/TCPA rules checked inline</span>
+                    <span className="text-base">Pre-execution validation: Regulatory rules checked inline</span>
                   </li>
                   <li className="flex items-start gap-3 text-gray-200">
                     <div className="w-1.5 h-1.5 bg-krim-cyan rounded-full mt-2 flex-shrink-0" />
@@ -350,7 +350,7 @@ export default function Kriya() {
                   </li>
                   <li className="flex items-start gap-3 text-gray-200">
                     <div className="w-1.5 h-1.5 bg-krim-cyan rounded-full mt-2 flex-shrink-0" />
-                    <span className="text-base">Regulatory reporting: CFPB/FTC complaint response ready</span>
+                    <span className="text-base">Regulatory reporting: Regulatory complaint response ready</span>
                   </li>
                 </ul>
               </GlassContainer>
@@ -375,12 +375,12 @@ export default function Kriya() {
               {
                 title: "30-day past due outreach",
                 flow: "CHECK: account_status=30DPD → CHECK: vulnerable_customer=false → POLICY: max_attempts(7/30days) → ACTION: send_sms(template:REG_F_30DPD) → ACTION: log_contact",
-                outcome: "TCPA compliant. Same message every account."
+                outcome: "Regulatory compliant. Same process every case."
               },
               {
                 title: "Dispute acknowledgment",
                 flow: "CHECK: dispute_type → POLICY: acknowledgment_sla(5_days) → ACTION: create_case → ACTION: send_letter(template:DISPUTE_ACK_V3) → ACTION: start_timer(30_days)",
-                outcome: "FCRA timeline enforced automatically."
+                outcome: "Regulatory timeline enforced automatically."
               }
             ].map((example, idx) => (
               <GlassContainer key={example.title} glassLevel="light" className="p-6">

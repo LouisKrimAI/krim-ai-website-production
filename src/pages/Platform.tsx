@@ -211,7 +211,7 @@ export default function Platform(){
                 },
                 {
                   title: 'Cross-System Data Access',
-                  desc: 'Provides unified API layer for agents to access CRM, core systems, and bureau data',
+                  desc: 'Provides unified API layer for agents to access CRM, core systems, and external data',
                   icon: Database,
                   gradient: 'from-krim-coral/12 via-krim-coral/4',
                   glowColor: 'rgba(255, 111, 97, 0.3)',
@@ -371,14 +371,14 @@ export default function Platform(){
                 {
                   title: 'Krim-Fabric',
                   subtitle: 'Unified data layer',
-                  description: 'Pulls together servicing, CRM, payments, bureaus and policies into the operational view every agent and workflow relies on.',
+                  description: 'Pulls together systems, data sources, and policies into the operational view every agent and workflow relies on.',
                   icon: Database,
                   color: 'cyan'
                 },
                 {
                   title: 'Krim-Govern',
                   subtitle: 'Policy engine',
-                  description: 'Encodes laws, bank rules and internal policies so there is a single source of truth for what is allowed in every journey.',
+                  description: 'Encodes laws, organizational rules and internal policies so there is a single source of truth for what is allowed in every journey.',
                   icon: Scales,
                   color: 'purple'
                 },
@@ -1172,7 +1172,7 @@ export default function Platform(){
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: 1 }}
                 >
-                  Servicing is now about <span className="text-krim-mint not-italic font-bold">intention</span>, not reaction.
+                  Operations become <span className="text-krim-mint not-italic font-bold">proactive</span>, not reactive.
                 </motion.p>
               </motion.div>
             </motion.div>

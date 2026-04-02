@@ -845,7 +845,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Why Banks Need a New Operating System - Enhanced with modern styling */}
+      {/* Why You Need a New Operating System */}
       <section className="py-20 md:py-32 relative overflow-hidden">
         {/* Background removed for full starfield visibility */}
         
