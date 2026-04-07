@@ -6,7 +6,7 @@ import React, { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { KrimAnimatedLogo } from '../components/KrimLogo'
-import StunningIntegrationsSection from '../components/home/StunningIntegrationsSection'
+import IntegrationsCarousel from '../components/home/IntegrationsCarousel'
 import Button from '../components/Button'
 
 // Import the V2 visual components for enhanced 5-tab section
@@ -283,7 +283,7 @@ function KrimAIStackSection() {
     kriya: {
       productName: "Kriya",
       description: "Building Blocks of Safe Agentic Automation",
-      subtitle: "Compliant automation blocks. Explainable. Testable. Fully governed."
+      subtitle: "Governed execution primitives. Explainable. Testable. Fully auditable."
     }
   }
 
@@ -428,7 +428,7 @@ function KrimAIStackSection() {
                     <>
                       <div className="flex items-start gap-3">
                         <Target className="w-5 h-5 text-orange-400 mt-1 flex-shrink-0" />
-                        <span className="text-white/70">Pre-built automation blocks for compliance</span>
+                        <span className="text-white/70">Pre-built compliance primitives ready to deploy</span>
                       </div>
                       <div className="flex items-start gap-3">
                         <Target className="w-5 h-5 text-orange-400 mt-1 flex-shrink-0" />
@@ -1226,8 +1226,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Integration Ecosystem with Actual Logos */}
-      <StunningIntegrationsSection />
+      {/* Integration Ecosystem — Horizontal Carousel */}
+      <IntegrationsCarousel />
 
       {/* Governance for Intelligence - Combined Enterprise Section */}
       <section className="py-20 md:py-32 relative overflow-hidden">
