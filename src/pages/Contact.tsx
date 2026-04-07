@@ -321,11 +321,11 @@ export default function Contact() {
                 transition={{ duration: 0.8 }}
               >
                 <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-white mb-8 leading-tight">
-                  Book a Krim Demo
+                  Schedule Your Demo
                 </h1>
-                
+
                 <p className="text-xl text-white/90 mb-12 leading-relaxed">
-                  See how Autonomous Workers, digital twins and command centers can automate your regulated operations while keeping compliance and data safety at the core.
+                  Walk through how Autonomous Workers, Digital Twins and Command Centers scale your operations while maintaining compliance.
                 </p>
               </motion.div>
             </div>

@@ -280,7 +280,7 @@ export default function Kupa() {
               transition={{ duration: 0.8, delay: 0.5 }}
               className="text-xl md:text-2xl lg:text-3xl text-white/60 max-w-4xl mx-auto font-light tracking-wide mb-10 leading-relaxed"
             >
-              Real-Time Operational Control Interfaces
+              Built on Kendra Runtime
             </motion.p>
 
             {/* Description - What it DOES */}
@@ -291,7 +291,7 @@ export default function Kupa() {
               transition={{ duration: 0.6, delay: 0.6 }}
               className="text-lg md:text-xl lg:text-2xl text-white/70 max-w-4xl mx-auto mb-16 leading-relaxed"
             >
-              Monitor worker performance and portfolio health in real-time. Intervene with policy controls when needed. Scale oversight without adding headcount.
+              See worker performance and portfolio health live across all channels. Act with policy controls when needed. Scale oversight without scaling headcount.
             </motion.p>
             
             {/* CTAs */}
@@ -324,11 +324,11 @@ export default function Kupa() {
           <Reveal direction="up" delay={0}>
             <div className="text-center mb-12">
               <h2 className="text-4xl lg:text-5xl xl:text-6xl font-light leading-[1.2] mb-6 text-center text-white">
-                <span className="text-krim-cyan font-bold">Specialized</span><br />
-                <span className="text-white font-bold">Command Centers</span>
+                <span className="text-krim-cyan font-bold">Eight Mission-Critical</span><br />
+                <span className="text-white font-bold">Control Centers</span>
               </h2>
               <p className="text-lg sm:text-xl text-gray-300 leading-relaxed max-w-4xl mx-auto">
-                Purpose-built interfaces for every operational domain
+                Tailored interfaces for campaigns, support, legal, field, compliance, risk, settlement, and executive oversight
               </p>
             </div>
           </Reveal>
@@ -353,10 +353,10 @@ export default function Kupa() {
           <Reveal direction="up" delay={0}>
             <div className="text-center mb-12">
               <h2 className="text-4xl lg:text-5xl xl:text-6xl font-light mb-6 text-center text-white">
-                <span className="bg-gradient-to-r from-krim-mint to-krim-cyan bg-clip-text text-transparent">Operational Control</span> With Compliance
+                <span className="bg-gradient-to-r from-krim-mint to-krim-cyan bg-clip-text text-transparent">Visibility, Action, Compliance</span>
               </h2>
               <p className="text-lg sm:text-xl text-gray-300 leading-relaxed max-w-4xl mx-auto">
-                Governed control that enables scaled operations
+                Three capabilities working together to let you control operations at scale
               </p>
             </div>
           </Reveal>
@@ -475,10 +475,10 @@ export default function Kupa() {
           <Reveal direction="up" delay={0}>
             <div className="text-center mb-12">
               <h2 className="text-4xl lg:text-5xl xl:text-6xl font-light text-center mb-6 text-white">
-                <span className="bg-gradient-to-r from-krim-mint to-krim-cyan bg-clip-text text-transparent">Role-Based</span> Command Centers
+                <span className="bg-gradient-to-r from-krim-mint to-krim-cyan bg-clip-text text-transparent">Configured for Each Role</span>
               </h2>
               <p className="text-lg sm:text-xl text-gray-300 leading-relaxed max-w-4xl mx-auto">
-                Configured views and controls for each operational role
+                CROs see risk. COOs see operations. Compliance officers see violations. Each role gets their dashboard.
               </p>
             </div>
           </Reveal>
@@ -609,12 +609,12 @@ export default function Kupa() {
             <div className="space-y-6">
               {/* Heading */}
               <h2 className="text-4xl lg:text-5xl xl:text-6xl font-light text-center text-white">
-                <span className="bg-gradient-to-r from-krim-mint to-krim-cyan bg-clip-text text-transparent">Deploy Kupa Command Centers</span>
+                <span className="bg-gradient-to-r from-krim-mint to-krim-cyan bg-clip-text text-transparent">Go Live in Weeks</span>
               </h2>
-              
+
               {/* Subtext */}
               <p className="text-xl sm:text-2xl text-gray-300 leading-relaxed max-w-3xl mx-auto text-center font-medium">
-                Pre-configured for your compliance requirements. Live in weeks.
+                Pre-built centers configured for your compliance. Deploy Kupa and scale operations immediately.
               </p>
               
               {/* CTAs */}

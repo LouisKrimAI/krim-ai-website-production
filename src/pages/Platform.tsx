@@ -62,14 +62,14 @@ export default function Platform(){
                 {/* Main Title - Centered with Better Typography */}
                 <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-8 text-center">
                   <span className="block bg-gradient-to-r from-krim-cyan to-krim-mint bg-clip-text text-transparent font-bold leading-tight">
-                    Unified Intelligence Platform
+                    Enterprise AI Operating System
                   </span>
                 </h2>
 
                 {/* Description - Centered */}
                 <div className="flex justify-center">
                   <p className="text-base md:text-lg lg:text-xl text-white/60 max-w-3xl text-center leading-relaxed font-light">
-                    Operational control from command to execution—three integrated layers with governance, learning, and autonomous intelligence
+                    Command, orchestrate, and execute—three integrated layers that bring governed intelligence to scale.
                   </p>
                 </div>
               </div>

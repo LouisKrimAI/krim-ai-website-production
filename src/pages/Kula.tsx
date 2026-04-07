@@ -48,7 +48,7 @@ export default function KulaPage() {
               transition={{ duration: 0.8, delay: 0.5 }}
               className="text-xl md:text-2xl lg:text-3xl text-white/60 max-w-4xl mx-auto font-light tracking-wide mb-10 leading-relaxed"
             >
-              Natural Language Interface for every role
+              Powered by Kendra Runtime
             </motion.p>
 
             {/* Description - What it DOES */}

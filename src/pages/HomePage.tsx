@@ -272,8 +272,8 @@ function KrimAIStackSection() {
     },
     karta: {
       productName: "Karta",
-      description: "Autonomous Workers for Conversations and Cases",
-      subtitle: "Autonomous workers for voice, text, and document workflows. Monitored. Compliant. Controllable."
+      description: "Multi-Modal Autonomous Workers for Contact Center & Back-Office",
+      subtitle: "Voice, text, and document workflows handled end-to-end. Monitored. Compliant. Controllable."
     },
     kupa: {
       productName: "Kupa",
@@ -394,15 +394,15 @@ function KrimAIStackSection() {
                     <>
                       <div className="flex items-start gap-3">
                         <Users className="w-5 h-5 text-[#00FF88] mt-1 flex-shrink-0" />
-                        <span className="text-white/70">Safe AI agents across voice, text, documents</span>
+                        <span className="text-white/70">Handles voice, text, and document interactions end-to-end</span>
                       </div>
                       <div className="flex items-start gap-3">
                         <Users className="w-5 h-5 text-[#00FF88] mt-1 flex-shrink-0" />
-                        <span className="text-white/70">20+ pre-built agents for regulated workflows</span>
+                        <span className="text-white/70">20+ pre-built specialists for regulated workflows</span>
                       </div>
                       <div className="flex items-start gap-3">
                         <Users className="w-5 h-5 text-[#00FF88] mt-1 flex-shrink-0" />
-                        <span className="text-white/70">Real-time monitoring and override controls</span>
+                        <span className="text-white/70">Real-time monitoring with instant override controls</span>
                       </div>
                     </>
                   )}

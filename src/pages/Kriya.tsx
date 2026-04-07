@@ -118,7 +118,7 @@ export default function Kriya() {
               transition={{ duration: 0.8, delay: 0.5 }}
               className="text-xl md:text-2xl lg:text-3xl text-white/60 max-w-4xl mx-auto font-light tracking-wide mb-10 leading-relaxed"
             >
-              Pre-Approved Operations for Controlled Automation
+              Governed Building Blocks
             </motion.p>
 
             {/* Description - What it DOES */}
@@ -128,7 +128,7 @@ export default function Kriya() {
               transition={{ duration: 0.6, delay: 0.6 }}
               className="text-lg md:text-xl lg:text-2xl text-white/70 max-w-4xl mx-auto mb-16 leading-relaxed"
             >
-              Every action maps to compliant, auditable primitives. Change policies once, update everywhere. No unauthorized actions.
+              Define operations as governed primitives. Every action stays within your policies. Update rules once, enforce everywhere.
             </motion.p>
 
             <motion.div
@@ -171,8 +171,7 @@ export default function Kriya() {
           <Reveal direction="up" once={true}>
             <div className="text-center mb-12">
               <h2 className="text-4xl lg:text-5xl xl:text-6xl font-light leading-[1.2] mb-6 text-center text-white">
-                <span className="bg-gradient-to-r from-krim-cyan to-krim-mint bg-clip-text text-transparent font-bold">Five Primitive Types</span><br />
-                <span className="text-white font-bold">Complete Control</span>
+                <span className="bg-gradient-to-r from-krim-cyan to-krim-mint bg-clip-text text-transparent font-bold">Five Building Blocks for Governance</span>
               </h2>
             </div>
           </Reveal>
@@ -408,11 +407,11 @@ export default function Kriya() {
           <Reveal direction="up" once={true}>
             <div className="space-y-6">
               <h2 className="text-4xl lg:text-5xl xl:text-6xl font-light text-center text-white">
-                <span className="bg-gradient-to-r from-krim-cyan to-krim-mint bg-clip-text text-transparent">Your Policies Enable Safe Automation</span>
+                <span className="bg-gradient-to-r from-krim-cyan to-krim-mint bg-clip-text text-transparent">Policies Become Execution</span>
               </h2>
-              
+
               <p className="text-xl sm:text-2xl text-gray-200 leading-relaxed max-w-3xl mx-auto text-center font-medium">
-                Your policies become the foundation for automated execution that stays within your rules.
+                Your governance rules turn directly into automated workflows that never break compliance.
               </p>
               
               <Button 
