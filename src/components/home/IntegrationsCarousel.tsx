@@ -36,7 +36,7 @@ const CARD_WIDTH_MOBILE = 300;
 const GAP = 24;
 const AUTO_ADVANCE_MS = 6000;
 const VELOCITY_THRESHOLD = 250; // px/s — snap in velocity direction
-const DRAG_ELASTIC = 0.08;
+const DRAG_ELASTIC = 0.18;
 
 // Unified krim-cyan accent — no per-category colors
 const CYAN = '#00D4FF';
@@ -45,7 +45,8 @@ const ACTIVE_GLOW = `0 0 40px rgba(${CYAN_RGB}, 0.3), 0 0 80px rgba(${CYAN_RGB},
 const IDLE_SHADOW = 'inset 0 1px 0 rgba(255,255,255,0.04)';
 
 // Spring for main snap animation
-const SNAP_SPRING = { type: 'spring' as const, stiffness: 220, damping: 28, mass: 0.9 };
+const SNAP_SPRING = { type: 'spring' as const, stiffness: 150, damping: 24, mass: 1.0 };
+const AUTO_SPRING = { type: 'spring' as const, stiffness: 110, damping: 22, mass: 1.1 };
 
 // Section entry stagger helpers
 const ENTRY_EASE = [0.22, 1, 0.36, 1] as const;
@@ -451,12 +452,12 @@ export default function IntegrationsCarousel() {
   );
 
   const animateToIndex = useCallback(
-    (index: number) => {
+    (index: number, spring = SNAP_SPRING) => {
       const target = getTargetX(index);
       if (reducedMotion) {
         x.set(target);
       } else {
-        animate(x, target, SNAP_SPRING);
+        animate(x, target, spring);
       }
     },
     [getTargetX, x, reducedMotion],
@@ -477,9 +478,9 @@ export default function IntegrationsCarousel() {
         const t = Math.min(dist / CARD_STEP, 2); // 0=centered, 1=one card away, 2=two away
 
         // Continuous interpolations
-        const scale = Math.max(1 - t * 0.12, 0.76); // 1.0 → 0.88 → 0.76
-        const opacity = Math.max(1 - t * 0.6, 0.25); // 1.0 → 0.4 → 0.25
-        const yShift = Math.min(t * 8, 16); // 0 → 8px → 16px
+        const scale = Math.max(1 - Math.pow(Math.min(t, 1), 1.4) * 0.12, 0.76); // power curve for softer falloff
+        const opacity = Math.max(0.55, 1 - t * 0.45); // 1.0 → 0.55 (softer fade)
+        const yShift = Math.min(t * 14, 28); // 0 → 14px → 28px (more depth)
         const side = cardCenter < viewportCenter ? 1 : -1;
         const rotateY = side * 4 * Math.min(t, 1); // 0 → +/-4deg
         const isCenter = t < 0.3;
@@ -504,11 +505,11 @@ export default function IntegrationsCarousel() {
   // ─── Go-to (sets state, ref, animates, resets dot progress) ───────────────
 
   const goTo = useCallback(
-    (index: number) => {
+    (index: number, spring = SNAP_SPRING) => {
       const clamped = Math.max(0, Math.min(TOTAL - 1, index));
       activeIndexRef.current = clamped;
       setActiveIndex(clamped);
-      animateToIndex(clamped);
+      animateToIndex(clamped, spring);
       setProgressKey((k) => k + 1);
     },
     [animateToIndex],
@@ -533,7 +534,7 @@ export default function IntegrationsCarousel() {
     const tick = () => {
       if (!isDragging.current && !isHovered.current) {
         const next = (activeIndexRef.current + 1) % TOTAL;
-        goTo(next);
+        goTo(next, AUTO_SPRING);
       }
     };
     autoPlayRef.current = setInterval(tick, AUTO_ADVANCE_MS);
@@ -548,7 +549,7 @@ export default function IntegrationsCarousel() {
     autoPlayRef.current = setInterval(() => {
       if (!isDragging.current && !isHovered.current) {
         const next = (activeIndexRef.current + 1) % TOTAL;
-        goTo(next);
+        goTo(next, AUTO_SPRING);
       }
     }, AUTO_ADVANCE_MS);
   }, [goTo]);
@@ -605,6 +606,39 @@ export default function IntegrationsCarousel() {
     },
     [handleNext, handlePrev],
   );
+
+  // ─── Wheel navigation (trackpad swipe + mouse wheel) ──────────────────────
+
+  const wheelAccumulator = useRef(0);
+  const wheelTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  useEffect(() => {
+    const el = containerRef.current;
+    if (!el) return;
+
+    const handler = (e: WheelEvent) => {
+      const delta = Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX : e.deltaY;
+      if (Math.abs(delta) < 2) return;
+      e.preventDefault();
+
+      wheelAccumulator.current += delta;
+      if (wheelTimeout.current) clearTimeout(wheelTimeout.current);
+
+      if (Math.abs(wheelAccumulator.current) > 50) {
+        const direction = wheelAccumulator.current > 0 ? 1 : -1;
+        goTo(activeIndexRef.current + direction);
+        resetAutoPlay();
+        wheelAccumulator.current = 0;
+      }
+
+      wheelTimeout.current = setTimeout(() => {
+        wheelAccumulator.current = 0;
+      }, 150);
+    };
+
+    el.addEventListener('wheel', handler, { passive: false });
+    return () => el.removeEventListener('wheel', handler);
+  }, [goTo, resetAutoPlay]);
 
   // ─── Hover pause for auto-advance ─────────────────────────────────────────
 
@@ -676,7 +710,7 @@ export default function IntegrationsCarousel() {
       </div>
 
       {/* ── Carousel Track ── */}
-      <motion.div className="relative" ref={containerRef} {...sectionEntry(0.3)}>
+      <motion.div className="relative" ref={containerRef} style={{ overflow: 'hidden' }} {...sectionEntry(0.3)}>
         {/* Ambient glow orb — large blurred blob behind cards, parallax-tracked */}
         <motion.div
           className="absolute top-1/2 left-1/2 -translate-y-1/2 pointer-events-none z-0"
@@ -685,8 +719,23 @@ export default function IntegrationsCarousel() {
             width: 500,
             height: 300,
             borderRadius: '50%',
-            background: `radial-gradient(ellipse at center, rgba(${CYAN_RGB}, 0.08) 0%, transparent 70%)`,
+            background: `radial-gradient(ellipse at center, rgba(${CYAN_RGB}, 0.15) 0%, transparent 70%)`,
             filter: 'blur(80px)',
+            willChange: 'transform',
+          }}
+          aria-hidden="true"
+        />
+
+        {/* Inner glow core — tighter, brighter */}
+        <motion.div
+          className="absolute top-1/2 left-1/2 -translate-y-1/2 pointer-events-none z-0"
+          style={{
+            x: glowX,
+            width: 220,
+            height: 140,
+            borderRadius: '50%',
+            background: `radial-gradient(ellipse at center, rgba(${CYAN_RGB}, 0.12) 0%, transparent 70%)`,
+            filter: 'blur(40px)',
             willChange: 'transform',
           }}
           aria-hidden="true"
@@ -769,7 +818,8 @@ export default function IntegrationsCarousel() {
           drag="x"
           dragConstraints={dragConstraints}
           dragElastic={DRAG_ELASTIC}
-          dragMomentum={false}
+          dragMomentum={true}
+          dragTransition={{ bounceStiffness: 300, bounceDamping: 30, power: 0.3, timeConstant: 200 }}
           onDragStart={handleDragStart}
           onDragEnd={handleDragEnd}
         >
