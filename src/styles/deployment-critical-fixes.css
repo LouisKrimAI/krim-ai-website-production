@@ -154,6 +154,14 @@ button::before,
   pointer-events: none;
 }
 
+/* Carousel nav dots — keep visual size small, touch target via ::before */
+[role="tablist"] button {
+  min-height: 8px !important;
+  min-width: 8px !important;
+  padding: 0 !important;
+  display: block !important;
+}
+
 /* Navigation menu items - ensure proper sizing */
 nav a,
 nav button,

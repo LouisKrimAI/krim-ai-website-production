@@ -183,12 +183,12 @@ export default function Kriya() {
               {[
                 {
                   title: "Actions",
-                  text: "Send text messages respecting time zones. Make calls with attempt limits. Update account status. Create payment plans.",
+                  text: "Send notifications respecting schedules. Make calls with retry logic. Update entity status. Trigger external system events.",
                   color: "border-t-cyan-400"
                 },
                 {
-                  title: "Checks", 
-                  text: "Verify if customer is vulnerable. Check payment due dates. Confirm dispute status. Validate contact permissions.",
+                  title: "Checks",
+                  text: "Verify entity eligibility. Check time-based conditions. Confirm permission status. Validate against external rules.",
                   color: "border-t-emerald-400"
                 }
               ].map((primitive, idx) => {
@@ -221,17 +221,17 @@ export default function Kriya() {
               {[
                 {
                   title: "Policies",
-                  text: "Maximum 7 contact attempts per month. Required disclosures by state. Settlement limits by balance amount.",
+                  text: "Action frequency limits. Conditional execution rules. Threshold-based constraints. Time-window restrictions.",
                   color: "border-t-violet-400"
                 },
                 {
                   title: "Templates",
-                  text: "Pre-written scripts for calls. Standardized letter templates. Dispute acknowledgment forms with legal language.",
+                  text: "Pre-written message templates. Standard response forms. Approved document schemas. Regulated content language.",
                   color: "border-t-blue-400"
                 },
                 {
                   title: "Data & Scope",
-                  text: "Junior agents see balances only. Managers access personal information. State laws control what data is visible.",
+                  text: "Role-based field access. Scope restrictions by context. Attribute-level visibility controls. Context-aware data boundaries.",
                   color: "border-t-teal-400"
                 }
               ].map((primitive, idx) => {
@@ -372,14 +372,14 @@ export default function Kriya() {
           <StaggerGrid staggerDelay={100} className="grid md:grid-cols-2 gap-6">
             {[
               {
-                title: "30-day past due outreach",
-                flow: "CHECK: account_status=30DPD → CHECK: vulnerable_customer=false → POLICY: max_attempts(7/30days) → ACTION: send_sms(template:REG_F_30DPD) → ACTION: log_contact",
-                outcome: "Regulatory compliant. Same process every case."
+                title: "Automated escalation workflow",
+                flow: "CHECK: severity_threshold → CHECK: user_role_eligible → POLICY: max_actions_per_hour(5) → ACTION: send_notification(template:ESCALATION_V2) → ACTION: create_ticket",
+                outcome: "Consistent execution. Policies enforced on every trigger."
               },
               {
-                title: "Dispute acknowledgment",
-                flow: "CHECK: dispute_type → POLICY: acknowledgment_sla(5_days) → ACTION: create_case → ACTION: send_letter(template:DISPUTE_ACK_V3) → ACTION: start_timer(30_days)",
-                outcome: "Regulatory timeline enforced automatically."
+                title: "Request processing pipeline",
+                flow: "CHECK: request_type → POLICY: sla_window(24_hours) → ACTION: validate_data → ACTION: send_confirmation(template:ACK_V1) → ACTION: log_transaction",
+                outcome: "Repeatable process. Zero policy violations."
               }
             ].map((example, idx) => (
               <GlassContainer key={example.title} glassLevel="light" className="p-6">

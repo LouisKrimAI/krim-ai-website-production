@@ -2,19 +2,29 @@
  * INTEGRATIONS CAROUSEL
  * Futuristic horizontal-sliding integration showcase
  * Smooth drag/swipe navigation with auto-advancing categories
+ *
+ * IMPROVEMENTS:
+ * - Responsive card widths (300px mobile, 380px desktop)
+ * - Optimized drag constraints with natural elastic feel
+ * - Always-on edge fades (no motion value dependency issues)
+ * - Hover lift effect for non-active cards
+ * - Enhanced accessibility (aria-labels, keyboard navigation)
+ * - Improved visual polish and readability
+ * - Simplified noise texture (removed overly complex SVG)
+ * - Fixed auto-advance cleanup and closure issues
  */
-import React, { useState, useRef, useCallback, useEffect } from 'react';
-import { motion, useMotionValue, useTransform, animate, PanInfo } from 'framer-motion';
+import React, { useState, useRef, useCallback, useEffect, useMemo } from 'react';
+import { motion, useMotionValue, animate, PanInfo } from 'framer-motion';
 import { darkBackgroundLogos } from '../logos/DarkBackgroundLogos';
 
 // ─── Integration Categories ────────────────────────────────────────────────────
-// Expanded to cover the full KrimOS integration surface
+// Optimized for regulated industries with IAM, contact center, and consolidated banking
 
 const categories = [
   {
     id: 'llm-foundation',
     name: 'LLM & Foundation Models',
-    description: 'Multi-model orchestration across leading providers',
+    description: 'Multi-model orchestration for autonomous agent reasoning',
     gradient: 'from-violet-500/20 to-purple-600/20',
     borderGlow: 'violet',
     logos: [
@@ -27,67 +37,67 @@ const categories = [
     ]
   },
   {
-    id: 'core-banking',
-    name: 'Core Banking & Financial',
-    description: 'Deep integrations with core banking infrastructure',
-    gradient: 'from-blue-500/20 to-cyan-600/20',
+    id: 'identity-access',
+    name: 'Identity & Access Management',
+    description: 'Zero-trust governance with regulated identity verification',
+    gradient: 'from-indigo-500/20 to-blue-600/20',
     borderGlow: 'blue',
     logos: [
-      { name: 'Jack Henry', component: 'Jack Henry' },
-      { name: 'Fiserv', component: 'Fiserv' },
-      { name: 'Oracle', component: 'Oracle' },
-      { name: 'FIS', component: 'FIS' },
-      { name: 'Temenos', component: 'Temenos' },
+      { name: 'Okta', component: null },
+      { name: 'Auth0', component: null },
+      { name: 'Ping', component: null },
+      { name: 'Azure', component: 'Azure' },
     ]
   },
   {
-    id: 'fintech-payments',
-    name: 'Fintech & Payments',
-    description: 'Payment rails and fintech platform connectivity',
+    id: 'banking-payments',
+    name: 'Banking, Payments & Fintech',
+    description: 'Core banking systems, payment rails, and fintech with audit trails',
+    gradient: 'from-blue-500/20 to-cyan-600/20',
+    borderGlow: 'cyan',
+    logos: [
+      { name: 'Jack Henry', component: 'Jack Henry' },
+      { name: 'Fiserv', component: 'Fiserv' },
+      { name: 'FIS', component: 'FIS' },
+      { name: 'Temenos', component: 'Temenos' },
+      { name: 'Stripe', component: 'Stripe' },
+    ]
+  },
+  {
+    id: 'contact-center',
+    name: 'Contact Center & Telephony',
+    description: 'Omnichannel contact centers and voice/video for autonomous agents',
     gradient: 'from-emerald-500/20 to-green-600/20',
     borderGlow: 'emerald',
     logos: [
-      { name: 'Razorpay', component: 'Razorpay' },
-      { name: 'Stripe', component: 'Stripe' },
-      { name: 'Signzy', component: 'Signzy' },
-      { name: 'HubSpot', component: 'HubSpot' },
+      { name: 'Twilio', component: null },
+      { name: 'Genesys', component: null },
+      { name: 'NICE', component: null },
+      { name: 'Zoom', component: 'Zoom' },
     ]
   },
   {
     id: 'cloud-data',
-    name: 'Cloud & Data Platforms',
-    description: 'Enterprise cloud and data infrastructure',
+    name: 'Cloud & Data Infrastructure',
+    description: 'Secure cloud, data lakes, and analytics with compliance controls',
     gradient: 'from-cyan-500/20 to-sky-600/20',
     borderGlow: 'cyan',
     logos: [
       { name: 'AWS', component: 'AWS' },
       { name: 'Microsoft', component: 'Microsoft' },
-      { name: 'Azure', component: 'Azure' },
       { name: 'Snowflake', component: 'Snowflake' },
       { name: 'Databricks', component: 'Databricks' },
     ]
   },
   {
-    id: 'communication',
-    name: 'Communication & Collaboration',
-    description: 'Unified messaging and real-time collaboration',
-    gradient: 'from-purple-500/20 to-fuchsia-600/20',
-    borderGlow: 'purple',
-    logos: [
-      { name: 'Slack', component: 'Slack' },
-      { name: 'Zoom', component: 'Zoom' },
-      { name: 'Teams', component: 'Teams' },
-      { name: 'Discord', component: 'Discord' },
-    ]
-  },
-  {
-    id: 'enterprise-ai',
+    id: 'enterprise-software',
     name: 'Enterprise & AI Software',
-    description: 'CRM, GPU compute, and AI infrastructure',
+    description: 'CRM, ERP, GPU compute, and real-time communications',
     gradient: 'from-amber-500/20 to-orange-600/20',
     borderGlow: 'amber',
     logos: [
       { name: 'Salesforce', component: 'Salesforce' },
+      { name: 'Oracle', component: 'Oracle' },
       { name: 'NVIDIA', component: 'NVIDIA' },
       { name: 'LiveKit', component: 'LiveKit' },
     ]
@@ -95,7 +105,7 @@ const categories = [
   {
     id: 'grc-compliance',
     name: 'Governance, Risk & Compliance',
-    description: 'Regulatory compliance and risk management platforms',
+    description: 'Audit-ready compliance, risk frameworks, and policy management',
     gradient: 'from-red-500/20 to-rose-600/20',
     borderGlow: 'red',
     logos: [
@@ -107,8 +117,8 @@ const categories = [
   },
   {
     id: 'document-knowledge',
-    name: 'Document & Knowledge',
-    description: 'Enterprise content and knowledge management',
+    name: 'Document & Knowledge Management',
+    description: 'Enterprise content, knowledge bases, and document intelligence',
     gradient: 'from-teal-500/20 to-emerald-600/20',
     borderGlow: 'teal',
     logos: [
@@ -178,7 +188,7 @@ const LogoItem = React.memo(({ logo }: { logo: { name: string; component: string
       </span>
     </div>
   );
-});
+}, (prevProps, nextProps) => prevProps.logo.name === nextProps.logo.name);
 
 LogoItem.displayName = 'LogoItem';
 
@@ -194,18 +204,22 @@ const CategoryCard = React.memo(({ category, isActive }: {
   return (
     <motion.div
       className={`
-        relative flex-shrink-0 w-[340px] sm:w-[380px] h-[320px]
+        relative flex-shrink-0 w-[300px] sm:w-[380px] h-[320px]
         rounded-2xl border ${border}
         bg-gradient-to-br ${category.gradient}
         backdrop-blur-xl overflow-hidden
         transition-all duration-700 ease-out
-        ${isActive ? 'scale-100 opacity-100' : 'scale-[0.96] opacity-60'}
+        cursor-pointer
+        group
+        ${isActive ? 'scale-100 opacity-100' : 'scale-[0.96] opacity-60 hover:scale-[0.98] hover:opacity-75'}
       `}
       style={{
         boxShadow: isActive
           ? `0 0 40px ${glow}, 0 0 80px ${glow.replace('0.4', '0.15')}, inset 0 1px 0 rgba(255,255,255,0.06)`
           : `inset 0 1px 0 rgba(255,255,255,0.03)`,
       }}
+      whileHover={!isActive ? { y: -4 } : undefined}
+      transition={{ type: 'spring', stiffness: 400, damping: 30 }}
     >
       {/* Top glowing accent line */}
       <div
@@ -223,7 +237,7 @@ const CategoryCard = React.memo(({ category, isActive }: {
           <h3 className="text-lg font-semibold text-white leading-tight">
             {category.name}
           </h3>
-          <p className={`text-xs mt-1 ${accent} opacity-80`}>
+          <p className={`text-sm mt-2 ${accent} opacity-75 leading-relaxed`}>
             {category.description}
           </p>
         </div>
@@ -243,44 +257,79 @@ const CategoryCard = React.memo(({ category, isActive }: {
           ))}
         </div>
       </div>
-
-      {/* Subtle noise texture */}
-      <div className="absolute inset-0 opacity-[0.015] bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIj48ZmlsdGVyIGlkPSJhIj48ZmVUdXJidWxlbmNlIHR5cGU9ImZyYWN0YWxOb2lzZSIgYmFzZUZyZXF1ZW5jeT0iLjc1IiBzdGl0Y2hUaWxlcz0ic3RpdGNoIi8+PC9maWx0ZXI+PHJlY3Qgd2lkdGg9IjMwMCIgaGVpZ2h0PSIzMDAiIGZpbHRlcj0idXJsKCNhKSIgb3BhY2l0eT0iLjA1Ii8+PC9zdmc+')]" />
     </motion.div>
+  );
+}, (prevProps, nextProps) => {
+  return (
+    prevProps.category.id === nextProps.category.id &&
+    prevProps.isActive === nextProps.isActive
   );
 });
 
 CategoryCard.displayName = 'CategoryCard';
 
 // ─── Carousel Navigation Dot ──────────────────────────────────────────────────
-const NavDot = ({ isActive, color, onClick }: { isActive: boolean; color: string; onClick: () => void }) => {
+const NavDot = React.memo(({ isActive, color, onClick, index, total }: {
+  isActive: boolean;
+  color: string;
+  onClick: () => void;
+  index: number;
+  total: number;
+}) => {
   const glow = glowColors[color] || glowColors.cyan;
   return (
     <button
       onClick={onClick}
       className={`
         relative h-2 rounded-full transition-all duration-500 ease-out
+        focus:outline-none focus:ring-2 focus:ring-white/50 focus:ring-offset-2 focus:ring-offset-transparent
         ${isActive ? 'w-8' : 'w-2 hover:w-3'}
       `}
       style={{
         background: isActive ? glow.replace('0.4', '1') : 'rgba(255,255,255,0.2)',
         boxShadow: isActive ? `0 0 12px ${glow}` : 'none',
       }}
+      aria-label={`Category ${index + 1} of ${total}: ${color}`}
+      aria-current={isActive ? 'true' : 'false'}
     />
   );
-};
+}, (prevProps, nextProps) => {
+  return (
+    prevProps.isActive === nextProps.isActive &&
+    prevProps.color === nextProps.color &&
+    prevProps.index === nextProps.index
+  );
+});
+
+NavDot.displayName = 'NavDot';
 
 // ─── Main Carousel Component ───────────────────────────────────────────────────
 export default function IntegrationsCarousel() {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [isSmallScreen, setIsSmallScreen] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
   const x = useMotionValue(0);
   const isDragging = useRef(false);
   const autoPlayRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
-  const CARD_WIDTH = 380;
+  const CARD_WIDTH_DESKTOP = 380;
+  const CARD_WIDTH_MOBILE = 300;
   const GAP = 24;
   const TOTAL = categories.length;
+  const AUTO_ADVANCE_DELAY = 5000;
+
+  // Responsive card width
+  const CARD_WIDTH = isSmallScreen ? CARD_WIDTH_MOBILE : CARD_WIDTH_DESKTOP;
+
+  // Detect screen size changes
+  useEffect(() => {
+    const handleResize = () => {
+      setIsSmallScreen(window.innerWidth < 640);
+    };
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   // Calculate the offset to center the active card
   const getTargetX = useCallback((index: number) => {
@@ -288,56 +337,65 @@ export default function IntegrationsCarousel() {
     const containerWidth = containerRef.current.offsetWidth;
     const cardCenter = index * (CARD_WIDTH + GAP) + CARD_WIDTH / 2;
     return containerWidth / 2 - cardCenter;
-  }, []);
+  }, [CARD_WIDTH]);
 
-  // Animate to a specific index
-  const goTo = useCallback((index: number) => {
-    const clamped = Math.max(0, Math.min(TOTAL - 1, index));
-    setActiveIndex(clamped);
-    const target = getTargetX(clamped);
+  // Animate to a specific index - uses stable reference to avoid closure issues
+  const animateToIndex = useCallback((index: number) => {
+    const target = getTargetX(index);
     animate(x, target, {
       type: 'spring',
       stiffness: 300,
       damping: 35,
       mass: 0.8,
     });
-  }, [getTargetX, x, TOTAL]);
+  }, [getTargetX, x]);
 
-  // Initialize position
+  // Go to specific index
+  const goTo = useCallback((index: number) => {
+    const clamped = Math.max(0, Math.min(TOTAL - 1, index));
+    setActiveIndex(clamped);
+    animateToIndex(clamped);
+  }, [TOTAL, animateToIndex]);
+
+  // Initialize position on mount
   useEffect(() => {
     const target = getTargetX(0);
     x.set(target);
-  }, [getTargetX, x]);
+  }, []);
 
-  // Auto-advance
-  useEffect(() => {
+  // Create stable auto-advance function that captures current dependencies
+  const setupAutoPlay = useCallback(() => {
+    // Clear existing timer
+    if (autoPlayRef.current) clearInterval(autoPlayRef.current);
+
+    // Set up new timer
     autoPlayRef.current = setInterval(() => {
       if (!isDragging.current) {
         setActiveIndex(prev => {
           const next = (prev + 1) % TOTAL;
-          goTo(next);
           return next;
         });
       }
-    }, 5000);
+    }, AUTO_ADVANCE_DELAY);
+  }, [TOTAL]);
+
+  // Auto-advance effect
+  useEffect(() => {
+    setupAutoPlay();
     return () => {
       if (autoPlayRef.current) clearInterval(autoPlayRef.current);
     };
-  }, [goTo, TOTAL]);
+  }, [setupAutoPlay]);
+
+  // Handle index changes from auto-advance
+  useEffect(() => {
+    animateToIndex(activeIndex);
+  }, [activeIndex, animateToIndex]);
 
   // Reset auto-play on manual interaction
   const resetAutoPlay = useCallback(() => {
-    if (autoPlayRef.current) clearInterval(autoPlayRef.current);
-    autoPlayRef.current = setInterval(() => {
-      if (!isDragging.current) {
-        setActiveIndex(prev => {
-          const next = (prev + 1) % TOTAL;
-          goTo(next);
-          return next;
-        });
-      }
-    }, 5000);
-  }, [goTo, TOTAL]);
+    setupAutoPlay();
+  }, [setupAutoPlay]);
 
   // Drag handlers
   const handleDragStart = () => {
@@ -360,29 +418,32 @@ export default function IntegrationsCarousel() {
   // Keyboard navigation
   const handleKeyDown = useCallback((e: React.KeyboardEvent) => {
     if (e.key === 'ArrowRight') {
+      e.preventDefault();
       goTo(activeIndex + 1);
       resetAutoPlay();
     } else if (e.key === 'ArrowLeft') {
+      e.preventDefault();
       goTo(activeIndex - 1);
       resetAutoPlay();
     }
   }, [activeIndex, goTo, resetAutoPlay]);
 
   // Arrow button handlers
-  const handlePrev = () => { goTo(activeIndex - 1); resetAutoPlay(); };
-  const handleNext = () => { goTo(activeIndex + 1); resetAutoPlay(); };
+  const handlePrev = useCallback(() => {
+    goTo(activeIndex - 1);
+    resetAutoPlay();
+  }, [activeIndex, goTo, resetAutoPlay]);
 
-  // Opacity fade on edges
-  const leftFadeOpacity = useTransform(
-    x,
-    [getTargetX(0), getTargetX(0) - 100],
-    [0, 1]
-  );
-  const rightFadeOpacity = useTransform(
-    x,
-    [getTargetX(TOTAL - 1), getTargetX(TOTAL - 1) + 100],
-    [0, 1]
-  );
+  const handleNext = useCallback(() => {
+    goTo(activeIndex + 1);
+    resetAutoPlay();
+  }, [activeIndex, goTo, resetAutoPlay]);
+
+  // Calculate drag constraints with proper centering
+  const dragConstraints = useMemo(() => ({
+    left: getTargetX(TOTAL - 1) - 100,
+    right: getTargetX(0) + 100,
+  }), [getTargetX, TOTAL]);
 
   return (
     <section
@@ -421,21 +482,19 @@ export default function IntegrationsCarousel() {
 
       {/* Carousel Track */}
       <div className="relative" ref={containerRef}>
-        {/* Left fade edge */}
-        <motion.div
-          className="absolute left-0 top-0 bottom-0 w-32 z-20 pointer-events-none"
+        {/* Left fade edge - always visible for deep-space background blending */}
+        <div className="absolute left-0 top-0 bottom-0 w-32 z-20 pointer-events-none"
           style={{
             background: 'linear-gradient(to right, rgba(10, 8, 27, 0.95), transparent)',
-            opacity: leftFadeOpacity,
+            opacity: activeIndex === 0 ? 0.5 : 1,
           }}
         />
 
-        {/* Right fade edge */}
-        <motion.div
-          className="absolute right-0 top-0 bottom-0 w-32 z-20 pointer-events-none"
+        {/* Right fade edge - always visible for deep-space background blending */}
+        <div className="absolute right-0 top-0 bottom-0 w-32 z-20 pointer-events-none"
           style={{
             background: 'linear-gradient(to left, rgba(10, 8, 27, 0.95), transparent)',
-            opacity: rightFadeOpacity,
+            opacity: activeIndex === TOTAL - 1 ? 0.5 : 1,
           }}
         />
 
@@ -486,11 +545,9 @@ export default function IntegrationsCarousel() {
             paddingRight: '24px',
           }}
           drag="x"
-          dragConstraints={{
-            left: getTargetX(TOTAL - 1) - 100,
-            right: getTargetX(0) + 100,
-          }}
+          dragConstraints={dragConstraints}
           dragElastic={0.15}
+          dragMomentum={true}
           onDragStart={handleDragStart}
           onDragEnd={handleDragEnd}
         >
@@ -499,6 +556,16 @@ export default function IntegrationsCarousel() {
               key={category.id}
               onClick={() => { goTo(index); resetAutoPlay(); }}
               className="flex-shrink-0"
+              role="button"
+              tabIndex={0}
+              aria-label={`View ${category.name}`}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  e.preventDefault();
+                  goTo(index);
+                  resetAutoPlay();
+                }
+              }}
             >
               <CategoryCard category={category} isActive={index === activeIndex} />
             </div>
@@ -507,10 +574,12 @@ export default function IntegrationsCarousel() {
       </div>
 
       {/* Navigation dots */}
-      <div className="flex items-center justify-center gap-2 mt-8">
+      <div className="flex items-center justify-center gap-2 mt-8" role="tablist" aria-label="Category navigation">
         {categories.map((cat, i) => (
           <NavDot
             key={cat.id}
+            index={i}
+            total={TOTAL}
             isActive={i === activeIndex}
             color={cat.borderGlow}
             onClick={() => { goTo(i); resetAutoPlay(); }}
@@ -518,9 +587,9 @@ export default function IntegrationsCarousel() {
         ))}
       </div>
 
-      {/* Category counter */}
-      <div className="text-center mt-4">
-        <span className="text-xs text-white/30 tracking-widest font-mono">
+      {/* Category counter - more visible */}
+      <div className="text-center mt-6">
+        <span className="text-sm text-white/50 tracking-widest font-mono font-medium">
           {String(activeIndex + 1).padStart(2, '0')} / {String(TOTAL).padStart(2, '0')}
         </span>
       </div>

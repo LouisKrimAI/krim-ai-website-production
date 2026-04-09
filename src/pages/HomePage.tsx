@@ -428,15 +428,15 @@ function KrimAIStackSection() {
                     <>
                       <div className="flex items-start gap-3">
                         <Target className="w-5 h-5 text-orange-400 mt-1 flex-shrink-0" />
-                        <span className="text-white/70">Pre-built compliance primitives ready to deploy</span>
+                        <span className="text-white/70">Pre-built execution primitives ready to deploy</span>
                       </div>
                       <div className="flex items-start gap-3">
                         <Target className="w-5 h-5 text-orange-400 mt-1 flex-shrink-0" />
-                        <span className="text-white/70">Built-in compliance validation and guardrails</span>
+                        <span className="text-white/70">Policies enforced before every action</span>
                       </div>
                       <div className="flex items-start gap-3">
                         <Target className="w-5 h-5 text-orange-400 mt-1 flex-shrink-0" />
-                        <span className="text-white/70">Transparent, auditable decision chains</span>
+                        <span className="text-white/70">Every decision logged and auditable</span>
                       </div>
                     </>
                   )}
@@ -1654,7 +1654,7 @@ export default function HomePage() {
                   <h3 className="text-3xl md:text-4xl font-bold text-white text-center">Ready to get started?</h3>
                 </div>
                 <p className="text-lg md:text-xl text-white/70 max-w-3xl mx-auto leading-relaxed text-center">
-                  Let's explore how governed AI can transform your operations.
+                  Let's explore how governed AI can run your operations.
                 </p>
               </div>
               

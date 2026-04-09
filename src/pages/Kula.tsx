@@ -58,7 +58,7 @@ export default function KulaPage() {
               transition={{ duration: 0.6, delay: 0.6 }}
               className="text-lg md:text-xl lg:text-2xl text-white/70 max-w-4xl mx-auto mb-16 leading-relaxed"
             >
-              Query portfolios in plain English. Surface insights from millions of records. Transform intent into governed, executable workflows.
+              Query portfolios in plain English. Surface insights from millions of records. Turn intent into governed, executable workflows.
             </motion.p>
 
             <motion.div
