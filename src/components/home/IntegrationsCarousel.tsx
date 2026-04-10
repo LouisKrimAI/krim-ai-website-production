@@ -26,7 +26,7 @@ import {
   type PanInfo,
   type MotionValue,
 } from 'framer-motion';
-import { CaretLeft, CaretRight } from '@phosphor-icons/react';
+import { ArrowLeft, ArrowRight } from '@phosphor-icons/react';
 import { darkBackgroundLogos } from '../logos/DarkBackgroundLogos';
 
 // ─── Constants ────────────────────────────────────────────────────────────────
@@ -630,35 +630,78 @@ export default function IntegrationsCarousel() {
     [handleNext, handlePrev],
   );
 
-  // ─── Wheel navigation (trackpad swipe — horizontal only) ─────────────────
+  // ─── Wheel navigation (mouse wheel + trackpad, both axes) ──────────────
 
   const wheelAccumulator = useRef(0);
   const wheelTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const wheelCooldown = useRef(false);
+  const edgeScrollCount = useRef(0);
+  const edgeScrollTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
     const el = containerRef.current;
     if (!el) return;
 
     const handler = (e: WheelEvent) => {
-      // Only capture intentional horizontal gestures
-      const isHorizontal = Math.abs(e.deltaX) > Math.abs(e.deltaY) * 2 && Math.abs(e.deltaX) > 5;
-      if (!isHorizontal) return; // Let vertical scroll pass through
+      const absX = Math.abs(e.deltaX);
+      const absY = Math.abs(e.deltaY);
 
+      // Classify gesture axis — must have clear dominance
+      const isHorizontal = absX > absY * 1.5 && absX > 3;
+      const isVertical = absY > absX * 1.5 && absY > 3;
+      if (!isHorizontal && !isVertical) return;
+
+      // Effective delta: horizontal uses deltaX, vertical uses deltaY
+      const effectiveDelta = isHorizontal ? e.deltaX : e.deltaY;
+
+      // Edge passthrough — prevent scroll hijacking at boundaries
+      const atStart = activeIndexRef.current === 0;
+      const atEnd = activeIndexRef.current === TOTAL - 1;
+      const scrollingBackward = effectiveDelta < 0;
+      const scrollingForward = effectiveDelta > 0;
+
+      if ((atStart && scrollingBackward) || (atEnd && scrollingForward)) {
+        edgeScrollCount.current += 1;
+        if (edgeScrollTimeout.current) clearTimeout(edgeScrollTimeout.current);
+        edgeScrollTimeout.current = setTimeout(() => {
+          edgeScrollCount.current = 0;
+        }, 300);
+
+        // First 2 events at edge: consume silently (prevents jarring page scroll after snap)
+        if (edgeScrollCount.current <= 2) {
+          e.preventDefault();
+          return;
+        }
+        // After 2+ attempts: let page scroll through
+        wheelAccumulator.current = 0;
+        return;
+      }
+
+      // Consume this event — we're navigating the carousel
       e.preventDefault();
+      edgeScrollCount.current = 0;
 
-      wheelAccumulator.current += e.deltaX;
+      // Accumulate delta
+      wheelAccumulator.current += effectiveDelta;
       if (wheelTimeout.current) clearTimeout(wheelTimeout.current);
+      wheelTimeout.current = setTimeout(() => {
+        wheelAccumulator.current = 0;
+      }, 200);
 
-      if (Math.abs(wheelAccumulator.current) > 60) {
+      // Threshold check with cooldown to prevent double-snap
+      const threshold = isHorizontal ? 50 : 80;
+      if (Math.abs(wheelAccumulator.current) > threshold && !wheelCooldown.current) {
         const direction = wheelAccumulator.current > 0 ? 1 : -1;
         goTo(activeIndexRef.current + direction, WHEEL_SPRING);
         resetAutoPlay();
         wheelAccumulator.current = 0;
-      }
 
-      wheelTimeout.current = setTimeout(() => {
-        wheelAccumulator.current = 0;
-      }, 180);
+        // 400ms cooldown matches WHEEL_SPRING settle time
+        wheelCooldown.current = true;
+        setTimeout(() => {
+          wheelCooldown.current = false;
+        }, 400);
+      }
     };
 
     el.addEventListener('wheel', handler, { passive: false });
@@ -705,7 +748,7 @@ export default function IntegrationsCarousel() {
       `}</style>
 
       {/* ── Section Header ── */}
-      <div className="max-w-7xl mx-auto px-6 mb-8">
+      <div className="max-w-7xl mx-auto px-6 mb-14">
         <div className="text-center flex flex-col items-center">
           <motion.div
             className="inline-flex items-center justify-center gap-4 mb-5"
@@ -731,47 +774,6 @@ export default function IntegrationsCarousel() {
           >
             Native connectivity across your entire technology stack
           </motion.p>
-        </div>
-      </div>
-
-      {/* ── Arrow Control Bar ── */}
-      <div className="max-w-7xl mx-auto px-6 flex items-center justify-end mb-4">
-        <div className="flex items-center gap-2">
-          <motion.button
-            onClick={handlePrev}
-            disabled={activeIndex === 0}
-            className="w-10 h-10 rounded-full border border-white/10 bg-white/5 flex items-center justify-center"
-            style={{ pointerEvents: activeIndex === 0 ? 'none' : 'auto' }}
-            animate={{
-              opacity: activeIndex === 0 ? 0.2 : 1,
-              x: activeIndex === 0 ? -4 : 0,
-              scale: activeIndex === 0 ? 0.92 : 1,
-            }}
-            transition={{ duration: 0.35, ease: [0.32, 0, 0.24, 1] }}
-            whileHover={{ backgroundColor: 'rgba(255, 255, 255, 0.10)' }}
-            whileTap={{ scale: 0.98 }}
-            aria-label="Previous category"
-          >
-            <CaretLeft size={18} weight="bold" className="text-white/80" />
-          </motion.button>
-
-          <motion.button
-            onClick={handleNext}
-            disabled={activeIndex === TOTAL - 1}
-            className="w-10 h-10 rounded-full border border-white/10 bg-white/5 flex items-center justify-center"
-            style={{ pointerEvents: activeIndex === TOTAL - 1 ? 'none' : 'auto' }}
-            animate={{
-              opacity: activeIndex === TOTAL - 1 ? 0.2 : 1,
-              x: activeIndex === TOTAL - 1 ? 4 : 0,
-              scale: activeIndex === TOTAL - 1 ? 0.92 : 1,
-            }}
-            transition={{ duration: 0.35, ease: [0.32, 0, 0.24, 1] }}
-            whileHover={{ backgroundColor: 'rgba(255, 255, 255, 0.10)' }}
-            whileTap={{ scale: 0.98 }}
-            aria-label="Next category"
-          >
-            <CaretRight size={18} weight="bold" className="text-white/80" />
-          </motion.button>
         </div>
       </div>
 
@@ -825,6 +827,58 @@ export default function IntegrationsCarousel() {
           animate={{ opacity: activeIndex === TOTAL - 1 ? 0.4 : 1 }}
           transition={{ duration: 0.4, ease: [0.32, 0, 0.24, 1] }}
         />
+
+        {/* Arrow — prev */}
+        <motion.button
+          onClick={handlePrev}
+          disabled={activeIndex === 0}
+          className={`
+            group absolute left-4 sm:left-6 top-1/2 -translate-y-1/2 z-30
+            w-12 h-12 sm:w-14 sm:h-14 rounded-full
+            flex items-center justify-center
+            border backdrop-blur-sm
+            transition-all duration-200 ease-out
+            focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#00D4FF] focus-visible:outline-offset-[3px]
+            ${activeIndex === 0
+              ? 'bg-white/[0.03] border-white/[0.08] shadow-none pointer-events-none cursor-not-allowed'
+              : 'bg-[rgba(0,212,255,0.12)] border-[rgba(0,212,255,0.35)] shadow-[0_0_20px_rgba(0,212,255,0.15)] hover:bg-[rgba(0,212,255,0.22)] hover:border-[rgba(0,212,255,0.6)] hover:shadow-[0_0_30px_rgba(0,212,255,0.3),0_0_60px_rgba(0,212,255,0.1)] hover:scale-[1.08] active:bg-[rgba(0,212,255,0.35)] active:scale-95 active:shadow-[0_0_15px_rgba(0,212,255,0.4)]'}
+          `}
+          aria-label="Previous category"
+        >
+          <ArrowLeft
+            size={24}
+            weight="bold"
+            className={`transition-colors duration-200 ${
+              activeIndex === 0 ? 'text-white/[0.15]' : 'text-[#00D4FF] group-hover:text-white'
+            }`}
+          />
+        </motion.button>
+
+        {/* Arrow — next */}
+        <motion.button
+          onClick={handleNext}
+          disabled={activeIndex === TOTAL - 1}
+          className={`
+            group absolute right-4 sm:right-6 top-1/2 -translate-y-1/2 z-30
+            w-12 h-12 sm:w-14 sm:h-14 rounded-full
+            flex items-center justify-center
+            border backdrop-blur-sm
+            transition-all duration-200 ease-out
+            focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#00D4FF] focus-visible:outline-offset-[3px]
+            ${activeIndex === TOTAL - 1
+              ? 'bg-white/[0.03] border-white/[0.08] shadow-none pointer-events-none cursor-not-allowed'
+              : 'bg-[rgba(0,212,255,0.12)] border-[rgba(0,212,255,0.35)] shadow-[0_0_20px_rgba(0,212,255,0.15)] hover:bg-[rgba(0,212,255,0.22)] hover:border-[rgba(0,212,255,0.6)] hover:shadow-[0_0_30px_rgba(0,212,255,0.3),0_0_60px_rgba(0,212,255,0.1)] hover:scale-[1.08] active:bg-[rgba(0,212,255,0.35)] active:scale-95 active:shadow-[0_0_15px_rgba(0,212,255,0.4)]'}
+          `}
+          aria-label="Next category"
+        >
+          <ArrowRight
+            size={24}
+            weight="bold"
+            className={`transition-colors duration-200 ${
+              activeIndex === TOTAL - 1 ? 'text-white/[0.15]' : 'text-[#00D4FF] group-hover:text-white'
+            }`}
+          />
+        </motion.button>
 
         {/* Draggable card track */}
         <motion.div
