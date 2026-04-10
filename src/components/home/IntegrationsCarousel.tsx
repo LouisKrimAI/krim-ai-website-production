@@ -44,7 +44,9 @@ const CYAN_RGB = '0, 212, 255';
 const ACTIVE_GLOW = `0 0 40px rgba(${CYAN_RGB}, 0.3), 0 0 80px rgba(${CYAN_RGB}, 0.12)`;
 const IDLE_SHADOW = 'inset 0 1px 0 rgba(255,255,255,0.04)';
 
-// Spring for main snap animation
+// Spring hierarchy
+const ARROW_SPRING = { type: 'spring' as const, stiffness: 220, damping: 26, mass: 0.85 };
+const WHEEL_SPRING = { type: 'spring' as const, stiffness: 200, damping: 28, mass: 0.8 };
 const SNAP_SPRING = { type: 'spring' as const, stiffness: 150, damping: 24, mass: 1.0 };
 const AUTO_SPRING = { type: 'spring' as const, stiffness: 110, damping: 22, mass: 1.1 };
 
@@ -263,7 +265,12 @@ const CategoryCard = React.memo(
     return (
       <motion.div
         ref={cardRef}
-        className="relative flex-shrink-0 w-[300px] sm:w-[380px] h-[320px] rounded-2xl border border-cyan-500/20 overflow-hidden cursor-pointer group transition-[box-shadow] duration-700 ease-out"
+        className={`
+          relative flex-shrink-0 w-[300px] sm:w-[380px] h-[320px] rounded-2xl
+          border overflow-hidden cursor-pointer group
+          transition-[box-shadow,border-color] duration-700 ease-out
+          ${isActive ? 'border-cyan-500/20' : 'border-white/[0.06] hover:border-cyan-500/30'}
+        `}
         style={{
           scale: mv.scale,
           opacity: mv.opacity,
@@ -505,14 +512,26 @@ export default function IntegrationsCarousel() {
   // ─── Go-to (sets state, ref, animates, resets dot progress) ───────────────
 
   const goTo = useCallback(
-    (index: number, spring = SNAP_SPRING) => {
+    (index: number, spring = SNAP_SPRING, userInitiated = true) => {
       const clamped = Math.max(0, Math.min(TOTAL - 1, index));
       activeIndexRef.current = clamped;
       setActiveIndex(clamped);
       animateToIndex(clamped, spring);
       setProgressKey((k) => k + 1);
+
+      // Magnetic snap glow pulse — only on user-initiated navigation
+      if (userInitiated && !reducedMotion) {
+        const mv = cardMVs[clamped];
+        setTimeout(() => {
+          animate(mv.shadow, [
+            ACTIVE_GLOW,
+            `0 0 50px rgba(${CYAN_RGB}, 0.38), 0 0 100px rgba(${CYAN_RGB}, 0.16)`,
+            ACTIVE_GLOW,
+          ], { duration: 0.6, ease: [0.32, 0, 0.24, 1] });
+        }, 200);
+      }
     },
-    [animateToIndex],
+    [animateToIndex, reducedMotion],
   );
 
   // ─── Initialize position on mount ─────────────────────────────────────────
@@ -528,13 +547,15 @@ export default function IntegrationsCarousel() {
 
   // ─── Auto-advance ─────────────────────────────────────────────────────────
   // Uses ref for current index to avoid closure issues.
-  // Pauses on hover and when dragging.
+  // Pauses on hover and when dragging. Stops at last card.
 
   useEffect(() => {
     const tick = () => {
       if (!isDragging.current && !isHovered.current) {
-        const next = (activeIndexRef.current + 1) % TOTAL;
-        goTo(next, AUTO_SPRING);
+        const current = activeIndexRef.current;
+        if (current < TOTAL - 1) {
+          goTo(current + 1, AUTO_SPRING, false);
+        }
       }
     };
     autoPlayRef.current = setInterval(tick, AUTO_ADVANCE_MS);
@@ -548,8 +569,10 @@ export default function IntegrationsCarousel() {
     setProgressKey((k) => k + 1);
     autoPlayRef.current = setInterval(() => {
       if (!isDragging.current && !isHovered.current) {
-        const next = (activeIndexRef.current + 1) % TOTAL;
-        goTo(next, AUTO_SPRING);
+        const current = activeIndexRef.current;
+        if (current < TOTAL - 1) {
+          goTo(current + 1, AUTO_SPRING, false);
+        }
       }
     }, AUTO_ADVANCE_MS);
   }, [goTo]);
@@ -585,12 +608,12 @@ export default function IntegrationsCarousel() {
   // ─── Arrow & keyboard ────────────────────────────────────────────────────
 
   const handlePrev = useCallback(() => {
-    goTo(activeIndexRef.current - 1);
+    goTo(activeIndexRef.current - 1, ARROW_SPRING);
     resetAutoPlay();
   }, [goTo, resetAutoPlay]);
 
   const handleNext = useCallback(() => {
-    goTo(activeIndexRef.current + 1);
+    goTo(activeIndexRef.current + 1, ARROW_SPRING);
     resetAutoPlay();
   }, [goTo, resetAutoPlay]);
 
@@ -607,7 +630,7 @@ export default function IntegrationsCarousel() {
     [handleNext, handlePrev],
   );
 
-  // ─── Wheel navigation (trackpad swipe + mouse wheel) ──────────────────────
+  // ─── Wheel navigation (trackpad swipe — horizontal only) ─────────────────
 
   const wheelAccumulator = useRef(0);
   const wheelTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -617,23 +640,25 @@ export default function IntegrationsCarousel() {
     if (!el) return;
 
     const handler = (e: WheelEvent) => {
-      const delta = Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX : e.deltaY;
-      if (Math.abs(delta) < 2) return;
+      // Only capture intentional horizontal gestures
+      const isHorizontal = Math.abs(e.deltaX) > Math.abs(e.deltaY) * 2 && Math.abs(e.deltaX) > 5;
+      if (!isHorizontal) return; // Let vertical scroll pass through
+
       e.preventDefault();
 
-      wheelAccumulator.current += delta;
+      wheelAccumulator.current += e.deltaX;
       if (wheelTimeout.current) clearTimeout(wheelTimeout.current);
 
-      if (Math.abs(wheelAccumulator.current) > 50) {
+      if (Math.abs(wheelAccumulator.current) > 60) {
         const direction = wheelAccumulator.current > 0 ? 1 : -1;
-        goTo(activeIndexRef.current + direction);
+        goTo(activeIndexRef.current + direction, WHEEL_SPRING);
         resetAutoPlay();
         wheelAccumulator.current = 0;
       }
 
       wheelTimeout.current = setTimeout(() => {
         wheelAccumulator.current = 0;
-      }, 150);
+      }, 180);
     };
 
     el.addEventListener('wheel', handler, { passive: false });
@@ -680,7 +705,7 @@ export default function IntegrationsCarousel() {
       `}</style>
 
       {/* ── Section Header ── */}
-      <div className="max-w-7xl mx-auto px-6 mb-14">
+      <div className="max-w-7xl mx-auto px-6 mb-8">
         <div className="text-center flex flex-col items-center">
           <motion.div
             className="inline-flex items-center justify-center gap-4 mb-5"
@@ -706,6 +731,47 @@ export default function IntegrationsCarousel() {
           >
             Native connectivity across your entire technology stack
           </motion.p>
+        </div>
+      </div>
+
+      {/* ── Arrow Control Bar ── */}
+      <div className="max-w-7xl mx-auto px-6 flex items-center justify-end mb-4">
+        <div className="flex items-center gap-2">
+          <motion.button
+            onClick={handlePrev}
+            disabled={activeIndex === 0}
+            className="w-10 h-10 rounded-full border border-white/10 bg-white/5 flex items-center justify-center"
+            style={{ pointerEvents: activeIndex === 0 ? 'none' : 'auto' }}
+            animate={{
+              opacity: activeIndex === 0 ? 0.2 : 1,
+              x: activeIndex === 0 ? -4 : 0,
+              scale: activeIndex === 0 ? 0.92 : 1,
+            }}
+            transition={{ duration: 0.35, ease: [0.32, 0, 0.24, 1] }}
+            whileHover={{ backgroundColor: 'rgba(255, 255, 255, 0.10)' }}
+            whileTap={{ scale: 0.98 }}
+            aria-label="Previous category"
+          >
+            <CaretLeft size={18} weight="bold" className="text-white/80" />
+          </motion.button>
+
+          <motion.button
+            onClick={handleNext}
+            disabled={activeIndex === TOTAL - 1}
+            className="w-10 h-10 rounded-full border border-white/10 bg-white/5 flex items-center justify-center"
+            style={{ pointerEvents: activeIndex === TOTAL - 1 ? 'none' : 'auto' }}
+            animate={{
+              opacity: activeIndex === TOTAL - 1 ? 0.2 : 1,
+              x: activeIndex === TOTAL - 1 ? 4 : 0,
+              scale: activeIndex === TOTAL - 1 ? 0.92 : 1,
+            }}
+            transition={{ duration: 0.35, ease: [0.32, 0, 0.24, 1] }}
+            whileHover={{ backgroundColor: 'rgba(255, 255, 255, 0.10)' }}
+            whileTap={{ scale: 0.98 }}
+            aria-label="Next category"
+          >
+            <CaretRight size={18} weight="bold" className="text-white/80" />
+          </motion.button>
         </div>
       </div>
 
@@ -742,67 +808,23 @@ export default function IntegrationsCarousel() {
         />
 
         {/* Left edge fade */}
-        <div
+        <motion.div
           className="absolute left-0 top-0 bottom-0 w-32 z-20 pointer-events-none"
           style={{
             background: 'linear-gradient(to right, rgba(10, 8, 27, 0.95), transparent)',
-            opacity: activeIndex === 0 ? 0.5 : 1,
           }}
+          animate={{ opacity: activeIndex === 0 ? 0.4 : 1 }}
+          transition={{ duration: 0.4, ease: [0.32, 0, 0.24, 1] }}
         />
         {/* Right edge fade */}
-        <div
+        <motion.div
           className="absolute right-0 top-0 bottom-0 w-32 z-20 pointer-events-none"
           style={{
             background: 'linear-gradient(to left, rgba(10, 8, 27, 0.95), transparent)',
-            opacity: activeIndex === TOTAL - 1 ? 0.5 : 1,
           }}
+          animate={{ opacity: activeIndex === TOTAL - 1 ? 0.4 : 1 }}
+          transition={{ duration: 0.4, ease: [0.32, 0, 0.24, 1] }}
         />
-
-        {/* Arrow — prev */}
-        <motion.button
-          onClick={handlePrev}
-          disabled={activeIndex === 0}
-          className={`
-            absolute left-4 sm:left-8 top-1/2 -translate-y-1/2 z-30
-            w-10 h-10 rounded-full
-            border border-white/10 bg-white/5
-            flex items-center justify-center
-            transition-colors duration-200
-            ${activeIndex === 0 ? 'opacity-0 pointer-events-none' : 'opacity-100'}
-          `}
-          whileHover={
-            activeIndex !== 0
-              ? { scale: 1.08, backgroundColor: 'rgba(255,255,255,0.12)' }
-              : undefined
-          }
-          whileTap={activeIndex !== 0 ? { scale: 0.95 } : undefined}
-          aria-label="Previous category"
-        >
-          <CaretLeft size={18} weight="bold" className="text-white/80" />
-        </motion.button>
-
-        {/* Arrow — next */}
-        <motion.button
-          onClick={handleNext}
-          disabled={activeIndex === TOTAL - 1}
-          className={`
-            absolute right-4 sm:right-8 top-1/2 -translate-y-1/2 z-30
-            w-10 h-10 rounded-full
-            border border-white/10 bg-white/5
-            flex items-center justify-center
-            transition-colors duration-200
-            ${activeIndex === TOTAL - 1 ? 'opacity-0 pointer-events-none' : 'opacity-100'}
-          `}
-          whileHover={
-            activeIndex !== TOTAL - 1
-              ? { scale: 1.08, backgroundColor: 'rgba(255,255,255,0.12)' }
-              : undefined
-          }
-          whileTap={activeIndex !== TOTAL - 1 ? { scale: 0.95 } : undefined}
-          aria-label="Next category"
-        >
-          <CaretRight size={18} weight="bold" className="text-white/80" />
-        </motion.button>
 
         {/* Draggable card track */}
         <motion.div
@@ -860,14 +882,6 @@ export default function IntegrationsCarousel() {
             }}
           />
         ))}
-      </motion.div>
-
-      {/* Category counter */}
-      <motion.div className="text-center mt-6" {...sectionEntry(0.55)}>
-        <span className="text-sm text-white/50 tracking-widest font-mono font-medium">
-          {String(activeIndex + 1).padStart(2, '0')} /{' '}
-          {String(TOTAL).padStart(2, '0')}
-        </span>
       </motion.div>
     </section>
   );
