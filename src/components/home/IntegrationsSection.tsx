@@ -223,13 +223,13 @@ const IntegrationsSection: React.FC = () => {
                   <span className="text-xs text-krim-mint mt-1">AI</span>
                 </div>
 
-                {/* Channels & Co-Workers */}
+                {/* Channels & Autonomous Workers */}
                 <div className="text-center">
                   <div className="w-20 h-20 bg-krim-cyan/10 rounded-xl flex items-center justify-center mb-3 border border-krim-cyan/30">
                     <ChatCircle className="w-8 h-8 text-krim-cyan" />
                   </div>
                   <p className="text-sm text-white font-medium">Channels</p>
-                  <p className="text-xs text-krim-cyan">AI Co-Workers</p>
+                  <p className="text-xs text-krim-cyan">Autonomous Workers</p>
                 </div>
               </div>
             </div>

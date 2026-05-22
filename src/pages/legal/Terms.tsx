@@ -42,7 +42,7 @@ const serviceTerms = [
   {
     category: 'Compliance and Regulations',
     terms: [
-      'FDCPA, TCPA, FCRA, and SCRA compliance built-in',
+      'Domain-specific regulatory compliance built-in (FDCPA, TCPA, FCRA, SCRA where applicable)',
       'Regular regulatory updates included in service',
       'Compliance monitoring and violation prevention',
       'Regulatory examination support and documentation'

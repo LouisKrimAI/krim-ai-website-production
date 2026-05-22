@@ -11,25 +11,39 @@ interface LogoProps {
   size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'custom'
   className?: string
   animated?: boolean
+  /**
+   * Color treatment.
+   * - 'mint'  = legacy brand (mint #00FF88) — used on alternative homepage
+   * - 'brand' = canonical brand (Mithila ochre #C8973B on indigo) — used on main site
+   * - 'white' = monochrome white wordmark (for high-contrast moments)
+   */
+  treatment?: 'mint' | 'brand' | 'white'
 }
 
 interface WordmarkProps extends LogoProps {
   variant?: 'horizontal' | 'stacked'
 }
 
+const TREATMENT_COLOR: Record<NonNullable<LogoProps['treatment']>, string> = {
+  mint: '#00FF88',
+  brand: '#C8973B',
+  white: '#FAFAFA',
+}
+
 /**
  * Krim AI Icon-only Logo
  * Perfect for compact spaces, favicons, loading states
  */
-export function KrimLogo({ size = 'md', className, animated = false }: LogoProps) {
+export function KrimLogo({ size = 'md', className, animated = false, treatment = 'mint' }: LogoProps) {
   const sizeClasses = {
     xs: 'w-4 h-4',
-    sm: 'w-6 h-6', 
+    sm: 'w-6 h-6',
     md: 'w-8 h-8',
     lg: 'w-12 h-12',
     xl: 'w-16 h-16',
     custom: ''
   }
+  const c = TREATMENT_COLOR[treatment]
 
   return (
     <svg
@@ -46,22 +60,14 @@ export function KrimLogo({ size = 'md', className, animated = false }: LogoProps
     >
       <title id="krim-logo-title">Krim Logo</title>
       <g id="inverted-triangle">
-        {/* Inverted triangle with green edges */}
-        {/* Left side with gap */}
-        <line x1="100" y1="100" x2="140" y2="169.3" stroke="#00FF88" strokeWidth="4" strokeLinecap="round"/>
-        <line x1="160" y1="203.9" x2="200" y2="273.2" stroke="#00FF88" strokeWidth="4" strokeLinecap="round"/>
-        
-        {/* Right side with gap */}
-        <line x1="300" y1="100" x2="260" y2="169.3" stroke="#00FF88" strokeWidth="4" strokeLinecap="round"/>
-        <line x1="240" y1="203.9" x2="200" y2="273.2" stroke="#00FF88" strokeWidth="4" strokeLinecap="round"/>
-        
-        {/* Top side with gap */}
-        <line x1="100" y1="100" x2="180" y2="100" stroke="#00FF88" strokeWidth="4" strokeLinecap="round"/>
-        <line x1="220" y1="100" x2="300" y2="100" stroke="#00FF88" strokeWidth="4" strokeLinecap="round"/>
+        <line x1="100" y1="100" x2="140" y2="169.3" stroke={c} strokeWidth="4" strokeLinecap="round"/>
+        <line x1="160" y1="203.9" x2="200" y2="273.2" stroke={c} strokeWidth="4" strokeLinecap="round"/>
+        <line x1="300" y1="100" x2="260" y2="169.3" stroke={c} strokeWidth="4" strokeLinecap="round"/>
+        <line x1="240" y1="203.9" x2="200" y2="273.2" stroke={c} strokeWidth="4" strokeLinecap="round"/>
+        <line x1="100" y1="100" x2="180" y2="100" stroke={c} strokeWidth="4" strokeLinecap="round"/>
+        <line x1="220" y1="100" x2="300" y2="100" stroke={c} strokeWidth="4" strokeLinecap="round"/>
       </g>
-
-      {/* Single central dot at exact centroid */}
-      <circle cx="200" cy="157.7" r="6" fill="#00FF88"/>
+      <circle cx="200" cy="157.7" r="6" fill={c}/>
     </svg>
   )
 }
@@ -70,12 +76,14 @@ export function KrimLogo({ size = 'md', className, animated = false }: LogoProps
  * Krim AI Wordmark Logo
  * Professional brand lockup with icon + text
  */
-export function KrimWordmark({ 
-  size = 'md', 
-  variant = 'horizontal', 
+export function KrimWordmark({
+  size = 'md',
+  variant = 'horizontal',
   className,
-  animated = false 
+  animated = false,
+  treatment = 'mint'
 }: WordmarkProps) {
+  const c = TREATMENT_COLOR[treatment]
   const sizeClasses = {
     xs: 'h-6',
     sm: 'h-8', 
@@ -99,33 +107,23 @@ export function KrimWordmark({
       aria-labelledby="krim-wordmark-title"
     >
       <title id="krim-wordmark-title">Krim AI wordmark</title>
-      {/* Logo icon on the left */}
       <g transform="translate(20, 5) scale(0.35)">
-        {/* Inverted triangle with green edges */}
-        {/* Left side with gap */}
-        <line x1="100" y1="100" x2="140" y2="169.3" stroke="#00FF88" strokeWidth="4" strokeLinecap="round"/>
-        <line x1="160" y1="203.9" x2="200" y2="273.2" stroke="#00FF88" strokeWidth="4" strokeLinecap="round"/>
-        
-        {/* Right side with gap */}
-        <line x1="300" y1="100" x2="260" y2="169.3" stroke="#00FF88" strokeWidth="4" strokeLinecap="round"/>
-        <line x1="240" y1="203.9" x2="200" y2="273.2" stroke="#00FF88" strokeWidth="4" strokeLinecap="round"/>
-        
-        {/* Top side with gap */}
-        <line x1="100" y1="100" x2="180" y2="100" stroke="#00FF88" strokeWidth="4" strokeLinecap="round"/>
-        <line x1="220" y1="100" x2="300" y2="100" stroke="#00FF88" strokeWidth="4" strokeLinecap="round"/>
-        
-        {/* Single center dot at centroid */}
-        <circle cx="200" cy="157.7" r="5" fill="#00FF88"/>
+        <line x1="100" y1="100" x2="140" y2="169.3" stroke={c} strokeWidth="4" strokeLinecap="round"/>
+        <line x1="160" y1="203.9" x2="200" y2="273.2" stroke={c} strokeWidth="4" strokeLinecap="round"/>
+        <line x1="300" y1="100" x2="260" y2="169.3" stroke={c} strokeWidth="4" strokeLinecap="round"/>
+        <line x1="240" y1="203.9" x2="200" y2="273.2" stroke={c} strokeWidth="4" strokeLinecap="round"/>
+        <line x1="100" y1="100" x2="180" y2="100" stroke={c} strokeWidth="4" strokeLinecap="round"/>
+        <line x1="220" y1="100" x2="300" y2="100" stroke={c} strokeWidth="4" strokeLinecap="round"/>
+        <circle cx="200" cy="157.7" r="5" fill={c}/>
       </g>
-      
-      {/* Text adjacent to logo */}
-      <text 
-        x="150" 
-        y="90" 
-        fontFamily="Montserrat, system-ui, -apple-system, sans-serif" 
-        fontSize="56" 
-        fontWeight="bold" 
-        fill="#00FF88"
+      <text
+        x="150"
+        y="90"
+        fontFamily={treatment === 'brand' ? 'Georgia, serif' : 'Montserrat, system-ui, -apple-system, sans-serif'}
+        fontSize="56"
+        fontWeight={treatment === 'brand' ? '400' : 'bold'}
+        fill={c}
+        letterSpacing={treatment === 'brand' ? '2' : '0'}
       >
         KRIM
       </text>
@@ -137,11 +135,13 @@ export function KrimWordmark({
  * Krim AI Animated Logo
  * Engaging animated version with converging dots
  */
-export function KrimAnimatedLogo({ 
-  size = 'md', 
+export function KrimAnimatedLogo({
+  size = 'md',
   className,
-  animated = true 
+  animated = true,
+  treatment = 'mint'
 }: Omit<WordmarkProps, 'variant'>) {
+  const c = TREATMENT_COLOR[treatment]
   const sizeClasses = {
     xs: 'h-6',
     sm: 'h-8', 
@@ -164,62 +164,50 @@ export function KrimAnimatedLogo({
       aria-labelledby="krim-animated-title"
     >
       <title id="krim-animated-title">Krim AI animated wordmark</title>
-      {/* Logo icon on the left */}
       <g transform="translate(20, 5) scale(0.35)">
-        {/* Inverted triangle with green edges */}
-        {/* Left side with gap */}
-        <line x1="100" y1="100" x2="140" y2="169.3" stroke="#00FF88" strokeWidth="4" strokeLinecap="round"/>
-        <line x1="160" y1="203.9" x2="200" y2="273.2" stroke="#00FF88" strokeWidth="4" strokeLinecap="round"/>
-        
-        {/* Right side with gap */}
-        <line x1="300" y1="100" x2="260" y2="169.3" stroke="#00FF88" strokeWidth="4" strokeLinecap="round"/>
-        <line x1="240" y1="203.9" x2="200" y2="273.2" stroke="#00FF88" strokeWidth="4" strokeLinecap="round"/>
-        
-        {/* Top side with gap */}
-        <line x1="100" y1="100" x2="180" y2="100" stroke="#00FF88" strokeWidth="4" strokeLinecap="round"/>
-        <line x1="220" y1="100" x2="300" y2="100" stroke="#00FF88" strokeWidth="4" strokeLinecap="round"/>
-        
-        {/* Animated dots entering through portal centers to exact centroid (200, 157.7) */}
-        {animated && (
+        <line x1="100" y1="100" x2="140" y2="169.3" stroke={c} strokeWidth="4" strokeLinecap="round"/>
+        <line x1="160" y1="203.9" x2="200" y2="273.2" stroke={c} strokeWidth="4" strokeLinecap="round"/>
+        <line x1="300" y1="100" x2="260" y2="169.3" stroke={c} strokeWidth="4" strokeLinecap="round"/>
+        <line x1="240" y1="203.9" x2="200" y2="273.2" stroke={c} strokeWidth="4" strokeLinecap="round"/>
+        <line x1="100" y1="100" x2="180" y2="100" stroke={c} strokeWidth="4" strokeLinecap="round"/>
+        <line x1="220" y1="100" x2="300" y2="100" stroke={c} strokeWidth="4" strokeLinecap="round"/>
+        {animated && treatment === 'mint' && (
           <>
-            {/* Red dot from left portal center */}
             <circle r="4" fill="#FF0040">
               <animate attributeName="cx" values="106.7;150;200;150;106.7" dur="3s" repeatCount="indefinite"/>
               <animate attributeName="cy" values="211.6;186.6;157.7;186.6;211.6" dur="3s" repeatCount="indefinite"/>
               <animate attributeName="opacity" values="0;1;1;1;0" dur="3s" repeatCount="indefinite"/>
             </circle>
-            
-            {/* Blue dot from right portal center */}
             <circle r="4" fill="#00BBFF">
               <animate attributeName="cx" values="293.3;250;200;250;293.3" dur="3s" begin="1s" repeatCount="indefinite"/>
               <animate attributeName="cy" values="211.6;186.6;157.7;186.6;211.6" dur="3s" begin="1s" repeatCount="indefinite"/>
               <animate attributeName="opacity" values="0;1;1;1;0" dur="3s" begin="1s" repeatCount="indefinite"/>
             </circle>
-            
-            {/* Green dot from top portal center */}
             <circle r="4" fill="#00FF88">
               <animate attributeName="cx" values="200;200;200;200;200" dur="3s" begin="2s" repeatCount="indefinite"/>
               <animate attributeName="cy" values="50;100;157.7;100;50" dur="3s" begin="2s" repeatCount="indefinite"/>
               <animate attributeName="opacity" values="0;1;1;1;0" dur="3s" begin="2s" repeatCount="indefinite"/>
             </circle>
-            
-            {/* Central convergence flash */}
             <circle cx="200" cy="157.7" r="2" fill="#FFFFFF" opacity="0">
               <animate attributeName="opacity" values="0;0.8;0" dur="1s" begin="1.5s" repeatCount="indefinite"/>
               <animate attributeName="r" values="2;10;2" dur="1s" begin="1.5s" repeatCount="indefinite"/>
             </circle>
           </>
         )}
+        {/* When not animating, render a steady central dot — disciplined restraint */}
+        {!animated && (
+          <circle cx="200" cy="157.7" r="6" fill={c}/>
+        )}
       </g>
-      
-      {/* Text adjacent to logo */}
-      <text 
-        x="150" 
-        y="90" 
-        fontFamily="Montserrat, system-ui, -apple-system, sans-serif" 
-        fontSize="56" 
-        fontWeight="bold" 
-        fill="#00FF88"
+
+      <text
+        x="150"
+        y="90"
+        fontFamily={treatment === 'brand' ? 'Georgia, serif' : 'Montserrat, system-ui, -apple-system, sans-serif'}
+        fontSize="56"
+        fontWeight={treatment === 'brand' ? '400' : 'bold'}
+        fill={c}
+        letterSpacing={treatment === 'brand' ? '2' : '0'}
       >
         KRIM
       </text>

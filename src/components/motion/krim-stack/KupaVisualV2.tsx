@@ -67,7 +67,7 @@ const KupaVisualV2: React.FC = () => {
   ])
   const [metrics, setMetrics] = useState<MetricData[]>([
     // Panel 1: Campaign Performance Metrics (Top Left) - Real-time operational metrics
-    { name: 'Today\'s Collections', value: 847293, target: 2000000, status: 'warning', trend: [621000, 734000, 847293] },
+    { name: 'Today\'s Recovery', value: 847293, target: 2000000, status: 'warning', trend: [621000, 734000, 847293] },
     { name: 'Accounts Worked', value: 3427, target: 5000, status: 'warning', trend: [2890, 3156, 3427] },
     { name: 'RPC Rate', value: 42.3, target: 45, status: 'warning', trend: [40.1, 41.2, 42.3] }, // Right Party Contact
     { name: 'PTP Rate', value: 23.7, target: 25, status: 'warning', trend: [22.1, 23.2, 23.7] }, // Promise to Pay
@@ -104,7 +104,7 @@ const KupaVisualV2: React.FC = () => {
     }
   }, [mouseX, mouseY])
 
-  // Real-time updates for collections (every 30 seconds)
+  // Real-time updates for recovery metrics (every 30 seconds)
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentTime(new Date())
@@ -119,8 +119,8 @@ const KupaVisualV2: React.FC = () => {
         const isPeakHours = hour >= 10 && hour <= 18 // Peak collection hours
         const isLateShift = hour >= 18 && hour <= 20 // Final push hours
         
-        if (metric.name === 'Today\'s Collections' && isBusinessHours) {
-          // Collections increase varies by time of day
+        if (metric.name === 'Today\'s Recovery' && isBusinessHours) {
+          // Recovery increase varies by time of day
           if (isPeakHours) {
             variation = Math.floor(Math.random() * 15000 + 8000) // $8-23k during peak
           } else if (isLateShift) {
@@ -199,7 +199,7 @@ const KupaVisualV2: React.FC = () => {
           const alertTypes = [
             // Critical operational alerts
             { type: 'critical' as const, message: 'Dialer system failure - 52 agents unable to make calls', priority: 'high' as const },
-            { type: 'critical' as const, message: 'TCPA violation risk - agent bypassed DNC check on 7 calls', priority: 'high' as const },
+            { type: 'critical' as const, message: 'Policy violation risk - worker bypassed compliance check on 7 calls', priority: 'high' as const },
             { type: 'critical' as const, message: 'Payment gateway offline - unable to process settlements', priority: 'high' as const },
             // Warning alerts
             { type: 'warning' as const, message: 'High-balance account $247K requesting 22% settlement', priority: 'high' as const },
@@ -485,7 +485,7 @@ const KupaVisualV2: React.FC = () => {
                     </span>
                     <div className="flex items-center gap-1 shrink-0">
                       <span className={`text-xs font-mono font-bold ${getMetricColor(metric.status)} whitespace-nowrap`}>
-                        {metric.name === 'Today\'s Collections' ? `$${(metric.value/1000).toFixed(0)}K` :
+                        {metric.name === 'Today\'s Recovery' ? `$${(metric.value/1000).toFixed(0)}K` :
                          metric.name === 'Accounts Worked' ? metric.value.toLocaleString() :
                          metric.name === 'RPC Rate' ? `${metric.value.toFixed(1)}%` :
                          metric.name === 'PTP Rate' ? `${metric.value.toFixed(1)}%` :

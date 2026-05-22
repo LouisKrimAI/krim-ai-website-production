@@ -107,14 +107,14 @@ export default function NotFound() {
                 </HeroButton>
               </Link>
 
-              <Link to="/agents">
+              <Link to="/kendra">
                 <Button
                   variant="secondary"
                   size="lg"
                   icon={<UsersThree weight="bold" />}
                   className="w-full sm:w-auto"
                 >
-                  Explore Agents
+                  Explore KrimOS
                 </Button>
               </Link>
 
@@ -144,22 +144,22 @@ export default function NotFound() {
               </h3>
               <div className="flex flex-wrap justify-center gap-4 text-sm">
                 <Link
-                  to="/platform"
+                  to="/kendra"
                   className="text-krim-mint hover:text-krim-cyan transition-colors duration-fast underline-offset-4 hover:underline"
                 >
-                  Platform Overview
+                  KrimOS
                 </Link>
                 <Link
-                  to="/pricing"
+                  to="/safe-superintelligence"
                   className="text-krim-mint hover:text-krim-cyan transition-colors duration-fast underline-offset-4 hover:underline"
                 >
-                  Pricing
+                  Epistemic AI
                 </Link>
                 <Link
-                  to="/case-studies"
+                  to="/banking"
                   className="text-krim-mint hover:text-krim-cyan transition-colors duration-fast underline-offset-4 hover:underline"
                 >
-                  Case Studies
+                  Banking
                 </Link>
                 <Link
                   to="/legal/privacy"

@@ -221,7 +221,7 @@ const Privacy: React.FC = () => {
                 title: 'Compliance & Legal',
                 icon: <ShieldCheck className="w-6 h-6 text-krim-mint" />,
                 items: [
-                  'Comply with FDCPA, CFPB, and other regulations',
+                  'Comply with applicable domain regulations (financial, government, industry-specific)',
                   'Maintain audit trails and documentation',
                   'Respond to legal requests and court orders',
                   'Prevent money laundering and financial crimes'

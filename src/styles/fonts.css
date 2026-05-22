@@ -40,6 +40,12 @@
 
   /* System font fallback */
   --font-system: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+
+  /* === CANONICAL BRAND TYPOGRAPHY (Brand Deck page 7) === */
+  /* Georgia: display / headlines / the soul */
+  --font-brand-serif: Georgia, Cambria, 'Times New Roman', Times, serif;
+  /* Calibri: body / explanation / the work — falls back to Inter where Calibri unavailable */
+  --font-brand-body: Calibri, 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
 /* METRIC-COMPATIBLE FALLBACK FONTS - Prevent layout shift */
@@ -79,3 +85,37 @@ h1, h2, h3, h4, h5, h6, .font-display {
 .font-inter-400 { font-family: var(--font-inter); font-weight: 400; }
 .font-inter-600 { font-family: var(--font-inter); font-weight: 600; }
 .font-display-700 { font-family: var(--font-display); font-weight: 700; }
+
+/* === CANONICAL BRAND TYPOGRAPHY UTILITIES === */
+/* Use these on pages aligned to the new brand (Brand Deck page 7) */
+.brand-serif {
+  font-family: var(--font-brand-serif);
+  letter-spacing: -0.01em;
+  hyphens: none;
+}
+.brand-sans {
+  font-family: var(--font-brand-body);
+}
+.brand-eyebrow {
+  font-family: var(--font-brand-body);
+  font-size: 0.6875rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+/* When the body carries this class, EVERYTHING under it uses brand serif/sans */
+.brand-canon {
+  font-family: var(--font-brand-body);
+}
+.brand-canon h1,
+.brand-canon h2,
+.brand-canon h3,
+.brand-canon h4,
+.brand-canon h5,
+.brand-canon h6,
+.brand-canon .brand-display {
+  font-family: var(--font-brand-serif);
+  font-weight: 400;
+  letter-spacing: -0.015em;
+}

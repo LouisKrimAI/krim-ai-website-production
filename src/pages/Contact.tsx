@@ -30,6 +30,12 @@ const ASSET_MAP = {
   }
 }
 
+// ── Shared input class builder ──────────────────────────────────────
+const inputBase = 'w-full backdrop-blur-md bg-white/[0.03] border rounded-lg px-4 py-3 text-white focus:outline-none transition-colors'
+const inputOk = 'border-white/[0.08] focus:border-krim-cyan'
+const inputErr = 'border-krim-coral focus:border-krim-coral'
+const inputCls = (hasError: boolean) => `${inputBase} ${hasError ? inputErr : inputOk}`
+
 export default function Contact() {
   const mousePosition = useCursorGlow()
   const location = useLocation()
@@ -119,20 +125,20 @@ export default function Contact() {
   const submit = async (e: React.FormEvent) => {
     e.preventDefault()
     setSubmitAttempts(prev => prev + 1)
-    
+
     if (!validateForm()) {
       setStatus('error')
       return
     }
-    
+
     setStatus('submitting')
     setErrors({})
     try {
       // Use Supabase directly like the ContactForm component
       const { DatabaseService, getUserMetadata, isSupabaseConfigured } = await import('../lib/supabase')
-      
+
       const dbConfigured = isSupabaseConfigured()
-      
+
       if (!dbConfigured) {
         // Use fallback storage
         const fallbackData = {
@@ -141,16 +147,16 @@ export default function Contact() {
           form_data: form,
           source: requestedAsset ? 'asset-download-fallback' : pricingConfig ? 'pricing-inquiry-fallback' : 'contact-page-fallback'
         }
-        
+
         // Store in localStorage
         const existing = localStorage.getItem('contact_submissions')
         const submissions = existing ? JSON.parse(existing) : []
         submissions.push(fallbackData)
         localStorage.setItem('contact_submissions', JSON.stringify(submissions))
-        
+
         // Show success
         setStatus('success')
-        
+
         // Try to send notification
         try {
           await fetch('https://formspree.io/f/xjkbbgye', {
@@ -166,12 +172,12 @@ export default function Contact() {
         } catch (e) {
           // Silent fail
         }
-        
+
         // Trigger download if requested
         if (requestedAsset) {
           setTimeout(() => triggerAssetDownload(requestedAsset.file), 1000)
         }
-        
+
         return
       }
 
@@ -208,7 +214,7 @@ export default function Contact() {
         source: source,
         ...metadata
       })
-      
+
       if (result.success && result.data) {
         setStatus('success')
         setForm({ name: '', email: '', company: '', phone: '', role: '', industrySegment: '', aum: '', activeBorrowers: '', aiReadiness: '', contactType: 'strategic-consultation', urgency: 'within-month', message: '', hearAboutUs: '' })
@@ -271,11 +277,11 @@ export default function Contact() {
   const faqs = [
     {
       q: "What happens after I submit this form?",
-      a: "We review your details, check that Krim is likely a fit, and send 2–3 options for a 30-minute session. On the call we map your use cases, walk through the relevant parts of the product stack, and discuss whether a pilot makes sense."
+      a: "We review your details, check that Krim is likely a fit, and send 2\u20133 options for a 30-minute session. On the call we map your use cases, walk through the relevant parts of the product stack, and discuss whether a pilot makes sense."
     },
     {
       q: "Who should join the demo from our side?",
-      a: "Ideally one business owner for operations / collections, one technology owner (systems / integrations), and—if possible—someone from risk or compliance."
+      a: "Ideally one business owner for operations, one technology owner (systems / integrations), and\u2014if possible\u2014someone from risk or compliance."
     },
     {
       q: "What type of companies is Krim for?",
@@ -287,11 +293,11 @@ export default function Contact() {
     },
     {
       q: "Are you safe for regulated operations?",
-      a: "Yes—Krim is designed for regulated organizations. Guardrails, policies and data-access boundaries are enforced in Kendra so Autonomous Workers follow your rules, and sensitive data isn't shown to users or systems that shouldn't see it."
+      a: "Yes\u2014Krim is designed for regulated organizations. Guardrails, policies and data-access boundaries are enforced in Kendra so Autonomous Workers follow your rules, and sensitive data isn\u2019t shown to users or systems that shouldn\u2019t see it."
     },
     {
       q: "How do integrations work with existing systems?",
-      a: "We connect Kendra to the systems you already use—loan and account servicing platforms, CRMs, dialers and contact-centre tools, payment and messaging providers, and, where useful, your data warehouse or lake. For a pilot we usually start with a small set of systems, using APIs or secure file/event feeds, and expand from there as the scope grows."
+      a: "We connect Kendra to the systems you already use\u2014loan and account servicing platforms, CRMs, dialers and contact-centre tools, payment and messaging providers, and, where useful, your data warehouse or lake. For a pilot we usually start with a small set of systems, using APIs or secure file/event feeds, and expand from there as the scope grows."
     }
   ]
 
@@ -305,14 +311,13 @@ export default function Contact() {
         }}
       />
 
-
       {/* Content wrapper */}
       <div className="relative z-10">
         {/* Hero + Form Section */}
         <div className="max-w-7xl mx-auto px-6 mb-20">
           {/* Desktop: Two-column layout, Mobile: Stacked */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
-            
+
             {/* Left column: Hero content */}
             <div className="lg:pr-8">
               <motion.div
@@ -320,11 +325,11 @@ export default function Contact() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8 }}
               >
-                <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-white mb-8 leading-tight">
-                  Schedule Your Demo
+                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-8 leading-tight">
+                  <span className="bg-gradient-to-r from-krim-mint via-krim-cyan to-krim-mint bg-clip-text text-transparent">Schedule Your Demo</span>
                 </h1>
 
-                <p className="text-xl text-white/90 mb-12 leading-relaxed">
+                <p className="text-lg md:text-xl text-white/60 mb-12 leading-relaxed max-w-3xl">
                   Walk through how Autonomous Workers, Digital Twins and Command Centers scale your operations while maintaining compliance.
                 </p>
               </motion.div>
@@ -333,7 +338,7 @@ export default function Contact() {
             {/* Right column: Form */}
             <div>
               {/* One-liner above form */}
-              <p className="text-lg text-white/80 mb-6 text-left">
+              <p className="text-lg text-white/60 mb-6 text-left">
                 Tell us a bit about your portfolio and current setup. We'll review, then schedule a working session to walk through fit, live examples, and next steps.
               </p>
 
@@ -342,11 +347,11 @@ export default function Contact() {
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
-                className="glass rounded-2xl p-8"
+                className="backdrop-blur-md bg-gradient-to-br from-cyan-500/[0.05] to-cyan-600/[0.02] hover:from-cyan-500/[0.12] hover:to-cyan-600/[0.06] border border-white/[0.08] hover:border-cyan-400/50 rounded-2xl p-7 transition-all duration-500 hover:shadow-[0_8px_32px_rgba(0,212,255,0.15)]"
               >
                 {/* Context-aware banners */}
                 {requestedAsset && (
-                  <div className="mb-6 p-4 border-2 border-krim-mint/30 rounded-lg">
+                  <div className="mb-6 px-6 py-5 border border-krim-mint/20 rounded-2xl backdrop-blur-md bg-gradient-to-br from-emerald-500/[0.05] to-emerald-600/[0.02]">
                     <div className="flex items-center gap-3">
                       <Download className="text-krim-mint" size={24} />
                       <div>
@@ -358,7 +363,7 @@ export default function Contact() {
                 )}
 
                 {pricingConfig && (
-                  <div className="mb-6 p-4 border-2 border-krim-cyan/30 rounded-lg">
+                  <div className="mb-6 px-6 py-5 border border-krim-cyan/20 rounded-2xl backdrop-blur-md bg-gradient-to-br from-cyan-500/[0.05] to-cyan-600/[0.02]">
                     <div className="flex items-center gap-3">
                       <CurrencyDollar className="text-krim-cyan" size={24} />
                       <div>
@@ -371,26 +376,24 @@ export default function Contact() {
                   </div>
                 )}
 
-                {/* Form - keeping exact structure */}
-                <form onSubmit={submit} className="space-y-6">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {/* Form */}
+                <form onSubmit={submit} className="space-y-5">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                     <div>
-                      <label className="block text-sm text-white mb-2">Name *</label>
+                      <label className="block text-sm text-white/60 mb-2">Name *</label>
                       <input
                         required
                         value={form.name}
                         onChange={set('name')}
                         autoComplete="name"
                         style={{ fontSize: '16px' }}
-                        className={`w-full border rounded-lg px-4 py-3 text-white bg-transparent focus:outline-none transition-colors ${
-                          errors.name ? 'border-krim-coral focus:border-krim-coral' : 'border-white/10 focus:border-krim-mint'
-                        }`}
+                        className={inputCls(!!errors.name)}
                         placeholder="Your full name"
                       />
                       {errors.name && <p className="text-krim-coral text-sm mt-1">{errors.name}</p>}
                     </div>
                     <div>
-                      <label className="block text-sm text-white mb-2">Email *</label>
+                      <label className="block text-sm text-white/60 mb-2">Email *</label>
                       <input
                         required
                         type="email"
@@ -399,33 +402,29 @@ export default function Contact() {
                         inputMode="email"
                         autoComplete="email"
                         style={{ fontSize: '16px' }}
-                        className={`w-full border rounded-lg px-4 py-3 text-white bg-transparent focus:outline-none transition-colors ${
-                          errors.email ? 'border-krim-coral focus:border-krim-coral' : 'border-white/10 focus:border-krim-mint'
-                        }`}
+                        className={inputCls(!!errors.email)}
                         placeholder="your.email@company.com"
                       />
                       {errors.email && <p className="text-krim-coral text-sm mt-1">{errors.email}</p>}
                     </div>
                   </div>
 
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                     <div>
-                      <label className="block text-sm text-white mb-2">Company *</label>
+                      <label className="block text-sm text-white/60 mb-2">Company *</label>
                       <input
                         required
                         value={form.company}
                         onChange={set('company')}
                         autoComplete="organization"
                         style={{ fontSize: '16px' }}
-                        className={`w-full border rounded-lg px-4 py-3 text-white bg-transparent focus:outline-none transition-colors ${
-                          errors.company ? 'border-krim-coral focus:border-krim-coral' : 'border-white/10 focus:border-krim-mint'
-                        }`}
+                        className={inputCls(!!errors.company)}
                         placeholder="Your company name"
                       />
                       {errors.company && <p className="text-krim-coral text-sm mt-1">{errors.company}</p>}
                     </div>
                     <div>
-                      <label className="block text-sm text-white mb-2">Phone *</label>
+                      <label className="block text-sm text-white/60 mb-2">Phone *</label>
                       <input
                         required
                         type="tel"
@@ -434,46 +433,40 @@ export default function Contact() {
                         inputMode="tel"
                         autoComplete="tel"
                         style={{ fontSize: '16px' }}
-                        className={`w-full border rounded-lg px-4 py-3 text-white bg-transparent focus:outline-none transition-colors ${
-                          errors.phone ? 'border-krim-coral focus:border-krim-coral' : 'border-white/10 focus:border-krim-mint'
-                        }`}
+                        className={inputCls(!!errors.phone)}
                         placeholder="(555) 123-4567"
                       />
                       {errors.phone && <p className="text-krim-coral text-sm mt-1">{errors.phone}</p>}
                     </div>
                   </div>
 
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                     <div>
-                      <label className="block text-sm text-white mb-2">Your Role *</label>
+                      <label className="block text-sm text-white/60 mb-2">Your Role *</label>
                       <select
                         required
                         value={form.role}
                         onChange={set('role')}
-                        className={`w-full border rounded-lg px-4 py-3 text-white bg-transparent focus:outline-none transition-colors ${
-                          errors.role ? 'border-krim-coral focus:border-krim-coral' : 'border-white/10 focus:border-krim-mint'
-                        }`}
+                        className={inputCls(!!errors.role)}
                       >
                         <option value="" className="text-white">Select your role</option>
                         <option value="ceo" className="text-white">CEO/President</option>
                         <option value="coo" className="text-white">COO/Operations</option>
                         <option value="cfo" className="text-white">CFO/Finance</option>
                         <option value="cto" className="text-white">CTO/Technology</option>
-                        <option value="head-collections" className="text-white">Head of Collections</option>
+                        <option value="head-operations" className="text-white">Head of Operations</option>
                         <option value="risk-compliance" className="text-white">Risk/Compliance</option>
                         <option value="other" className="text-white">Other Executive</option>
                       </select>
                       {errors.role && <p className="text-krim-coral text-sm mt-1">{errors.role}</p>}
                     </div>
                     <div>
-                      <label className="block text-sm text-white mb-2">Implementation Urgency *</label>
+                      <label className="block text-sm text-white/60 mb-2">Implementation Urgency *</label>
                       <select
                         required
                         value={form.urgency}
                         onChange={set('urgency')}
-                        className={`w-full border rounded-lg px-4 py-3 text-white bg-transparent focus:outline-none transition-colors ${
-                          errors.urgency ? 'border-krim-coral focus:border-krim-coral' : 'border-white/10 focus:border-krim-mint'
-                        }`}
+                        className={inputCls(!!errors.urgency)}
                       >
                         <option value="immediate" className="text-white">Desired timeline</option>
                         <option value="within-month" className="text-white">Within 30 days</option>
@@ -484,13 +477,13 @@ export default function Contact() {
                   </div>
 
                   {/* ICP Segmentation Fields */}
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                     <div>
-                      <label className="block text-sm text-white mb-2">Industry Segment</label>
+                      <label className="block text-sm text-white/60 mb-2">Industry Segment</label>
                       <select
                         value={form.industrySegment}
                         onChange={set('industrySegment')}
-                        className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-krim-mint transition-colors"
+                        className={inputCls(false)}
                       >
                         <option value="" className="text-white">Select industry...</option>
                         <option value="auto-finance" className="text-white">Auto-Finance</option>
@@ -505,11 +498,11 @@ export default function Contact() {
                       </select>
                     </div>
                     <div>
-                      <label className="block text-sm text-white mb-2">Assets Under Management (AUM)</label>
+                      <label className="block text-sm text-white/60 mb-2">Assets Under Management (AUM)</label>
                       <select
                         value={form.aum}
                         onChange={set('aum')}
-                        className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-krim-mint transition-colors"
+                        className={inputCls(false)}
                       >
                         <option value="" className="text-white">Select AUM...</option>
                         <option value="<50M" className="text-white">&lt;$50M</option>
@@ -523,13 +516,13 @@ export default function Contact() {
                     </div>
                   </div>
 
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                     <div>
-                      <label className="block text-sm text-white mb-2">Active Customers</label>
+                      <label className="block text-sm text-white/60 mb-2">Active Customers</label>
                       <select
                         value={form.activeBorrowers}
                         onChange={set('activeBorrowers')}
-                        className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-krim-mint transition-colors"
+                        className={inputCls(false)}
                       >
                         <option value="" className="text-white">Select volume...</option>
                         <option value="<50k" className="text-white">&lt;50k</option>
@@ -542,11 +535,11 @@ export default function Contact() {
                       </select>
                     </div>
                     <div>
-                      <label className="block text-sm text-white mb-2">Company AI stage</label>
+                      <label className="block text-sm text-white/60 mb-2">Company AI stage</label>
                       <select
                         value={form.aiReadiness}
                         onChange={set('aiReadiness')}
-                        className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-krim-mint transition-colors"
+                        className={inputCls(false)}
                       >
                         <option value="" className="text-white">Current AI usage...</option>
                         <option value="none" className="text-white">None (exploring)</option>
@@ -559,26 +552,24 @@ export default function Contact() {
                   </div>
 
                   <div>
-                    <label className="block text-sm text-white mb-2">Specific Challenges or Goals *</label>
+                    <label className="block text-sm text-white/60 mb-2">Specific Challenges or Goals *</label>
                     <textarea
                       required
                       rows={4}
                       value={form.message}
                       onChange={set('message')}
-                      className={`w-full bg-white/5 border rounded-lg px-4 py-3 text-white focus:outline-none transition-colors ${
-                        errors.message ? 'border-krim-coral focus:border-krim-coral' : 'border-white/10 focus:border-krim-mint'
-                      }`}
+                      className={inputCls(!!errors.message)}
                       placeholder="Tell us about your current challenges, or specific goals for improvement..."
                     />
                     {errors.message && <p className="text-krim-coral text-sm mt-1">{errors.message}</p>}
                   </div>
 
                   <div>
-                    <label className="block text-sm text-white mb-2">From where did you hear about our organization?</label>
+                    <label className="block text-sm text-white/60 mb-2">From where did you hear about our organization?</label>
                     <select
                       value={form.hearAboutUs}
                       onChange={set('hearAboutUs')}
-                      className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-krim-mint transition-colors"
+                      className={inputCls(false)}
                     >
                       <option value="" className="text-white">-- Select an option --</option>
                       <option value="google" className="text-white">Google Search</option>
@@ -599,7 +590,7 @@ export default function Contact() {
                       variant="primary"
                       size="md"
                       shape="standard"
-                      className="w-full text-lg"
+                      className="w-full text-lg rounded-xl px-8 py-3.5"
                     >
                       {status === 'submitting' ? (
                         <>
@@ -616,7 +607,7 @@ export default function Contact() {
                   </div>
 
                   {status === 'success' && (
-                    <div className="glass-success rounded-lg p-6 text-center">
+                    <div className="backdrop-blur-md bg-gradient-to-br from-emerald-500/[0.05] to-emerald-600/[0.02] border border-emerald-400/20 rounded-2xl px-6 py-5 text-center">
                       <CheckCircle className="w-12 h-12 text-krim-mint mx-auto mb-4" />
                       <h3 className="text-xl font-bold text-krim-mint mb-2 text-white">Request Submitted Successfully!</h3>
                       <p className="text-white mb-4">
@@ -633,9 +624,9 @@ export default function Contact() {
                       </p>
                     </div>
                   )}
-                  
+
                   {status === 'error' && (
-                    <div className="glass-error rounded-lg p-6 text-center">
+                    <div className="backdrop-blur-md bg-gradient-to-br from-red-500/[0.05] to-red-600/[0.02] border border-red-400/20 rounded-2xl px-6 py-5 text-center">
                       <div className="text-krim-coral text-lg font-semibold">
                         Something went wrong. Please try again or call us directly at +1 5103455686
                       </div>
@@ -648,21 +639,21 @@ export default function Contact() {
         </div>
 
         {/* FAQ Section */}
-        <div className="max-w-4xl mx-auto px-6 mb-20">
+        <div className="max-w-4xl mx-auto px-6 py-20 md:py-28">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-12 text-center">
-              FAQ
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-12 text-center">
+              <span className="bg-gradient-to-r from-krim-mint via-krim-cyan to-krim-mint bg-clip-text text-transparent">FAQ</span>
             </h2>
-            
+
             <div className="space-y-4">
               {faqs.map((faq, idx) => (
-                <div key={idx} className="glass rounded-lg overflow-hidden">
+                <div key={idx} className="backdrop-blur-md bg-gradient-to-br from-cyan-500/[0.05] to-cyan-600/[0.02] hover:from-cyan-500/[0.12] hover:to-cyan-600/[0.06] border border-white/[0.08] hover:border-cyan-400/50 rounded-2xl overflow-hidden transition-all duration-500 hover:shadow-[0_8px_32px_rgba(0,212,255,0.15)]">
                   <button
-                    className="w-full text-left p-6 flex justify-between items-center hover:bg-white/5 transition-colors"
+                    className="w-full text-left px-6 py-5 flex justify-between items-center hover:bg-white/[0.03] transition-colors"
                     onClick={() => setExpandedFaq(expandedFaq === idx ? null : idx)}
                   >
                     <span className="font-semibold text-lg text-white pr-6">{faq.q}</span>
@@ -670,10 +661,10 @@ export default function Contact() {
                       animate={{ rotate: expandedFaq === idx ? 180 : 0 }}
                       transition={{ duration: 0.2 }}
                     >
-                      <CaretDown className="w-5 h-5 text-white/70 flex-shrink-0" />
+                      <CaretDown className="w-5 h-5 text-white/55 flex-shrink-0" />
                     </motion.div>
                   </button>
-                  
+
                   <AnimatePresence>
                     {expandedFaq === idx && (
                       <motion.div
@@ -684,7 +675,7 @@ export default function Contact() {
                         className="overflow-hidden"
                       >
                         <div className="px-6 pb-6">
-                          <p className="text-white/90 leading-relaxed">{faq.a}</p>
+                          <p className="text-sm text-white/55 leading-relaxed">{faq.a}</p>
                         </div>
                       </motion.div>
                     )}

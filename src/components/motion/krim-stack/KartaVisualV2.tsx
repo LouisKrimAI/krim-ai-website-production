@@ -19,11 +19,11 @@ const KartaVisualV2: React.FC = () => {
   const agents: Agent[] = [
     // Contact Center Agents (4)
     {
-      id: 'early-collections',
-      name: 'Early Collections',
+      id: 'early-recovery',
+      name: 'Early Recovery',
       category: 'contact-center',
       status: 'busy',
-      description: 'Delinquency',
+      description: 'Overdue Accounts',
       icon: '🎯'
     },
     {

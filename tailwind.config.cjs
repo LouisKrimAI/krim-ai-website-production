@@ -5,13 +5,21 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        // Official Krim AI brand colors
+        // === NEW CANONICAL BRAND (2026, per Brand Marketing Deck) ===
+        'krim-indigo': '#1A1E47',       // Primary · 60% visual weight · dark blue background
+        'krim-ochre': '#C8973B',         // Mithila ochre · accent, used sparingly
+        'krim-slate': '#6B7894',         // Supporting
+        'krim-off-white': '#FAFAFA',     // Foreground text on indigo · never cream
+        'krim-pramana': '#2D8B57',       // Krim-Nyaya: 6 Sources of Knowledge (green)
+        'krim-dosha': '#A23B3B',         // Krim-Nyaya: 13 Classes of Error (red)
+        'krim-yogyata': '#C8973B',       // Krim-Nyaya: 7 Fitness for Action (ochre)
+
+        // === LEGACY (retained for alternative homepage + gradual migration) ===
         'krim-deep-space': '#0A081B',
         'krim-mint': '#00FF88',
         'krim-cyan': '#00D4FF',
         'krim-coral': '#FF4C61',
         'krim-purple': '#8B5CF6',
-        // 'krim-ash': '#A3A3B5', // REMOVED: 0 usages in codebase
         
         // Depth system colors
         'depth-void': 'var(--depth-void)',
@@ -46,6 +54,9 @@ module.exports = {
         'display': ['var(--font-display)'],
         'body': ['var(--font-body)'],
         'mono': ['var(--font-mono)'],
+        // Canonical brand typography (per Brand Deck page 7)
+        'serif-brand': ['Georgia', 'Cambria', 'Times New Roman', 'Times', 'serif'],
+        'sans-brand': ['Calibri', 'Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'sans-serif'],
       },
       fontSize: {
         'xs': ['var(--text-xs)', { lineHeight: '1.4' }],

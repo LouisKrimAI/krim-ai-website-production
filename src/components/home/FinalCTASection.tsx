@@ -73,7 +73,7 @@ const FinalCTASection: React.FC = () => {
         {/* Description */}
         <Reveal>
           <p className="text-lg md:text-xl text-gray-300 mb-12 leading-relaxed max-w-3xl mx-auto">
-            Bring one or two live workflows – sales, retention, collections, service, support or back office. We'll show how Krim would power AI co-workers, dashboards and guardrails on top of your stack, and outline a safe path to pilot.
+            Bring one or two live workflows – sales, retention, recovery, service, support or back office. We'll show how Krim would power Autonomous Workers, dashboards and guardrails on top of your stack, and outline a safe path to pilot.
           </p>
         </Reveal>
 

@@ -117,26 +117,13 @@ const securityFrameworks = [
     nextAudit: 'April 2026'
   },
   {
-    framework: 'FDCPA',
+    framework: 'Domain Regulations',
     status: 'Compliant',
-    description: 'Fair Debt Collection Practices Act compliance ensuring ethical collection practices',
+    description: 'Domain-specific regulatory compliance including FDCPA, CFPB, TCPA, and industry frameworks',
     controls: [
       'Communication compliance monitoring',
       'Consumer rights protection',
-      'Harassment prevention protocols',
-      'Documentation and record keeping'
-    ],
-    auditDate: 'Ongoing',
-    nextAudit: 'Continuous'
-  },
-  {
-    framework: 'CFPB',
-    status: 'Compliant',
-    description: 'Consumer Financial Protection Bureau regulations for fair lending and consumer protection',
-    controls: [
-      'Fair lending practices',
-      'Consumer complaint handling',
-      'Regulatory reporting',
+      'Regulatory reporting and audit trails',
       'Compliance management system'
     ],
     auditDate: 'Ongoing',

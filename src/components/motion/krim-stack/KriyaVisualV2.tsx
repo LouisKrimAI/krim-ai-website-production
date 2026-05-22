@@ -40,7 +40,7 @@ const KriyaVisualV2: React.FC = () => {
       name: 'Policies',
       type: 'policy',
       description: 'Compliance rules',
-      kriyas: ['FDCPA Compliance', 'State Regulations', 'Contact Limits', 'Settlement Rules'],
+      kriyas: ['Regulatory Compliance', 'State Regulations', 'Contact Limits', 'Approval Rules'],
       icon: '⚖️',
       governance: 'Enforced before execution',
       color: 'from-violet-500 to-purple-500'

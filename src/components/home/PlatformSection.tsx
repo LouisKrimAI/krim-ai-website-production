@@ -48,7 +48,7 @@ const tabsData: TabContent[] = [
     headline: 'Kendra – Safe Superintelligence Runtime for Credit Operations',
     description: 'Kendra is the execution engine behind Krim AI. It takes your credit data and policies, and turns them into coordinated, auditable actions across contact center and back office.',
     bullets: [
-      'Orchestrates workflows for sales, retention, collections, servicing, support and back-office teams',
+      'Orchestrates workflows for sales, retention, recovery, servicing, support and back-office teams',
       'Keeps policies, data and events in sync so every action runs from the same facts and rules',
       'Checks and logs each action, so behaviour stays controlled, explainable and ready for audit'
     ],
@@ -85,14 +85,14 @@ const tabsData: TabContent[] = [
       accent: '#8b5cf6',
       gradient: 'from-violet-500/20 to-purple-600/10'
     },
-    headline: 'Karta – AI Co-Workers for Contact Center & Back Office',
-    description: 'Karta is a family of AI co-workers that take on conversations and cases, using structured primitives instead of free-form improvisation.',
+    headline: 'Karta – Autonomous Workers for Contact Center & Back Office',
+    description: 'Karta is a family of Autonomous Workers that take on conversations and cases, using structured primitives instead of free-form improvisation.',
     bullets: [
       'Contact Center: Handle inbound/outbound across voice, SMS and digital channels with enforced scripts and policies',
       'Back-Office: Prepare and triage cases, help with QA, reporting, reconciliations, disputes and compliance checks',
       'Designed to stay grounded in approved data and flows, escalating sensitive cases to humans with full context'
     ],
-    cta: 'Meet the Karta Co-Workers',
+    cta: 'Meet the Karta Autonomous Workers',
     route: '/karta'
   },
   {
@@ -130,7 +130,7 @@ const tabsData: TabContent[] = [
     bullets: [
       'Primitives for steps like "send compliant notice", "review hardship", "design payment plan", "log promise", "trigger field visit", "close dispute"',
       'Each primitive defines what data can be used, what rules apply and which channels are allowed, so agentic behaviour stays inside approved boundaries',
-      'Co-workers and workflows are composed from these primitives, so new automation automatically inherits safety, explainability and an audit trail'
+      'Autonomous Workers and workflows are composed from these primitives, so new automation automatically inherits safety, explainability and an audit trail'
     ],
     cta: 'Understand Kriya Primitives',
     route: '/kriya'
@@ -728,7 +728,7 @@ const PlatformSection: React.FC = () => {
                                       className="mt-3 p-2 bg-cyan-500/10 rounded border border-cyan-500/20"
                                     >
                                       <div className="text-xs text-cyan-400 mb-1">Generated Workflow</div>
-                                      <div className="text-xs text-gray-300">• Risk scoring • FDCPA compliance check • Payment plan generation</div>
+                                      <div className="text-xs text-gray-300">• Risk scoring • Regulatory compliance check • Payment plan generation</div>
                                     </motion.div>
                                   </div>
                                 </motion.div>
@@ -867,7 +867,7 @@ const PlatformSection: React.FC = () => {
                       </motion.div>
                     )}
 
-                    {/* Karta - Professional AI Co-Workers Layout */}
+                    {/* Karta - Professional Autonomous Workers Layout */}
                     {activeTab === 'karta' && (
                       <motion.div 
                         initial={{ opacity: 0 }}
@@ -876,7 +876,7 @@ const PlatformSection: React.FC = () => {
                         className="h-full"
                       >
                         <div className="grid grid-cols-3 gap-4 h-full">
-                          {/* AI Agent Gallery */}
+                          {/* Autonomous Worker Gallery */}
                           <div className="col-span-2 space-y-4">
                             <motion.div 
                               initial={{ opacity: 0, scale: 0.95 }}
@@ -886,7 +886,7 @@ const PlatformSection: React.FC = () => {
                             >
                               <div className="flex items-center gap-3 mb-4">
                                 <Users className="w-5 h-5 text-violet-400" />
-                                <span className="text-sm font-semibold text-white">Active AI Co-Workers</span>
+                                <span className="text-sm font-semibold text-white">Active Autonomous Workers</span>
                                 <motion.span 
                                   animate={{ opacity: [0.5, 1, 0.5] }}
                                   transition={{ duration: 2, repeat: Infinity }}
@@ -902,7 +902,7 @@ const PlatformSection: React.FC = () => {
                                   { name: 'Kim Resolve', role: 'Dispute Resolution', status: 'active', tasks: 147 },
                                   { name: 'Kim Connect', role: 'Customer Outreach', status: 'active', tasks: 892 },
                                   { name: 'Kim Guardian', role: 'Compliance Monitor', status: 'active', tasks: 2431 },
-                                  { name: 'Kim Early', role: 'Early Stage Collections', status: 'active', tasks: 534 },
+                                  { name: 'Kim Early', role: 'Early Stage Recovery', status: 'active', tasks: 534 },
                                   { name: 'Kim Orchestrator', role: 'Workflow Manager', status: 'training', tasks: 0 },
                                   { name: 'Kim Recovery', role: 'Account Recovery', status: 'active', tasks: 267 }
                                 ].map((agent, i) => (
@@ -1492,7 +1492,7 @@ const PlatformSection: React.FC = () => {
                                 <div className="text-amber-400">// Send Compliant Notice</div>
                                 <div className="text-gray-400">primitive: <span className="text-orange-400">'notice.send'</span></div>
                                 <div className="text-gray-400">data: <span className="text-cyan-400">['account', 'template']</span></div>
-                                <div className="text-gray-400">rules: <span className="text-green-400">['FDCPA', 'TCPA']</span></div>
+                                <div className="text-gray-400">rules: <span className="text-green-400">['policy', 'channel']</span></div>
                                 <div className="text-gray-400">channels: <span className="text-purple-400">['sms', 'email']</span></div>
                               </div>
                             </motion.div>

@@ -379,33 +379,6 @@ export const LazyComponents = {
     }
   ),
 
-  // Secondary pages - Truly seamless loading (no fallbacks)
-  AgentsPage: createLazyComponent(
-    () => import('../../pages/Agents'),
-    { displayName: 'AgentsPage', priority: 'normal', fallback: null }
-  ),
-
-  AgentDetailPage: createLazyComponent(
-    () => import('../../pages/AgentDetail'),
-    { displayName: 'AgentDetailPage', priority: 'normal', fallback: null }
-  ),
-
-  PricingPage: createLazyComponent(
-    () => import('../../pages/Pricing'),
-    { displayName: 'PricingPage', priority: 'normal', fallback: null }
-  ),
-
-  // Note: PlatformPage, ContactPage moved to direct imports - remove these
-  CaseStudiesPage: createLazyComponent(
-    () => import('../../pages/CaseStudies'),
-    { displayName: 'CaseStudiesPage', priority: 'normal', fallback: null }
-  ),
-
-  NewsPage: createLazyComponent(
-    () => import('../../pages/News'),
-    { displayName: 'NewsPage', priority: 'normal', fallback: null }
-  ),
-
   // Legal pages - Low priority, seamless loading
   PrivacyPage: createLazyComponent(
     () => import('../../pages/legal/Privacy'),
@@ -420,30 +393,6 @@ export const LazyComponents = {
   SecurityPage: createLazyComponent(
     () => import('../../pages/legal/Security'),
     { displayName: 'SecurityPage', priority: 'low', fallback: null }
-  ),
-
-  AboutPage: createLazyComponent(
-    () => import('../../pages/About'),
-    { displayName: 'AboutPage', priority: 'normal', fallback: null }
-  ),
-
-  // New enterprise-grade homepage for comparison
-  HomePageNew: createLazyComponent(
-    () => import('../../pages/HomePageNew'),
-    { displayName: 'HomePageNew', priority: 'high', fallback: null }
-  ),
-
-  // Fixed homepage with precision and rebuilt visuals
-  HomePageNewFixed: createLazyComponent(
-    () => import('../../pages/HomePageNewFixed'),
-    { displayName: 'HomePageNewFixed', priority: 'high', fallback: null }
-  ),
-
-  // Note: Product pages (Karta, Kriya, Kupa, Kula, SafeSuperintelligence) moved to direct imports
-  
-  TextReadabilityTestPage: createLazyComponent(
-    () => import('../../pages/TextReadabilityTest'),
-    { displayName: 'TextReadabilityTestPage', priority: 'low', fallback: null }
   )
 }
 
@@ -475,8 +424,6 @@ export function PreloadTrigger({
       const loaderMap: Record<string, () => Promise<any>> = {
         // ParticleField removed to prevent eager R3F loading
         ContactForm: () => import('../forms/ContactForm'),
-        // AgentsPage removed - contains 3D components
-        PricingPage: () => import('../../pages/Pricing'),
         // Add more as needed (non-3D components only)
       }
 

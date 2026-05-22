@@ -11,7 +11,7 @@ const benefits = [
   {
     icon: <Lightning className="w-6 h-6" />,
     title: 'Less manual grind',
-    description: 'Shift routine servicing, billing, collections and case prep from humans to governed AI co-workers',
+    description: 'Shift routine servicing, billing, recovery and case prep from humans to governed Autonomous Workers',
     color: 'krim-mint'
   },
   {

@@ -1,6 +1,6 @@
 /**
  * KRIYA PRIMITIVES - The Building Blocks of Safe Agentic Automation
- * Product page implementation with starfield continuity system
+ * Compact glassmorphic design with emerald/mint accent theme
  */
 
 import React from 'react'
@@ -11,72 +11,39 @@ import {
 import Button from '../components/Button'
 
 // Import starfield and motion components
-import { 
-  StarfieldLayout, 
+import {
+  StarfieldLayout,
   StarfieldSection
 } from '../components/motion/StarfieldLayout'
 import {
-  Reveal,
-  StaggerGrid,
-  HoverLiftCard,
-  GlassContainer
+  Reveal
 } from '../components/motion/primitives'
-
-// Animation variants
-const fadeUpVariants = {
-  hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0 }
-}
-
-const staggerContainer = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.08
-    }
-  }
-}
-
-const scaleInVariants = {
-  hidden: { opacity: 0, scale: 0.95 },
-  visible: { opacity: 1, scale: 1 }
-}
 
 // Simple Primitive List Component for Hero
 function PrimitiveList() {
   return (
-    <GlassContainer glassLevel="light" className="relative w-full rounded-2xl p-8">
-      <div className="space-y-6">
-        <h3 className="text-xl sm:text-2xl font-bold text-white mb-6">How Kriya Controls Execution:</h3>
+    <div className="backdrop-blur-md bg-gradient-to-br from-emerald-500/[0.05] to-krim-mint/[0.02] border border-white/[0.06] rounded-2xl px-6 py-5">
+      <div className="space-y-5">
+        <h3 className="text-lg font-bold text-white mb-5">How Kriya Controls Execution:</h3>
         <div className="space-y-4">
-          <div className="flex items-start gap-3">
-            <div className="w-2 h-2 bg-krim-cyan rounded-full mt-2 flex-shrink-0" />
-            <div>
-              <div className="text-lg font-semibold text-white">Every action requires a primitive</div>
-              <div className="text-base text-gray-300">Only pre-defined, approved operations execute</div>
+          {[
+            { title: 'Every action requires a primitive', desc: 'Only pre-defined, approved operations execute' },
+            { title: 'Policies enforced before execution', desc: 'Your rules checked in real-time before each action' },
+            { title: 'Complete audit trail', desc: 'Every action logged for regulatory compliance' },
+          ].map((item) => (
+            <div key={item.title} className="flex items-start gap-3">
+              <div className="w-2 h-2 bg-emerald-400 rounded-full mt-2 flex-shrink-0" />
+              <div>
+                <div className="text-sm font-semibold text-white">{item.title}</div>
+                <div className="text-sm text-white/55">{item.desc}</div>
+              </div>
             </div>
-          </div>
-          <div className="flex items-start gap-3">
-            <div className="w-2 h-2 bg-krim-cyan rounded-full mt-2 flex-shrink-0" />
-            <div>
-              <div className="text-lg font-semibold text-white">Policies enforced before execution</div>
-              <div className="text-base text-gray-300">Your rules checked in real-time before each action</div>
-            </div>
-          </div>
-          <div className="flex items-start gap-3">
-            <div className="w-2 h-2 bg-krim-cyan rounded-full mt-2 flex-shrink-0" />
-            <div>
-              <div className="text-lg font-semibold text-white">Complete audit trail</div>
-              <div className="text-base text-gray-300">Every action logged for regulatory compliance</div>
-            </div>
-          </div>
+          ))}
         </div>
       </div>
-    </GlassContainer>
+    </div>
   )
 }
-
 
 
 export default function Kriya() {
@@ -92,41 +59,41 @@ export default function Kriya() {
 
   return (
     <StarfieldLayout pageType="product" contentDensity="moderate">
-      
-      {/* Hero Section - Standardized Pattern */}
-      <StarfieldSection glassLevel="ultraLight" className="relative min-h-[700px] lg:min-h-[800px] xl:min-h-[900px] flex items-center py-24 lg:py-32">
+
+      {/* Hero Section */}
+      <StarfieldSection glassLevel="ultraLight" className="relative min-h-[700px] lg:min-h-[800px] xl:min-h-[900px] flex items-center py-20 md:py-28">
         <div className="w-full max-w-6xl mx-auto px-6">
           <div className="text-center">
-            {/* Kriya Title - Matching Kendra Pattern */}
+            {/* Kriya Title */}
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.3 }}
-              className="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-bold mb-8 leading-[1.1] tracking-tight"
+              className="text-4xl md:text-5xl lg:text-6xl font-bold mb-8 leading-[1.1] tracking-tight"
             >
-              <span className="bg-gradient-to-r from-krim-cyan to-krim-mint bg-clip-text text-transparent font-black">
+              <span className="bg-gradient-to-r from-krim-mint via-krim-cyan to-krim-mint bg-clip-text text-transparent font-black">
                 Kriya Primitives™
               </span>
             </motion.h2>
 
-            {/* Sub-heading - What it IS */}
+            {/* Sub-heading */}
             <motion.p
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.5 }}
-              className="text-xl md:text-2xl lg:text-3xl text-white/60 max-w-4xl mx-auto font-light tracking-wide mb-10 leading-relaxed"
+              className="text-lg md:text-xl text-white/60 max-w-3xl mx-auto font-light tracking-wide mb-10 leading-relaxed"
             >
               Governed Building Blocks
             </motion.p>
 
-            {/* Description - What it DOES */}
+            {/* Description */}
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.6 }}
-              className="text-lg md:text-xl lg:text-2xl text-white/70 max-w-4xl mx-auto mb-16 leading-relaxed"
+              className="text-lg md:text-xl text-white/60 max-w-3xl mx-auto mb-16 leading-relaxed"
             >
               Define operations as governed primitives. Every action stays within your policies. Update rules once, enforce everywhere.
             </motion.p>
@@ -137,9 +104,9 @@ export default function Kriya() {
               transition={{ duration: 0.6, delay: 0.4 }}
               className="flex justify-center mb-16"
             >
-              <Button 
-                size="lg" 
-                className="bg-gradient-to-r from-krim-cyan via-krim-mint to-krim-cyan hover:from-krim-mint hover:to-krim-cyan text-black font-semibold px-8 py-4"
+              <Button
+                size="lg"
+                className="bg-gradient-to-r from-krim-cyan via-krim-mint to-krim-cyan hover:from-krim-mint hover:to-krim-cyan text-black font-semibold rounded-xl px-8 py-3.5"
               >
                 Review Compliance Controls
               </Button>
@@ -148,13 +115,13 @@ export default function Kriya() {
         </div>
       </StarfieldSection>
 
-      {/* How Kriya Controls AI - Moved Below Hero */}
-      <StarfieldSection glassLevel="light" className="relative py-16 border-t border-slate-800">
+      {/* How Kriya Controls AI */}
+      <StarfieldSection glassLevel="light" className="relative py-20 md:py-28 border-t border-slate-800">
         <div className="container max-w-4xl mx-auto px-6">
           <Reveal direction="up" once={true}>
             <div className="text-center mb-10">
-              <h2 className="text-3xl lg:text-4xl xl:text-5xl font-light mb-6 text-white">
-                <span className="bg-gradient-to-r from-krim-cyan to-krim-mint bg-clip-text text-transparent font-bold">How Kriya Controls Execution</span>
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-white">
+                <span className="bg-gradient-to-r from-krim-mint via-krim-cyan to-krim-mint bg-clip-text text-transparent">How Kriya Controls Execution</span>
               </h2>
             </div>
           </Reveal>
@@ -166,105 +133,114 @@ export default function Kriya() {
 
 
       {/* Section 2: The Five Primitive Types */}
-      <StarfieldSection glassLevel="light" className="relative py-20 border-t border-slate-800">
+      <StarfieldSection glassLevel="light" className="relative py-20 md:py-28 border-t border-slate-800">
         <div className="container max-w-6xl mx-auto px-6">
           <Reveal direction="up" once={true}>
             <div className="text-center mb-12">
-              <h2 className="text-4xl lg:text-5xl xl:text-6xl font-light leading-[1.2] mb-6 text-center text-white">
-                <span className="bg-gradient-to-r from-krim-cyan to-krim-mint bg-clip-text text-transparent font-bold">Five Building Blocks for Governance</span>
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.2] mb-6 text-center">
+                <span className="bg-gradient-to-r from-krim-mint via-krim-cyan to-krim-mint bg-clip-text text-transparent">Five Building Blocks for Governance</span>
               </h2>
             </div>
           </Reveal>
 
           {/* Primitive Types Grid - 2-3 Layout */}
-          <div className="space-y-8 mb-16">
-            {/* Top row: 2 cards centered */}
-            <StaggerGrid staggerDelay={80} className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+          <div className="space-y-5 mb-12">
+            {/* Top row: 2 cards */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-5 max-w-5xl mx-auto">
               {[
                 {
                   title: "Actions",
                   text: "Send notifications respecting schedules. Make calls with retry logic. Update entity status. Trigger external system events.",
-                  color: "border-t-cyan-400"
+                  accentColor: "from-emerald-400 to-mint-400",
                 },
                 {
                   title: "Checks",
                   text: "Verify entity eligibility. Check time-based conditions. Confirm permission status. Validate against external rules.",
-                  color: "border-t-emerald-400"
+                  accentColor: "from-emerald-400 to-krim-mint",
                 }
               ].map((primitive, idx) => {
                 const Icon = primitiveIcons[idx]
                 return (
-                  <HoverLiftCard
+                  <motion.div
                     key={primitive.title}
-                    liftDistance={5}
-                    glowColor="rgba(0, 255, 136, 0.15)"
-                    className={`bg-slate-800/30 border border-gray-700 border-t-4 ${primitive.color} rounded-2xl p-8 hover:border-gray-600 transition-all duration-300 group cursor-pointer h-full`}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: idx * 0.08, duration: 0.5, ease: [0.21, 0.47, 0.32, 0.98] }}
+                    whileHover={{ y: -6, transition: { type: 'spring', stiffness: 400, damping: 25 } }}
+                    className="group relative backdrop-blur-md bg-gradient-to-br from-emerald-500/[0.05] to-krim-mint/[0.02] group-hover:from-emerald-500/[0.12] group-hover:to-krim-mint/[0.06] border border-white/[0.08] hover:border-emerald-400/50 rounded-2xl p-7 transition-all duration-500 overflow-hidden group-hover:shadow-[0_8px_32px_rgba(16,185,129,0.15)]"
                   >
                     <div className="flex items-start gap-4">
-                      <Icon className="w-6 h-6 text-krim-cyan mt-1" />
+                      <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-emerald-400/15 to-krim-mint/5 border border-emerald-400/20 flex items-center justify-center flex-shrink-0 transition-all duration-300 group-hover:scale-110 group-hover:shadow-lg group-hover:shadow-emerald-400/30">
+                        <Icon className="w-5 h-5 text-emerald-400" />
+                      </div>
                       <div>
-                        <h3 className="text-xl font-bold text-white mb-4 group-hover:text-krim-cyan transition-colors">
+                        <h3 className="text-lg font-bold text-white mb-2 group-hover:text-emerald-400 transition-colors">
                           {primitive.title}
                         </h3>
-                        <p className="text-base text-gray-200 leading-relaxed font-medium">
+                        <p className="text-sm text-white/55 leading-relaxed">
                           {primitive.text}
                         </p>
                       </div>
                     </div>
-                  </HoverLiftCard>
+                    <div className="absolute inset-x-0 bottom-0 h-[2px] bg-gradient-to-r from-emerald-400 via-krim-mint/60 to-emerald-400 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
+                  </motion.div>
                 )
               })}
-            </StaggerGrid>
+            </div>
 
             {/* Bottom row: 3 cards */}
-            <StaggerGrid staggerDelay={80} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 max-w-6xl mx-auto">
               {[
                 {
                   title: "Policies",
                   text: "Action frequency limits. Conditional execution rules. Threshold-based constraints. Time-window restrictions.",
-                  color: "border-t-violet-400"
                 },
                 {
                   title: "Templates",
                   text: "Pre-written message templates. Standard response forms. Approved document schemas. Regulated content language.",
-                  color: "border-t-blue-400"
                 },
                 {
                   title: "Data & Scope",
                   text: "Role-based field access. Scope restrictions by context. Attribute-level visibility controls. Context-aware data boundaries.",
-                  color: "border-t-teal-400"
                 }
               ].map((primitive, idx) => {
                 const Icon = primitiveIcons[idx + 2]
                 return (
-                  <HoverLiftCard
+                  <motion.div
                     key={primitive.title}
-                    liftDistance={5}
-                    glowColor="rgba(0, 255, 136, 0.15)"
-                    className={`bg-slate-800/30 border border-gray-700 border-t-4 ${primitive.color} rounded-2xl p-8 hover:border-gray-600 transition-all duration-300 group cursor-pointer h-full`}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: idx * 0.08, duration: 0.5, ease: [0.21, 0.47, 0.32, 0.98] }}
+                    whileHover={{ y: -6, transition: { type: 'spring', stiffness: 400, damping: 25 } }}
+                    className="group relative backdrop-blur-md bg-gradient-to-br from-emerald-500/[0.05] to-krim-mint/[0.02] group-hover:from-emerald-500/[0.12] group-hover:to-krim-mint/[0.06] border border-white/[0.08] hover:border-emerald-400/50 rounded-2xl p-7 transition-all duration-500 overflow-hidden group-hover:shadow-[0_8px_32px_rgba(16,185,129,0.15)]"
                   >
                     <div className="flex items-start gap-4">
-                      <Icon className="w-6 h-6 text-krim-cyan mt-1" />
+                      <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-emerald-400/15 to-krim-mint/5 border border-emerald-400/20 flex items-center justify-center flex-shrink-0 transition-all duration-300 group-hover:scale-110 group-hover:shadow-lg group-hover:shadow-emerald-400/30">
+                        <Icon className="w-5 h-5 text-emerald-400" />
+                      </div>
                       <div>
-                        <h3 className="text-xl font-bold text-white mb-4 group-hover:text-krim-cyan transition-colors">
+                        <h3 className="text-lg font-bold text-white mb-2 group-hover:text-emerald-400 transition-colors">
                           {primitive.title}
                         </h3>
-                        <p className="text-base text-gray-200 leading-relaxed font-medium">
+                        <p className="text-sm text-white/55 leading-relaxed">
                           {primitive.text}
                         </p>
                       </div>
                     </div>
-                  </HoverLiftCard>
+                    <div className="absolute inset-x-0 bottom-0 h-[2px] bg-gradient-to-r from-emerald-400 via-krim-mint/60 to-emerald-400 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
+                  </motion.div>
                 )
               })}
-            </StaggerGrid>
+            </div>
           </div>
 
           <Reveal direction="up" delay={0.5} once={true}>
             <div className="text-center">
-              <div className="bg-gradient-to-r from-slate-800/30 to-slate-700/30 border border-slate-600/30 rounded-xl p-6 max-w-4xl mx-auto">
-                <p className="text-lg font-semibold text-white text-center">
-                  <span className="bg-gradient-to-r from-krim-cyan to-krim-mint bg-clip-text text-transparent">Each primitive:</span> defined inputs/outputs, policy validation, <span className="bg-gradient-to-r from-krim-cyan to-krim-mint bg-clip-text text-transparent">full audit trail</span>.
+              <div className="backdrop-blur-md bg-gradient-to-br from-emerald-500/[0.05] to-krim-mint/[0.02] border border-white/[0.06] rounded-2xl px-6 py-5 max-w-4xl mx-auto">
+                <p className="text-sm text-white/55 text-center">
+                  <span className="bg-gradient-to-r from-emerald-400 to-krim-mint bg-clip-text text-transparent font-bold">Each primitive:</span> defined inputs/outputs, policy validation, <span className="bg-gradient-to-r from-emerald-400 to-krim-mint bg-clip-text text-transparent font-bold">full audit trail</span>.
                 </p>
               </div>
             </div>
@@ -272,35 +248,34 @@ export default function Kriya() {
         </div>
       </StarfieldSection>
 
-      {/* Section 3: Stack Position - Simplified */}
-      <StarfieldSection glassLevel="standard" className="relative py-16 border-t border-gray-800">
+      {/* Section 3: Stack Position */}
+      <StarfieldSection glassLevel="standard" className="relative py-20 md:py-28 border-t border-gray-800">
         <div className="container max-w-4xl mx-auto px-6">
           <Reveal direction="up" once={true}>
             <div className="text-center mb-8">
-              <h2 className="text-3xl lg:text-4xl xl:text-5xl font-light mb-6 text-center text-white">
-                <span className="bg-gradient-to-r from-krim-cyan to-krim-mint bg-clip-text text-transparent">Architecture:</span> Primitives at the Foundation
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-center">
+                <span className="bg-gradient-to-r from-krim-mint via-krim-cyan to-krim-mint bg-clip-text text-transparent">Architecture:</span>{' '}
+                <span className="text-white">Primitives at the Foundation</span>
               </h2>
             </div>
           </Reveal>
 
           <Reveal direction="up" delay={0.2} once={true}>
-            <div className="bg-slate-800/30 border border-gray-700 rounded-xl p-6">
-              <div className="space-y-3 text-gray-200">
-                <div className="flex items-center gap-3">
-                  <span className="font-mono font-semibold text-gray-300">Layer 1:</span>
-                  <span>Kriya Primitives (atomic operations + policies)</span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <span className="font-mono font-semibold text-gray-300">Layer 2:</span>
-                  <span>Kendra Runtime (orchestration + enforcement)</span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <span className="font-mono font-semibold text-gray-300">Layer 3:</span>
-                  <span>Karta/Kula/Kupa (AI applications using primitives)</span>
-                </div>
+            <div className="backdrop-blur-md bg-gradient-to-br from-emerald-500/[0.05] to-krim-mint/[0.02] border border-white/[0.06] rounded-2xl px-6 py-5">
+              <div className="space-y-3">
+                {[
+                  { layer: 'Layer 1:', text: 'Kriya Primitives (atomic operations + policies)' },
+                  { layer: 'Layer 2:', text: 'Kendra Runtime (orchestration + enforcement)' },
+                  { layer: 'Layer 3:', text: 'Karta/Kula/Kupa (AI applications using primitives)' },
+                ].map((item) => (
+                  <div key={item.layer} className="flex items-center gap-3">
+                    <span className="font-mono font-semibold text-sm text-white/55">{item.layer}</span>
+                    <span className="text-sm text-white/55">{item.text}</span>
+                  </div>
+                ))}
               </div>
-              <div className="mt-6 pt-4 border-t border-gray-700 text-base text-gray-200 font-medium">
-                <span className="bg-gradient-to-r from-krim-cyan to-krim-mint bg-clip-text text-transparent">Change a primitive</span> → automatically updates across all applications. <span className="bg-gradient-to-r from-krim-cyan to-krim-mint bg-clip-text text-transparent">Version controlled. Audit logged.</span>
+              <div className="mt-5 pt-4 border-t border-white/[0.06] text-sm text-white/55">
+                <span className="bg-gradient-to-r from-emerald-400 to-krim-mint bg-clip-text text-transparent font-bold">Change a primitive</span> → automatically updates across all applications. <span className="bg-gradient-to-r from-emerald-400 to-krim-mint bg-clip-text text-transparent font-bold">Version controlled. Audit logged.</span>
               </div>
             </div>
           </Reveal>
@@ -308,68 +283,69 @@ export default function Kriya() {
       </StarfieldSection>
 
       {/* Section 4: Compliance Mechanisms */}
-      <StarfieldSection glassLevel="standard" className="relative py-16 border-t border-white/10">
+      <StarfieldSection glassLevel="standard" className="relative py-20 md:py-28 border-t border-white/10">
         <div className="container max-w-5xl mx-auto px-6">
           <Reveal direction="up" once={true}>
-            <h2 className="text-3xl lg:text-4xl xl:text-5xl font-light text-center mb-10 text-white">
-              <span className="bg-gradient-to-r from-krim-cyan to-krim-mint bg-clip-text text-transparent">Regulatory Compliance</span> Through Constraint
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-center mb-10">
+              <span className="bg-gradient-to-r from-krim-mint via-krim-cyan to-krim-mint bg-clip-text text-transparent">Regulatory Compliance</span>{' '}
+              <span className="text-white">Through Constraint</span>
             </h2>
           </Reveal>
-          
+
           <Reveal direction="up" delay={0.2} once={true}>
-            <div className="grid md:grid-cols-2 gap-6">
-              <GlassContainer glassLevel="light" className="p-6">
-                <h3 className="text-xl font-bold text-white mb-6">Enforcement Mechanisms</h3>
-                <ul className="space-y-3">
-                  <li className="flex items-start gap-3 text-gray-200">
-                    <div className="w-1.5 h-1.5 bg-krim-cyan rounded-full mt-2 flex-shrink-0" />
-                    <span className="text-base">Primitive whitelist: AI cannot invent new actions</span>
-                  </li>
-                  <li className="flex items-start gap-3 text-gray-200">
-                    <div className="w-1.5 h-1.5 bg-krim-cyan rounded-full mt-2 flex-shrink-0" />
-                    <span className="text-base">Pre-execution validation: Regulatory rules checked inline</span>
-                  </li>
-                  <li className="flex items-start gap-3 text-gray-200">
-                    <div className="w-1.5 h-1.5 bg-krim-cyan rounded-full mt-2 flex-shrink-0" />
-                    <span className="text-base">Data isolation: No external data sources, only your systems</span>
-                  </li>
-                </ul>
-              </GlassContainer>
-              
-              <GlassContainer glassLevel="light" className="p-6">
-                <h3 className="text-xl font-bold text-white mb-6">Audit & Traceability</h3>
-                <ul className="space-y-3">
-                  <li className="flex items-start gap-3 text-gray-200">
-                    <div className="w-1.5 h-1.5 bg-krim-cyan rounded-full mt-2 flex-shrink-0" />
-                    <span className="text-base">Every primitive execution logged with timestamp + context</span>
-                  </li>
-                  <li className="flex items-start gap-3 text-gray-200">
-                    <div className="w-1.5 h-1.5 bg-krim-cyan rounded-full mt-2 flex-shrink-0" />
-                    <span className="text-base">Policy version tracking: which rules applied when</span>
-                  </li>
-                  <li className="flex items-start gap-3 text-gray-200">
-                    <div className="w-1.5 h-1.5 bg-krim-cyan rounded-full mt-2 flex-shrink-0" />
-                    <span className="text-base">Regulatory reporting: Regulatory complaint response ready</span>
-                  </li>
-                </ul>
-              </GlassContainer>
+            <div className="grid md:grid-cols-2 gap-5">
+              {[
+                {
+                  title: 'Enforcement Mechanisms',
+                  items: [
+                    'Primitive whitelist: AI cannot invent new actions',
+                    'Pre-execution validation: Regulatory rules checked inline',
+                    'Data isolation: No external data sources, only your systems',
+                  ]
+                },
+                {
+                  title: 'Audit & Traceability',
+                  items: [
+                    'Every primitive execution logged with timestamp + context',
+                    'Policy version tracking: which rules applied when',
+                    'Regulatory reporting: Regulatory complaint response ready',
+                  ]
+                }
+              ].map((card) => (
+                <div
+                  key={card.title}
+                  className="group relative backdrop-blur-md bg-gradient-to-br from-emerald-500/[0.05] to-krim-mint/[0.02] hover:from-emerald-500/[0.12] hover:to-krim-mint/[0.06] border border-white/[0.08] hover:border-emerald-400/50 rounded-2xl p-7 transition-all duration-500 overflow-hidden hover:shadow-[0_8px_32px_rgba(16,185,129,0.15)]"
+                >
+                  <h3 className="text-lg font-bold text-white mb-5">{card.title}</h3>
+                  <ul className="space-y-3">
+                    {card.items.map((item, i) => (
+                      <li key={i} className="flex items-start gap-3">
+                        <div className="w-1.5 h-1.5 bg-emerald-400 rounded-full mt-1.5 flex-shrink-0" />
+                        <span className="text-sm text-white/55">{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  <div className="absolute inset-x-0 bottom-0 h-[2px] bg-gradient-to-r from-emerald-400 via-krim-mint/60 to-emerald-400 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
+                </div>
+              ))}
             </div>
           </Reveal>
         </div>
       </StarfieldSection>
 
       {/* Section 5: Real Workflows */}
-      <StarfieldSection glassLevel="light" className="relative py-16 border-t border-gray-800">
+      <StarfieldSection glassLevel="light" className="relative py-20 md:py-28 border-t border-gray-800">
         <div className="container max-w-5xl mx-auto px-6">
           <Reveal direction="up" once={true}>
             <div className="text-center mb-10">
-              <h2 className="text-3xl lg:text-4xl xl:text-5xl font-light mb-6 text-center text-white">
-                <span className="bg-gradient-to-r from-krim-cyan to-krim-mint bg-clip-text text-transparent">Real Workflows</span> Using Primitives
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-center">
+                <span className="bg-gradient-to-r from-krim-mint via-krim-cyan to-krim-mint bg-clip-text text-transparent">Real Workflows</span>{' '}
+                <span className="text-white">Using Primitives</span>
               </h2>
             </div>
           </Reveal>
 
-          <StaggerGrid staggerDelay={100} className="grid md:grid-cols-2 gap-6">
+          <div className="grid md:grid-cols-2 gap-5">
             {[
               {
                 title: "Automated escalation workflow",
@@ -382,41 +358,50 @@ export default function Kriya() {
                 outcome: "Repeatable process. Zero policy violations."
               }
             ].map((example, idx) => (
-              <GlassContainer key={example.title} glassLevel="light" className="p-6">
-                <h3 className="text-xl font-bold text-white mb-6">
+              <motion.div
+                key={example.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: idx * 0.08, duration: 0.5, ease: [0.21, 0.47, 0.32, 0.98] }}
+                whileHover={{ y: -6, transition: { type: 'spring', stiffness: 400, damping: 25 } }}
+                className="group relative backdrop-blur-md bg-gradient-to-br from-emerald-500/[0.05] to-krim-mint/[0.02] group-hover:from-emerald-500/[0.12] group-hover:to-krim-mint/[0.06] border border-white/[0.08] hover:border-emerald-400/50 rounded-2xl p-7 transition-all duration-500 overflow-hidden group-hover:shadow-[0_8px_32px_rgba(16,185,129,0.15)]"
+              >
+                <h3 className="text-lg font-bold text-white mb-4">
                   {example.title}
                 </h3>
-                <div className="bg-slate-900/50 rounded-lg p-3 mb-4">
-                  <code className="text-sm text-krim-cyan font-mono break-all leading-relaxed">
+                <div className="bg-black/20 rounded-lg p-3 mb-4">
+                  <code className="text-xs text-emerald-400 font-mono break-all leading-relaxed">
                     {example.flow}
                   </code>
                 </div>
-                <p className="text-base text-gray-200 font-medium">
-                  <span className="text-krim-mint font-bold text-lg">→</span> {example.outcome}
+                <p className="text-sm text-white/55">
+                  <span className="text-krim-mint font-bold">→</span> {example.outcome}
                 </p>
-              </GlassContainer>
+                <div className="absolute inset-x-0 bottom-0 h-[2px] bg-gradient-to-r from-emerald-400 via-krim-mint/60 to-emerald-400 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
+              </motion.div>
             ))}
-          </StaggerGrid>
+          </div>
         </div>
       </StarfieldSection>
 
 
       {/* Final CTA Section */}
-      <StarfieldSection glassLevel="standard" className="relative py-16 border-t border-white/10">
+      <StarfieldSection glassLevel="standard" className="relative py-20 md:py-28 border-t border-white/10">
         <div className="container max-w-4xl mx-auto px-6 text-center">
           <Reveal direction="up" once={true}>
             <div className="space-y-6">
-              <h2 className="text-4xl lg:text-5xl xl:text-6xl font-light text-center text-white">
-                <span className="bg-gradient-to-r from-krim-cyan to-krim-mint bg-clip-text text-transparent">Policies Become Execution</span>
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-center">
+                <span className="bg-gradient-to-r from-krim-mint via-krim-cyan to-krim-mint bg-clip-text text-transparent">Policies Become Execution</span>
               </h2>
 
-              <p className="text-xl sm:text-2xl text-gray-200 leading-relaxed max-w-3xl mx-auto text-center font-medium">
+              <p className="text-lg md:text-xl text-white/60 max-w-3xl mx-auto text-center leading-relaxed">
                 Your governance rules turn directly into automated workflows that never break compliance.
               </p>
-              
-              <Button 
+
+              <Button
                 size="lg"
-                className="bg-gradient-to-r from-krim-cyan via-krim-mint to-krim-cyan hover:from-krim-mint hover:to-krim-cyan text-black font-semibold px-8 py-4"
+                className="bg-gradient-to-r from-krim-cyan via-krim-mint to-krim-cyan hover:from-krim-mint hover:to-krim-cyan text-black font-semibold rounded-xl px-8 py-3.5"
               >
                 See Safe Superintelligence in Action
               </Button>

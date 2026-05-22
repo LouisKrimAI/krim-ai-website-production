@@ -21,7 +21,7 @@ const securityFeatures = [
   {
     icon: <Lock className="w-6 h-6" />,
     title: 'Clear data boundaries',
-    description: 'Scoped access for teams, co-workers and integrations, designed to minimise internal and external leakage'
+    description: 'Scoped access for teams, Autonomous Workers and integrations, designed to minimise internal and external leakage'
   },
   {
     icon: <Eye className="w-6 h-6" />,

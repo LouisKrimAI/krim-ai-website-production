@@ -33,7 +33,7 @@ const KulaVisualV2: React.FC = () => {
     },
     {
       userMessage: "Set up automated weekly compliance reports for the legal team",
-      kulaResponse: "I'll generate automated reports covering FDCPA violations, dispute rates, and settlement approvals. Want specific state regulation tracking?"
+      kulaResponse: "I'll generate automated reports covering policy violations, dispute rates, and resolution approvals. Want specific regulation tracking?"
     },
     {
       userMessage: "I need automated weekly reports sent to different teams for our credit card cross-sell campaign",

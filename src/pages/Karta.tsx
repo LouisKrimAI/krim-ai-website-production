@@ -1,7 +1,7 @@
 /**
  * KARTA AUTONOMOUS WORKERS - Individual Specialist Showcase
- * Redesigned to highlight expertise-based AI specialists
- * Clean, focused structure showcasing individual Autonomous Workers
+ * Redesigned with compact glassmorphic card design language
+ * Accent: mint primary (#00FF88), emerald secondary
  */
 
 import React from 'react'
@@ -9,33 +9,29 @@ import { motion } from 'framer-motion'
 import {
   ArrowRight, Shield, Brain, FileText, ChartBar,
   Users, Scales, Gear, Lock, CheckCircle,
-  Phone, EnvelopeSimple, ChatCircle, Headset,
+  EnvelopeSimple, ChatCircle, Headset,
   Buildings, Calculator, TrendUp, Eye, Pulse, Star,
-  Gavel, ClipboardText, HandCoins, UserCircle,
-  DeviceMobile, Globe, Lightning, Cpu
+  ClipboardText, HandCoins, UserCircle,
+  DeviceMobile, Lightning, Cpu
 } from '@phosphor-icons/react'
 import Button from '../components/Button'
 
 // Import starfield system components
 import { StarfieldLayout, StarfieldSection } from '../components/motion/StarfieldLayout'
-import { 
-  Reveal, 
-  StaggerGrid, 
-  HoverLiftCard, 
-  GlassContainer 
-} from '../components/motion/primitives'
+import { Reveal, StaggerGrid } from '../components/motion/primitives'
 
-// Individual Specialist Card Interface
-interface SpecialistCardProps {
-  name: string
-  expertise: string
-  description: string
-  competencies: string[]
-  icon: React.ElementType
-  category: 'contact' | 'backoffice'
-}
+/* ------------------------------------------------------------------ */
+/*  Design tokens  (Karta = mint primary, emerald secondary)          */
+/* ------------------------------------------------------------------ */
+const glass = 'relative backdrop-blur-md bg-gradient-to-br from-krim-mint/[0.05] to-krim-mint/[0.02] group-hover:from-krim-mint/[0.12] group-hover:to-krim-mint/[0.06] border border-white/[0.08] rounded-2xl overflow-hidden group-hover:shadow-[0_8px_32px_rgba(0,255,136,0.15)]'
+const glassHover = 'hover:border-krim-mint/50 transition-all duration-500'
+const glassCyan = 'relative backdrop-blur-md bg-gradient-to-br from-krim-cyan/[0.05] to-krim-cyan/[0.02] group-hover:from-krim-cyan/[0.12] group-hover:to-krim-cyan/[0.06] border border-white/[0.08] rounded-2xl overflow-hidden hover:border-krim-cyan/50 transition-all duration-500 group-hover:shadow-[0_8px_32px_rgba(0,212,255,0.15)]'
 
-// Simple Karta Card Interface
+const springHover = { type: 'spring' as const, stiffness: 400, damping: 25 }
+
+/* ------------------------------------------------------------------ */
+/*  Simple Karta Card (compact, used in specialist grids)             */
+/* ------------------------------------------------------------------ */
 interface SimpleKartaCardProps {
   name: string
   expertise: string
@@ -43,796 +39,230 @@ interface SimpleKartaCardProps {
   category: 'contact' | 'backoffice'
 }
 
-// Specialist Card Component
-function SpecialistCard({ name, expertise, description, competencies, icon: Icon, category }: SpecialistCardProps) {
-  const isContact = category === 'contact'
-  const accentColor = isContact ? 'rgb(0, 212, 255)' : 'rgb(0, 255, 136)'
-  const glowColor = `${accentColor.replace('rgb', 'rgba').replace(')', ', 0.25)')}`
-  
-  return (
-    <HoverLiftCard
-      liftDistance={8}
-      glowColor={glowColor}
-      className="group h-full"
-    >
-      <GlassContainer
-        glassLevel="standard"
-        className="flex flex-col h-full p-6 relative overflow-hidden"
-      >
-        {/* Top accent bar */}
-        <div 
-          className="absolute inset-x-0 top-0 h-0.5"
-          style={{
-            background: `linear-gradient(90deg, transparent, ${accentColor} 50%, transparent)`,
-            boxShadow: `0 0 15px ${glowColor}`,
-          }}
-        />
-        
-        {/* Icon */}
-        <div 
-          className="w-14 h-14 rounded-xl flex items-center justify-center mb-4"
-          style={{
-            background: `${accentColor}15`,
-            border: `1px solid ${accentColor}40`
-          }}
-        >
-          <Icon className="w-7 h-7" style={{ color: accentColor }} />
-        </div>
-        
-        {/* Name and Expertise */}
-        <h3 className="text-lg font-bold text-white mb-1">
-          {name}
-        </h3>
-        <p className="text-sm mb-3" style={{ color: accentColor }}>
-          {expertise}
-        </p>
-        
-        {/* Description */}
-        <p className="text-xs text-gray-300 mb-4 flex-grow">
-          {description}
-        </p>
-        
-        {/* Competencies */}
-        <div className="space-y-2">
-          {competencies.slice(0, 3).map((competency, index) => (
-            <div key={index} className="flex items-start gap-2">
-              <div className="w-1.5 h-1.5 rounded-full mt-1.5 flex-shrink-0" style={{ backgroundColor: accentColor }} />
-              <span className="text-xs text-gray-300">{competency}</span>
-            </div>
-          ))}
-        </div>
-        
-        {/* Background glow */}
-        <div 
-          className="absolute -top-10 -right-10 w-24 h-24 rounded-full opacity-10 blur-3xl pointer-events-none"
-          style={{ backgroundColor: accentColor }}
-        />
-      </GlassContainer>
-    </HoverLiftCard>
-  )
-}
-
-// Simple Karta Card Component
 function SimpleKartaCard({ name, expertise, icon: Icon, category }: SimpleKartaCardProps) {
   const isContact = category === 'contact'
-  const accentColor = isContact ? 'rgb(0, 212, 255)' : 'rgb(0, 255, 136)'
-  const glowColor = `${accentColor.replace('rgb', 'rgba').replace(')', ', 0.15)')}`
-  
+  const color = isContact ? 'krim-cyan' : 'krim-mint'
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5 }}
+      whileHover={{ y: -6 }}
+      className={`group ${isContact ? glassCyan : `${glass} ${glassHover}`} flex items-center gap-4 px-5 py-4`}
     >
-      <HoverLiftCard
-        liftDistance={6}
-        glowColor={glowColor}
-        className="group h-full"
-      >
-        <GlassContainer
-          glassLevel="light"
-          className="flex items-center gap-4 h-full p-4 relative overflow-hidden"
-        >
-          {/* Top accent bar */}
-          <div 
-            className="absolute inset-x-0 top-0 h-0.5"
-            style={{
-              background: `linear-gradient(90deg, transparent, ${accentColor} 50%, transparent)`,
-              boxShadow: `0 0 10px ${glowColor}`,
-            }}
-          />
-          
-          {/* Icon */}
-          <div 
-            className="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0"
-            style={{
-              background: `${accentColor}15`,
-              border: `1px solid ${accentColor}30`
-            }}
-          >
-            <Icon className="w-5 h-5" style={{ color: accentColor }} />
-          </div>
-          
-          {/* Content */}
-          <div className="flex-1 min-w-0">
-            <h3 className="text-sm font-bold text-white mb-1 truncate">
-              {name}
-            </h3>
-            <p className="text-xs" style={{ color: accentColor }}>
-              {expertise}
-            </p>
-          </div>
-          
-          {/* Background glow */}
-          <div 
-            className="absolute -top-5 -right-5 w-16 h-16 rounded-full opacity-5 blur-2xl pointer-events-none"
-            style={{ backgroundColor: accentColor }}
-          />
-        </GlassContainer>
-      </HoverLiftCard>
+      <div className={`w-10 h-10 rounded-lg bg-${color}/10 flex items-center justify-center flex-shrink-0 transition-all duration-300 group-hover:scale-110 group-hover:shadow-lg`}>
+        <Icon className={`w-5 h-5 text-${color}`} />
+      </div>
+      <div className="flex-1 min-w-0">
+        <h3 className="text-sm font-bold text-white mb-1 truncate">{name}</h3>
+        <p className={`text-xs text-${color}`}>{expertise}</p>
+      </div>
+      {/* Bottom accent line */}
+      <div className={`absolute bottom-0 inset-x-0 h-[2px] bg-gradient-to-r from-transparent via-${color}/60 to-transparent scale-x-0 group-hover:scale-x-100 transition-transform duration-300`} />
     </motion.div>
   )
 }
 
-// Contact Center Specialists Data
-const contactCenterSpecialists = [
-  // Customer Lifecycle (4)
-  {
-    name: 'Onboarding Agent',
-    expertise: 'Account Setup & Guidance',
-    description: 'Guides new customers through account activation, setup, and initial product education with personalized onboarding flows.',
-    competencies: ['Account activation', 'Product education', 'Setup guidance'],
-    icon: UserCircle,
-    category: 'contact' as const
-  },
-  {
-    name: 'KYC/Re-KYC Agent',
-    expertise: 'Identity Verification & Compliance',
-    description: 'Conducts identity verification calls, collects compliance documentation, and manages periodic re-verification requirements.',
-    competencies: ['Identity verification', 'Compliance documentation', 'Re-verification workflows'],
-    icon: Shield,
-    category: 'contact' as const
-  },
-  {
-    name: 'Financial Education Agent',
-    expertise: 'Financial Literacy & Empowerment',
-    description: 'Provides financial literacy education and budgeting guidance to improve customer financial health.',
-    competencies: ['Financial education', 'Budgeting guidance', 'Financial wellness'],
-    icon: Brain,
-    category: 'contact' as const
-  },
-  {
-    name: 'Healer Agent',
-    expertise: 'Relationship Recovery',
-    description: 'Rebuilds relationships post-payment and provides financial wellness counseling.',
-    competencies: ['Relationship rebuilding', 'Financial wellness', 'Customer advocacy'],
-    icon: Star,
-    category: 'contact' as const
-  },
+/* ------------------------------------------------------------------ */
+/*  Compact feature card used in "How Karta Works"                    */
+/* ------------------------------------------------------------------ */
+interface FeatureCardProps {
+  icon: React.ElementType
+  title: string
+  body: string
+  bullets: string[]
+  color: 'mint' | 'cyan' | 'purple' | 'red'
+}
 
-  // Case Management Lifecycle (4)
-  {
-    name: 'Nudger Agent',
-    expertise: 'Pre-Due & Due Date',
-    description: 'Gentle behavioral timing specialist providing soft reminders and early intervention before cases escalate.',
-    competencies: ['Behavioral timing', 'Early intervention', 'Payment reminders'],
-    icon: Pulse,
-    category: 'contact' as const
-  },
-  {
-    name: 'Case Management (Early)',
-    expertise: 'Early Intervention Specialist',
-    description: 'Manages early-stage cases with focus on sustainable payment arrangements and early resolution.',
-    competencies: ['Early intervention', 'Payment arrangements', 'Relationship preservation'],
-    icon: Headset,
-    category: 'contact' as const
-  },
-  {
-    name: 'Cure Agent',
-    expertise: '31-90 Days Recovery',
-    description: 'Mid-stage recovery specialist balancing firmness with empathy to create sustainable payment solutions and cure accounts.',
-    competencies: ['Payment plan negotiation', 'Account recovery', 'Win-win solutions'],
-    icon: CheckCircle,
-    category: 'contact' as const
-  },
-  {
-    name: 'Late Stage Settlement',
-    expertise: '91+ Days Resolution',
-    description: 'Authoritative specialist handling complex late-stage cases with commanding presence and settlement authority.',
-    competencies: ['Settlement authority', 'Complex resolution', 'Final negotiations'],
-    icon: Gavel,
-    category: 'contact' as const
-  },
+const colorMap = {
+  mint:   { text: 'text-krim-mint', bg: 'bg-krim-mint', dot: 'bg-krim-mint', cardClass: `${glass} ${glassHover}` },
+  cyan:   { text: 'text-krim-cyan', bg: 'bg-krim-cyan', dot: 'bg-krim-cyan', cardClass: glassCyan },
+  purple: { text: 'text-purple-400', bg: 'bg-purple-400', dot: 'bg-purple-400', cardClass: 'relative backdrop-blur-md bg-gradient-to-br from-purple-500/[0.05] to-purple-500/[0.02] group-hover:from-purple-500/[0.12] group-hover:to-purple-500/[0.06] border border-white/[0.08] rounded-2xl overflow-hidden hover:border-purple-400/50 transition-all duration-500 group-hover:shadow-[0_8px_32px_rgba(168,85,247,0.15)]' },
+  red:    { text: 'text-red-400', bg: 'bg-red-400', dot: 'bg-red-400', cardClass: 'relative backdrop-blur-md bg-gradient-to-br from-red-400/[0.05] to-red-400/[0.02] group-hover:from-red-400/[0.12] group-hover:to-red-400/[0.06] border border-white/[0.08] rounded-2xl overflow-hidden hover:border-red-400/50 transition-all duration-500 group-hover:shadow-[0_8px_32px_rgba(248,113,113,0.15)]' },
+}
 
-  // Specialized Services (4)
-  {
-    name: 'Hardship Agent',
-    expertise: 'Financial Assistance',
-    description: 'Empathetic specialist providing financial assistance programs and support for customers experiencing genuine hardship.',
-    competencies: ['Financial counseling', 'Hardship programs', 'Empathy-driven support'],
-    icon: Users,
-    category: 'contact' as const
-  },
-  {
-    name: 'Cross-Sell Agent',
-    expertise: 'New Products',
-    description: 'Identifies opportunities for additional product offerings and services.',
-    competencies: ['Product opportunities', 'Revenue expansion', 'Cross-selling'],
-    icon: TrendUp,
-    category: 'contact' as const
-  },
-  {
-    name: 'Up-Sell Agent',
-    expertise: 'Product Upgrades',
-    description: 'Enhancement specialist focused on upgrading existing products to higher value tiers and premium service levels.',
-    competencies: ['Product upgrades', 'Premium services', 'Value enhancement'],
-    icon: Star,
-    category: 'contact' as const
-  },
-  {
-    name: 'Fraud & Dispute Agent',
-    expertise: 'Case Handling',
-    description: 'Specialized investigator handling fraud cases, dispute resolution, and complex complaint management with regulatory compliance.',
-    competencies: ['Fraud investigation', 'Dispute resolution', 'Regulatory compliance'],
-    icon: Scales,
-    category: 'contact' as const
-  }
-]
+function FeatureCard({ icon: Icon, title, body, bullets, color }: FeatureCardProps) {
+  const c = colorMap[color]
+  return (
+    <motion.div
+      whileHover={{ y: -6 }}
+      transition={springHover}
+      className={`group ${c.cardClass} p-7 h-full flex flex-col`}
+    >
+      <div className="flex items-center gap-3 mb-4">
+        <Icon className={`w-5 h-5 ${c.text}`} />
+        <h3 className="text-lg font-bold text-white">{title}</h3>
+      </div>
+      <p className="text-sm text-white/55 mb-4">{body}</p>
+      <ul className="space-y-2">
+        {bullets.map((b) => (
+          <li key={b} className="flex items-center gap-2 text-sm text-white/55">
+            <div className={`w-1.5 h-1.5 ${c.dot} rounded-full`} />
+            {b}
+          </li>
+        ))}
+      </ul>
+      <div className={`absolute bottom-0 inset-x-0 h-[2px] bg-gradient-to-r from-transparent via-current to-transparent scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ${c.text}`} style={{ opacity: 0.6 }} />
+    </motion.div>
+  )
+}
 
-// Back Office Specialists Data
-const backOfficeSpecialists = [
-  // Campaign & Strategy (3)
-  {
-    name: 'Campaign Manager',
-    expertise: 'Orchestration',
-    description: 'Orchestrates multi-channel campaigns and coordinates case management across all touchpoints.',
-    competencies: ['Campaign orchestration', 'Multi-channel strategy', 'Timing optimization'],
-    icon: Gear,
-    category: 'backoffice' as const
-  },
-  {
-    name: 'Forecaster Agent',
-    expertise: 'Predictive Intelligence',
-    description: 'Predictive intelligence engine analyzing campaign outcomes, spotting trends, and optimizing ROI strategies with data-driven insights.',
-    competencies: ['Predictive modeling', 'Trend analysis', 'ROI optimization'],
-    icon: ChartBar,
-    category: 'backoffice' as const
-  },
-  {
-    name: 'Orchestrator Agent',
-    expertise: 'Master Data Conductor',
-    description: 'Master conductor connecting customer journey dots, predicting risk before escalation, and coordinating data flows across the ecosystem.',
-    competencies: ['Data flow coordination', 'Journey mapping', 'Risk prediction'],
-    icon: Brain,
-    category: 'backoffice' as const
-  },
-
-  // Compliance & Risk (3)
-  {
-    name: 'Compliance Monitoring',
-    expertise: 'Regulatory Oversight',
-    description: 'Real-time compliance monitoring with audit trails and violation prevention across all applicable regulations.',
-    competencies: ['Real-time monitoring', 'Violation prevention', 'Regulatory compliance'],
-    icon: Shield,
-    category: 'backoffice' as const
-  },
-  {
-    name: 'Evidence Trail Agent',
-    expertise: 'Documentation Tracking',
-    description: 'Maintains comprehensive audit trails and documentation tracking for regulatory compliance and internal governance requirements.',
-    competencies: ['Audit trail maintenance', 'Documentation tracking', 'Compliance records'],
-    icon: FileText,
-    category: 'backoffice' as const
-  },
-  {
-    name: 'Recorder Agent',
-    expertise: 'Regulatory Reporting',
-    description: 'Automated regulatory reporting specialist preparing compliance documents and eliminating manual MIS workload with systematic efficiency.',
-    competencies: ['Regulatory reporting', 'Compliance documentation', 'Automated workflows'],
-    icon: ClipboardText,
-    category: 'backoffice' as const
-  },
-
-  // Data & Intelligence (4)
-  {
-    name: 'Business Intelligence (BIA)',
-    expertise: 'Analytics',
-    description: 'Generates performance insights and strategic recommendations from case management data.',
-    competencies: ['Advanced analytics', 'Performance insights', 'Strategic recommendations'],
-    icon: ChartBar,
-    category: 'backoffice' as const
-  },
-  {
-    name: 'Report Generator',
-    expertise: 'Stakeholder Reports',
-    description: 'Creates stakeholder reports and executive dashboards with customized metrics, KPIs, and business intelligence delivery.',
-    competencies: ['Executive dashboards', 'Custom reporting', 'KPI tracking'],
-    icon: TrendUp,
-    category: 'backoffice' as const
-  },
-  {
-    name: 'Payment Reconciliation',
-    expertise: 'Processing',
-    description: 'Handles payment processing, matching, financial reconciliation, and transaction management with automated workflows.',
-    competencies: ['Payment processing', 'Financial reconciliation', 'Transaction management'],
-    icon: Buildings,
-    category: 'backoffice' as const
-  },
-  {
-    name: 'Interpreter Agent',
-    expertise: 'Emotional Intelligence',
-    description: 'Emotional intelligence specialist detecting sentiment, modulating tone for empathy, and embedding human nuance into AI interactions.',
-    competencies: ['Sentiment detection', 'Empathy modulation', 'Emotional intelligence'],
-    icon: Users,
-    category: 'backoffice' as const
-  },
-
-  // Platform Management (3)
-  {
-    name: 'Karta Admin',
-    expertise: 'System Management',
-    description: 'System management specialist handling configuration, operational oversight, and platform administration with confident automation.',
-    competencies: ['System configuration', 'Operational oversight', 'Platform administration'],
-    icon: Gear,
-    category: 'backoffice' as const
-  },
-  {
-    name: 'Karta Learn',
-    expertise: 'Knowledge Management',
-    description: 'Knowledge management specialist optimizing continuous learning, training patterns, and intelligence enhancement across the platform.',
-    competencies: ['Knowledge management', 'Continuous learning', 'Training optimization'],
-    icon: Brain,
-    category: 'backoffice' as const
-  },
-  {
-    name: 'Karta Payload',
-    expertise: 'Multimedia Content Delivery',
-    description: 'Multimedia content delivery specialist managing documents, images, videos, and rich media assets for campaigns and customer communications.',
-    competencies: ['Document delivery', 'Multimedia management', 'Content distribution'],
-    icon: EnvelopeSimple,
-    category: 'backoffice' as const
-  }
-]
-
-// Main Karta Page Component
+/* ------------------------------------------------------------------ */
+/*  Page                                                               */
+/* ------------------------------------------------------------------ */
 export default function Karta() {
   return (
-    <StarfieldLayout 
-      pageType="product" 
-      contentDensity="moderate"
-    >
-      
-      {/* Hero Section - Standardized like Kendra */}
-      <StarfieldSection 
-        glassLevel="ultraLight" 
-        className="relative py-24 lg:py-32"
-      >
-        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-          <div>
-            
-            {/* Karta Title - Enterprise-grade Typography */}
-            <div className="w-full flex justify-center">
-              <motion.h2
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8, delay: 0.3 }}
-                className="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-bold mb-8 text-center"
-              >
-                <span className="bg-gradient-to-r from-krim-cyan to-krim-mint bg-clip-text text-transparent">
-                  Karta™ Autonomous Workers
-                </span>
-              </motion.h2>
-            </div>
+    <StarfieldLayout pageType="product" contentDensity="moderate">
 
-            {/* Sub-heading - What it IS */}
-            <div className="w-full flex justify-center">
-              <motion.p
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8, delay: 0.5 }}
-                className="text-2xl md:text-3xl text-white/60 max-w-3xl font-light tracking-wide mb-10 text-center"
-              >
-                Intelligent Multi-Modal Specialists
-              </motion.p>
-            </div>
+      {/* Hero Section */}
+      <StarfieldSection glassLevel="ultraLight" className="relative py-20 md:py-28">
+        <div className="mx-auto max-w-6xl px-6">
+          <div className="text-center">
+            <motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+              className="text-4xl md:text-5xl lg:text-6xl font-bold mb-8"
+            >
+              <span className="bg-gradient-to-r from-krim-mint via-krim-cyan to-krim-mint bg-clip-text text-transparent">
+                Karta™ Autonomous Workers
+              </span>
+            </motion.h2>
 
-            {/* Description - What it DOES */}
-            <div className="w-full flex justify-center">
-              <motion.p
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.6 }}
-                className="text-lg md:text-xl text-white/70 max-w-4xl mb-12 leading-relaxed text-center"
-              >
-                Create & Deploy expert AI specialists across contact center and back office. Each masters their domain, grounded by pre-execution validation, intercepting hallucinations before action.
-              </motion.p>
-            </div>
-              
-            {/* CTAs */}
+            <motion.p
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.5 }}
+              className="text-lg md:text-xl text-white/60 max-w-3xl mx-auto font-light tracking-wide mb-10"
+            >
+              Intelligent Multi-Modal Specialists
+            </motion.p>
+
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.6 }}
+              className="text-lg md:text-xl text-white/60 max-w-3xl mx-auto mb-12 leading-relaxed"
+            >
+              Create & Deploy expert AI specialists across contact center and back office. Each masters their domain, grounded by pre-execution validation, intercepting hallucinations before action.
+            </motion.p>
+
             <Reveal delay={0.7}>
-              <div className="flex flex-col sm:flex-row gap-4 items-center justify-center">
-                <HoverLiftCard liftDistance={4}>
-                  <Button 
-                    size="lg" 
-                    className="bg-gradient-to-r from-krim-cyan via-krim-mint to-krim-cyan hover:from-krim-mint hover:to-krim-cyan text-black font-semibold px-8 py-4"
-                  >
-                    See Agents Handle Real Cases
-                    <ArrowRight className="ml-2 h-4 w-4" />
-                  </Button>
-                </HoverLiftCard>
+              <div className="flex justify-center">
+                <Button
+                  size="lg"
+                  className="bg-gradient-to-r from-krim-cyan via-krim-mint to-krim-cyan hover:from-krim-mint hover:to-krim-cyan text-black font-semibold rounded-xl px-8 py-3.5"
+                >
+                  See Agents Handle Real Cases
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Button>
               </div>
             </Reveal>
           </div>
         </div>
       </StarfieldSection>
 
-      {/* How Karta Autonomous Workers Operate Section */}
-      <StarfieldSection glassLevel="light" className="py-20 lg:py-24 border-t border-slate-800">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <Reveal className="mb-16">
-            <div className="w-full flex justify-center">
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6">
-                How <span className="bg-gradient-to-r from-krim-cyan to-krim-mint bg-clip-text text-transparent">Karta</span> Works
-              </h2>
-            </div>
-            <div className="w-full flex justify-center">
-              <p className="text-lg sm:text-xl text-gray-200 max-w-4xl text-center">
-                Autonomous AI specialists with multi-modal capabilities, regulatory compliance, and instant deployment
-              </p>
-            </div>
+      {/* How Karta Works */}
+      <StarfieldSection glassLevel="light" className="py-20 md:py-28">
+        <div className="mx-auto max-w-7xl px-6">
+          <Reveal className="mb-14">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 text-center">
+              How <span className="bg-gradient-to-r from-krim-mint via-krim-cyan to-krim-mint bg-clip-text text-transparent">Karta</span> Works
+            </h2>
+            <p className="text-lg md:text-xl text-white/60 max-w-3xl mx-auto text-center">
+              Autonomous AI specialists with multi-modal capabilities, regulatory compliance, and instant deployment
+            </p>
           </Reveal>
 
-          <StaggerGrid className="grid gap-8 lg:grid-cols-4 md:grid-cols-2 grid-cols-1 max-w-7xl mx-auto">
-            {/* Multi-Modal Communication */}
-            <HoverLiftCard liftDistance={6} glowColor="rgba(0, 212, 255, 0.15)">
-              <GlassContainer glassLevel="standard" className="p-6 h-full relative overflow-hidden">
-                <div className="absolute inset-x-0 top-0 h-0.5" 
-                  style={{ 
-                    background: 'linear-gradient(90deg, transparent, rgb(0, 212, 255) 50%, transparent)',
-                    boxShadow: '0 0 15px rgba(0, 212, 255, 0.3)' 
-                  }}/>
-                
-                <div className="flex items-center gap-3 mb-4">
-                  <DeviceMobile className="w-6 h-6 text-krim-cyan" />
-                  <h3 className="text-lg font-bold text-white">Multi-Modal Channels</h3>
-                </div>
-                
-                <p className="text-sm text-gray-100 mb-4 leading-relaxed">
-                  Communicate across every customer touchpoint
-                </p>
-                
-                <ul className="space-y-2">
-                  <li className="flex items-center gap-2 text-xs text-gray-200">
-                    <div className="w-1.5 h-1.5 bg-krim-cyan rounded-full" />
-                    Voice calls & voicemails
-                  </li>
-                  <li className="flex items-center gap-2 text-xs text-gray-200">
-                    <div className="w-1.5 h-1.5 bg-krim-cyan rounded-full" />
-                    Email, SMS & web chat
-                  </li>
-                  <li className="flex items-center gap-2 text-xs text-gray-200">
-                    <div className="w-1.5 h-1.5 bg-krim-cyan rounded-full" />
-                    Social media & messaging
-                  </li>
-                  <li className="flex items-center gap-2 text-xs text-gray-200">
-                    <div className="w-1.5 h-1.5 bg-krim-cyan rounded-full" />
-                    Document & multimedia
-                  </li>
-                </ul>
-                
-                <div className="absolute -bottom-6 -right-6 w-20 h-20 rounded-full bg-krim-cyan/10 blur-2xl" />
-              </GlassContainer>
-            </HoverLiftCard>
-
-            {/* Autonomous Actions */}
-            <HoverLiftCard liftDistance={6} glowColor="rgba(0, 255, 136, 0.15)">
-              <GlassContainer glassLevel="standard" className="p-6 h-full relative overflow-hidden">
-                <div className="absolute inset-x-0 top-0 h-0.5" 
-                  style={{ 
-                    background: 'linear-gradient(90deg, transparent, rgb(0, 255, 136) 50%, transparent)',
-                    boxShadow: '0 0 15px rgba(0, 255, 136, 0.3)' 
-                  }}/>
-                
-                <div className="flex items-center gap-3 mb-4">
-                  <Lightning className="w-6 h-6 text-krim-mint" />
-                  <h3 className="text-lg font-bold text-white">Autonomous Actions</h3>
-                </div>
-                
-                <p className="text-sm text-gray-100 mb-4 leading-relaxed">
-                  Execute complex tasks without human intervention
-                </p>
-                
-                <ul className="space-y-2">
-                  <li className="flex items-center gap-2 text-xs text-gray-200">
-                    <div className="w-1.5 h-1.5 bg-krim-mint rounded-full" />
-                    Process payments & plans
-                  </li>
-                  <li className="flex items-center gap-2 text-xs text-gray-200">
-                    <div className="w-1.5 h-1.5 bg-krim-mint rounded-full" />
-                    Generate personalized content
-                  </li>
-                  <li className="flex items-center gap-2 text-xs text-gray-200">
-                    <div className="w-1.5 h-1.5 bg-krim-mint rounded-full" />
-                    Verify & document compliance
-                  </li>
-                  <li className="flex items-center gap-2 text-xs text-gray-200">
-                    <div className="w-1.5 h-1.5 bg-krim-mint rounded-full" />
-                    Orchestrate workflows
-                  </li>
-                </ul>
-                
-                <div className="absolute -bottom-6 -right-6 w-20 h-20 rounded-full bg-krim-mint/10 blur-2xl" />
-              </GlassContainer>
-            </HoverLiftCard>
-
-            {/* Intelligence & Decision Making */}
-            <HoverLiftCard liftDistance={6} glowColor="rgba(138, 43, 226, 0.15)">
-              <GlassContainer glassLevel="standard" className="p-6 h-full relative overflow-hidden">
-                <div className="absolute inset-x-0 top-0 h-0.5" 
-                  style={{ 
-                    background: 'linear-gradient(90deg, transparent, rgb(138, 43, 226) 50%, transparent)',
-                    boxShadow: '0 0 15px rgba(138, 43, 226, 0.3)' 
-                  }}/>
-                
-                <div className="flex items-center gap-3 mb-4">
-                  <Brain className="w-6 h-6" style={{ color: 'rgb(138, 43, 226)' }} />
-                  <h3 className="text-lg font-bold text-white">Smart Decision Making</h3>
-                </div>
-                
-                <p className="text-sm text-gray-100 mb-4 leading-relaxed">
-                  Advanced intelligence with built-in compliance
-                </p>
-                
-                <ul className="space-y-2">
-                  <li className="flex items-center gap-2 text-xs text-gray-200">
-                    <div className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: 'rgb(138, 43, 226)' }} />
-                    Real-time risk assessment
-                  </li>
-                  <li className="flex items-center gap-2 text-xs text-gray-200">
-                    <div className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: 'rgb(138, 43, 226)' }} />
-                    Adaptive customer strategies
-                  </li>
-                  <li className="flex items-center gap-2 text-xs text-gray-200">
-                    <div className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: 'rgb(138, 43, 226)' }} />
-                    Pre-execution validation
-                  </li>
-                  <li className="flex items-center gap-2 text-xs text-gray-200">
-                    <div className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: 'rgb(138, 43, 226)' }} />
-                    Smart escalation logic
-                  </li>
-                </ul>
-                
-                <div className="absolute -bottom-6 -right-6 w-20 h-20 rounded-full opacity-10 blur-2xl" style={{ backgroundColor: 'rgb(138, 43, 226)' }} />
-              </GlassContainer>
-            </HoverLiftCard>
-
-            {/* Integration & Deployment */}
-            <HoverLiftCard liftDistance={6} glowColor="rgba(255, 107, 107, 0.15)">
-              <GlassContainer glassLevel="standard" className="p-6 h-full relative overflow-hidden">
-                <div className="absolute inset-x-0 top-0 h-0.5" 
-                  style={{ 
-                    background: 'linear-gradient(90deg, transparent, rgb(255, 107, 107) 50%, transparent)',
-                    boxShadow: '0 0 15px rgba(255, 107, 107, 0.3)' 
-                  }}/>
-                
-                <div className="flex items-center gap-3 mb-4">
-                  <Cpu className="w-6 h-6" style={{ color: 'rgb(255, 107, 107)' }} />
-                  <h3 className="text-lg font-bold text-white">Instant<br />Deployment</h3>
-                </div>
-                
-                <p className="text-sm text-gray-100 mb-4 leading-relaxed">
-                  Ready-to-use specialists with seamless integration
-                </p>
-                
-                <ul className="space-y-2">
-                  <li className="flex items-center gap-2 text-xs text-gray-200">
-                    <div className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: 'rgb(255, 107, 107)' }} />
-                    Universal system integration
-                  </li>
-                  <li className="flex items-center gap-2 text-xs text-gray-200">
-                    <div className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: 'rgb(255, 107, 107)' }} />
-                    Zero training required
-                  </li>
-                  <li className="flex items-center gap-2 text-xs text-gray-200">
-                    <div className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: 'rgb(255, 107, 107)' }} />
-                    Continuous optimization
-                  </li>
-                  <li className="flex items-center gap-2 text-xs text-gray-200">
-                    <div className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: 'rgb(255, 107, 107)' }} />
-                    Scale on demand
-                  </li>
-                </ul>
-                
-                <div className="absolute -bottom-6 -right-6 w-20 h-20 rounded-full opacity-10 blur-2xl" style={{ backgroundColor: 'rgb(255, 107, 107)' }} />
-              </GlassContainer>
-            </HoverLiftCard>
+          <StaggerGrid className="grid gap-6 lg:grid-cols-4 md:grid-cols-2 grid-cols-1 max-w-7xl mx-auto">
+            <FeatureCard icon={DeviceMobile} title="Multi-Modal Channels" body="Communicate across every customer touchpoint" color="cyan" bullets={['Voice calls & voicemails', 'Email, SMS & web chat', 'Social media & messaging', 'Document & multimedia']} />
+            <FeatureCard icon={Lightning} title="Autonomous Actions" body="Execute complex tasks without human intervention" color="mint" bullets={['Process payments & plans', 'Generate personalized content', 'Verify & document compliance', 'Orchestrate workflows']} />
+            <FeatureCard icon={Brain} title="Smart Decision Making" body="Advanced intelligence with built-in compliance" color="purple" bullets={['Real-time risk assessment', 'Adaptive customer strategies', 'Pre-execution validation', 'Smart escalation logic']} />
+            <FeatureCard icon={Cpu} title="Instant Deployment" body="Ready-to-use specialists with seamless integration" color="red" bullets={['Universal system integration', 'Zero training required', 'Continuous optimization', 'Scale on demand']} />
           </StaggerGrid>
 
           {/* Key Differentiators Callout */}
-          <Reveal delay={0.3} className="mt-12">
-            <div className="w-full flex justify-center">
-              <GlassContainer glassLevel="ultraLight" className="max-w-3xl mx-auto p-6 text-center">
-                <h3 className="text-lg font-bold text-white mb-3">
-                  <span className="text-krim-mint">Enterprise-Grade</span> Autonomous Workers
-                </h3>
-                <p className="text-sm text-gray-300">
-                  <strong className="text-white">Autonomous execution</strong> • <strong className="text-white">Built-in compliance</strong> • <strong className="text-white">Multi-modal expertise</strong>
-                </p>
-              </GlassContainer>
+          <Reveal delay={0.3} className="mt-10">
+            <div className={`${glass} max-w-3xl mx-auto px-6 py-5 text-center`}>
+              <h3 className="text-lg font-bold text-white mb-2">
+                <span className="text-krim-mint">Enterprise-Grade</span> Autonomous Workers
+              </h3>
+              <p className="text-sm text-white/55">
+                <strong className="text-white">Autonomous execution</strong> &middot; <strong className="text-white">Built-in compliance</strong> &middot; <strong className="text-white">Multi-modal expertise</strong>
+              </p>
             </div>
           </Reveal>
         </div>
       </StarfieldSection>
 
-      {/* Three Types of Karta Overview Section */}
-      <StarfieldSection glassLevel="light" className="py-20 lg:py-24 border-t border-slate-800">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      {/* Three Types of Karta */}
+      <StarfieldSection glassLevel="light" className="py-20 md:py-28">
+        <div className="mx-auto max-w-7xl px-6">
           <Reveal className="mb-12">
-            <div className="w-full flex justify-center">
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6">
-                Three Types of <span className="bg-gradient-to-r from-krim-cyan to-krim-mint bg-clip-text text-transparent">Karta</span>
-              </h2>
-            </div>
-            <div className="w-full flex justify-center">
-              <p className="text-lg sm:text-xl text-gray-200 max-w-3xl text-center">
-                Purpose-built Autonomous Workers for regulated operations
-              </p>
-            </div>
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 text-center">
+              Three Types of <span className="bg-gradient-to-r from-krim-mint via-krim-cyan to-krim-mint bg-clip-text text-transparent">Karta</span>
+            </h2>
+            <p className="text-lg md:text-xl text-white/60 max-w-3xl mx-auto text-center">
+              Purpose-built Autonomous Workers for regulated operations
+            </p>
           </Reveal>
-          
-          <div className="grid gap-8 lg:grid-cols-3 max-w-6xl mx-auto">
-            {/* Back Office Karta Card */}
-            <HoverLiftCard liftDistance={8} glowColor="rgba(0, 255, 136, 0.2)">
-              <GlassContainer glassLevel="standard" className="p-6 h-full relative overflow-hidden">
-                <div className="absolute inset-x-0 top-0 h-1" 
-                  style={{ 
-                    background: 'linear-gradient(90deg, transparent, rgb(0, 255, 136) 50%, transparent)',
-                    boxShadow: '0 0 20px rgba(0, 255, 136, 0.3)' 
-                  }}/>
-                
-                <div className="flex items-center gap-3 mb-4">
-                  <Gear className="w-7 h-7 text-krim-mint" />
-                  <h3 className="text-xl font-bold text-white">Back Office</h3>
-                </div>
-                
-                <p className="text-base text-gray-100 mb-5 leading-relaxed font-medium">
-                  Back office Autonomous Workers handling workflows and business processes
-                </p>
-                
-                <ul className="space-y-2.5">
-                  <li className="flex items-center gap-3">
-                    <div className="w-2 h-2 bg-krim-mint rounded-full" />
-                    <span className="text-gray-200 text-sm">Risk Assessment & Analytics</span>
-                  </li>
-                  <li className="flex items-center gap-3">
-                    <div className="w-2 h-2 bg-krim-mint rounded-full" />
-                    <span className="text-gray-200 text-sm">Payment & Financial Operations</span>
-                  </li>
-                  <li className="flex items-center gap-3">
-                    <div className="w-2 h-2 bg-krim-mint rounded-full" />
-                    <span className="text-gray-200 text-sm">Document & Workflow Management</span>
-                  </li>
-                  <li className="flex items-center gap-3">
-                    <div className="w-2 h-2 bg-krim-mint rounded-full" />
-                    <span className="text-gray-200 text-sm">Compliance & Quality Assurance</span>
-                  </li>
-                </ul>
-                
-                <div className="absolute -top-10 -right-10 w-28 h-28 rounded-full bg-krim-mint/10 blur-3xl" />
-              </GlassContainer>
-            </HoverLiftCard>
-            
-            {/* Contact Center Karta Card */}
-            <HoverLiftCard liftDistance={8} glowColor="rgba(0, 212, 255, 0.2)">
-              <GlassContainer glassLevel="standard" className="p-6 h-full relative overflow-hidden">
-                <div className="absolute inset-x-0 top-0 h-1" 
-                  style={{ 
-                    background: 'linear-gradient(90deg, transparent, rgb(0, 212, 255) 50%, transparent)',
-                    boxShadow: '0 0 20px rgba(0, 212, 255, 0.3)' 
-                  }}/>
-                
-                <div className="flex items-center gap-3 mb-4">
-                  <Headset className="w-7 h-7 text-krim-cyan" />
-                  <h3 className="text-xl font-bold text-white">Contact Center</h3>
-                </div>
-                
-                <p className="text-base text-gray-100 mb-5 leading-relaxed font-medium">
-                  Customer-facing Autonomous Workers handling conversations across all channels
-                </p>
-                
-                <ul className="space-y-2.5">
-                  <li className="flex items-center gap-3">
-                    <div className="w-2 h-2 bg-krim-cyan rounded-full" />
-                    <span className="text-gray-200 text-sm">Customer Service & Support</span>
-                  </li>
-                  <li className="flex items-center gap-3">
-                    <div className="w-2 h-2 bg-krim-cyan rounded-full" />
-                    <span className="text-gray-200 text-sm">Sales & Revenue Expansion</span>
-                  </li>
-                  <li className="flex items-center gap-3">
-                    <div className="w-2 h-2 bg-krim-cyan rounded-full" />
-                    <span className="text-gray-200 text-sm">Case Management & Resolution</span>
-                  </li>
-                  <li className="flex items-center gap-3">
-                    <div className="w-2 h-2 bg-krim-cyan rounded-full" />
-                    <span className="text-gray-200 text-sm">Dispute & Complaint Resolution</span>
-                  </li>
-                </ul>
-                
-                <div className="absolute -top-10 -right-10 w-28 h-28 rounded-full bg-krim-cyan/10 blur-3xl" />
-              </GlassContainer>
-            </HoverLiftCard>
-            
-            {/* Studio Karta Card */}
-            <HoverLiftCard liftDistance={8} glowColor="rgba(138, 43, 226, 0.2)">
-              <GlassContainer glassLevel="standard" className="p-6 h-full relative overflow-hidden">
-                <div className="absolute inset-x-0 top-0 h-1" 
-                  style={{ 
-                    background: 'linear-gradient(90deg, transparent, rgb(138, 43, 226) 50%, transparent)',
-                    boxShadow: '0 0 20px rgba(138, 43, 226, 0.3)' 
-                  }}/>
-                
-                <div className="flex items-center gap-3 mb-4">
-                  <Brain className="w-7 h-7" style={{ color: 'rgb(138, 43, 226)' }} />
-                  <h3 className="text-xl font-bold text-white">Studio</h3>
-                </div>
-                
-                <p className="text-base text-gray-100 mb-5 leading-relaxed font-medium">
-                  AI builder for custom Autonomous Workers and workflows
-                </p>
-                
-                <ul className="space-y-2.5">
-                  <li className="flex items-center gap-3">
-                    <div className="w-2 h-2 rounded-full" style={{ backgroundColor: 'rgb(138, 43, 226)' }} />
-                    <span className="text-gray-200 text-sm">Agent & Workflow Creation</span>
-                  </li>
-                  <li className="flex items-center gap-3">
-                    <div className="w-2 h-2 rounded-full" style={{ backgroundColor: 'rgb(138, 43, 226)' }} />
-                    <span className="text-gray-200 text-sm">Content Generation Studio</span>
-                  </li>
-                  <li className="flex items-center gap-3">
-                    <div className="w-2 h-2 rounded-full" style={{ backgroundColor: 'rgb(138, 43, 226)' }} />
-                    <span className="text-gray-200 text-sm">Deployment & Scale</span>
-                  </li>
-                  <li className="flex items-center gap-3">
-                    <div className="w-2 h-2 rounded-full" style={{ backgroundColor: 'rgb(138, 43, 226)' }} />
-                    <span className="text-gray-200 text-sm">Continuous Optimization</span>
-                  </li>
-                </ul>
-                
-                <div className="absolute -top-10 -right-10 w-28 h-28 rounded-full opacity-10 blur-3xl" style={{ backgroundColor: 'rgb(138, 43, 226)' }} />
-              </GlassContainer>
-            </HoverLiftCard>
+
+          <div className="grid gap-6 lg:grid-cols-3 max-w-6xl mx-auto">
+            {[
+              { icon: Gear, title: 'Back Office', color: 'mint' as const, desc: 'Back office Autonomous Workers handling workflows and business processes', items: ['Risk Assessment & Analytics', 'Payment & Financial Operations', 'Document & Workflow Management', 'Compliance & Quality Assurance'] },
+              { icon: Headset, title: 'Contact Center', color: 'cyan' as const, desc: 'Customer-facing Autonomous Workers handling conversations across all channels', items: ['Customer Service & Support', 'Sales & Revenue Expansion', 'Case Management & Resolution', 'Dispute & Complaint Resolution'] },
+              { icon: Brain, title: 'Studio', color: 'purple' as const, desc: 'AI builder for custom Autonomous Workers and workflows', items: ['Agent & Workflow Creation', 'Content Generation Studio', 'Deployment & Scale', 'Continuous Optimization'] },
+            ].map((card) => {
+              const c = colorMap[card.color]
+              return (
+                <motion.div
+                  key={card.title}
+                  whileHover={{ y: -6 }}
+                  transition={springHover}
+                  className={`group ${c.cardClass} p-7 h-full`}
+                >
+                  <div className="flex items-center gap-3 mb-4">
+                    <card.icon className={`w-6 h-6 ${c.text}`} />
+                    <h3 className="text-xl font-bold text-white">{card.title}</h3>
+                  </div>
+                  <p className="text-sm text-white/55 mb-5">{card.desc}</p>
+                  <ul className="space-y-2.5">
+                    {card.items.map((item) => (
+                      <li key={item} className="flex items-center gap-3">
+                        <div className={`w-2 h-2 ${c.dot} rounded-full`} />
+                        <span className="text-sm text-white/55">{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  <div className={`absolute bottom-0 inset-x-0 h-[2px] bg-gradient-to-r from-transparent via-current to-transparent scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ${c.text}`} style={{ opacity: 0.6 }} />
+                </motion.div>
+              )
+            })}
           </div>
         </div>
       </StarfieldSection>
 
       {/* Back Office Karta Section */}
-      <StarfieldSection glassLevel="standard" className="py-20 lg:py-24 border-t border-slate-800">
-        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+      <StarfieldSection glassLevel="standard" className="py-20 md:py-28">
+        <div className="mx-auto max-w-6xl px-6">
           <Reveal className="mb-12">
-            <div className="w-full flex justify-center">
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6">
-                <span className="bg-gradient-to-r from-krim-mint to-krim-cyan bg-clip-text text-transparent">Back Office</span> Karta
-              </h2>
-            </div>
-            <div className="w-full flex justify-center">
-              <p className="text-lg sm:text-xl text-gray-200 max-w-3xl text-center">
-                Operations Autonomous Workers managing workflows and business processes
-              </p>
-            </div>
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 text-center">
+              <span className="bg-gradient-to-r from-krim-mint via-krim-cyan to-krim-mint bg-clip-text text-transparent">Back Office</span> Karta
+            </h2>
+            <p className="text-lg md:text-xl text-white/60 max-w-3xl mx-auto text-center">
+              Operations Autonomous Workers managing workflows and business processes
+            </p>
           </Reveal>
-          
+
           {/* Risk & Analytics */}
-          <div className="mb-16">
-            <div className="w-full flex justify-center">
-              <h3 className="text-2xl font-bold text-white mb-6">Risk Assessment & Analytics</h3>
-            </div>
-            <StaggerGrid staggerDelay={80} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="mb-14">
+            <h3 className="text-2xl font-bold text-white mb-6 text-center">Risk Assessment & Analytics</h3>
+            <StaggerGrid staggerDelay={80} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
               <SimpleKartaCard name="Risk Assessment Karta" expertise="Portfolio Analysis" icon={ChartBar} category="backoffice" />
               <SimpleKartaCard name="Fraud Prevention Karta" expertise="Security & Detection" icon={Lock} category="backoffice" />
               <SimpleKartaCard name="Predictive Analytics Karta" expertise="Behavioral Forecasting" icon={Brain} category="backoffice" />
@@ -840,11 +270,9 @@ export default function Karta() {
           </div>
 
           {/* Financial Operations */}
-          <div className="mb-16">
-            <div className="w-full flex justify-center">
-              <h3 className="text-2xl font-bold text-white mb-6">Payment & Financial Operations</h3>
-            </div>
-            <StaggerGrid staggerDelay={80} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="mb-14">
+            <h3 className="text-2xl font-bold text-white mb-6 text-center">Payment & Financial Operations</h3>
+            <StaggerGrid staggerDelay={80} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
               <SimpleKartaCard name="Transaction Processing Karta" expertise="Transaction Management" icon={Buildings} category="backoffice" />
               <SimpleKartaCard name="Settlement Karta" expertise="Resolution Operations" icon={Calculator} category="backoffice" />
               <SimpleKartaCard name="Revenue Recognition Karta" expertise="Financial Reporting" icon={TrendUp} category="backoffice" />
@@ -852,11 +280,9 @@ export default function Karta() {
           </div>
 
           {/* Document & Workflow */}
-          <div className="mb-16">
-            <div className="w-full flex justify-center">
-              <h3 className="text-2xl font-bold text-white mb-6">Document & Workflow Management</h3>
-            </div>
-            <StaggerGrid staggerDelay={80} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="mb-14">
+            <h3 className="text-2xl font-bold text-white mb-6 text-center">Document & Workflow Management</h3>
+            <StaggerGrid staggerDelay={80} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
               <SimpleKartaCard name="Document Generation Karta" expertise="Automated Documentation" icon={ClipboardText} category="backoffice" />
               <SimpleKartaCard name="Workflow Orchestration Karta" expertise="Process Management" icon={Gear} category="backoffice" />
               <SimpleKartaCard name="Data Integration Karta" expertise="System Coordination" icon={Pulse} category="backoffice" />
@@ -865,10 +291,8 @@ export default function Karta() {
 
           {/* Compliance & Quality */}
           <div>
-            <div className="w-full flex justify-center">
-              <h3 className="text-2xl font-bold text-white mb-6">Compliance & Quality Assurance</h3>
-            </div>
-            <StaggerGrid staggerDelay={80} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <h3 className="text-2xl font-bold text-white mb-6 text-center">Compliance & Quality Assurance</h3>
+            <StaggerGrid staggerDelay={80} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
               <SimpleKartaCard name="Compliance Monitor Karta" expertise="Regulatory Oversight" icon={Shield} category="backoffice" />
               <SimpleKartaCard name="Audit Trail Karta" expertise="Documentation & Records" icon={FileText} category="backoffice" />
               <SimpleKartaCard name="Quality Assurance Karta" expertise="Performance Monitoring" icon={Eye} category="backoffice" />
@@ -878,27 +302,21 @@ export default function Karta() {
       </StarfieldSection>
 
       {/* Contact Center Karta Section */}
-      <StarfieldSection glassLevel="light" className="py-20 lg:py-24 border-t border-slate-800">
-        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+      <StarfieldSection glassLevel="light" className="py-20 md:py-28">
+        <div className="mx-auto max-w-6xl px-6">
           <Reveal className="mb-12">
-            <div className="w-full flex justify-center">
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6">
-                <span className="bg-gradient-to-r from-krim-cyan to-krim-mint bg-clip-text text-transparent">Contact Center</span> Karta
-              </h2>
-            </div>
-            <div className="w-full flex justify-center">
-              <p className="text-lg sm:text-xl text-gray-200 max-w-3xl text-center">
-                Customer-facing Autonomous Workers organized by expertise and responsibility
-              </p>
-            </div>
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 text-center">
+              <span className="bg-gradient-to-r from-krim-mint via-krim-cyan to-krim-mint bg-clip-text text-transparent">Contact Center</span> Karta
+            </h2>
+            <p className="text-lg md:text-xl text-white/60 max-w-3xl mx-auto text-center">
+              Customer-facing Autonomous Workers organized by expertise and responsibility
+            </p>
           </Reveal>
 
           {/* Customer Service & Support */}
-          <div className="mb-16">
-            <div className="w-full flex justify-center">
-              <h3 className="text-2xl font-bold text-white mb-6">Customer Service & Support</h3>
-            </div>
-            <StaggerGrid staggerDelay={80} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="mb-14">
+            <h3 className="text-2xl font-bold text-white mb-6 text-center">Customer Service & Support</h3>
+            <StaggerGrid staggerDelay={80} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
               <SimpleKartaCard name="Service Karta" expertise="General Support" icon={ChatCircle} category="contact" />
               <SimpleKartaCard name="Dispute Karta" expertise="Complaints & Disputes" icon={Scales} category="contact" />
               <SimpleKartaCard name="VIP Service Karta" expertise="High-Value Customers" icon={Star} category="contact" />
@@ -906,11 +324,9 @@ export default function Karta() {
           </div>
 
           {/* Sales & Revenue */}
-          <div className="mb-16">
-            <div className="w-full flex justify-center">
-              <h3 className="text-2xl font-bold text-white mb-6">Sales & Revenue Expansion</h3>
-            </div>
-            <StaggerGrid staggerDelay={80} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="mb-14">
+            <h3 className="text-2xl font-bold text-white mb-6 text-center">Sales & Revenue Expansion</h3>
+            <StaggerGrid staggerDelay={80} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
               <SimpleKartaCard name="Cross-sell Karta" expertise="Revenue Growth" icon={TrendUp} category="contact" />
               <SimpleKartaCard name="Retention Karta" expertise="Customer Loyalty" icon={Brain} category="contact" />
               <SimpleKartaCard name="Activation Karta" expertise="Account Onboarding" icon={Pulse} category="contact" />
@@ -919,10 +335,8 @@ export default function Karta() {
 
           {/* Case Management & Resolution */}
           <div>
-            <div className="w-full flex justify-center">
-              <h3 className="text-2xl font-bold text-white mb-6">Case Management & Resolution</h3>
-            </div>
-            <StaggerGrid staggerDelay={80} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <h3 className="text-2xl font-bold text-white mb-6 text-center">Case Management & Resolution</h3>
+            <StaggerGrid staggerDelay={80} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
               <SimpleKartaCard name="Early Stage Karta" expertise="0-30 Days Past Due" icon={UserCircle} category="contact" />
               <SimpleKartaCard name="Mid Stage Karta" expertise="31-90 Days Past Due" icon={Headset} category="contact" />
               <SimpleKartaCard name="Late Stage Karta" expertise="90+ Days Past Due" icon={Shield} category="contact" />
@@ -935,212 +349,101 @@ export default function Karta() {
       </StarfieldSection>
 
       {/* AI Studio Section */}
-      <StarfieldSection glassLevel="standard" className="py-20 lg:py-24 border-t border-slate-800">
-        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+      <StarfieldSection glassLevel="standard" className="py-20 md:py-28">
+        <div className="mx-auto max-w-6xl px-6">
           <Reveal className="mb-12">
-            <div className="w-full flex justify-center">
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6">
-                <span className="bg-gradient-to-r from-krim-mint to-krim-cyan bg-clip-text text-transparent">AI Studio</span>
-              </h2>
-            </div>
-            <div className="w-full flex justify-center">
-              <p className="text-lg sm:text-xl text-gray-200 max-w-3xl text-center">
-                Build, create, and deploy custom Autonomous Workers
-              </p>
-            </div>
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 text-center">
+              <span className="bg-gradient-to-r from-krim-mint via-krim-cyan to-krim-mint bg-clip-text text-transparent">AI Studio</span>
+            </h2>
+            <p className="text-lg md:text-xl text-white/60 max-w-3xl mx-auto text-center">
+              Build, create, and deploy custom Autonomous Workers
+            </p>
           </Reveal>
-          
+
           {/* Agent & Workflow Creation */}
-          <div className="mb-16">
-            <div className="w-full flex justify-center">
-              <h3 className="text-2xl font-bold text-white mb-6">Agent & Workflow Creation</h3>
-            </div>
-            <StaggerGrid staggerDelay={80} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              <HoverLiftCard liftDistance={8} glowColor="rgba(0, 255, 136, 0.2)">
-                <GlassContainer glassLevel="standard" className="h-full p-6 relative overflow-hidden">
-                  <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-krim-mint via-emerald-300 to-krim-mint"
-                    style={{ boxShadow: '0 0 20px rgba(0, 255, 136, 0.4)' }}/>
-                  
-                  <div className="w-12 h-12 rounded-lg bg-krim-mint/10 border border-krim-mint/20 flex items-center justify-center mb-4">
-                    <Brain className="w-6 h-6 text-krim-mint" />
+          <div className="mb-14">
+            <h3 className="text-2xl font-bold text-white mb-6 text-center">Agent & Workflow Creation</h3>
+            <StaggerGrid staggerDelay={80} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+              {[
+                { icon: Brain, title: 'Agent Builder', desc: 'Design custom Autonomous Workers with expertise and compliance guardrails', bullets: ['Configure conversation patterns', 'Set domain expertise'] },
+                { icon: Gear, title: 'Workflow Designer', desc: 'Create automation workflows', bullets: ['Visual workflow builder', 'Multi-channel orchestration', 'Decision logic trees'] },
+                { icon: CheckCircle, title: 'Integration Studio', desc: 'Connect to existing systems and data sources', bullets: ['API connectors', 'System orchestration'] },
+              ].map((card) => (
+                <motion.div
+                  key={card.title}
+                  whileHover={{ y: -6 }}
+                  transition={springHover}
+                  className={`group ${glass} ${glassHover} p-7 h-full`}
+                >
+                  <div className="w-10 h-10 rounded-lg bg-krim-mint/10 flex items-center justify-center mb-4 transition-all duration-300 group-hover:scale-110 group-hover:shadow-lg group-hover:shadow-krim-mint/30">
+                    <card.icon className="w-5 h-5 text-krim-mint" />
                   </div>
-                  
-                  <h4 className="text-xl font-bold text-white mb-3">Agent Builder</h4>
-                  <p className="text-sm text-gray-300 mb-4">Design custom Autonomous Workers with expertise and compliance guardrails</p>
-                  <ul className="space-y-2 text-xs text-gray-400">
-                    <li>• Configure conversation patterns</li>
-                    <li>• Set domain expertise</li>
+                  <h4 className="text-xl font-bold text-white mb-3">{card.title}</h4>
+                  <p className="text-sm text-white/55 mb-4">{card.desc}</p>
+                  <ul className="space-y-2 text-sm text-white/55">
+                    {card.bullets.map((b) => <li key={b}>&#8226; {b}</li>)}
                   </ul>
-                  
-                  <div className="absolute -top-10 -right-10 w-24 h-24 rounded-full bg-krim-mint/5 blur-2xl" />
-                </GlassContainer>
-              </HoverLiftCard>
-
-              <HoverLiftCard liftDistance={8} glowColor="rgba(0, 255, 136, 0.2)">
-                <GlassContainer glassLevel="standard" className="h-full p-6 relative overflow-hidden">
-                  <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-krim-mint via-emerald-300 to-krim-mint"
-                    style={{ boxShadow: '0 0 20px rgba(0, 255, 136, 0.4)' }}/>
-                  
-                  <div className="w-12 h-12 rounded-lg bg-krim-mint/10 border border-krim-mint/20 flex items-center justify-center mb-4">
-                    <Gear className="w-6 h-6 text-krim-mint" />
-                  </div>
-                  
-                  <h4 className="text-xl font-bold text-white mb-3">Workflow Designer</h4>
-                  <p className="text-sm text-gray-300 mb-4">Create automation workflows</p>
-                  <ul className="space-y-2 text-xs text-gray-400">
-                    <li>• Visual workflow builder</li>
-                    <li>• Multi-channel orchestration</li>
-                    <li>• Decision logic trees</li>
-                  </ul>
-                  
-                  <div className="absolute -top-10 -right-10 w-24 h-24 rounded-full bg-krim-mint/5 blur-2xl" />
-                </GlassContainer>
-              </HoverLiftCard>
-
-              <HoverLiftCard liftDistance={8} glowColor="rgba(0, 255, 136, 0.2)">
-                <GlassContainer glassLevel="standard" className="h-full p-6 relative overflow-hidden">
-                  <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-krim-mint via-emerald-300 to-krim-mint"
-                    style={{ boxShadow: '0 0 20px rgba(0, 255, 136, 0.4)' }}/>
-                  
-                  <div className="w-12 h-12 rounded-lg bg-krim-mint/10 border border-krim-mint/20 flex items-center justify-center mb-4">
-                    <CheckCircle className="w-6 h-6 text-krim-mint" />
-                  </div>
-                  
-                  <h4 className="text-xl font-bold text-white mb-3">Integration Studio</h4>
-                  <p className="text-sm text-gray-300 mb-4">Connect to existing systems and data sources</p>
-                  <ul className="space-y-2 text-xs text-gray-400">
-                    <li>• API connectors</li>
-                    <li>• System orchestration</li>
-                  </ul>
-                  
-                  <div className="absolute -top-10 -right-10 w-24 h-24 rounded-full bg-krim-mint/5 blur-2xl" />
-                </GlassContainer>
-              </HoverLiftCard>
+                  <div className="absolute bottom-0 inset-x-0 h-[2px] bg-gradient-to-r from-transparent via-krim-mint/60 to-transparent scale-x-0 group-hover:scale-x-100 transition-transform duration-300" />
+                </motion.div>
+              ))}
             </StaggerGrid>
           </div>
 
           {/* Content Generation Studio */}
-          <div className="mb-16">
-            <div className="w-full flex justify-center">
-              <h3 className="text-2xl font-bold text-white mb-6">Content Generation Studio</h3>
-            </div>
-            <StaggerGrid staggerDelay={80} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              <HoverLiftCard liftDistance={8} glowColor="rgba(0, 212, 255, 0.2)">
-                <GlassContainer glassLevel="standard" className="h-full p-6 relative overflow-hidden">
-                  <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-krim-cyan via-blue-300 to-krim-cyan"
-                    style={{ boxShadow: '0 0 20px rgba(0, 212, 255, 0.4)' }}/>
-                  
-                  <div className="w-12 h-12 rounded-lg bg-krim-cyan/10 border border-krim-cyan/20 flex items-center justify-center mb-4">
-                    <FileText className="w-6 h-6 text-krim-cyan" />
+          <div className="mb-14">
+            <h3 className="text-2xl font-bold text-white mb-6 text-center">Content Generation Studio</h3>
+            <StaggerGrid staggerDelay={80} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+              {[
+                { icon: FileText, title: 'Document Creation', desc: 'Generate legal notices, compliance docs, and campaign materials' },
+                { icon: Eye, title: 'Image Generation', desc: 'Create visual assets for campaigns and presentations' },
+                { icon: ChatCircle, title: 'Video Production', desc: 'Generate video content for training and marketing' },
+                { icon: EnvelopeSimple, title: 'Multimedia Delivery', desc: 'Orchestrate delivery of documents, images, and videos' },
+              ].map((card) => (
+                <motion.div
+                  key={card.title}
+                  whileHover={{ y: -6 }}
+                  transition={springHover}
+                  className={`group ${glassCyan} p-7 h-full`}
+                >
+                  <div className="w-10 h-10 rounded-lg bg-krim-cyan/10 flex items-center justify-center mb-4 transition-all duration-300 group-hover:scale-110 group-hover:shadow-lg group-hover:shadow-krim-cyan/30">
+                    <card.icon className="w-5 h-5 text-krim-cyan" />
                   </div>
-                  
-                  <h4 className="text-lg font-bold text-white mb-3">Document Creation</h4>
-                  <p className="text-sm text-gray-300 mb-4">Generate legal notices, compliance docs, and campaign materials</p>
-                  
-                  <div className="absolute -top-10 -right-10 w-24 h-24 rounded-full bg-krim-cyan/5 blur-2xl" />
-                </GlassContainer>
-              </HoverLiftCard>
-
-              <HoverLiftCard liftDistance={8} glowColor="rgba(0, 212, 255, 0.2)">
-                <GlassContainer glassLevel="standard" className="h-full p-6 relative overflow-hidden">
-                  <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-krim-cyan via-blue-300 to-krim-cyan"
-                    style={{ boxShadow: '0 0 20px rgba(0, 212, 255, 0.4)' }}/>
-                  
-                  <div className="w-12 h-12 rounded-lg bg-krim-cyan/10 border border-krim-cyan/20 flex items-center justify-center mb-4">
-                    <Eye className="w-6 h-6 text-krim-cyan" />
-                  </div>
-                  
-                  <h4 className="text-lg font-bold text-white mb-3">Image Generation</h4>
-                  <p className="text-sm text-gray-300 mb-4">Create visual assets for campaigns and presentations</p>
-                  
-                  <div className="absolute -top-10 -right-10 w-24 h-24 rounded-full bg-krim-cyan/5 blur-2xl" />
-                </GlassContainer>
-              </HoverLiftCard>
-
-              <HoverLiftCard liftDistance={8} glowColor="rgba(0, 212, 255, 0.2)">
-                <GlassContainer glassLevel="standard" className="h-full p-6 relative overflow-hidden">
-                  <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-krim-cyan via-blue-300 to-krim-cyan"
-                    style={{ boxShadow: '0 0 20px rgba(0, 212, 255, 0.4)' }}/>
-                  
-                  <div className="w-12 h-12 rounded-lg bg-krim-cyan/10 border border-krim-cyan/20 flex items-center justify-center mb-4">
-                    <ChatCircle className="w-6 h-6 text-krim-cyan" />
-                  </div>
-                  
-                  <h4 className="text-lg font-bold text-white mb-3">Video Production</h4>
-                  <p className="text-sm text-gray-300 mb-4">Generate video content for training and marketing</p>
-                  
-                  <div className="absolute -top-10 -right-10 w-24 h-24 rounded-full bg-krim-cyan/5 blur-2xl" />
-                </GlassContainer>
-              </HoverLiftCard>
-
-              <HoverLiftCard liftDistance={8} glowColor="rgba(0, 212, 255, 0.2)">
-                <GlassContainer glassLevel="standard" className="h-full p-6 relative overflow-hidden">
-                  <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-krim-cyan via-blue-300 to-krim-cyan"
-                    style={{ boxShadow: '0 0 20px rgba(0, 212, 255, 0.4)' }}/>
-                  
-                  <div className="w-12 h-12 rounded-lg bg-krim-cyan/10 border border-krim-cyan/20 flex items-center justify-center mb-4">
-                    <EnvelopeSimple className="w-6 h-6 text-krim-cyan" />
-                  </div>
-                  
-                  <h4 className="text-lg font-bold text-white mb-3">Multimedia Delivery</h4>
-                  <p className="text-sm text-gray-300 mb-4">Orchestrate delivery of documents, images, and videos</p>
-                  
-                  <div className="absolute -top-10 -right-10 w-24 h-24 rounded-full bg-krim-cyan/5 blur-2xl" />
-                </GlassContainer>
-              </HoverLiftCard>
+                  <h4 className="text-lg font-bold text-white mb-3">{card.title}</h4>
+                  <p className="text-sm text-white/55">{card.desc}</p>
+                  <div className="absolute bottom-0 inset-x-0 h-[2px] bg-gradient-to-r from-transparent via-krim-cyan/60 to-transparent scale-x-0 group-hover:scale-x-100 transition-transform duration-300" />
+                </motion.div>
+              ))}
             </StaggerGrid>
           </div>
 
           {/* Deployment & Scale */}
           <div className="mb-12">
-            <div className="w-full flex justify-center">
-              <h3 className="text-2xl font-bold text-white mb-6">Deployment & Scale</h3>
-            </div>
-            <StaggerGrid staggerDelay={80} className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-              <HoverLiftCard liftDistance={8} glowColor="rgba(0, 255, 136, 0.2)">
-                <GlassContainer glassLevel="standard" className="h-full p-6 relative overflow-hidden">
-                  <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-krim-mint via-emerald-300 to-krim-mint"
-                    style={{ boxShadow: '0 0 20px rgba(0, 255, 136, 0.4)' }}/>
-                  
-                  <div className="w-12 h-12 rounded-lg bg-krim-mint/10 border border-krim-mint/20 flex items-center justify-center mb-4">
-                    <Pulse className="w-6 h-6 text-krim-mint" />
+            <h3 className="text-2xl font-bold text-white mb-6 text-center">Deployment & Scale</h3>
+            <StaggerGrid staggerDelay={80} className="grid grid-cols-1 md:grid-cols-2 gap-5 max-w-4xl mx-auto">
+              {[
+                { icon: Pulse, title: 'Live Deployment', desc: 'Deploy agents with intelligent routing', bullets: ['Multi-channel deployment', 'Campaign timing optimization', 'Real-time monitoring'] },
+                { icon: TrendUp, title: 'Continuous Optimization', desc: 'Monitor and optimize agent effectiveness', bullets: ['A/B testing frameworks', 'Continuous learning', 'ROI optimization'] },
+              ].map((card) => (
+                <motion.div
+                  key={card.title}
+                  whileHover={{ y: -6 }}
+                  transition={springHover}
+                  className={`group ${glass} ${glassHover} p-7 h-full`}
+                >
+                  <div className="w-10 h-10 rounded-lg bg-krim-mint/10 flex items-center justify-center mb-4 transition-all duration-300 group-hover:scale-110 group-hover:shadow-lg group-hover:shadow-krim-mint/30">
+                    <card.icon className="w-5 h-5 text-krim-mint" />
                   </div>
-                  
-                  <h4 className="text-xl font-bold text-white mb-3">Live Deployment</h4>
-                  <p className="text-sm text-gray-300 mb-4">Deploy agents with intelligent routing</p>
-                  <ul className="space-y-2 text-xs text-gray-400">
-                    <li>• Multi-channel deployment</li>
-                    <li>• Campaign timing optimization</li>
-                    <li>• Real-time monitoring</li>
+                  <h4 className="text-xl font-bold text-white mb-3">{card.title}</h4>
+                  <p className="text-sm text-white/55 mb-4">{card.desc}</p>
+                  <ul className="space-y-2 text-sm text-white/55">
+                    {card.bullets.map((b) => <li key={b}>&#8226; {b}</li>)}
                   </ul>
-                  
-                  <div className="absolute -top-10 -right-10 w-24 h-24 rounded-full bg-krim-mint/5 blur-2xl" />
-                </GlassContainer>
-              </HoverLiftCard>
-
-              <HoverLiftCard liftDistance={8} glowColor="rgba(0, 255, 136, 0.2)">
-                <GlassContainer glassLevel="standard" className="h-full p-6 relative overflow-hidden">
-                  <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-krim-mint via-emerald-300 to-krim-mint"
-                    style={{ boxShadow: '0 0 20px rgba(0, 255, 136, 0.4)' }}/>
-                  
-                  <div className="w-12 h-12 rounded-lg bg-krim-mint/10 border border-krim-mint/20 flex items-center justify-center mb-4">
-                    <TrendUp className="w-6 h-6 text-krim-mint" />
-                  </div>
-                  
-                  <h4 className="text-xl font-bold text-white mb-3">Continuous Optimization</h4>
-                  <p className="text-sm text-gray-300 mb-4">Monitor and optimize agent effectiveness</p>
-                  <ul className="space-y-2 text-xs text-gray-400">
-                    <li>• A/B testing frameworks</li>
-                    <li>• Continuous learning</li>
-                    <li>• ROI optimization</li>
-                  </ul>
-                  
-                  <div className="absolute -top-10 -right-10 w-24 h-24 rounded-full bg-krim-mint/5 blur-2xl" />
-                </GlassContainer>
-              </HoverLiftCard>
+                  <div className="absolute bottom-0 inset-x-0 h-[2px] bg-gradient-to-r from-transparent via-krim-mint/60 to-transparent scale-x-0 group-hover:scale-x-100 transition-transform duration-300" />
+                </motion.div>
+              ))}
             </StaggerGrid>
           </div>
-          
+
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -1148,155 +451,109 @@ export default function Karta() {
             transition={{ delay: 0.5 }}
             className="text-center"
           >
-            <GlassContainer glassLevel="light" className="inline-flex items-center gap-3 px-8 py-4 rounded-full">
+            <div className={`${glass} inline-flex items-center gap-3 px-8 py-3.5 rounded-xl`}>
               <Pulse className="h-5 w-5 text-krim-mint" />
               <p className="text-lg font-bold">
-                <span className="text-krim-mint">Powered by Kendra.</span>{" "}
+                <span className="text-krim-mint">Powered by Kendra.</span>{' '}
                 <span className="text-white">Every creation governed.</span>
               </p>
-            </GlassContainer>
+            </div>
           </motion.div>
         </div>
       </StarfieldSection>
 
-      {/* Compliance Foundations Section */}
-      <StarfieldSection glassLevel="standard" className="py-20 lg:py-24 border-t border-slate-800">
-        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+      {/* Compliance Foundations */}
+      <StarfieldSection glassLevel="standard" className="py-20 md:py-28">
+        <div className="mx-auto max-w-6xl px-6">
           <Reveal className="mb-12">
-            <div className="w-full flex justify-center">
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6">
-                Built on <span className="bg-gradient-to-r from-krim-mint to-krim-cyan bg-clip-text text-transparent">Compliance Foundations</span>
-              </h2>
-            </div>
-            <div className="w-full flex justify-center">
-              <p className="text-lg sm:text-xl text-gray-200 max-w-3xl text-center">
-                Every specialist operates within policy constraints, not prompts
-              </p>
-            </div>
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 text-center">
+              Built on <span className="bg-gradient-to-r from-krim-mint via-krim-cyan to-krim-mint bg-clip-text text-transparent">Compliance Foundations</span>
+            </h2>
+            <p className="text-lg md:text-xl text-white/60 max-w-3xl mx-auto text-center">
+              Every specialist operates within policy constraints, not prompts
+            </p>
           </Reveal>
-          
-          <StaggerGrid staggerDelay={100} className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <HoverLiftCard liftDistance={5} glowColor="rgba(0, 255, 136, 0.15)">
-              <GlassContainer glassLevel="light" className="p-6 h-full flex flex-col items-center text-center">
-                <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-krim-mint/10 to-krim-mint/5 border border-krim-mint/20 flex items-center justify-center mb-4">
-                  <Shield className="w-6 h-6 text-krim-mint" />
+
+          <StaggerGrid staggerDelay={100} className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
+            {[
+              { icon: Shield, title: 'Policy Constraints', desc: 'Your playbooks, not prompts', color: 'mint' },
+              { icon: Brain, title: 'Validated Outputs', desc: 'Actions verified against approved data', color: 'cyan' },
+              { icon: Lock, title: 'Data Boundaries', desc: 'Scoped access control', color: 'mint' },
+              { icon: CheckCircle, title: 'Audit Trails', desc: 'Full traceability', color: 'cyan' },
+            ].map((item) => (
+              <motion.div
+                key={item.title}
+                whileHover={{ y: -6 }}
+                transition={springHover}
+                className={`group ${item.color === 'mint' ? `${glass} ${glassHover}` : glassCyan} p-7 flex flex-col items-center text-center`}
+              >
+                <div className={`w-11 h-11 rounded-lg bg-${item.color === 'mint' ? 'krim-mint' : 'krim-cyan'}/10 flex items-center justify-center mb-4 transition-all duration-300 group-hover:scale-110 group-hover:shadow-lg group-hover:shadow-${item.color === 'mint' ? 'krim-mint' : 'krim-cyan'}/30`}>
+                  <item.icon className={`w-5 h-5 text-${item.color === 'mint' ? 'krim-mint' : 'krim-cyan'}`} />
                 </div>
-                <h3 className="text-lg font-bold text-white mb-2">Policy Constraints</h3>
-                <p className="text-sm text-gray-300">Your playbooks, not prompts</p>
-              </GlassContainer>
-            </HoverLiftCard>
-            
-            <HoverLiftCard liftDistance={5} glowColor="rgba(0, 212, 255, 0.15)">
-              <GlassContainer glassLevel="light" className="p-6 h-full flex flex-col items-center text-center">
-                <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-krim-cyan/10 to-krim-cyan/5 border border-krim-cyan/20 flex items-center justify-center mb-4">
-                  <Brain className="w-6 h-6 text-krim-cyan" />
-                </div>
-                <h3 className="text-lg font-bold text-white mb-2">Validated Outputs</h3>
-                <p className="text-sm text-gray-300">Actions verified against approved data</p>
-              </GlassContainer>
-            </HoverLiftCard>
-            
-            <HoverLiftCard liftDistance={5} glowColor="rgba(0, 255, 136, 0.15)">
-              <GlassContainer glassLevel="light" className="p-6 h-full flex flex-col items-center text-center">
-                <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-krim-mint/10 to-krim-mint/5 border border-krim-mint/20 flex items-center justify-center mb-4">
-                  <Lock className="w-6 h-6 text-krim-mint" />
-                </div>
-                <h3 className="text-lg font-bold text-white mb-2">Data Boundaries</h3>
-                <p className="text-sm text-gray-300">Scoped access control</p>
-              </GlassContainer>
-            </HoverLiftCard>
-            
-            <HoverLiftCard liftDistance={5} glowColor="rgba(0, 212, 255, 0.15)">
-              <GlassContainer glassLevel="light" className="p-6 h-full flex flex-col items-center text-center">
-                <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-krim-cyan/10 to-krim-cyan/5 border border-krim-cyan/20 flex items-center justify-center mb-4">
-                  <CheckCircle className="w-6 h-6 text-krim-cyan" />
-                </div>
-                <h3 className="text-lg font-bold text-white mb-2">Audit Trails</h3>
-                <p className="text-sm text-gray-300">Full traceability</p>
-              </GlassContainer>
-            </HoverLiftCard>
+                <h3 className="text-lg font-bold text-white mb-2">{item.title}</h3>
+                <p className="text-sm text-white/55">{item.desc}</p>
+                <div className={`absolute bottom-0 inset-x-0 h-[2px] bg-gradient-to-r from-transparent via-${item.color === 'mint' ? 'krim-mint' : 'krim-cyan'}/60 to-transparent scale-x-0 group-hover:scale-x-100 transition-transform duration-300`} />
+              </motion.div>
+            ))}
           </StaggerGrid>
         </div>
       </StarfieldSection>
 
-      {/* Impact Showcase Section */}
-      <StarfieldSection glassLevel="light" className="py-20 lg:py-24 border-t border-slate-800">
-        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+      {/* Proven Impact */}
+      <StarfieldSection glassLevel="light" className="py-20 md:py-28">
+        <div className="mx-auto max-w-6xl px-6">
           <Reveal className="mb-12">
-            <div className="w-full flex justify-center">
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6">
-                <span className="bg-gradient-to-r from-krim-cyan to-krim-mint bg-clip-text text-transparent">Proven Impact</span> Across Operations
-              </h2>
-            </div>
-            <div className="w-full flex justify-center">
-              <p className="text-lg sm:text-xl text-gray-200 max-w-3xl text-center">
-                Specialists drive measurable improvements across every metric that matters
-              </p>
-            </div>
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 text-center">
+              <span className="bg-gradient-to-r from-krim-mint via-krim-cyan to-krim-mint bg-clip-text text-transparent">Proven Impact</span> Across Operations
+            </h2>
+            <p className="text-lg md:text-xl text-white/60 max-w-3xl mx-auto text-center">
+              Specialists drive measurable improvements across every metric that matters
+            </p>
           </Reveal>
-          
-          <StaggerGrid staggerDelay={120} className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <GlassContainer glassLevel="light" className="p-6 text-center">
-              <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-krim-mint/10 to-krim-mint/5 border border-krim-mint/20 flex items-center justify-center mx-auto mb-4">
-                <TrendUp className="w-6 h-6 text-krim-mint" />
-              </div>
-              <h3 className="text-lg font-bold text-white mb-2">Portfolio Performance</h3>
-              <p className="text-sm text-gray-300">Higher recovery rates with improved customer relationships</p>
-            </GlassContainer>
-            
-            <GlassContainer glassLevel="light" className="p-6 text-center">
-              <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-krim-cyan/10 to-krim-cyan/5 border border-krim-cyan/20 flex items-center justify-center mx-auto mb-4">
-                <Pulse className="w-6 h-6 text-krim-cyan" />
-              </div>
-              <h3 className="text-lg font-bold text-white mb-2">Operational Efficiency</h3>
-              <p className="text-sm text-gray-300">Faster processing with consistent quality across all interactions</p>
-            </GlassContainer>
-            
-            <GlassContainer glassLevel="light" className="p-6 text-center">
-              <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-krim-mint/10 to-krim-mint/5 border border-krim-mint/20 flex items-center justify-center mx-auto mb-4">
-                <Shield className="w-6 h-6 text-krim-mint" />
-              </div>
-              <h3 className="text-lg font-bold text-white mb-2">Compliance Confidence</h3>
-              <p className="text-sm text-gray-300">Perfect regulatory adherence with complete audit documentation</p>
-            </GlassContainer>
-            
-            <GlassContainer glassLevel="light" className="p-6 text-center">
-              <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-krim-cyan/10 to-krim-cyan/5 border border-krim-cyan/20 flex items-center justify-center mx-auto mb-4">
-                <Star className="w-6 h-6 text-krim-cyan" />
-              </div>
-              <h3 className="text-lg font-bold text-white mb-2">Customer<br />Experience</h3>
-              <p className="text-sm text-gray-300">Better outcomes through empathetic, expert interactions</p>
-            </GlassContainer>
+
+          <StaggerGrid staggerDelay={120} className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
+            {[
+              { icon: TrendUp, title: 'Portfolio Performance', desc: 'Higher recovery rates with improved customer relationships', color: 'mint' },
+              { icon: Pulse, title: 'Operational Efficiency', desc: 'Faster processing with consistent quality across all interactions', color: 'cyan' },
+              { icon: Shield, title: 'Compliance Confidence', desc: 'Perfect regulatory adherence with complete audit documentation', color: 'mint' },
+              { icon: Star, title: 'Customer Experience', desc: 'Better outcomes through empathetic, expert interactions', color: 'cyan' },
+            ].map((item) => (
+              <motion.div
+                key={item.title}
+                whileHover={{ y: -6 }}
+                transition={springHover}
+                className={`group ${item.color === 'mint' ? `${glass} ${glassHover}` : glassCyan} p-7 text-center`}
+              >
+                <div className={`w-11 h-11 rounded-lg bg-${item.color === 'mint' ? 'krim-mint' : 'krim-cyan'}/10 flex items-center justify-center mx-auto mb-4 transition-all duration-300 group-hover:scale-110 group-hover:shadow-lg group-hover:shadow-${item.color === 'mint' ? 'krim-mint' : 'krim-cyan'}/30`}>
+                  <item.icon className={`w-5 h-5 text-${item.color === 'mint' ? 'krim-mint' : 'krim-cyan'}`} />
+                </div>
+                <h3 className="text-lg font-bold text-white mb-2">{item.title}</h3>
+                <p className="text-sm text-white/55">{item.desc}</p>
+                <div className={`absolute bottom-0 inset-x-0 h-[2px] bg-gradient-to-r from-transparent via-${item.color === 'mint' ? 'krim-mint' : 'krim-cyan'}/60 to-transparent scale-x-0 group-hover:scale-x-100 transition-transform duration-300`} />
+              </motion.div>
+            ))}
           </StaggerGrid>
         </div>
       </StarfieldSection>
 
-      {/* Simple CTA Section */}
-      <StarfieldSection glassLevel="standard" className="py-20 lg:py-24 border-t border-slate-800">
-        <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+      {/* CTA */}
+      <StarfieldSection glassLevel="standard" className="py-20 md:py-28">
+        <div className="mx-auto max-w-4xl px-6">
           <Reveal>
-            <div className="w-full flex justify-center">
-              <h2 className="text-4xl lg:text-5xl xl:text-6xl font-light text-white mb-6">
-                <span className="bg-gradient-to-r from-krim-mint to-krim-cyan bg-clip-text text-transparent">Deploy Your AI Specialists</span>
-              </h2>
-            </div>
-            
-            <div className="w-full flex justify-center">
-              <p className="text-xl sm:text-2xl text-gray-300 leading-relaxed max-w-3xl mb-8 text-center">
-                See how your specialists handle real customer interactions and workflows
-              </p>
-            </div>
-            
-            <div className="w-full flex justify-center">
-              <HoverLiftCard liftDistance={4}>
-                <Button 
-                  size="lg"
-                  className="bg-gradient-to-r from-krim-cyan via-krim-mint to-krim-cyan hover:from-krim-mint hover:to-krim-cyan text-black font-semibold px-8 py-4"
-                >
-                  See Agents Handle Real Cases
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </Button>
-              </HoverLiftCard>
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-center">
+              <span className="bg-gradient-to-r from-krim-mint via-krim-cyan to-krim-mint bg-clip-text text-transparent">Deploy Your AI Specialists</span>
+            </h2>
+            <p className="text-lg md:text-xl text-white/60 max-w-3xl mx-auto mb-8 text-center">
+              See how your specialists handle real customer interactions and workflows
+            </p>
+            <div className="flex justify-center">
+              <Button
+                size="lg"
+                className="bg-gradient-to-r from-krim-cyan via-krim-mint to-krim-cyan hover:from-krim-mint hover:to-krim-cyan text-black font-semibold rounded-xl px-8 py-3.5"
+              >
+                See Agents Handle Real Cases
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Button>
             </div>
           </Reveal>
         </div>

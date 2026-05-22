@@ -76,7 +76,7 @@ const HeroSection: React.FC = () => {
 
             <Reveal>
               <p className="text-xl md:text-2xl text-gray-300 leading-relaxed font-light">
-                A governed multi-agent OS that orchestrates AI co-workers across your entire credit operation—with 
+                A governed multi-agent OS that orchestrates Autonomous Workers across your entire credit operation—with 
                 <span className="text-white font-medium"> compliance</span> and 
                 <span className="text-white font-medium"> explainability</span> built into every action.
               </p>
@@ -88,7 +88,7 @@ const HeroSection: React.FC = () => {
                   {
                     icon: <Lightning className="w-5 h-5" />,
                     title: 'Contact Center Automation',
-                    desc: 'Sales, retention, collections, service & support—all orchestrated'
+                    desc: 'Sales, retention, recovery, service & support—all orchestrated'
                   },
                   {
                     icon: <Brain className="w-5 h-5" />,
@@ -258,7 +258,7 @@ const HeroSection: React.FC = () => {
                   className="absolute top-1/2 -right-40 lg:-right-48 transform -translate-y-1/2 space-y-3 hidden lg:block"
                 >
                   {[
-                    { name: 'AI Co-Workers', icon: '🤖', desc: 'Autonomous agents' },
+                    { name: 'Autonomous Workers', icon: '🤖', desc: 'Governed agents' },
                     { name: 'Human Teams', icon: '👨‍💼', desc: 'Augmented workforce' },
                     { name: 'Omnichannel', icon: '📱', desc: 'Voice, SMS, Digital' }
                   ].map((item, index) => (

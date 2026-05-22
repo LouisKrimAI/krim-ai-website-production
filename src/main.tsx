@@ -9,7 +9,7 @@ import './styles/starfield-integration.css'
 // CRITICAL: Suppress ALL console output in production before any other imports
 import { suppressConsoleInProduction } from './utils/consoleSuppression'
 import HomePage from './pages/HomePage'
-import HookProbe from './pages/HookProbe'
+import HomePageBrand from './pages/HomePageBrand'
 import NotFound from './pages/NotFound'
 import VerifyEmail from './pages/VerifyEmail'
 
@@ -47,26 +47,34 @@ import WebVitalsReporter from './components/Performance/WebVitalsReporter'
 function Layout() {
   // Initialize route preloading
   useRoutePreloading()
+  const { pathname } = useLocation()
+  // /homepage-alt keeps the legacy futuristic chassis (particle universe, mint).
+  // The rest of the site uses the canonical brand chassis (flat indigo).
+  const isAlt = pathname === '/homepage-alt'
 
   return (
-    <div className="min-h-screen flex flex-col relative">
-      {/* Z0: Particle Universe Background - 3D GPU-accelerated particles */}
-      <Suspense fallback={<div className="fixed inset-0" style={{ zIndex: -1 }} />}>
-        <ParticleUniverse adaptive />
-      </Suspense>
+    <div className={`min-h-screen flex flex-col relative bg-krim-indigo ${isAlt ? '' : 'brand-canon'}`}>
+      {/* Legacy starfield background — only retained on the alternative homepage */}
+      {isAlt && (
+        <Suspense fallback={<div className="fixed inset-0" style={{ zIndex: -1 }} />}>
+          <ParticleUniverse adaptive />
+        </Suspense>
+      )}
 
       {/* Content wrapper with proper z-index */}
       <div className="flex flex-col min-h-screen relative" style={{ zIndex: 10 }}>
-        {/* Skip to main content link - accessibility enhancement for keyboard users */}
         <a
           href="#main-content"
-          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[10000] focus:px-4 focus:py-2 focus:bg-krim-mint focus:text-krim-deep-space focus:rounded-lg font-semibold focus:shadow-lg focus:outline-none focus:ring-2 focus:ring-krim-cyan transition-all"
+          className={`sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[10000] focus:px-4 focus:py-2 focus:rounded-lg font-semibold focus:shadow-lg focus:outline-none transition-all ${
+            isAlt
+              ? 'focus:bg-krim-mint focus:text-krim-deep-space focus:ring-2 focus:ring-krim-cyan'
+              : 'focus:bg-krim-ochre focus:text-krim-indigo focus:ring-2 focus:ring-krim-ochre'
+          }`}
           aria-label="Skip to main content"
         >
           Skip to main content
         </a>
 
-        {/* Scroll to top on route change */}
         <ScrollToTop />
 
         <Header/>
@@ -95,10 +103,11 @@ const router = createBrowserRouter([
     path: '/',
     element: <Layout />,
     children: [
-      { path: '/', element: <HomePage/> },
-      { path: '/homepage-new', element: <LazyComponents.HomePageNew /> },
-      { path: '/homepage-fixed', element: <LazyComponents.HomePageNewFixed /> },
-      
+      // New canonical brand homepage (Mithila, 4 pillars, Krim-Nyaya, AI Co-Workers)
+      { path: '/', element: <HomePageBrand/> },
+      // Alternative — legacy mint visual identity preserved for side-by-side comparison
+      { path: '/homepage-alt', element: <HomePage/> },
+
       // Core navigation pages - Instant loading (no lazy loading)
       { path: '/kendra', element: <Platform /> },
       { path: '/contact', element: <Contact /> },
@@ -110,20 +119,12 @@ const router = createBrowserRouter([
       { path: '/banking', element: <Banking /> },
       { path: '/government', element: <Government /> },
       
-      // Secondary pages - Keep lazy loading with seamless fallbacks
-      { path: '/agents', element: <LazyComponents.AgentsPage /> },
-      { path: '/agents/:id', element: <LazyComponents.AgentDetailPage /> },
-      { path: '/case-studies', element: <LazyComponents.CaseStudiesPage /> },
-      { path: '/news', element: <LazyComponents.NewsPage /> },
-      { path: '/pricing', element: <LazyComponents.PricingPage /> },
+      // Legal pages - Keep lazy loading with seamless fallbacks
       { path: '/legal', element: <LazyComponents.PrivacyPage /> }, // Default legal page
       { path: '/legal/privacy', element: <LazyComponents.PrivacyPage /> },
       { path: '/legal/terms', element: <LazyComponents.TermsPage /> },
       { path: '/legal/security', element: <LazyComponents.SecurityPage /> },
       { path: '/verify-email', element: <VerifyEmail /> },
-      { path: '/hookprobe', element: <HookProbe /> },
-      { path: '/text-readability-test', element: <LazyComponents.TextReadabilityTestPage /> },
-      // { path: '/about', element: <LazyComponents.AboutPage /> }, // Hidden for now
       { path: '*', element: <NotFound /> } // 404 catch-all route
     ]
   }
@@ -139,8 +140,7 @@ if (typeof window !== 'undefined') {
   const preloadSecondaryRoutes = () => {
     setTimeout(() => {
       // Only preload pages that are still lazy-loaded
-      import('./pages/Agents').catch(() => {})
-      import('./pages/Pricing').catch(() => {})
+      import('./pages/legal/Privacy').catch(() => {})
     }, 2000) // Wait longer since these are lower priority
   }
   

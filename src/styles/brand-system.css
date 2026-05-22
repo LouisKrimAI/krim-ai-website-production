@@ -202,6 +202,22 @@
   box-shadow: 0 8px 24px rgba(0, 255, 136, 0.35);
 }
 
+/* === Canonical brand button overrides ===
+   The main site lives under .brand-canon (set on the Layout root for every
+   non-alt route). Primary CTAs there are Mithila ochre, not mint. The
+   alternative homepage (/homepage-alt) is NOT under .brand-canon, so it keeps
+   the legacy mint/cyan buttons. Two-class specificity wins over the base rule. */
+.brand-canon .btn-primary {
+  background: #C8973B;
+  color: #1A1E47;
+}
+.brand-canon .btn-primary:hover {
+  box-shadow: 0 8px 24px rgba(200, 151, 59, 0.30);
+}
+.brand-canon .btn-secondary {
+  color: #C8973B;
+}
+
 /* Secondary Button */
 .btn-secondary {
   padding: 1rem 2rem;
