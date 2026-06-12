@@ -1,7 +1,6 @@
 /**
- * SECURITY & DATA PROTECTION - Enterprise Security Excellence
- * Comprehensive security framework that builds trust and ensures protection
- * Transform security requirements into competitive advantages
+ * Security & data protection — how Krim designs KrimOS for sovereignty,
+ * pre-execution validation, and full action auditability.
  */
 
 import React, { useState, useEffect } from 'react'
@@ -13,47 +12,46 @@ import Button from '../../components/Button'
 import { ComplianceBadgePresets } from '../../components/ComplianceBadges'
 import { useCursorGlow } from '../../hooks/useCursorGlow'
 
+// Honest architectural facts — no fabricated metrics or borrowed claims.
 const securityMetrics = [
   {
-    value: 'A+',
-    label: 'Security Rating',
+    value: 'On-prem',
+    label: 'Default deployment',
     trend: 'up' as const,
-    trendValue: 'Industry leading',
-    description: 'Comprehensive security posture assessment',
-    icon: 'award' as const
-  },
-  {
-    value: 0,
-    label: 'Security Breaches',
-    unit: ' ever',
-    trend: 'up' as const,
-    trendValue: 'Perfect record',
-    description: 'Zero security incidents since inception',
+    trendValue: 'Sovereign by design',
+    description: 'Customer data and model weights never leave premises.',
     icon: 'shield' as const
   },
   {
-    value: '< 15min',
-    label: 'Threat Response',
+    value: 'Pre-execution',
+    label: 'Validation',
     trend: 'up' as const,
-    trendValue: '24/7 monitoring',
-    description: 'Average security incident response time',
-    icon: 'clock' as const
+    trendValue: 'Every action',
+    description: 'Govern™ checks every action against policy before it fires.',
+    icon: 'target' as const
   },
   {
-    value: 847,
-    label: 'Security Controls',
-    unit: ' active',
+    value: 'Immutable',
+    label: 'Audit trail',
     trend: 'up' as const,
-    trendValue: '+47 this quarter',
-    description: 'Comprehensive defense in depth',
-    icon: 'target' as const
+    trendValue: 'Tamper-evident',
+    description: 'Every action logged with its full reasoning chain.',
+    icon: 'award' as const
+  },
+  {
+    value: 'AES-256',
+    label: 'Encryption',
+    trend: 'up' as const,
+    trendValue: 'In transit and at rest',
+    description: 'TLS 1.3 in transit; AES-256 at rest.',
+    icon: 'clock' as const
   }
 ]
 
 const securityFrameworks = [
   {
     framework: 'SOC 2',
-    status: 'Certified',
+    status: 'Aligned',
     description: 'Independent audit of security, availability, and confidentiality controls',
     controls: [
       'Security policies and procedures',
@@ -66,7 +64,7 @@ const securityFrameworks = [
   },
   {
     framework: 'ISO 27001',
-    status: 'Compliant',
+    status: 'Aligned',
     description: 'International standard for information security management systems',
     controls: [
       'Information security policies',
@@ -79,7 +77,7 @@ const securityFrameworks = [
   },
   {
     framework: 'GDPR & CCPA',
-    status: 'Compliant',
+    status: 'Aligned',
     description: 'Privacy regulations compliance for data protection and consumer rights',
     controls: [
       'Data privacy impact assessments',
@@ -92,7 +90,7 @@ const securityFrameworks = [
   },
   {
     framework: 'PCI DSS',
-    status: 'Certified',
+    status: 'Aligned',
     description: 'Payment card industry data security standards compliance',
     controls: [
       'Secure payment processing',
@@ -105,7 +103,7 @@ const securityFrameworks = [
   },
   {
     framework: 'HIPAA',
-    status: 'Compliant',
+    status: 'Aligned',
     description: 'Health Insurance Portability and Accountability Act compliance for protected health information',
     controls: [
       'PHI data encryption and protection',
@@ -118,7 +116,7 @@ const securityFrameworks = [
   },
   {
     framework: 'Domain Regulations',
-    status: 'Compliant',
+    status: 'Aligned',
     description: 'Domain-specific regulatory compliance including FDCPA, CFPB, TCPA, and industry frameworks',
     controls: [
       'Communication compliance monitoring',
@@ -131,7 +129,7 @@ const securityFrameworks = [
   },
   {
     framework: 'TCPA',
-    status: 'Compliant',
+    status: 'Aligned',
     description: 'Telephone Consumer Protection Act compliance for automated communications',
     controls: [
       'Prior express consent management',
@@ -203,7 +201,7 @@ export default function Security() {
       metaDescription.setAttribute('name', 'description')
       document.head.appendChild(metaDescription)
     }
-    metaDescription.setAttribute('content', 'Krim AI Security: A+ rating, zero breaches, SOC 2, ISO 27001, military-grade encryption. Enterprise-grade protection for AI debt collection platform.')
+    metaDescription.setAttribute('content', 'Security at Krim — how we design KrimOS for sovereign deployment, pre-execution validation, and full action auditability.')
     
     // Add structured data for better SEO
     const structuredData = {

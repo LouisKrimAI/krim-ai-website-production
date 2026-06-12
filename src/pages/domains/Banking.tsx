@@ -1,7 +1,5 @@
 /**
- * KRIM AI - BANKING DOMAIN PAGE
- * Sovereign Safe Superintelligence Infrastructure for Banking
- * Comprehensive domain-specific landing page for banking operations
+ * Banking domain page — KrimOS applied to lending operations end to end.
  */
 
 import React, { useState } from 'react'
@@ -47,45 +45,24 @@ function BankingHero() {
           {/* Left: Content */}
           <motion.div className="space-y-8" {...fadeInUp}>
             <div className="space-y-6">
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-light tracking-tight leading-[1.15]">
-                <span className="bg-gradient-to-r from-krim-mint to-krim-cyan bg-clip-text text-transparent font-bold">
-                  Sovereign Safe Superintelligence
-                </span>
-                <br />
-                <span className="text-white text-3xl md:text-4xl lg:text-5xl">
-                  Infrastructure for Banking
-                </span>
+              <p className="brand-eyebrow text-krim-ochre">KrimOS for Banking</p>
+              <h1 className="brand-serif text-krim-off-white text-[clamp(2.25rem,5vw,4.25rem)] leading-[1.05] tracking-tight [hyphens:none]">
+                Lending operations, <span className="italic text-krim-ochre">governed end to end</span>.
               </h1>
 
-              <p className="text-lg md:text-xl text-white/80 leading-[1.7] max-w-xl">
-                Automate credit decisions, servicing, and collections. Full governance and audit trails built in.
+              <p className="brand-sans text-krim-off-white/75 text-lg md:text-xl leading-relaxed max-w-xl">
+                From origination to collections, KrimOS runs the work and validates every action
+                against policy before it fires.
               </p>
-
-              <div className="grid grid-cols-3 gap-4 pt-4">
-                <div className="space-y-1">
-                  <div className="text-2xl font-bold text-krim-mint">40+</div>
-                  <div className="text-xs text-white/70">Fragmented Tools</div>
-                </div>
-                <div className="space-y-1">
-                  <div className="text-2xl font-bold text-krim-cyan">65%</div>
-                  <div className="text-xs text-white/70">Staff Churn</div>
-                </div>
-                <div className="space-y-1">
-                  <div className="text-2xl font-bold text-[#00FF88]">100%</div>
-                  <div className="text-xs text-white/70">Compliance</div>
-                </div>
-              </div>
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4">
-              <Link to="/contact">
-                <Button
-                  size="lg"
-                  className="bg-gradient-to-r from-krim-mint to-krim-cyan hover:from-krim-mint/90 hover:to-krim-cyan/90 text-black font-semibold px-8 py-3.5 shadow-lg transition-all duration-200 border border-krim-mint/30 w-full sm:w-auto"
-                >
-                  Book a Demo
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </Button>
+              <Link
+                to="/contact"
+                className="group inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-md bg-krim-ochre text-krim-indigo font-semibold transition-transform hover:-translate-y-0.5 w-full sm:w-auto"
+              >
+                Request a demo
+                <ArrowRight weight="bold" className="ml-1 transition-transform group-hover:translate-x-1" size={18} />
               </Link>
             </div>
           </motion.div>
@@ -98,7 +75,7 @@ function BankingHero() {
                   {[
                     { name: 'AI Applications', desc: 'Kula, Karta, Kupa, Kriya', icon: '🧠' },
                     { name: 'Application Intelligence', desc: 'APIs, Orchestration, Governance', icon: '⚡' },
-                    { name: 'Kendra Runtime', desc: 'Safe Superintelligence', icon: '🔷', highlight: true },
+                    { name: 'Kendra Runtime', desc: 'KrimOS Core™ Runtime', icon: '🔷', highlight: true },
                     { name: 'Foundation Models', desc: 'GPT, Claude, Gemini, Llama', icon: '🎯' },
                     { name: 'Infrastructure', desc: 'Cloud, VPC, On-Premise', icon: '🏗️' }
                   ].map((layer, idx) => (
@@ -156,31 +133,31 @@ function ProblemSection() {
   const problems = [
     {
       icon: <Cube className="w-8 h-8" />,
-      title: "Fragmented Tools",
-      desc: "40+ disconnected systems force manual context-switching.",
+      title: "Fragmented tools",
+      desc: "Disconnected systems force manual context-switching.",
       color: "emerald",
-      stat: "40+"
+      stat: "Disconnected"
     },
     {
       icon: <Users className="w-8 h-8" />,
-      title: "Knowledge Drain",
-      desc: "65% staff churn means institutional knowledge walks out the door.",
+      title: "Knowledge drain",
+      desc: "High staff churn means institutional knowledge walks out the door.",
       color: "cyan",
-      stat: "65%"
+      stat: "Costly"
     },
     {
       icon: <WarningCircle className="w-8 h-8" />,
-      title: "Reactive Compliance",
-      desc: "Rules enforced after violations happen, not before.",
+      title: "After-the-fact compliance",
+      desc: "Rules enforced only after the action has fired.",
       color: "mint",
-      stat: "100%"
+      stat: "Late"
     },
     {
       icon: <TrendUp className="w-8 h-8" />,
-      title: "Scaling Failures",
+      title: "Brittle at scale",
       desc: "Manual workflows break under loan volume and complexity.",
       color: "amber",
-      stat: "↑↑↑"
+      stat: "Brittle"
     },
     {
       icon: <Clock className="w-8 h-8" />,
@@ -425,15 +402,15 @@ function UseCasesSection() {
   const useCases = [
     {
       icon: <Phone className="w-8 h-8" />,
-      title: "Credit Decisions",
+      title: "Credit decisions",
       desc: "Real-time approvals with full audit trails.",
-      metrics: ["100% compliant", "Sub-second", "Full transparency"]
+      metrics: ["Compliant by design", "Real-time decisioning", "Fully audited"]
     },
     {
       icon: <Headset className="w-8 h-8" />,
-      title: "Loan Servicing",
+      title: "Loan servicing",
       desc: "Automate payments, delinquency, and borrower comms at scale.",
-      metrics: ["Zero manual", "24/7 automation", "Built-in compliance"]
+      metrics: ["Hands-off", "Always on", "Governed end to end"]
     },
     {
       icon: <CurrencyDollar className="w-8 h-8" />,
@@ -519,129 +496,93 @@ function UseCasesSection() {
 }
 
 /**
- * COMPLIANCE SECTION
+ * COMPLIANCE SECTION — tabs per jurisdiction (India / USA / UK)
  */
+type RegItem = { acronym: string; name: string; desc: string }
+const REGIONS: Record<string, RegItem[]> = {
+  India: [
+    { acronym: 'RBI', name: 'Reserve Bank of India', desc: 'Fair Practices Code, master directions, prudential norms.' },
+    { acronym: 'DPDP', name: 'Digital Personal Data Protection Act', desc: 'Consent, purpose limitation, breach notification.' },
+    { acronym: 'PMLA', name: 'Prevention of Money Laundering Act', desc: 'KYC, suspicious-transaction reporting, retention.' },
+    { acronym: 'NPCI', name: 'National Payments Corporation of India', desc: 'UPI, IMPS, NACH operating rules.' },
+    { acronym: 'SEBI', name: 'Securities & Exchange Board of India', desc: 'Markets, NBFC linkages, investor protection.' },
+  ],
+  USA: [
+    { acronym: 'CFPB', name: 'Consumer Financial Protection Bureau', desc: 'UDAAP rules and debt-collection oversight.' },
+    { acronym: 'FCRA', name: 'Fair Credit Reporting Act', desc: 'Credit accuracy, disputes, permissible purpose.' },
+    { acronym: 'FDCPA', name: 'Fair Debt Collection Practices Act', desc: 'Communication conduct and harassment limits.' },
+    { acronym: 'TCPA', name: 'Telephone Consumer Protection Act', desc: 'Consent, contact windows, auto-dialler use.' },
+    { acronym: 'GLBA', name: 'Gramm–Leach–Bliley Act', desc: 'Privacy and safeguards for customer data.' },
+  ],
+  UK: [
+    { acronym: 'FCA', name: 'Financial Conduct Authority', desc: 'Conduct rules, SM&CR, fair treatment.' },
+    { acronym: 'PRA', name: 'Prudential Regulation Authority', desc: 'Capital, liquidity, and prudential standards.' },
+    { acronym: 'Consumer Duty', name: 'FCA Consumer Duty', desc: 'Outcomes-based fair treatment of retail customers.' },
+    { acronym: 'UK GDPR', name: 'Data Protection Act 2018', desc: 'Personal data, consent, cross-border transfers.' },
+    { acronym: 'MLR 2017', name: 'Money Laundering Regulations 2017', desc: 'KYC, due diligence, transaction monitoring.' },
+  ],
+}
+const REGION_NAMES = ['India', 'USA', 'UK'] as const
+type Region = typeof REGION_NAMES[number]
+
 function ComplianceSection() {
-  const regulations = [
-    {
-      acronym: "FDCPA",
-      name: "Fair Debt Collection Practices Act",
-      desc: "Regulates contact frequency, validation timing, and collection practices."
-    },
-    {
-      acronym: "TCPA",
-      name: "Telephone Consumer Protection Act",
-      desc: "Controls autodialer use, Do-Not-Call compliance, and consent for voice/SMS."
-    },
-    {
-      acronym: "CFPB",
-      name: "Consumer Financial Protection Bureau",
-      desc: "Prevents unfair, deceptive, or abusive practices."
-    },
-    {
-      acronym: "FCRA",
-      name: "Fair Credit Reporting Act",
-      desc: "Ensures credit accuracy, dispute handling, and legitimate purpose requirements."
-    },
-    {
-      acronym: "SCRA",
-      name: "Servicemembers Civil Relief Act",
-      desc: "Protects active service members with rate caps and foreclosure restrictions."
-    }
-  ]
+  const [region, setRegion] = useState<Region>('India')
+  const regs = REGIONS[region]
 
   return (
     <StarfieldSection glassLevel="light" className="py-20 md:py-32">
-      <div className="max-w-7xl mx-auto px-6">
-        <Reveal className="text-center mb-20">
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-8">
-            <span className="bg-gradient-to-r from-krim-mint to-krim-cyan bg-clip-text text-transparent">
-              Banking-Grade
-            </span>
-            <br />
-            <span className="text-white">Compliance Automation</span>
+      <div className="max-w-[1200px] mx-auto px-6">
+        <Reveal className="max-w-3xl mx-auto text-center mb-12">
+          <p className="brand-eyebrow text-krim-ochre mb-5">Built for your regulator</p>
+          <h2 className="brand-serif text-krim-off-white text-[clamp(2rem,4vw,3.25rem)] leading-[1.15] mb-5">
+            Compliance, encoded for the jurisdiction you operate in.
           </h2>
-          <p className="text-lg md:text-xl text-white/70 max-w-3xl mx-auto">
-            Every agent interaction and decision is checked against banking regulations in real time. Violations trigger alerts before harm occurs.
+          <p className="brand-sans text-krim-off-white/70 text-lg leading-relaxed">
+            KrimOS encodes the rules of every market it serves. Govern™ enforces them at the
+            runtime layer, on every action.
           </p>
         </Reveal>
 
-        <StaggerGrid className="grid md:grid-cols-2 lg:grid-cols-5 gap-6 mb-16 items-stretch">
-          {regulations.map((reg, idx) => (
-            <motion.div
-              key={idx}
-              {...fadeInUp}
-              className="group relative h-full"
-              whileHover={{ y: -6 }}
-              transition={{ duration: 0.4, type: "spring", stiffness: 300, damping: 20 }}
+        {/* Region tabs */}
+        <div className="flex justify-center gap-3 mb-12">
+          {REGION_NAMES.map((r) => (
+            <button
+              key={r}
+              onClick={() => setRegion(r)}
+              className={`px-7 py-2.5 rounded-full text-sm font-semibold brand-sans transition-all duration-200 ${
+                region === r
+                  ? 'text-krim-indigo bg-krim-ochre'
+                  : 'text-krim-slate border border-white/10 bg-white/[0.03] hover:text-krim-off-white hover:border-krim-ochre/30'
+              }`}
             >
-              <div className="relative p-6 rounded-2xl h-full overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-br from-krim-cyan/[0.08] to-transparent rounded-2xl" />
-                <div className="absolute inset-0 backdrop-blur-xl rounded-2xl" />
-                <div className="absolute inset-0 rounded-2xl border border-krim-cyan/20 group-hover:border-krim-cyan/40 transition-colors duration-500" />
-
-                <div className="relative z-10 flex flex-col h-full">
-                  <div className="h-[42px] mb-5">
-                    <div className="text-3xl font-black text-krim-cyan tracking-tight">{reg.acronym}</div>
-                  </div>
-                  <h3 className="text-lg font-bold text-white mb-3 leading-tight">{reg.name}</h3>
-                  <p className="text-sm text-white/70 flex-1">{reg.desc}</p>
-                </div>
-              </div>
-            </motion.div>
+              {r}
+            </button>
           ))}
-        </StaggerGrid>
-
-        {/* Key Compliance Features */}
-        <div className="grid md:grid-cols-3 gap-8 items-stretch">
-          <Reveal delay={0.2}>
-            <div className="relative p-8 rounded-2xl overflow-hidden h-full flex flex-col">
-              <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/[0.08] to-transparent rounded-2xl" />
-              <div className="absolute inset-0 backdrop-blur-xl rounded-2xl" />
-              <div className="absolute inset-0 rounded-2xl border border-emerald-400/20" />
-
-              <div className="relative z-10 flex flex-col h-full">
-                <div className="h-[32px] mb-5">
-                  <ShieldCheck className="w-8 h-8 text-emerald-400" />
-                </div>
-                <h3 className="text-xl font-bold text-white mb-3">Block Before Harm</h3>
-                <p className="text-white/70 flex-1">Stop non-compliant actions before they happen, not after audit.</p>
-              </div>
-            </div>
-          </Reveal>
-
-          <Reveal delay={0.3}>
-            <div className="relative p-8 rounded-2xl overflow-hidden h-full flex flex-col">
-              <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/[0.08] to-transparent rounded-2xl" />
-              <div className="absolute inset-0 backdrop-blur-xl rounded-2xl" />
-              <div className="absolute inset-0 rounded-2xl border border-cyan-400/20" />
-
-              <div className="relative z-10 flex flex-col h-full">
-                <div className="h-[32px] mb-5">
-                  <FileText className="w-8 h-8 text-cyan-400" />
-                </div>
-                <h3 className="text-xl font-bold text-white mb-3">Complete Audit Trail</h3>
-                <p className="text-white/70 flex-1">Every decision, interaction, and rule enforcement logged for regulators.</p>
-              </div>
-            </div>
-          </Reveal>
-
-          <Reveal delay={0.4}>
-            <div className="relative p-8 rounded-2xl overflow-hidden h-full flex flex-col">
-              <div className="absolute inset-0 bg-gradient-to-br from-[#00FF88]/[0.08] to-transparent rounded-2xl" />
-              <div className="absolute inset-0 backdrop-blur-xl rounded-2xl" />
-              <div className="absolute inset-0 rounded-2xl border border-[#00FF88]/20" />
-
-              <div className="relative z-10 flex flex-col h-full">
-                <div className="h-[32px] mb-5">
-                  <Target className="w-8 h-8 text-[#00FF88]" />
-                </div>
-                <h3 className="text-xl font-bold text-white mb-3">Instant Rule Updates</h3>
-                <p className="text-white/70 flex-1">Regulation changes deploy instantly—no code, no redeployment needed.</p>
-              </div>
-            </div>
-          </Reveal>
         </div>
+
+        {/* Region cards */}
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={region}
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -8 }}
+            transition={{ duration: 0.25 }}
+            className="grid md:grid-cols-2 lg:grid-cols-5 gap-5"
+          >
+            {regs.map((reg) => (
+              <div
+                key={reg.acronym}
+                className="group relative rounded-2xl backdrop-blur-md bg-gradient-to-br from-white/[0.06] to-white/[0.015] border border-white/10 p-6 transition-colors duration-300 hover:border-krim-ochre/40 flex flex-col h-full"
+              >
+                <span className="block h-px w-9 bg-krim-ochre mb-5" aria-hidden />
+                <div className="brand-serif text-krim-ochre text-2xl tracking-tight mb-2">{reg.acronym}</div>
+                <h3 className="brand-serif text-krim-off-white text-base leading-snug mb-3">{reg.name}</h3>
+                <p className="brand-sans text-krim-slate text-sm leading-relaxed flex-1">{reg.desc}</p>
+              </div>
+            ))}
+          </motion.div>
+        </AnimatePresence>
       </div>
     </StarfieldSection>
   )
@@ -661,14 +602,12 @@ function SecuritySection() {
     <StarfieldSection glassLevel="light" className="py-20 md:py-32">
       <div className="max-w-7xl mx-auto px-6">
         <Reveal className="text-center mb-20">
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-8">
-            <span className="text-white">Bank-Grade Security </span>
-            <span className="bg-gradient-to-r from-krim-mint to-krim-cyan bg-clip-text text-transparent">
-              & Deployment
-            </span>
+          <h2 className="brand-serif text-krim-off-white text-[clamp(2rem,4vw,3.25rem)] leading-[1.15] mb-6">
+            Security and <span className="italic text-krim-ochre">sovereign deployment</span>.
           </h2>
-          <p className="text-lg md:text-xl text-white/70 max-w-3xl mx-auto">
-            Enterprise-grade encryption, SOC2 compliance, and flexible deployment—from cloud to on-premise.
+          <p className="brand-sans text-krim-off-white/70 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed">
+            End-to-end encryption, immutable audit logs, and flexible deployment — from your cloud
+            to your own data centre.
           </p>
         </Reveal>
 
@@ -698,10 +637,10 @@ function SecuritySection() {
 
               <div className="p-6 rounded-2xl bg-gradient-to-br from-white/[0.04] to-transparent border border-white/[0.08] backdrop-blur-xl">
                 <div className="flex items-start gap-4">
-                  <CheckCircle className="w-6 h-6 text-[#00FF88] mt-1 flex-shrink-0" />
+                  <CheckCircle className="w-6 h-6 text-krim-ochre mt-1 flex-shrink-0" />
                   <div>
-                    <h3 className="text-lg font-bold text-white mb-2">SOC2 Type II</h3>
-                    <p className="text-white/70">Annual audit and compliance certification for regulated industries.</p>
+                    <h3 className="text-lg font-bold text-white mb-2">Sovereign deployment</h3>
+                    <p className="text-white/70">Run on-prem, hybrid, or in your preferred sovereign cloud — your data, your environment.</p>
                   </div>
                 </div>
               </div>
@@ -759,13 +698,13 @@ function CTASection() {
           </h2>
 
           <p className="text-lg md:text-xl text-white/70 mb-12 max-w-2xl mx-auto">
-            See how banks replace 40+ tools with a unified intelligence runtime.
+            See how banks unify lending operations on KrimOS.
           </p>
 
           <Link to="/contact">
             <Button
               size="lg"
-              className="bg-gradient-to-r from-krim-mint to-krim-cyan hover:from-krim-mint/90 hover:to-krim-cyan/90 text-black font-semibold px-10 py-4 shadow-lg transition-all duration-200 border border-krim-mint/30 mb-6"
+              className="bg-krim-ochre hover:bg-krim-ochre/90 text-krim-indigo font-semibold px-10 py-4 shadow-lg transition-all duration-200 mb-6"
             >
               Book a Demo
               <ArrowRight className="ml-2 h-5 w-5" />

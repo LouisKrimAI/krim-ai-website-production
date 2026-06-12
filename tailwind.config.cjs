@@ -7,6 +7,7 @@ module.exports = {
       colors: {
         // === NEW CANONICAL BRAND (2026, per Brand Marketing Deck) ===
         'krim-indigo': '#1A1E47',       // Primary · 60% visual weight · dark blue background
+        'krim-surface': '#22264E',       // V2 lifted indigo (+4% toward off-white) · replaces all glass
         'krim-ochre': '#C8973B',         // Mithila ochre · accent, used sparingly
         'krim-slate': '#6B7894',         // Supporting
         'krim-off-white': '#FAFAFA',     // Foreground text on indigo · never cream
@@ -113,8 +114,14 @@ module.exports = {
       animation: {
         'aurora-flow': 'aurora-flow 8s ease-in-out infinite',
         'pulse-glow': 'pulse-glow 2s ease-in-out infinite',
-        // REMOVED starfield animations: causing performance issues with gradient rendering
-        // REMOVED unused animations (0 usages): shimmer, float, rotate
+        'marquee': 'marquee 45s linear infinite',
+        'marquee-reverse': 'marquee-reverse 45s linear infinite',
+        // V2 — slow marquee for the single integration row
+        'marquee-slow': 'marquee 60s linear infinite',
+        // V2 — ochre clearance tick reveal (controlled overshoot)
+        'tick-in': 'tick-in 180ms cubic-bezier(0.34, 1.56, 0.64, 1) both',
+        // V2 — connective hairline draws between diptych halves
+        'hairline-draw': 'hairline-draw 600ms cubic-bezier(0.22, 1, 0.36, 1) 240ms both',
       },
       keyframes: {
         'aurora-flow': {
@@ -125,8 +132,23 @@ module.exports = {
           '0%, 100%': { 'box-shadow': '0 0 20px rgba(22, 255, 187, 0.3)' },
           '50%': { 'box-shadow': '0 0 40px rgba(22, 255, 187, 0.8)' },
         },
-        // REMOVED starfield keyframes: causing paint thrashing and performance issues
-        // REMOVED unused keyframes: shimmer, float
+        // Seamless infinite logo marquee: track holds the set twice; shift exactly one set.
+        'marquee': {
+          '0%': { transform: 'translateX(0)' },
+          '100%': { transform: 'translateX(-50%)' },
+        },
+        'marquee-reverse': {
+          '0%': { transform: 'translateX(-50%)' },
+          '100%': { transform: 'translateX(0)' },
+        },
+        'tick-in': {
+          '0%': { opacity: '0', transform: 'scale(0.85)' },
+          '100%': { opacity: '1', transform: 'scale(1)' },
+        },
+        'hairline-draw': {
+          '0%': { transform: 'scaleY(0)', transformOrigin: 'top' },
+          '100%': { transform: 'scaleY(1)', transformOrigin: 'top' },
+        },
       },
       transitionDuration: {
         'fast': 'var(--duration-fast)',

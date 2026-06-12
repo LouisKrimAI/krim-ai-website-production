@@ -104,14 +104,18 @@ body {
     max-width: 100% !important;
   }
   
-  /* Prevent images from causing overflow */
+  /* Prevent images from causing overflow.
+     NOTE: svg is intentionally excluded from `height: auto !important` —
+     a viewBox-only SVG (logos, diagrams) collapses to 0x0 under it. */
   img,
   picture,
   video,
-  canvas,
-  svg {
+  canvas {
     max-width: 100% !important;
     height: auto !important;
+  }
+  svg {
+    max-width: 100% !important;
   }
   
   /* Fix absolute positioned elements */

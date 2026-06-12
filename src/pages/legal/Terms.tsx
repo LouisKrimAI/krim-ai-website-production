@@ -15,17 +15,17 @@ const serviceTerms = [
   {
     category: 'Service Availability',
     terms: [
-      '99.9% uptime guarantee with service level credits',
-      'Planned maintenance with 48-hour advance notice',
+      'Service-level commitments defined in your contract',
+      'Planned maintenance with advance notice',
       'Emergency maintenance as operationally required',
-      'Performance monitoring with real-time status updates'
+      'Real-time status monitoring'
     ]
   },
   {
     category: 'Data and Security',
     terms: [
-      'Enterprise-grade security with SOC 2 compliance',
-      'Data encryption in transit and at rest',
+      'Customer data remains in your environment by default',
+      'Encryption in transit and at rest',
       'Regular security assessments and vulnerability testing',
       'Incident response with customer notification procedures'
     ]
@@ -89,7 +89,7 @@ export default function Terms() {
       metaDescription.setAttribute('name', 'description')
       document.head.appendChild(metaDescription)
     }
-    metaDescription.setAttribute('content', 'Krim AI Terms of Service: Enterprise service agreement, 99.9% uptime guarantee, SOC 2 compliance, comprehensive support for AI-powered debt collection.')
+    metaDescription.setAttribute('content', 'Terms of service for Krim and KrimOS — service agreement, data and security terms, and customer responsibilities.')
     
     // Add structured data for better SEO
     const structuredData = {

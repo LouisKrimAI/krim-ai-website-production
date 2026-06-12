@@ -31,6 +31,22 @@ import ScrollToTop from './components/ScrollToTop'
 import { lazy, Suspense } from 'react'
 const ParticleUniverse = lazy(() => import('./components/ParticleUniverse'))
 
+/**
+ * The starfield is a decorative backdrop. If its lazy chunk fails to load
+ * (e.g. a stale dev module graph after a server restart, or a flaky network),
+ * it must NOT crash the page — it should silently degrade to no backdrop.
+ * Suspense does not catch import rejections, so we need an error boundary.
+ */
+class StarfieldBoundary extends React.Component<{ children: React.ReactNode }, { failed: boolean }> {
+  state = { failed: false }
+  static getDerivedStateFromError() { return { failed: true } }
+  componentDidCatch() { /* swallow — backdrop is non-critical */ }
+  render() {
+    if (this.state.failed) return null
+    return this.props.children
+  }
+}
+
 // Import Cookie Consent System
 import { CookieConsentProvider } from './contexts/CookieConsentContext'
 import ConditionalAnalytics from './components/ConditionalAnalytics'
@@ -48,17 +64,33 @@ function Layout() {
   // Initialize route preloading
   useRoutePreloading()
   const { pathname } = useLocation()
-  // /homepage-alt keeps the legacy futuristic chassis (particle universe, mint).
-  // The rest of the site uses the canonical brand chassis (flat indigo).
+  // /homepage-alt keeps the legacy aurora chassis (mint/cyan particle universe).
+  // The home page (/) uses a calm, brand-toned starfield backdrop.
+  // Every other route uses the flat canonical brand chassis.
   const isAlt = pathname === '/homepage-alt'
+  const isHome = pathname === '/'
 
   return (
     <div className={`min-h-screen flex flex-col relative bg-krim-indigo ${isAlt ? '' : 'brand-canon'}`}>
-      {/* Legacy starfield background — only retained on the alternative homepage */}
+      {/* Legacy aurora starfield — alternative homepage only */}
       {isAlt && (
-        <Suspense fallback={<div className="fixed inset-0" style={{ zIndex: -1 }} />}>
-          <ParticleUniverse adaptive />
-        </Suspense>
+        <StarfieldBoundary>
+          <Suspense fallback={<div className="fixed inset-0" style={{ zIndex: -1 }} />}>
+            <ParticleUniverse adaptive />
+          </Suspense>
+        </StarfieldBoundary>
+      )}
+
+      {/* Calm brand starfield + legibility wash — main homepage backdrop */}
+      {isHome && (
+        <>
+          <StarfieldBoundary>
+            <Suspense fallback={<div className="fixed inset-0" style={{ zIndex: -1 }} />}>
+              <ParticleUniverse adaptive calm />
+            </Suspense>
+          </StarfieldBoundary>
+          <div className="fixed inset-0 bg-krim-indigo/45 pointer-events-none" style={{ zIndex: 1 }} aria-hidden />
+        </>
       )}
 
       {/* Content wrapper with proper z-index */}
@@ -97,8 +129,20 @@ function Layout() {
   )
 }
 
+// PHASE 1 design explorations (krim.ai rebuild) — full-canvas routes OUTSIDE
+// the site Layout (no header/footer/starfield). Lazy: zero cost to main bundle.
+const ExploreIndex = lazy(() => import('./explore/ExploreIndex'))
+const DirectionGate = lazy(() => import('./explore/DirectionGate'))
+const DirectionLedger = lazy(() => import('./explore/DirectionLedger'))
+const DirectionField = lazy(() => import('./explore/DirectionField'))
+const exploreFallback = <div style={{ minHeight: '100vh', background: '#09090C' }} />
+
 // Use lazy loaded components for better performance
 const router = createBrowserRouter([
+  { path: '/explore', element: <Suspense fallback={exploreFallback}><ExploreIndex /></Suspense> },
+  { path: '/explore/gate', element: <Suspense fallback={exploreFallback}><DirectionGate /></Suspense> },
+  { path: '/explore/ledger', element: <Suspense fallback={exploreFallback}><DirectionLedger /></Suspense> },
+  { path: '/explore/field', element: <Suspense fallback={exploreFallback}><DirectionField /></Suspense> },
   {
     path: '/',
     element: <Layout />,

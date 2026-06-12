@@ -1,7 +1,5 @@
 /**
- * GOVERNMENT DOMAIN PAGE
- * Sovereign Safe Superintelligence Infrastructure for Government
- * Full-stack government-focused landing page with compliance, security, and citizen services
+ * Government domain page — Krim's architecture applied to regulated public-sector work.
  */
 
 import React from 'react'
@@ -500,15 +498,15 @@ export default function Government() {
                         icon: Shield
                       },
                       {
-                        standard: 'NIST 800-53',
-                        subtitle: 'Security controls catalog',
-                        description: 'Every component maps to required controls.',
+                        standard: 'Audit-ready by design',
+                        subtitle: 'Pre-execution validation',
+                        description: 'Every action checked before it fires, with the full reasoning chain logged.',
                         icon: Lock
                       },
                       {
-                        standard: 'SOC 2 Type II',
-                        subtitle: 'Third-party verified',
-                        description: 'Annual audit of controls and security.',
+                        standard: 'Air-gapped deployment',
+                        subtitle: 'Sovereign by default',
+                        description: 'Run inside a closed environment when the work demands it.',
                         icon: Eye
                       }
                     ].map((item, index) => (

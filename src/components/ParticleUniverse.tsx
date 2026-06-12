@@ -69,7 +69,7 @@ if (typeof window !== 'undefined') {
 
 import { Canvas, useFrame, useThree } from '@react-three/fiber'
 import { Points, PointMaterial } from '@react-three/drei'
-import { Vector3, Matrix4, AdditiveBlending } from 'three'
+import { Vector3, Matrix4, AdditiveBlending, NormalBlending } from 'three'
 import { ThreeJSErrorBoundary, withClientOnly } from '../utils/safeThreeJS'
 
 
@@ -144,7 +144,7 @@ interface ParticleBehavior {
 }
 
 // Particle system component with GPU instancing
-function ParticleSystem() {
+function ParticleSystem({ calm = false }: { calm?: boolean }) {
   const meshRef = useRef<any>(null)
   const { mouse, viewport, camera } = useThree()
   const { quality } = usePerformanceMonitor() // Move this OUTSIDE useFrame - CRITICAL FIX
@@ -171,14 +171,12 @@ function ParticleSystem() {
   // Dynamic particle count was causing "buffer attribute's array buffer does not match original size" errors
   const particleCount = useMemo(() => {
     const deviceCapability = getDeviceCapability()
-    // Use maximum count and handle performance via other means (size, update frequency)
-    const fixedCounts = {
-      low: 2000,
-      medium: 6000,
-      high: 10000
-    }
+    // Calm/brand variant: a sparser, deeper field — calmer and far better perf.
+    const fixedCounts = calm
+      ? { low: 1200, medium: 2500, high: 4000 }
+      : { low: 2000, medium: 6000, high: 10000 }
     return fixedCounts[deviceCapability]
-  }, []) // Remove getParticleCount dependency to prevent dynamic changes
+  }, [calm]) // Remove getParticleCount dependency to prevent dynamic changes
   
   // Generate particle data with emergence patterns - FIXED BUFFER ALLOCATION
   const { positions, colors, sizes, velocities, positionArrayRef, cleanupRef } = useMemo(() => {
@@ -209,31 +207,28 @@ function ParticleSystem() {
       positions[i3 + 1] = radius * Math.sin(phi) * Math.sin(theta) 
       positions[i3 + 2] = radius * Math.cos(phi)
       
-      // Colors - Multi-Agentic spectrum (mint, cyan, purple, coral)
-      const colorType = Math.floor(Math.random() * 4)
-      const intensity = 0.5 + Math.random() * 0.5
-      
-      switch (colorType) {
-        case 0: // Krim Mint
-          colors[i3] = 0.0 * intensity
-          colors[i3 + 1] = 1.0 * intensity
-          colors[i3 + 2] = 0.53 * intensity
-          break
-        case 1: // Krim Cyan
-          colors[i3] = 0.0 * intensity
-          colors[i3 + 1] = 0.83 * intensity
-          colors[i3 + 2] = 1.0 * intensity
-          break
-        case 2: // Krim Purple
-          colors[i3] = 0.55 * intensity
-          colors[i3 + 1] = 0.36 * intensity
-          colors[i3 + 2] = 0.96 * intensity
-          break
-        case 3: // Krim Coral
-          colors[i3] = 1.0 * intensity
-          colors[i3 + 1] = 0.3 * intensity
-          colors[i3 + 2] = 0.38 * intensity
-          break
+      if (calm) {
+        // Calm/brand field: dim slate haze with sparse ochre embers and rare mint glints.
+        // Indigo base, ochre accent, mint reserved — reads as deep space, not a green field.
+        const intensity = 0.34 + Math.random() * 0.26
+        const r = Math.random()
+        let cr = 0.62, cg = 0.65, cb = 0.78 // 70% off-white/slate haze (the field)
+        if (r >= 0.70 && r < 0.92) { cr = 0.36; cg = 0.40; cb = 0.55 }      // 22% deeper slate (depth variance)
+        else if (r >= 0.92 && r < 0.98) { cr = 0.78; cg = 0.59; cb = 0.23 } // 6% ochre embers (brand warm)
+        else if (r >= 0.98) { cr = 0.0; cg = 0.85; cb = 0.46 }              // 2% mint sparkle (rare glint)
+        colors[i3] = cr * intensity
+        colors[i3 + 1] = cg * intensity
+        colors[i3 + 2] = cb * intensity
+      } else {
+        // Legacy aurora spectrum (mint, cyan, purple, coral) — used on /homepage-alt
+        const colorType = Math.floor(Math.random() * 4)
+        const intensity = 0.5 + Math.random() * 0.5
+        switch (colorType) {
+          case 0: colors[i3] = 0.0 * intensity; colors[i3 + 1] = 1.0 * intensity; colors[i3 + 2] = 0.53 * intensity; break
+          case 1: colors[i3] = 0.0 * intensity; colors[i3 + 1] = 0.83 * intensity; colors[i3 + 2] = 1.0 * intensity; break
+          case 2: colors[i3] = 0.55 * intensity; colors[i3 + 1] = 0.36 * intensity; colors[i3 + 2] = 0.96 * intensity; break
+          case 3: colors[i3] = 1.0 * intensity; colors[i3 + 1] = 0.3 * intensity; colors[i3 + 2] = 0.38 * intensity; break
+        }
       }
       
       // Sizes - Agent hierarchy
@@ -253,7 +248,7 @@ function ParticleSystem() {
     }
     
     return { positions, colors, sizes, velocities, positionArrayRef, cleanupRef }
-  }, [particleCount])
+  }, [particleCount, calm])
 
   // CRITICAL FIX: Add proper cleanup to prevent buffer leaks
   useEffect(() => {
@@ -317,22 +312,23 @@ function ParticleSystem() {
         positionAttribute.array[i3 + 2]
       )
 
-      // 1. Orbital rotation (Multi-Agent coordination)
+      // 1. Orbital rotation (Multi-Agent coordination) — calm variant drifts ~0.45x slower
       const radius = position.length()
-      const rotationSpeed = 0.1 / (radius * 0.5 + 1)
+      const rotationSpeed = (calm ? 0.045 : 0.1) / (radius * 0.5 + 1)
       const rotation = new Matrix4().makeRotationY(rotationSpeed * delta)
       position.applyMatrix4(rotation)
-      
-      // 2. Mouse attraction/repulsion
+
+      // 2. Mouse attraction/repulsion — muted in calm so the cursor barely perturbs the field
+      const mouseRadius = calm ? 5 : 8
       const distance = position.distanceTo(mouseForce)
-      if (distance < 8) {
+      if (distance < mouseRadius) {
         const direction = position.clone().sub(mouseForce).normalize()
-        const force = Math.max(0, 8 - distance) * 0.05
+        const force = Math.max(0, mouseRadius - distance) * (calm ? 0.02 : 0.05)
         position.add(direction.multiplyScalar(force))
       }
-      
+
       // 3. Breathing motion (AI processing cycles)
-      const breathingForce = Math.sin(time * 2 + i * 0.01) * 0.02
+      const breathingForce = Math.sin(time * 2 + i * 0.01) * (calm ? 0.01 : 0.02)
       position.multiplyScalar(1 + breathingForce)
       
       // 4. Agent emergence patterns
@@ -361,8 +357,8 @@ function ParticleSystem() {
     
     positionAttribute.needsUpdate = true
     
-    // Rotate entire system slowly
-    meshRef.current.rotation.y += delta * 0.05
+    // Rotate entire system slowly (calm variant drifts ~0.45x slower)
+    meshRef.current.rotation.y += delta * (calm ? 0.022 : 0.05)
   })
   
   return (
@@ -370,11 +366,14 @@ function ParticleSystem() {
       <PointMaterial
         transparent
         vertexColors
-        size={quality === 'high' ? 0.02 : quality === 'medium' ? 0.015 : 0.01}
+        size={calm
+          ? (quality === 'high' ? 0.012 : quality === 'medium' ? 0.010 : 0.008)
+          : (quality === 'high' ? 0.02 : quality === 'medium' ? 0.015 : 0.01)}
         sizeAttenuation={true}
         depthWrite={false}
-        blending={AdditiveBlending}
-        fog={false}
+        blending={calm ? NormalBlending : AdditiveBlending}
+        opacity={calm ? 0.7 : 1}
+        fog={calm}
         alphaTest={0.1}
       />
     </Points>
@@ -399,19 +398,22 @@ interface ParticleUniverseProps {
   behavior?: Partial<ParticleBehavior>
   adaptive?: boolean
   className?: string
+  /** Calm/brand variant: dim indigo-toned field, slowed drift, sparser. */
+  calm?: boolean
 }
 
 export default function ParticleUniverse({
   count,
   behavior = {},
   adaptive = true,
-  className = ''
+  className = '',
+  calm = false
 }: ParticleUniverseProps) {
   // Prevent SSR issues with Three.js
   if (!isClient) {
     return (
       <div className={`particle-universe-fallback ${className}`}>
-        <div className="absolute inset-0 bg-gradient-to-br from-krim-mint/5 via-transparent to-krim-cyan/5" />
+        <div className={`absolute inset-0 bg-gradient-to-br ${calm ? 'from-krim-ochre/[0.04] via-transparent to-transparent' : 'from-krim-mint/5 via-transparent to-krim-cyan/5'}`} />
       </div>
     )
   }
@@ -422,7 +424,7 @@ export default function ParticleUniverse({
   if (prefersReducedMotion) {
     return (
       <div className={`particle-universe-fallback ${className}`}>
-        <div className="absolute inset-0 bg-gradient-to-br from-krim-mint/5 via-transparent to-krim-cyan/5" />
+        <div className={`absolute inset-0 bg-gradient-to-br ${calm ? 'from-krim-ochre/[0.04] via-transparent to-transparent' : 'from-krim-mint/5 via-transparent to-krim-cyan/5'}`} />
       </div>
     )
   }
@@ -456,24 +458,26 @@ export default function ParticleUniverse({
           gl.setClearColor(0x000000, 0)
         }}
       >
-        <ambientLight intensity={0.1} />
-        <pointLight position={[10, 10, 10]} intensity={0.3} />
-        <pointLight position={[-10, -10, -10]} intensity={0.2} color="#00D4FF" />
-        
-        <ParticleSystem />
+        {calm ? (
+          <>
+            <ambientLight intensity={0.08} />
+            <pointLight position={[10, 10, 10]} intensity={0.15} />
+          </>
+        ) : (
+          <>
+            <ambientLight intensity={0.1} />
+            <pointLight position={[10, 10, 10]} intensity={0.3} />
+            <pointLight position={[-10, -10, -10]} intensity={0.2} color="#00D4FF" />
+          </>
+        )}
+
+        <ParticleSystem calm={calm} />
         <ParticleConnections />
-        
-        {/* Fog for depth */}
-        <fog attach="fog" args={['#0A081B', 30, 80]} />
+
+        {/* Fog for depth — indigo tone in calm so particles fade into the page */}
+        <fog attach="fog" args={calm ? ['#13163A', 25, 70] : ['#0A081B', 30, 80]} />
         </Canvas>
       </ThreeJSErrorBoundary>
-      
-      {/* Performance indicator (dev mode) */}
-      {process.env.NODE_ENV === 'development' && (
-        <div className="fixed bottom-4 right-4 text-xs text-white font-mono">
-          Particles: {getDeviceCapability() === 'high' ? '10K' : getDeviceCapability() === 'medium' ? '5K' : '1K'}
-        </div>
-      )}
     </div>
   )
 }

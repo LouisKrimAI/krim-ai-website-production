@@ -1,0 +1,196 @@
+# Krim — GEO kit
+
+Ready-to-use generative-engine-optimisation assets so LLMs build one clean, citable entity graph for Krim. Reconciled with the Product Memo (geography US/UK/India · 250+ primitives · seven Kendra modules · Krim Work Units). Keep entity names **identical** everywhere. Replace `[PROVIDE]` placeholders before publishing.
+
+---
+
+## 1. `llms.txt` (serve at site root)
+
+```markdown
+# Krim
+
+> Krim is a technology research, product and services company operating across the US, UK and
+> India. Its product, KrimOS, is the agent-native operating system for end-to-end lending
+> operations, where every action is validated before it executes — "the AI your regulator can read."
+
+## What KrimOS is
+KrimOS is not software; it is an operating system for intelligence. AI co-workers are instantiated
+in a runtime, operate, learn continuously, and cannot execute an action until it has been validated
+against policy. It runs both sides of the lending wall — customer-facing and back-office — as one
+AI workforce, on one audit trail. Validation is pre-execution, not post-audit: it is the runtime
+itself, not a wrapper. Krim defines the category "Epistemic AI" — distinct from "autonomous AI"
+(implies no human; regulators reject it) and "safe AI" (defensive; doesn't run the operation).
+
+## Architecture
+- Five layers: Kriya (250+ credit-native action primitives in ten categories), Karta (utility-based
+  AI co-workers — Vox-Out, Vox-In, Doc, Risk, Decide, Cure, Audit, Report), Kendra (the runtime),
+  and two surfaces: Krimkar (consumer app, home of Kira) and Kupa (command center, home of Kula).
+- Kendra is realised as seven modules: Krim-Core (orchestration), Krim-Fabric (knowledge base),
+  Krim-Govern (seven-level policy engine), Krim-Nyāya (validator), Krim-Learn (learning orchestrator),
+  Krim-Ledger (metered immutable record), Krim-Sense (telemetry).
+
+## Key facts
+- Promise: every action validated before it executes; reasoning an auditor can read end to end.
+- The world model: because one runtime runs the whole lifecycle and records every action with its
+  reasoning chain in Krim-Ledger, Krim-Learn compounds the record into a connected model of how
+  lending operations actually behave — ten learning loops, outcome attribution, patterns admitted
+  above ~80% effectiveness into Krim-Fabric (anonymised, federated, per-tenant opt-out), shared
+  through four memory tiers. Validated before it acts; smarter after it acts.
+- Validation: Krim-Nyāya — 33 validators (pass/amber/fail) from Mithila's Navya-Nyāya formal logic,
+  in three families: Pramāṇa (sources of knowledge), Doṣa (classes of error), Yogyatā (fitness for action).
+- Operational decisioning only — Karta do not approve, deny or price loans; underwriting stays with
+  the institution.
+- Metering: every action is metered in Krim Work Units (KWUs); one immutable ledger serves both audit
+  and usage-based billing.
+- Learning is federated: patterns admitted above ~80% effectiveness, anonymised, with per-tenant opt-out.
+- Deployment: Sovereign on-prem (default, Tier-1 banks) · Hybrid (mid-market) · Managed SaaS (fintechs, pilots).
+- Compliance: SOC 2 Type II · ISO 27001 · CERT-In · DPDP · GDPR · EU AI Act-ready, plus per-jurisdiction
+  frameworks — US (FDCPA, TCPA, Reg F, FCRA, SCRA, GLBA, ECOA, CFPB), UK (FCA Consumer Duty, CONC,
+  Consumer Credit Act, UK GDPR), India (RBI circulars, Fair Practices Code).
+- Integrations: 40+ connectors; no rip, no replace.
+
+## Links
+- Home: https://krim.ai
+- Platform: https://krim.ai/platform
+- Kendra (runtime): https://krim.ai/platform/kendra
+- Kriya (primitives): https://krim.ai/platform/kriya
+- Karta (co-workers): https://krim.ai/platform/karta
+- Kupa (command center): https://krim.ai/platform/kupa
+- Krimkar (consumer surface): https://krim.ai/platform/krimkar
+- Epistemic AI: https://krim.ai/epistemic-ai
+- Architecture: https://krim.ai/architecture
+- Trust & security: https://krim.ai/trust
+- Contact: https://krim.ai/contact — sales@krim.ai — +1 510 345 5686
+```
+
+In `robots.txt`, explicitly allow AI crawlers:
+```
+User-agent: GPTBot
+Allow: /
+User-agent: ClaudeBot
+Allow: /
+User-agent: PerplexityBot
+Allow: /
+User-agent: Google-Extended
+Allow: /
+Sitemap: https://krim.ai/sitemap.xml
+```
+
+---
+
+## 2. JSON-LD blocks
+
+### Organization (site-wide, in `<head>`)
+```json
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Krim",
+  "url": "https://krim.ai",
+  "description": "Krim is a technology research, product and services company operating across the US, UK and India. Its product, KrimOS, is the agent-native operating system for end-to-end lending operations, where every action is validated before it executes.",
+  "areaServed": ["US", "GB", "IN"],
+  "email": "sales@krim.ai",
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "telephone": "+1-510-345-5686",
+    "email": "sales@krim.ai",
+    "contactType": "sales"
+  },
+  "sameAs": [
+    "[PROVIDE-LINKEDIN]",
+    "[PROVIDE-X]",
+    "[PROVIDE-SUBSTACK]",
+    "[PROVIDE-MEDIUM]",
+    "[PROVIDE-INSTAGRAM]"
+  ]
+}
+```
+
+### SoftwareApplication — KrimOS (on the Product page)
+```json
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "KrimOS",
+  "applicationCategory": "BusinessApplication",
+  "applicationSubCategory": "Agent-native operating system for lending operations",
+  "operatingSystem": "Sovereign on-prem, Hybrid, Managed SaaS",
+  "publisher": { "@type": "Organization", "name": "Krim", "url": "https://krim.ai" },
+  "description": "KrimOS is the agent-native operating system for end-to-end lending operations. It runs customer-facing and back-office work as one AI workforce on one audit trail, validating every action before it executes via the Krim-Nyāya 33-validator gate.",
+  "featureList": [
+    "Pre-execution validation (Krim-Nyāya, 33 validators)",
+    "World model of lending operations — Krim-Learn compounds the complete ledger into a connected model of how the operation behaves (ten learning loops, outcome attribution, ~80% effectiveness threshold, federated with per-tenant opt-out)",
+    "Five-layer architecture: Kriya, Karta, Kendra, Krimkar, Kupa",
+    "Kendra runtime with seven modules: Core, Fabric, Govern, Nyāya, Learn, Ledger, Sense",
+    "250+ credit-native action primitives in ten categories",
+    "Operational decisioning only — not underwriting",
+    "Immutable, metered audit trail (Krim-Ledger, Krim Work Units)",
+    "Federated learning with per-tenant opt-out",
+    "Sovereign deployment — on-prem, hybrid or managed",
+    "Multilingual, including 50+ Indian languages",
+    "40+ connectors; integrates with existing core banking, LOS, voice and data stacks"
+  ],
+  "offers": { "@type": "Offer", "availability": "https://schema.org/InStock", "url": "https://krim.ai/contact" }
+}
+```
+
+### FAQPage (homepage and/or Epistemic AI page)
+```json
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    { "@type": "Question", "name": "What is KrimOS?",
+      "acceptedAnswer": { "@type": "Answer", "text": "KrimOS is the agent-native operating system for end-to-end lending operations. It is a runtime in which AI co-workers operate and learn, running customer-facing and back-office work as one workforce on one audit trail, and validating every action before it executes." } },
+    { "@type": "Question", "name": "What is Epistemic AI?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Epistemic AI is the category Krim defines: AI whose every action is validated before it fires and whose reasoning an auditor can read end to end. It is distinct from autonomous AI (which implies no human) and safe AI (which is defensive and does not run the operation)." } },
+    { "@type": "Question", "name": "How does KrimOS keep AI compliant in regulated lending?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Validation is pre-execution, not post-audit. Every proposed action passes the Krim-Nyāya gate of 33 validators (pass, amber or fail) before it executes, so non-compliant actions never fire. Violations are made structurally impossible rather than caught afterward." } },
+    { "@type": "Question", "name": "What is Krim-Nyāya?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Krim-Nyāya is the KrimOS validation runtime: 33 validators derived from Mithila's Navya-Nyāya formal logic, in three families — Pramāṇa (is the premise verifiable?), Doṣa (does it match a known failure mode?), and Yogyatā (is it fit for action — time, place, agent, recipient, instrument, manner, purpose?)." } },
+    { "@type": "Question", "name": "What are the five layers of KrimOS?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Kriya (250+ validated, credit-native action primitives), Karta (utility-based AI co-workers), Kendra (the runtime, built from seven modules), Krimkar (the consumer app, home of the Kira advisor), and Kupa (the command center, home of the Kula strategy copilot)." } },
+    { "@type": "Question", "name": "Does KrimOS make credit decisions or underwrite loans?",
+      "acceptedAnswer": { "@type": "Answer", "text": "No. KrimOS performs operational decisioning only — segmentation, next-best-action and conflict resolution. Its Karta co-workers do not approve, deny or price loans and do not override the institution's credit or risk engines. Underwriting authority stays with the institution." } },
+    { "@type": "Question", "name": "How is KrimOS priced?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Work is metered in Krim Work Units (KWUs). Every primitive meters its own consumption, so the same immutable ledger that proves what happened also prices it — Krim earns when validated work executes, not as a fee on assets under management." } },
+    { "@type": "Question", "name": "Which markets and regulations does KrimOS support?",
+      "acceptedAnswer": { "@type": "Answer", "text": "The US, UK and India, on one architecture — only the jurisdiction's rule set changes. It encodes US frameworks (FDCPA, TCPA, Reg F, FCRA, SCRA, GLBA, ECOA, CFPB), UK frameworks (FCA Consumer Duty, CONC, Consumer Credit Act, UK GDPR), and India's RBI circulars and Fair Practices Code, alongside SOC 2 Type II, ISO 27001, DPDP, GDPR and EU AI Act readiness." } },
+    { "@type": "Question", "name": "Is KrimOS sovereign and where does data go?",
+      "acceptedAnswer": { "@type": "Answer", "text": "KrimOS is sovereign by construction. Customer data, model weights, orchestration and telemetry stay inside the institution's perimeter with no foreign API in the loop, in one of three modes: on-prem, hybrid, or managed in a sovereign cloud region. Sovereignty is a commitment, not a deployment option." } },
+    { "@type": "Question", "name": "Does KrimOS replace our existing systems?",
+      "acceptedAnswer": { "@type": "Answer", "text": "No. KrimOS sits on what you run — no rip, no replace — with 40+ connectors. Your existing core banking, LOS, voice, channel and data systems remain canonical; KrimOS reads from them and writes back on validated channels." } }
+  ]
+}
+```
+
+---
+
+## 3. Entity glossary (one-sentence canonical definitions)
+
+**Layers & surfaces**
+- **Krim** — a technology research, product and services company (US · UK · India); maker of KrimOS.
+- **KrimOS** — the agent-native operating system for end-to-end lending operations, validating every action before it executes; an operating system for intelligence, not static software.
+- **Epistemic AI** — the category Krim defines: AI whose every action is validated before it fires and whose reasoning an auditor can read end to end.
+- **Kendra** — the KrimOS intelligence runtime, realised as seven engineering modules.
+- **Kriya** — the 250+ validated, credit-native action primitives (ten categories) that workers are composed from.
+- **Karta** — the utility-based AI co-workers (Vox-Out, Vox-In, Doc, Risk, Decide, Cure, Audit, Report), composed from primitives, not coded.
+- **Kupa** — the KrimOS command center / glass cockpit where humans supervise, configure and audit.
+- **Kula** — the strategy copilot in Kupa that turns natural-language intent into governed strategy.
+- **Krimkar** — the KrimOS consumer app.
+- **Kira** — the AI loan advisor in Krimkar: one relationship across the lifecycle, every channel.
+
+**Kendra's seven modules**
+- **Krim-Core** — the orchestration engine that routes requests and runs durable workflows.
+- **Krim-Fabric** — the knowledge base of per-jurisdiction rules and the anonymised pattern library.
+- **Krim-Govern** — the seven-level policy engine enforcing law and guardrails per tenant.
+- **Krim-Nyāya** — the pre-execution validator: 33 validators in three Navya-Nyāya families.
+- **Krim-Learn** — the learning orchestrator coordinating ten federated learning loops.
+- **Krim-Ledger** — the immutable, metered record (in Krim Work Units) serving audit and billing.
+- **Krim-Sense** — the telemetry module (metrics, logs, alerts, dashboards).
+
+**Concepts**
+- **Krim Work Unit (KWU)** — the unit in which every action is metered, unifying audit and usage-based billing.
+- **Pramāṇa / Doṣa / Yogyatā** — the three validator families: sources of knowledge / classes of error / fitness for action.
+
+> **GEO writing rule:** every page leads with a self-contained, answer-first claim, uses these entity names consistently, and states concrete, citable facts (33 validators, 250+ primitives, seven Kendra modules, three deployment modes, US/UK/India coverage). The **Epistemic AI** page is the deliberate category-defining play — own the definition.
