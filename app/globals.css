@@ -1,0 +1,185 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================================
+   Krim — design tokens (docs/design-tokens.md, transcribed)
+   One dark canvas · cyan = proposed/thinking · mint = validated/learned
+   ============================================================ */
+
+:root {
+  /* Base / surfaces */
+  --bg:             #09090C;
+  --bg-deep:        #04060C;
+  --surface:        #101116;
+  --surface-raised: #15171D;
+
+  /* Borders (alpha over --bg) */
+  --border:         rgba(255, 255, 255, 0.08);
+  --border-strong:  rgba(255, 255, 255, 0.14);
+  --border-mint:    #00FFB2;
+
+  /* Text */
+  --text:           #F6F6F4;
+  --text-2:         #A9ADB6;
+  --text-3:         #6B6F78;
+
+  /* Mint (primary) */
+  --mint:           #00FFB2;
+  --mint-bright:    #5CFFCB;
+  --mint-dim:       #00C98C;
+  --mint-deep:      #0A6B4E;
+  --on-mint:        #04130D;
+
+  /* Gold (secondary — sparingly) */
+  --gold:           #C8A14A;
+  --gold-dim:       #A8843A;
+
+  /* Orb / cyan = proposed, thinking */
+  --orb-canvas:     #04060C;
+  --orb-stroke:     #39D6FF;
+  --orb-highlight:  #BFEFFF;
+
+  /* Validator states */
+  --pass:  #00FFB2;
+  --amber: #C8A14A;
+  --fail:  #E5484D;
+
+  /* Spacing (4px base) */
+  --space-1: 4px;  --space-2: 8px;   --space-3: 12px;  --space-4: 16px;
+  --space-6: 24px; --space-8: 32px;  --space-12: 48px; --space-16: 64px;
+  --space-24: 96px; --space-32: 128px;
+
+  /* Radii */
+  --r-sm: 6px; --r: 10px; --r-lg: 14px; --r-xl: 20px;
+
+  /* Rhythm */
+  --section-y: clamp(64px, 10vw, 128px);
+  --measure: 68ch;
+
+  /* Motion */
+  --ease-out-soft: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out:   cubic-bezier(0.65, 0, 0.35, 1);
+  --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
+  --dur-fast: 150ms; --dur: 240ms; --dur-slow: 420ms;
+}
+
+/* ---------- base ---------- */
+
+html {
+  scroll-behavior: smooth;
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text-2);
+  font-family: var(--font-body), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: rgba(0, 255, 178, 0.22);
+  color: var(--text);
+}
+
+:focus-visible {
+  outline: 2px solid var(--mint);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* ---------- glass ----------
+   Real glassmorphism, reserved for cards that carry key information:
+   backdrop blur · ~1px hairline light border · faint top-edge inner
+   highlight · soft shadow for lift. */
+
+.glass {
+  position: relative;
+  background: rgba(255, 255, 255, 0.025);
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  box-shadow: 0 24px 48px rgba(2, 4, 10, 0.45);
+}
+.glass::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 1px;
+  border-radius: var(--r-lg) var(--r-lg) 0 0;
+  background: linear-gradient(90deg, transparent 4%, rgba(255, 255, 255, 0.18) 50%, transparent 96%);
+  pointer-events: none;
+}
+
+/* ---------- luminous hover ----------
+   Engineered, restrained: border brightens, faint mint lift. */
+
+.lume {
+  transition:
+    border-color var(--dur) var(--ease-standard),
+    box-shadow var(--dur) var(--ease-standard),
+    transform var(--dur) var(--ease-standard);
+}
+.lume:hover {
+  border-color: var(--border-strong);
+  box-shadow:
+    0 24px 48px rgba(2, 4, 10, 0.5),
+    0 0 0 1px rgba(0, 255, 178, 0.12),
+    0 8px 40px -12px rgba(0, 255, 178, 0.14);
+  transform: translateY(-2px);
+}
+@media (prefers-reduced-motion: reduce) {
+  .lume, .lume:hover { transform: none; }
+}
+
+/* ---------- orb backdrop drift ----------
+   The persistent world-model backdrop: very slow, GPU-only. */
+
+@keyframes orb-drift {
+  0%   { transform: translate3d(-2.5%, -1.5%, 0) scale(1); }
+  50%  { transform: translate3d(2.5%, 2%, 0) scale(1.04); }
+  100% { transform: translate3d(-2.5%, -1.5%, 0) scale(1); }
+}
+.orb-drift {
+  animation: orb-drift 75s var(--ease-in-out) infinite;
+  will-change: transform;
+}
+@media (prefers-reduced-motion: reduce) {
+  .orb-drift { animation: none; }
+}
+
+/* ---------- integration wheels ----------
+   Slow orbital rings; each tag counter-rotates to stay upright. */
+
+@keyframes orbit     { from { transform: rotate(0deg); }   to { transform: rotate(360deg); } }
+@keyframes orbit-ccw { from { transform: rotate(0deg); }   to { transform: rotate(-360deg); } }
+.orbit     { animation: orbit 90s linear infinite; }
+.orbit-tag { animation: orbit-ccw 90s linear infinite; }
+@media (prefers-reduced-motion: reduce) {
+  .orbit, .orbit-tag { animation: none; }
+}
+
+/* ---------- flywheel ring ----------
+   A comet orbits the ring (12s); each node lights cyan as it arrives,
+   settles mint as it passes (staggered by quarter-period). */
+
+@keyframes ring-turn { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+.ring-comet { animation: ring-turn 12s linear infinite; transform-origin: center; }
+
+@keyframes node-pass {
+  0%, 100% { stroke: rgba(255, 255, 255, 0.28); fill: rgba(255, 255, 255, 0.06); }
+  4%       { stroke: #39D6FF; fill: rgba(57, 214, 255, 0.22); }
+  16%      { stroke: #00FFB2; fill: rgba(0, 255, 178, 0.18); }
+  55%      { stroke: rgba(0, 255, 178, 0.45); fill: rgba(0, 255, 178, 0.05); }
+}
+.ring-node { animation: node-pass 12s linear infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  .ring-comet { animation: none; visibility: hidden; }
+  .ring-node { animation: none; stroke: rgba(0, 255, 178, 0.5); fill: rgba(0, 255, 178, 0.08); }
+}

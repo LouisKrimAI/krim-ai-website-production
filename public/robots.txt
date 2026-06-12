@@ -1,3 +1,16 @@
+# krim.ai — search and answer engines welcome (KRIM-BRIEF §SEO & GEO)
+
 User-agent: *
 Allow: /
-Sitemap: https://krim.ai/sitemap.xml
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /

@@ -104,10 +104,12 @@ Body: Capability composes from the bottom up — primitives build into co-worker
 
 **Composition, in one line:** Kriya primitives compose into Karta co-workers; Karta execute through the Kendra runtime; every action passes Krim-Nyāya before it fires; outcomes are metered and recorded in Krim-Ledger and feed Krim-Learn — all surfaced through Kira in Krimkar and Kula in Kupa.
 
+**Where the mind is:** the intelligence and the judgment live in **Kendra** — **Krim-Nyāya** validates, **Krim-Learn** is the learning mind. **Kula** (enterprise) and **Kira** (consumer) are *interfaces* to that mind, not minds themselves.
+
 | Layer | What it is |
 |---|---|
-| **Krimkar** *(consumer app)* | **Kira** — the AI loan advisor. One relationship across the whole lifecycle, on every channel. |
-| **Kupa** *(command center)* | **Kula** — the strategy copilot, plus the glass cockpit where humans supervise, configure and audit. |
+| **Krimkar** *(consumer app + public site)* | **Kira** — the AI loan advisor. One relationship across the whole lifecycle, on every channel; the face customers meet in the app and on the public site. |
+| **Kupa** *(command center)* | **Kula** — the enterprise natural-language interface: each user meets a digital twin tailored to their role, in the glass cockpit where humans supervise, configure and audit. |
 | **Karta** *(AI co-workers)* | A utility-based catalog — voice, document, risk, decision, cure, audit, report — composed from primitives, not coded. |
 | **Kriya** *(action primitives)* | **250+** validated, credit-native primitives in ten categories — the metered vocabulary every worker is built from. |
 | **Kendra** *(the runtime)* | The intelligence substrate, realised as seven modules: Core, Fabric, Govern, Nyāya, Learn, Ledger, Sense. |
@@ -198,16 +200,6 @@ Body: Every action, decision, prompt, output and validation is streamed to an im
 
 ---
 
-## The world model — intelligence that compounds
-*(Canonical block — BUILD-BRIEF v3 §2. The second of the two co-equal powers; carry into every key page's spine alongside pre-execution validation.)*
-
-> **The world model — intelligence that compounds.**
-> One runtime runs the whole lending lifecycle, so it sees the operation whole — every call, document, decision and outcome, on one ledger with its complete reasoning chain. Krim-Learn turns that record into a connected model of how the operation actually behaves: which sequence cures a delinquency, which channel reaches which segment, where borrowers stall and why. Ten learning loops attribute outcomes to decisions; patterns above the effectiveness threshold enter Krim-Fabric, anonymised and federated, with per-tenant opt-out; four memory tiers share what one co-worker learns with all of them. The result: Q1 baseline, measurable gains by Q2, materially better than go-live by year two — improvement from the runtime, not additional engineering. **Validated before it acts. Smarter after it acts.**
-
-**The dependency is the insight:** validation without learning is a compliance tool; learning without validation is a liability no bank can deploy. The gate makes it safe to act; the world model makes each action smarter than the last. Sovereignty underwrites both.
-
----
-
 ## Krim-Learn — compounding, federated intelligence
 Eyebrow: LEARNING · Headline: **It improves with use — structurally.**
 Body: Krim-Learn coordinates ten learning loops (outcome feedback, error analysis, pattern refinement, temporal and semantic learning among them), running from every interaction back into the institution's intelligence: optimisation on every decision, pattern memory shared across the workforce, outcome attribution from the complete reasoning chain in Krim-Ledger, cross-worker transfer between adjacent workflows within governance constraints. **Learning is federated** — the moat lives in Krim-Fabric's pattern library: patterns are admitted only above a defined effectiveness threshold (≈80%), anonymised and aggregated so no tenant's secrets leak, with per-tenant opt-out. Expected curve: a first-quarter baseline, measurable gains by the second quarter, materially better than go-live by year two — improvement from the runtime, not from additional engineering.
@@ -218,11 +210,11 @@ Body: Krim-Learn coordinates ten learning loops (outcome feedback, error analysi
 
 ### Kira · Krimkar (consumer)
 Headline: **Kira — one relationship, the whole lifecycle.**
-A single AI loan advisor meets the borrower across WhatsApp, voice, IVR, chat, email and SMS — one thread, context preserved across channels, from application to payoff. Speaks the customer's language (including 50+ Indian languages), auto-clarifies ambiguous fields mid-conversation, acts only within consent and contact-window rules, and hands off to a human with full context for disputes, hardship or sensitive segments.
+A single AI loan advisor meets the borrower across WhatsApp, voice, IVR, chat, email and SMS — and on the public consumer site and the Krimkar app — one thread, context preserved across channels, from application to payoff. Speaks the customer's language (including 50+ Indian languages), auto-clarifies ambiguous fields mid-conversation, acts only within consent and contact-window rules, and hands off to a human with full context for disputes, hardship or sensitive segments.
 
-### Kula · Kupa (strategy copilot)
-Headline: **Kula turns intent into governed strategy.**
-An operator writes, e.g., *"Increase on-time payments in 1–30 DPD by 5% next quarter,"* or *"Run a win-back for auto-loan customers who paid off last year and took no further product."* Kula proposes segments, flows, Karta combinations and policy constraints; drafts workflows from Kriya primitives; routes every proposal through Krim-Govern and Krim-Nyāya; and surfaces it in Kupa for human review. It never bypasses human sign-off or policy checks. *(The Ask → Suggest → Act → Learn loop in one line.)*
+### Kula · Kupa (enterprise natural-language interface)
+Headline: **Kula — talk to your operation.**
+Kula is the natural-language interface for enterprise users: each user meets a **digital twin tailored to their role**, which coordinates and assists intelligently. The thinking happens in Kendra (Krim-Learn and the runtime modules); Kula is how a person reaches it. An operator writes, e.g., *"Increase on-time payments in 1–30 DPD by 5% next quarter,"* or *"Run a win-back for auto-loan customers who paid off last year and took no further product."* Kula proposes segments, flows, Karta combinations and policy constraints; drafts workflows from Kriya primitives; routes every proposal through Krim-Govern and Krim-Nyāya; and surfaces it in Kupa for human review. It never bypasses human sign-off or policy checks. *(Ask → Suggest → Act → Learn.)*
 
 ### Kupa · the command center
 Headline: **The glass cockpit for Krim-powered operations.**

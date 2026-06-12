@@ -31,11 +31,6 @@ itself, not a wrapper. Krim defines the category "Epistemic AI" — distinct fro
 
 ## Key facts
 - Promise: every action validated before it executes; reasoning an auditor can read end to end.
-- The world model: because one runtime runs the whole lifecycle and records every action with its
-  reasoning chain in Krim-Ledger, Krim-Learn compounds the record into a connected model of how
-  lending operations actually behave — ten learning loops, outcome attribution, patterns admitted
-  above ~80% effectiveness into Krim-Fabric (anonymised, federated, per-tenant opt-out), shared
-  through four memory tiers. Validated before it acts; smarter after it acts.
 - Validation: Krim-Nyāya — 33 validators (pass/amber/fail) from Mithila's Navya-Nyāya formal logic,
   in three families: Pramāṇa (sources of knowledge), Doṣa (classes of error), Yogyatā (fitness for action).
 - Operational decisioning only — Karta do not approve, deny or price loans; underwriting stays with
@@ -51,12 +46,7 @@ itself, not a wrapper. Krim defines the category "Epistemic AI" — distinct fro
 
 ## Links
 - Home: https://krim.ai
-- Platform: https://krim.ai/platform
-- Kendra (runtime): https://krim.ai/platform/kendra
-- Kriya (primitives): https://krim.ai/platform/kriya
-- Karta (co-workers): https://krim.ai/platform/karta
-- Kupa (command center): https://krim.ai/platform/kupa
-- Krimkar (consumer surface): https://krim.ai/platform/krimkar
+- Product / KrimOS: https://krim.ai/product
 - Epistemic AI: https://krim.ai/epistemic-ai
 - Architecture: https://krim.ai/architecture
 - Trust & security: https://krim.ai/trust
@@ -119,7 +109,6 @@ Sitemap: https://krim.ai/sitemap.xml
   "description": "KrimOS is the agent-native operating system for end-to-end lending operations. It runs customer-facing and back-office work as one AI workforce on one audit trail, validating every action before it executes via the Krim-Nyāya 33-validator gate.",
   "featureList": [
     "Pre-execution validation (Krim-Nyāya, 33 validators)",
-    "World model of lending operations — Krim-Learn compounds the complete ledger into a connected model of how the operation behaves (ten learning loops, outcome attribution, ~80% effectiveness threshold, federated with per-tenant opt-out)",
     "Five-layer architecture: Kriya, Karta, Kendra, Krimkar, Kupa",
     "Kendra runtime with seven modules: Core, Fabric, Govern, Nyāya, Learn, Ledger, Sense",
     "250+ credit-native action primitives in ten categories",
