@@ -10,7 +10,10 @@
 
 import { useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
+import { motion, useReducedMotion } from 'framer-motion'
 import KrimLogoAnimated from './KrimLogoAnimated'
+
+const OUT_SOFT = [0.16, 1, 0.3, 1] as const
 
 const DOMAINS = [
   ['Lending', '/lending'],
@@ -30,10 +33,13 @@ const DEMO_HREF = 'mailto:sales@krim.ai?subject=Demo%20request%20%E2%80%94%20Kri
 
 const linkCls = 'font-sans text-[14px] text-ink-2 transition-colors duration-fast hover:text-ink'
 
-export default function SiteHeader() {
+export default function SiteHeader({ revealDelay = 0 }: { revealDelay?: number }) {
   const [menuOpen, setMenuOpen] = useState(false) // mobile sheet
   const [domainsOpen, setDomainsOpen] = useState(false) // desktop dropdown
   const domainsRef = useRef<HTMLDivElement>(null)
+  const reduce = useReducedMotion()
+  // on the homepage the banner stays hidden through the orb arrival, then fades in
+  const showNow = reduce || !revealDelay
 
   // close the desktop dropdown on outside click / Escape
   useEffect(() => {
@@ -51,7 +57,12 @@ export default function SiteHeader() {
   }, [domainsOpen])
 
   return (
-    <header className="sticky top-0 z-40 border-b border-soft bg-bg/70 backdrop-blur-md">
+    <motion.header
+      className="sticky top-0 z-40 border-b border-soft bg-bg/70 backdrop-blur-md"
+      initial={{ opacity: showNow ? 1 : 0 }}
+      animate={{ opacity: 1 }}
+      transition={showNow ? { duration: 0 } : { delay: revealDelay, duration: 1, ease: OUT_SOFT }}
+    >
       <div className="mx-auto flex h-16 max-w-site items-center justify-between px-6 md:px-10">
         <Link href="/" className="flex items-center" aria-label="Krim — home">
           {/* the moving inverted logo + KRIM */}
@@ -158,6 +169,6 @@ export default function SiteHeader() {
           </div>
         </nav>
       )}
-    </header>
+    </motion.header>
   )
 }

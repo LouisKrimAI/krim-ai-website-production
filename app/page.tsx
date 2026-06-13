@@ -130,7 +130,7 @@ export default function HomePage() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(orgLd) }} />
-      <SiteHeader />
+      <SiteHeader revealDelay={3.8} />
       <main>
         {/* ---- 1 · Hero — orb choreography + persistent fixed orb backdrop ---- */}
         <HomeHero />

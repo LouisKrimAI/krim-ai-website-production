@@ -39,21 +39,17 @@ export default function HomeHero() {
           }}
         />
         <div className="absolute left-1/2 top-[44%] flex -translate-x-1/2 -translate-y-1/2 items-center justify-center">
-          {/* Arrival: a small orb grows — slowly at first, then a little
-              faster — out to full size beyond the screen, settling as the
-              living backdrop. The logo and words fade in afterwards. */}
+          {/* Arrival: a small orb grows on one continuous, smooth curve —
+              slow at first, then a little faster, easing to rest — out to
+              full size beyond the screen. Centre-aligned throughout; only its
+              size changes (no drift, no jumps). The logo + words follow. */}
           <motion.div
-            initial={reduce ? orbResolved : { scale: 0.35, opacity: 0 }}
-            animate={reduce ? orbResolved : { scale: [0.35, 0.7, 1.6], opacity: [0, 0.5, 0.34] }}
-            transition={
-              reduce
-                ? { duration: 0 }
-                : { duration: 4.2, times: [0, 0.45, 1], ease: ['easeIn', 'easeOut'] }
-            }
+            initial={reduce ? orbResolved : { scale: 0.3, opacity: 0 }}
+            animate={reduce ? orbResolved : { scale: 1.6, opacity: 0.34 }}
+            transition={reduce ? { duration: 0 } : { duration: 4.6, ease: [0.6, 0, 0.3, 1] }}
+            style={{ transformOrigin: 'center' }}
           >
-            <div className="orb-drift">
-              <WaveOrb size="min(88vmin, 880px)" speed={0.5} density={0.6} />
-            </div>
+            <WaveOrb size="min(88vmin, 880px)" speed={0.5} density={0.6} />
           </motion.div>
         </div>
         {/* gentle vignette so text edges never fight the orb (light — keep the orb visible) */}
@@ -73,7 +69,7 @@ export default function HomeHero() {
             <motion.div
               initial={reduce ? { opacity: 1, y: 0 } : { opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={reduce ? { duration: 0 } : { duration: 1.6, delay: 3.4, ease: OUT_SOFT }}
+              transition={reduce ? { duration: 0 } : { duration: 1.5, delay: 3.8, ease: OUT_SOFT }}
             >
               <KrimLogoAnimated className="h-[clamp(116px,17vw,232px)] w-auto" />
             </motion.div>
@@ -82,26 +78,26 @@ export default function HomeHero() {
               className="mt-10 font-serif text-[clamp(2.5rem,5.2vw,4.25rem)] leading-[1.06] tracking-[-0.02em] text-ink"
               initial={reduce ? { opacity: 1, y: 0 } : { opacity: 0, y: 14 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={reduce ? { duration: 0 } : { duration: 1.4, delay: 4.5, ease: OUT_SOFT }}
+              transition={reduce ? { duration: 0 } : { duration: 1.4, delay: 4.9, ease: OUT_SOFT }}
             >
-              <span className="block">Safe Superintelligence</span>
-              <span className="block">for Regulated Automation</span>
+              <span className="block">Sovereign Superintelligence</span>
+              <span className="block">for Safe Automation</span>
             </motion.h1>
 
             <motion.p
               className="mt-7 max-w-[52ch] font-sans text-body-lg text-ink-2"
               initial={reduce ? { opacity: 1, y: 0 } : { opacity: 0, y: 14 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={reduce ? { duration: 0 } : { duration: 1.4, delay: 4.85, ease: OUT_SOFT }}
+              transition={reduce ? { duration: 0 } : { duration: 1.4, delay: 5.15, ease: OUT_SOFT }}
             >
-              AI co-workers run your ops — Intelligence by Policy.
+              AI workers run your operations — Intelligence by Policy.
             </motion.p>
 
             <motion.div
               className="mt-11 flex flex-wrap items-center justify-center gap-6"
               initial={reduce ? { opacity: 1, y: 0 } : { opacity: 0, y: 14 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={reduce ? { duration: 0 } : { duration: 1.2, delay: 5.1, ease: OUT_SOFT }}
+              transition={reduce ? { duration: 0 } : { duration: 1.2, delay: 5.4, ease: OUT_SOFT }}
             >
               <CTA href={DEMO_HREF}>Book a demo</CTA>
               <CTA href="#intelligence" variant="secondary">
