@@ -100,7 +100,7 @@ export default function HomeHero() {
               transition={reduce ? { duration: 0 } : { duration: 1, delay: 4.6, ease: OUT_SOFT }}
             >
               <CTA href={DEMO_HREF}>Book a demo</CTA>
-              <CTA href="#proof" variant="secondary">
+              <CTA href="#intelligence" variant="secondary">
                 See how it works
               </CTA>
             </motion.div>

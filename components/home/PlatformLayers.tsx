@@ -6,7 +6,8 @@
  * KrimOS rendered as an elegant vertical stack of glass strata. Read top
  * to bottom as a real architecture:
  *
- *   Kula · Kira   — the two SURFACE faces people touch (interfaces, NOT minds)
+ *   Kupa          — the command center your teams work from (surface)
+ *   Kula · Kira   — the two interface faces people talk to (NOT minds)
  *   Karta         — the co-workers (operating layer)
  *   Kriya         — the validated vocabulary (operating layer)
  *   Kendra        — the brain: a luminous cyan foundation the stack rests on
@@ -46,8 +47,15 @@ type Layer = {
   tag2?: string
 }
 
-/** Top → bottom. Surface faces first, operating layers, brain last. */
+/** Top → bottom. The command center, the interface faces, operating layers, brain last. */
 const LAYERS: Layer[] = [
+  {
+    key: 'kupa',
+    name: 'Kupa',
+    role: 'the command center — supervise, configure, audit',
+    tag: 'COMMAND CENTER',
+    tone: 'surface',
+  },
   {
     key: 'faces',
     name: 'Kula',

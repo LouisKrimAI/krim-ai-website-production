@@ -14,6 +14,7 @@ import Reveal from '@/components/Reveal'
 import HomeHero from '@/components/home/HomeHero'
 import PowerCards from '@/components/home/PowerCards'
 import PlatformLayers from '@/components/home/PlatformLayers'
+import PolicyChecks from '@/components/home/PolicyChecks'
 import ProofPanel from '@/components/home/ProofPanel'
 import IntegrationsMarquee from '@/components/home/IntegrationsMarquee'
 import Recognition from '@/components/home/Recognition'
@@ -129,19 +130,19 @@ export default function HomePage() {
         {/* everything below sits above the fixed orb (z-0) */}
         <div className="relative z-10">
 
-        {/* ---- 2 · The problem ---- */}
-        <Section hairline id="problem">
+        {/* ---- 2 · The challenge ---- */}
+        <Section hairline id="challenge">
           <Reveal>
-            <Eyebrow tone="gold">The problem</Eyebrow>
+            <Eyebrow tone="gold">The challenge</Eyebrow>
             <h2 className="mt-4 font-serif text-display-1 text-ink">Regulated work is stuck.</h2>
           </Reveal>
-          <div className="mt-12 max-w-[660px] space-y-6">
+          <div className="mt-12 grid gap-5 md:grid-cols-3">
             {PROBLEMS.map((p, i) => (
               <Reveal key={p} delay={i * 0.1}>
-                <div className="flex items-stretch gap-5">
-                  {/* a quiet cyan "blocked" rule — the grammar that resolves to mint below */}
-                  <span aria-hidden className="mt-1 w-px shrink-0 self-stretch bg-cyan/45" />
-                  <p className="font-sans text-body-lg text-ink-2">{p}</p>
+                <div className="glass lume h-full p-7 md:p-8">
+                  {/* the cyan "blocked" cue — resolves to mint in the powers below */}
+                  <span aria-hidden className="block h-[3px] w-12 rounded-full bg-cyan/70" />
+                  <p className="mt-6 font-sans text-body-lg text-ink-2">{p}</p>
                 </div>
               </Reveal>
             ))}
@@ -266,39 +267,53 @@ export default function HomePage() {
           </div>
         </Section>
 
-        {/* ---- 7 · Proof & fit ---- */}
-        <Section hairline id="proof">
+        {/* ---- 7 · Intelligence by policy — what Kendra checks ---- */}
+        <Section hairline id="intelligence">
           <Reveal>
-            <Eyebrow>See it, slot it in</Eyebrow>
-            <h2 className="mt-4 max-w-[24ch] font-serif text-display-1 text-ink">
-              Every action on the record. Every system still in place.
+            <Eyebrow>Intelligence by policy</Eyebrow>
+            <h2 className="mt-4 max-w-[20ch] font-serif text-display-1 text-ink">
+              Every action has to earn its execution.
             </h2>
-            <p className="mt-6 max-w-[58ch] font-sans text-body-lg text-ink-2">
-              Watch one action get checked, cleared and receipted — including the one that&rsquo;s
-              refused and handed to a person. And Krim sits on what you already run: no rip, no
-              replace.
+            <p className="mt-6 max-w-[60ch] font-sans text-body-lg text-ink-2">
+              Before a co-worker acts, Kendra puts the proposed action through Krim-Nyāya — a gate
+              built on a formal logic tradition. Three questions decide it, every time.
             </p>
           </Reveal>
-          <Reveal delay={0.15}>
-            <div className="mt-12">
+          <div className="mt-12">
+            <PolicyChecks />
+          </div>
+          <Reveal delay={0.1}>
+            <div className="mt-16">
               <ProofPanel />
             </div>
           </Reveal>
+        </Section>
+
+        {/* ---- 8 · Fits the stack you already run ---- */}
+        <Section hairline id="integrations">
+          <Reveal>
+            <p className="text-center font-serif text-[clamp(1.6rem,2.8vw,2.2rem)] leading-tight text-ink">
+              No rip, no replace.
+            </p>
+            <p className="mx-auto mt-4 max-w-[50ch] text-center font-sans text-body text-ink-2">
+              KrimOS is the decision layer your existing systems report into.
+            </p>
+          </Reveal>
           <Reveal delay={0.1}>
-            <div className="mt-20">
+            <div className="mt-12">
               <IntegrationsMarquee />
             </div>
           </Reveal>
         </Section>
 
-        {/* ---- 8 · Recognition — slim honest credibility strip ---- */}
+        {/* ---- 9 · Recognition — slim honest credibility strip ---- */}
         <Section hairline id="recognition">
           <Reveal>
             <Recognition />
           </Reveal>
         </Section>
 
-        {/* ---- 9 · Close ---- */}
+        {/* ---- 10 · Close ---- */}
         <Section hairline id="close">
           <Reveal>
             <GlassCard className="mx-auto max-w-[720px] p-10 text-center md:p-14">
