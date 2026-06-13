@@ -38,7 +38,7 @@ export default function HomeHero() {
               'radial-gradient(56% 50% at 50% 40%, #04060C 0%, rgba(4,6,12,0.55) 55%, rgba(9,9,12,0) 100%)',
           }}
         />
-        <div className="absolute left-1/2 top-[44%] flex -translate-x-1/2 -translate-y-1/2 items-center justify-center">
+        <div className="absolute left-1/2 top-1/2 flex -translate-x-1/2 -translate-y-1/2 items-center justify-center">
           {/* Arrival: a small orb grows on one continuous, smooth curve —
               slow at first, then a little faster, easing to rest — out to
               full size beyond the screen. Centre-aligned throughout; only its

@@ -33,13 +33,22 @@ const DEMO_HREF = 'mailto:sales@krim.ai?subject=Demo%20request%20%E2%80%94%20Kri
 
 const linkCls = 'font-sans text-[14px] text-ink-2 transition-colors duration-fast hover:text-ink'
 
-export default function SiteHeader({ revealDelay = 0 }: { revealDelay?: number }) {
+export default function SiteHeader({ scrollReveal = false }: { scrollReveal?: boolean }) {
   const [menuOpen, setMenuOpen] = useState(false) // mobile sheet
   const [domainsOpen, setDomainsOpen] = useState(false) // desktop dropdown
   const domainsRef = useRef<HTMLDivElement>(null)
   const reduce = useReducedMotion()
-  // on the homepage the banner stays hidden through the orb arrival, then fades in
-  const showNow = reduce || !revealDelay
+  // On the homepage the banner stays hidden over the hero and is revealed once
+  // the visitor scrolls past it. Elsewhere (scrollReveal=false) it's always shown.
+  const [shown, setShown] = useState(!scrollReveal)
+
+  useEffect(() => {
+    if (!scrollReveal) return
+    const onScroll = () => setShown(window.scrollY > window.innerHeight * 0.5)
+    onScroll()
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [scrollReveal])
 
   // close the desktop dropdown on outside click / Escape
   useEffect(() => {
@@ -59,9 +68,11 @@ export default function SiteHeader({ revealDelay = 0 }: { revealDelay?: number }
   return (
     <motion.header
       className="sticky top-0 z-40 border-b border-soft bg-bg/70 backdrop-blur-md"
-      initial={{ opacity: showNow ? 1 : 0 }}
-      animate={{ opacity: 1 }}
-      transition={showNow ? { duration: 0 } : { delay: revealDelay, duration: 1, ease: OUT_SOFT }}
+      aria-hidden={!shown}
+      initial={false}
+      animate={{ opacity: shown ? 1 : 0, y: shown || reduce ? 0 : -14 }}
+      transition={reduce ? { duration: 0 } : { duration: 0.5, ease: OUT_SOFT }}
+      style={{ pointerEvents: shown ? 'auto' : 'none' }}
     >
       <div className="mx-auto flex h-16 max-w-site items-center justify-between px-6 md:px-10">
         <Link href="/" className="flex items-center" aria-label="Krim — home">
