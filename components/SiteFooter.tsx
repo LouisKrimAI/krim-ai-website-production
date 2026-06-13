@@ -6,6 +6,7 @@
  */
 
 import Link from 'next/link'
+import KrimLogoAnimated from './KrimLogoAnimated'
 
 const DEMO_HREF = 'mailto:sales@krim.ai?subject=Demo%20request%20%E2%80%94%20KrimOS'
 
@@ -99,10 +100,7 @@ export default function SiteFooter() {
         {/* brand row */}
         <div className="mt-14 flex flex-wrap items-center justify-between gap-x-8 gap-y-5 border-t border-soft pt-8">
           <div className="flex items-center gap-3.5">
-            <span className="flex items-center gap-2.5">
-              <img src="/brand/krim-mark.svg" alt="" width={20} height={20} className="h-5 w-5" />
-              <span className="font-mono text-[14px] font-medium tracking-[0.22em] text-ink">KRIM</span>
-            </span>
+            <KrimLogoAnimated className="h-7 w-auto" />
             <span aria-hidden className="hidden h-4 w-px bg-strong sm:block" />
             <span className="hidden font-serif text-[0.95rem] italic text-ink-2 sm:inline">
               Intelligence by policy.
