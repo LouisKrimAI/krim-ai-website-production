@@ -45,16 +45,16 @@ const orgLd = {
 
 const PROBLEMS = [
   {
-    heading: 'It can’t be trusted to act',
-    body: 'AI can advise all day. But one wrong action in regulated work is a compliance breach — so it never gets the keys.',
+    heading: 'Advice, not action',
+    body: 'AI can recommend, but few institutions will let it act — in regulated work, one wrong move can become a compliance event.',
   },
   {
-    heading: 'The data can’t leave',
-    body: 'Sensitive records can’t be handed to a cloud model. Off-the-shelf AI is off the table from the start.',
+    heading: 'Data that can’t leave',
+    body: 'Sensitive records often can’t go to a third-party cloud, which rules out most off-the-shelf AI.',
   },
   {
-    heading: 'So the work stays manual',
-    body: 'Slow, costly, impossible to scale — the status quo no one can defend, and no one can replace.',
+    heading: 'Stuck in manual',
+    body: 'So much of the work stays manual — slow, costly, and hard to scale.',
   },
 ]
 
@@ -180,15 +180,15 @@ export default function HomePage() {
             <div>
               <Reveal>
                 <Eyebrow>Why it compounds</Eyebrow>
-                <h2 className="mt-4 max-w-[22ch] font-serif text-display-1 text-ink">
-                  Most AI trades safety for power. This one builds both.
+                <h2 className="mt-4 max-w-[20ch] font-serif text-display-1 text-ink">
+                  Safety and intelligence build each other.
                 </h2>
               </Reveal>
               <Reveal delay={0.12}>
                 <p className="mt-7 max-w-[52ch] font-sans text-body-lg text-ink-2">
-                  Validation lets the machines act. Acting creates a record. The record makes them
-                  smarter. And smarter actions clear the gate more often — so they do more, safely,
-                  the longer they run.
+                  Validation lets the co-workers act. Every action leaves a complete record, and that
+                  record makes them sharper — so more of what they propose clears the gate. They do
+                  more, safely, the longer they run.
                 </p>
               </Reveal>
               <Reveal delay={0.2}>
