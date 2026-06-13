@@ -1,8 +1,9 @@
 /**
  * / — the homepage: the argument, Krim in 30 seconds.
- * Eight sections strictly per docs/copy/homepage.md; presentation notes
- * honoured. Hero is a simple fade for now — the orb-breathe hero is a
- * later dedicated work order. Facts: docs/krim-content.md.
+ * Nine sections per docs/copy/homepage.md; presentation notes honoured.
+ * Hero choreography + persistent orb live in HomeHero. Signature pieces
+ * (orb, platform layers, proof surface, integration marquee) are their own
+ * components. Facts: docs/krim-content.md.
  */
 
 import type { Metadata } from 'next'
@@ -10,13 +11,12 @@ import Link from 'next/link'
 import SiteHeader from '@/components/SiteHeader'
 import SiteFooter from '@/components/SiteFooter'
 import Reveal from '@/components/Reveal'
-import ArchGlyph from '@/components/ArchGlyph'
 import HomeHero from '@/components/home/HomeHero'
-import FlywheelRing from '@/components/home/FlywheelRing'
-import IntegrationWheels from '@/components/home/IntegrationWheels'
-import Receipt from '@/components/home/Receipt'
+import PowerCards from '@/components/home/PowerCards'
+import PlatformLayers from '@/components/home/PlatformLayers'
+import ProofPanel from '@/components/home/ProofPanel'
+import IntegrationsMarquee from '@/components/home/IntegrationsMarquee'
 import Recognition from '@/components/home/Recognition'
-import { BlockedCue, ResolvedCue } from '@/components/home/PowerCue'
 import { Section, Eyebrow, GlassCard, CTA } from '@/components/ui'
 
 export const metadata: Metadata = {
@@ -135,11 +135,12 @@ export default function HomePage() {
             <Eyebrow tone="gold">The problem</Eyebrow>
             <h2 className="mt-4 font-serif text-display-1 text-ink">Regulated work is stuck.</h2>
           </Reveal>
-          <div className="mt-12 max-w-[640px] space-y-7">
+          <div className="mt-12 max-w-[660px] space-y-6">
             {PROBLEMS.map((p, i) => (
               <Reveal key={p} delay={i * 0.1}>
-                <div className="flex items-start gap-4">
-                  <BlockedCue className="mt-[5px] shrink-0" />
+                <div className="flex items-stretch gap-5">
+                  {/* a quiet cyan "blocked" rule — the grammar that resolves to mint below */}
+                  <span aria-hidden className="mt-1 w-px shrink-0 self-stretch bg-cyan/45" />
                   <p className="font-sans text-body-lg text-ink-2">{p}</p>
                 </div>
               </Reveal>
@@ -153,20 +154,11 @@ export default function HomePage() {
             <Eyebrow>What Krim changes</Eyebrow>
             <h2 className="mt-4 font-serif text-display-1 text-ink">Three things, locked together.</h2>
           </Reveal>
-          <div className="mt-12 grid gap-5 lg:grid-cols-3">
-            {POWERS.map((p, i) => (
-              <Reveal key={p.name} delay={i * 0.12}>
-                <GlassCard className="h-full p-8 md:p-9">
-                  <ResolvedCue delay={i * 0.15} />
-                  <h3 className="mt-5 font-serif text-[1.75rem] leading-tight text-ink">{p.name}</h3>
-                  <p className="mt-2 font-serif text-[1.05rem] italic text-mint">&ldquo;{p.tagline}&rdquo;</p>
-                  <p className="mt-5 font-sans text-body text-ink-2">{p.body}</p>
-                </GlassCard>
-              </Reveal>
-            ))}
+          <div className="mt-12">
+            <PowerCards powers={POWERS} />
           </div>
-          <Reveal delay={0.3}>
-            <p className="mt-10 text-center font-serif text-[1.1rem] italic text-ink-2">
+          <Reveal delay={0.2}>
+            <p className="mt-10 text-center font-serif text-[1.15rem] italic text-ink-2">
               Not features you choose between — each makes the others possible.
             </p>
           </Reveal>
@@ -198,7 +190,20 @@ export default function HomePage() {
               </Reveal>
             </div>
             <Reveal delay={0.15}>
-              <FlywheelRing />
+              {/* PLACEHOLDER: flywheel visual is being made in Gemini.
+                  Drop the asset at /public/images/flywheel.* (square, ~1000×1000)
+                  and replace this block with the <Image>. Sequence to depict:
+                  Validate → Act → Record → Learn, each lighting cyan then mint. */}
+              <div className="glass-quiet relative mx-auto flex aspect-square w-full max-w-[420px] items-center justify-center overflow-hidden">
+                <div className="absolute inset-5 rounded-[12px] border border-dashed border-soft" aria-hidden />
+                <div className="px-8 text-center">
+                  <p className="font-mono text-[11px] uppercase tracking-[0.22em] text-ink-3">Flywheel visual</p>
+                  <p className="mt-4 font-mono text-[12px] leading-relaxed tracking-[0.14em] text-ink-2">
+                    VALIDATE → ACT →<br />RECORD → LEARN
+                  </p>
+                  <p className="mt-5 font-sans text-[12px] text-ink-3">image slot · /images/flywheel</p>
+                </div>
+              </div>
             </Reveal>
           </div>
         </Section>
@@ -218,12 +223,12 @@ export default function HomePage() {
             </Reveal>
           </div>
           <Reveal delay={0.15}>
-            <GlassCard className="mx-auto mt-12 max-w-[820px] px-5 py-8 md:px-10 md:py-10">
-              <ArchGlyph />
-            </GlassCard>
+            <div className="mt-14">
+              <PlatformLayers />
+            </div>
           </Reveal>
           <Reveal delay={0.2}>
-            <div className="mt-9 text-center">
+            <div className="mt-12 text-center">
               <CTA href="/platform" variant="secondary">
                 Explore the platform
               </CTA>
@@ -238,6 +243,10 @@ export default function HomePage() {
             <h2 className="mt-4 max-w-[26ch] font-serif text-display-1 text-ink">
               Built for the operations that can&rsquo;t afford to be wrong.
             </h2>
+            <p className="mt-6 max-w-[60ch] font-sans text-body-lg text-ink-2">
+              One core, every regulated industry. The rules and use cases change; the proof and the
+              learning do not.
+            </p>
           </Reveal>
           <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {DOORS.map(([name, line, href], i) => (
@@ -272,12 +281,12 @@ export default function HomePage() {
           </Reveal>
           <Reveal delay={0.15}>
             <div className="mt-12">
-              <Receipt />
+              <ProofPanel />
             </div>
           </Reveal>
           <Reveal delay={0.1}>
-            <div className="mt-16">
-              <IntegrationWheels />
+            <div className="mt-20">
+              <IntegrationsMarquee />
             </div>
           </Reveal>
         </Section>
@@ -300,9 +309,6 @@ export default function HomePage() {
                 </h2>
                 <p className="mt-5 font-sans text-body text-ink-2">
                   Sovereign by default. Auditable by design.
-                </p>
-                <p className="mt-4 font-mono text-[11px] uppercase tracking-[0.2em] text-ink-3">
-                  On-premise · Hybrid · Managed — whichever your regulator prefers
                 </p>
                 <div className="mt-9">
                   <CTA href={DEMO_HREF}>Book a demo</CTA>

@@ -146,16 +146,18 @@ body {
   transition:
     border-color var(--dur) var(--ease-standard),
     box-shadow var(--dur) var(--ease-standard),
+    background-color var(--dur) var(--ease-standard),
     transform var(--dur) var(--ease-standard);
 }
 .lume:hover {
-  border-color: rgba(255, 255, 255, 0.2);
+  border-color: rgba(0, 255, 178, 0.4);
+  background-color: rgba(0, 255, 178, 0.02);
   box-shadow:
-    0 1px 1px 0 rgba(255, 255, 255, 0.16) inset,
-    0 36px 70px -20px rgba(2, 4, 10, 0.72),
-    0 0 0 1px rgba(0, 255, 178, 0.16),
-    0 10px 48px -14px rgba(0, 255, 178, 0.2);
-  transform: translateY(-3px);
+    0 1px 1px 0 rgba(255, 255, 255, 0.2) inset,
+    0 44px 84px -20px rgba(2, 4, 10, 0.78),
+    0 0 0 1px rgba(0, 255, 178, 0.28),
+    0 14px 64px -14px rgba(0, 255, 178, 0.32);
+  transform: translateY(-5px);
 }
 @media (prefers-reduced-motion: reduce) {
   .lume, .lume:hover { transform: none; }

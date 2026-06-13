@@ -16,15 +16,18 @@
 
 import { useEffect, useMemo, useRef } from 'react'
 
+// Cool luminous family, cyan-led ("thinking"), with mint ("validated") and a
+// soft violet/indigo accent so the sphere reads colourful and dimensional
+// against the deep canvas — never flat monochrome, never a garish rainbow.
 const PALETTE: Array<[number, number]> = [
-  [250, 72], // indigo
-  [222, 82], // blue
-  [202, 84], // azure
-  [190, 80], // cyan
-  [170, 68], // teal
-  [234, 70], // periwinkle
-  [266, 64], // violet
-  [212, 30], // slate grey
+  [196, 92], // azure   — spine
+  [188, 95], // cyan    — spine (brightest)
+  [202, 88], // sky     — spine
+  [172, 82], // teal
+  [162, 90], // mint-teal (brand mint leans in here)
+  [212, 80], // blue
+  [250, 70], // indigo  — accent
+  [268, 60], // violet  — accent
 ]
 const P = PALETTE.length
 
@@ -93,10 +96,10 @@ export default function WaveOrb({
   const shells = useMemo<Shell[]>(() => {
     const R = (n: number) => Math.max(3, Math.round(n * density))
     return [
-      makeShell(R(18), [-0.64, -0.32, 0, 0.32, 0.64], R(102), 1.0, 0.74, 1, 5),
-      makeShell(R(14), [-0.56, -0.18, 0.18, 0.56], R(92), 0.85, 0.66, -1, 6),
-      makeShell(R(12), [-0.5, -0.16, 0.16, 0.5], R(82), 0.7, 0.58, 1, 7),
-      makeShell(R(10), [-0.42, 0, 0.42], R(74), 0.55, 0.5, -1, 8),
+      makeShell(R(20), [-0.7, -0.42, -0.14, 0.14, 0.42, 0.7], R(104), 1.0, 0.74, 1, 5),
+      makeShell(R(15), [-0.56, -0.18, 0.18, 0.56], R(92), 0.85, 0.66, -1, 6),
+      makeShell(R(13), [-0.5, -0.16, 0.16, 0.5], R(82), 0.7, 0.58, 1, 7),
+      makeShell(R(11), [-0.42, 0, 0.42], R(74), 0.55, 0.5, -1, 8),
     ]
   }, [density])
 
@@ -107,6 +110,34 @@ export default function WaveOrb({
   const glowEls = useRef<Array<SVGPathElement | null>>([])
   const coreRef = useRef<SVGGElement>(null)
 
+  // Travelling light pulses — signals passing along the strands. A small, fixed
+  // pool, each bound to one (shell, ring), advancing along that ring's sample
+  // arc. Positions are read from the same per-frame buffers the rings already
+  // fill, so this adds only a handful of attribute writes — no path strings, no
+  // per-frame allocations. Built once; deterministic so the first frame is right.
+  const PULSE_N = 9
+  const pulses = useMemo(() => {
+    const arr: Array<{ shell: number; ring: number; speed: number; phase: number }> = []
+    let seed = 1
+    const rnd = () => {
+      seed = (seed * 1103515245 + 12345) & 0x7fffffff
+      return seed / 0x7fffffff
+    }
+    for (let i = 0; i < PULSE_N; i++) {
+      // Favour the two densest, brightest shells so signals read on the spine.
+      const shell = rnd() < 0.62 ? (rnd() < 0.5 ? 0 : 1) : (rnd() < 0.5 ? 2 : 3)
+      const ring = Math.floor(rnd() * shells[shell].rings)
+      arr.push({
+        shell,
+        ring,
+        speed: 0.06 + rnd() * 0.05, // fraction of the arc per second — slow
+        phase: rnd(),               // staggered starts
+      })
+    }
+    return arr
+  }, [shells])
+  const pulseEls = useRef<Array<SVGCircleElement | null>>([])
+
   useEffect(() => {
     const CX = 500, CY = 500, RAD = 300, PERSP = 0.36, TILT = 0.46
     const cosTilt = Math.cos(TILT), sinTilt = Math.sin(TILT)
@@ -115,6 +146,10 @@ export default function WaveOrb({
     let maxS = 0
     for (const sh of shells) maxS = Math.max(maxS, sh.samples)
     const bx = new Float32Array(maxS), by = new Float32Array(maxS), bd = new Float32Array(maxS)
+
+    // Group pulses by host shell once, so the per-ring check stays a tiny scan.
+    const pulseByShell: number[][] = shells.map(() => [])
+    for (let i = 0; i < pulses.length; i++) pulseByShell[pulses[i].shell].push(i)
 
     function draw(time: number) {
       const t = time / 1000
@@ -172,6 +207,31 @@ export default function WaveOrb({
             tgt[bk] += m
             if (d > 0.58) glow += m
           }
+
+          // Park any pulse riding this ring at its current point on the arc.
+          const here = pulseByShell[si]
+          for (let k = 0; k < here.length; k++) {
+            const pi = here[k]
+            const pu = pulses[pi]
+            if (pu.ring !== ri) continue
+            const el = pulseEls.current[pi]
+            if (!el) continue
+            const last = sh.samples - 1
+            // Looping head position along the arc, in [0, last).
+            const frac = (pu.phase + t * pu.speed) % 1
+            const fpos = frac * last
+            const s0 = Math.floor(fpos)
+            const s1 = s0 + 1 <= last ? s0 + 1 : last
+            const f = fpos - s0
+            const hx = bx[s0] + (bx[s1] - bx[s0]) * f
+            const hy = by[s0] + (by[s1] - by[s0]) * f
+            const hd = bd[s0] + (bd[s1] - bd[s0]) * f
+            // Visible only on the front-facing arc; gentle fade in/out at the rim.
+            const vis = hd <= 0.5 ? 0 : Math.min(1, (hd - 0.5) / 0.18)
+            el.setAttribute('cx', hx.toFixed(1))
+            el.setAttribute('cy', hy.toFixed(1))
+            el.setAttribute('opacity', (vis * (0.85 - si * 0.12)).toFixed(3))
+          }
         }
         const grp = shellEls.current[si]
         for (let p = 0; p < P; p++) {
@@ -200,7 +260,7 @@ export default function WaveOrb({
       raf = requestAnimationFrame(loop)
     }
     return () => cancelAnimationFrame(raf)
-  }, [shells, speed, amp])
+  }, [shells, pulses, speed, amp])
 
   const col = (p: number, L: number) => `hsl(${PALETTE[p][0]} ${PALETTE[p][1]}% ${L}%)`
 
@@ -211,12 +271,22 @@ export default function WaveOrb({
           <filter id="wo-glow" x="-30%" y="-30%" width="160%" height="160%">
             <feGaussianBlur stdDeviation="5" />
           </filter>
+          <filter id="wo-pulse" x="-220%" y="-220%" width="540%" height="540%">
+            <feGaussianBlur stdDeviation="2.4" />
+          </filter>
+          {/* signal dot — cyan core fading to a mint halo */}
+          <radialGradient id="wo-pulse-grad" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stopColor="#eafffb" />
+            <stop offset="32%" stopColor="hsl(176 100% 78%)" />
+            <stop offset="66%" stopColor="hsl(162 95% 60% / 0.55)" />
+            <stop offset="100%" stopColor="hsl(188 95% 60% / 0)" />
+          </radialGradient>
           <radialGradient id="wo-core" cx="50%" cy="50%" r="50%">
             <stop offset="0%" stopColor="#ffffff" />
-            <stop offset="20%" stopColor={`hsl(${hue} 60% 94%)`} />
-            <stop offset="44%" stopColor={`hsl(${hue} 50% 86% / 0.35)`} />
-            <stop offset="74%" stopColor={`hsl(${hue} 40% 82% / 0.08)`} />
-            <stop offset="100%" stopColor={`hsl(${hue} 40% 82% / 0)`} />
+            <stop offset="18%" stopColor={`hsl(${hue} 70% 95%)`} />
+            <stop offset="38%" stopColor={`hsl(${hue} 78% 80% / 0.42)`} />
+            <stop offset="62%" stopColor={`hsl(${hue + 18} 80% 70% / 0.16)`} />
+            <stop offset="100%" stopColor={`hsl(${hue} 60% 78% / 0)`} />
           </radialGradient>
         </defs>
         {shells.map((_, si) => {
@@ -225,19 +295,30 @@ export default function WaveOrb({
             <g key={si} style={{ mixBlendMode: 'screen' }}>
               <path
                 ref={(el) => { glowEls.current[si] = el }}
-                fill="none" stroke="hsl(205 70% 72%)" strokeWidth={2.3 - si * 0.2}
-                opacity={(0.1 * w).toFixed(3)} filter="url(#wo-glow)"
+                fill="none" stroke="hsl(190 82% 70%)" strokeWidth={2.3 - si * 0.2}
+                opacity={(0.13 * w).toFixed(3)} filter="url(#wo-glow)"
               />
               {PALETTE.map((__, p) => (
                 <g key={p}>
-                  <path ref={(el) => { shellEls.current[si][p][0] = el }} fill="none" stroke={col(p, 48)} strokeWidth="0.55" opacity={(0.13 * w).toFixed(3)} />
-                  <path ref={(el) => { shellEls.current[si][p][1] = el }} fill="none" stroke={col(p, 58)} strokeWidth="0.8" opacity={(0.26 * w).toFixed(3)} />
-                  <path ref={(el) => { shellEls.current[si][p][2] = el }} fill="none" stroke={col(p, 68)} strokeWidth="1.1" opacity={(0.46 * w).toFixed(3)} />
+                  <path ref={(el) => { shellEls.current[si][p][0] = el }} fill="none" stroke={col(p, 50)} strokeWidth="0.55" opacity={(0.16 * w).toFixed(3)} />
+                  <path ref={(el) => { shellEls.current[si][p][1] = el }} fill="none" stroke={col(p, 60)} strokeWidth="0.8" opacity={(0.30 * w).toFixed(3)} />
+                  <path ref={(el) => { shellEls.current[si][p][2] = el }} fill="none" stroke={col(p, 70)} strokeWidth="1.1" opacity={(0.52 * w).toFixed(3)} />
                 </g>
               ))}
             </g>
           )
         })}
+        {/* travelling signals — positioned each frame in the draw loop */}
+        <g style={{ mixBlendMode: 'screen' }} filter="url(#wo-pulse)">
+          {pulses.map((pu, i) => (
+            <circle
+              key={i}
+              ref={(el) => { pulseEls.current[i] = el }}
+              cx="500" cy="500" r={(3.4 - pu.shell * 0.5).toFixed(2)}
+              fill="url(#wo-pulse-grad)" opacity="0"
+            />
+          ))}
+        </g>
         <g ref={coreRef} style={{ mixBlendMode: 'screen' }}>
           <circle r="58" fill="url(#wo-core)" />
         </g>

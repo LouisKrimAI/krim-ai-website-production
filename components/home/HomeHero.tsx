@@ -23,8 +23,9 @@ const DEMO_HREF = 'mailto:sales@krim.ai?subject=Demo%20request%20%E2%80%94%20Kri
 export default function HomeHero() {
   const reduce = useReducedMotion()
 
-  // resolved (final) orb state — also the reduced-motion state
-  const orbResolved = { scale: 1.62, opacity: 0.15 }
+  // resolved (final) orb state — also the reduced-motion state.
+  // Less faded than before (0.30) so the living, colourful orb stays present.
+  const orbResolved = { scale: 1.55, opacity: 0.3 }
 
   return (
     <>
@@ -39,12 +40,12 @@ export default function HomeHero() {
         />
         <div className="absolute left-1/2 top-[44%] flex -translate-x-1/2 -translate-y-1/2 items-center justify-center">
           <motion.div
-            initial={reduce ? orbResolved : { scale: 0.92, opacity: 0 }}
-            animate={reduce ? orbResolved : { scale: [0.92, 1, 1, 0.52, 1.62], opacity: [0, 0.95, 0.95, 0.36, 0.15] }}
+            initial={reduce ? orbResolved : { scale: 0.95, opacity: 0 }}
+            animate={reduce ? orbResolved : { scale: [0.95, 1, 1, 0.5, 1.55], opacity: [0, 0.95, 0.95, 0.42, 0.3] }}
             transition={
               reduce
                 ? { duration: 0 }
-                : { duration: 3.9, times: [0, 0.14, 0.36, 0.6, 1], ease: ['easeOut', 'linear', OUT_SOFT, OUT_SOFT] }
+                : { duration: 5, times: [0, 0.1, 0.4, 0.64, 1], ease: ['easeOut', 'linear', OUT_SOFT, OUT_SOFT] }
             }
           >
             <div className="orb-drift">
@@ -67,18 +68,18 @@ export default function HomeHero() {
         <div className="mx-auto w-full max-w-site px-6 md:px-10">
           <div className="mx-auto flex max-w-[860px] flex-col items-center text-center">
             <motion.div
-              initial={reduce ? { opacity: 1, y: 0 } : { opacity: 0, y: 14 }}
+              initial={reduce ? { opacity: 1, y: 0 } : { opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={reduce ? { duration: 0 } : { duration: 0.9, delay: 1.9, ease: OUT_SOFT }}
+              transition={reduce ? { duration: 0 } : { duration: 1.4, delay: 2.9, ease: OUT_SOFT }}
             >
-              <KrimLogoAnimated className="h-[clamp(72px,11vw,128px)] w-auto" />
+              <KrimLogoAnimated className="h-[clamp(88px,13vw,168px)] w-auto" />
             </motion.div>
 
             <motion.h1
-              className="mt-9 font-serif text-display-hero text-ink"
+              className="mt-10 font-serif text-display-hero text-ink"
               initial={reduce ? { opacity: 1, y: 0 } : { opacity: 0, y: 14 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={reduce ? { duration: 0 } : { duration: 0.9, delay: 2.45, ease: OUT_SOFT }}
+              transition={reduce ? { duration: 0 } : { duration: 1.1, delay: 4, ease: OUT_SOFT }}
             >
               The AI your regulator can read.
             </motion.h1>
@@ -87,7 +88,7 @@ export default function HomeHero() {
               className="mt-7 max-w-[52ch] font-sans text-body-lg text-ink-2"
               initial={reduce ? { opacity: 1, y: 0 } : { opacity: 0, y: 14 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={reduce ? { duration: 0 } : { duration: 0.9, delay: 2.65, ease: OUT_SOFT }}
+              transition={reduce ? { duration: 0 } : { duration: 1.1, delay: 4.3, ease: OUT_SOFT }}
             >
               AI co-workers for regulated operations — validated before they act.
             </motion.p>
@@ -96,7 +97,7 @@ export default function HomeHero() {
               className="mt-11 flex flex-wrap items-center justify-center gap-6"
               initial={reduce ? { opacity: 1, y: 0 } : { opacity: 0, y: 14 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={reduce ? { duration: 0 } : { duration: 0.9, delay: 2.85, ease: OUT_SOFT }}
+              transition={reduce ? { duration: 0 } : { duration: 1, delay: 4.6, ease: OUT_SOFT }}
             >
               <CTA href={DEMO_HREF}>Book a demo</CTA>
               <CTA href="#proof" variant="secondary">

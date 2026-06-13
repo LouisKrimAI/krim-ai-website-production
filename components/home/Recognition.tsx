@@ -11,7 +11,6 @@ const MARKS = [
   { label: 'NVIDIA Inception', slug: 'nvidia-inception' },
   { label: 'DPIIT · Startup India', slug: 'dpiit-startup-india' },
   { label: 'STPI-incubated', slug: 'stpi' },
-  { label: 'Fintech', slug: 'fintech' },
 ]
 
 export default function Recognition() {
