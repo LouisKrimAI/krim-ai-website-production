@@ -11,9 +11,11 @@ import SiteHeader from '@/components/SiteHeader'
 import SiteFooter from '@/components/SiteFooter'
 import Reveal from '@/components/Reveal'
 import ArchGlyph from '@/components/ArchGlyph'
+import HomeHero from '@/components/home/HomeHero'
 import FlywheelRing from '@/components/home/FlywheelRing'
 import IntegrationWheels from '@/components/home/IntegrationWheels'
 import Receipt from '@/components/home/Receipt'
+import Recognition from '@/components/home/Recognition'
 import { BlockedCue, ResolvedCue } from '@/components/home/PowerCue'
 import { Section, Eyebrow, GlassCard, CTA } from '@/components/ui'
 
@@ -121,32 +123,11 @@ export default function HomePage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(orgLd) }} />
       <SiteHeader />
       <main>
-        {/* ---- 1 · Hero — simple, tasteful fade over the orb backdrop ---- */}
-        <section className="flex min-h-[82vh] items-center">
-          <div className="mx-auto w-full max-w-site px-6 md:px-10">
-            <div className="mx-auto max-w-[820px] text-center">
-              <Reveal>
-                <h1 className="font-serif text-display-hero text-ink">
-                  The AI your regulator can read.
-                </h1>
-              </Reveal>
-              <Reveal delay={0.15}>
-                <p className="mx-auto mt-7 max-w-[54ch] font-sans text-body-lg text-ink-2">
-                  AI co-workers for regulated operations — every action validated before it
-                  executes.
-                </p>
-              </Reveal>
-              <Reveal delay={0.3}>
-                <div className="mt-10 flex flex-wrap items-center justify-center gap-6">
-                  <CTA href={DEMO_HREF}>Book a demo</CTA>
-                  <CTA href="#proof" variant="secondary">
-                    See how it works
-                  </CTA>
-                </div>
-              </Reveal>
-            </div>
-          </div>
-        </section>
+        {/* ---- 1 · Hero — orb choreography + persistent fixed orb backdrop ---- */}
+        <HomeHero />
+
+        {/* everything below sits above the fixed orb (z-0) */}
+        <div className="relative z-10">
 
         {/* ---- 2 · The problem ---- */}
         <Section hairline id="problem">
@@ -301,13 +282,20 @@ export default function HomePage() {
           </Reveal>
         </Section>
 
-        {/* ---- 8 · Close ---- */}
+        {/* ---- 8 · Recognition — slim honest credibility strip ---- */}
+        <Section hairline id="recognition">
+          <Reveal>
+            <Recognition />
+          </Reveal>
+        </Section>
+
+        {/* ---- 9 · Close ---- */}
         <Section hairline id="close">
           <Reveal>
             <GlassCard className="mx-auto max-w-[720px] p-10 text-center md:p-14">
               {/* the faint perimeter motif — the sovereign boundary */}
               <div className="rounded-lg border border-soft px-6 py-10 md:px-10">
-                <h2 className="font-serif text-[clamp(1.7rem,3.2vw,2.4rem)] leading-tight text-ink">
+                <h2 className="font-serif text-[clamp(1.85rem,3.4vw,2.6rem)] leading-tight text-ink">
                   The operating system for regulated operations.
                 </h2>
                 <p className="mt-5 font-sans text-body text-ink-2">
@@ -323,6 +311,7 @@ export default function HomePage() {
             </GlassCard>
           </Reveal>
         </Section>
+        </div>
       </main>
       <SiteFooter />
     </>

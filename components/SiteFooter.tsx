@@ -5,7 +5,6 @@
  */
 
 import Link from 'next/link'
-import TriangleMark from './TriangleMark'
 
 const COLS: Array<[string, Array<[string, string]>]> = [
   [
@@ -48,7 +47,7 @@ export default function SiteFooter() {
         <div className="grid gap-12 md:grid-cols-[1.2fr_1fr_1fr_1fr]">
           <div>
             <div className="flex items-center gap-2.5">
-              <TriangleMark size={20} />
+              <img src="/brand/krim-mark.svg" alt="" width={20} height={20} className="h-5 w-5" />
               <span className="font-mono text-[14px] font-medium tracking-[0.22em] text-ink">KRIM</span>
             </div>
             <p className="mt-4 font-serif text-[1.05rem] italic text-ink-2">Intelligence by policy.</p>

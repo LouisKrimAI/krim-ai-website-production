@@ -15,7 +15,7 @@ const config: Config = {
         mint: { DEFAULT: '#00FFB2', bright: '#5CFFCB', dim: '#00C98C', deep: '#0A6B4E' },
         'on-mint': '#04130D',
         gold: { DEFAULT: '#C8A14A', dim: '#A8843A' },
-        ink: { DEFAULT: '#F6F6F4', 2: '#A9ADB6', 3: '#6B6F78' },
+        ink: { DEFAULT: '#F6F6F4', 2: '#A9ADB6', 3: '#828791' },
         orb: { stroke: '#39D6FF', glow: '#BFEFFF' },
         cyan: '#39D6FF', // grammar alias: proposed / thinking
         pass: '#00FFB2',
@@ -32,13 +32,13 @@ const config: Config = {
         mono: ['var(--font-mono)', 'ui-monospace', 'Consolas', 'monospace'],
       },
       fontSize: {
-        // type scale — docs/design-tokens.md §2
-        'display-hero': ['clamp(2.75rem, 6vw, 5rem)', { lineHeight: '1.06', letterSpacing: '-0.015em', fontWeight: '400' }],
-        'display-1': ['clamp(2rem, 4vw, 3.25rem)', { lineHeight: '1.1', letterSpacing: '-0.01em', fontWeight: '400' }],
-        'display-2': ['1.5rem', { lineHeight: '1.25', letterSpacing: '-0.005em', fontWeight: '500' }],
-        eyebrow: ['0.75rem', { lineHeight: '1', letterSpacing: '0.18em', fontWeight: '500' }],
-        'body-lg': ['1.125rem', { lineHeight: '1.6' }],
-        body: ['1rem', { lineHeight: '1.6' }],
+        // type scale — docs/design-tokens.md §2, scaled up for presence
+        'display-hero': ['clamp(3rem, 6.6vw, 5.75rem)', { lineHeight: '1.04', letterSpacing: '-0.02em', fontWeight: '400' }],
+        'display-1': ['clamp(2.3rem, 4.6vw, 3.9rem)', { lineHeight: '1.08', letterSpacing: '-0.015em', fontWeight: '400' }],
+        'display-2': ['clamp(1.6rem, 2.4vw, 2.05rem)', { lineHeight: '1.2', letterSpacing: '-0.01em', fontWeight: '500' }],
+        eyebrow: ['0.8125rem', { lineHeight: '1', letterSpacing: '0.2em', fontWeight: '500' }],
+        'body-lg': ['1.25rem', { lineHeight: '1.62' }],
+        body: ['1.0625rem', { lineHeight: '1.62' }],
         caption: ['0.8125rem', { lineHeight: '1.55' }],
         'mono-data': ['0.875rem', { lineHeight: '1.4', letterSpacing: '0.02em', fontWeight: '500' }],
       },

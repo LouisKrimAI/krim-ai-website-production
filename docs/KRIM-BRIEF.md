@@ -10,7 +10,7 @@
 - **Common sense over false precision.** Source docs are inputs, not scripture. Never force real content into a tidy number or template — if "five layers" would drop or bury something real (it once buried Kula, one of the two minds of KrimOS), don't. Represent the product honestly, surface conflicts between sources instead of silently resolving them, and flag for confirmation rather than guessing. Truth and clarity beat neat counts.
 
 ## The story — three powers, one flywheel
-KrimOS is the operating system for regulated lending operations. Its whole argument is three powers, locked together — not a feature list:
+**Krim automates regulated operations.** KrimOS is the core operating system for them — and its whole argument is three powers, locked together, not a feature list:
 
 1. **Validation (judgment).** No action executes until it has passed Krim-Nyāya's pre-execution gate. Proof isn't demonstrated to the regulator after the fact; it is the precondition of action. *Validated before it acts.*
 2. **Intelligence (the world model).** Because one runtime runs the whole lifecycle and records every action with its reasoning on one ledger, the system builds a connected, compounding model of how the operation actually behaves — the first system positioned to see a lending operation whole. *Smarter after it acts.*
@@ -20,7 +20,9 @@ KrimOS is the operating system for regulated lending operations. Its whole argum
 
 **The flywheel that makes it unique:** validation makes deployment possible → autonomy generates complete, attributed data → data compounds into the world model → the world model proposes better actions → better actions clear validation more often → more autonomy. In this architecture, safety and intelligence manufacture each other instead of trading off. Sovereignty is load-bearing for the intelligence: only a system a bank trusts inside its walls gets to observe the whole operation.
 
-**Spine, one breath:** *Institutions couldn't deploy AI they can't prove — or let their data leave. Krim made proof the runtime and keeps the whole system inside your walls. So the machines can finally act; and because they act on one record, the system learns the entire operation and compounds.*
+**Spine, one breath:** *Regulated operations couldn't run on AI you can't prove, or risk what leaves your walls. Krim made proof the runtime and keeps the system inside your perimeter. So the machines can finally act — and because they act on one record, the system learns the operation and compounds.*
+
+**One OS, every regulated domain.** KrimOS is the core — the same brain (Kendra), vocabulary (Kriya), co-workers (Karta) and interfaces (Kula, Kira) everywhere. Only the rules and use cases change per industry (carried in Krim-Fabric). Krim serves four domains, each with its own page: **Lending** (flagship — deeply documented), **Government**, **Large Enterprise**, **MSME** (medium-sized enterprises, any industry — here the regulation-grade rigor is a *confidence* play, not a compliance one). Top-level language is always "regulated operations," never "lending." New-domain content is framed as logical capability fit, not claimed deployments — invent nothing.
 
 **Designated taglines (verbatim allowed):** "The AI your regulator can read." · "Validated before it acts. Smarter after it acts."
 
@@ -32,11 +34,21 @@ KrimOS is the operating system for regulated lending operations. Its whole argum
 **Aesthetic target: precision instrumentation, not sci-fi.** The feeling is *control rendered beautifully* — a cockpit, a Swiss movement, a seismograph. A CRO should think "this system is exact," never "this looks flashy." Minimal, profoundly considered, high-value.
 
 - **One canvas.** A single deep ground (the `#04060C`–`#09090C` family). Calm, dark, consistent. No light/dark theme-switching.
-- **Glassmorphism as the best sites use it — sparingly, for hierarchy.** Real backdrop-blur, a ~1px hairline light border (white at low alpha), a faint top-edge inner highlight, a soft shadow for lift. Reserved for cards that carry *key information* — never the whole page. Key points live in these cards in **large display type**, scannable at a glance.
+- **Glassmorphism is a hero element here — make it visibly beautiful, not a whisper.** Real depth: generous backdrop-blur, luminous hairline borders, faint inner top-edge highlights, layered translucency, subtle tints that catch the orb's light. Key information lives in glass cards that genuinely *stand out* from the canvas and read as crafted objects. Premium and cool, never gaudy — the restraint lives in the palette and the motion, not in the glass.
 - **Colour grammar:** cyan = proposed / thinking (the runtime, the orb); mint = validated / learned (the brand, cleared actions); gold sparingly for amber / exception states. Otherwise restrained near-monochrome.
-- **Type:** confident, large display for the points that must land; quiet, generous body. (Newsreader / Inter / IBM Plex Mono is the starting set in `design-tokens.md` — a springboard, extend with taste.)
-- **Hero animation — keep it simple and flawless.** The orb sits centred on the dark canvas with a glowing core. It *breathes*: a slow, smooth shrink-and-grow, a couple of cycles. Then it recedes and fades to a faint, slowly drifting backdrop that **persists behind the homepage**. As it settles, the headline and subhead fade up. That is the entire sequence — no pinhead, no logo-morph, no multi-stage choreography. One beautiful idea, executed to a frame-perfect, 60fps standard. Reduced-motion: show the settled state (faint orb backdrop + text) instantly.
-- **Motion elsewhere:** subtle, purposeful micro-animations only — soft reveals, luminous hovers, a value that ticks, a pattern that propagates. Never decorative. GPU-only; canvases pause offscreen; no CLS; designed mobile variants, not shrunk desktop ones.
+- **Type: large and confident, and still professional.** Big display headlines that carry a section on their own; comfortably large, readable body — never cramped, never timid. Use weight and scale to make sections feel like designed moments with strong presence and clear separation. (Newsreader / Inter / IBM Plex Mono is the starting set in `design-tokens.md`; **scale the type up** from any conservative defaults.)
+- **The logo (real asset, already in the repo — never a mimic).** Use the actual Krim logo committed to the repo. The **hero uses the special animated logo** (the version with moving elements); the **top nav/banner and favicon use the static mark**. Locate the real files in the repo and use them; if you genuinely can't find them, leave a clearly-labelled placeholder slot and ask — do **not** draw a substitute. Browser tab: homepage title is exactly `Krim - Safe Superintelligence`; other pages use the template `{Page} — Krim`. "Safe Superintelligence" is the brand line (safety from validation, intelligence from learning) — use it in titles/meta/footer, but keep on-page body copy credible and concrete for regulated buyers.
+- **Hero first-load choreography (the site's one signature animation — make it flawless, 60fps, slow confident eases, no bounce/spin/cliché):**
+  1. Black canvas. The orb alone, centred, at **full brightness**, gently alive. Nothing else.
+  2. The orb **shrinks inward and dims**, drawing the eye to centre.
+  3. As it recedes, the **Krim logo (large, real asset) fades up** in its place.
+  4. Shortly after, the **hero words fade up** just beneath — kept trim (headline + one short line).
+  5. The orb then **expands outward to a large, soft, faded presence behind everything**, where it stays as the page's living backdrop.
+  Reduced-motion: skip to the resolved state (logo + words + faded orb backdrop) instantly. Timings tuned for elegance, not speed.
+- **Motion — crafted only. No "AI slop" motion.**
+  *Allowed (purposeful, beautiful):* the hero choreography; the cyan→mint validation pulse; slow, lightly-staggered scroll reveals; luminous hover states; the living orb backdrop; the signature interactive components animating *on interaction*; gentle ambient drift.
+  *Banned:* fade-in-up on every element; bouncy/springy overshoot; spinning loaders or icons; decorative parallax; typewriter text; gratuitous count-ups; auto-playing carousels; gradient-shifting buttons; anything that moves without a reason.
+  *Always:* 60fps, GPU-only (transform/opacity), reduced-motion honoured, zero layout shift; mobile motion designed for mobile, not a shrunk desktop.
 
 ## Copy discipline
 Concise, punchy, original, quietly literary. Make the key point land in a few words; let glass cards carry it in large type. Most sections are short; reach for a longer passage only where it genuinely earns it (the `/company` thesis, parts of `/epistemic-ai`). Read every section aloud; if two adjacent sections share a skeleton, rewrite one. No AI-slop ("revolutionary," "unlock," "leverage," "empower," "cutting-edge"), no urgency theatrics, no hedging. A stranger from any domain must grasp Krim in ~30 seconds.

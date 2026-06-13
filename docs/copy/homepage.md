@@ -2,10 +2,12 @@
 *Standard: copy + PRESENTATION (designed treatment). Curated, punchy, no lazy lists. One dark canvas, glassmorphism, cyan→mint grammar. The 30-second grasp. Facts per krim-content.md; prose original; domain-neutral ("regulated operations," not "lending").*
 
 ## 1 · Hero
+LOGO: the real Krim logo from the repo — the hero uses the special ANIMATED logo (moving elements), fading in large after the orb recedes. Static mark in the top nav. Never a mimic.
+TAB TITLE: Krim - Safe Superintelligence
 H1: The AI your regulator can read.
-SUB: AI co-workers for regulated operations — every action validated before it executes.
+SUB: AI co-workers for regulated operations — validated before they act.
 CTA: Book a demo · See how it works →
-PRESENTATION: the orb breathes at centre — a glowing core, slow shrink-and-grow — then recedes to a faint, slowly drifting backdrop as the headline fades up. The orb persists behind the whole page, low and calm. This is the site's one "big" motion; everything else is subtle.
+PRESENTATION: the signature first-load choreography — (1) orb alone, centred, full brightness; (2) orb shrinks and dims; (3) the Krim logo fades up large in its place; (4) the trim hero words fade up beneath; (5) the orb expands to a large, soft, faded backdrop and stays there. Slow, confident eases; 60fps; reduced-motion jumps to the resolved state. This is the site's one big motion — everything else is subtle.
 
 ## 2 · The problem
 EYEBROW: THE PROBLEM
@@ -55,7 +57,12 @@ H2: Every action on the record. Every system still in place.
 BODY: Watch one action get checked, cleared and receipted — including the one that's refused and handed to a person. And Krim sits on what you already run: no rip, no replace.
 PRESENTATION: the Action Receipt rendered as a tangible glass artifact — the page's "proof" object: one real validated action with its checks, its reasoning, its seal — set beside the honest amber-refused row. Below it, the three categorised integration wheels — Core systems · Channels & voice · Data & security — as slow, glassy orbital rings.
 
-## 8 · Close
+## 8 · Recognition (slim strip, before close)
+EYEBROW: BACKED & RECOGNISED
+COPY: NVIDIA Inception · DPIIT (Startup India) · STPI-incubated · Fintech
+PRESENTATION: a quiet single-row badge strip in glass — official marks, evenly spaced, understated. Honest credibility in place of customer logos. [PROVIDE official badge images → public/images/badges/. Confirm the "Fintech" body.]
+
+## 9 · Close
 H2: The operating system for regulated operations.
 BODY: Sovereign by default. Auditable by design. On-premise, hybrid, or managed — whichever your regulator prefers.
 CTA: Book a demo

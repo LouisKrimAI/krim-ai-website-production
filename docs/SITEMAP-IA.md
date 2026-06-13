@@ -2,7 +2,7 @@
 *The map: every page, its one job, and its sections (titles only — copy is written per work order in Stage 3). Pairs with `KRIM-BRIEF.md`.*
 
 ## Narrative spine
-Institutions couldn't deploy AI they can't prove, or risk what leaves their walls. Krim made proof the runtime and keeps the whole system inside the perimeter — so the machines can finally act, and because they act on one record, the system learns the entire operation and compounds. **Validated before it acts. Smarter after it acts. Never leaves your walls.**
+Regulated operations couldn't run on AI you can't prove, or risk what leaves your walls. Krim made proof the runtime and keeps the system inside the perimeter — so machines can finally act, and because they act on one record, the system learns the operation and compounds. One core OS, tailored to every regulated domain. **Validated before it acts. Smarter after it acts. Never leaves your walls.**
 
 ## Sitemap
 ```
@@ -13,8 +13,10 @@ Institutions couldn't deploy AI they can't prove, or risk what leaves their wall
   /platform/karta       The co-workers — operational decisioning, not underwriting
   /platform/kula        The enterprise interface — natural language; a role-tailored digital twin per user (in Kupa)
   /platform/kira        The customer advisor — every channel + the consumer app & public site (Krimkar)
-/lending              Flagship domain — the world model of lending operations (Intelligence, made concrete)
-/government           Second domain — sovereignty-led, capability not track record
+/lending              Domain · flagship — end-to-end lending operations (deeply documented)
+/government           Domain — public sector, sovereignty-led
+/enterprise           Domain — large regulated enterprise, operations at scale
+/msme                 Domain — small & mid enterprise, compliance without the team [logical — confirm]
 /epistemic-ai         The category — validation + learning as one epistemology (GEO play)
 /architecture         For engineers — runtime, integration fabric, substrate (GEO-strong)
 /research             The foundations & frontier — formal logic, the lending world model (intellect + GEO)
@@ -25,7 +27,7 @@ Institutions couldn't deploy AI they can't prove, or risk what leaves their wall
 /contact              Book a demo
 404
 ```
-**Header nav:** Platform · Lending · Government · Epistemic AI · Trust · Company + **Book a demo**.
+**Header nav:** Platform · Domains ▾ (Lending · Government · Large Enterprise · MSME) · Epistemic AI · Trust · Company + **Book a demo**.
 **Footer:** triangle mark · "Intelligence by policy." · full nav incl. Architecture / Research / Services / Blog · socials [PROVIDE] · newsletter.
 
 ## Homepage — sections
@@ -34,7 +36,7 @@ Institutions couldn't deploy AI they can't prove, or risk what leaves their wall
 3. **The three powers** — Validation · Intelligence · Sovereignty as three large glass cards. The heart of the page.
 4. **The flywheel** — one quiet visual: validation lets it act → action becomes record → record becomes intelligence → intelligence proposes better action. Safety and intelligence compounding each other.
 5. **The platform** — the architecture at a glance, one line per element → into /platform.
-6. **Two domains** — Lending (flagship) and Government doors.
+6. **The domains** — four doors: Lending · Government · Large Enterprise · MSME. One OS, tailored per domain.
 7. **Proof & fit** — one condensed exhibit (a cleared action / ledger row, incl. an honest amber refusal) + the **three integration wheels** (Core systems · Channels & voice · Data & security).
 8. **Close** — sovereignty/deployment strip + Book a demo.
 
@@ -52,9 +54,13 @@ Institutions couldn't deploy AI they can't prove, or risk what leaves their wall
 
 **/platform/kira** — Hero (one relationship, the whole lifecycle) · Always on, every channel (incl. 50+ Indian languages) · Within the rules (consent, contact windows, graceful handoff) · Where it lives (the Krimkar consumer app and the public consumer site) · CTA.
 
-**/lending** — Hero (the world model of lending operations) · What it sees (the operation whole, on one record) · The lifecycle (six stages, both sides) · By role (eight twins, scannable) · Impact (ranges, not commitments; the learning curve) · CTA.
+**/lending** *(flagship — the deep one)* — Hero (run the whole loan lifecycle; validated, and learning) · The problem (two workforces split by a wall; operations are 40–60% of cost-per-loan; you can't deploy AI you can't explain) · The lifecycle (six stages, customer + back-office, scannable) · Compliance by jurisdiction (India RBI/Fair Practices · UK FCA/CONC · US FDCPA/TCPA/Reg F) · By role (the eight twins, light) · Impact (ranges, not commitments; the learning curve) · Deployment fit (on-prem / hybrid) · CTA.
 
-**/government** — Hero (sovereignty first) · Why the same stack fits (rules change, architecture doesn't) · Accountability (validation as legal-basis-for-every-action) · The record as public trust · Candidate use cases (capability framing, [CONFIRM] specifics) · CTA (Start a conversation).
+**/government** *(capability framing — no invented track record)* — Hero (public services that can answer for every action) · The challenge (legacy systems; every action needs a legal basis; citizen trust; data can't leave the jurisdiction) · Why Krim fits (sovereignty is decisive; validation = legal basis for each action; the ledger = public accountability) · Use cases (citizen communication · receivables: taxes & fees · casework & documents · benefits servicing) · Impact (faster response, cleared backlogs, lawful by construction, every action auditable) · Deployment (sovereign on-prem) · CTA: Start a conversation.
+
+**/enterprise** *(logical framing — confirm sectors)* — Hero (regulated operations, at scale) · Who (insurance, telecom, utilities, healthcare payers, large financial groups — high-volume regulated customer & back-office ops) · The challenge (scale across fragmented systems; multi-jurisdiction compliance; the cost of large ops teams; audit exposure; generic AI is unsafe in regulated comms) · Use cases (customer servicing · compliant outbound: collections, renewals, notices · back-office processing · disputes & complaints · compliance reporting) · Why Krim fits (validation makes regulated comms safe to automate; sovereignty for sensitive data; one OS over many systems; the world model lifts performance) · Impact (lower cost-to-serve, consistent compliance, audit-ready, scale without headcount) · Deployment (on-prem / hybrid) · CTA.
+
+**/msme** *(medium enterprises, any industry — confidence framing, confirm)* — Hero (regulation-grade AI workers, now for everyday operations) · Who (medium-sized enterprises in any industry — not heavily regulated, but still can't afford AI that gets it wrong) · The challenge (growth outpacing the team; customer service and back-office eat time and cost; off-the-shelf AI is unreliable — you can't trust it with customers or money) · Why Krim fits (the same validated, auditable, reliable AI workers the regulated giants use — automation you can actually trust; managed deployment, affordable and fast; intelligence that lifts operations over time) · Use cases (customer support & servicing · outbound: reminders, follow-ups, renewals · receivables / collections · document processing & back-office workflows) · Impact (automate customer + back-office work without a big team; reliable automation you can trust; enterprise-grade capability at mid-market reach) · Deployment (managed SaaS) · CTA.
 
 **/epistemic-ai** — Hero (the definition, answer-first) · Not autonomous, not "safe" (the neighbours) · The ceiling · The two tests, one epistemology (justify *and* revise belief) · Krim-Nyāya & the Mithila lineage · In practice (post-hoc vs pre-execution) · FAQ (+ FAQPage schema) · CTA.
 
@@ -76,6 +82,6 @@ Institutions couldn't deploy AI they can't prove, or risk what leaves their wall
 1. **Component system + homepage shell + the orb backdrop** (no spectacular hero yet — a clean fade) → gate.
 2. **/platform + its sub-pages** (kendra, kriya, karta, kula, kira — they set every pattern) → gate.
 3. **The hero**, as its own dedicated work order, once the site around it is right → gate.
-4. **/lending → /epistemic-ai → /contact** (funnel live) → gate.
-5. **/government → /trust → /architecture → /research → /services → /company → /blog → 404** → gate.
+4. **/lending → /epistemic-ai → /contact** (flagship + funnel live) → gate.
+5. **/government → /enterprise → /msme → /trust → /architecture → /research → /services → /company → /blog → 404** → gate.
 6. **QA pass** (the checklist in KRIM-BRIEF's protocol) + Lighthouse.

@@ -1,6 +1,5 @@
 import type { Metadata } from 'next'
 import { Newsreader, Inter, IBM_Plex_Mono } from 'next/font/google'
-import OrbBackdrop from '@/components/OrbBackdrop'
 import './globals.css'
 
 const display = Newsreader({
@@ -23,11 +22,17 @@ const mono = IBM_Plex_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL('https://krim.ai'),
   title: {
-    default: 'Krim — The AI your regulator can read',
-    template: '%s | Krim',
+    default: 'Krim - Safe Superintelligence',
+    template: '%s — Krim',
   },
   description:
     'KrimOS is the operating system for regulated operations: AI co-workers whose every action is validated before it executes — and that learn from everything they do, inside your own walls.',
+  icons: {
+    icon: [
+      { url: '/brand/krim-mark.svg', type: 'image/svg+xml' },
+      { url: '/favicon.ico', sizes: 'any' },
+    ],
+  },
   openGraph: {
     siteName: 'Krim',
     type: 'website',
@@ -39,10 +44,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${display.variable} ${body.variable} ${mono.variable}`}>
-      <body>
-        <OrbBackdrop />
-        <div className="relative z-10">{children}</div>
-      </body>
+      <body>{children}</body>
     </html>
   )
 }

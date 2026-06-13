@@ -19,11 +19,11 @@ H2: Krim.
 COPY: The logic at the heart of the system — Navya-Nyāya — was refined over centuries in Mithila, one of the world's great traditions of reasoning about what is true and what follows from it. We took the name, and the discipline, from there. It isn't decoration; it's the lineage of the thirty-three validators that check every action.
 PRESENTATION: the Mithila / Navya-Nyāya heritage with quiet dignity; ties to the brand marks and the heritage art.
 
-## 4 · Leadership
-EYEBROW: WHO'S BUILDING IT
-H2: The team.
-COPY: [PROVIDE — founders + technical leadership; the deep-tech / research pedigree is worth featuring for enterprise buyers.]
-PRESENTATION: refined leader cards — photo, name, one line. [PROVIDE bios + photos.]
+## 4 · Recognition
+EYEBROW: BACKED & RECOGNISED
+H2: In good company.
+COPY: NVIDIA Inception · DPIIT (Startup India) · STPI-incubated · Fintech.
+PRESENTATION: a clean badge strip in glass — official marks, evenly spaced, understated. (No team section by request.) [PROVIDE official badge images → public/images/badges/. Confirm the "Fintech" affiliation/body.]
 
 ## 5 · Markets
 EYEBROW: WHERE WE ARE
