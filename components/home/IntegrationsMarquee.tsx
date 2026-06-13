@@ -161,10 +161,6 @@ export default function IntegrationsMarquee() {
           <MarqueeRow key={row.label} row={row} />
         ))}
       </div>
-
-      <p className="mt-9 text-center font-mono text-[11px] tracking-[0.06em] text-ink-3">
-        Representative systems — works with, not endorsements · 40+ connectors
-      </p>
     </div>
   )
 }

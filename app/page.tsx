@@ -15,7 +15,6 @@ import HomeHero from '@/components/home/HomeHero'
 import PowerCards from '@/components/home/PowerCards'
 import PlatformLayers from '@/components/home/PlatformLayers'
 import PolicyChecks from '@/components/home/PolicyChecks'
-import ProofPanel from '@/components/home/ProofPanel'
 import IntegrationsMarquee from '@/components/home/IntegrationsMarquee'
 import Recognition from '@/components/home/Recognition'
 import { Section, Eyebrow, GlassCard, CTA } from '@/components/ui'
@@ -45,9 +44,18 @@ const orgLd = {
 // ---------------------------------------------------------------- content
 
 const PROBLEMS = [
-  "AI can suggest, but it can't be trusted to act. One wrong move is a compliance breach.",
-  "Sensitive data can't leave the building. Cloud AI is off the table.",
-  'So the work stays manual — slow, costly, hard to scale.',
+  {
+    heading: 'It can’t be trusted to act',
+    body: 'AI can advise all day. But one wrong action in regulated work is a compliance breach — so it never gets the keys.',
+  },
+  {
+    heading: 'The data can’t leave',
+    body: 'Sensitive records can’t be handed to a cloud model. Off-the-shelf AI is off the table from the start.',
+  },
+  {
+    heading: 'So the work stays manual',
+    body: 'Slow, costly, impossible to scale — the status quo no one can defend, and no one can replace.',
+  },
 ]
 
 const POWERS = [
@@ -138,11 +146,12 @@ export default function HomePage() {
           </Reveal>
           <div className="mt-12 grid gap-5 md:grid-cols-3">
             {PROBLEMS.map((p, i) => (
-              <Reveal key={p} delay={i * 0.1}>
+              <Reveal key={p.heading} delay={i * 0.1}>
                 <div className="glass lume h-full p-7 md:p-8">
                   {/* the cyan "blocked" cue — resolves to mint in the powers below */}
                   <span aria-hidden className="block h-[3px] w-12 rounded-full bg-cyan/70" />
-                  <p className="mt-6 font-sans text-body-lg text-ink-2">{p}</p>
+                  <h3 className="mt-6 font-serif text-[1.4rem] leading-tight text-ink">{p.heading}</h3>
+                  <p className="mt-3 font-sans text-body text-ink-2">{p.body}</p>
                 </div>
               </Reveal>
             ))}
@@ -282,11 +291,6 @@ export default function HomePage() {
           <div className="mt-12">
             <PolicyChecks />
           </div>
-          <Reveal delay={0.1}>
-            <div className="mt-16">
-              <ProofPanel />
-            </div>
-          </Reveal>
         </Section>
 
         {/* ---- 8 · Fits the stack you already run ---- */}

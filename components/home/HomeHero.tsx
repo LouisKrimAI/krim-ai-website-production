@@ -72,16 +72,16 @@ export default function HomeHero() {
               animate={{ opacity: 1, y: 0 }}
               transition={reduce ? { duration: 0 } : { duration: 1.4, delay: 2.9, ease: OUT_SOFT }}
             >
-              <KrimLogoAnimated className="h-[clamp(88px,13vw,168px)] w-auto" />
+              <KrimLogoAnimated className="h-[clamp(116px,17vw,232px)] w-auto" />
             </motion.div>
 
             <motion.h1
-              className="mt-10 font-serif text-display-hero text-ink"
+              className="mt-10 max-w-[20ch] font-serif text-display-hero text-ink"
               initial={reduce ? { opacity: 1, y: 0 } : { opacity: 0, y: 14 }}
               animate={{ opacity: 1, y: 0 }}
               transition={reduce ? { duration: 0 } : { duration: 1.1, delay: 4, ease: OUT_SOFT }}
             >
-              The AI your regulator can read.
+              Safe Superintelligence for Regulated Automation
             </motion.h1>
 
             <motion.p
@@ -90,7 +90,7 @@ export default function HomeHero() {
               animate={{ opacity: 1, y: 0 }}
               transition={reduce ? { duration: 0 } : { duration: 1.1, delay: 4.3, ease: OUT_SOFT }}
             >
-              AI co-workers for regulated operations — validated before they act.
+              An AI workforce to run your ops — validated before action.
             </motion.p>
 
             <motion.div

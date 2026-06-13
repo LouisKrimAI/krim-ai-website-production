@@ -46,9 +46,9 @@ export default function PolicyChecks() {
         ))}
       </div>
       <Reveal delay={0.15}>
-        <p className="mt-8 max-w-[70ch] font-sans text-caption text-ink-3">
-          Thirty-three validators in all — each returns pass, amber or fail, before execution, not
-          after. Every decision is written to the ledger, including the ones that clear.
+        <p className="mt-10 max-w-[58ch] font-sans text-body-lg text-ink-2">
+          Thirty-three validators weigh every action. Whatever they decide — clear it, hold it, or
+          refuse it — the reasoning is recorded.
         </p>
       </Reveal>
     </div>

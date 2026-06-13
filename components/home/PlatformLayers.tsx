@@ -3,28 +3,18 @@
 /**
  * PlatformLayers — homepage "one operating system" visual.
  *
- * KrimOS rendered as an elegant vertical stack of glass strata. Read top
- * to bottom as a real architecture:
+ * KrimOS as an elegant vertical stack of centred glass strata. Top → bottom:
  *
- *   Kupa          — the command center your teams work from (surface)
  *   Kula · Kira   — the two interface faces people talk to (NOT minds)
+ *   Kupa          — the command center your teams run operations from
  *   Karta         — the co-workers (operating layer)
  *   Kriya         — the validated vocabulary (operating layer)
  *   Kendra        — the brain: a luminous cyan foundation the stack rests on
  *
- * Micro-motion (purposeful, restrained, GPU-only):
- *   · a faint cyan signal rises from the Kendra core up through the strata
- *     and back — flow between brain and surface;
- *   · the Kendra core breathes with a slow living glow;
- *   · on hover a layer lifts and illuminates with a mint edge (.lume).
- *
- * Reduced motion: the signal and breathing are suppressed and the stack
- * settles instantly. Hover lift is already neutralised by .lume under
- * prefers-reduced-motion. GPU-only transforms / opacity; no layout shift.
- *
- * Self-contained: a local <style> defines uniquely-named keyframes
- * (krim-pl-*) so globals.css is untouched. The page wraps this with the
- * heading + the /platform link; this file is the visual only.
+ * Each row is centre-aligned: the name and its label sit together, the
+ * explanation reads beneath. Micro-motion (GPU-only): a cyan signal rises
+ * from the Kendra core through the strata; the core breathes; hover lifts a
+ * layer with a mint edge (.lume). Reduced motion settles instantly.
  */
 
 import { useState } from 'react'
@@ -34,56 +24,52 @@ type Tone = 'surface' | 'operating' | 'core'
 
 type Layer = {
   key: string
-  /** display name (serif) */
   name: string
-  /** short role (sans) */
   role: string
-  /** faint mono tag */
   tag: string
   tone: Tone
-  /** optional second name for the paired surface faces */
   name2?: string
   role2?: string
   tag2?: string
 }
 
-/** Top → bottom. The command center, the interface faces, operating layers, brain last. */
+/** Top → bottom: interfaces, command center, operating layers, brain. */
 const LAYERS: Layer[] = [
-  {
-    key: 'kupa',
-    name: 'Kupa',
-    role: 'the command center — supervise, configure, audit',
-    tag: 'COMMAND CENTER',
-    tone: 'surface',
-  },
   {
     key: 'faces',
     name: 'Kula',
-    role: "your teams' interface",
+    role: 'Your teams ask in plain language; the runtime does the thinking and proposes the work.',
     tag: 'INTERFACE',
     name2: 'Kira',
-    role2: "your customers' interface",
+    role2: 'One advisor your customers meet on every channel, in their own language, end to end.',
     tag2: 'INTERFACE',
+    tone: 'surface',
+  },
+  {
+    key: 'kupa',
+    name: 'Kupa',
+    role: 'The cockpit your teams run operations from — supervise live work, set policy, and audit every action in one place.',
+    tag: 'COMMAND CENTER',
     tone: 'surface',
   },
   {
     key: 'karta',
     name: 'Karta',
-    role: 'the co-workers — they do the work',
+    role: 'The AI co-workers that do the work — each composed from validated primitives and held to measured outcomes.',
     tag: 'CO-WORKERS',
     tone: 'operating',
   },
   {
     key: 'kriya',
     name: 'Kriya',
-    role: 'the validated, credit-native vocabulary',
+    role: 'The finite vocabulary of validated, credit-native actions every co-worker is built from — 250+ in all.',
     tag: 'PRIMITIVES',
     tone: 'operating',
   },
   {
     key: 'kendra',
     name: 'Kendra',
-    role: 'the brain — the governed runtime core',
+    role: 'The brain: the governed runtime where Krim-Nyāya validates every action and Krim-Learn turns each outcome into intelligence.',
     tag: 'RUNTIME · NYĀYA · LEARN',
     tone: 'core',
   },
@@ -96,8 +82,7 @@ export default function PlatformLayers() {
   const [hover, setHover] = useState<string | null>(null)
 
   return (
-    <div className="relative mx-auto w-full max-w-[460px]" aria-hidden="false">
-      {/* uniquely-named keyframes — globals.css stays untouched */}
+    <div className="relative mx-auto w-full max-w-[520px]">
       <style
         dangerouslySetInnerHTML={{
           __html: `
@@ -117,9 +102,7 @@ export default function PlatformLayers() {
   50%      { opacity: 0.5; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .krim-pl-signal, .krim-pl-glow, .krim-pl-coreline {
-    animation: none !important;
-  }
+  .krim-pl-signal, .krim-pl-glow, .krim-pl-coreline { animation: none !important; }
   .krim-pl-signal { opacity: 0 !important; }
   .krim-pl-glow { opacity: 0.7 !important; transform: none !important; }
 }
@@ -127,14 +110,11 @@ export default function PlatformLayers() {
         }}
       />
 
-      {/* travelling signal — a thread of cyan light rising from the core up
-          through the strata and dissolving. Behind the glass, masked to the
-          stack. Suppressed under reduced motion. */}
       {!reduce && (
         <div
           aria-hidden
-          className="pointer-events-none absolute inset-x-0 bottom-[58px] top-2 z-0"
-          style={{ ['--krim-pl-travel' as string]: '300px' }}
+          className="pointer-events-none absolute inset-x-0 bottom-[70px] top-2 z-0"
+          style={{ ['--krim-pl-travel' as string]: '360px' }}
         >
           <div
             className="krim-pl-signal absolute bottom-0 left-1/2 h-[120px] w-px"
@@ -146,7 +126,6 @@ export default function PlatformLayers() {
               willChange: 'transform, opacity',
             }}
           />
-          {/* faint persistent spine connecting brain ↔ surface */}
           <div
             className="krim-pl-coreline absolute bottom-0 left-1/2 top-0 w-px -translate-x-1/2"
             style={{
@@ -158,7 +137,6 @@ export default function PlatformLayers() {
         </div>
       )}
 
-      {/* the stack */}
       <div className="relative z-10 flex flex-col gap-2.5">
         {LAYERS.map((layer, i) => (
           <LayerRow
@@ -190,9 +168,6 @@ function LayerRow({
 }) {
   const isCore = layer.tone === 'core'
   const isSurface = layer.tone === 'surface'
-
-  // glass flavour per tone: surface faces lean mint (brand/touch), the brain
-  // leans cyan (thinking), operating layers stay near-monochrome glass.
   const glassClass = isCore ? 'glass glass-cyan' : isSurface ? 'glass glass-mint' : 'glass'
 
   return (
@@ -203,34 +178,23 @@ function LayerRow({
       transition={{ duration: 0.6, ease: EASE, delay: reduce ? 0 : index * 0.08 }}
     >
       <div
-        className={`lume relative overflow-hidden rounded-lg ${glassClass} ${
-          isCore ? 'px-5 py-5' : 'px-5 py-4'
-        }`}
+        className={`lume relative overflow-hidden rounded-lg px-6 py-5 ${glassClass}`}
         onMouseEnter={() => onHover(layer.key)}
         onMouseLeave={() => onHover(null)}
         onFocus={() => onHover(layer.key)}
         onBlur={() => onHover(null)}
         tabIndex={0}
         role="group"
-        aria-label={
-          layer.name2
-            ? `${layer.name} and ${layer.name2} — ${layer.role}`
-            : `${layer.name} — ${layer.role}`
-        }
+        aria-label={layer.name2 ? `${layer.name} and ${layer.name2}` : `${layer.name} — ${layer.role}`}
         style={{ outline: 'none' }}
       >
-        {/* mint accent edge appears on hover/focus — left rail */}
+        {/* mint accent edge on hover — left rail */}
         <span
           aria-hidden
           className="pointer-events-none absolute inset-y-2 left-0 w-px rounded-full transition-opacity duration-300"
-          style={{
-            background: 'linear-gradient(to bottom, transparent, var(--mint), transparent)',
-            opacity: isHover ? 0.9 : 0,
-          }}
+          style={{ background: 'linear-gradient(to bottom, transparent, var(--mint), transparent)', opacity: isHover ? 0.9 : 0 }}
         />
 
-        {/* the Kendra core: a living luminous well so the stack reads as
-            resting on a glowing brain */}
         {isCore && (
           <>
             <div
@@ -245,11 +209,8 @@ function LayerRow({
               aria-hidden
               className="krim-pl-glow pointer-events-none absolute -bottom-6 left-1/2 h-16 w-40 -translate-x-1/2 rounded-full"
               style={{
-                background:
-                  'radial-gradient(closest-side, rgba(57,214,255,0.35), rgba(57,214,255,0))',
-                animation: reduce
-                  ? 'none'
-                  : 'krim-pl-breathe 7s var(--ease-in-out, cubic-bezier(0.65,0,0.35,1)) infinite',
+                background: 'radial-gradient(closest-side, rgba(57,214,255,0.35), rgba(57,214,255,0))',
+                animation: reduce ? 'none' : 'krim-pl-breathe 7s var(--ease-in-out, cubic-bezier(0.65,0,0.35,1)) infinite',
                 willChange: 'transform, opacity',
               }}
             />
@@ -257,28 +218,25 @@ function LayerRow({
         )}
 
         {layer.name2 ? (
-          // surface faces: two interfaces side by side, divided hairline
-          <div className="relative flex items-stretch gap-4">
+          <div className="relative grid grid-cols-2 items-start gap-4">
             <Face name={layer.name} role={layer.role} tag={layer.tag} />
-            <span aria-hidden className="w-px self-stretch bg-white/10" />
-            <Face name={layer.name2} role={layer.role2!} tag={layer.tag2!} align="right" />
+            <span aria-hidden className="absolute inset-y-1 left-1/2 w-px -translate-x-1/2 bg-white/10" />
+            <Face name={layer.name2} role={layer.role2!} tag={layer.tag2!} />
           </div>
         ) : (
-          <div className="relative flex items-baseline justify-between gap-4">
-            <div className="min-w-0">
-              <span className="font-serif text-[1.35rem] leading-none text-ink">
-                {layer.name}
-              </span>
-              <span className="mt-1.5 block font-sans text-caption text-ink-2">
-                {layer.role}
+          <div className="relative text-center">
+            <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-1">
+              <span className="font-serif text-[1.5rem] leading-none text-ink">{layer.name}</span>
+              <span
+                className="font-mono text-[10px] uppercase tracking-[0.16em] text-ink-3"
+                style={isCore ? { color: 'rgba(57,214,255,0.75)' } : undefined}
+              >
+                {layer.tag}
               </span>
             </div>
-            <span
-              className="shrink-0 font-mono text-[10px] tracking-[0.16em] text-ink-3"
-              style={isCore ? { color: 'rgba(57,214,255,0.7)' } : undefined}
-            >
-              {layer.tag}
-            </span>
+            <p className="mx-auto mt-2.5 max-w-[54ch] font-sans text-[13.5px] leading-relaxed text-ink-2">
+              {layer.role}
+            </p>
           </div>
         )}
       </div>
@@ -286,26 +244,14 @@ function LayerRow({
   )
 }
 
-function Face({
-  name,
-  role,
-  tag,
-  align = 'left',
-}: {
-  name: string
-  role: string
-  tag: string
-  align?: 'left' | 'right'
-}) {
+function Face({ name, role, tag }: { name: string; role: string; tag: string }) {
   return (
-    <div className={`min-w-0 flex-1 ${align === 'right' ? 'text-right' : ''}`}>
-      <span className="font-serif text-[1.2rem] leading-none text-ink">{name}</span>
-      <span className="mt-1.5 block font-sans text-[12.5px] leading-snug text-ink-2">
-        {role}
-      </span>
-      <span className="mt-1.5 block font-mono text-[9.5px] tracking-[0.16em] text-ink-3">
-        {tag}
-      </span>
+    <div className="min-w-0 px-2 text-center">
+      <div className="flex flex-wrap items-center justify-center gap-x-2.5 gap-y-1">
+        <span className="font-serif text-[1.25rem] leading-none text-ink">{name}</span>
+        <span className="font-mono text-[9.5px] uppercase tracking-[0.16em] text-ink-3">{tag}</span>
+      </div>
+      <p className="mx-auto mt-2 max-w-[34ch] font-sans text-[12.5px] leading-snug text-ink-2">{role}</p>
     </div>
   )
 }
