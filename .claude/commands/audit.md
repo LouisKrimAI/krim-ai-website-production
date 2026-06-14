@@ -4,29 +4,18 @@ description: Full pre-ship audit across every route at every breakpoint. Returns
 
 Scope: **$ARGUMENTS** (default: every route in the app).
 
-This is the gate before shipping. Work to `CLAUDE.md`. Be ruthless; a soft audit is
-worthless.
+The gate before shipping. Work to `CLAUDE.md` + `docs/HOUSE-STYLE.md`. Be ruthless; a soft audit is worthless.
 
-1. **Enumerate routes.** List every page in the App Router (and key dynamic routes).
-   Confirm the dev server is running.
-
-2. **Per route**, via the Claude Preview MCP (preview_resize → preview_screenshot / preview_inspect / preview_snapshot / preview_console_logs) at 375 / 768 / 1440:
-   - Screenshot and visually inspect each breakpoint.
-   - Run `design-critic` and `content-critic`.
+1. **Enumerate routes.** List every page in the App Router (+ key dynamic routes). Ensure the dev server is running.
+2. **Capture (the lead does this).** For each route, capture screenshots at **375 / 768 / 1440** (headless Playwright via Bash, or the Claude Preview MCP), the served HTML, and console output.
+3. **Per route, grade:**
+   - Run `design-critic` and `content-critic` on the captured renders (pass the paths + a one-line page brief). They grade against `HOUSE-STYLE.md` + the homepage anchor + `krim-content.md`.
    - Record console errors/warnings.
-   - Check internal links resolve and primary CTAs work (click them).
-   - Spot-check accessibility: heading order, focus-visible on interactive elements,
-     image alt text, AA contrast on text.
+   - Confirm internal links resolve and primary CTAs are correct.
+   - Accessibility spot-check: heading order (one h1), focus-visible, alt text, AA contrast, no CLS.
+   - GEO spot-check: answer-first opening; substantive copy present in the served HTML (not interaction-only); title/meta/canonical/JSON-LD present.
+4. **Cross-page consistency (the anchor test).** Do all routes look like one team built them — same canvas/orb/glass/type/grammar/restraint as the homepage? Shared nav/footer/buttons/cards identical? Flag any drift.
+5. **Report** one table: route × breakpoint × P0/P1 × verdict, plus the consolidated P0/P1 list with each fix.
+6. **Go / No-go.** No-go if any route has an open P0 or P1. Name exactly what must change to reach Go. Don't soften it.
 
-3. **Cross-page consistency.** Verify shared components (nav, footer, buttons, cards)
-   are visually and behaviourally identical across routes, and that the verticals
-   (Platform and the Domains) share one coherent system rather than drifting apart.
-
-4. **Report** as a single table: route × breakpoint × P0/P1 counts × verdict, plus a
-   consolidated list of every P0 and P1 with its fix.
-
-5. **Go / No-go.** **No-go** if any route has an open P0 or P1. Name exactly what
-   must be fixed to reach Go. Do not soften this.
-
-Do not fix issues during the audit — report them, then a follow-up `/review <route>`
-per failing route resolves them.
+Don't fix during the audit — report, then `/review <route>` resolves each failing page.

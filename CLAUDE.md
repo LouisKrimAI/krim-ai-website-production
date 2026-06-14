@@ -18,12 +18,18 @@ Before writing or changing anything user-facing, read and treat as canonical:
 - `docs/SITEMAP-IA.md` — the route map, every page's sections, and the nav.
 - `docs/BUILD-PLAN.md` — the phased build approach (foundation → signature components →
   page assembly → polish) and the Phase-A kickoff.
+- `docs/HOUSE-STYLE.md` — **THE DESIGN ANCHOR.** The homepage's design DNA (canvas, orb,
+  glass, colour grammar, type, motion budget, graphics policy, a11y/GEO floors, voice).
+  It governs how every page **looks and feels — not its sections or order.** Each page
+  earns its own best-practice structure; this is the style it's built in. It is the
+  rubric the `design-critic` grades against.
 - `docs/design-tokens.md` — the ONLY source of colour, type, spacing, radius, motion.
 - `docs/krim-content.md` — the canonical source of FACTS: claims, statistics, product
-  names, numbers, and brand voice. (Facts only — not the prose to render.)
-- `docs/copy/<route>.md` — **the source of the rendered COPY and per-section design
-  intent for each route.** Each section is COPY + a PRESENTATION note. Build the page
-  from its deck.
+  names, numbers. The claim ceiling. (Facts only — not the prose to render.)
+- `docs/copy/<route>.md` — **raw material (facts + intent), NOT final copy.** Write copy
+  fresh, with full creative licence in the house voice (`HOUSE-STYLE.md` §10): marketing-
+  grade, benefit-led; every headline sells or evokes — never a meta-label like "Named for
+  what each one does". Facts must trace to `krim-content.md`.
 - `docs/geo-kit.md` — discovery / Generative-Engine-Optimization / structured-data
   requirements (llms.txt, JSON-LD/schema, FAQ, entity glossary). NOT geographic SEO.
 

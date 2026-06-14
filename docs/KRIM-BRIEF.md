@@ -31,6 +31,8 @@
 - **KWUs:** the Krim Work Unit is a unit of *account* — it meters every validated action for the institution's own audit, attribution and capacity planning, in any deployment. As a *billing* unit it suits SaaS/hybrid (pay per validated action); on-prem is licensed/subscription, with KWUs used internally only. **Do not put pricing or KWU mechanics on the public site** beyond a single tasteful mention of the Ledger-as-meter on `/platform/kendra`. Pricing is a sales conversation.
 
 ## Design language
+> **The anchor is `docs/HOUSE-STYLE.md`** — the homepage's design DNA, codified. It governs how every page LOOKS and FEELS (canvas, orb, glass, colour grammar, type, motion budget, graphics policy), **not** its sections or order. Each page earns its own structure; the house style is how it's built. Copy is written fresh with **full creative licence** in the house voice — the decks in `docs/copy/` are raw material, not final wording; headlines sell or evoke, never describe ("Named for what each one does" is the banned archetype).
+
 **Aesthetic target: precision instrumentation, not sci-fi.** The feeling is *control rendered beautifully* — a cockpit, a Swiss movement, a seismograph. A CRO should think "this system is exact," never "this looks flashy." Minimal, profoundly considered, high-value.
 
 - **One canvas.** A single deep ground (the `#04060C`–`#09090C` family). Calm, dark, consistent. No light/dark theme-switching.

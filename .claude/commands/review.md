@@ -1,34 +1,33 @@
 ---
-description: Build or refine one route, then render → critique → fix until both critics return SHIP. Usage: /review <route> [intent]
+description: Build or refine one route to the house standard, then render → critique → fix until both critics SHIP. Usage: /review <route> [intent]
 ---
 
 Target route: **$ARGUMENTS**
 
-Work to the rules in `CLAUDE.md`. Do not report done from code alone.
+Work to `CLAUDE.md` and `docs/HOUSE-STYLE.md`. Do not report done from code alone.
+The homepage is the **style** anchor — match its craft, not its section order. This
+page gets the structure that best does *its* job.
 
-1. **Plan (thinking).** Confirm the route's single job from `docs/SITEMAP-IA.md`
-   (and `docs/KRIM-BRIEF.md`). Run the two-pass design process from `CLAUDE.md` §2:
-   state palette, type roles, layout concept, and the signature element (the route's
-   deck names one — honour it); then self-critique against the AI-default looks and
-   revise. Pull **copy** from `docs/copy/<route>.md`, **facts/names** from
-   `docs/krim-content.md`, and **visual values** from `docs/design-tokens.md`. Honour
-   each section's PRESENTATION (design-intent) note in the deck.
-
-2. **Build / refine** the route accordingly. Tokens only; no hardcoded values. Reuse
-   the shared component system and signature components — don't rebuild per route.
-
-3. **Render.** Ensure the dev server is running. Open the route via the Claude Preview
-   MCP (preview_start, then preview_resize + preview_screenshot) at 375 / 768 / 1440.
-   Fix any console error before going further.
-
-4. **Critique.** Invoke the `design-critic` and the `content-critic` subagents
-   against the live route.
-
-5. **Fix.** Resolve every **P0** and **P1** from both critics, at the token/copy level
-   they specify. Then re-render and re-run both critics.
-
-6. **Loop** steps 4–5 until **both** critics return `SHIP`. Stop on two SHIP verdicts,
-   not the first "looks fine."
-
-7. **Report** a short changelog: what changed, which fixes were applied, and any P2s
-   intentionally deferred.
+1. **Architect (thinking).** Confirm the page's single job and audience from
+   `docs/SITEMAP-IA.md` + `docs/KRIM-BRIEF.md`. Decide the page's OWN structure
+   (sections + order — best practice for this page type, not a clone of the homepage)
+   and its ONE signature idea. List the must-include facts from `docs/krim-content.md`.
+   Write this as a 3–5 line page brief.
+2. **Copy (full creative licence).** Write marketing-grade copy for that structure in
+   the house voice (`HOUSE-STYLE.md` §10) — evocative, benefit-led; every headline
+   sells or evokes, never a meta-label. Facts trace to `krim-content.md`; the decks in
+   `docs/copy/` are raw material, not final wording.
+3. **Build / refine.** Implement to `HOUSE-STYLE.md`: shared component system + tokens
+   only; the calm orb backdrop; glass for key info; **motion budget — ≤1–2 earned
+   moments**, everything else subtle; imagery = real Gemini assets in labelled slots
+   (no mediocre inline SVG). Reuse signature components — don't reinvent per route.
+4. **Render (the lead captures — critics don't).** Ensure the dev server is running.
+   Capture full-page + key-section screenshots at **375 / 768 / 1440** (headless
+   Playwright via Bash, or the Claude Preview MCP) and the served HTML. Fix any console
+   error before going further.
+5. **Critique.** Invoke `design-critic` and `content-critic`, passing the screenshot
+   paths + served HTML + the page brief. They grade against `HOUSE-STYLE.md` + the
+   homepage anchor + `krim-content.md`.
+6. **Fix.** Resolve every **P0** and **P1** at the token/copy level they specify; re-render; re-run both critics.
+7. **Loop** 5–6 until **both** return `SHIP` (two clean verdicts, not the first "looks fine").
+8. **Report** a short changelog: the page brief, what changed, fixes applied, any P2s deferred.
