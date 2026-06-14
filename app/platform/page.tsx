@@ -172,7 +172,7 @@ export default function PlatformPage() {
         <Section hairline>
           <Reveal>
             <div className="glass mx-auto max-w-[760px] p-10 text-center md:p-14">
-              <h2 className="font-serif text-[clamp(1.85rem,3.4vw,2.6rem)] leading-tight text-ink">
+              <h2 className="font-serif text-display-3 leading-tight text-ink">
                 See it on the stack you already run.
               </h2>
               <p className="mx-auto mt-5 max-w-[48ch] font-sans text-body text-ink-2">

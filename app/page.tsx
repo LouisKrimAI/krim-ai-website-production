@@ -323,7 +323,7 @@ export default function HomePage() {
             <GlassCard className="mx-auto max-w-[720px] p-10 text-center md:p-14">
               {/* the faint perimeter motif — the sovereign boundary */}
               <div className="rounded-lg border border-soft px-6 py-10 md:px-10">
-                <h2 className="font-serif text-[clamp(1.85rem,3.4vw,2.6rem)] leading-tight text-ink">
+                <h2 className="font-serif text-display-3 leading-tight text-ink">
                   The operating system for regulated operations.
                 </h2>
                 <p className="mt-5 font-sans text-body text-ink-2">

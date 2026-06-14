@@ -76,7 +76,7 @@ export default function LayerShell({ slug, children }: { slug: LayerSlug; childr
         {/* closing CTA band */}
         <Section hairline>
           <div className="glass mx-auto max-w-[760px] p-10 text-center md:p-14">
-            <h2 className="font-serif text-[clamp(1.6rem,3vw,2.3rem)] leading-tight text-ink">
+            <h2 className="font-serif text-display-3 leading-tight text-ink">
               See {layer.name} on the stack you already run.
             </h2>
             <p className="mx-auto mt-4 max-w-[46ch] font-sans text-body text-ink-2">

@@ -70,7 +70,7 @@ export default function SiteFooter() {
           </h2>
           <Link
             href={DEMO_HREF}
-            className="inline-block shrink-0 self-start rounded bg-mint px-7 py-3.5 font-sans text-[15px] font-medium text-on-mint transition-all duration-DEFAULT ease-standard hover:-translate-y-0.5 hover:bg-mint-bright motion-reduce:hover:translate-y-0 md:self-end"
+            className="inline-block shrink-0 self-start rounded bg-mint px-7 py-3.5 font-sans text-[15px] font-medium text-on-mint transition-all duration-fast ease-standard hover:-translate-y-0.5 hover:bg-mint-bright motion-reduce:hover:translate-y-0 md:self-end"
           >
             Book a demo
           </Link>

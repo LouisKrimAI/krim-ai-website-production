@@ -222,7 +222,7 @@ export function OneThread() {
 
         {/* live channel badge — the SAME thread, this channel right now */}
         <div className="flex items-center gap-2.5">
-          <span className="font-mono text-[9.5px] uppercase tracking-[0.14em] text-ink-3">
+          <span className="font-mono text-[10.5px] uppercase tracking-[0.14em] text-ink-3">
             One thread · now on
           </span>
           <AnimatePresence mode="wait" initial={false}>
@@ -267,7 +267,7 @@ export function OneThread() {
                     className="my-1 flex items-center gap-2.5"
                   >
                     <span className="h-px flex-1 bg-[rgba(0,255,178,0.18)]" />
-                    <span className="flex items-center gap-1.5 font-mono text-[9px] uppercase tracking-[0.14em] text-mint">
+                    <span className="flex items-center gap-1.5 font-mono text-[10.5px] uppercase tracking-[0.14em] text-mint">
                       <svg viewBox="0 0 24 24" className="h-3 w-3" aria-hidden>
                         {ch.glyph}
                       </svg>
@@ -290,7 +290,7 @@ export function OneThread() {
                         : { background: 'rgba(0,255,178,0.05)', border: '1px solid rgba(0,255,178,0.16)' }
                     }
                   >
-                    <p className="font-mono text-[8.5px] uppercase tracking-[0.14em] text-ink-3">
+                    <p className="font-mono text-mono-data uppercase text-ink-3">
                       {t.who === 'customer' ? 'Customer' : 'Kira'}
                     </p>
                     <p
@@ -425,7 +425,7 @@ export function ActsWithin() {
         {/* the customer asks Kira to act */}
         <div className="mt-4 flex justify-end">
           <div className="max-w-[80%] rounded-2xl border border-white/[0.08] bg-white/[0.05] px-4 py-2.5">
-            <p className="font-mono text-[8.5px] uppercase tracking-[0.14em] text-ink-3">Customer</p>
+            <p className="font-mono text-mono-data uppercase text-ink-3">Customer</p>
             <p className="mt-1 font-sans text-[13.5px] leading-relaxed text-ink-2">
               Go ahead and pay the ₹4,200 now.
             </p>
@@ -516,7 +516,7 @@ export function ActsWithin() {
                     onClick={runValidation}
                     disabled={validating}
                     aria-describedby={`${groupId}-act`}
-                    className="rounded bg-mint px-4 py-2 font-sans text-[13.5px] font-medium text-on-mint transition-all duration-DEFAULT ease-standard hover:bg-mint-bright hover:-translate-y-0.5 motion-reduce:hover:translate-y-0 disabled:opacity-60"
+                    className="rounded bg-mint px-4 py-2 font-sans text-[13.5px] font-medium text-on-mint transition-all duration-fast ease-standard hover:bg-mint-bright hover:-translate-y-0.5 motion-reduce:hover:translate-y-0 disabled:opacity-60"
                   >
                     {validating ? 'Validating…' : 'Validate & run'}
                   </button>
@@ -533,7 +533,7 @@ export function ActsWithin() {
                 >
                   <div className="flex justify-start">
                     <div className="max-w-[88%] rounded-2xl border border-[rgba(0,255,178,0.16)] bg-[rgba(0,255,178,0.05)] px-4 py-2.5">
-                      <p className="font-mono text-[8.5px] uppercase tracking-[0.14em] text-ink-3">
+                      <p className="font-mono text-mono-data uppercase text-ink-3">
                         Kira
                       </p>
                       <p className="mt-1 font-sans text-[13.5px] leading-relaxed text-ink">
@@ -568,7 +568,7 @@ export function ActsWithin() {
         {/* a sensitive moment */}
         <div className="mt-4 flex justify-end">
           <div className="max-w-[82%] rounded-2xl border border-white/[0.08] bg-white/[0.05] px-4 py-2.5">
-            <p className="font-mono text-[8.5px] uppercase tracking-[0.14em] text-ink-3">Customer</p>
+            <p className="font-mono text-mono-data uppercase text-ink-3">Customer</p>
             <p className="mt-1 font-sans text-[13.5px] leading-relaxed text-ink-2">
               I&rsquo;ve lost my job and I&rsquo;m really struggling this month.
             </p>
@@ -578,7 +578,7 @@ export function ActsWithin() {
         {/* Kira recognises it and hands over — gold, dignified */}
         <div className="mt-4 flex justify-start">
           <div className="max-w-[88%] rounded-2xl border border-[rgba(0,255,178,0.16)] bg-[rgba(0,255,178,0.05)] px-4 py-2.5">
-            <p className="font-mono text-[8.5px] uppercase tracking-[0.14em] text-ink-3">Kira</p>
+            <p className="font-mono text-mono-data uppercase text-ink-3">Kira</p>
             <p className="mt-1 font-sans text-[13.5px] leading-relaxed text-ink">
               I&rsquo;m sorry to hear that, Anaya. This deserves a person — let me bring in someone
               from the hardship team who can help properly.
@@ -626,7 +626,7 @@ export function ActsWithin() {
                       key={row.t}
                       className="flex items-baseline gap-3 bg-white/[0.012] px-3.5 py-2"
                     >
-                      <span className="w-[72px] shrink-0 font-mono text-[9.5px] uppercase tracking-[0.12em] text-ink-3">
+                      <span className="w-[72px] shrink-0 font-mono text-[10.5px] uppercase tracking-[0.12em] text-ink-3">
                         {row.t}
                       </span>
                       <span className="font-sans text-[12.5px] leading-snug text-ink-2">

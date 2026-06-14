@@ -81,10 +81,10 @@ export function Composition() {
           initial={reduce ? false : { opacity: 0, scale: 0.92 }}
           animate={play ? { opacity: 1, scale: 1 } : undefined}
           transition={{ duration: 0.6, ease: EASE, delay: play ? 0.7 : 0 }}
-          className="rounded-xl border border-[rgba(0,255,178,0.4)] bg-[rgba(0,255,178,0.05)] px-6 py-7 text-center"
+          className="glass-mint rounded-xl px-6 py-7 text-center"
         >
           <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-mint">Co-worker</p>
-          <p className="mt-2.5 font-serif text-[1.5rem] leading-none text-ink">Karta-Cure</p>
+          <p className="mt-2.5 font-serif text-display-2 leading-none text-ink">Karta-Cure</p>
           <p className="mt-3 max-w-[22ch] font-sans text-[12.5px] leading-relaxed text-ink-3">
             Six validated primitives, composed — not a line of new code.
           </p>
@@ -178,7 +178,7 @@ function RosterRow({ co }: { co: CoWorker }) {
   return (
     <div className="glass-quiet h-full p-5 md:p-6">
       <div className="flex items-baseline justify-between gap-4">
-        <span className="font-serif text-[1.22rem] leading-tight text-ink">
+        <span className="font-serif text-display-2 leading-tight text-ink">
           <span className="text-ink-3">Karta-</span>
           {co.name}
         </span>
@@ -190,7 +190,7 @@ function RosterRow({ co }: { co: CoWorker }) {
       {co.caveat && (
         <p className="mt-3 inline-flex items-center gap-2 rounded border border-[rgba(200,161,74,0.32)] bg-[rgba(200,161,74,0.05)] px-2.5 py-1">
           <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-gold" aria-hidden />
-          <span className="font-mono text-[10.5px] uppercase tracking-[0.1em] text-gold">
+          <span className="font-mono text-eyebrow uppercase text-gold">
             {co.caveat}
           </span>
         </p>
@@ -281,7 +281,7 @@ export function AutonomyDial() {
 
           {/* the rail */}
           <div className="relative mt-7 pb-1">
-            <div className="absolute left-0 right-0 top-[9px] h-px bg-gradient-to-r from-mint/45 via-cyan/35 to-gold/45" />
+            <div className="absolute left-0 right-0 top-[9px] h-px bg-gradient-to-r from-mint/45 via-cyan/35 to-white/15" />
             <div
               role="radiogroup"
               aria-labelledby={`${groupId}-label`}
@@ -375,7 +375,7 @@ export function AutonomyDial() {
             initial={reduce ? false : { opacity: 0, y: 6 }}
             animate={{ opacity: 1, y: 0 }}
             transition={settle}
-            className="mt-6 font-serif text-[1.18rem] leading-snug text-ink"
+            className="mt-6 font-serif text-display-2 leading-snug text-ink"
           >
             {active.who}
           </motion.p>

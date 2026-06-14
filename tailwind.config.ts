@@ -36,6 +36,7 @@ const config: Config = {
         'display-hero': ['clamp(3rem, 6.6vw, 5.75rem)', { lineHeight: '1.04', letterSpacing: '-0.02em', fontWeight: '400' }],
         'display-1': ['clamp(2.3rem, 4.6vw, 3.9rem)', { lineHeight: '1.08', letterSpacing: '-0.015em', fontWeight: '400' }],
         'display-2': ['clamp(1.6rem, 2.4vw, 2.05rem)', { lineHeight: '1.2', letterSpacing: '-0.01em', fontWeight: '500' }],
+        'display-3': ['clamp(1.7rem, 3.2vw, 2.5rem)', { lineHeight: '1.14', letterSpacing: '-0.012em', fontWeight: '400' }],
         eyebrow: ['0.8125rem', { lineHeight: '1', letterSpacing: '0.2em', fontWeight: '500' }],
         'body-lg': ['1.25rem', { lineHeight: '1.62' }],
         body: ['1.0625rem', { lineHeight: '1.62' }],

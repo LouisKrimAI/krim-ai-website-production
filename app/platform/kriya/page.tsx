@@ -91,7 +91,7 @@ export default function KriyaPage() {
         <Section hairline>
           <Reveal>
             <Eyebrow>The library</Eyebrow>
-            <h2 className="mt-4 font-serif text-display-1 text-ink">Ten kinds of action.</h2>
+            <h2 className="mt-4 font-serif text-display-1 text-ink">The whole grammar of regulated work.</h2>
             <p className="mt-7 max-w-[62ch] font-sans text-body-lg text-ink-2">
               The vocabulary covers the operations regulated work actually needs — voice, documents,
               compliance checks, data, payments, decisions, analytics, integration, and your own.
@@ -137,7 +137,7 @@ export default function KriyaPage() {
         <Section hairline>
           <Reveal>
             <div className="mx-auto max-w-[760px] text-center">
-              <h2 className="font-serif text-[clamp(1.7rem,3.2vw,2.5rem)] leading-tight text-ink">
+              <h2 className="font-serif text-display-3 leading-tight text-ink">
                 The vocabulary your co-workers speak.
               </h2>
               <p className="mx-auto mt-5 max-w-[48ch] font-sans text-body text-ink-2">

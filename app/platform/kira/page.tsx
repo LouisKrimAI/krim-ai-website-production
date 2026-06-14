@@ -103,7 +103,7 @@ export default function KiraPage() {
           </Reveal>
 
           <Reveal delay={0.14}>
-            <p className="mt-8 max-w-[62ch] font-sans text-[15px] leading-relaxed text-ink-3">
+            <p className="mt-8 max-w-[62ch] font-sans text-body leading-relaxed text-ink-3">
               The channel changes; the context does not. Wherever the customer reaches you — the
               public site, the Krimkar app, a missed-call IVR — it is the same conversation, carried
               forward, never restarted.
@@ -131,7 +131,7 @@ export default function KiraPage() {
           </Reveal>
 
           <Reveal delay={0.14}>
-            <p className="mt-8 max-w-[62ch] font-sans text-[15px] leading-relaxed text-ink-3">
+            <p className="mt-8 max-w-[62ch] font-sans text-body leading-relaxed text-ink-3">
               Every action runs only within consent and the contact-window rules. The hand-off is a
               feature, not a failure — the moments that deserve a human reach one, with the whole
               conversation already in hand.
@@ -143,7 +143,7 @@ export default function KiraPage() {
         <Section hairline>
           <Reveal>
             <div className="mx-auto max-w-[760px] text-center">
-              <h2 className="font-serif text-[clamp(1.7rem,3.2vw,2.5rem)] leading-tight text-ink">
+              <h2 className="font-serif text-display-3 leading-tight text-ink">
                 The face your customers trust.
               </h2>
               <p className="mx-auto mt-5 max-w-[52ch] font-sans text-body text-ink-2">
@@ -153,12 +153,12 @@ export default function KiraPage() {
               <div className="mt-8 flex justify-center">
                 <Link
                   href="/platform/kendra"
-                  className="group inline-flex items-baseline gap-2 font-sans text-[15px] text-ink-2 transition-colors hover:text-mint"
+                  className="group inline-flex items-baseline gap-2 font-sans text-body text-ink-2 transition-colors hover:text-mint"
                 >
                   <span className="underline-offset-4 group-hover:underline">
                     See the brain behind it
                   </span>
-                  <span aria-hidden className="transition-transform duration-DEFAULT group-hover:translate-x-0.5">
+                  <span aria-hidden className="transition-transform duration-fast group-hover:translate-x-0.5">
                     →
                   </span>
                 </Link>

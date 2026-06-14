@@ -99,7 +99,7 @@ export default function KulaPage() {
           </Reveal>
 
           <Reveal delay={0.14}>
-            <p className="mt-8 max-w-[62ch] font-sans text-[15px] leading-relaxed text-ink-3">
+            <p className="mt-8 max-w-[62ch] font-sans text-body text-ink-3">
               It never skips the human. Act is locked until you approve — and the runtime validates
               each action against policy before it fires. Kula is the way in; the governance lives
               behind it.
@@ -112,7 +112,7 @@ export default function KulaPage() {
           <Reveal>
             <Eyebrow>Tailored</Eyebrow>
             <h2 className="mt-4 font-serif text-display-1 text-ink">
-              One operation, seen from your seat.
+              Everyone sees the same truth, in their own language.
             </h2>
             <p className="mt-7 max-w-[62ch] font-sans text-body-lg text-ink-2">
               A risk lead, a collections head and a service manager each meet a different Kula — the
@@ -151,7 +151,7 @@ export default function KulaPage() {
         <Section hairline>
           <Reveal>
             <div className="mx-auto max-w-[760px] text-center">
-              <h2 className="font-serif text-[clamp(1.7rem,3.2vw,2.5rem)] leading-tight text-ink">
+              <h2 className="font-serif text-display-3 leading-tight text-ink">
                 Your teams&rsquo; way in.
               </h2>
               <p className="mx-auto mt-5 max-w-[52ch] font-sans text-body text-ink-2">

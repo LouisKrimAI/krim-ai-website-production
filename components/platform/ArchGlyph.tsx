@@ -55,9 +55,9 @@ export default function ArchGlyph({ active }: { active?: LayerSlug }) {
                   fill="none"
                   stroke="var(--mint)"
                   strokeWidth="1"
-                  initial={reduce ? { opacity: 0.4, scale: 1 } : { opacity: 0.5, scale: 1 }}
-                  animate={reduce ? { opacity: 0.4 } : { opacity: [0.5, 0.12, 0.5], scale: [1, 1.12, 1] }}
-                  transition={reduce ? { duration: 0 } : { duration: 3.4, ease: 'easeInOut', repeat: Infinity }}
+                  initial={reduce ? { opacity: 0.4, scale: 1 } : { opacity: 0, scale: 1.08 }}
+                  animate={reduce ? { opacity: 0.4 } : { opacity: 0.42, scale: 1 }}
+                  transition={reduce ? { duration: 0 } : { duration: 1.1, ease: 'easeOut' }}
                   style={{ transformOrigin: `${n.x}px ${n.y}px` }}
                 />
               )}

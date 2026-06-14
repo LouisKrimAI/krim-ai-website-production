@@ -64,7 +64,7 @@ function UnitCell({
   const labelColor = tone === 'mint' ? 'text-mint' : tone === 'cyan' ? 'text-cyan' : 'text-ink-3'
   return (
     <div className={`flex flex-col justify-center rounded-lg border bg-white/[0.02] px-4 py-4 ${ring}`}>
-      <span className={`flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.18em] ${labelColor}`}>
+      <span className={`flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.18em] ${labelColor}`}>
         <span className={`h-1.5 w-1.5 rounded-full ${dot}`} aria-hidden />
         {label}
       </span>
@@ -236,13 +236,13 @@ function CategoryTile({
   const height = open ? innerRef.current?.scrollHeight ?? undefined : 0
 
   return (
-    <div className={`glass-quiet h-full overflow-hidden ${open ? 'border-[rgba(0,255,178,0.26)]' : ''} transition-colors duration-DEFAULT`}>
+    <div className={`glass-quiet h-full overflow-hidden ${open ? 'border-[rgba(0,255,178,0.26)]' : ''} transition-colors duration-fast`}>
       <button
         type="button"
         onClick={onToggle}
         aria-expanded={open}
         aria-controls={panelId}
-        className="group flex w-full items-start gap-4 px-5 py-5 text-left md:px-6"
+        className="group flex min-h-[44px] w-full items-start gap-4 px-5 py-5 text-left transition-colors hover:bg-white/[0.02] md:px-6"
       >
         <div className="flex-1">
           <span className="font-serif text-[1.18rem] leading-tight text-ink transition-colors group-hover:text-mint">
@@ -256,7 +256,7 @@ function CategoryTile({
           <span className="font-mono text-[12px] tabular-nums text-ink-2">{category.count}</span>
           <span
             aria-hidden
-            className={`font-mono text-[13px] text-ink-3 transition-transform duration-DEFAULT ease-standard motion-reduce:transition-none ${
+            className={`font-mono text-[13px] text-ink-3 transition-transform duration-fast ease-standard motion-reduce:transition-none ${
               open ? 'rotate-45 text-mint' : 'group-hover:text-ink-2'
             }`}
           >
@@ -288,7 +288,7 @@ function CategoryTile({
               </li>
             ))}
           </ul>
-          <p className="mt-4 font-mono text-[10.5px] uppercase tracking-[0.16em] text-ink-3">
+          <p className="mt-4 font-mono text-[11px] uppercase tracking-[0.16em] text-ink-3">
             {category.count} primitives · a representative few
           </p>
         </div>
@@ -347,7 +347,7 @@ export function MakeCallReceipt() {
           <span className="h-2 w-2 rounded-full bg-mint" aria-hidden />
           <span className="font-mono text-[13px] tracking-[0.04em] text-ink">MAKE_CALL</span>
         </span>
-        <span className="font-mono text-[10px] uppercase tracking-[0.16em] text-ink-3">
+        <span className="font-mono text-[11px] uppercase tracking-[0.16em] text-ink-3">
           Voice &amp; telephony · 1 primitive
         </span>
       </div>
@@ -386,7 +386,7 @@ export function MakeCallReceipt() {
 
         {/* KWU meter — line-item math */}
         <div className="mt-7 rounded-lg border border-[rgba(0,255,178,0.22)] bg-[rgba(0,255,178,0.03)] px-5 py-5">
-          <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-mint">
+          <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-mint">
             Metered — KWU
           </span>
           <ul className="mt-4 space-y-2">
@@ -411,7 +411,7 @@ export function MakeCallReceipt() {
           </p>
         </div>
 
-        <p className="mt-6 font-mono text-[10px] uppercase tracking-[0.16em] text-ink-3">
+        <p className="mt-6 font-mono text-[11px] uppercase tracking-[0.16em] text-ink-3">
           Illustrative · a lending example
         </p>
       </div>
@@ -434,8 +434,8 @@ function ReceiptBlock({
   return (
     <div className="mb-7 last:mb-0">
       <div className="mb-3 flex items-baseline justify-between gap-3">
-        <span className={`font-mono text-[10px] uppercase tracking-[0.18em] ${labelColor}`}>{label}</span>
-        {note && <span className="font-mono text-[10px] uppercase tracking-[0.14em] text-ink-3">{note}</span>}
+        <span className={`font-mono text-[11px] uppercase tracking-[0.18em] ${labelColor}`}>{label}</span>
+        {note && <span className="font-mono text-[11px] uppercase tracking-[0.14em] text-ink-3">{note}</span>}
       </div>
       {children}
     </div>
@@ -487,7 +487,7 @@ function PreCheckRow({
       <span className="font-mono text-[12.5px] text-ink-2">{code}</span>
       <span className="font-sans text-[12.5px] text-ink-3">{label}</span>
       <motion.span
-        className="ml-auto font-mono text-[10px] uppercase tracking-[0.12em]"
+        className="ml-auto font-mono text-[11px] uppercase tracking-[0.12em]"
         initial={false}
         animate={{ color, opacity: cleared ? 1 : 0.6 }}
         transition={reduce ? { duration: 0 } : { duration: 0.4, delay: cleared ? 0.12 + index * 0.18 : 0 }}

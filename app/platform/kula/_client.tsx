@@ -143,7 +143,7 @@ export function PlanAssembly() {
             </p>
           </div>
 
-          <p className="mt-6 font-sans text-[13.5px] leading-relaxed text-ink-2">
+          <p className="mt-6 font-sans text-caption text-ink-2">
             Kula reads the intent and assembles a plan from what the runtime knows
             about your operation. Nothing has happened yet — it&rsquo;s a proposal,
             waiting on you.
@@ -228,7 +228,7 @@ export function PlanAssembly() {
                         window.setTimeout(() => setApproval('approved'), reduce ? 0 : 260)
                       }}
                       aria-describedby={`${groupId}-gatehint`}
-                      className="rounded bg-mint px-5 py-2.5 font-sans text-[14px] font-medium text-on-mint transition-all duration-DEFAULT ease-standard hover:bg-mint-bright hover:-translate-y-0.5 motion-reduce:hover:translate-y-0 disabled:opacity-60"
+                      className="rounded bg-mint px-5 py-2.5 font-sans text-[14px] font-medium text-on-mint transition-all duration-fast ease-standard hover:bg-mint-bright hover:-translate-y-0.5 motion-reduce:hover:translate-y-0 disabled:opacity-60"
                       disabled={awaiting}
                     >
                       {awaiting ? 'Reviewing…' : 'Approve plan'}
@@ -400,7 +400,7 @@ export function RoleTwin() {
                 <p className="font-mono text-[10px] uppercase tracking-[0.14em] text-ink-3">
                   {role.watch.label}
                 </p>
-                <p className="mt-1.5 font-serif text-[2.4rem] leading-none text-ink">
+                <p className="mt-1.5 font-serif text-[clamp(1.9rem,5vw,2.4rem)] leading-none text-ink">
                   {role.watch.value}
                 </p>
               </div>
@@ -505,12 +505,12 @@ export function KupaCockpit() {
           </span>
           <div>
             <p className="font-mono text-[12px] uppercase tracking-[0.16em] text-ink">Kupa</p>
-            <p className="font-mono text-[9.5px] uppercase tracking-[0.14em] text-ink-3">
+            <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-ink-3">
               The command centre
             </p>
           </div>
         </div>
-        <span className="rounded-full border border-[rgba(200,161,74,0.32)] bg-[rgba(200,161,74,0.05)] px-3 py-1 font-mono text-[9.5px] uppercase tracking-[0.14em] text-gold">
+        <span className="rounded-full border border-[rgba(200,161,74,0.32)] bg-[rgba(200,161,74,0.05)] px-3 py-1 font-mono text-[11px] uppercase tracking-[0.14em] text-gold">
           Illustrative · simulated data
         </span>
       </div>
@@ -519,10 +519,10 @@ export function KupaCockpit() {
         {/* ── unified operational view ── */}
         <div className="rounded-xl border border-soft bg-white/[0.015] p-5">
           <div className="flex items-baseline justify-between">
-            <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-ink-2">
+            <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-ink-2">
               Operational view
             </p>
-            <p className="font-mono text-[9.5px] uppercase tracking-[0.14em] text-ink-3">
+            <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-ink-3">
               Queues · SLA · bucket
             </p>
           </div>
@@ -538,13 +538,13 @@ export function KupaCockpit() {
                 <div className="mt-2 grid grid-cols-2 gap-3">
                   <div>
                     <Bar value={q.sla} tone={q.sla >= 0.9 ? 'mint' : 'gold'} />
-                    <p className="mt-1 font-mono text-[9px] uppercase tracking-[0.12em] text-ink-3">
+                    <p className="mt-1 font-mono text-[11px] uppercase tracking-[0.12em] text-ink-3">
                       SLA {Math.round(q.sla * 100)}%
                     </p>
                   </div>
                   <div>
                     <Bar value={q.bucket} tone={q.bucket >= 0.85 ? 'mint' : 'gold'} />
-                    <p className="mt-1 font-mono text-[9px] uppercase tracking-[0.12em] text-ink-3">
+                    <p className="mt-1 font-mono text-[11px] uppercase tracking-[0.12em] text-ink-3">
                       Bucket {Math.round(q.bucket * 100)}%
                     </p>
                   </div>
@@ -557,7 +557,7 @@ export function KupaCockpit() {
         {/* ── human-in-the-loop review queue ── */}
         <div className="rounded-xl border border-soft bg-white/[0.015] p-5">
           <div className="flex items-baseline justify-between">
-            <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-ink-2">
+            <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-ink-2">
               Review queue · human sign-off
             </p>
             <span className="font-mono text-[11px] text-gold">{openReview.length} open</span>
@@ -575,7 +575,7 @@ export function KupaCockpit() {
                 >
                   <div className="flex items-center justify-between gap-3">
                     <span className="font-mono text-[11px] tracking-[0.04em] text-ink-2">{r.id}</span>
-                    <span className="rounded-full border border-[rgba(200,161,74,0.32)] px-2 py-0.5 font-mono text-[8.5px] uppercase tracking-[0.12em] text-gold">
+                    <span className="rounded-full border border-[rgba(200,161,74,0.32)] px-2 py-0.5 font-mono text-[11px] uppercase tracking-[0.12em] text-gold">
                       {r.kind === 'high-risk' ? 'High-risk' : 'Low-confidence'}
                     </span>
                   </div>
@@ -584,14 +584,14 @@ export function KupaCockpit() {
                     <button
                       type="button"
                       onClick={() => setCleared((c) => [...c, r.id])}
-                      className="rounded border border-[rgba(0,255,178,0.4)] px-3 py-1 font-mono text-[10px] uppercase tracking-[0.1em] text-mint transition-colors hover:bg-[rgba(0,255,178,0.08)]"
+                      className="rounded border border-[rgba(0,255,178,0.4)] px-3 py-1 font-mono text-[11px] uppercase tracking-[0.1em] text-mint transition-colors hover:bg-[rgba(0,255,178,0.08)]"
                     >
                       Approve
                     </button>
                     <button
                       type="button"
                       onClick={() => setCleared((c) => [...c, r.id])}
-                      className="rounded border border-soft px-3 py-1 font-mono text-[10px] uppercase tracking-[0.1em] text-ink-3 transition-colors hover:text-ink-2 hover:border-strong"
+                      className="rounded border border-soft px-3 py-1 font-mono text-[11px] uppercase tracking-[0.1em] text-ink-3 transition-colors hover:text-ink-2 hover:border-strong"
                     >
                       Send back
                     </button>
@@ -607,7 +607,7 @@ export function KupaCockpit() {
                 <button
                   type="button"
                   onClick={() => setCleared([])}
-                  className="mt-2 font-mono text-[10px] uppercase tracking-[0.12em] text-ink-3 underline-offset-4 transition-colors hover:text-ink-2 hover:underline"
+                  className="mt-2 font-mono text-[11px] uppercase tracking-[0.12em] text-ink-3 underline-offset-4 transition-colors hover:text-ink-2 hover:underline"
                 >
                   Reset queue
                 </button>
@@ -618,34 +618,34 @@ export function KupaCockpit() {
 
         {/* ── live monitoring + kill switches ── */}
         <div className="rounded-xl border border-soft bg-white/[0.015] p-5">
-          <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-ink-2">
+          <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-ink-2">
             Live monitoring · one-click pause &amp; rollback
           </p>
-          <div className="mt-4 grid grid-cols-3 gap-3">
+          <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-3">
             {[
               { label: 'Live volume', value: '17.8k', tone: 'mint' as const },
               { label: 'Error rate', value: '0.21%', tone: 'mint' as const },
               { label: 'Complaints', value: '0.04%', tone: 'gold' as const },
             ].map((m) => (
               <div key={m.label} className="rounded-lg border border-soft bg-white/[0.01] p-3">
-                <p className="font-serif text-[1.3rem] leading-none" style={{ color: m.tone === 'gold' ? GOLD : 'var(--text-1)' }}>
+                <p className="font-serif text-[1.3rem] leading-none" style={{ color: m.tone === 'gold' ? GOLD : 'var(--text)' }}>
                   {m.value}
                 </p>
-                <p className="mt-1.5 font-mono text-[9px] uppercase tracking-[0.1em] text-ink-3">
+                <p className="mt-1.5 font-mono text-[11px] uppercase tracking-[0.1em] text-ink-3">
                   {m.label}
                 </p>
               </div>
             ))}
           </div>
-          <p className="mt-3 flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.12em] text-gold">
+          <p className="mt-3 flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.12em] text-gold">
             <span aria-hidden className="h-1.5 w-1.5 rounded-full" style={{ background: GOLD }} />
             Anomaly flagged · 60+ DPD contact rate
           </p>
 
-          <p className="mt-5 font-mono text-[9.5px] uppercase tracking-[0.14em] text-ink-3">
+          <p className="mt-5 font-mono text-[11px] uppercase tracking-[0.14em] text-ink-3">
             Kill switches
           </p>
-          <ul className="mt-3 grid grid-cols-2 gap-2.5">
+          <ul className="mt-3 grid grid-cols-1 gap-2.5 sm:grid-cols-2">
             {SWITCHES.map((s) => {
               const off = paused === s.label
               return (
@@ -661,7 +661,7 @@ export function KupaCockpit() {
                     }}
                   >
                     <span className="min-w-0">
-                      <span className="block font-mono text-[8.5px] uppercase tracking-[0.12em] text-ink-3">
+                      <span className="block font-mono text-[11px] uppercase tracking-[0.12em] text-ink-3">
                         {s.scope}
                       </span>
                       <span className="block truncate font-sans text-[12.5px] text-ink-2">
@@ -672,7 +672,7 @@ export function KupaCockpit() {
                       initial={false}
                       animate={{ opacity: 1 }}
                       transition={settle}
-                      className="shrink-0 font-mono text-[9px] uppercase tracking-[0.1em]"
+                      className="shrink-0 font-mono text-[11px] uppercase tracking-[0.1em]"
                       style={{ color: off ? '#E5484D' : 'var(--text-3)' }}
                     >
                       {off ? 'Paused' : 'Pause'}
@@ -686,7 +686,7 @@ export function KupaCockpit() {
 
         {/* ── audit / investigation workspace ── */}
         <div className="rounded-xl border border-soft bg-white/[0.015] p-5">
-          <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-ink-2">
+          <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-ink-2">
             Audit &amp; investigation
           </p>
           <p className="mt-3 font-sans text-[13px] leading-relaxed text-ink-3">
@@ -703,7 +703,7 @@ export function KupaCockpit() {
                 key={idx}
                 className="flex items-center gap-3 bg-white/[0.012] px-3.5 py-2.5"
               >
-                <span className="font-mono text-[10.5px] tabular-nums text-ink-3">{row.t}</span>
+                <span className="font-mono text-[11px] tabular-nums text-ink-3">{row.t}</span>
                 <span
                   aria-hidden
                   className="h-1.5 w-1.5 shrink-0 rounded-full"
@@ -712,19 +712,19 @@ export function KupaCockpit() {
                 <span className="min-w-0 flex-1 truncate font-sans text-[13px] text-ink-2">
                   {row.a}
                 </span>
-                <span className="hidden shrink-0 font-mono text-[10px] tracking-[0.02em] text-ink-3 sm:block">
+                <span className="hidden shrink-0 font-mono text-[11px] tracking-[0.02em] text-ink-3 sm:block">
                   {row.who}
                 </span>
               </li>
             ))}
           </ul>
-          <p className="mt-4 font-mono text-[9.5px] uppercase tracking-[0.14em] text-ink-3">
+          <p className="mt-4 font-mono text-[11px] uppercase tracking-[0.14em] text-ink-3">
             Full chain of custody · exportable for examiners
           </p>
         </div>
       </div>
 
-      <p className="mt-5 border-t border-soft pt-4 font-mono text-[10.5px] uppercase tracking-[0.16em] text-ink-3">
+      <p className="mt-5 border-t border-soft pt-4 font-mono text-[11px] uppercase tracking-[0.16em] text-ink-3">
         Mint = validated · gold = exception · red = paused · numbers illustrative, not live telemetry
       </p>
     </div>

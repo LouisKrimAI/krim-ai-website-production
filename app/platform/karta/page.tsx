@@ -96,7 +96,7 @@ export default function KartaPage() {
           </Reveal>
 
           <Reveal delay={0.14}>
-            <p className="mt-8 max-w-[74ch] font-sans text-[14.5px] leading-relaxed text-ink-3">
+            <p className="mt-8 max-w-[74ch] font-sans text-caption leading-relaxed text-ink-3">
               Each co-worker is defined by eleven attributes — including its purpose, capabilities,
               primitives, inputs, outputs, metrics, KWU cost, governance, learning loops,
               human-in-the-loop triggers and availability. Recompose the attributes; the co-worker
@@ -109,7 +109,9 @@ export default function KartaPage() {
         <Section hairline>
           <Reveal>
             <Eyebrow>The roster</Eyebrow>
-            <h2 className="mt-4 font-serif text-display-1 text-ink">A small, utility set.</h2>
+            <h2 className="mt-4 font-serif text-display-1 text-ink">
+              Eight co-workers run the whole operation.
+            </h2>
             <p className="mt-7 max-w-[62ch] font-sans text-body-lg text-ink-2">
               Eight co-workers cover the operation end to end — voice in both directions, the
               paper, the operational calls, the cure journeys, and the review that keeps it all
@@ -143,7 +145,7 @@ export default function KartaPage() {
           </Reveal>
 
           <Reveal delay={0.14}>
-            <p className="mt-8 max-w-[60ch] font-sans text-[15px] leading-relaxed text-ink-3">
+            <p className="mt-8 max-w-[60ch] font-sans text-caption leading-relaxed text-ink-3">
               Co-workers run operations; they don&rsquo;t make the credit decision — that stays with
               you.
             </p>
@@ -191,7 +193,7 @@ export default function KartaPage() {
                       >
                         <span className="block h-[1.5px] w-2 rounded-full bg-gold" />
                       </span>
-                      <span className="font-sans text-[15px] leading-snug text-ink-2">{item}</span>
+                      <span className="font-sans text-body leading-snug text-ink-2">{item}</span>
                     </li>
                   ))}
                 </ul>
@@ -208,7 +210,7 @@ export default function KartaPage() {
         <Section hairline>
           <Reveal>
             <div className="mx-auto max-w-[760px] text-center">
-              <h2 className="font-serif text-[clamp(1.7rem,3.2vw,2.5rem)] leading-tight text-ink">
+              <h2 className="font-serif text-display-3 leading-tight text-ink">
                 Your workforce, composed.
               </h2>
               <p className="mx-auto mt-5 max-w-[50ch] font-sans text-body text-ink-2">

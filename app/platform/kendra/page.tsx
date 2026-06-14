@@ -97,7 +97,7 @@ export default function KendraPage() {
             <div>
               <Reveal>
                 <Eyebrow>Kendra — the runtime</Eyebrow>
-                <h1 className="mt-4 font-serif text-[clamp(2.4rem,5vw,4rem)] leading-[1.06] tracking-[-0.02em] text-ink">
+                <h1 className="mt-4 font-serif text-display-hero text-ink">
                   The mind of the operation.
                 </h1>
               </Reveal>
@@ -118,7 +118,7 @@ export default function KendraPage() {
             <Reveal delay={0.15}>
               <GlassCard className="p-7 md:p-9">
                 <ArchGlyph active="kendra" />
-                <p className="mt-5 font-mono text-[11px] uppercase tracking-[0.16em] text-ink-3">
+                <p className="mt-5 font-mono text-eyebrow uppercase text-ink-3">
                   The brain that runs the rest — lit on the map.
                 </p>
               </GlassCard>
@@ -169,8 +169,8 @@ export default function KendraPage() {
                       {String(i + 1).padStart(2, '0')}
                     </span>
                   </div>
-                  <p className="mt-3 font-sans text-[15px] text-cyan">{f.q}</p>
-                  <p className="mt-3 flex-1 font-sans text-[14.5px] leading-relaxed text-ink-2">
+                  <p className="mt-3 font-sans text-body text-cyan">{f.q}</p>
+                  <p className="mt-3 flex-1 font-sans text-caption leading-relaxed text-ink-2">
                     {f.body}
                   </p>
                 </GlassCard>
@@ -250,7 +250,7 @@ export default function KendraPage() {
               </Reveal>
             </div>
 
-            {/* signature device — world-model field that accrues, paired with the curve */}
+            {/* static diagram — world-model field with the rising curve */}
             <Reveal delay={0.1}>
               <WorldModelField />
             </Reveal>
@@ -336,10 +336,10 @@ export default function KendraPage() {
             <p className="mt-7">
               <Link
                 href="/architecture"
-                className="group inline-flex items-baseline gap-2 font-sans text-[15px] text-ink-2 transition-colors hover:text-mint"
+                className="group inline-flex items-baseline gap-2 font-sans text-body text-ink-2 transition-colors hover:text-mint"
               >
                 <span className="underline-offset-4 group-hover:underline">See the architecture</span>
-                <span aria-hidden className="transition-transform duration-DEFAULT group-hover:translate-x-0.5">
+                <span aria-hidden className="transition-transform duration-fast group-hover:translate-x-0.5">
                   →
                 </span>
               </Link>

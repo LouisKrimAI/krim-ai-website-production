@@ -113,7 +113,7 @@ export function CTA({
     return (
       <Link
         href={href}
-        className={`inline-block rounded bg-mint px-7 py-3.5 font-sans text-[15px] font-medium text-on-mint transition-all duration-DEFAULT ease-standard hover:bg-mint-bright hover:-translate-y-0.5 active:translate-y-0 active:bg-mint-dim motion-reduce:hover:translate-y-0 ${className}`}
+        className={`inline-block rounded bg-mint px-7 py-3.5 font-sans text-[15px] font-medium text-on-mint transition-all duration-fast ease-standard hover:bg-mint-bright hover:-translate-y-0.5 active:translate-y-0 active:bg-mint-dim motion-reduce:hover:translate-y-0 ${className}`}
       >
         {children}
       </Link>
@@ -125,7 +125,7 @@ export function CTA({
       className={`group inline-flex items-baseline gap-2 font-sans text-[15px] text-ink-2 transition-colors hover:text-mint ${className}`}
     >
       <span className="underline-offset-4 group-hover:underline">{children}</span>
-      <span aria-hidden className="transition-transform duration-DEFAULT group-hover:translate-x-0.5">→</span>
+      <span aria-hidden className="transition-transform duration-fast group-hover:translate-x-0.5">→</span>
     </Link>
   )
 }
