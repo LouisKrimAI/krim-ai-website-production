@@ -1,7 +1,9 @@
 /**
- * /platform — the hub / map. From docs/copy/platform.md. The recurring
- * architecture glyph anchors the hero; the named parts each open a sub-page.
- * Don't force a tidy count — name the parts that are real. Facts: krim-content.md.
+ * /platform — the hub / map. Rebuilt to docs/HOUSE-STYLE.md as the reference
+ * exemplar. Its own structure (claim → the parts as doorways → why it holds →
+ * close), the homepage's design DNA, marketing-grade copy. The premium glass
+ * strata (PlatformLayers) is the signature visual; the flat ArchGlyph is gone.
+ * Facts: docs/krim-content.md.
  */
 
 import type { Metadata } from 'next'
@@ -10,16 +12,19 @@ import SiteHeader from '@/components/SiteHeader'
 import SiteFooter from '@/components/SiteFooter'
 import OrbBackdrop from '@/components/OrbBackdrop'
 import Reveal from '@/components/Reveal'
-import ArchGlyph from '@/components/platform/ArchGlyph'
+import PlatformLayers from '@/components/home/PlatformLayers'
 import { LAYERS } from '@/components/platform/layers'
 import { Section, Eyebrow, GlassCard, CTA } from '@/components/ui'
 
 export const metadata: Metadata = {
-  title: 'Platform — one operating system, named for what each part does',
+  title: 'Platform',
   description:
-    'KrimOS is a runtime, a vocabulary, a workforce, and two interfaces: Kendra, Kriya, Karta, Kula and Kira. One operating system for regulated operations.',
+    'KrimOS is one operating system for regulated operations: a vocabulary of validated actions (Kriya), the co-workers built from it (Karta), the runtime that validates and learns (Kendra), and two interfaces — Kula for your teams, Kira for your customers.',
   alternates: { canonical: 'https://krim.ai/platform' },
+  openGraph: { title: 'KrimOS — the platform', url: 'https://krim.ai/platform' },
 }
+
+const DEMO_HREF = 'mailto:sales@krim.ai?subject=Demo%20request%20%E2%80%94%20KrimOS'
 
 const breadcrumbLd = {
   '@context': 'https://schema.org',
@@ -30,79 +35,102 @@ const breadcrumbLd = {
   ],
 }
 
-const DEMO_HREF = 'mailto:sales@krim.ai?subject=Demo%20request%20%E2%80%94%20KrimOS'
+const softwareLd = {
+  '@context': 'https://schema.org',
+  '@type': 'SoftwareApplication',
+  name: 'KrimOS',
+  applicationCategory: 'BusinessApplication',
+  applicationSubCategory: 'Operating system for regulated operations',
+  operatingSystem: 'Sovereign on-prem, Hybrid, Managed SaaS',
+  publisher: { '@type': 'Organization', name: 'Krim', url: 'https://krim.ai' },
+  description:
+    'KrimOS is the operating system for regulated operations: AI co-workers whose every action is validated before it executes, and that learn from everything they do — inside the institution’s own perimeter.',
+  featureList: [
+    'Pre-execution validation — Krim-Nyāya, 33 validators',
+    '250+ validated, credit-native action primitives (Kriya, ten categories)',
+    'Utility-based AI co-workers (Karta) — operational decisioning, not underwriting',
+    'One runtime that validates every action and learns from every outcome (Kendra)',
+    'Natural-language interface for teams (Kula) and a customer advisor (Kira)',
+    'Immutable, metered audit trail (Krim-Ledger, Krim Work Units)',
+    'Sovereign deployment — on-prem, hybrid or managed',
+    '40+ connectors; no rip, no replace',
+  ],
+  offers: { '@type': 'Offer', availability: 'https://schema.org/InStock', url: 'https://krim.ai/platform' },
+}
+
+// benefit-led doorways — the hub's core job is routing the buyer to the part they need
+const DOORS: Record<string, string> = {
+  kendra: 'The mind. It validates every action before it fires — and gets sharper from every one after.',
+  kriya: 'The vocabulary. 250+ validated, credit-native actions; the finite set everything is built from.',
+  karta: 'The co-workers. Composed from the vocabulary to run the operation — never to approve, deny or price a loan.',
+  kula: 'Your teams’ way in. Ask in plain language; the runtime does the thinking and waits for your sign-off.',
+  kira: 'Your customers’ advisor. One relationship across every channel, in their own language.',
+}
 
 export default function PlatformPage() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(softwareLd) }} />
       <SiteHeader />
       <OrbBackdrop />
       <main className="relative z-10">
-        {/* ---- 1 · Hero ---- */}
-        <Section className="!pt-20">
-          <div className="grid items-center gap-12 lg:grid-cols-[1.05fr_1fr]">
+        {/* ---- 1 · Hero: the claim + the architecture, seen whole ---- */}
+        <Section className="!pt-24">
+          <div className="grid items-center gap-12 lg:grid-cols-[1.05fr_0.95fr]">
             <div>
               <Reveal>
                 <Eyebrow>The platform</Eyebrow>
-                <h1 className="mt-4 font-serif text-[clamp(2.4rem,5vw,4rem)] leading-[1.06] tracking-[-0.02em] text-ink">
-                  One operating system. Named for what each part does.
+                <h1 className="mt-5 font-serif text-display-hero text-ink">
+                  One operating system for regulated operations.
                 </h1>
               </Reveal>
               <Reveal delay={0.12}>
-                <p className="mt-7 max-w-[52ch] font-sans text-body-lg text-ink-2">
-                  KrimOS isn&rsquo;t a product with features bolted on — it&rsquo;s a runtime, a
-                  vocabulary, a workforce, and two faces. Here&rsquo;s how they fit.
+                <p className="mt-7 max-w-[56ch] font-sans text-body-lg text-ink-2">
+                  Every action is validated before it executes — and the system gets sharper from
+                  each one. A vocabulary of validated actions, the co-workers built from it, and the
+                  mind that runs them, as one stack inside your walls.
                 </p>
               </Reveal>
               <Reveal delay={0.2}>
-                <div className="mt-9">
+                <div className="mt-10 flex flex-wrap items-center gap-6">
                   <CTA href={DEMO_HREF}>Book a demo</CTA>
+                  <CTA href="/platform/kendra" variant="secondary">
+                    See how it validates
+                  </CTA>
                 </div>
               </Reveal>
             </div>
             <Reveal delay={0.15}>
-              <GlassCard className="p-7 md:p-9">
-                <ArchGlyph />
-                <p className="mt-5 font-mono text-[11px] uppercase tracking-[0.16em] text-ink-3">
-                  The same map recurs on every page — lit for the part you&rsquo;re on.
-                </p>
-              </GlassCard>
+              <PlatformLayers />
             </Reveal>
           </div>
         </Section>
 
-        {/* ---- 2 · How it fits together ---- */}
+        {/* ---- 2 · The parts, as doorways ---- */}
         <Section hairline>
           <Reveal>
-            <Eyebrow>The architecture</Eyebrow>
-            <h2 className="mt-4 max-w-[24ch] font-serif text-display-1 text-ink">
-              A vocabulary becomes a workforce, run by a mind.
+            <Eyebrow>The parts</Eyebrow>
+            <h2 className="mt-4 max-w-[20ch] font-serif text-display-1 text-ink">
+              Open the part you came for.
             </h2>
-            <p className="mt-7 max-w-[64ch] font-sans text-body-lg text-ink-2">
-              Kriya is the vocabulary — validated actions. Karta are the co-workers built from them.
-              Kendra is the mind that runs them: it validates everything before it acts, and learns
-              from everything it does. Two interfaces let people in — Kula for your teams, Kira for
-              your customers.
+            <p className="mt-6 max-w-[58ch] font-sans text-body-lg text-ink-2">
+              A vocabulary becomes a workforce, run by one mind — with two ways in. Each part is a
+              door into the same operating system.
             </p>
-          </Reveal>
-        </Section>
-
-        {/* ---- 3 · The parts ---- */}
-        <Section hairline>
-          <Reveal>
-            <Eyebrow>Explore</Eyebrow>
-            <h2 className="mt-4 font-serif text-display-1 text-ink">Named for what each one does.</h2>
           </Reveal>
           <div className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
             {LAYERS.map((l, i) => (
               <Reveal key={l.slug} delay={(i % 3) * 0.08}>
-                <Link href={`/platform/${l.slug}`} className="block h-full">
+                <Link href={`/platform/${l.slug}`} className="group block h-full">
                   <GlassCard hover className="flex h-full flex-col p-7">
                     <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-ink-3">{l.eyebrow}</p>
-                    <h3 className="mt-3 font-serif text-[1.6rem] leading-none text-ink">{l.name}</h3>
-                    <p className="mt-3 flex-1 font-sans text-[14px] leading-relaxed text-ink-2">{l.oneLiner}</p>
-                    <p className="mt-6 font-mono text-[13px] text-mint" aria-hidden>→</p>
+                    <h3 className="mt-3 font-serif text-display-2 text-ink">{l.name}</h3>
+                    <p className="mt-3 flex-1 font-sans text-[14px] leading-relaxed text-ink-2">{DOORS[l.slug]}</p>
+                    <p className="mt-6 font-mono text-[13px] text-mint" aria-hidden>
+                      Open {l.name}{' '}
+                      <span className="inline-block transition-transform duration-fast group-hover:translate-x-1">→</span>
+                    </p>
                   </GlassCard>
                 </Link>
               </Reveal>
@@ -110,21 +138,51 @@ export default function PlatformPage() {
           </div>
         </Section>
 
+        {/* ---- 3 · Why it holds together (the two powers) ---- */}
+        <Section hairline>
+          <div className="grid items-center gap-12 md:grid-cols-[1fr_1fr]">
+            <Reveal>
+              <div>
+                <Eyebrow>Why it holds together</Eyebrow>
+                <h2 className="mt-4 max-w-[18ch] font-serif text-display-1 text-ink">
+                  Validated before it acts. Smarter after.
+                </h2>
+                <p className="mt-7 max-w-[52ch] font-sans text-body-lg text-ink-2">
+                  Nothing runs until it has cleared the gate. Everything that runs makes the next
+                  decision sharper. Safety and intelligence aren&rsquo;t traded off here — each is
+                  what makes the other possible.
+                </p>
+              </div>
+            </Reveal>
+            <Reveal delay={0.12}>
+              <GlassCard accent className="p-8 md:p-10">
+                <p className="font-serif text-[clamp(1.4rem,2.4vw,1.85rem)] leading-snug text-ink">
+                  That is why one operating system beats a drawer of point tools — and why it gets
+                  better the longer it runs.
+                </p>
+                <p className="mt-6 font-mono text-[11px] uppercase tracking-[0.18em] text-mint">
+                  Krim-Nyāya validates · Krim-Learn compounds
+                </p>
+              </GlassCard>
+            </Reveal>
+          </div>
+        </Section>
+
         {/* ---- 4 · Close ---- */}
         <Section hairline>
           <Reveal>
             <div className="glass mx-auto max-w-[760px] p-10 text-center md:p-14">
-              <h2 className="font-serif text-[clamp(1.7rem,3.2vw,2.5rem)] leading-tight text-ink">
-                One core. Every regulated domain.
+              <h2 className="font-serif text-[clamp(1.85rem,3.4vw,2.6rem)] leading-tight text-ink">
+                See it on the stack you already run.
               </h2>
-              <p className="mt-5 font-sans text-body text-ink-2">
-                The parts never change. Only the rules and use cases do.
+              <p className="mx-auto mt-5 max-w-[48ch] font-sans text-body text-ink-2">
+                No rip, no replace — KrimOS reads from your systems and writes back on validated channels.
               </p>
               <div className="mt-9 flex flex-wrap items-center justify-center gap-6">
-                <CTA href="/platform/kendra" variant="secondary">
-                  Start with the brain — Kendra
-                </CTA>
                 <CTA href={DEMO_HREF}>Book a demo</CTA>
+                <CTA href="/lending" variant="secondary">
+                  See it in lending
+                </CTA>
               </div>
             </div>
           </Reveal>

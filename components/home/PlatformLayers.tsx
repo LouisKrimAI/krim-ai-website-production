@@ -218,9 +218,9 @@ function LayerRow({
         )}
 
         {layer.name2 ? (
-          <div className="relative grid grid-cols-2 items-start gap-4">
+          <div className="relative grid grid-cols-1 items-start gap-5 sm:grid-cols-2 sm:gap-4">
             <Face name={layer.name} role={layer.role} tag={layer.tag} />
-            <span aria-hidden className="absolute inset-y-1 left-1/2 w-px -translate-x-1/2 bg-white/10" />
+            <span aria-hidden className="absolute inset-y-1 left-1/2 hidden w-px -translate-x-1/2 bg-white/10 sm:block" />
             <Face name={layer.name2} role={layer.role2!} tag={layer.tag2!} />
           </div>
         ) : (

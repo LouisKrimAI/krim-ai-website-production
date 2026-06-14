@@ -113,7 +113,7 @@ export function CTA({
     return (
       <Link
         href={href}
-        className={`inline-block rounded bg-mint px-7 py-3.5 font-sans text-[15px] font-medium text-on-mint transition-all duration-DEFAULT ease-standard hover:bg-mint-bright hover:-translate-y-0.5 motion-reduce:hover:translate-y-0 ${className}`}
+        className={`inline-block rounded bg-mint px-7 py-3.5 font-sans text-[15px] font-medium text-on-mint transition-all duration-DEFAULT ease-standard hover:bg-mint-bright hover:-translate-y-0.5 active:translate-y-0 active:bg-mint-dim motion-reduce:hover:translate-y-0 ${className}`}
       >
         {children}
       </Link>
