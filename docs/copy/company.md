@@ -1,5 +1,5 @@
 # Copy + design — /company  (who Krim is — carries the literary thesis)
-*The one page allowed to breathe and be elevated. Facts per krim-content.md; prose original. [PROVIDE: leadership bios + photos; careers status.]*
+*The one page allowed to breathe and be elevated. Facts per krim-content.md; prose original. No leadership/team section for now (by decision) — the page stands on the thesis, the name, and the recognition marks. Careers: [CONFIRM].*
 
 ## 1 · Hero
 EYEBROW: COMPANY
@@ -22,8 +22,8 @@ PRESENTATION: the Mithila / Navya-Nyāya heritage with quiet dignity; ties to th
 ## 4 · Recognition
 EYEBROW: BACKED & RECOGNISED
 H2: In good company.
-COPY: NVIDIA Inception · DPIIT (Startup India) · STPI-incubated · Fintech.
-PRESENTATION: a clean badge strip in glass — official marks, evenly spaced, understated. (No team section by request.) [PROVIDE official badge images → public/images/badges/. Confirm the "Fintech" affiliation/body.]
+COPY: NVIDIA Inception · DPIIT (Startup India) · STPI-incubated.
+PRESENTATION: a clean badge strip in glass — official marks, evenly spaced, understated. Honest credibility in place of a team section (no team page for now). [PROVIDE official badge images → public/images/badges/.]
 
 ## 5 · Markets
 EYEBROW: WHERE WE ARE

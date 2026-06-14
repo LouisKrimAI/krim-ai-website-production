@@ -29,7 +29,7 @@ The orb renders at `hue=210` — a **blue-cyan** glow, not mint:
 | Orb highlight (pale) | `#BFEFFF` |
 | Orb canvas | `#04060C` |
 
-**Strong default — cyan.** Keep the orb at `hue=210` (cyan), resolving into the mint logo at the pinhead handoff — the cyan→mint shift is a deliberate "ignition" beat. This is a good default because the asset already exists; the designer is free to propose a better hero idea entirely in the exploration phase.
+**Strong default — cyan.** Keep the orb at `hue=210` (cyan): cyan = thinking, mint = validated/brand, so the cyan orb resolving toward the mint brand as the logo arrives is a deliberate "ignition" beat. (The exact hero choreography lives in `KRIM-BRIEF.md` / `HomeHero.tsx`.)
 
 ### Built scale (CSS custom properties)
 
@@ -176,18 +176,7 @@ Easings — refined, no bounce:
 
 Site-wide: scroll-reveals (fade + 12–16px rise on `--ease-out-soft`), engineered hover states (border/again brightening, subtle translate), GPU-only transforms (opacity/translate/scale). Everything wrapped in `prefers-reduced-motion: reduce` → render final state instantly.
 
-**Hero timeline (≈5s, once per session)** — single GSAP/Framer-Motion timeline, GPU-only, zero CLS, 60fps:
-
-| Phase | Time | Motion |
-|---|---|---|
-| 1 | 0.0–1.2s | Orb appears full-screen centred on `--bg-deep`, animates |
-| 2 | 1.2–2.0s | Orb eases down, scales toward a single point — to a pinhead |
-| 3 | 2.0–2.2s | Seamless handoff at that point: Krim logo emerges from the pinhead (no cut/flash) |
-| 4 | 2.2–3.8s | Logo scales up from pinhead to full size, centred |
-| 5 | 3.8–4.4s | Logo translates + settles into the header position/size |
-| 6 | 4.4–5.0s | Tagline "The AI your regulator can read." + primary CTA fade-and-rise; hero settles |
-
-Reduced-motion fallback: render phase 6 (final state) immediately, no animation. Preload assets; no FOUC.
+**Hero choreography:** defined in `KRIM-BRIEF.md` (the spine) and built in `components/home/HomeHero.tsx` — do not re-spec it here. In short: a small orb grows on one smooth curve out to full size as the living backdrop, then the Krim logo fades in, then the words ~1s behind; reduced-motion jumps to the settled state. (An earlier "orb → pinhead → logo flies into the header" timeline was retired — ignore any such description.)
 
 ---
 

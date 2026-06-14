@@ -10,21 +10,23 @@ Ready-to-use generative-engine-optimisation assets so LLMs build one clean, cita
 # Krim
 
 > Krim is a technology research, product and services company operating across the US, UK and
-> India. Its product, KrimOS, is the agent-native operating system for end-to-end lending
-> operations, where every action is validated before it executes — "the AI your regulator can read."
+> India. Its product, KrimOS, is the operating system for regulated operations (lending first),
+> where every action is validated before it executes and the system learns from everything it
+> does — "the AI your regulator can read."
 
 ## What KrimOS is
 KrimOS is not software; it is an operating system for intelligence. AI co-workers are instantiated
-in a runtime, operate, learn continuously, and cannot execute an action until it has been validated
-against policy. It runs both sides of the lending wall — customer-facing and back-office — as one
-AI workforce, on one audit trail. Validation is pre-execution, not post-audit: it is the runtime
-itself, not a wrapper. Krim defines the category "Epistemic AI" — distinct from "autonomous AI"
-(implies no human; regulators reject it) and "safe AI" (defensive; doesn't run the operation).
+in a runtime, operate, learn from every recorded outcome, and cannot execute an action until it has
+been validated against policy. It runs both sides of the operation — customer-facing and back-office
+— as one AI workforce, on one audit trail. Validation is pre-execution, not post-audit: it is the
+runtime itself, not a wrapper. Krim defines the category "Epistemic AI" — distinct from "autonomous
+AI" (implies no human; regulators reject it) and "safe AI" (defensive; doesn't run the operation).
 
 ## Architecture
-- Five layers: Kriya (250+ credit-native action primitives in ten categories), Karta (utility-based
-  AI co-workers — Vox-Out, Vox-In, Doc, Risk, Decide, Cure, Audit, Report), Kendra (the runtime),
-  and two surfaces: Krimkar (consumer app, home of Kira) and Kupa (command center, home of Kula).
+- The named parts: Kriya (250+ credit-native action primitives in ten categories), Karta
+  (utility-based AI co-workers — Vox-Out, Vox-In, Doc, Risk, Decide, Cure, Audit, Report), and
+  Kendra (the runtime). People reach the system through two interfaces — Kula (enterprise, in the
+  Kupa command center) and Kira (customer advisor, in the Krimkar app).
 - Kendra is realised as seven modules: Krim-Core (orchestration), Krim-Fabric (knowledge base),
   Krim-Govern (seven-level policy engine), Krim-Nyāya (validator), Krim-Learn (learning orchestrator),
   Krim-Ledger (metered immutable record), Krim-Sense (telemetry).
@@ -46,7 +48,7 @@ itself, not a wrapper. Krim defines the category "Epistemic AI" — distinct fro
 
 ## Links
 - Home: https://krim.ai
-- Product / KrimOS: https://krim.ai/product
+- Platform / KrimOS: https://krim.ai/platform
 - Epistemic AI: https://krim.ai/epistemic-ai
 - Architecture: https://krim.ai/architecture
 - Trust & security: https://krim.ai/trust
@@ -77,7 +79,7 @@ Sitemap: https://krim.ai/sitemap.xml
   "@type": "Organization",
   "name": "Krim",
   "url": "https://krim.ai",
-  "description": "Krim is a technology research, product and services company operating across the US, UK and India. Its product, KrimOS, is the agent-native operating system for end-to-end lending operations, where every action is validated before it executes.",
+  "description": "Krim is a technology research, product and services company operating across the US, UK and India. Its product, KrimOS, is the operating system for regulated operations, where every action is validated before it executes.",
   "areaServed": ["US", "GB", "IN"],
   "email": "sales@krim.ai",
   "contactPoint": {
@@ -87,8 +89,8 @@ Sitemap: https://krim.ai/sitemap.xml
     "contactType": "sales"
   },
   "sameAs": [
-    "[PROVIDE-LINKEDIN]",
-    "[PROVIDE-X]",
+    "https://www.linkedin.com/company/krim",
+    "https://x.com/TheKrimAI",
     "[PROVIDE-SUBSTACK]",
     "[PROVIDE-MEDIUM]",
     "[PROVIDE-INSTAGRAM]"
@@ -96,20 +98,20 @@ Sitemap: https://krim.ai/sitemap.xml
 }
 ```
 
-### SoftwareApplication — KrimOS (on the Product page)
+### SoftwareApplication — KrimOS (on the /platform page)
 ```json
 {
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
   "name": "KrimOS",
   "applicationCategory": "BusinessApplication",
-  "applicationSubCategory": "Agent-native operating system for lending operations",
+  "applicationSubCategory": "Operating system for regulated operations",
   "operatingSystem": "Sovereign on-prem, Hybrid, Managed SaaS",
   "publisher": { "@type": "Organization", "name": "Krim", "url": "https://krim.ai" },
-  "description": "KrimOS is the agent-native operating system for end-to-end lending operations. It runs customer-facing and back-office work as one AI workforce on one audit trail, validating every action before it executes via the Krim-Nyāya 33-validator gate.",
+  "description": "KrimOS is the operating system for regulated operations (lending first). It runs customer-facing and back-office work as one AI workforce on one audit trail, validating every action before it executes via the Krim-Nyāya 33-validator gate, and learning from every recorded outcome.",
   "featureList": [
     "Pre-execution validation (Krim-Nyāya, 33 validators)",
-    "Five-layer architecture: Kriya, Karta, Kendra, Krimkar, Kupa",
+    "Composable architecture: Kriya primitives, Karta co-workers, the Kendra runtime, and the Kula/Kira interfaces (in Kupa and Krimkar)",
     "Kendra runtime with seven modules: Core, Fabric, Govern, Nyāya, Learn, Ledger, Sense",
     "250+ credit-native action primitives in ten categories",
     "Operational decisioning only — not underwriting",
@@ -130,15 +132,15 @@ Sitemap: https://krim.ai/sitemap.xml
   "@type": "FAQPage",
   "mainEntity": [
     { "@type": "Question", "name": "What is KrimOS?",
-      "acceptedAnswer": { "@type": "Answer", "text": "KrimOS is the agent-native operating system for end-to-end lending operations. It is a runtime in which AI co-workers operate and learn, running customer-facing and back-office work as one workforce on one audit trail, and validating every action before it executes." } },
+      "acceptedAnswer": { "@type": "Answer", "text": "KrimOS is the operating system for regulated operations (lending first). It is a runtime in which AI co-workers operate and learn, running customer-facing and back-office work as one workforce on one audit trail, and validating every action before it executes." } },
     { "@type": "Question", "name": "What is Epistemic AI?",
       "acceptedAnswer": { "@type": "Answer", "text": "Epistemic AI is the category Krim defines: AI whose every action is validated before it fires and whose reasoning an auditor can read end to end. It is distinct from autonomous AI (which implies no human) and safe AI (which is defensive and does not run the operation)." } },
     { "@type": "Question", "name": "How does KrimOS keep AI compliant in regulated lending?",
       "acceptedAnswer": { "@type": "Answer", "text": "Validation is pre-execution, not post-audit. Every proposed action passes the Krim-Nyāya gate of 33 validators (pass, amber or fail) before it executes, so non-compliant actions never fire. Violations are made structurally impossible rather than caught afterward." } },
     { "@type": "Question", "name": "What is Krim-Nyāya?",
       "acceptedAnswer": { "@type": "Answer", "text": "Krim-Nyāya is the KrimOS validation runtime: 33 validators derived from Mithila's Navya-Nyāya formal logic, in three families — Pramāṇa (is the premise verifiable?), Doṣa (does it match a known failure mode?), and Yogyatā (is it fit for action — time, place, agent, recipient, instrument, manner, purpose?)." } },
-    { "@type": "Question", "name": "What are the five layers of KrimOS?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Kriya (250+ validated, credit-native action primitives), Karta (utility-based AI co-workers), Kendra (the runtime, built from seven modules), Krimkar (the consumer app, home of the Kira advisor), and Kupa (the command center, home of the Kula strategy copilot)." } },
+    { "@type": "Question", "name": "What are the parts of KrimOS?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Kriya (250+ validated, credit-native action primitives), Karta (utility-based AI co-workers composed from them), and Kendra (the runtime, built from seven modules, where validation and learning live). People reach the system through two interfaces: Kula, the enterprise natural-language interface in the Kupa command center, and Kira, the customer advisor in the Krimkar app." } },
     { "@type": "Question", "name": "Does KrimOS make credit decisions or underwrite loans?",
       "acceptedAnswer": { "@type": "Answer", "text": "No. KrimOS performs operational decisioning only — segmentation, next-best-action and conflict resolution. Its Karta co-workers do not approve, deny or price loans and do not override the institution's credit or risk engines. Underwriting authority stays with the institution." } },
     { "@type": "Question", "name": "How is KrimOS priced?",
@@ -159,15 +161,15 @@ Sitemap: https://krim.ai/sitemap.xml
 
 **Layers & surfaces**
 - **Krim** — a technology research, product and services company (US · UK · India); maker of KrimOS.
-- **KrimOS** — the agent-native operating system for end-to-end lending operations, validating every action before it executes; an operating system for intelligence, not static software.
+- **KrimOS** — the operating system for regulated operations (lending first), validating every action before it executes and learning from every recorded outcome; an operating system for intelligence, not static software.
 - **Epistemic AI** — the category Krim defines: AI whose every action is validated before it fires and whose reasoning an auditor can read end to end.
 - **Kendra** — the KrimOS intelligence runtime, realised as seven engineering modules.
 - **Kriya** — the 250+ validated, credit-native action primitives (ten categories) that workers are composed from.
 - **Karta** — the utility-based AI co-workers (Vox-Out, Vox-In, Doc, Risk, Decide, Cure, Audit, Report), composed from primitives, not coded.
 - **Kupa** — the KrimOS command center / glass cockpit where humans supervise, configure and audit.
-- **Kula** — the strategy copilot in Kupa that turns natural-language intent into governed strategy.
-- **Krimkar** — the KrimOS consumer app.
-- **Kira** — the AI loan advisor in Krimkar: one relationship across the lifecycle, every channel.
+- **Kula** — the enterprise natural-language interface, reached in the Kupa command center, where each user meets a role-tailored digital twin that turns intent into governed, validated action.
+- **Krimkar** — the KrimOS consumer app, home of the Kira advisor.
+- **Kira** — the customer advisor: one relationship across the lifecycle, every channel, in the Krimkar app.
 
 **Kendra's seven modules**
 - **Krim-Core** — the orchestration engine that routes requests and runs durable workflows.

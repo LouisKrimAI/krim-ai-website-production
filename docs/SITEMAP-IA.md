@@ -72,7 +72,7 @@ Regulated operations couldn't run on AI you can't prove, or risk what leaves you
 
 **/services** — Hero (pilot to go-live in a quarter) · The path (deep-dive → proof of value → go-live, with exits) · What Krim brings · Expansion · CTA.
 
-**/company** — Hero (research, product, services · US/UK/India) · The thesis (the one literary passage) · The name (Mithila, Navya-Nyāya — substance) · Leadership ([PROVIDE] who to feature — founders + technical leadership; deep-tech/research pedigree is a real credibility signal for enterprise buyers) · Markets & contact · careers note (optional).
+**/company** — Hero (research, product, services · US/UK/India) · The thesis (the one literary passage) · The name (Mithila, Navya-Nyāya — substance) · Recognition (NVIDIA Inception · DPIIT · STPI — badge strip) · Markets & contact · careers note (optional). *(No leadership/team section for now — by decision; add later if desired.)*
 
 **/contact** — Hero (Book a demo) · The form · Scheduling alternative · Direct contacts.
 

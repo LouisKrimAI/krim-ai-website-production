@@ -10,7 +10,7 @@ Every fact, claim and on-brand line for **krim.ai**, reconciled from two sources
 - **Kendra is realised as seven modules** (Core, Fabric, Govern, Nyāya, Learn, Ledger, Sense) — the deck only named Ledger/Learn.
 - **Karta is a named, utility-based catalog of eight** (was "~10 utility workers").
 - **New commercial concept: Krim Work Units (KWUs)** — usage-based metering and billing.
-- `[DECISION]` **Primary descriptor** — deck: "agent-native operating system"; memo: "the intelligence operating system." Both used below; pick the hero wording.
+- `[RESOLVED]` **Primary descriptor** — KRIM-BRIEF sets it: KrimOS is **"the operating system for regulated operations"** (domain-neutral, lending first). The older "agent-native operating system for end-to-end lending operations" is retired.
 
 ## Things only you can provide
 - `[PROVIDE]` Lead/form backend · scheduling URL · social URLs (LinkedIn · X · Substack · Medium · Instagram) · blog feeds · analytics choice
@@ -21,13 +21,14 @@ Every fact, claim and on-brand line for **krim.ai**, reconciled from two sources
 ## Global
 
 - **Company:** Krim — a technology research, product and services company. Markets: **US · UK · India** (2026).
-- **Product:** **KrimOS** — the agent-native operating system for end-to-end lending operations. *(Memo descriptor: "the intelligence operating system for end-to-end lending operations.")*
+- **Recognition (confirmed; official badge images to be supplied):** NVIDIA Inception · DPIIT (Startup India) · STPI-incubated.
+- **Product:** **KrimOS** — the operating system for regulated operations (lending first). *(Descriptor reconciled to KRIM-BRIEF: domain-neutral "regulated operations," never "lending," at the top level; earlier drafts said "agent-native operating system for end-to-end lending operations.")*
 - **One-line concept:** KrimOS is not software — it is an operating system for intelligence. The runtime is the product; the workflows that run inside it are how value is delivered.
 - **Promise:** *Every action validated before it executes.* **The AI your regulator can read.**
 - **Closing signature:** *Intelligence by policy. The AI your regulator can read.*
 - **Audience:** Heads of AI, CTOs, Chief Lending & Risk Officers, Heads of Operations & Compliance, and product/engineering evaluators at banks and NBFCs across the US, UK and India.
 - **Contact:** sales@krim.ai · krim.ai · +1 510 345 5686 · US · UK · India
-- **Primary CTA:** "Let's run a pilot" / "Request a pilot" — free 30-minute optimisation consult: automation potential + a 90-day plan.
+- **Primary CTA:** **"Book a demo"** (secondary: "See how it works"; /government uses "Start a conversation"). *(Reconciled to KRIM-BRIEF; earlier drafts said "Request a pilot.")*
 
 **Reusable on-brand lines** (verbatim — lead sections with these): "The AI your regulator can read." · "Every action validated before it executes." · "Compliance as physics." · "No rip. No replace." · "Safety is the architecture, not an add-on." · "Pre-execution, not post-audit." · "One stack. Both sides of the wall." · "Sovereign by construction. Auditable by default." · "Validation is the runtime, not a wrapper bolted on." · "The runtime is the product." · "Sovereignty is a commitment, not a deployment option." · "Intelligence by policy." · "The operating system for the operations that cannot afford to be wrong."
 
@@ -41,15 +42,15 @@ Every fact, claim and on-brand line for **krim.ai**, reconciled from two sources
 
 ### 1. Hero
 - Headline: **The AI your regulator can read.**
-- Sub: The agent-native operating system for end-to-end lending operations. Every action validated before it executes.
-- CTA: Request a pilot
+- Sub: The operating system for regulated operations. Every action validated before it executes.
+- CTA: Book a demo
 
 ### 2. The shift
 - Eyebrow: THE SHIFT
 - Headline: **Lending is being rebuilt on agent infrastructure.**
 - Body: The operating model is moving off tickets, spreadsheets and call scripts onto AI co-workers that act. Only one architecture survives regulated procurement — one built from layer zero for governance, sovereignty and the whole lifecycle.
 - **Today — Workflow, not autonomy:** BPOs add headcount, not intelligence. Lending SaaS moves tickets through a workflow — humans still decide and act. Chatbots talk, but cannot execute a regulated action.
-- **KrimOS — Agent-native operations:** Co-workers that act across customer and back-office channels. Validated before execution — every action gated, not audited after the fact. Sovereign by construction — self-hosted, in-jurisdiction, no foreign API in the loop.
+- **KrimOS — operations that can act:** Co-workers that act across customer and back-office channels. Validated before execution — every action gated, not audited after the fact. Sovereign by construction — self-hosted, in-jurisdiction, no foreign API in the loop.
 
 ### 3. The problem
 - Eyebrow: THE PROBLEM
@@ -93,14 +94,14 @@ See Trust & security below.
 ### 11. Close
 - Headline: **The operating system for the operations that cannot afford to be wrong.**
 - Sub: The runtime is the product. Validation is the architecture, not an add-on. Sovereignty is a commitment, not a deployment option.
-- CTA: Let's run a pilot — free 30-minute consult: automation potential + a 90-day plan.
+- CTA: Book a demo.
 
 ---
 
-## Product / KrimOS — the five layers
+## Product / KrimOS — the named layers
 
-Eyebrow: THE ARCHITECTURE · Headline: **Five layers. One operating system.**
-Body: Capability composes from the bottom up — primitives build into co-workers, co-workers run inside the Kendra runtime, and the runtime is surfaced to borrowers and staff through two purpose-built workspaces.
+Eyebrow: THE ARCHITECTURE · Headline: **One operating system, named for what each part does.**
+Body: Capability composes from the bottom up — primitives build into co-workers, co-workers run inside the Kendra runtime, and the runtime is surfaced to customers and staff through two purpose-built workspaces. *(Don't force a tidy count of "layers" — name the parts that are real: Kriya, Karta, Kendra, Kula, Kira, Kupa, Krimkar.)*
 
 **Composition, in one line:** Kriya primitives compose into Karta co-workers; Karta execute through the Kendra runtime; every action passes Krim-Nyāya before it fires; outcomes are metered and recorded in Krim-Ledger and feed Krim-Learn — all surfaced through Kira in Krimkar and Kula in Kupa.
 
@@ -108,7 +109,7 @@ Body: Capability composes from the bottom up — primitives build into co-worker
 
 | Layer | What it is |
 |---|---|
-| **Krimkar** *(consumer app + public site)* | **Kira** — the AI loan advisor. One relationship across the whole lifecycle, on every channel; the face customers meet in the app and on the public site. |
+| **Krimkar** *(consumer app + public site)* | **Kira** — the AI customer advisor. One relationship across the whole lifecycle, on every channel; the face customers meet in the app and on the public site. |
 | **Kupa** *(command center)* | **Kula** — the enterprise natural-language interface: each user meets a digital twin tailored to their role, in the glass cockpit where humans supervise, configure and audit. |
 | **Karta** *(AI co-workers)* | A utility-based catalog — voice, document, risk, decision, cure, audit, report — composed from primitives, not coded. |
 | **Kriya** *(action primitives)* | **250+** validated, credit-native primitives in ten categories — the metered vocabulary every worker is built from. |
@@ -162,7 +163,7 @@ Every primitive is uniform by construction: one operation with explicit inputs/o
 
 ## Karta — the AI co-workers
 Eyebrow: THE CO-WORKERS · Headline: **Intelligent co-workers, not bots.**
-Body: Karta live in the runtime, compose primitives into capability, learn from every interaction, and operate across many functions through configuration rather than re-coding. Each is defined by twelve attributes — purpose, capabilities, primitives, inputs, outputs, metrics, KWU cost, governance, learning loops, human-in-the-loop triggers and availability. A small utility-based catalog configures to any function across the lifecycle, so cross-domain learning compounds.
+Body: Karta live in the runtime, compose primitives into capability, learn from every interaction, and operate across many functions through configuration rather than re-coding. Each is defined by eleven attributes — purpose, capabilities, primitives, inputs, outputs, metrics, KWU cost, governance, learning loops, human-in-the-loop triggers and availability. A small utility-based catalog configures to any function across the lifecycle, so cross-domain learning compounds.
 
 | Co-worker | Role |
 |---|---|
@@ -210,7 +211,7 @@ Body: Krim-Learn coordinates ten learning loops (outcome feedback, error analysi
 
 ### Kira · Krimkar (consumer)
 Headline: **Kira — one relationship, the whole lifecycle.**
-A single AI loan advisor meets the borrower across WhatsApp, voice, IVR, chat, email and SMS — and on the public consumer site and the Krimkar app — one thread, context preserved across channels, from application to payoff. Speaks the customer's language (including 50+ Indian languages), auto-clarifies ambiguous fields mid-conversation, acts only within consent and contact-window rules, and hands off to a human with full context for disputes, hardship or sensitive segments.
+A single AI customer advisor meets the borrower across WhatsApp, voice, IVR, chat, email and SMS — and on the public consumer site and the Krimkar app — one thread, context preserved across channels, from application to payoff. Speaks the customer's language (including 50+ Indian languages), auto-clarifies ambiguous fields mid-conversation, acts only within consent and contact-window rules, and hands off to a human with full context for disputes, hardship or sensitive segments.
 
 ### Kula · Kupa (enterprise natural-language interface)
 Headline: **Kula — talk to your operation.**
@@ -303,8 +304,8 @@ Eyebrow: FROM PILOT TO SCALE · Headline: **From deep-dive to production go-live
 
 ---
 
-## Contact / request a pilot
-Headline: **Let's run a pilot.**
-Body: Free 30-minute optimisation consult — automation potential and a 90-day plan.
-Form fields: institution · role · work email · message → routes to sales@krim.ai. `[PROVIDE]` scheduling option.
+## Contact / book a demo
+Headline: **Book a demo.**
+Body: See KrimOS on the stack you already run — and a path from pilot to go-live.
+Form fields: institution · role · work email · message → routes to sales@krim.ai. `[PROVIDE]` scheduling option (Cal.com).
 sales@krim.ai · krim.ai · +1 510 345 5686 · US · UK · India

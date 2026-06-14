@@ -1,5 +1,5 @@
 # Copy + design — /platform  (the hub / map)
-*Airy. The map that ties the five parts together. Shared device: the architecture glyph (current part lit) recurs on every sub-page. Facts per krim-content.md; prose original.*
+*Airy. The map that ties the parts together. Shared device: the architecture glyph (current part lit) recurs on every sub-page. Don't force a tidy count — name the parts that are real (Kendra, Kriya, Karta, Kula, Kira, and the Kupa/Krimkar surfaces). Facts per krim-content.md; prose original.*
 
 ## 1 · Hero
 EYEBROW: THE PLATFORM
@@ -14,15 +14,15 @@ H2: A vocabulary becomes a workforce, run by a mind.
 COPY: Kriya is the vocabulary — validated actions. Karta are the co-workers built from them. Kendra is the mind that runs them: it validates everything before it acts, and learns from everything it does. Two interfaces let people in — Kula for your teams, Kira for your customers.
 PRESENTATION: the composition animates bottom to top — Kriya primitives assemble into Karta, Karta run inside Kendra, Kula & Kira surface on top. One continuous build.
 
-## 3 · The five parts
+## 3 · The parts
 EYEBROW: EXPLORE
-H2: Five parts, one system.
+H2: Named for what each one does.
 [CARD] Kendra — the brain. Validates every action; learns from every outcome. →
 [CARD] Kriya — the vocabulary. 250+ validated actions. →
 [CARD] Karta — the co-workers, built from Kriya. →
-[CARD] Kula — how your teams talk to it. →
-[CARD] Kira — how your customers do. →
-PRESENTATION: five glass cards, each carrying the architecture glyph with its own part lit — the first appearance of the "same map, lit differently" device used on every sub-page.
+[CARD] Kula — how your teams talk to it, in the Kupa command center. →
+[CARD] Kira — how your customers do, in the Krimkar app. →
+PRESENTATION: a glass card per part, each carrying the architecture glyph with its own part lit — the first appearance of the "same map, lit differently" device used on every sub-page. Don't force a count; if a part deserves its own card later (e.g. Kupa), give it one.
 
 ## 4 · Close
 H2: One core. Every regulated domain.
