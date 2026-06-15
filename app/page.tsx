@@ -11,6 +11,7 @@ import Link from 'next/link'
 import SiteHeader from '@/components/SiteHeader'
 import SiteFooter from '@/components/SiteFooter'
 import Reveal from '@/components/Reveal'
+import Image from 'next/image'
 import HomeHero from '@/components/home/HomeHero'
 import PowerCards from '@/components/home/PowerCards'
 import PlatformLayers from '@/components/home/PlatformLayers'
@@ -200,27 +201,21 @@ export default function HomePage() {
               </Reveal>
             </div>
             <Reveal delay={0.15}>
-              {/* Interim, clean glass treatment until the Gemini flywheel render lands at
-                  /public/images/krimos/flywheel.png — then swap this block for an <Image>. */}
-              <div className="glass relative mx-auto flex aspect-square w-full max-w-[420px] flex-col items-center justify-center overflow-hidden p-10 text-center">
+              {/* the flywheel render, floated into the canvas — edges feathered, no hard rectangle */}
+              <div className="relative mx-auto aspect-square w-full max-w-[440px]">
+                <Image
+                  src="/images/krimos/flywheel.png"
+                  alt="The KrimOS flywheel — a glass ring of light turning through validate, act, record and learn, cyan warming to mint as the cycle compounds."
+                  width={1400}
+                  height={1400}
+                  sizes="(max-width: 768px) 84vw, 440px"
+                  className="h-full w-full object-contain"
+                />
                 <div
                   aria-hidden
                   className="pointer-events-none absolute inset-0"
-                  style={{ background: 'radial-gradient(58% 52% at 50% 44%, rgba(57,214,255,0.10), transparent 70%)' }}
+                  style={{ background: 'radial-gradient(82% 82% at 50% 50%, transparent 60%, #09090C 100%)' }}
                 />
-                <p className="relative font-mono text-[11px] uppercase tracking-[0.2em] text-ink-3">The flywheel</p>
-                <p className="relative mt-6 font-mono text-[13px] leading-relaxed tracking-[0.12em]">
-                  <span className="text-cyan">Validate</span>
-                  <span className="text-ink-3"> → </span>
-                  <span className="text-ink">Act</span>
-                  <span className="text-ink-3"> → </span>
-                  <span className="text-ink">Record</span>
-                  <span className="text-ink-3"> → </span>
-                  <span className="text-mint">Learn</span>
-                </p>
-                <p className="relative mt-7 max-w-[22ch] font-serif text-[1.2rem] leading-snug text-ink">
-                  Each turn compounds.
-                </p>
               </div>
             </Reveal>
           </div>

@@ -58,12 +58,12 @@ function useTyped(disabled: boolean) {
           return next
         })
         const ch = line[ci - 1]
-        const delay = ch === ' ' ? 10 : li === 2 ? 16 : 24 // brisk; the long subline a touch faster
+        const delay = ch === ' ' ? 20 : li === 2 ? 32 : 48 // 0.5× speed — slow, deliberate typing
         timers.push(setTimeout(step, delay))
       } else {
         li += 1
         ci = 0
-        timers.push(setTimeout(step, 200)) // a beat between lines
+        timers.push(setTimeout(step, 400)) // a beat between lines
       }
     }
     timers.push(setTimeout(step, 4200)) // begin once the logo has arrived
