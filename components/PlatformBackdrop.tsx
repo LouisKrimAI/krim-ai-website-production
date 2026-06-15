@@ -29,7 +29,7 @@ export default function PlatformBackdrop() {
         className="absolute inset-0"
         style={{ opacity: 0.28, willChange: 'transform' }}
         initial={false}
-        animate={reduce ? { scale: 1.06, y: 0 } : { scale: [1.05, 1.12, 1.05], y: ['0%', '-1.8%', '0%'] }}
+        animate={reduce ? { scale: 1.0, y: 0 } : { scale: [0.98, 1.04, 0.98], y: ['0%', '-1.4%', '0%'] }}
         transition={reduce ? { duration: 0 } : { duration: 30, ease: 'easeInOut', repeat: Infinity }}
       >
         <Image
@@ -38,8 +38,8 @@ export default function PlatformBackdrop() {
           fill
           priority
           sizes="100vw"
-          className="object-cover"
-          style={{ objectPosition: '50% 36%', filter: 'blur(1.5px)' }}
+          className="object-contain"
+          style={{ objectPosition: '50% 50%', filter: 'blur(1.5px)' }}
         />
       </motion.div>
 
