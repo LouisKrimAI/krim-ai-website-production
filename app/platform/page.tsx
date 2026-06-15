@@ -111,6 +111,12 @@ export default function PlatformPage() {
                   sizes="(max-width: 1024px) 80vw, 440px"
                   className="h-auto w-full"
                 />
+                {/* feather the render's edges into the canvas so it floats — no hard rectangle */}
+                <div
+                  aria-hidden
+                  className="pointer-events-none absolute inset-0"
+                  style={{ background: 'radial-gradient(85% 80% at 50% 48%, transparent 62%, #09090C 100%)' }}
+                />
               </div>
             </Reveal>
           </div>
