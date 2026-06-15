@@ -33,23 +33,17 @@ type Layer = {
   tag2?: string
 }
 
-/** Top → bottom: interfaces, command center, operating layers, brain. */
+/** Top → bottom: the two human-facing surfaces (enterprise + customer), then the
+ *  co-workers, the vocabulary, and the brain the whole stack rests on. */
 const LAYERS: Layer[] = [
   {
     key: 'faces',
-    name: 'Kula',
-    role: 'Your teams ask in plain language; the runtime does the thinking and proposes the work.',
-    tag: 'INTERFACE',
-    name2: 'Kira',
-    role2: 'One advisor your customers meet on every channel, in their own language, end to end.',
-    tag2: 'INTERFACE',
-    tone: 'surface',
-  },
-  {
-    key: 'kupa',
-    name: 'Kupa',
-    role: 'The cockpit your teams run operations from — supervise live work, set policy, and audit every action in one place.',
-    tag: 'COMMAND CENTER',
+    name: 'Kula & Kupa',
+    role: 'Enterprise-facing — talk to your operation in plain language, and supervise, configure and audit it from the cockpit.',
+    tag: 'YOUR TEAMS',
+    name2: 'Kira & Krimkar',
+    role2: 'Customer-facing — the AI advisor your customers meet on every channel, in the Krimkar app.',
+    tag2: 'YOUR CUSTOMERS',
     tone: 'surface',
   },
   {

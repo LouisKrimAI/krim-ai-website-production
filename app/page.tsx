@@ -200,19 +200,27 @@ export default function HomePage() {
               </Reveal>
             </div>
             <Reveal delay={0.15}>
-              {/* PLACEHOLDER: flywheel visual is being made in Gemini.
-                  Drop the asset at /public/images/flywheel.* (square, ~1000×1000)
-                  and replace this block with the <Image>. Sequence to depict:
-                  Validate → Act → Record → Learn, each lighting cyan then mint. */}
-              <div className="glass-quiet relative mx-auto flex aspect-square w-full max-w-[420px] items-center justify-center overflow-hidden">
-                <div className="absolute inset-5 rounded-[12px] border border-dashed border-soft" aria-hidden />
-                <div className="px-8 text-center">
-                  <p className="font-mono text-[11px] uppercase tracking-[0.22em] text-ink-3">Flywheel visual</p>
-                  <p className="mt-4 font-mono text-[12px] leading-relaxed tracking-[0.14em] text-ink-2">
-                    VALIDATE → ACT →<br />RECORD → LEARN
-                  </p>
-                  <p className="mt-5 font-sans text-[12px] text-ink-3">image slot · /images/flywheel</p>
-                </div>
+              {/* Interim, clean glass treatment until the Gemini flywheel render lands at
+                  /public/images/krimos/flywheel.png — then swap this block for an <Image>. */}
+              <div className="glass relative mx-auto flex aspect-square w-full max-w-[420px] flex-col items-center justify-center overflow-hidden p-10 text-center">
+                <div
+                  aria-hidden
+                  className="pointer-events-none absolute inset-0"
+                  style={{ background: 'radial-gradient(58% 52% at 50% 44%, rgba(57,214,255,0.10), transparent 70%)' }}
+                />
+                <p className="relative font-mono text-[11px] uppercase tracking-[0.2em] text-ink-3">The flywheel</p>
+                <p className="relative mt-6 font-mono text-[13px] leading-relaxed tracking-[0.12em]">
+                  <span className="text-cyan">Validate</span>
+                  <span className="text-ink-3"> → </span>
+                  <span className="text-ink">Act</span>
+                  <span className="text-ink-3"> → </span>
+                  <span className="text-ink">Record</span>
+                  <span className="text-ink-3"> → </span>
+                  <span className="text-mint">Learn</span>
+                </p>
+                <p className="relative mt-7 max-w-[22ch] font-serif text-[1.2rem] leading-snug text-ink">
+                  Each turn compounds.
+                </p>
               </div>
             </Reveal>
           </div>
