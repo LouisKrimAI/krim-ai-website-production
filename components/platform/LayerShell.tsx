@@ -8,7 +8,7 @@
 import Link from 'next/link'
 import SiteHeader from '../SiteHeader'
 import SiteFooter from '../SiteFooter'
-import OrbBackdrop from '../OrbBackdrop'
+import PlatformBackdrop from '../PlatformBackdrop'
 import { Section, CTA } from '../ui'
 import { layerBySlug, prevNext, type Layer, type LayerSlug } from './layers'
 
@@ -37,7 +37,7 @@ export default function LayerShell({ slug, children }: { slug: LayerSlug; childr
   return (
     <>
       <SiteHeader />
-      <OrbBackdrop />
+      <PlatformBackdrop />
       <main className="relative z-10">
         <div className="mx-auto max-w-site px-6 pt-10 md:px-10">
           <nav aria-label="Breadcrumb" className="font-mono text-[11px] uppercase tracking-[0.16em] text-ink-3">

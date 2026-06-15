@@ -8,7 +8,6 @@
  */
 
 import type { Metadata } from 'next'
-import Image from 'next/image'
 import LayerShell from '@/components/platform/LayerShell'
 import Reveal from '@/components/Reveal'
 import { Section, Eyebrow, GlassCard } from '@/components/ui'
@@ -52,46 +51,19 @@ export default function KendraPage() {
       <LayerShell slug="kendra">
         {/* ---- Hero: what it is ---- */}
         <Section className="!pt-10">
-          <div className="grid items-center gap-12 lg:grid-cols-[1.05fr_0.95fr]">
-            <div>
-              <Reveal>
-                <Eyebrow>The runtime</Eyebrow>
-                <h1 className="mt-4 font-serif text-display-hero text-ink">
-                  The brain your co-workers think in.
-                </h1>
-              </Reveal>
-              <Reveal delay={0.12}>
-                <p className="mt-7 max-w-[54ch] font-sans text-body-lg text-ink-2">
-                  Kendra is the runtime of KrimOS — where every co-worker reasons, and where the
-                  rules of what they may do actually live. It validates each action before it acts,
-                  and gets sharper from each outcome it records.
-                </p>
-              </Reveal>
-            </div>
-            <Reveal delay={0.15}>
-              <div className="relative mx-auto w-full max-w-[440px]">
-                {/* faint cyan ground so the render sits in the orb's light, not on a seam */}
-                <div
-                  aria-hidden
-                  className="pointer-events-none absolute -inset-6 -z-10 rounded-full opacity-60 blur-2xl"
-                  style={{ background: 'radial-gradient(60% 50% at 50% 42%, rgba(57,214,255,0.12), transparent 70%)' }}
-                />
-                <Image
-                  src="/images/krimos/kendra.jpg"
-                  alt="Kendra rendered as the luminous reasoning core of KrimOS — the mind at the centre of the stack, validating and learning."
-                  width={1173}
-                  height={1650}
-                  priority
-                  sizes="(max-width: 1024px) 80vw, 440px"
-                  className="h-auto w-full"
-                />
-                {/* feather the render's edges into the canvas so it floats — no hard rectangle */}
-                <div
-                  aria-hidden
-                  className="pointer-events-none absolute inset-0"
-                  style={{ background: 'radial-gradient(85% 80% at 50% 48%, transparent 62%, #09090C 100%)' }}
-                />
-              </div>
+          <div className="mx-auto max-w-[820px] text-center">
+            <Reveal>
+              <Eyebrow>The runtime</Eyebrow>
+              <h1 className="mt-4 font-serif text-display-hero text-ink">
+                The brain your co-workers think in.
+              </h1>
+            </Reveal>
+            <Reveal delay={0.12}>
+              <p className="mx-auto mt-7 max-w-[56ch] font-sans text-body-lg text-ink-2">
+                Kendra is the runtime of KrimOS — where every co-worker reasons, and where the
+                rules of what they may do actually live. It validates each action before it acts,
+                and gets sharper from each outcome it records.
+              </p>
             </Reveal>
           </div>
         </Section>

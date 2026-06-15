@@ -11,9 +11,8 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import SiteHeader from '@/components/SiteHeader'
 import SiteFooter from '@/components/SiteFooter'
-import OrbBackdrop from '@/components/OrbBackdrop'
+import PlatformBackdrop from '@/components/PlatformBackdrop'
 import Reveal from '@/components/Reveal'
-import Image from 'next/image'
 import PlatformLayers from '@/components/home/PlatformLayers'
 import { LAYERS } from '@/components/platform/layers'
 import { Section, Eyebrow, GlassCard, CTA } from '@/components/ui'
@@ -66,57 +65,30 @@ export default function PlatformPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(softwareLd) }} />
       <SiteHeader />
-      <OrbBackdrop />
+      <PlatformBackdrop />
       <main className="relative z-10">
         {/* ---- 1 · Hero: the claim + the architecture, seen whole ---- */}
         <Section className="!pt-24">
-          <div className="grid items-center gap-12 lg:grid-cols-[1.05fr_0.95fr]">
-            <div>
-              <Reveal>
-                <Eyebrow>KrimOS</Eyebrow>
-                <h1 className="mt-5 font-serif text-display-hero text-ink">
-                  One operating system for regulated operations.
-                </h1>
-              </Reveal>
-              <Reveal delay={0.12}>
-                <p className="mt-7 max-w-[56ch] font-sans text-body-lg text-ink-2">
-                  KrimOS is the agent-native operating system for regulated operations. AI
-                  co-workers do the work; every action is validated before it executes, and the
-                  system gets sharper from every outcome it records — all inside your own perimeter.
-                </p>
-              </Reveal>
-              <Reveal delay={0.2}>
-                <div className="mt-10 flex flex-wrap items-center gap-6">
-                  <CTA href={DEMO_HREF}>Book a demo</CTA>
-                  <CTA href="/platform/kendra" variant="secondary">
-                    See how it validates
-                  </CTA>
-                </div>
-              </Reveal>
-            </div>
-            <Reveal delay={0.15}>
-              <div className="relative mx-auto w-full max-w-[440px]">
-                {/* faint cyan ground so the render sits in the orb's light, not on a seam */}
-                <div
-                  aria-hidden
-                  className="pointer-events-none absolute -inset-6 -z-10 rounded-full opacity-60 blur-2xl"
-                  style={{ background: 'radial-gradient(60% 50% at 50% 42%, rgba(57,214,255,0.12), transparent 70%)' }}
-                />
-                <Image
-                  src="/images/krimos/layers.png"
-                  alt="The KrimOS stack rendered as physical strata: the reasoning mind on top, the validated operating layers beneath, resting on a sovereign silicon foundation."
-                  width={1115}
-                  height={1500}
-                  priority
-                  sizes="(max-width: 1024px) 80vw, 440px"
-                  className="h-auto w-full"
-                />
-                {/* feather the render's edges into the canvas so it floats — no hard rectangle */}
-                <div
-                  aria-hidden
-                  className="pointer-events-none absolute inset-0"
-                  style={{ background: 'radial-gradient(85% 80% at 50% 48%, transparent 62%, #09090C 100%)' }}
-                />
+          <div className="mx-auto max-w-[860px] text-center">
+            <Reveal>
+              <Eyebrow>KrimOS</Eyebrow>
+              <h1 className="mt-5 font-serif text-display-hero text-ink">
+                One operating system for regulated operations.
+              </h1>
+            </Reveal>
+            <Reveal delay={0.12}>
+              <p className="mx-auto mt-7 max-w-[60ch] font-sans text-body-lg text-ink-2">
+                KrimOS is the agent-native operating system for regulated operations. AI co-workers
+                do the work; every action is validated before it executes, and the system gets
+                sharper from every outcome it records — all inside your own perimeter.
+              </p>
+            </Reveal>
+            <Reveal delay={0.2}>
+              <div className="mt-10 flex flex-wrap items-center justify-center gap-6">
+                <CTA href={DEMO_HREF}>Book a demo</CTA>
+                <CTA href="/platform/kendra" variant="secondary">
+                  See how it validates
+                </CTA>
               </div>
             </Reveal>
           </div>
