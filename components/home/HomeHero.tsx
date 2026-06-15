@@ -18,7 +18,7 @@ import KrimLogoAnimated from '../KrimLogoAnimated'
 import { CTA } from '../ui'
 
 const OUT_SOFT = [0.16, 1, 0.3, 1] as const
-const DEMO_HREF = 'mailto:sales@krim.ai?subject=Demo%20request%20%E2%80%94%20KrimOS'
+const DEMO_HREF = '/contact'
 
 export default function HomeHero() {
   const reduce = useReducedMotion()

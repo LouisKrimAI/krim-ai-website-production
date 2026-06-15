@@ -28,7 +28,7 @@ export const metadata: Metadata = {
   openGraph: { title: 'Epistemic AI', url: 'https://krim.ai/epistemic-ai' },
 }
 
-const DEMO_HREF = 'mailto:sales@krim.ai?subject=Demo%20request%20%E2%80%94%20Epistemic%20AI'
+const DEMO_HREF = '/contact'
 
 const breadcrumbLd = {
   '@context': 'https://schema.org',

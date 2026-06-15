@@ -12,7 +12,7 @@ import OrbBackdrop from '../OrbBackdrop'
 import { Section, CTA } from '../ui'
 import { layerBySlug, prevNext, type Layer, type LayerSlug } from './layers'
 
-const DEMO_HREF = 'mailto:sales@krim.ai?subject=Demo%20request%20%E2%80%94%20KrimOS'
+const DEMO_HREF = '/contact'
 
 function NavCard({ layer, dir }: { layer: Layer; dir: 'prev' | 'next' }) {
   return (

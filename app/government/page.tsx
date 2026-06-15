@@ -34,7 +34,7 @@ const breadcrumbLd = {
 }
 
 const CTA_HREF =
-  'mailto:sales@krim.ai?subject=Starting%20a%20conversation%20%E2%80%94%20Krim%20for%20government'
+  '/contact'
 
 // the public-sector bar — what makes generic AI a non-starter here
 const CHALLENGES = [

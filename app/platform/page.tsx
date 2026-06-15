@@ -26,7 +26,7 @@ export const metadata: Metadata = {
   openGraph: { title: 'KrimOS — the platform', url: 'https://krim.ai/platform' },
 }
 
-const DEMO_HREF = 'mailto:sales@krim.ai?subject=Demo%20request%20%E2%80%94%20KrimOS'
+const DEMO_HREF = '/contact'
 
 const breadcrumbLd = {
   '@context': 'https://schema.org',

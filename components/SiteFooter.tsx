@@ -8,18 +8,19 @@
 import Link from 'next/link'
 import KrimLogoAnimated from './KrimLogoAnimated'
 
-const DEMO_HREF = 'mailto:sales@krim.ai?subject=Demo%20request%20%E2%80%94%20KrimOS'
+const DEMO_HREF = '/contact'
 
 const NAV: Array<[string, Array<[string, string]>]> = [
   [
-    'Platform',
+    'KrimOS',
     [
-      ['KrimOS', '/platform'],
+      ['Overview', '/platform'],
       ['Kendra', '/platform/kendra'],
       ['Kriya', '/platform/kriya'],
       ['Karta', '/platform/karta'],
+      ['Kupa', '/platform/kupa'],
       ['Kula', '/platform/kula'],
-      ['Kira', '/platform/kira'],
+      ['Kira & Krimkar', '/platform/kira'],
     ],
   ],
   [
@@ -27,19 +28,18 @@ const NAV: Array<[string, Array<[string, string]>]> = [
     [
       ['Lending', '/lending'],
       ['Government', '/government'],
-      ['Epistemic AI', '/epistemic-ai'],
-      ['Architecture', '/architecture'],
-      ['Research', '/research'],
+      ['Large Enterprise', '/enterprise'],
+      ['MSME', '/msme'],
     ],
   ],
   [
-    'Company',
+    'More',
     [
-      ['About', '/company'],
+      ['Epistemic AI', '/epistemic-ai'],
+      ['Architecture', '/architecture'],
+      ['Research', '/research'],
       ['Trust', '/trust'],
-      ['Services', '/services'],
-      ['Blog', '/blog'],
-      ['Contact', '/contact'],
+      ['Book a demo', '/contact'],
     ],
   ],
 ]

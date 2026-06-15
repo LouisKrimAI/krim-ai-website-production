@@ -36,10 +36,9 @@ const DOMAINS = [
 const FLAT_RIGHT = [
   ['Epistemic AI', '/epistemic-ai'],
   ['Trust', '/trust'],
-  ['Company', '/company'],
 ] as const
 
-const DEMO_HREF = 'mailto:sales@krim.ai?subject=Demo%20request%20%E2%80%94%20KrimOS'
+const DEMO_HREF = '/contact'
 
 const linkCls = 'font-sans text-[14px] text-ink-2 transition-colors duration-fast hover:text-ink'
 
