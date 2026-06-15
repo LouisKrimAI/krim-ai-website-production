@@ -19,9 +19,9 @@ export type Layer = {
 }
 
 export const LAYERS: Layer[] = [
-  { slug: 'kendra', name: 'Kendra', eyebrow: 'The runtime', oneLiner: 'The brain — validates every action, learns from every outcome.', tag: 'RUNTIME' },
-  { slug: 'kriya', name: 'Kriya', eyebrow: 'The vocabulary', oneLiner: '250+ validated, credit-native action primitives.', tag: 'PRIMITIVES' },
-  { slug: 'karta', name: 'Karta', eyebrow: 'The co-workers', oneLiner: 'Intelligent co-workers, composed from primitives.', tag: 'CO-WORKERS' },
+  { slug: 'kendra', name: 'Kendra', eyebrow: 'When it has to be right', oneLiner: 'The brain — validates every action, learns from every outcome.', tag: 'RUNTIME' },
+  { slug: 'kriya', name: 'Kriya', eyebrow: 'What it can do', oneLiner: '250+ validated, credit-native action primitives.', tag: 'PRIMITIVES' },
+  { slug: 'karta', name: 'Karta', eyebrow: 'Who does the work', oneLiner: 'Intelligent co-workers, composed from primitives.', tag: 'CO-WORKERS' },
   { slug: 'kula', name: 'Kula', eyebrow: 'For your teams', oneLiner: 'Talk to your operation, in plain language — in Kupa.', tag: 'ENTERPRISE INTERFACE' },
   { slug: 'kira', name: 'Kira', eyebrow: 'For your customers', oneLiner: 'One relationship across every channel — in the Krimkar app.', tag: 'CUSTOMER ADVISOR' },
 ]

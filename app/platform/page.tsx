@@ -1,6 +1,6 @@
 /**
  * /platform — the hub / map. Rebuilt to docs/HOUSE-STYLE.md as the reference
- * exemplar. Its own structure (claim → the parts as doorways → why it holds →
+ * exemplar. Its own structure (claim → the doorways in → why it holds →
  * close), the homepage's design DNA, marketing-grade copy. The premium glass
  * strata (PlatformLayers) is the signature visual; the flat ArchGlyph is gone.
  * Facts: docs/krim-content.md.
@@ -58,9 +58,9 @@ const softwareLd = {
   offers: { '@type': 'Offer', availability: 'https://schema.org/InStock', url: 'https://krim.ai/platform' },
 }
 
-// benefit-led doorways — the hub's core job is routing the buyer to the part they need
+// benefit-led doorways — the hub's core job is routing the buyer to the layer they need
 const DOORS: Record<string, string> = {
-  kendra: 'The mind. It validates every action before it fires — and gets sharper from every one after.',
+  kendra: 'The mind. It validates every action before it fires — and gets sharper from every outcome it records.',
   kriya: 'The vocabulary. 250+ validated, credit-native actions; the finite set everything is built from.',
   karta: 'The co-workers. Composed from the vocabulary to run the operation — never to approve, deny or price a loan.',
   kula: 'Your teams’ way in. Ask in plain language; the runtime does the thinking and waits for your sign-off.',
@@ -88,7 +88,7 @@ export default function PlatformPage() {
               <Reveal delay={0.12}>
                 <p className="mt-7 max-w-[56ch] font-sans text-body-lg text-ink-2">
                   Every action is validated before it executes — and the system gets sharper from
-                  each one. A vocabulary of validated actions, the co-workers built from it, and the
+                  every outcome it records. A vocabulary of validated actions, the co-workers built from it, and the
                   mind that runs them, as one stack inside your walls.
                 </p>
               </Reveal>
@@ -107,16 +107,17 @@ export default function PlatformPage() {
           </div>
         </Section>
 
-        {/* ---- 2 · The parts, as doorways ---- */}
+        {/* ---- 2 · Inside the system — the doorways ---- */}
         <Section hairline>
           <Reveal>
-            <Eyebrow>The parts</Eyebrow>
-            <h2 className="mt-4 max-w-[20ch] font-serif text-display-1 text-ink">
-              Open the part you came for.
+            <Eyebrow>Inside KrimOS</Eyebrow>
+            <h2 className="mt-4 max-w-[22ch] font-serif text-display-1 text-ink">
+              One system, wherever you start.
             </h2>
-            <p className="mt-6 max-w-[58ch] font-sans text-body-lg text-ink-2">
-              A vocabulary becomes a workforce, run by one mind — with two ways in. Each part is a
-              door into the same operating system.
+            <p className="mt-6 max-w-[60ch] font-sans text-body-lg text-ink-2">
+              A vocabulary becomes a workforce, run by one mind — with two ways in, one for the
+              teams who run the operation and one for the customers it serves. Start where your
+              problem is; underneath, it stays a single operating system.
             </p>
           </Reveal>
           <div className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
@@ -128,7 +129,7 @@ export default function PlatformPage() {
                     <h3 className="mt-3 font-serif text-display-2 text-ink">{l.name}</h3>
                     <p className="mt-3 flex-1 font-sans text-[14px] leading-relaxed text-ink-2">{DOORS[l.slug]}</p>
                     <p className="mt-6 font-mono text-[13px] text-mint" aria-hidden>
-                      Open {l.name}{' '}
+                      Explore {l.name}{' '}
                       <span className="inline-block transition-transform duration-fast group-hover:translate-x-1">→</span>
                     </p>
                   </GlassCard>

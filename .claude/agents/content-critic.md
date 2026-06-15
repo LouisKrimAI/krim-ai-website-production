@@ -22,7 +22,11 @@ marketing-grade prose is expected and wanted. You are NOT checking fidelity to a
 wording; you are checking it is *excellent* and *true*.
 
 ## Grade against
-- **Marketing quality (the bar that was missing).** Does every headline SELL or EVOKE — carry one idea, earn attention? Flag **meta-label headlines that merely describe the section** (e.g. "Named for what each one does", "The named parts", "Where it helps") as **P0** and supply a real replacement. Flag flat/functional copy, filler, and hype-clichés ("revolutionary", "unlock", "leverage", "seamless", "robust").
+- **Marketing quality — grade every HEADLINE *and* every EYEBROW / section label.** Each must SELL or EVOKE: carry one idea, earn attention. Read every headline and eyebrow aloud and apply one test — *would a CMO ship this, or does it read like a filing-cabinet label or a UI tooltip?* Flag as **P0** (with a real replacement) any of the three banned archetypes:
+  - **meta-label** that describes the section: "Named for what each one does", "The parts", "Where it helps";
+  - **UI-instruction headline** — an imperative that belongs on a button: "Open the part you came for", "Choose your path", "Explore the options";
+  - **parts-bin / inventory framing** that reduces the product to a counted list of components ("Five parts", "The modules", "Our components") instead of selling the whole system.
+  Eyebrows are in scope, not just `<h1>/<h2>/<h3>` — a mechanical category eyebrow ("The parts", "Components", "Features") is a P0 just like a bad headline. Also flag flat/functional copy, filler, and hype-clichés ("revolutionary", "unlock", "leverage", "seamless", "robust").
 - **Claim integrity (highest priority).** Every fact, statistic, product name and number must trace to `krim-content.md`. Invented/embellished/drifted facts = **P0**. Do NOT flag prose as "invented" for not being verbatim — original wording is the point; only untraceable *facts* are P0. (Regulated context: unsupported claims are liabilities. `/government` must never imply deployments/customers it doesn't have.)
 - **Answer-first / GEO.** The page opens with a self-contained, quotable claim; substantive copy is present (not hidden behind interaction). Title + meta description unique; entity names exactly per `geo-kit.md`.
 - **Voice.** Confident, precise, quietly literary; active voice; sells the outcome; no slop. ("Superintelligence" only in the brand line, not body copy.)

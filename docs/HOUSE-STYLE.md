@@ -21,7 +21,11 @@
 - **Body — Inter:** generous, calm, `ink-2`.
 - **Labels / eyebrows / data — IBM Plex Mono:** uppercase, wide-tracked, `ink-3`, small.
 - Scale lives in the Tailwind tokens (`text-display-hero/display-1/display-2/body-lg/body/eyebrow/caption`). Lead each section with one confident serif line.
-- **Headlines sell or evoke — they never describe the section.** "Named for what each one does." is the banned archetype: a meta-label posing as a headline. A headline earns attention and carries one idea.
+- **Headlines AND eyebrows sell or evoke — they never label, instruct, or inventory.** A headline earns attention and carries one idea; an eyebrow orients with character, never reduces. Three banned archetypes, all real failures we have shipped and had to rip out:
+  - **Meta-label** — describes the section instead of saying something: *"Named for what each one does."*, *"The parts"*, *"The named pieces."*
+  - **UI instruction** — an imperative that belongs on a button, not a headline: *"Open the part you came for."*, *"Choose your path."*, *"Click to explore."*
+  - **Parts-bin inventory** — reduces one system to a counted catalogue of components: *"Five parts"*, *"The modules"*, *"Our components."* Sell the whole; never make the buyer feel they're reading a parts list. (A hub that links to sub-pages routes by *what the buyer needs*, not by enumerating pieces.)
+  The test: read it aloud. If it could sit on a filing-cabinet drawer or in a tooltip, rewrite it.
 
 ## 4 · Glass (the signature surface)
 - `.glass` — the showcase surface for cards that carry key information: real backdrop-blur, a hairline light border, a faint top-edge highlight, a soft lift. `.glass-quiet` for secondary; `.glass-cyan` / `.glass-mint` for the **one** accent per view; `.lume` for interactive hover lift.
@@ -52,7 +56,7 @@ AA contrast on all text · visible `:focus-visible` · logical heading order (on
 - Per page: unique `<title>` + meta description, canonical, BreadcrumbList JSON-LD, an OG/share-image slot. Entity names exactly per `geo-kit.md`.
 
 ## 10 · Voice & copy
-- Confident, precise, quietly literary — sells the outcome and stays credible to a regulator. **Full creative licence within the facts** (`krim-content.md`). No filler, no hype-clichés ("revolutionary", "unlock", "leverage", "seamless"), no meta-label headlines. Read every line aloud; if it doesn't earn its place, cut it.
+- Confident, precise, quietly literary — sells the outcome and stays credible to a regulator. **Full creative licence within the facts** (`krim-content.md`). No filler, no hype-clichés ("revolutionary", "unlock", "leverage", "seamless"), and none of the three banned headline/eyebrow archetypes in §3 (label, instruction, inventory). Read every line aloud; the test for any headline or eyebrow is "would a CMO ship this?" — if it doesn't earn its place, rewrite or cut it.
 
 ---
 
