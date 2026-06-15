@@ -1,8 +1,9 @@
 /**
  * /platform — the hub / map. Rebuilt to docs/HOUSE-STYLE.md as the reference
  * exemplar. Its own structure (claim → the doorways in → why it holds →
- * close), the homepage's design DNA, marketing-grade copy. The premium glass
- * strata (PlatformLayers) is the signature visual; the flat ArchGlyph is gone.
+ * close), the homepage's design DNA, marketing-grade copy. The Layershq render
+ * (public/images/krimos/layers.png) is the hero visual; hand-built SVG "devices"
+ * are gone — real image or clean glass+type only (HOUSE-STYLE §7).
  * Facts: docs/krim-content.md.
  */
 
@@ -12,12 +13,12 @@ import SiteHeader from '@/components/SiteHeader'
 import SiteFooter from '@/components/SiteFooter'
 import OrbBackdrop from '@/components/OrbBackdrop'
 import Reveal from '@/components/Reveal'
-import PlatformLayers from '@/components/home/PlatformLayers'
+import Image from 'next/image'
 import { LAYERS } from '@/components/platform/layers'
 import { Section, Eyebrow, GlassCard, CTA } from '@/components/ui'
 
 export const metadata: Metadata = {
-  title: 'Platform',
+  title: 'KrimOS',
   description:
     'KrimOS is one operating system for regulated operations: a vocabulary of validated actions (Kriya), the co-workers built from it (Karta), the runtime that validates and learns (Kendra), and two interfaces — Kula for your teams, Kira for your customers.',
   alternates: { canonical: 'https://krim.ai/platform' },
@@ -31,7 +32,7 @@ const breadcrumbLd = {
   '@type': 'BreadcrumbList',
   itemListElement: [
     { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://krim.ai' },
-    { '@type': 'ListItem', position: 2, name: 'Platform', item: 'https://krim.ai/platform' },
+    { '@type': 'ListItem', position: 2, name: 'KrimOS', item: 'https://krim.ai/platform' },
   ],
 }
 
@@ -64,7 +65,7 @@ const DOORS: Record<string, string> = {
   kriya: 'The vocabulary. 250+ validated, credit-native actions; the finite set everything is built from.',
   karta: 'The co-workers. Composed from the vocabulary to run the operation — never to approve, deny or price a loan.',
   kula: 'Your teams’ way in. Ask in plain language; the runtime does the thinking and waits for your sign-off.',
-  kira: 'Your customers’ advisor. One relationship across every channel, in their own language.',
+  kira: 'Your customers’ advisor — one relationship across every channel, in their own language, in the Krimkar app.',
 }
 
 export default function PlatformPage() {
@@ -80,7 +81,7 @@ export default function PlatformPage() {
           <div className="grid items-center gap-12 lg:grid-cols-[1.05fr_0.95fr]">
             <div>
               <Reveal>
-                <Eyebrow>The platform</Eyebrow>
+                <Eyebrow>KrimOS</Eyebrow>
                 <h1 className="mt-5 font-serif text-display-hero text-ink">
                   One operating system for regulated operations.
                 </h1>
@@ -102,7 +103,23 @@ export default function PlatformPage() {
               </Reveal>
             </div>
             <Reveal delay={0.15}>
-              <PlatformLayers />
+              <div className="relative mx-auto w-full max-w-[440px]">
+                {/* faint cyan ground so the render sits in the orb's light, not on a seam */}
+                <div
+                  aria-hidden
+                  className="pointer-events-none absolute -inset-6 -z-10 rounded-full opacity-60 blur-2xl"
+                  style={{ background: 'radial-gradient(60% 50% at 50% 42%, rgba(57,214,255,0.12), transparent 70%)' }}
+                />
+                <Image
+                  src="/images/krimos/layers.png"
+                  alt="The KrimOS stack rendered as physical strata: the reasoning mind on top, the validated operating layers beneath, resting on a sovereign silicon foundation."
+                  width={1115}
+                  height={1500}
+                  priority
+                  sizes="(max-width: 1024px) 80vw, 440px"
+                  className="h-auto w-full"
+                />
+              </div>
             </Reveal>
           </div>
         </Section>

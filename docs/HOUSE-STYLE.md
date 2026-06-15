@@ -6,6 +6,11 @@
 
 ---
 
+## 0 · The bar — simple, content-first, like the homepage
+- **Simplicity wins. Do not over-engineer.** A page earns its keep with clear thinking and strong writing, not contraptions. The reference for "how much is enough" is the homepage: calm glass cards carrying confident type, a real image or two, generous space. If a section needs a gadget to be interesting, the writing isn't doing its job — fix the writing.
+- **Content shape for a product or domain page:** the challenge → the offering & the use cases it covers → the impact. Lead with the claim, prove it in glass, close with the ask. Most pages need nothing more than this, said well.
+- **Match the homepage's craft exactly** — its glass (`glass lume` cards with the small accent bar; `GlassCard` callouts; real images framed in glass), its type scale, its restraint. `app/page.tsx` is the literal pattern to emulate, not just admire.
+
 ## 1 · Canvas & atmosphere
 - One deep dark ground, always: `#09090C` page / `#04060C` deepest. No light mode, no theme switch.
 - **The orb is the brand's living ground.** A faint, centred, slowly-drifting WaveOrb sits behind every page (`OrbBackdrop`, ~0.18–0.34 opacity). It is the *only* ambient graphic and must never compete with content. A radial well + soft vignette keep text legible over it.
@@ -42,10 +47,11 @@
 - Always GPU-only (opacity/transform/colour); reduced-motion settles to the meaningful end state instantly; 60fps; zero CLS.
 - **Banned:** a signature device in every section, spinning loaders, springy overshoot, gratuitous count-ups, auto-carousels, typewriters, gradient-shifting buttons, motion for motion's sake.
 
-## 7 · Graphics policy (world-class or nothing)
-- The aesthetic is carried by **orb + glass + type + colour grammar** — not by decorative illustration.
-- **Imagery is real, high-quality assets only** (generated in Gemini), dropped into labelled slots under `public/images/<category>/`. If a great asset doesn't exist yet, leave a labelled placeholder at the right path/dimensions — **never ship a mediocre hand-built SVG "device" as a stand-in.**
-- Custom SVG/diagrams are allowed **only** when genuinely excellent, purposeful, and they earn their place (and pass the design-critic). Default to restraint: a quiet glass panel beats a busy diagram.
+## 7 · Graphics policy (real images or nothing — no hand-built "devices")
+- The aesthetic is carried by **orb + glass + type + colour grammar**. Content graphics are **real, high-quality images** (made in Gemini, dropped into `public/images/<category>/`, used via `next/image` in glass-framed slots like the homepage's) — **or nothing.**
+- **Do not build inline SVG/JSX "devices" as content.** No diagrams, dashboards, dials, gauges, charts, ledgers, fake product UIs, validation-gate animations, scatter-fields, or "explainer" contraptions. They read as cheap and they are banned — we would rather have none than a mediocre one. **A clean glass + type section is ALWAYS preferred to a homemade graphic.** *(The design-critic flags any informational/illustrative inline SVG as P0.)*
+- If a great image doesn't exist for a slot yet, ship the **clean glass + type** version of that section — never a placeholder device or a homemade stand-in. (A single labelled empty image slot, like the homepage flywheel, is acceptable while a real asset is being made.)
+- The **only** allowed inline SVG is barely-there **decorative motif** — like the homepage's 56px door motifs at ~0.09 opacity. Texture, never information.
 
 ## 8 · Accessibility floor (non-negotiable)
 AA contrast on all text · visible `:focus-visible` · logical heading order (one `<h1>` per page) · descriptive `alt` (or `alt=""` for decorative) · no layout shift · keyboard-operable interactives · `prefers-reduced-motion` honoured.

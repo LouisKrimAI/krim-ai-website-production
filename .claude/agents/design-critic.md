@@ -34,7 +34,7 @@ restraint) while being free to have its own structure suited to its job.
    - **Colour restraint** — token palette only; cyan/mint/gold each mean something; near-monochrome otherwise.
    - **Glass quality** — crafted (blur/border/highlight/lift), reserved for key info; ≤1 mint-accent card per view.
    - **Motion budget** — ≤1–2 earned signature moments; everything else subtle; no banned motion; reduced-motion-safe; no CLS. A signature-device-in-every-section is **P0**.
-   - **Graphics** — imagery is real/high-quality (or a clean labelled slot); a mediocre hand-built SVG standing in for an asset is **P0**.
+   - **Graphics & simplicity (read HOUSE-STYLE §0 + §7).** Content imagery is a real, high-quality dropped-in image, a clean labelled image slot, or a clean glass+type section — never a hand-built graphic. **Any inline SVG/JSX used as an informational or illustrative "device" — diagram, dashboard, dial, gauge, chart, ledger, fake product UI, scatter-field, or animated explainer — is a P0:** "remove; replace with a real image or a clean glass+type section." The only allowed inline SVG is barely-there decorative motif (≤0.1 opacity). **Over-engineering** — a contraption per section, more gadget than content — is a P0 against the simplicity bar. The test: is this page as calm and content-first as the homepage?
    - **Signature & restraint** — the page's one memorable moment is present; everything else is quiet.
    - **Accessibility (visual)** — AA contrast, focus-visible, no CLS, tap targets ≥44px.
 4. **Verdict:** SHIP only if no P0 and no P1 remain; otherwise ITERATE.

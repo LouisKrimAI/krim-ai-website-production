@@ -22,10 +22,13 @@ page gets the structure that best does *its* job.
    parts/modules"). The test for each line: *would a CMO ship this, or does it read like
    a filing-cabinet drawer, a UI tooltip, or a parts list?* Arrive at the build step
    with copy that already clears the bar.
-3. **Build / refine.** Implement to `HOUSE-STYLE.md`: shared component system + tokens
-   only; the calm orb backdrop; glass for key info; **motion budget — ≤1–2 earned
-   moments**, everything else subtle; imagery = real Gemini assets in labelled slots
-   (no mediocre inline SVG). Reuse signature components — don't reinvent per route.
+3. **Build / refine — simple and content-first (HOUSE-STYLE §0).** Implement to
+   `HOUSE-STYLE.md`: tokens only; the calm orb backdrop; **emulate the homepage's glass
+   exactly** (`glass lume` cards + accent bar, `GlassCard` callouts, real images framed
+   in glass). Content graphics are real dropped-in images or a clean glass+type section —
+   **never a hand-built SVG/JSX "device"** (diagrams, dashboards, dials, fake UIs, gates).
+   Motion budget ≤1 earned moment, everything else subtle. Don't over-engineer: if a
+   section needs a gadget to be interesting, fix the writing instead.
 4. **Render (the lead captures — critics don't).** Ensure the dev server is running.
    Capture full-page + key-section screenshots at **375 / 768 / 1440** (headless
    Playwright via Bash, or the Claude Preview MCP) and the served HTML. Fix any console

@@ -2,10 +2,10 @@
 
 /**
  * SiteHeader — sticky glass nav over the orb. The static Krim mark (real
- * committed file) + wordmark at left. Domains are grouped under a labelled
- * "Domains" menu (BUILD-PLAN); the rest are flat. Accessible: the menu is a
- * real button with aria-expanded, closes on Escape/outside-click, links are
- * focusable. Routes beyond / ship in later phases.
+ * committed file) + wordmark at left. Two grouped menus — "KrimOS" (the
+ * product, with its layers) and "Domains" — plus flat links. Accessible:
+ * each menu is a real button with aria-expanded, the open menu closes on
+ * Escape / outside-click, links are focusable. Only one menu open at a time.
  */
 
 import { useEffect, useRef, useState } from 'react'
@@ -15,6 +15,16 @@ import KrimLogoAnimated from './KrimLogoAnimated'
 
 const OUT_SOFT = [0.16, 1, 0.3, 1] as const
 
+// KrimOS — overview + the layer pages (Kira now also covers the Krimkar app)
+const KRIMOS = [
+  ['Overview', 'The operating system, end to end', '/platform'],
+  ['Kendra', 'The runtime — validates & learns', '/platform/kendra'],
+  ['Kriya', 'The vocabulary of actions', '/platform/kriya'],
+  ['Karta', 'The AI co-workers', '/platform/karta'],
+  ['Kula', 'For your teams', '/platform/kula'],
+  ['Kira & Krimkar', 'For your customers', '/platform/kira'],
+] as const
+
 const DOMAINS = [
   ['Lending', '/lending'],
   ['Government', '/government'],
@@ -22,7 +32,6 @@ const DOMAINS = [
   ['MSME', '/msme'],
 ] as const
 
-const FLAT_LEFT = [['Platform', '/platform']] as const
 const FLAT_RIGHT = [
   ['Epistemic AI', '/epistemic-ai'],
   ['Trust', '/trust'],
@@ -33,10 +42,20 @@ const DEMO_HREF = 'mailto:sales@krim.ai?subject=Demo%20request%20%E2%80%94%20Kri
 
 const linkCls = 'font-sans text-[14px] text-ink-2 transition-colors duration-fast hover:text-ink'
 
+type MenuKey = 'krimos' | 'domains' | null
+
+function Caret({ open }: { open: boolean }) {
+  return (
+    <svg width="9" height="9" viewBox="0 0 10 10" aria-hidden className={`transition-transform duration-fast ${open ? 'rotate-180' : ''}`}>
+      <path d="M1 3l4 4 4-4" fill="none" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  )
+}
+
 export default function SiteHeader({ scrollReveal = false }: { scrollReveal?: boolean }) {
   const [menuOpen, setMenuOpen] = useState(false) // mobile sheet
-  const [domainsOpen, setDomainsOpen] = useState(false) // desktop dropdown
-  const domainsRef = useRef<HTMLDivElement>(null)
+  const [open, setOpen] = useState<MenuKey>(null) // desktop dropdown (one at a time)
+  const navRef = useRef<HTMLElement>(null)
   const reduce = useReducedMotion()
   // On the homepage the banner stays hidden over the hero and is revealed once
   // the visitor scrolls past it. Elsewhere (scrollReveal=false) it's always shown.
@@ -50,20 +69,20 @@ export default function SiteHeader({ scrollReveal = false }: { scrollReveal?: bo
     return () => window.removeEventListener('scroll', onScroll)
   }, [scrollReveal])
 
-  // close the desktop dropdown on outside click / Escape
+  // close the open desktop dropdown on outside click / Escape
   useEffect(() => {
-    if (!domainsOpen) return
+    if (!open) return
     const onDown = (e: MouseEvent) => {
-      if (domainsRef.current && !domainsRef.current.contains(e.target as Node)) setDomainsOpen(false)
+      if (navRef.current && !navRef.current.contains(e.target as Node)) setOpen(null)
     }
-    const onKey = (e: KeyboardEvent) => e.key === 'Escape' && setDomainsOpen(false)
+    const onKey = (e: KeyboardEvent) => e.key === 'Escape' && setOpen(null)
     document.addEventListener('mousedown', onDown)
     document.addEventListener('keydown', onKey)
     return () => {
       document.removeEventListener('mousedown', onDown)
       document.removeEventListener('keydown', onKey)
     }
-  }, [domainsOpen])
+  }, [open])
 
   return (
     <motion.header
@@ -76,37 +95,62 @@ export default function SiteHeader({ scrollReveal = false }: { scrollReveal?: bo
     >
       <div className="mx-auto flex h-16 max-w-site items-center justify-between px-6 md:px-10">
         <Link href="/" className="flex items-center" aria-label="Krim — home">
-          {/* the moving inverted logo + KRIM */}
           <KrimLogoAnimated className="h-7 w-auto" />
         </Link>
 
-        <nav className="hidden items-center gap-7 lg:flex" aria-label="Primary">
-          {FLAT_LEFT.map(([label, href]) => (
-            <Link key={href} href={href} className={linkCls}>
-              {label}
-            </Link>
-          ))}
-
-          {/* Domains group */}
+        <nav ref={navRef} className="hidden items-center gap-7 lg:flex" aria-label="Primary">
+          {/* KrimOS group — the product + its layers */}
           <div
-            ref={domainsRef}
             className="relative"
-            onMouseEnter={() => setDomainsOpen(true)}
-            onMouseLeave={() => setDomainsOpen(false)}
+            onMouseEnter={() => setOpen('krimos')}
+            onMouseLeave={() => setOpen(null)}
           >
             <button
               type="button"
               className={`flex items-center gap-1.5 ${linkCls}`}
-              aria-expanded={domainsOpen}
+              aria-expanded={open === 'krimos'}
               aria-haspopup="true"
-              onClick={() => setDomainsOpen((v) => !v)}
+              onClick={() => setOpen((v) => (v === 'krimos' ? null : 'krimos'))}
+            >
+              KrimOS
+              <Caret open={open === 'krimos'} />
+            </button>
+            {open === 'krimos' && (
+              <div className="absolute left-1/2 top-full z-50 w-[300px] -translate-x-1/2 pt-3">
+                <div className="glass overflow-hidden p-2">
+                  {KRIMOS.map(([label, role, href]) => (
+                    <Link
+                      key={href}
+                      href={href}
+                      className="block rounded-[10px] px-3.5 py-2.5 transition-colors hover:bg-white/[0.05]"
+                      onClick={() => setOpen(null)}
+                    >
+                      <span className="block font-sans text-[14px] text-ink">{label}</span>
+                      <span className="mt-0.5 block font-sans text-[12.5px] text-ink-3">{role}</span>
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+
+          {/* Domains group */}
+          <div
+            className="relative"
+            onMouseEnter={() => setOpen('domains')}
+            onMouseLeave={() => setOpen(null)}
+          >
+            <button
+              type="button"
+              className={`flex items-center gap-1.5 ${linkCls}`}
+              aria-expanded={open === 'domains'}
+              aria-haspopup="true"
+              onClick={() => setOpen((v) => (v === 'domains' ? null : 'domains'))}
             >
               Domains
-              <svg width="9" height="9" viewBox="0 0 10 10" aria-hidden className={`transition-transform duration-fast ${domainsOpen ? 'rotate-180' : ''}`}>
-                <path d="M1 3l4 4 4-4" fill="none" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
+              <Caret open={open === 'domains'} />
             </button>
-            {domainsOpen && (
+            {open === 'domains' && (
               <div className="absolute left-1/2 top-full z-50 w-[230px] -translate-x-1/2 pt-3">
                 <div className="glass overflow-hidden p-2">
                   {DOMAINS.map(([label, href]) => (
@@ -114,7 +158,7 @@ export default function SiteHeader({ scrollReveal = false }: { scrollReveal?: bo
                       key={href}
                       href={href}
                       className="block rounded-[10px] px-3.5 py-2.5 font-sans text-[14px] text-ink-2 transition-colors hover:bg-white/[0.05] hover:text-ink"
-                      onClick={() => setDomainsOpen(false)}
+                      onClick={() => setOpen(null)}
                     >
                       {label}
                     </Link>
@@ -158,9 +202,12 @@ export default function SiteHeader({ scrollReveal = false }: { scrollReveal?: bo
       {menuOpen && (
         <nav className="border-t border-soft bg-bg/95 backdrop-blur-md lg:hidden" aria-label="Primary mobile">
           <div className="mx-auto max-w-site px-6 py-5">
-            <Link href="/platform" onClick={() => setMenuOpen(false)} className="block py-2.5 font-sans text-[15px] text-ink-2 hover:text-ink">
-              Platform
-            </Link>
+            <p className="pb-1 font-mono text-[11px] uppercase tracking-[0.2em] text-ink-3">KrimOS</p>
+            {KRIMOS.map(([label, , href]) => (
+              <Link key={href} href={href} onClick={() => setMenuOpen(false)} className="block py-2 pl-3 font-sans text-[15px] text-ink-2 hover:text-ink">
+                {label}
+              </Link>
+            ))}
             <p className="pb-1 pt-3 font-mono text-[11px] uppercase tracking-[0.2em] text-ink-3">Domains</p>
             {DOMAINS.map(([label, href]) => (
               <Link key={href} href={href} onClick={() => setMenuOpen(false)} className="block py-2 pl-3 font-sans text-[15px] text-ink-2 hover:text-ink">
