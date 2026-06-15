@@ -33,13 +33,21 @@ const NAV: Array<[string, Array<[string, string]>]> = [
     ],
   ],
   [
-    'More',
+    'Resources',
     [
       ['Epistemic AI', '/epistemic-ai'],
       ['Architecture', '/architecture'],
       ['Research', '/research'],
       ['Trust', '/trust'],
-      ['Book a demo', '/contact'],
+    ],
+  ],
+  [
+    'Company',
+    [
+      ['About', '/company'],
+      ['Services', '/services'],
+      ['Writing', '/blog'],
+      ['Contact', '/contact'],
     ],
   ],
 ]
@@ -77,7 +85,7 @@ export default function SiteFooter() {
         </div>
 
         {/* compact inline nav */}
-        <nav className="mt-12 grid gap-x-10 gap-y-8 sm:grid-cols-3" aria-label="Footer">
+        <nav className="mt-12 grid grid-cols-2 gap-x-8 gap-y-8 md:grid-cols-4" aria-label="Footer">
           {NAV.map(([title, links]) => (
             <div key={title}>
               <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-ink-3">{title}</p>

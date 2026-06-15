@@ -36,6 +36,7 @@ const DOMAINS = [
 const FLAT_RIGHT = [
   ['Epistemic AI', '/epistemic-ai'],
   ['Trust', '/trust'],
+  ['Company', '/company'],
 ] as const
 
 const DEMO_HREF = '/contact'
