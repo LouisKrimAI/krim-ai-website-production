@@ -1,32 +1,24 @@
 /**
- * /platform/kendra — the runtime, the brain. The deepest page of the
- * platform cluster: the loop every action runs, the two powers (Krim-Nyāya
- * validates, Krim-Learn learns), the five quieter modules, and the ledger.
- * Server component: metadata + JSON-LD live here; every animated piece is in
- * _client.tsx. Wrapped in the shared LayerShell. Facts: docs/krim-content.md
- * · copy: docs/copy/platform-kendra.md. Grammar: cyan = proposed/thinking ·
- * mint = validated/learned · gold = amber/exception.
+ * /platform/kendra — Kendra, the runtime (the brain of KrimOS).
+ * Built to the house standard: content-first, homepage glass, a real image,
+ * no hand-built device graphics (HOUSE-STYLE §0, §7). Server component — no
+ * client island. Shape: what it is (hero) → the two powers → the seven
+ * modules → the ledger → impact. Facts: docs/krim-content.md (Kendra · the
+ * seven runtime modules · Krim-Nyāya · Krim-Learn · Krim-Ledger).
  */
 
 import type { Metadata } from 'next'
-import Link from 'next/link'
+import Image from 'next/image'
 import LayerShell from '@/components/platform/LayerShell'
-import ArchGlyph from '@/components/platform/ArchGlyph'
 import Reveal from '@/components/Reveal'
 import { Section, Eyebrow, GlassCard } from '@/components/ui'
-import {
-  LoopFlow,
-  ValidationGate,
-  WorldModelField,
-  LedgerStreams,
-  OrbBrainCard,
-} from './_client'
 
 export const metadata: Metadata = {
   title: 'Kendra — the runtime',
   description:
-    'Kendra is the mind of KrimOS: Krim-Nyāya validates every action before it executes, Krim-Learn turns every outcome into intelligence.',
+    'Kendra is the runtime of KrimOS — the brain the co-workers think in. Krim-Nyāya validates every action before it executes; Krim-Learn turns every recorded outcome into intelligence. Seven engineering modules make the guarantees hold.',
   alternates: { canonical: 'https://krim.ai/platform/kendra' },
+  openGraph: { title: 'Kendra — the runtime', url: 'https://krim.ai/platform/kendra' },
 }
 
 const breadcrumbLd = {
@@ -34,53 +26,20 @@ const breadcrumbLd = {
   '@type': 'BreadcrumbList',
   itemListElement: [
     { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://krim.ai' },
-    { '@type': 'ListItem', position: 2, name: 'Platform', item: 'https://krim.ai/platform' },
+    { '@type': 'ListItem', position: 2, name: 'KrimOS', item: 'https://krim.ai/platform' },
     { '@type': 'ListItem', position: 3, name: 'Kendra', item: 'https://krim.ai/platform/kendra' },
   ],
 }
 
-// the three Krim-Nyāya validator families
-const FAMILIES = [
-  {
-    name: 'Pramāṇa',
-    q: 'Is it grounded?',
-    body: 'Every premise the action rests on has to hold. Unverifiable, it doesn’t proceed.',
-  },
-  {
-    name: 'Doṣa',
-    q: 'Is it sound?',
-    body: 'Checked against every known way this kind of thing goes wrong.',
-  },
-  {
-    name: 'Yogyatā',
-    q: 'Is it fit?',
-    body: 'Right moment, right person, right channel, right purpose — wrong on any, and it waits.',
-  },
-]
-
-// the five quieter modules of the runtime
+// the seven engineering modules of the runtime (docs/krim-content.md · the seven runtime modules)
 const MODULES = [
-  { name: 'Krim-Core', role: 'orchestration', body: 'Routes each task, runs the workflows, handles retries and hand-offs.' },
-  { name: 'Krim-Fabric', role: 'knowledge', body: 'The rules of each jurisdiction, each institution’s policies, the shared pattern library.' },
-  { name: 'Krim-Govern', role: 'policy', body: 'A seven-level hierarchy of law, regulation and house rules, enforced per tenant.' },
-  { name: 'Krim-Ledger', role: 'the record', body: 'Every action logged, sealed and metered — detailed just below.' },
-  { name: 'Krim-Sense', role: 'telemetry', body: 'The metrics, alerts and dashboards that show what’s happening.' },
-]
-
-// the ledger's three jobs from one record
-const LEDGER_JOBS = [
-  {
-    name: 'Evidence',
-    body: 'The audit trail a regulator can replay — inspection responses in minutes, not days.',
-  },
-  {
-    name: 'Intelligence',
-    body: 'The same record is what Krim-Learn learns from. Proof and improvement, one source.',
-  },
-  {
-    name: 'Meter',
-    body: 'Every action measured in Krim Work Units — your own clear view of what the operation costs.',
-  },
+  { name: 'Krim-Core', role: 'orchestration', body: 'Routes each task to the right co-worker and runs the workflow — sequential, parallel or hand-off — with retries and graceful fallbacks.' },
+  { name: 'Krim-Fabric', role: 'knowledge', body: 'The regulatory rule set for each jurisdiction, each institution’s own policies, and the shared, anonymised pattern library.' },
+  { name: 'Krim-Govern', role: 'policy', body: 'A seven-level hierarchy of law, regulator guidance and house rules, enforced per tenant and updated as the rules change.' },
+  { name: 'Krim-Nyāya', role: 'validation', body: 'The pre-execution gate — 33 validators that decide whether a proposed action is allowed to happen at all.' },
+  { name: 'Krim-Learn', role: 'learning', body: 'Ten learning loops that read every recorded outcome and feed back what actually worked across the workforce.' },
+  { name: 'Krim-Ledger', role: 'the record', body: 'Every action logged immutably and metered in the same pass — one trail that serves both audit and billing.' },
+  { name: 'Krim-Sense', role: 'telemetry', body: 'The metrics, logs, alerts and dashboards that show what is happening across the whole stack.' },
 ]
 
 export default function KendraPage() {
@@ -91,196 +50,134 @@ export default function KendraPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }}
       />
       <LayerShell slug="kendra">
-        {/* ---- 1 · Hero ---- */}
-        <Section className="!pt-14 md:!pt-16">
-          <div className="grid items-center gap-12 lg:grid-cols-[1.04fr_1fr]">
+        {/* ---- Hero: what it is ---- */}
+        <Section className="!pt-10">
+          <div className="grid items-center gap-12 lg:grid-cols-[1.05fr_0.95fr]">
             <div>
               <Reveal>
-                <Eyebrow>Kendra — the runtime</Eyebrow>
+                <Eyebrow>The runtime</Eyebrow>
                 <h1 className="mt-4 font-serif text-display-hero text-ink">
-                  The mind of the operation.
+                  The brain your co-workers think in.
                 </h1>
               </Reveal>
               <Reveal delay={0.12}>
                 <p className="mt-7 max-w-[54ch] font-sans text-body-lg text-ink-2">
-                  Kendra is where KrimOS reasons — the runtime that decides what every co-worker is
-                  allowed to do. Two parts define it. <span className="text-ink">Krim-Nyāya</span>{' '}
-                  validates every action before it executes; <span className="text-ink">Krim-Learn</span>{' '}
-                  turns every outcome into intelligence.
+                  Kendra is the runtime of KrimOS — where every co-worker reasons, and where the
+                  rules of what they may do actually live. It validates each action before it acts,
+                  and gets sharper from each outcome it records.
                 </p>
-              </Reveal>
-              <Reveal delay={0.2}>
-                <div className="mt-9">
-                  <OrbBrainCard />
-                </div>
               </Reveal>
             </div>
             <Reveal delay={0.15}>
-              <GlassCard className="p-7 md:p-9">
-                <ArchGlyph active="kendra" />
-                <p className="mt-5 font-mono text-eyebrow uppercase text-ink-3">
-                  The brain that runs the rest — lit on the map.
-                </p>
-              </GlassCard>
+              <div className="relative mx-auto w-full max-w-[440px]">
+                {/* faint cyan ground so the render sits in the orb's light, not on a seam */}
+                <div
+                  aria-hidden
+                  className="pointer-events-none absolute -inset-6 -z-10 rounded-full opacity-60 blur-2xl"
+                  style={{ background: 'radial-gradient(60% 50% at 50% 42%, rgba(57,214,255,0.12), transparent 70%)' }}
+                />
+                <Image
+                  src="/images/krimos/kendra.jpg"
+                  alt="Kendra rendered as the luminous reasoning core of KrimOS — the mind at the centre of the stack, validating and learning."
+                  width={1173}
+                  height={1650}
+                  priority
+                  sizes="(max-width: 1024px) 80vw, 440px"
+                  className="h-auto w-full rounded-lg"
+                />
+              </div>
             </Reveal>
           </div>
         </Section>
 
-        {/* ---- 2 · The loop ---- */}
+        {/* ---- The two powers ---- */}
         <Section hairline>
           <Reveal>
-            <Eyebrow>The loop</Eyebrow>
+            <Eyebrow>Why it earns trust</Eyebrow>
             <h2 className="mt-4 max-w-[20ch] font-serif text-display-1 text-ink">
-              One path for every action.
+              Validated before it acts. Smarter after it acts.
             </h2>
-            <p className="mt-7 max-w-[62ch] font-sans text-body-lg text-ink-2">
-              Perceive. Reason. Plan. Validate. Act. Every co-worker, every task runs the same five
-              steps — and the fourth is the one the others serve. Validation isn&rsquo;t a review
-              after the work; it&rsquo;s the gate the work must pass to become real.
-            </p>
-          </Reveal>
-          <Reveal delay={0.12}>
-            <div className="mt-12 md:mt-16">
-              <LoopFlow />
-            </div>
-          </Reveal>
-        </Section>
-
-        {/* ---- 3 · Power one — judgment ---- */}
-        <Section hairline>
-          <Reveal>
-            <Eyebrow tone="cyan">Power one · judgment</Eyebrow>
-            <h2 className="mt-4 font-serif text-display-1 text-ink">Krim-Nyāya: the gate.</h2>
-            <p className="mt-7 max-w-[64ch] font-sans text-body-lg text-ink-2">
-              Before anything fires, it goes to Krim-Nyāya — thirty-three validators that ask, in
-              formal logic, whether this action is allowed to happen at all. They work in three
-              families, each returning <span className="text-pass">pass</span>,{' '}
-              <span className="text-amber">amber</span> or <span className="text-fail">fail</span>.
+            <p className="mt-6 max-w-[60ch] font-sans text-body-lg text-ink-2">
+              Two powers live inside Kendra, and each makes the other possible. One keeps the system
+              safe to run; the other makes it worth running for years.
             </p>
           </Reveal>
 
-          <div className="mt-12 grid gap-5 md:grid-cols-3">
-            {FAMILIES.map((f, i) => (
-              <Reveal key={f.name} delay={i * 0.08}>
-                <GlassCard className="flex h-full flex-col p-7">
-                  <div className="flex items-baseline justify-between">
-                    <h3 className="font-serif text-[1.5rem] leading-none text-ink">{f.name}</h3>
-                    <span className="font-mono text-[11px] uppercase tracking-[0.14em] text-ink-3">
-                      {String(i + 1).padStart(2, '0')}
-                    </span>
-                  </div>
-                  <p className="mt-3 font-sans text-body text-cyan">{f.q}</p>
-                  <p className="mt-3 flex-1 font-sans text-caption leading-relaxed text-ink-2">
-                    {f.body}
-                  </p>
-                </GlassCard>
-              </Reveal>
-            ))}
-          </div>
-
-          {/* signature device — the validation gate with amber exception lane */}
-          <Reveal delay={0.1}>
-            <div className="mt-12 md:mt-16">
-              <ValidationGate />
-            </div>
-          </Reveal>
-
-          <div className="mt-12 grid items-end gap-10 lg:grid-cols-[1.1fr_1fr]">
+          <div className="mt-12 grid gap-5 md:grid-cols-2">
             <Reveal>
-              <p className="max-w-[58ch] font-sans text-body-lg text-ink-2">
-                Most actions clear. Some don&rsquo;t — and that&rsquo;s the point. A blocked action
-                doesn&rsquo;t vanish; it&rsquo;s flagged{' '}
-                <span className="text-amber">amber</span> and handed to a person, with the rule that
-                stopped it and the reason in plain words.{' '}
-                <span className="text-ink">A system you can trust is one you can watch refuse.</span>
-              </p>
+              <div className="glass lume h-full p-8 md:p-9">
+                <span aria-hidden className="block h-[3px] w-12 rounded-full bg-cyan/70" />
+                <p className="mt-6 font-mono text-eyebrow uppercase text-cyan">Krim-Nyāya</p>
+                <h3 className="mt-3 font-serif text-[1.55rem] leading-tight text-ink">
+                  Nothing runs until it clears the gate.
+                </h3>
+                <p className="mt-4 font-sans text-body text-ink-2">
+                  Before any action fires, it passes through Krim-Nyāya — 33 validators that ask, in
+                  formal logic, whether this action is allowed to happen at all. Validation is not a
+                  review after the work; it is the gate the work must pass to become real. Most
+                  actions clear. The ones that don’t are flagged and handed to a person, with the
+                  rule that stopped them in plain words.
+                </p>
+              </div>
             </Reveal>
             <Reveal delay={0.1}>
-              <GlassCard accent className="p-8 md:p-10">
-                <p className="font-serif text-[clamp(1.4rem,2.4vw,1.9rem)] leading-tight text-ink">
-                  33 validators. Nothing executes unvalidated.
+              <div className="glass lume h-full p-8 md:p-9">
+                <span aria-hidden className="block h-[3px] w-12 rounded-full bg-mint/70" />
+                <p className="mt-6 font-mono text-eyebrow uppercase text-mint">Krim-Learn</p>
+                <h3 className="mt-3 font-serif text-[1.55rem] leading-tight text-ink">
+                  Every recorded outcome makes the next one sharper.
+                </h3>
+                <p className="mt-4 font-sans text-body text-ink-2">
+                  Because every action and its result land on one record, Krim-Learn sees what
+                  actually worked and feeds it back through ten learning loops. It is disciplined,
+                  not magic — a pattern only joins the shared library once it clears an effectiveness
+                  threshold of around 80%, and what is shared is anonymised, aggregated and
+                  opt-out. The system compounds; a baseline in the first quarter is materially beyond
+                  it by year two.
                 </p>
-              </GlassCard>
+              </div>
             </Reveal>
           </div>
 
           <Reveal delay={0.05}>
-            <p className="mt-10 max-w-[70ch] font-sans text-caption leading-relaxed text-ink-3">
-              The logic is Navya-Nyāya — a formal tradition of valid inference refined over
-              centuries in Mithila — applied now to machine action. The full story lives on{' '}
-              <Link href="/epistemic-ai" className="text-ink-2 underline-offset-4 transition-colors hover:text-mint hover:underline">
-                Epistemic AI
-              </Link>
-              .
-            </p>
+            <GlassCard accent className="mt-5 p-8 md:p-10">
+              <p className="font-serif text-[clamp(1.4rem,2.4vw,1.9rem)] leading-tight text-ink">
+                The AI your regulator can read.
+              </p>
+              <p className="mt-5 max-w-[60ch] font-sans text-body text-ink-2">
+                Safety and intelligence aren’t traded off here. The validation that keeps every
+                action accountable is the same complete record the system learns from — proof and
+                improvement from one source of truth.
+              </p>
+            </GlassCard>
           </Reveal>
         </Section>
 
-        {/* ---- 4 · Power two — intelligence ---- */}
+        {/* ---- The seven modules ---- */}
         <Section hairline>
           <Reveal>
-            <Eyebrow>Power two · intelligence</Eyebrow>
-            <h2 className="mt-4 font-serif text-display-1 text-ink">Krim-Learn: the mind.</h2>
-          </Reveal>
-
-          <div className="mt-7 grid gap-12 lg:grid-cols-[1fr_1.02fr] lg:items-center">
-            <div className="space-y-6">
-              <Reveal>
-                <p className="max-w-[58ch] font-sans text-body-lg text-ink-2">
-                  Validation makes the system safe to run; Krim-Learn makes it worth running twice.
-                  Because every action and its outcome land on one record, Krim-Learn sees what
-                  actually worked and feeds it back — ten learning loops turn a day of operations
-                  into a sharper next day.
-                </p>
-              </Reveal>
-              <Reveal delay={0.08}>
-                <p className="max-w-[58ch] font-sans text-body text-ink-2">
-                  Over time this becomes a connected model of how the whole operation behaves — what
-                  works, what doesn&rsquo;t, where things stall and why. In lending, say: which
-                  sequence brings a late account back to good standing.
-                </p>
-              </Reveal>
-              <Reveal delay={0.12}>
-                <p className="max-w-[58ch] font-sans text-body text-ink-2">
-                  It&rsquo;s disciplined, not magic. A pattern only joins the shared library once it
-                  clears an effectiveness threshold — around 80%; what&rsquo;s shared is anonymised
-                  and aggregated; any institution can opt out. The improvement comes from the
-                  runtime, not more engineering.
-                </p>
-              </Reveal>
-            </div>
-
-            {/* static diagram — world-model field with the rising curve */}
-            <Reveal delay={0.1}>
-              <WorldModelField />
-            </Reveal>
-          </div>
-        </Section>
-
-        {/* ---- 5 · The rest of the runtime ---- */}
-        <Section hairline>
-          <Reveal>
-            <Eyebrow tone="dim">The runtime, in full</Eyebrow>
-            <h2 className="mt-4 max-w-[26ch] font-serif text-display-1 text-ink">
-              Five quieter modules hold it together.
+            <Eyebrow tone="dim">Inside the runtime</Eyebrow>
+            <h2 className="mt-4 max-w-[24ch] font-serif text-display-1 text-ink">
+              Seven modules make the guarantees hold.
             </h2>
-            <p className="mt-7 max-w-[60ch] font-sans text-body-lg text-ink-2">
-              Nyāya and Learn get the attention; these make them possible. Kendra is seven modules
-              in all — these five, plus the two powers above.
+            <p className="mt-6 max-w-[60ch] font-sans text-body-lg text-ink-2">
+              Nyāya and Learn get the attention; these are the engineering that makes them possible.
+              Each does one job, and together they are the runtime.
             </p>
           </Reveal>
 
           <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {MODULES.map((m, i) => (
               <Reveal key={m.name} delay={(i % 3) * 0.07}>
-                <div className="glass-quiet flex h-full flex-col p-6">
-                  <div className="flex items-baseline gap-2.5">
-                    <h3 className="font-serif text-[1.25rem] leading-none text-ink">{m.name}</h3>
+                <div className="glass lume flex h-full flex-col p-7">
+                  <span aria-hidden className="block h-[3px] w-12 rounded-full bg-mint/70" />
+                  <div className="mt-6 flex items-baseline gap-2.5">
+                    <h3 className="font-serif text-[1.3rem] leading-none text-ink">{m.name}</h3>
                     <span className="font-mono text-[10.5px] uppercase tracking-[0.14em] text-ink-3">
                       {m.role}
                     </span>
                   </div>
-                  <p className="mt-3 flex-1 font-sans text-[13.5px] leading-relaxed text-ink-2">
+                  <p className="mt-3 flex-1 font-sans text-[14px] leading-relaxed text-ink-2">
                     {m.body}
                   </p>
                 </div>
@@ -289,61 +186,57 @@ export default function KendraPage() {
           </div>
         </Section>
 
-        {/* ---- 6 · The ledger ---- */}
+        {/* ---- The ledger ---- */}
         <Section hairline>
-          <Reveal>
-            <Eyebrow>One record</Eyebrow>
-            <h2 className="mt-4 font-serif text-display-1 text-ink">Three jobs, one record.</h2>
-            <p className="mt-7 max-w-[64ch] font-sans text-body-lg text-ink-2">
-              Krim-Ledger writes everything — every action, decision and validation — to an
-              immutable, sealed trail. From that single source it does three jobs at once.
-            </p>
-          </Reveal>
-
-          {/* signature device — one sealed record, three streams flowing out */}
-          <Reveal delay={0.1}>
-            <div className="mt-12 md:mt-16">
-              <LedgerStreams jobs={LEDGER_JOBS} />
-            </div>
-          </Reveal>
-
-          <div className="mt-12 grid items-end gap-10 lg:grid-cols-[1fr_0.92fr]">
+          <div className="grid items-center gap-12 md:grid-cols-[1fr_1fr]">
             <Reveal>
-              <GlassCard accent className="p-8 md:p-10">
-                <p className="font-serif text-[clamp(1.4rem,2.4vw,1.9rem)] leading-tight text-ink">
-                  Compliance, intelligence and cost — from one immutable record.
+              <div>
+                <Eyebrow>The record</Eyebrow>
+                <h2 className="mt-4 max-w-[20ch] font-serif text-display-1 text-ink">
+                  Every action and its reasoning, on one record.
+                </h2>
+                <p className="mt-7 max-w-[52ch] font-sans text-body-lg text-ink-2">
+                  Krim-Ledger streams every action, decision, output and validation to an immutable,
+                  cryptographically sealed trail — and meters it in the same pass, in Krim Work
+                  Units. Because the evidence is complete by construction, an inspection response
+                  that took a compliance team three days is generated in minutes.
                 </p>
-              </GlassCard>
+              </div>
             </Reveal>
-            <Reveal delay={0.08}>
-              <p className="max-w-[46ch] font-sans text-body text-ink-2">
-                The elegance isn&rsquo;t three systems kept in sync. It&rsquo;s one trail, read three
-                ways — proof, learning and meter from the same source of truth.
-              </p>
+            <Reveal delay={0.12}>
+              <GlassCard className="p-8 md:p-10">
+                <p className="font-serif text-[1.45rem] leading-tight text-ink">
+                  One trail, read three ways.
+                </p>
+                <ul className="mt-6 space-y-4">
+                  {[
+                    ['Evidence', 'The audit trail a regulator can replay — what happened, why, and under which rule.'],
+                    ['Intelligence', 'The same record Krim-Learn learns from — proof and improvement from one source.'],
+                    ['Meter', 'Every action measured in Krim Work Units — a clear view of what the operation costs.'],
+                  ].map(([name, body]) => (
+                    <li key={name}>
+                      <p className="font-serif text-[1.1rem] leading-none text-ink">{name}</p>
+                      <p className="mt-1.5 font-sans text-caption leading-relaxed text-ink-2">{body}</p>
+                    </li>
+                  ))}
+                </ul>
+              </GlassCard>
             </Reveal>
           </div>
         </Section>
 
-        {/* ---- 7 · Close ---- */}
+        {/* ---- Impact ---- */}
         <Section hairline>
           <Reveal>
-            <h2 className="max-w-[18ch] font-serif text-display-1 text-ink">
-              This is the part that earns the trust.
-            </h2>
-            <p className="mt-6 max-w-[54ch] font-sans text-body-lg text-ink-2">
-              See Kendra run an action end to end — validated, executed, recorded, learned from.
-            </p>
-            <p className="mt-7">
-              <Link
-                href="/architecture"
-                className="group inline-flex items-baseline gap-2 font-sans text-body text-ink-2 transition-colors hover:text-mint"
-              >
-                <span className="underline-offset-4 group-hover:underline">See the architecture</span>
-                <span aria-hidden className="transition-transform duration-fast group-hover:translate-x-0.5">
-                  →
-                </span>
-              </Link>
-            </p>
+            <GlassCard className="mx-auto max-w-[820px] p-10 text-center md:p-14">
+              <h2 className="font-serif text-display-2 text-ink">
+                Validated as it runs, sharper for having run.
+              </h2>
+              <p className="mx-auto mt-5 max-w-[54ch] font-sans text-body-lg text-ink-2">
+                Kendra is the part that earns the trust: every action accountable before it fires,
+                every outcome compounding into the next — all inside your own perimeter.
+              </p>
+            </GlassCard>
           </Reveal>
         </Section>
       </LayerShell>

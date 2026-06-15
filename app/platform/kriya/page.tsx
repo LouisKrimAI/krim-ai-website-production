@@ -1,23 +1,22 @@
 /**
- * /platform/kriya — the vocabulary. From docs/copy/platform-kriya.md.
- * A finite set of 250+ validated primitives — the atomic operations of
- * regulated work. Server component (metadata + JSON-LD + static substance);
- * the two interactive devices — the ten-category progressive index and the
- * MAKE_CALL receipt — live in _client.tsx. Facts only; invent nothing.
+ * /platform/kriya — Kriya, the vocabulary (a core KrimOS layer).
+ * Content-first, homepage glass, no devices (HOUSE-STYLE §7).
+ * Shape: what it is (hero) → what a primitive is → the breadth →
+ *        how they compose → the boundary → impact.
+ * Facts: docs/krim-content.md (Kriya · the credit-native primitives).
  */
 
 import type { Metadata } from 'next'
 import LayerShell from '@/components/platform/LayerShell'
-import ArchGlyph from '@/components/platform/ArchGlyph'
 import Reveal from '@/components/Reveal'
 import { Section, Eyebrow, GlassCard } from '@/components/ui'
-import { CategoryIndex, MakeCallReceipt, PrimitiveUnit } from './_client'
 
 export const metadata: Metadata = {
   title: 'Kriya — the vocabulary',
   description:
-    'A finite vocabulary of 250+ validated primitives — the atomic operations of regulated work. The list is finite; what you build from it isn’t.',
+    'Kriya is the vocabulary of KrimOS: 250+ validated, credit-native primitives — atomic operations that ship with their own checks, metered in KWUs and logged by construction. A finite vocabulary, endless combinations.',
   alternates: { canonical: 'https://krim.ai/platform/kriya' },
+  openGraph: { title: 'Kriya — the vocabulary', url: 'https://krim.ai/platform/kriya' },
 }
 
 const breadcrumbLd = {
@@ -25,125 +24,192 @@ const breadcrumbLd = {
   '@type': 'BreadcrumbList',
   itemListElement: [
     { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://krim.ai' },
-    { '@type': 'ListItem', position: 2, name: 'Platform', item: 'https://krim.ai/platform' },
+    { '@type': 'ListItem', position: 2, name: 'KrimOS', item: 'https://krim.ai/platform' },
     { '@type': 'ListItem', position: 3, name: 'Kriya', item: 'https://krim.ai/platform/kriya' },
   ],
 }
+
+// what every primitive carries, by construction (docs/krim-content.md · Kriya)
+const PROPERTIES = [
+  {
+    title: 'Validated before it runs',
+    body: 'Each primitive ships with its own checks. The action clears its rules first — or it never fires, and the exception is logged with the reason.',
+  },
+  {
+    title: 'Metered as it works',
+    body: 'Every primitive self-meters in Krim Work Units. The cost of an action is explained line by line, not asserted — the same record that bills it.',
+  },
+  {
+    title: 'Logged by construction',
+    body: 'Explicit inputs and outputs, written to the audit trail and versioned the moment it completes. Nothing to reconcile, no loose ends to chase later.',
+  },
+]
+
+// the ten categories, verbatim from docs/krim-content.md · Kriya (lines 145–156)
+const CATEGORIES = [
+  { name: 'Voice & telephony', count: '~45', body: 'Placing, transferring and capturing live conversations.' },
+  { name: 'Document operations', count: '~30', body: 'Generating, reading and signing the paper of regulated work.' },
+  { name: 'Compliance checks', count: '~50', body: 'The rule-tests an action must pass before it is allowed to run.' },
+  { name: 'Data operations', count: '~35', body: 'Fetching, updating and enriching the records work runs on.' },
+  { name: 'Payment processing', count: '~25', body: 'Calculating, verifying and moving money under the rules.' },
+  { name: 'Decision logic', count: '~20', body: 'Evaluating policy, resolving conflicts and routing to people.' },
+  { name: 'Analytics & reporting', count: '~15', body: 'Rolling up metrics and producing the reports auditors expect.' },
+  { name: 'Integration', count: '~30', body: 'Reaching the systems you already run, in both directions.' },
+  { name: 'Testing & QA', count: '~10', body: 'Exercising co-workers safely before they ever touch production.' },
+  { name: 'Custom', count: '—', body: 'Tenant-specific primitives, built to the same construction.' },
+]
 
 export default function KriyaPage() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }} />
       <LayerShell slug="kriya">
-        {/* ---- 1 · Hero ---- */}
-        <Section className="!pt-12 md:!pt-16">
-          <div className="grid items-center gap-12 lg:grid-cols-[1.05fr_0.95fr]">
-            <div>
-              <Reveal>
-                <Eyebrow>Kriya — the vocabulary</Eyebrow>
-                <h1 className="mt-5 font-serif text-display-hero text-ink">
-                  A finite vocabulary.
-                  <br />
-                  Endless combinations.
-                </h1>
+        {/* ---- Hero: what it is ---- */}
+        <Section className="!pt-10">
+          <div className="mx-auto max-w-[820px] text-center">
+            <Reveal>
+              <Eyebrow>The vocabulary</Eyebrow>
+              <h1 className="mt-4 font-serif text-display-hero text-ink">
+                A finite vocabulary, endless combinations.
+              </h1>
+            </Reveal>
+            <Reveal delay={0.12}>
+              <p className="mx-auto mt-7 max-w-[58ch] font-sans text-body-lg text-ink-2">
+                Every action a co-worker can take is one of 250+ validated, credit-native
+                primitives — the atomic operations of regulated lending. The list is finite; what
+                you build from it isn&rsquo;t.
+              </p>
+            </Reveal>
+          </div>
+        </Section>
+
+        {/* ---- What a primitive is ---- */}
+        <Section hairline>
+          <Reveal>
+            <Eyebrow>What a primitive is</Eyebrow>
+            <h2 className="mt-4 max-w-[24ch] font-serif text-display-1 text-ink">
+              The smallest action that already knows the rules.
+            </h2>
+            <p className="mt-6 max-w-[60ch] font-sans text-body-lg text-ink-2">
+              A primitive does one thing — make a call, generate a notice, move a payment — and
+              carries its own safety inside it, not bolted on afterward. Because the building blocks
+              are validated, everything built from them inherits that safety.
+            </p>
+          </Reveal>
+          <div className="mt-12 grid gap-5 md:grid-cols-3">
+            {PROPERTIES.map((p, i) => (
+              <Reveal key={p.title} delay={(i % 3) * 0.08}>
+                <div className="glass lume h-full p-7">
+                  <span aria-hidden className="block h-[3px] w-12 rounded-full bg-mint/70" />
+                  <h3 className="mt-6 font-serif text-[1.4rem] leading-tight text-ink">{p.title}</h3>
+                  <p className="mt-3 font-sans text-body text-ink-2">{p.body}</p>
+                </div>
               </Reveal>
-              <Reveal delay={0.12}>
-                <p className="mt-7 max-w-[54ch] font-sans text-body-lg text-ink-2">
-                  Every action a co-worker can take is one of{' '}
-                  <span className="text-ink">250+ validated primitives</span> — the atomic
-                  operations of regulated work. The list is finite; what you build from it isn&rsquo;t.
+            ))}
+          </div>
+        </Section>
+
+        {/* ---- The breadth ---- */}
+        <Section hairline>
+          <Reveal>
+            <Eyebrow>The library</Eyebrow>
+            <h2 className="mt-4 max-w-[24ch] font-serif text-display-1 text-ink">
+              The whole grammar of regulated lending, in one library.
+            </h2>
+            <p className="mt-6 max-w-[60ch] font-sans text-body-lg text-ink-2">
+              250+ primitives span the operations a lender actually performs — voice, documents,
+              compliance, data, payments and decisions — so there are no generic tool-calls for an
+              integrator to assemble. It ships credit-native.
+            </p>
+          </Reveal>
+          <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {CATEGORIES.map((c, i) => (
+              <Reveal key={c.name} delay={(i % 3) * 0.07}>
+                <div className="glass lume h-full p-6">
+                  <div className="flex items-baseline justify-between gap-4">
+                    <h3 className="font-serif text-[1.3rem] leading-tight text-ink">{c.name}</h3>
+                    <span className="shrink-0 font-mono text-[12px] tabular-nums text-ink-3">{c.count}</span>
+                  </div>
+                  <p className="mt-3 font-sans text-body text-ink-2">{c.body}</p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+          <Reveal delay={0.14}>
+            <p className="mt-8 max-w-[74ch] font-sans text-[14.5px] leading-relaxed text-ink-3">
+              Counts are approximate; the library passed{' '}
+              <span className="text-ink-2">250+</span> primitives and keeps growing. Each one is
+              uniform by construction — explicit inputs and outputs, built-in validation, self-metering
+              in KWUs, logged and versioned.
+            </p>
+          </Reveal>
+        </Section>
+
+        {/* ---- How they compose ---- */}
+        <Section hairline>
+          <div className="grid items-center gap-12 md:grid-cols-[1fr_1fr]">
+            <Reveal>
+              <div>
+                <Eyebrow>How they compose</Eyebrow>
+                <h2 className="mt-4 max-w-[20ch] font-serif text-display-1 text-ink">
+                  A small set of words, an unbounded set of work.
+                </h2>
+                <p className="mt-7 max-w-[52ch] font-sans text-body-lg text-ink-2">
+                  Co-workers are composed from these primitives the way sentences are composed from
+                  words. The same MAKE_CALL underlies a collections call, a retention call and an
+                  onboarding call — the workflow differs by policy, script and segment, and the
+                  compliance scaffolding comes along for free.
                 </p>
-              </Reveal>
-            </div>
-            <Reveal delay={0.15}>
-              <GlassCard className="p-7 md:p-9">
-                <ArchGlyph active="kriya" />
-                <p className="mt-5 font-mono text-[11px] uppercase tracking-[0.16em] text-ink-3">
-                  Kriya feeds the core — the vocabulary every co-worker is built from.
+              </div>
+            </Reveal>
+            <Reveal delay={0.12}>
+              <GlassCard className="p-8 md:p-10">
+                <p className="font-serif text-display-3 leading-tight text-ink">
+                  Finite vocabulary.
+                </p>
+                <p className="mt-2 font-serif text-display-3 leading-tight text-mint">
+                  Infinite workflows.
+                </p>
+                <p className="mt-6 font-sans text-body text-ink-2">
+                  Every co-worker in KrimOS speaks this one vocabulary — so a check written once
+                  protects every workflow that ever uses it.
                 </p>
               </GlassCard>
             </Reveal>
           </div>
         </Section>
 
-        {/* ---- 2 · Why primitives ---- */}
+        {/* ---- The boundary ---- */}
         <Section hairline>
           <Reveal>
-            <Eyebrow>Why it matters</Eyebrow>
-            <h2 className="mt-4 max-w-[20ch] font-serif text-display-1 text-ink">
-              Small, validated, accountable.
-            </h2>
-            <p className="mt-7 max-w-[62ch] font-sans text-body-lg text-ink-2">
-              Each primitive does one thing — with its checks built in, metered as it runs, and
-              logged when it&rsquo;s done. Because the building blocks are validated, everything built
-              from them inherits that safety. No loose ends to audit later.
-            </p>
-          </Reveal>
-
-          <Reveal delay={0.12}>
-            <div className="mt-12">
-              <PrimitiveUnit />
-            </div>
-          </Reveal>
-        </Section>
-
-        {/* ---- 3 · The ten categories ---- */}
-        <Section hairline>
-          <Reveal>
-            <Eyebrow>The library</Eyebrow>
-            <h2 className="mt-4 font-serif text-display-1 text-ink">The whole grammar of regulated work.</h2>
-            <p className="mt-7 max-w-[62ch] font-sans text-body-lg text-ink-2">
-              The vocabulary covers the operations regulated work actually needs — voice, documents,
-              compliance checks, data, payments, decisions, analytics, integration, and your own.
-              Open a category to glimpse a few of the primitives inside.
-            </p>
-          </Reveal>
-
-          <Reveal delay={0.1}>
-            <div className="mt-12">
-              <CategoryIndex />
-            </div>
-          </Reveal>
-
-          <Reveal delay={0.14}>
-            <p className="mt-8 max-w-[74ch] font-sans text-[14.5px] leading-relaxed text-ink-3">
-              Every primitive is uniform by construction — explicit inputs and outputs, built-in
-              validation hooks, self-metering in KWUs, logged, and versioned. Counts are approximate;
-              the library passed <span className="text-ink-2">250+</span> and keeps growing.
-            </p>
-          </Reveal>
-        </Section>
-
-        {/* ---- 4 · One primitive, end to end ---- */}
-        <Section hairline>
-          <Reveal>
-            <Eyebrow>A closer look</Eyebrow>
-            <h2 className="mt-4 font-serif text-display-1 text-ink">Watch one fire.</h2>
-            <p className="mt-7 max-w-[62ch] font-sans text-body-lg text-ink-2">
-              Take a single outbound call. Before it dials, it clears consent, calling hours, contact
-              limits and do-not-call. It returns a transcript, an outcome, a record — and meters
-              itself as it goes. One small action, fully governed.
-            </p>
-          </Reveal>
-
-          <Reveal delay={0.1}>
-            <div className="mt-12">
-              <MakeCallReceipt />
-            </div>
-          </Reveal>
-        </Section>
-
-        {/* ---- 5 · Close ---- */}
-        <Section hairline>
-          <Reveal>
-            <div className="mx-auto max-w-[760px] text-center">
-              <h2 className="font-serif text-display-3 leading-tight text-ink">
-                The vocabulary your co-workers speak.
+            <GlassCard accent className="mx-auto max-w-[760px] p-8 md:p-10">
+              <Eyebrow tone="gold">Where the line is</Eyebrow>
+              <h2 className="mt-4 font-serif text-display-2 leading-tight text-ink">
+                A primitive moves a workflow — it never decides the credit.
               </h2>
-              <p className="mx-auto mt-5 max-w-[48ch] font-sans text-body text-ink-2">
-                Finite, validated, accountable. Next, the co-workers that put it to work.
+              <p className="mt-6 max-w-[58ch] font-sans text-body-lg text-ink-2">
+                In the library, APPROVE means approval of a step in a workflow — never a credit
+                decision. Primitives segment, route and execute under the institution&rsquo;s own rules.
+                They do not approve, deny or price loans. Underwriting authority stays exactly where
+                the regulator expects it.
               </p>
-            </div>
+            </GlassCard>
+          </Reveal>
+        </Section>
+
+        {/* ---- Impact ---- */}
+        <Section hairline>
+          <Reveal>
+            <GlassCard className="mx-auto max-w-[820px] p-10 text-center md:p-14">
+              <h2 className="font-serif text-display-2 text-ink">
+                Safety written once, inherited everywhere.
+              </h2>
+              <p className="mx-auto mt-5 max-w-[52ch] font-sans text-body-lg text-ink-2">
+                Build on a vocabulary that is validated, metered and logged at the root, and every
+                co-worker you compose is accountable from its first action. Next, the co-workers that
+                put the vocabulary to work.
+              </p>
+            </GlassCard>
           </Reveal>
         </Section>
       </LayerShell>

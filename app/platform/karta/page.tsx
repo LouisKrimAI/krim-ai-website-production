@@ -1,32 +1,22 @@
 /**
- * /platform/karta — the co-workers. From docs/copy/platform-karta.md.
- * Karta are intelligent co-workers, not bots: compositions of validated Kriya
- * primitives that run inside the Kendra runtime and learn from every
- * interaction. A small utility set configures to almost any operation.
- *
- * Server component (metadata + JSON-LD + static substance). The three signature
- * devices live in _client.tsx:
- *   · Roster        — the eight co-workers as a scannable glass register, with
- *                     the two operational-boundary caveats marked subtly in gold.
- *   · AutonomyDial  — the page's interactive centrepiece: a four-stop dial whose
- *                     selection changes a small who-acts diagram.
- *   · Composition   — primitives snapping together into a co-worker.
- * The hard-boundary panel (the one gold moment) is built here, statically.
- * Facts only; invent nothing.
+ * /platform/karta — Karta, the AI co-workers (a core KrimOS layer).
+ * Built to the house standard: content-first, homepage glass, no devices.
+ * Shape: what they are (hero) → how they're made → the roster of eight →
+ *   the hard boundary (the one gold moment) → how control works → impact.
+ * Facts: docs/krim-content.md (Karta — the AI co-workers). Invent nothing.
  */
 
 import type { Metadata } from 'next'
 import LayerShell from '@/components/platform/LayerShell'
-import ArchGlyph from '@/components/platform/ArchGlyph'
 import Reveal from '@/components/Reveal'
 import { Section, Eyebrow, GlassCard } from '@/components/ui'
-import { Composition, Roster, AutonomyDial } from './_client'
 
 export const metadata: Metadata = {
   title: 'Karta — the co-workers',
   description:
-    'Intelligent co-workers, not bots. Karta are composed from validated Kriya primitives, run inside the Kendra runtime, and learn from every interaction — operating, never underwriting.',
+    'Karta are the AI co-workers of KrimOS: composed from validated Kriya primitives, configured not coded, and run under pre-execution validation with humans in the loop — operational decisioning, never underwriting.',
   alternates: { canonical: 'https://krim.ai/platform/karta' },
+  openGraph: { title: 'Karta — the co-workers', url: 'https://krim.ai/platform/karta' },
 }
 
 const breadcrumbLd = {
@@ -34,190 +24,215 @@ const breadcrumbLd = {
   '@type': 'BreadcrumbList',
   itemListElement: [
     { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://krim.ai' },
-    { '@type': 'ListItem', position: 2, name: 'Platform', item: 'https://krim.ai/platform' },
+    { '@type': 'ListItem', position: 2, name: 'KrimOS', item: 'https://krim.ai/platform' },
     { '@type': 'ListItem', position: 3, name: 'Karta', item: 'https://krim.ai/platform/karta' },
   ],
 }
+
+// what defines a co-worker (docs/krim-content.md · Karta)
+const MAKEUP = [
+  {
+    title: 'Composed, not coded',
+    body: 'Each co-worker is a composition of validated Kriya primitives — the same handful covering voice, documents, decisions, risk, audit and reporting. Change what one does by recomposing it, not by writing new code.',
+  },
+  {
+    title: 'Defined by its attributes',
+    body: 'Every co-worker is set by eleven attributes — purpose, capabilities, primitives, inputs, outputs, metrics, KWU cost, governance, learning loops, human-in-the-loop triggers and availability. Configure the attributes; the co-worker changes with them.',
+  },
+  {
+    title: 'Validated before it acts',
+    body: 'Nothing a co-worker proposes fires until it passes pre-execution validation, with humans in the loop wherever the institution sets them. Compliance is the runtime they run inside, not a check bolted on after.',
+  },
+]
+
+// the roster — exactly EIGHT (docs/krim-content.md · Karta table)
+const ROSTER = [
+  { name: 'Vox-Out', line: 'Outbound voice across the lifecycle — acquisition, onboarding, servicing, collections, hardship, retention and cross-sell.' },
+  { name: 'Vox-In', line: 'Inbound voice — servicing and payment queries, disputes, hardship signposting, and warm transfer to a human.' },
+  { name: 'Doc', line: 'Documents and notices — arrears notices, restructuring offers, regulatory letters and payment confirmations.' },
+  { name: 'Risk', line: 'Operational risk segmentation and gating by the institution’s own external risk flags.' },
+  { name: 'Decide', line: 'Next-best-action and conflict resolution across competing strategies.' },
+  { name: 'Cure', line: 'Delinquency cure — multi-step journeys that bring borrowers back to good standing.' },
+  { name: 'Audit', line: 'Interaction review, pattern detection and anomaly surfacing for compliance and audit teams.' },
+  { name: 'Report', line: 'Operational reporting, aggregated for ops, risk, compliance and executive stakeholders.' },
+]
+
+// what they will never do (the hard boundary — docs/krim-content.md)
+const NEVER = [
+  'Approve or deny loans',
+  'Price credit',
+  'Override the institution’s credit or risk engines',
+  'Touch underwriting authority',
+]
 
 export default function KartaPage() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }} />
       <LayerShell slug="karta">
-        {/* ---- 1 · Hero ---- */}
-        <Section className="!pt-12 md:!pt-16">
-          <div className="grid items-center gap-12 lg:grid-cols-[1.05fr_0.95fr]">
-            <div>
-              <Reveal>
-                <Eyebrow>Karta — the co-workers</Eyebrow>
-                <h1 className="mt-5 font-serif text-display-hero text-ink">
-                  Intelligent co-workers,
-                  <br />
-                  not bots.
-                </h1>
+        {/* ---- Hero: what they are ---- */}
+        <Section className="!pt-10">
+          <div className="mx-auto max-w-[820px] text-center">
+            <Reveal>
+              <Eyebrow>The co-workers</Eyebrow>
+              <h1 className="mt-4 font-serif text-display-hero text-ink">
+                Intelligent co-workers, not bots.
+              </h1>
+            </Reveal>
+            <Reveal delay={0.12}>
+              <p className="mx-auto mt-7 max-w-[58ch] font-sans text-body-lg text-ink-2">
+                Karta are the AI co-workers that run your operation — composed from validated
+                primitives, configured to your institution, and held to every rule before they act.
+                A small, capable team that does the work while you stay in control.
+              </p>
+            </Reveal>
+          </div>
+        </Section>
+
+        {/* ---- How they're made ---- */}
+        <Section hairline>
+          <Reveal>
+            <Eyebrow>How they&rsquo;re made</Eyebrow>
+            <h2 className="mt-4 max-w-[22ch] font-serif text-display-1 text-ink">
+              Assembled from the vocabulary, not written from scratch.
+            </h2>
+            <p className="mt-6 max-w-[60ch] font-sans text-body-lg text-ink-2">
+              A co-worker is a composition, not a one-off script. The same validated parts cover
+              the whole operation, so a new capability is a configuration — and it inherits the
+              compliance scaffolding everything else already runs on.
+            </p>
+          </Reveal>
+          <div className="mt-12 grid gap-5 md:grid-cols-3">
+            {MAKEUP.map((c, i) => (
+              <Reveal key={c.title} delay={(i % 3) * 0.08}>
+                <div className="glass lume h-full p-7">
+                  <span aria-hidden className="block h-[3px] w-12 rounded-full bg-mint/70" />
+                  <h3 className="mt-6 font-serif text-[1.4rem] leading-tight text-ink">{c.title}</h3>
+                  <p className="mt-3 font-sans text-body text-ink-2">{c.body}</p>
+                </div>
               </Reveal>
-              <Reveal delay={0.12}>
-                <p className="mt-7 max-w-[55ch] font-sans text-body-lg text-ink-2">
-                  Karta are built from <span className="text-ink">Kriya primitives</span>, run inside
-                  the <span className="text-ink">Kendra runtime</span>, and learn from every
-                  interaction. A small set of utility co-workers configures to almost any operation.
-                </p>
+            ))}
+          </div>
+        </Section>
+
+        {/* ---- The roster of eight ---- */}
+        <Section hairline>
+          <Reveal>
+            <Eyebrow>The roster</Eyebrow>
+            <h2 className="mt-4 max-w-[24ch] font-serif text-display-1 text-ink">
+              Eight co-workers cover the operation end to end.
+            </h2>
+            <p className="mt-6 max-w-[60ch] font-sans text-body-lg text-ink-2">
+              Voice in both directions, the paperwork, the operational calls, the cure journeys,
+              and the review that keeps it all accountable — each configured to your segments,
+              scripts and policies.
+            </p>
+          </Reveal>
+          <div className="mt-12 grid gap-5 md:grid-cols-2">
+            {ROSTER.map((c, i) => (
+              <Reveal key={c.name} delay={(i % 2) * 0.08}>
+                <div className="glass lume h-full p-7">
+                  <h3 className="font-serif text-[1.5rem] leading-tight text-ink">
+                    <span className="text-ink-3">Karta-</span>
+                    {c.name}
+                  </h3>
+                  <p className="mt-3 font-sans text-body text-ink-2">{c.line}</p>
+                </div>
               </Reveal>
-            </div>
-            <Reveal delay={0.15}>
-              <GlassCard className="p-7 md:p-9">
-                <ArchGlyph active="karta" />
-                <p className="mt-5 font-mono text-[11px] uppercase tracking-[0.16em] text-ink-3">
-                  Composed from the vocabulary — running inside the core that governs them.
+            ))}
+          </div>
+        </Section>
+
+        {/* ---- The hard boundary — the one gold moment ---- */}
+        <Section hairline>
+          <Reveal>
+            <GlassCard className="relative mx-auto max-w-[860px] overflow-hidden p-10 md:p-14">
+              <span
+                aria-hidden
+                className="absolute inset-y-0 left-0 w-px bg-gradient-to-b from-transparent via-gold to-transparent opacity-70"
+              />
+              <Eyebrow tone="gold">The hard boundary</Eyebrow>
+              <h2 className="mt-4 max-w-[20ch] font-serif text-display-1 text-ink">
+                Operational decisioning. Never underwriting.
+              </h2>
+              <p className="mt-6 max-w-[64ch] font-sans text-body-lg text-ink-2">
+                Karta-Risk and Karta-Decide segment portfolios, suggest the next best action,
+                resolve conflicts and gate actions on the institution&rsquo;s own risk and fraud
+                flags. That is the whole of their authority.
+              </p>
+
+              <p className="mt-10 font-mono text-[10.5px] uppercase tracking-[0.18em] text-gold">
+                What they will never do
+              </p>
+              <ul className="mt-5 grid gap-x-10 gap-y-3.5 sm:grid-cols-2">
+                {NEVER.map((item) => (
+                  <li key={item} className="flex items-start gap-3">
+                    <span
+                      aria-hidden
+                      className="mt-[7px] grid h-4 w-4 shrink-0 place-items-center rounded-full border border-gold/60"
+                    >
+                      <span className="block h-[1.5px] w-2 rounded-full bg-gold" />
+                    </span>
+                    <span className="font-sans text-body leading-snug text-ink-2">{item}</span>
+                  </li>
+                ))}
+              </ul>
+
+              <p className="mt-10 max-w-[60ch] border-t border-[rgba(200,161,74,0.28)] pt-7 font-serif text-[clamp(1.15rem,2vw,1.45rem)] leading-snug text-ink">
+                Underwriting authority stays exactly where the regulator expects it — with you.
+              </p>
+            </GlassCard>
+          </Reveal>
+        </Section>
+
+        {/* ---- How control works ---- */}
+        <Section hairline>
+          <div className="grid items-center gap-12 md:grid-cols-[1fr_1fr]">
+            <Reveal>
+              <div>
+                <Eyebrow>Who&rsquo;s in control</Eyebrow>
+                <h2 className="mt-4 max-w-[20ch] font-serif text-display-1 text-ink">
+                  You set how far they go.
+                </h2>
+                <p className="mt-7 max-w-[52ch] font-sans text-body-lg text-ink-2">
+                  Autonomy is a setting, not a default. The institution decides how much each
+                  co-worker does on its own — per workflow, per segment, per risk band — and moves
+                  the line as confidence grows. The risk profile stays yours to control.
                 </p>
+              </div>
+            </Reveal>
+            <Reveal delay={0.12}>
+              <GlassCard className="p-8 md:p-10">
+                <ul className="grid gap-5">
+                  {[
+                    ['Configured, not coded', 'Every co-worker is set by its attributes — no engineering cycle to change behaviour.'],
+                    ['Autonomy you choose', 'Run a co-worker hands-off, with oversight, as a copilot, or fully human-in-the-loop.'],
+                    ['Humans in the loop', 'Low-confidence and high-risk actions route to a person before anything executes.'],
+                  ].map(([title, body]) => (
+                    <li key={title} className="flex items-start gap-4">
+                      <span aria-hidden className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-mint" />
+                      <div>
+                        <p className="font-serif text-[1.25rem] leading-tight text-ink">{title}</p>
+                        <p className="mt-1.5 font-sans text-body text-ink-2">{body}</p>
+                      </div>
+                    </li>
+                  ))}
+                </ul>
               </GlassCard>
             </Reveal>
           </div>
         </Section>
 
-        {/* ---- 2 · Built, not coded ---- */}
+        {/* ---- Impact ---- */}
         <Section hairline>
           <Reveal>
-            <Eyebrow>How they&rsquo;re made</Eyebrow>
-            <h2 className="mt-4 max-w-[22ch] font-serif text-display-1 text-ink">
-              Assembled from the vocabulary.
-            </h2>
-            <p className="mt-7 max-w-[62ch] font-sans text-body-lg text-ink-2">
-              A co-worker is a composition of validated primitives, not a one-off script. Change what
-              it does by recomposing it — no rebuild. The same handful covers voice, documents,
-              decisions, risk, audit and reporting.
-            </p>
-          </Reveal>
-
-          <Reveal delay={0.12}>
-            <div className="mt-12">
-              <Composition />
-            </div>
-          </Reveal>
-
-          <Reveal delay={0.14}>
-            <p className="mt-8 max-w-[74ch] font-sans text-caption leading-relaxed text-ink-3">
-              Each co-worker is defined by eleven attributes — including its purpose, capabilities,
-              primitives, inputs, outputs, metrics, KWU cost, governance, learning loops,
-              human-in-the-loop triggers and availability. Recompose the attributes; the co-worker
-              changes with them.
-            </p>
-          </Reveal>
-        </Section>
-
-        {/* ---- 3 · The roster ---- */}
-        <Section hairline>
-          <Reveal>
-            <Eyebrow>The roster</Eyebrow>
-            <h2 className="mt-4 font-serif text-display-1 text-ink">
-              Eight co-workers run the whole operation.
-            </h2>
-            <p className="mt-7 max-w-[62ch] font-sans text-body-lg text-ink-2">
-              Eight co-workers cover the operation end to end — voice in both directions, the
-              paper, the operational calls, the cure journeys, and the review that keeps it all
-              accountable. Configured, not coded, to your institution.
-            </p>
-          </Reveal>
-
-          <Reveal delay={0.1}>
-            <div className="mt-12">
-              <Roster />
-            </div>
-          </Reveal>
-        </Section>
-
-        {/* ---- 4 · You set the autonomy ---- */}
-        <Section hairline>
-          <Reveal>
-            <Eyebrow>Operating modes</Eyebrow>
-            <h2 className="mt-4 font-serif text-display-1 text-ink">From hands-off to hands-on.</h2>
-            <p className="mt-7 max-w-[62ch] font-sans text-body-lg text-ink-2">
-              Every co-worker runs in one of four modes — fully autonomous, with oversight, as a
-              copilot, or human-in-the-loop. Set it per workflow, per segment, per risk band, and
-              move along the dial as confidence grows. The risk stays yours to control.
-            </p>
-          </Reveal>
-
-          <Reveal delay={0.1}>
-            <div className="mt-12">
-              <AutonomyDial />
-            </div>
-          </Reveal>
-
-          <Reveal delay={0.14}>
-            <p className="mt-8 max-w-[60ch] font-sans text-caption leading-relaxed text-ink-3">
-              Co-workers run operations; they don&rsquo;t make the credit decision — that stays with
-              you.
-            </p>
-          </Reveal>
-        </Section>
-
-        {/* ---- 5 · The hard boundary — the one gold moment ---- */}
-        <Section hairline>
-          <Reveal>
-            <div className="relative mx-auto max-w-[860px] overflow-hidden rounded-xl border border-[rgba(200,161,74,0.42)] bg-[rgba(200,161,74,0.045)] p-8 md:p-12">
-              {/* gold rule along the leading edge */}
-              <span
-                aria-hidden
-                className="absolute inset-y-0 left-0 w-px bg-gradient-to-b from-transparent via-gold to-transparent opacity-70"
-              />
-
-              <Eyebrow tone="gold">The hard boundary</Eyebrow>
-              <h2 className="mt-4 max-w-[20ch] font-serif text-[clamp(1.9rem,3.6vw,2.9rem)] leading-[1.08] text-ink">
-                Operational decisioning.
-                <br />
-                Never underwriting.
-              </h2>
-
-              <p className="mt-7 max-w-[64ch] font-sans text-body text-ink-2">
-                Karta-Risk and Karta-Decide segment portfolios, suggest the next best action, resolve
-                conflicts, and gate actions on the institution&rsquo;s own risk and fraud flags — that
-                is the whole of their authority.
+            <GlassCard className="mx-auto max-w-[820px] p-10 text-center md:p-14">
+              <h2 className="font-serif text-display-2 text-ink">A workforce that compounds.</h2>
+              <p className="mx-auto mt-5 max-w-[52ch] font-sans text-body-lg text-ink-2">
+                Built from the vocabulary, governed by the runtime, steered by you — and learning
+                from every interaction, so the operation gets better the more it runs.
               </p>
-
-              <div className="mt-9">
-                <p className="font-mono text-[10.5px] uppercase tracking-[0.18em] text-gold">
-                  What they will never do
-                </p>
-                <ul className="mt-5 grid gap-x-10 gap-y-3.5 sm:grid-cols-2">
-                  {[
-                    'Approve or deny loans',
-                    'Price credit',
-                    'Override your credit or risk engines',
-                    'Touch underwriting authority',
-                  ].map((item) => (
-                    <li key={item} className="flex items-start gap-3">
-                      <span
-                        aria-hidden
-                        className="mt-[7px] grid h-4 w-4 shrink-0 place-items-center rounded-full border border-gold/60"
-                      >
-                        <span className="block h-[1.5px] w-2 rounded-full bg-gold" />
-                      </span>
-                      <span className="font-sans text-body leading-snug text-ink-2">{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              <p className="mt-10 max-w-[60ch] border-t border-[rgba(200,161,74,0.28)] pt-7 font-serif text-[clamp(1.15rem,2vw,1.45rem)] leading-snug text-ink">
-                Underwriting authority stays exactly where the regulator expects it — with you.
-              </p>
-            </div>
-          </Reveal>
-        </Section>
-
-        {/* ---- 6 · Close ---- */}
-        <Section hairline>
-          <Reveal>
-            <div className="mx-auto max-w-[760px] text-center">
-              <h2 className="font-serif text-display-3 leading-tight text-ink">
-                Your workforce, composed.
-              </h2>
-              <p className="mx-auto mt-5 max-w-[50ch] font-sans text-body text-ink-2">
-                Built from the vocabulary, governed by the runtime, steered by you. Next, the people
-                who steer them.
-              </p>
-            </div>
+            </GlassCard>
           </Reveal>
         </Section>
       </LayerShell>
