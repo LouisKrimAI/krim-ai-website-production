@@ -8,7 +8,7 @@
 
 ## 0 · The bar — simple, content-first, like the homepage
 - **Simplicity wins. Do not over-engineer.** A page earns its keep with clear thinking and strong writing, not contraptions. The reference for "how much is enough" is the homepage: calm glass cards carrying confident type, a real image or two, generous space. If a section needs a gadget to be interesting, the writing isn't doing its job — fix the writing.
-- **Content shape for a product or domain page:** the challenge → the offering & the use cases it covers → the impact. Lead with the claim, prove it in glass, close with the ask. Most pages need nothing more than this, said well.
+- **Design each page with judgment — there is no fixed section formula.** Think about what *this* page needs to land, then structure it well. A clear, standard rhythm usually serves: set up the problem, show what KrimOS does and where it fits, make the impact land, invite the next step — but adapt the order, depth and emphasis to the page. The goal is a thoughtfully-laid-out, well-written page, not a skeleton filled in. Borrow the homepage's calm and clarity; don't clone any running order.
 - **Match the homepage's craft exactly** — its glass (`glass lume` cards with the small accent bar; `GlassCard` callouts; real images framed in glass), its type scale, its restraint. `app/page.tsx` is the literal pattern to emulate, not just admire.
 
 ## 1 · Canvas & atmosphere

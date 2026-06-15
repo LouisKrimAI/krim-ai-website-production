@@ -21,6 +21,7 @@ const KRIMOS = [
   ['Kendra', 'The runtime — validates & learns', '/platform/kendra'],
   ['Kriya', 'The vocabulary of actions', '/platform/kriya'],
   ['Karta', 'The AI co-workers', '/platform/karta'],
+  ['Kupa', 'The command center', '/platform/kupa'],
   ['Kula', 'For your teams', '/platform/kula'],
   ['Kira & Krimkar', 'For your customers', '/platform/kira'],
 ] as const
@@ -117,7 +118,7 @@ export default function SiteHeader({ scrollReveal = false }: { scrollReveal?: bo
             </button>
             {open === 'krimos' && (
               <div className="absolute left-1/2 top-full z-50 w-[300px] -translate-x-1/2 pt-3">
-                <div className="glass overflow-hidden p-2">
+                <div className="overflow-hidden rounded-[14px] border border-strong bg-[rgba(14,15,19,0.97)] p-2 shadow-[0_24px_60px_rgba(0,0,0,0.55)] backdrop-blur-xl">
                   {KRIMOS.map(([label, role, href]) => (
                     <Link
                       key={href}
@@ -152,7 +153,7 @@ export default function SiteHeader({ scrollReveal = false }: { scrollReveal?: bo
             </button>
             {open === 'domains' && (
               <div className="absolute left-1/2 top-full z-50 w-[230px] -translate-x-1/2 pt-3">
-                <div className="glass overflow-hidden p-2">
+                <div className="overflow-hidden rounded-[14px] border border-strong bg-[rgba(14,15,19,0.97)] p-2 shadow-[0_24px_60px_rgba(0,0,0,0.55)] backdrop-blur-xl">
                   {DOMAINS.map(([label, href]) => (
                     <Link
                       key={href}

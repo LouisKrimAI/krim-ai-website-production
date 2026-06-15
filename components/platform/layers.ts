@@ -1,13 +1,13 @@
 /**
  * The KrimOS platform layers — the registry that drives the cluster's
  * breadcrumb, the recurring architecture glyph, and prev/next navigation.
- * Order is the reading order: the brain, the vocabulary, the co-workers,
- * then the two human-facing interfaces. (Kupa and Krimkar are the surfaces
- * the interfaces live in — named on the pages, not separate routes.)
+ * Order is the reading order, bottom-up: the runtime, the vocabulary, the
+ * co-workers, the command center, then the two human-facing interfaces.
+ * (Krimkar is the consumer app Kira lives in — covered on Kira's page.)
  * Facts: docs/krim-content.md · docs/copy/platform*.md.
  */
 
-export type LayerSlug = 'kendra' | 'kriya' | 'karta' | 'kula' | 'kira'
+export type LayerSlug = 'kendra' | 'kriya' | 'karta' | 'kupa' | 'kula' | 'kira'
 
 export type Layer = {
   slug: LayerSlug
@@ -22,7 +22,8 @@ export const LAYERS: Layer[] = [
   { slug: 'kendra', name: 'Kendra', eyebrow: 'When it has to be right', oneLiner: 'The brain — validates every action, learns from every outcome.', tag: 'RUNTIME' },
   { slug: 'kriya', name: 'Kriya', eyebrow: 'What it can do', oneLiner: '250+ validated, credit-native action primitives.', tag: 'PRIMITIVES' },
   { slug: 'karta', name: 'Karta', eyebrow: 'Who does the work', oneLiner: 'Intelligent co-workers, composed from primitives.', tag: 'CO-WORKERS' },
-  { slug: 'kula', name: 'Kula', eyebrow: 'For your teams', oneLiner: 'Talk to your operation, in plain language — in Kupa.', tag: 'ENTERPRISE INTERFACE' },
+  { slug: 'kupa', name: 'Kupa', eyebrow: 'Where you stay in control', oneLiner: 'The glass cockpit — supervise, configure, monitor and audit every action.', tag: 'COMMAND CENTER' },
+  { slug: 'kula', name: 'Kula', eyebrow: 'For your teams', oneLiner: 'Ask in plain language; the runtime proposes the work and waits for your sign-off.', tag: 'ENTERPRISE INTERFACE' },
   { slug: 'kira', name: 'Kira', eyebrow: 'For your customers', oneLiner: 'One relationship across every channel — in the Krimkar app.', tag: 'CUSTOMER ADVISOR' },
 ]
 

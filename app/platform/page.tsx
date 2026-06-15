@@ -14,13 +14,14 @@ import SiteFooter from '@/components/SiteFooter'
 import OrbBackdrop from '@/components/OrbBackdrop'
 import Reveal from '@/components/Reveal'
 import Image from 'next/image'
+import PlatformLayers from '@/components/home/PlatformLayers'
 import { LAYERS } from '@/components/platform/layers'
 import { Section, Eyebrow, GlassCard, CTA } from '@/components/ui'
 
 export const metadata: Metadata = {
   title: 'KrimOS',
   description:
-    'KrimOS is one operating system for regulated operations: a vocabulary of validated actions (Kriya), the co-workers built from it (Karta), the runtime that validates and learns (Kendra), and two interfaces — Kula for your teams, Kira for your customers.',
+    'KrimOS is one operating system for regulated operations: the runtime that validates and learns (Kendra), a vocabulary of validated actions (Kriya), the co-workers built from it (Karta), the command center your teams run them from (Kupa), and two ways in — Kula for your teams, Kira for your customers.',
   alternates: { canonical: 'https://krim.ai/platform' },
   openGraph: { title: 'KrimOS — the platform', url: 'https://krim.ai/platform' },
 }
@@ -59,15 +60,6 @@ const softwareLd = {
   offers: { '@type': 'Offer', availability: 'https://schema.org/InStock', url: 'https://krim.ai/platform' },
 }
 
-// benefit-led doorways — the hub's core job is routing the buyer to the layer they need
-const DOORS: Record<string, string> = {
-  kendra: 'The mind. It validates every action before it fires — and gets sharper from every outcome it records.',
-  kriya: 'The vocabulary. 250+ validated, credit-native actions; the finite set everything is built from.',
-  karta: 'The co-workers. Composed from the vocabulary to run the operation — never to approve, deny or price a loan.',
-  kula: 'Your teams’ way in. Ask in plain language; the runtime does the thinking and waits for your sign-off.',
-  kira: 'Your customers’ advisor — one relationship across every channel, in their own language, in the Krimkar app.',
-}
-
 export default function PlatformPage() {
   return (
     <>
@@ -88,9 +80,9 @@ export default function PlatformPage() {
               </Reveal>
               <Reveal delay={0.12}>
                 <p className="mt-7 max-w-[56ch] font-sans text-body-lg text-ink-2">
-                  Every action is validated before it executes — and the system gets sharper from
-                  every outcome it records. A vocabulary of validated actions, the co-workers built from it, and the
-                  mind that runs them, as one stack inside your walls.
+                  KrimOS is the agent-native operating system for regulated operations. AI
+                  co-workers do the work; every action is validated before it executes, and the
+                  system gets sharper from every outcome it records — all inside your own perimeter.
                 </p>
               </Reveal>
               <Reveal delay={0.2}>
@@ -124,35 +116,66 @@ export default function PlatformPage() {
           </div>
         </Section>
 
-        {/* ---- 2 · Inside the system — the doorways ---- */}
+        {/* ---- 2 · Inside KrimOS — the stack, all layers shown, then the doorways ---- */}
         <Section hairline>
           <Reveal>
             <Eyebrow>Inside KrimOS</Eyebrow>
-            <h2 className="mt-4 max-w-[22ch] font-serif text-display-1 text-ink">
-              One system, wherever you start.
+            <h2 className="mt-4 max-w-[24ch] font-serif text-display-1 text-ink">
+              One stack, from the core to the people who use it.
             </h2>
             <p className="mt-6 max-w-[60ch] font-sans text-body-lg text-ink-2">
-              A vocabulary becomes a workforce, run by one mind — with two ways in, one for the
-              teams who run the operation and one for the customers it serves. Start where your
-              problem is; underneath, it stays a single operating system.
+              Each layer does one job; together they are a single operating system. Here is the
+              whole stack, top to bottom.
             </p>
           </Reveal>
-          <div className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-            {LAYERS.map((l, i) => (
-              <Reveal key={l.slug} delay={(i % 3) * 0.08}>
-                <Link href={`/platform/${l.slug}`} className="group block h-full">
-                  <GlassCard hover className="flex h-full flex-col p-7">
-                    <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-ink-3">{l.eyebrow}</p>
-                    <h3 className="mt-3 font-serif text-display-2 text-ink">{l.name}</h3>
-                    <p className="mt-3 flex-1 font-sans text-[14px] leading-relaxed text-ink-2">{DOORS[l.slug]}</p>
-                    <p className="mt-6 font-mono text-[13px] text-mint" aria-hidden>
-                      Explore {l.name}{' '}
-                      <span className="inline-block transition-transform duration-fast group-hover:translate-x-1">→</span>
-                    </p>
-                  </GlassCard>
+          <Reveal delay={0.15}>
+            <div className="mt-14 flex justify-center">
+              <PlatformLayers />
+            </div>
+          </Reveal>
+
+          <Reveal>
+            <div className="mt-14 flex flex-wrap items-center justify-center gap-x-8 gap-y-3 border-t border-soft pt-9 font-sans text-[15px]">
+              <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-ink-3">Open any layer</span>
+              {LAYERS.map((l) => (
+                <Link
+                  key={l.slug}
+                  href={`/platform/${l.slug}`}
+                  className="group inline-flex items-baseline gap-1.5 text-ink-2 transition-colors hover:text-mint"
+                >
+                  <span className="underline-offset-4 group-hover:underline">{l.slug === 'kira' ? 'Kira & Krimkar' : l.name}</span>
+                  <span aria-hidden className="transition-transform duration-fast group-hover:translate-x-0.5">→</span>
                 </Link>
-              </Reveal>
-            ))}
+              ))}
+            </div>
+          </Reveal>
+        </Section>
+
+        {/* ---- 3 · Who it's for ---- */}
+        <Section hairline>
+          <div className="mx-auto max-w-[760px] text-center">
+            <Reveal>
+              <Eyebrow>Who it&rsquo;s for</Eyebrow>
+              <h2 className="mt-4 font-serif text-display-1 text-ink">One core, every regulated domain.</h2>
+              <p className="mx-auto mt-6 max-w-[52ch] font-sans text-body-lg text-ink-2">
+                The same stack runs across every regulated industry — only the rules and use cases
+                change. See it in your world:
+              </p>
+            </Reveal>
+            <Reveal delay={0.12}>
+              <div className="mt-8 flex flex-wrap items-center justify-center gap-x-8 gap-y-3 font-sans text-[15px]">
+                {[
+                  ['Lending', '/lending'],
+                  ['Government', '/government'],
+                  ['Large Enterprise', '/enterprise'],
+                  ['MSME', '/msme'],
+                ].map(([label, href]) => (
+                  <Link key={href} href={href} className="text-ink-2 underline-offset-4 transition-colors hover:text-mint hover:underline">
+                    {label}
+                  </Link>
+                ))}
+              </div>
+            </Reveal>
           </div>
         </Section>
 
