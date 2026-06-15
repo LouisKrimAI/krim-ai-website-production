@@ -35,6 +35,7 @@
 ## 4 · Glass (the signature surface)
 - `.glass` — the showcase surface for cards that carry key information: real backdrop-blur, a hairline light border, a faint top-edge highlight, a soft lift. `.glass-quiet` for secondary; `.glass-cyan` / `.glass-mint` for the **one** accent per view; `.lume` for interactive hover lift.
 - Glass is for content floating above the system — never wallpaper. **One mint-accent card per view, max.**
+- **Cards are crafted objects, not boxes.** A small, clear hierarchy (mono eyebrow/label → serif title → calm body), the 3px accent bar, generous padding, a luminous `.lume` hover. Beautiful and stylish — never bland, never busy, never ugly. If a card looks like a plain bordered rectangle, it isn't finished.
 
 ## 5 · Layout & rhythm
 - Container `max-w-site` (1200px); vertical rhythm via `Section` (`var(--section-y)`); hairline dividers between sections.
@@ -63,6 +64,7 @@ AA contrast on all text · visible `:focus-visible` · logical heading order (on
 
 ## 10 · Voice & copy
 - Confident, precise, quietly literary — sells the outcome and stays credible to a regulator. **Full creative licence within the facts** (`krim-content.md`). No filler, no hype-clichés ("revolutionary", "unlock", "leverage", "seamless"), and none of the three banned headline/eyebrow archetypes in §3 (label, instruction, inventory). Read every line aloud; the test for any headline or eyebrow is "would a CMO ship this?" — if it doesn't earn its place, rewrite or cut it.
+- **Concise above all — then highlight what matters.** Say it in the fewest words that still build trust: share enough detail to be credible and clear, never exhaustive — cut every word that doesn't earn its place. Then use the colour grammar to **highlight the load-bearing words inline** (mint = validated / proof / the brand · cyan = thinking / proposed · bright `ink` = emphasis) — a few tasteful touches per section so the key points land at a glance. Never rainbow. The aim: clear, concise, beautiful, with the right words lit.
 
 ---
 

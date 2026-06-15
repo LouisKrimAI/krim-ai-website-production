@@ -1,52 +1,35 @@
 /**
- * /lending — the flagship domain page. From docs/copy/lending.md.
- * The whole loan, start to finish: one system that carries the customer line
- * (Kira) and the back-office line (Karta) through the entire lifecycle, every
- * action validated before it executes, the rulebook switched per market.
+ * /lending — the flagship domain page. Facts: docs/krim-content.md.
  *
- * Standalone page (not a LayerShell): SiteHeader · OrbBackdrop · main · SiteFooter.
- * Server component — metadata + JSON-LD + static substance. The four signature
- * devices live in _client.tsx:
- *   · JourneySpine   — section 3, the CENTREPIECE: a steppable spine from
- *                      Application → Payoff, two threads (Kira above, Karta
- *                      below) converging at each stage where a cyan→mint pulse
- *                      marks the action clearing validation; the spine fills mint.
- *   · MarketSelector — section 4: India · UK · US switch one glass panel of that
- *                      market's frameworks, cyan→mint on each switch.
- *   · RoleSelector   — section 5: a quiet row of titles surfaces each twin's
- *                      promise in a single glass panel.
- *   · ImpactCurve    — section 6: four stat cards over a slim rising curve,
- *                      Q1 → Q2 → Year two, drawn on view.
- * Facts only, per the deck; impact numbers are ranges, measured against your
- * own baseline — never promises.
+ * Standalone shell (NOT a LayerShell): SiteHeader · OrbBackdrop · main · SiteFooter,
+ * to the HOUSE-STYLE bar (docs/HOUSE-STYLE.md). Server component — all substance in
+ * the rendered HTML, no hand-built devices. Calm glass + type only: shared Reveal,
+ * `glass lume` cards with the 3px accent bar, GlassCard callouts, tasteful inline
+ * highlighting (mint = validated/proof · cyan = thinking/proposed · ink = emphasis).
  *
- * Grammar: cyan = proposed/thinking · mint = validated · gold = exception.
+ * Rhythm: hero → the problem → the lifecycle → compliance by jurisdiction →
+ * impact + the learning curve → deployment → close.
+ *
+ * HARD RULE (krim-content.md): Karta do operational decisioning and NEVER
+ * underwrite — they never approve, deny or price loans, and never override the
+ * institution's own credit/risk engines.
  */
 
 import type { Metadata } from 'next'
-import Image from 'next/image'
 import SiteHeader from '@/components/SiteHeader'
 import SiteFooter from '@/components/SiteFooter'
 import OrbBackdrop from '@/components/OrbBackdrop'
 import Reveal from '@/components/Reveal'
-import { Section, Eyebrow, GlassCard, CTA, Stat } from '@/components/ui'
-import {
-  HeroTrace,
-  ProblemWall,
-  JourneySpine,
-  MarketSelector,
-  RoleSelector,
-  ImpactCurve,
-  PerimeterMotif,
-} from './_client'
+import { Section, Eyebrow, GlassCard, CTA } from '@/components/ui'
 
-const DEMO = 'mailto:sales@krim.ai?subject=Demo%20request%20%E2%80%94%20KrimOS'
+const DEMO = 'mailto:sales@krim.ai?subject=Demo%20request%20%E2%80%94%20Lending'
 
 export const metadata: Metadata = {
-  title: 'Lending — the whole loan, start to finish',
+  title: 'Lending',
   description:
-    'KrimOS runs the whole loan, start to finish — every customer conversation and every back-office task on one system that validates each action before it executes, across India, the UK and the US.',
+    'KrimOS runs the whole loan lifecycle — every customer conversation and every back-office task on one system that validates each action before it executes, and learns the operation as it runs. Built against RBI, FCA and US lending law by construction.',
   alternates: { canonical: 'https://krim.ai/lending' },
+  openGraph: { title: 'Lending — Krim', url: 'https://krim.ai/lending' },
 }
 
 const breadcrumbLd = {
@@ -60,18 +43,77 @@ const breadcrumbLd = {
 
 // ---------------------------------------------------------------- content
 
+// The whole loan, both sides of the wall — krim-content.md · lifecycle table.
+const LIFECYCLE = [
+  {
+    stage: 'Sourcing & onboarding',
+    customer: 'Engages, qualifies and guides the application.',
+    back: 'Lead scoring, KYC and document processing.',
+  },
+  {
+    stage: 'Underwriting & decision',
+    customer: 'Collects what is missing, sets expectations.',
+    back: 'Credit-analysis support, policy checks and sanction prep — the decision stays yours.',
+  },
+  {
+    stage: 'Disbursal',
+    customer: 'Walks the borrower through the agreement and confirmation.',
+    back: 'Agreement generation, compliance checks and disbursal ops.',
+  },
+  {
+    stage: 'Servicing',
+    customer: 'Payments, queries and statements — one advisor, always on.',
+    back: 'Account maintenance, reconciliation and monitoring.',
+  },
+  {
+    stage: 'Collections & hardship',
+    customer: 'Reminders and plans, hardship handled with care.',
+    back: 'Risk segmentation, early warning and escalation.',
+  },
+  {
+    stage: 'Closure & re-engagement',
+    customer: 'Payoff, the NOC, the next product conversation.',
+    back: 'Settlement, reporting and portfolio learning.',
+  },
+]
+
+// Sectoral frameworks encoded in Krim-Fabric — krim-content.md · trust & deployment.
+const JURISDICTIONS = [
+  {
+    place: 'India',
+    frameworks: ['RBI circulars', 'Fair Practices Code', 'DPDP'],
+  },
+  {
+    place: 'United Kingdom',
+    frameworks: ['FCA Consumer Duty', 'CONC sourcebook', 'Consumer Credit Act', 'UK GDPR'],
+  },
+  {
+    place: 'United States',
+    frameworks: ['FDCPA', 'TCPA', 'Reg F', 'FCRA', 'SCRA', 'ECOA'],
+  },
+]
+
+// Ranges, against the institution's own baseline — krim-content.md · proof.
+const IMPACT = [
+  { area: 'Origination', value: '5–10×', note: 'document throughput per analyst · days to hours on onboarding' },
+  { area: 'Servicing', value: '40–70%', note: 'self-serve resolution · 30–50% lower assisted handling time' },
+  { area: 'Collections', value: '1–3 pp', note: 'lower DPD 1–30 roll-rate · 25–40% more right-party contact' },
+  { area: 'Compliance', value: 'Minutes', note: 'audit-ready reporting · 100% of regulated actions pre-validated' },
+]
+
+// Three modes, one architecture — krim-content.md · sovereignty & deployment.
 const DEPLOYMENTS = [
   {
-    name: 'On-premise',
-    body: 'Entirely inside your own data centre — the model, the data and every action never leave the walls you already trust.',
+    name: 'Sovereign on-prem',
+    body: 'The full stack inside your own data centre — model, data and every action stay behind walls you already trust. The default for Tier-1 banks.',
   },
   {
     name: 'Hybrid',
-    body: 'A line drawn where you want it: sensitive records stay in, the rest runs where it is most efficient — the split is yours to set.',
+    body: 'Data and inference on-prem; orchestration and updates from Krim cloud. A line drawn where your regulator wants it.',
   },
   {
-    name: 'Fully managed',
-    body: 'Run for you inside a perimeter you define — sovereign by construction, with no foreign API anywhere in the loop.',
+    name: 'Managed',
+    body: 'Run for you in your preferred sovereign cloud region — no foreign API anywhere in the loop.',
   },
 ]
 
@@ -86,215 +128,250 @@ export default function LendingPage() {
       <OrbBackdrop />
       <main className="relative z-10">
         {/* ════════════════════ 1 · Hero ════════════════════ */}
-        <Section className="!pt-12 md:!pt-16">
-          <div className="grid items-center gap-12 lg:grid-cols-[1.05fr_0.95fr]">
-            <div>
-              <Reveal>
-                <Eyebrow>Lending</Eyebrow>
-                <h1 className="mt-5 font-serif text-display-hero text-ink">
-                  The whole loan,
-                  <br />
-                  start to finish.
-                </h1>
-              </Reveal>
-              <Reveal delay={0.12}>
-                <p className="mt-7 max-w-[54ch] font-sans text-body-lg text-ink-2">
-                  Every customer conversation and every back-office task —{' '}
-                  <span className="text-ink">on one system that validates each action</span> before
-                  it happens, and learns the operation as it runs.
-                </p>
-              </Reveal>
-              <Reveal delay={0.18}>
-                <div className="mt-9 flex flex-wrap items-center gap-x-7 gap-y-4">
-                  <CTA href={DEMO}>Book a demo</CTA>
-                  <CTA href="#lifecycle" variant="secondary">
-                    See it run a loan
-                  </CTA>
-                </div>
-              </Reveal>
-              {/* the fine line of light — application → payoff, foreshadowing the spine */}
-              <Reveal delay={0.24}>
-                <div className="mt-12">
-                  <HeroTrace />
-                </div>
-              </Reveal>
-            </div>
-
-            {/* the lending-lifecycle motif, framed in glass */}
-            <Reveal delay={0.15}>
-              <GlassCard className="overflow-hidden p-2.5 md:p-3">
-                <div className="relative aspect-[1792/2400] overflow-hidden rounded-[10px]">
-                  <Image
-                    src="/images/domains/lending.png"
-                    alt="An abstract rendering of a lending lifecycle — a single curve of light running from application through to payoff."
-                    fill
-                    priority
-                    sizes="(max-width: 1024px) 92vw, 44vw"
-                    className="object-cover"
-                  />
-                  <div
-                    aria-hidden
-                    className="pointer-events-none absolute inset-0"
-                    style={{
-                      background:
-                        'linear-gradient(180deg, rgba(9,9,12,0.12) 0%, rgba(9,9,12,0) 30%, rgba(9,9,12,0) 70%, rgba(9,9,12,0.35) 100%)',
-                    }}
-                  />
-                </div>
-              </GlassCard>
+        <Section className="!pt-24">
+          <div className="mx-auto max-w-[860px] text-center">
+            <Reveal>
+              <Eyebrow>Lending</Eyebrow>
+              <h1 className="mt-5 font-serif text-display-hero text-ink">
+                Run the whole loan lifecycle.
+              </h1>
+            </Reveal>
+            <Reveal delay={0.12}>
+              <p className="mx-auto mt-7 max-w-[60ch] font-sans text-body-lg text-ink-2">
+                One system carries every customer conversation and every back-office task — from
+                application to payoff. Every action is{' '}
+                <span className="text-mint">validated before it executes</span>, and the operation{' '}
+                <span className="text-cyan">gets sharper</span> from every outcome it records.
+              </p>
+            </Reveal>
+            <Reveal delay={0.2}>
+              <div className="mt-10 flex flex-wrap items-center justify-center gap-x-7 gap-y-4">
+                <CTA href={DEMO}>Book a demo</CTA>
+                <CTA href="/platform" variant="secondary">
+                  See how KrimOS works
+                </CTA>
+              </div>
             </Reveal>
           </div>
         </Section>
 
         {/* ════════════════════ 2 · The problem ════════════════════ */}
         <Section hairline>
-          <Reveal>
-            <Eyebrow tone="gold">Why lending stalls</Eyebrow>
-            <h2 className="mt-4 font-serif text-display-1 text-ink">Two teams, one wall.</h2>
-            <p className="mt-7 max-w-[64ch] font-sans text-body-lg text-ink-2">
-              Lending is run by two workforces — the people who speak to customers, and the people
-              who keep the books — held apart by tickets, spreadsheets and hand-offs. Together
-              they&rsquo;re <span className="text-ink">40&ndash;60% of what every loan costs</span>.
-              AI could close the gap, but a regulated action you can&rsquo;t explain is a risk no
-              lender will take. So the work stays manual.
-            </p>
-          </Reveal>
-
-          <Reveal delay={0.12}>
-            <div className="mt-12">
-              <ProblemWall />
-            </div>
-          </Reveal>
+          <div className="grid items-center gap-12 md:grid-cols-[1fr_1fr]">
+            <Reveal>
+              <div>
+                <Eyebrow tone="gold">Why lending stalls</Eyebrow>
+                <h2 className="mt-4 max-w-[20ch] font-serif text-display-1 text-ink">
+                  The work is manual because the AI couldn&rsquo;t be proven.
+                </h2>
+                <p className="mt-7 max-w-[54ch] font-sans text-body-lg text-ink-2">
+                  Lending runs on two workforces — the people who speak to customers and the people
+                  who keep the books — held apart by tickets, spreadsheets and hand-offs. Together
+                  they are <span className="text-ink">40–60% of what every loan costs</span>. AI
+                  could close the gap, but a regulated action you can&rsquo;t explain is a risk no
+                  lender will take. So the work stays manual.
+                </p>
+              </div>
+            </Reveal>
+            <Reveal delay={0.12}>
+              <GlassCard accent className="p-8 md:p-10">
+                <p className="font-serif text-[clamp(1.4rem,2.4vw,1.85rem)] leading-snug text-ink">
+                  KrimOS gates every action before it fires — so the work you couldn&rsquo;t trust
+                  to software becomes work you can.
+                </p>
+                <p className="mt-6 font-mono text-[11px] uppercase tracking-[0.18em] text-mint">
+                  Validated, not audited after the fact
+                </p>
+              </GlassCard>
+            </Reveal>
+          </div>
         </Section>
 
-        {/* ════════════════════ 3 · The lifecycle — CENTREPIECE ════════════════════ */}
+        {/* ════════════════════ 3 · The lifecycle ════════════════════ */}
         <Section id="lifecycle" hairline>
           <Reveal>
             <Eyebrow tone="cyan">End to end</Eyebrow>
-            <h2 className="mt-4 font-serif text-display-1 text-ink">Two threads. One journey.</h2>
-            <p className="mt-7 max-w-[64ch] font-sans text-body-lg text-ink-2">
-              The same system carries both sides of the wall through the whole loan —{' '}
-              <span className="text-ink">Kira with the customer, Karta in the back office</span> —
-              meeting at every step, every action validated as it passes.
+            <h2 className="mt-4 max-w-[22ch] font-serif text-display-1 text-ink">
+              Both sides of the wall, on one system.
+            </h2>
+            <p className="mt-6 max-w-[60ch] font-sans text-body-lg text-ink-2">
+              <span className="text-cyan">Kira</span> meets the customer on every channel;{' '}
+              <span className="text-mint">Karta</span> co-workers do the back-office work. They meet
+              at every stage — and each action passes the validation gate before it executes.
             </p>
           </Reveal>
 
-          <Reveal delay={0.12}>
-            <div className="mt-12">
-              <JourneySpine />
-            </div>
+          <div className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+            {LIFECYCLE.map((s, i) => (
+              <Reveal key={s.stage} delay={(i % 3) * 0.08}>
+                <div className="glass lume flex h-full flex-col p-7">
+                  <span aria-hidden className="block h-[3px] w-12 rounded-full bg-mint/70" />
+                  <h3 className="mt-6 font-serif text-[1.4rem] leading-tight text-ink">{s.stage}</h3>
+                  <dl className="mt-5 grid gap-4">
+                    <div>
+                      <dt className="font-mono text-[9.5px] uppercase tracking-[0.16em] text-cyan">
+                        Kira · customer
+                      </dt>
+                      <dd className="mt-1.5 font-sans text-[14px] leading-relaxed text-ink-2">
+                        {s.customer}
+                      </dd>
+                    </div>
+                    <div>
+                      <dt className="font-mono text-[9.5px] uppercase tracking-[0.16em] text-mint">
+                        Karta · back office
+                      </dt>
+                      <dd className="mt-1.5 font-sans text-[14px] leading-relaxed text-ink-2">
+                        {s.back}
+                      </dd>
+                    </div>
+                  </dl>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+
+          <Reveal delay={0.1}>
+            <p className="mt-9 max-w-[64ch] font-sans text-[14px] leading-relaxed text-ink-3">
+              A hard line holds throughout: Karta segment risk, suggest the next best action and
+              gate on your own flags — they <span className="text-ink-2">never approve, deny or
+              price a loan</span>, and never override your credit and risk engines. Underwriting
+              authority stays where the regulator expects it.
+            </p>
           </Reveal>
         </Section>
 
-        {/* ════════════════════ 4 · Compliance ════════════════════ */}
+        {/* ════════════════════ 4 · Compliance by jurisdiction ════════════════════ */}
         <Section hairline>
           <Reveal>
             <Eyebrow>Compliance, built in</Eyebrow>
-            <h2 className="mt-4 font-serif text-display-1 text-ink">
-              Your market&rsquo;s rules, applied before each action.
+            <h2 className="mt-4 max-w-[24ch] font-serif text-display-1 text-ink">
+              Your jurisdiction&rsquo;s law, applied before each action.
             </h2>
-            <p className="mt-7 max-w-[64ch] font-sans text-body-lg text-ink-2">
-              <span className="text-ink">Krim-Ny&#257;ya</span> checks every action against the law
-              where you lend — before it executes, not after. One system, three markets; only the
-              rulebook changes.
+            <p className="mt-6 max-w-[60ch] font-sans text-body-lg text-ink-2">
+              The same architecture runs in every market — only the rulebook changes. Each action
+              is checked against the law where you lend{' '}
+              <span className="text-mint">before it executes</span>, not after.
             </p>
           </Reveal>
 
-          <Reveal delay={0.12}>
-            <div className="mt-12">
-              <MarketSelector />
-            </div>
-          </Reveal>
+          <div className="mt-12 grid gap-5 md:grid-cols-3">
+            {JURISDICTIONS.map((j, i) => (
+              <Reveal key={j.place} delay={0.06 * i}>
+                <GlassCard className="flex h-full flex-col p-7">
+                  <div className="flex items-center justify-between">
+                    <h3 className="font-serif text-[1.5rem] leading-none text-ink">{j.place}</h3>
+                    <span className="flex items-center gap-2 font-mono text-[9.5px] uppercase tracking-[0.12em] text-mint">
+                      <span aria-hidden className="h-1.5 w-1.5 rounded-full bg-mint" />
+                      Pre-validated
+                    </span>
+                  </div>
+                  <ul className="mt-6 flex flex-wrap gap-2">
+                    {j.frameworks.map((f) => (
+                      <li
+                        key={f}
+                        className="rounded-lg border border-[rgba(0,255,178,0.22)] bg-[rgba(0,255,178,0.05)] px-3 py-1.5 font-mono text-[12px] tracking-[0.02em] text-ink"
+                      >
+                        {f}
+                      </li>
+                    ))}
+                  </ul>
+                </GlassCard>
+              </Reveal>
+            ))}
+          </div>
         </Section>
 
-        {/* ════════════════════ 5 · By role ════════════════════ */}
-        <Section hairline>
-          <Reveal>
-            <Eyebrow>For every desk</Eyebrow>
-            <h2 className="mt-4 font-serif text-display-1 text-ink">A twin tuned to the job.</h2>
-            <p className="mt-7 max-w-[64ch] font-sans text-body-lg text-ink-2">
-              Through <span className="text-ink">Kula</span>, each leader works with a digital twin
-              shaped to their role — one source of truth, seen from where they sit.
-            </p>
-          </Reveal>
-
-          <Reveal delay={0.12}>
-            <div className="mt-12">
-              <RoleSelector />
-            </div>
-          </Reveal>
-        </Section>
-
-        {/* ════════════════════ 6 · Impact ════════════════════ */}
+        {/* ════════════════════ 5 · Impact ════════════════════ */}
         <Section hairline>
           <Reveal>
             <Eyebrow tone="mint">What changes</Eyebrow>
-            <h2 className="mt-4 font-serif text-display-1 text-ink">
+            <h2 className="mt-4 max-w-[22ch] font-serif text-display-1 text-ink">
               Measured against your own baseline.
             </h2>
-            <p className="mt-7 max-w-[64ch] font-sans text-body-lg text-ink-2">
-              Ranges, not promises — scoped with you and{' '}
-              <span className="text-ink">proven on your data in a 30-day pilot</span>, before
+            <p className="mt-6 max-w-[60ch] font-sans text-body-lg text-ink-2">
+              Ranges, not commitments — calibrated to your deployment and{' '}
+              <span className="text-ink">proven on your data in a 30-day pilot</span> before
               anything goes live.
             </p>
           </Reveal>
 
-          <Reveal delay={0.12}>
-            <div className="mt-12">
-              <ImpactCurve />
-            </div>
+          <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {IMPACT.map((it, i) => (
+              <Reveal key={it.area} delay={(i % 4) * 0.07}>
+                <div className="glass flex h-full flex-col p-6">
+                  <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-ink-3">
+                    {it.area}
+                  </p>
+                  <p className="mt-3 font-serif text-[clamp(2.1rem,3.4vw,2.7rem)] leading-none text-mint">
+                    {it.value}
+                  </p>
+                  <p className="mt-3 font-sans text-[13.5px] leading-relaxed text-ink-2">
+                    {it.note}
+                  </p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+
+          <Reveal delay={0.1}>
+            <GlassCard className="mt-5 flex flex-col gap-3 p-7 md:flex-row md:items-center md:justify-between md:p-8">
+              <p className="max-w-[52ch] font-sans text-body text-ink-2">
+                And it improves with use: a first-quarter baseline,{' '}
+                <span className="text-mint">measurable gains by Q2</span>, and materially better
+                than go-live by year two — from the runtime, not from more engineering.
+              </p>
+              <p className="shrink-0 font-mono text-[10px] uppercase tracking-[0.16em] text-ink-3">
+                The learning curve
+              </p>
+            </GlassCard>
           </Reveal>
         </Section>
 
-        {/* ════════════════════ 7 · Deployment ════════════════════ */}
+        {/* ════════════════════ 6 · Deployment ════════════════════ */}
         <Section hairline>
           <Reveal>
             <Eyebrow>How it runs</Eyebrow>
-            <h2 className="mt-4 font-serif text-display-1 text-ink">
-              Where you want it, how you want it.
+            <h2 className="mt-4 max-w-[22ch] font-serif text-display-1 text-ink">
+              Sovereign by construction, wherever you run it.
             </h2>
-            <p className="mt-7 max-w-[64ch] font-sans text-body-lg text-ink-2">
-              KrimOS deploys three ways — on-premise, hybrid, or fully managed. Which one is your
-              decision, set by your data, your regulator and your preference. Whichever you choose,
-              it&rsquo;s <span className="text-ink">sovereign by construction</span>: inside the
-              perimeter you define, with no foreign API in the loop.
+            <p className="mt-6 max-w-[60ch] font-sans text-body-lg text-ink-2">
+              Three deployments, one architecture — your data, your regulator and your preference
+              decide which. Whichever you choose, everything stays inside the perimeter you define,
+              with <span className="text-ink">no foreign API in the loop</span>.
             </p>
           </Reveal>
 
           <div className="mt-12 grid gap-5 md:grid-cols-3">
             {DEPLOYMENTS.map((d, i) => (
-              <Reveal key={d.name} delay={0.04 * i}>
+              <Reveal key={d.name} delay={0.05 * i}>
                 <GlassCard hover className="flex h-full flex-col p-7">
                   <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-ink-3">
                     Deployment
                   </p>
-                  <h3 className="mt-3 font-serif text-[1.5rem] leading-tight text-ink">{d.name}</h3>
+                  <h3 className="mt-3 font-serif text-[1.45rem] leading-tight text-ink">{d.name}</h3>
                   <p className="mt-4 font-sans text-[15px] leading-relaxed text-ink-2">{d.body}</p>
                 </GlassCard>
               </Reveal>
             ))}
           </div>
-
-          {/* the perimeter motif under "sovereign by construction" */}
-          <Reveal delay={0.12}>
-            <div className="mt-10">
-              <PerimeterMotif />
-            </div>
-          </Reveal>
         </Section>
 
-        {/* ════════════════════ 8 · Close ════════════════════ */}
+        {/* ════════════════════ 7 · Close ════════════════════ */}
         <Section hairline>
           <Reveal>
-            <div className="mx-auto max-w-[760px] text-center">
-              <h2 className="font-serif text-[clamp(1.8rem,3.4vw,2.7rem)] leading-tight text-ink">
+            <div className="glass mx-auto max-w-[760px] p-10 text-center md:p-14">
+              <h2 className="font-serif text-display-3 leading-tight text-ink">
                 See it run a loan, end to end.
               </h2>
-              <p className="mx-auto mt-5 max-w-[52ch] font-sans text-body-lg text-ink-2">
-                One conversation, one validated action, one clean trail — application to payoff.
+              <p className="mx-auto mt-5 max-w-[50ch] font-sans text-body-lg text-ink-2">
+                One conversation, one validated action, one clean trail — application to payoff, on
+                the stack you already run.
               </p>
-              <div className="mt-9 flex justify-center">
+              <div className="mt-9 flex flex-wrap items-center justify-center gap-6">
                 <CTA href={DEMO}>Book a demo</CTA>
+                <CTA href="/platform" variant="secondary">
+                  Explore KrimOS
+                </CTA>
               </div>
             </div>
           </Reveal>

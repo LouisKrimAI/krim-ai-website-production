@@ -1,14 +1,12 @@
 /**
  * /government — the government domain. Standalone page (its own header /
- * backdrop / footer). Civic, serious, still — a touch more formal and
- * restrained than the other domains. Server component: metadata + JSON-LD
- * live here; the two animated pieces (the hero perimeter frame and the
- * lawful-basis signature device) live in _client.tsx.
+ * backdrop / footer), built to docs/HOUSE-STYLE.md: calm glass + type, no
+ * hand-built devices. Rhythm: hero → the challenge → why Krim fits → use
+ * cases → impact → deployment → close.
  *
- * HONESTY GUARD: capability framing only. "Built for / designed for" — never
- * claimed deployments, customers, figures or track record. Copy: docs/copy/
- * government.md. Grammar: cyan = proposed · mint = validated/lawful · gold =
- * exception.
+ * HONESTY GUARD: capability framing ONLY. "Krim fits because…" / "built for /
+ * designed for" — never claimed deployments, customers, agencies, figures or
+ * track record. Facts: docs/krim-content.md.
  */
 
 import type { Metadata } from 'next'
@@ -17,13 +15,13 @@ import SiteFooter from '@/components/SiteFooter'
 import OrbBackdrop from '@/components/OrbBackdrop'
 import Reveal from '@/components/Reveal'
 import { Section, Eyebrow, GlassCard, CTA } from '@/components/ui'
-import { PerimeterFrame, LawfulBasis } from './_client'
 
 export const metadata: Metadata = {
-  title: 'Government — public service that can answer for every action',
+  title: 'Government',
   description:
-    'The runtime trusted to satisfy banking regulators, built for the public sector — automating citizen-facing and back-office work, with a lawful basis and a clear record behind every action.',
+    'KrimOS fits public-sector work: AI co-workers that automate citizen-facing and back-office operations inside your own jurisdiction — every action resting on a lawful basis, every action kept on an immutable record.',
   alternates: { canonical: 'https://krim.ai/government' },
+  openGraph: { title: 'Government — Krim', url: 'https://krim.ai/government' },
 }
 
 const breadcrumbLd = {
@@ -38,40 +36,69 @@ const breadcrumbLd = {
 const CTA_HREF =
   'mailto:sales@krim.ai?subject=Starting%20a%20conversation%20%E2%80%94%20Krim%20for%20government'
 
-// the three constraints generic AI fails — set against the perimeter
-const CONSTRAINTS = [
+// the public-sector bar — what makes generic AI a non-starter here
+const CHALLENGES = [
   {
-    name: 'Legal basis',
-    body: 'Every action must rest on a rule that permits it.',
+    name: 'Legacy systems, rising demand',
+    body: 'Casework backlogs and service queues sit on ageing systems that can’t flex with the load.',
   },
   {
-    name: 'Scrutiny',
-    body: 'Every action must withstand inspection, after the fact.',
+    name: 'A lawful basis for everything',
+    body: 'Every action a public body takes must rest on a rule that permits it — and survive scrutiny after the fact.',
   },
   {
-    name: 'Sovereignty',
-    body: "Citizens' data must stay within the nation's borders.",
+    name: 'Citizen trust',
+    body: 'Service has to be fair, explainable and consistent. Citizens are owed an answer for every decision.',
+  },
+  {
+    name: 'Data can’t leave',
+    body: 'Citizens’ records can’t cross into a foreign cloud. Any AI that needs data egress is the wrong tool.',
   },
 ]
 
-// the four public-sector co-workers — framing is "designed for," capability
+// why Krim fits — three properties by construction (middle one is the heart)
+const FITS = [
+  {
+    title: 'Sovereignty is decisive',
+    body: 'KrimOS runs inside your perimeter, in your jurisdiction. Model weights, orchestration and citizens’ data never leave — the property that rules most AI out is the one Krim is built on.',
+  },
+  {
+    title: 'Validation is a lawful basis',
+    body: 'Before any co-worker acts, the proposed action is checked against the rules that govern it. Nothing executes without a basis recorded — compliance becomes a property of the runtime, not a department’s vigilance.',
+    accent: true,
+  },
+  {
+    title: 'The ledger is accountability',
+    body: 'Every action is sealed to an immutable record — the action, the rule that applied, and the validation result. The answer to “why did this happen?” is always on file.',
+  },
+]
+
+// the same co-workers, in public-sector form — capability, not deployment
 const USE_CASES = [
   {
     name: 'Citizen communication',
-    body: 'Answers, reminders and updates across channels and languages — always within the rules.',
+    body: 'Answers, reminders and status updates across channels and languages — always within the rules.',
   },
   {
     name: 'Receivables',
-    body: 'Taxes, fees and dues, collected lawfully and humanely.',
+    body: 'Taxes, fees and dues pursued lawfully and humanely, each step resting on the statute that permits it.',
   },
   {
     name: 'Casework & documents',
-    body: 'Applications and filings processed, checked and moved — faster.',
+    body: 'Applications and filings processed, checked and moved along — with officials kept in the loop.',
   },
   {
-    name: 'Service & benefits',
-    body: 'Eligibility and servicing handled; escalations routed to officials with full context.',
+    name: 'Benefits servicing',
+    body: 'Eligibility and servicing handled; exceptions routed to a human with the full context attached.',
   },
+]
+
+// what the capability makes possible — framed as fit, never as claimed results
+const IMPACT = [
+  ['Faster response', 'Routine work runs continuously, so citizens wait less.'],
+  ['Cleared backlogs', 'Casework moves at machine pace, not queue pace.'],
+  ['Lawful by construction', 'No action proceeds without a basis behind it.'],
+  ['Every action auditable', 'A complete trail stands ready for inspection.'],
 ]
 
 export default function GovernmentPage() {
@@ -85,30 +112,27 @@ export default function GovernmentPage() {
       <OrbBackdrop />
       <main className="relative z-10">
         {/* ---- 1 · Hero ---- */}
-        <Section className="!pt-20">
-          <div className="grid items-center gap-12 lg:grid-cols-[1.08fr_0.92fr]">
-            <div>
-              <Reveal>
-                <Eyebrow tone="dim">Government</Eyebrow>
-                <h1 className="mt-4 font-serif text-[clamp(2.4rem,5vw,4rem)] leading-[1.06] tracking-[-0.02em] text-ink">
-                  Public service that can answer for every action.
-                </h1>
-              </Reveal>
-              <Reveal delay={0.12}>
-                <p className="mt-7 max-w-[54ch] font-sans text-body-lg text-ink-2">
-                  The same runtime trusted to satisfy banking regulators, brought to the public
-                  sector — automating citizen-facing and back-office work, with a lawful basis and a
-                  clear record behind everything it does.
-                </p>
-              </Reveal>
-              <Reveal delay={0.2}>
-                <div className="mt-9">
-                  <CTA href={CTA_HREF}>Start a conversation</CTA>
-                </div>
-              </Reveal>
-            </div>
-            <Reveal delay={0.15}>
-              <PerimeterFrame />
+        <Section className="!pt-24">
+          <div className="mx-auto max-w-[860px] text-center">
+            <Reveal>
+              <Eyebrow tone="dim">Government</Eyebrow>
+              <h1 className="mt-5 font-serif text-display-hero text-ink">
+                Public service that can answer for every action.
+              </h1>
+            </Reveal>
+            <Reveal delay={0.12}>
+              <p className="mx-auto mt-7 max-w-[58ch] font-sans text-body-lg text-ink-2">
+                KrimOS brings the runtime built for regulated work to the public sector — AI
+                co-workers that automate citizen-facing and back-office operations{' '}
+                <span className="text-ink">inside your own jurisdiction</span>, with a{' '}
+                <span className="text-mint">lawful basis</span> and a clear record behind everything
+                they do.
+              </p>
+            </Reveal>
+            <Reveal delay={0.2}>
+              <div className="mt-10 flex justify-center">
+                <CTA href={CTA_HREF}>Start a conversation</CTA>
+              </div>
             </Reveal>
           </div>
         </Section>
@@ -116,27 +140,23 @@ export default function GovernmentPage() {
         {/* ---- 2 · The challenge ---- */}
         <Section hairline>
           <Reveal>
-            <Eyebrow tone="dim">The public-sector bar</Eyebrow>
+            <Eyebrow tone="gold">The public-sector bar</Eyebrow>
             <h2 className="mt-4 max-w-[24ch] font-serif text-display-1 text-ink">
               Citizens expect more. Accountability allows no shortcuts.
             </h2>
-            <p className="mt-7 max-w-[64ch] font-sans text-body-lg text-ink-2">
-              Agencies carry rising demand on ageing systems — backlogs in casework, queues for
-              every service. AI could help. But in government every action must rest on a legal
-              basis, withstand scrutiny, and keep citizens&rsquo; data within the nation&rsquo;s
-              borders. Generic AI manages none of these.
+            <p className="mt-6 max-w-[62ch] font-sans text-body-lg text-ink-2">
+              AI could carry the load — but in government every action has to rest on a rule,
+              withstand scrutiny, and keep citizens’ data within the nation’s borders. Generic AI
+              clears none of these.
             </p>
           </Reveal>
 
-          {/* three quiet constraint-markers — set against the perimeter */}
-          <div className="mt-12 grid gap-4 sm:grid-cols-3">
-            {CONSTRAINTS.map((c, i) => (
-              <Reveal key={c.name} delay={i * 0.08}>
-                <div className="glass-quiet flex h-full flex-col p-6">
-                  <span className="font-mono text-[11px] uppercase tracking-[0.16em] text-ink-3">
-                    {String(i + 1).padStart(2, '0')}
-                  </span>
-                  <h3 className="mt-3 font-serif text-[1.35rem] leading-none text-ink">{c.name}</h3>
+          <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            {CHALLENGES.map((c, i) => (
+              <Reveal key={c.name} delay={(i % 4) * 0.08}>
+                <div className="glass lume h-full p-7">
+                  <span aria-hidden className="block h-[3px] w-12 rounded-full bg-cyan/70" />
+                  <h3 className="mt-6 font-serif text-[1.3rem] leading-tight text-ink">{c.name}</h3>
                   <p className="mt-3 font-sans text-[14.5px] leading-relaxed text-ink-2">{c.body}</p>
                 </div>
               </Reveal>
@@ -147,69 +167,46 @@ export default function GovernmentPage() {
         {/* ---- 3 · Why Krim fits ---- */}
         <Section hairline>
           <Reveal>
-            <Eyebrow>Why Krim</Eyebrow>
-            <h2 className="mt-4 font-serif text-display-1 text-ink">
-              Built for the bar government sets.
+            <Eyebrow>Why Krim fits</Eyebrow>
+            <h2 className="mt-4 max-w-[22ch] font-serif text-display-1 text-ink">
+              The properties government demands, built in from the core.
             </h2>
-            <p className="mt-7 max-w-[60ch] font-sans text-body-lg text-ink-2">
-              Three properties, by construction — not bolted on. The middle one is the heart of it:
-              the lawful basis, made visible.
+            <p className="mt-6 max-w-[60ch] font-sans text-body-lg text-ink-2">
+              Krim fits public-sector work because the things government can’t compromise on are not
+              add-ons here — they are the architecture. Three of them, by construction.
             </p>
           </Reveal>
 
           <div className="mt-12 grid gap-5 lg:grid-cols-3 lg:items-start">
-            {/* sovereign */}
-            <Reveal>
-              <GlassCard className="flex h-full flex-col p-7 md:p-8">
-                <h3 className="font-serif text-[1.5rem] leading-none text-ink">
-                  Sovereign by construction
-                </h3>
-                <p className="mt-4 flex-1 font-sans text-[15px] leading-relaxed text-ink-2">
-                  Runs inside your infrastructure, in your jurisdiction. Citizens&rsquo; data never
-                  leaves.
-                </p>
-              </GlassCard>
-            </Reveal>
-
-            {/* lawful — the signature card, spanning two columns to carry the device */}
-            <Reveal delay={0.1} className="lg:col-span-2">
-              <GlassCard accent className="flex h-full flex-col p-7 md:p-8">
-                <h3 className="font-serif text-[1.5rem] leading-none text-ink">Lawful by design</h3>
-                <p className="mt-4 max-w-[60ch] font-sans text-[15px] leading-relaxed text-ink-2">
-                  Every action is checked against the rules that govern it before it happens. Nothing
-                  acts without a basis.
-                </p>
-                <div className="mt-7">
-                  <LawfulBasis />
-                </div>
-              </GlassCard>
-            </Reveal>
-
-            {/* accountable */}
-            <Reveal delay={0.16}>
-              <GlassCard className="flex h-full flex-col p-7 md:p-8">
-                <h3 className="font-serif text-[1.5rem] leading-none text-ink">
-                  Accountable by record
-                </h3>
-                <p className="mt-4 flex-1 font-sans text-[15px] leading-relaxed text-ink-2">
-                  Every decision sealed to an immutable trail. The answer to &ldquo;why did this
-                  happen?&rdquo; is always there.
-                </p>
-              </GlassCard>
-            </Reveal>
+            {FITS.map((f, i) => (
+              <Reveal key={f.title} delay={(i % 3) * 0.08}>
+                <GlassCard accent={f.accent} className="flex h-full flex-col p-7 md:p-8">
+                  <span
+                    aria-hidden
+                    className={`block h-[3px] w-12 rounded-full ${f.accent ? 'bg-mint' : 'bg-mint/45'}`}
+                  />
+                  <h3 className="mt-6 font-serif text-[1.45rem] leading-tight text-ink">
+                    {f.title}
+                  </h3>
+                  <p className="mt-4 flex-1 font-sans text-[15px] leading-relaxed text-ink-2">
+                    {f.body}
+                  </p>
+                </GlassCard>
+              </Reveal>
+            ))}
           </div>
         </Section>
 
-        {/* ---- 4 · Where it helps ---- */}
+        {/* ---- 4 · Use cases ---- */}
         <Section hairline>
           <Reveal>
             <Eyebrow>Use cases</Eyebrow>
-            <h2 className="mt-4 font-serif text-display-1 text-ink">
+            <h2 className="mt-4 max-w-[24ch] font-serif text-display-1 text-ink">
               The same co-workers, in public-sector form.
             </h2>
-            <p className="mt-7 max-w-[58ch] font-sans text-body-lg text-ink-2">
-              Designed for the work the public sector actually carries — capability built to the
-              bar, not a claim of deployment.
+            <p className="mt-6 max-w-[58ch] font-sans text-body-lg text-ink-2">
+              Capability built to the work the public sector actually carries — not a claim of who
+              already runs it.
             </p>
           </Reveal>
 
@@ -217,8 +214,8 @@ export default function GovernmentPage() {
             {USE_CASES.map((u, i) => (
               <Reveal key={u.name} delay={(i % 2) * 0.08}>
                 <GlassCard className="flex h-full flex-col p-7">
-                  <div className="flex items-baseline justify-between">
-                    <h3 className="font-serif text-[1.4rem] leading-none text-ink">{u.name}</h3>
+                  <div className="flex items-baseline justify-between gap-4">
+                    <h3 className="font-serif text-[1.4rem] leading-tight text-ink">{u.name}</h3>
                     <span className="font-mono text-[11px] uppercase tracking-[0.14em] text-ink-3">
                       {String(i + 1).padStart(2, '0')}
                     </span>
@@ -232,36 +229,64 @@ export default function GovernmentPage() {
 
         {/* ---- 5 · Impact ---- */}
         <Section hairline>
-          <Reveal>
-            <Eyebrow tone="dim">What changes</Eyebrow>
-            <h2 className="mt-4 max-w-[26ch] font-serif text-display-1 text-ink">
-              Faster service. Lawful by construction. Every action on the record.
-            </h2>
-          </Reveal>
-          <Reveal delay={0.1}>
-            <div className="mt-12">
-              <GlassCard accent className="p-8 md:p-12">
-                <p className="max-w-[58ch] font-serif text-[clamp(1.5rem,2.8vw,2.15rem)] leading-[1.3] text-ink">
-                  Shorter queues and cleared backlogs, citizens answered in their own language, and —
-                  for the first time — an automated operation where every action carries both its
-                  authority and its audit trail.
+          <div className="grid items-center gap-12 lg:grid-cols-[0.95fr_1.05fr]">
+            <Reveal>
+              <div>
+                <Eyebrow tone="dim">What it makes possible</Eyebrow>
+                <h2 className="mt-4 max-w-[18ch] font-serif text-display-1 text-ink">
+                  Faster service, lawful by construction, all on the record.
+                </h2>
+                <p className="mt-7 max-w-[50ch] font-sans text-body-lg text-ink-2">
+                  The capability is the point: an automated operation where every action carries{' '}
+                  <span className="text-mint">both its authority and its audit trail</span>.
                 </p>
-              </GlassCard>
-            </div>
+              </div>
+            </Reveal>
+            <Reveal delay={0.12}>
+              <div className="grid gap-px overflow-hidden rounded-lg border border-soft bg-soft sm:grid-cols-2">
+                {IMPACT.map(([title, body]) => (
+                  <div key={title} className="bg-[#09090C] p-7">
+                    <h3 className="font-serif text-[1.2rem] leading-tight text-ink">{title}</h3>
+                    <p className="mt-3 font-sans text-[14px] leading-relaxed text-ink-2">{body}</p>
+                  </div>
+                ))}
+              </div>
+            </Reveal>
+          </div>
+        </Section>
+
+        {/* ---- 6 · Deployment ---- */}
+        <Section hairline>
+          <Reveal>
+            <GlassCard className="mx-auto flex max-w-[860px] flex-col items-center gap-6 p-8 text-center md:flex-row md:items-center md:gap-10 md:p-10 md:text-left">
+              <div className="flex-1">
+                <Eyebrow>Deployment</Eyebrow>
+                <h2 className="mt-3 font-serif text-display-3 leading-tight text-ink">
+                  Sovereign, on your own infrastructure.
+                </h2>
+              </div>
+              <p className="flex-1 font-sans text-body text-ink-2">
+                The default for the public sector is the full stack inside your data centre —
+                nothing leaves the perimeter. Sovereignty is a commitment, not a deployment option.
+              </p>
+            </GlassCard>
           </Reveal>
         </Section>
 
-        {/* ---- 6 · Close ---- */}
+        {/* ---- 7 · Close ---- */}
         <Section hairline>
           <Reveal>
-            <h2 className="max-w-[18ch] font-serif text-display-1 text-ink">
-              Let&rsquo;s talk about your mandate.
-            </h2>
-            <p className="mt-6 max-w-[52ch] font-sans text-body-lg text-ink-2">
-              Every public body has its own rules, systems and constraints. Tell us yours.
-            </p>
-            <div className="mt-9">
-              <CTA href={CTA_HREF}>Start a conversation</CTA>
+            <div className="mx-auto max-w-[680px] text-center">
+              <h2 className="font-serif text-display-2 text-ink">
+                Let’s talk about your mandate.
+              </h2>
+              <p className="mx-auto mt-5 max-w-[50ch] font-sans text-body-lg text-ink-2">
+                Every public body has its own rules, systems and constraints. Tell us yours, and
+                we’ll show you the fit.
+              </p>
+              <div className="mt-9 flex justify-center">
+                <CTA href={CTA_HREF}>Start a conversation</CTA>
+              </div>
             </div>
           </Reveal>
         </Section>

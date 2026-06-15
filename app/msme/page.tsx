@@ -1,17 +1,14 @@
 /**
  * /msme — the MSME / mid-market domain. Standalone page (its own header /
- * backdrop / footer). A touch warmer and more approachable than the regulated
- * domains: confidence framing, not compliance. The same trustworthy automation
- * built for banks and governments, sized for a growing business.
+ * backdrop / footer; not LayerShell), built to docs/HOUSE-STYLE.md: calm,
+ * content-first, concise. Glass + type only — no hand-built devices.
  *
- * Server component — metadata + JSON-LD + static substance. The two animated
- * pieces live in _client.tsx:
- *   · HeroFrame      — the msme.png in a warm glass frame.
- *   · ValidatedTasks — THE SIGNATURE DEVICE: rigor made approachable. Ordinary
- *                      business tasks each receiving the mint "validated" check.
+ * Framing is CONFIDENCE, not compliance: medium-sized firms in any industry
+ * aren't heavily regulated, but still can't afford AI that gets it wrong in
+ * front of customers or with money. So they get the same validated, auditable,
+ * reliable AI workers the regulated giants run — managed and affordable.
  *
- * Copy: docs/copy/msme.md — facts only, prose original.
- * Grammar: cyan = proposed · mint = validated · gold = exception.
+ * Facts: docs/krim-content.md (search MSME / mid-market / managed SaaS).
  */
 
 import type { Metadata } from 'next'
@@ -20,15 +17,15 @@ import SiteFooter from '@/components/SiteFooter'
 import OrbBackdrop from '@/components/OrbBackdrop'
 import Reveal from '@/components/Reveal'
 import { Section, Eyebrow, GlassCard, CTA } from '@/components/ui'
-import { HeroFrame, ValidatedTasks } from './_client'
 
-const DEMO = 'mailto:sales@krim.ai?subject=Demo%20request%20%E2%80%94%20KrimOS'
+const DEMO_HREF = 'mailto:sales@krim.ai?subject=Demo%20request%20%E2%80%94%20KrimOS'
 
 export const metadata: Metadata = {
-  title: 'MSME — regulation-grade AI workers for everyday operations',
+  title: 'MSME',
   description:
-    'The same trustworthy automation built for banks and governments, sized for a growing business — every action validated before it acts, and kept on the record.',
+    'Regulation-grade AI workers, now for everyday operations. Medium-sized enterprises automate customer service and back-office work with the same validated, auditable, reliable AI the regulated giants run — managed, affordable and fast to deploy.',
   alternates: { canonical: 'https://krim.ai/msme' },
+  openGraph: { title: 'MSME — Krim', url: 'https://krim.ai/msme' },
 }
 
 const breadcrumbLd = {
@@ -42,44 +39,56 @@ const breadcrumbLd = {
 
 // ---------------------------------------------------------------- content
 
-// section 4 — why Krim fits. The middle pair carries the "regulation-grade,
-// made accessible" idea: validated, and on the record.
+// section 4 — why Krim fits. The first card is the heart: the same validated,
+// auditable, reliable automation the regulated giants run.
 const REASONS = [
   {
-    name: 'Validated before it acts',
-    body: 'Every action is checked first, so mistakes don&rsquo;t reach your customers.',
+    name: 'Automation you can trust',
+    body: 'The same validated, auditable, reliable AI workers banks and governments rely on — every action checked before it acts, and kept on the record.',
   },
   {
-    name: 'On the record',
-    body: 'Everything it does is logged and reviewable — nothing happens in the dark.',
+    name: 'Managed, affordable, fast',
+    body: 'Fully managed deployment with no infrastructure to stand up. You don’t run it; we do — enterprise-grade capability at mid-market reach.',
   },
   {
-    name: 'Fast to start',
-    body: 'Fully managed, with no infrastructure to stand up. You don&rsquo;t run it; we do.',
-  },
-  {
-    name: 'Better as it works',
-    body: 'It learns your operation and sharpens over time — the more it runs, the more it knows.',
+    name: 'Sharper as it works',
+    body: 'It learns your operation and improves with use, so the lift to your operations compounds the longer it runs.',
   },
 ]
 
-// section 5 — where it helps. The work that eats the week.
+// section 5 — use cases. The everyday work that eats time and cost.
 const USE_CASES = [
   {
-    name: 'Customer support',
-    body: 'Answers and servicing across channels, day and night — without the queue.',
+    name: 'Customer support & servicing',
+    body: 'Answers and account servicing across channels, day and night — without the queue or the headcount.',
   },
   {
-    name: 'Follow-ups',
-    body: 'Reminders, renewals and re-engagement, on time — nothing slips.',
+    name: 'Outbound',
+    body: 'Reminders, follow-ups and renewals, on time — the re-engagement that quietly slips when the team is stretched.',
   },
   {
     name: 'Receivables',
-    body: 'Collections handled steadily and fairly, in a tone you&rsquo;d stand behind.',
+    body: 'Collections handled steadily and fairly, in a tone you’d stand behind — money chased without the awkwardness.',
   },
   {
-    name: 'Back office',
-    body: 'Documents, data and routine workflows, done — the paperwork that piles up.',
+    name: 'Document processing & back-office',
+    body: 'Documents, data and routine workflows, done — the paperwork that piles up between the work that pays.',
+  },
+]
+
+// section 6 — impact.
+const IMPACT = [
+  {
+    name: 'Scale without scaling the team',
+    body: 'Automate customer and back-office work without hiring for every new channel, product or season.',
+  },
+  {
+    name: 'Reliable by construction',
+    body: 'Automation you can put in front of customers and against money — because nothing acts until it’s been checked.',
+  },
+  {
+    name: 'Enterprise-grade, mid-market reach',
+    body: 'The capability the regulated giants run, sized and priced for a growing business.',
   },
 ]
 
@@ -94,148 +103,119 @@ export default function MsmePage() {
       <OrbBackdrop />
       <main className="relative z-10">
         {/* ════════════════════ 1 · Hero ════════════════════ */}
-        <Section className="!pt-12 md:!pt-16">
-          <div className="grid items-center gap-12 lg:grid-cols-[1.05fr_0.95fr]">
-            <div>
-              <Reveal>
-                <Eyebrow>MSME</Eyebrow>
-                <h1 className="mt-5 font-serif text-display-hero text-ink">
-                  Regulation-grade AI workers, for everyday operations.
-                </h1>
-              </Reveal>
-              <Reveal delay={0.12}>
-                <p className="mt-7 max-w-[54ch] font-sans text-body-lg text-ink-2">
-                  The same trustworthy automation built for banks and governments —{' '}
-                  <span className="text-ink">sized for a growing business</span>. Automate
-                  customer and back-office work with AI you can actually rely on.
-                </p>
-              </Reveal>
-              <Reveal delay={0.18}>
-                <div className="mt-9 flex flex-wrap items-center gap-x-7 gap-y-4">
-                  <CTA href={DEMO}>Book a demo</CTA>
-                  <CTA href="#why" variant="secondary">
-                    See why it&rsquo;s different
-                  </CTA>
-                </div>
-              </Reveal>
-              {/* the signature device — rigor made approachable, up front */}
-              <Reveal delay={0.24}>
-                <div className="mt-12">
-                  <ValidatedTasks />
-                </div>
-              </Reveal>
-            </div>
-
-            {/* the modular-cubes motif, framed in warm glass */}
-            <Reveal delay={0.15}>
-              <HeroFrame />
+        <Section className="!pt-24">
+          <div className="mx-auto max-w-[860px] text-center">
+            <Reveal>
+              <Eyebrow>MSME</Eyebrow>
+              <h1 className="mt-5 font-serif text-display-hero text-ink">
+                Regulation-grade AI workers, now for everyday operations.
+              </h1>
+            </Reveal>
+            <Reveal delay={0.12}>
+              <p className="mx-auto mt-7 max-w-[58ch] font-sans text-body-lg text-ink-2">
+                The same validated, auditable, reliable AI workers the regulated giants run —{' '}
+                <span className="text-ink">sized for a growing business</span>. Automate customer
+                service and back-office work with automation you can{' '}
+                <span className="text-mint">actually trust</span>.
+              </p>
+            </Reveal>
+            <Reveal delay={0.2}>
+              <div className="mt-10 flex flex-wrap items-center justify-center gap-x-7 gap-y-4">
+                <CTA href={DEMO_HREF}>Book a demo</CTA>
+                <CTA href="#why" variant="secondary">
+                  See why it fits
+                </CTA>
+              </div>
             </Reveal>
           </div>
         </Section>
 
-        {/* ════════════════════ 2 · Who it's for ════════════════════ */}
+        {/* ════════════════════ 2 · The challenge ════════════════════ */}
         <Section hairline>
-          <Reveal>
-            <Eyebrow>Who it&rsquo;s for</Eyebrow>
-            <h2 className="mt-4 font-serif text-display-1 text-ink">
-              Built for the bar, available to the rest.
-            </h2>
-            <p className="mt-7 max-w-[62ch] font-sans text-body-lg text-ink-2">
-              Medium-sized enterprises in any industry, automating customer service and
-              back-office work. You may not have a regulator looking over your shoulder — but you{' '}
-              <span className="text-ink">
-                still can&rsquo;t afford AI that gets it wrong
-              </span>{' '}
-              in front of customers, or with money.
-            </p>
-          </Reveal>
+          <div className="grid items-start gap-12 md:grid-cols-[1fr_1fr]">
+            <Reveal>
+              <div>
+                <Eyebrow tone="gold">The challenge</Eyebrow>
+                <h2 className="mt-4 max-w-[20ch] font-serif text-display-1 text-ink">
+                  Growth outruns the team.
+                </h2>
+              </div>
+            </Reveal>
+            <Reveal delay={0.12}>
+              <p className="max-w-[54ch] font-sans text-body-lg text-ink-2">
+                For medium-sized enterprises in any industry, customer service and the back office
+                eat time and cost faster than you can hire. You may not have a regulator looking over
+                your shoulder, but you{' '}
+                <span className="text-ink">still can&rsquo;t afford AI that gets it wrong</span> in
+                front of customers, or with money — and off-the-shelf AI is quick to start and{' '}
+                <span className="text-ink">unreliable</span>. So the work stays manual.
+              </p>
+            </Reveal>
+          </div>
         </Section>
 
-        {/* ════════════════════ 3 · The challenge ════════════════════ */}
-        <Section hairline>
-          <Reveal>
-            <Eyebrow tone="gold">The challenge</Eyebrow>
-            <h2 className="mt-4 font-serif text-display-1 text-ink">Growth outruns the team.</h2>
-            <p className="mt-7 max-w-[62ch] font-sans text-body-lg text-ink-2">
-              Customer questions, follow-ups, collections and paperwork pile up faster than you
-              can hire. Off-the-shelf AI is quick to start and{' '}
-              <span className="text-ink">impossible to trust</span> — it makes things up, and no
-              one&rsquo;s checking. So the work stays manual.
-            </p>
-          </Reveal>
-        </Section>
-
-        {/* ════════════════════ 4 · Why Krim fits ════════════════════ */}
+        {/* ════════════════════ 3 · Why Krim fits ════════════════════ */}
+        {/* (note: §2 merges the former "Who it's for" + "The challenge") */}
         <Section id="why" hairline>
           <Reveal>
             <Eyebrow tone="mint">Why Krim</Eyebrow>
-            <h2 className="mt-4 font-serif text-display-1 text-ink">
-              Automation you can trust, without the enterprise price.
+            <h2 className="mt-4 max-w-[24ch] font-serif text-display-1 text-ink">
+              The rigor the giants rely on, made accessible.
             </h2>
             <p className="mt-7 max-w-[58ch] font-sans text-body-lg text-ink-2">
-              Four properties, built in. The first two are the heart of it — the rigor banks rely
-              on, made accessible: <span className="text-ink">validated, and on the record</span>.
+              The same validated, auditable AI workers — automation you can{' '}
+              <span className="text-ink">actually trust</span> — deployed for you, and getting
+              sharper the longer it runs.
             </p>
           </Reveal>
 
-          <div className="mt-12 grid gap-5 sm:grid-cols-2">
+          <div className="mt-12 grid gap-5 md:grid-cols-3">
             {REASONS.map((r, i) => (
-              <Reveal key={r.name} delay={(i % 2) * 0.08}>
-                <GlassCard
-                  hover
-                  accent={i === 0}
-                  className="flex h-full flex-col p-7 md:p-8"
-                >
-                  <div className="flex items-baseline justify-between">
-                    <h3 className="font-serif text-[1.5rem] leading-none text-ink">{r.name}</h3>
-                    <span className="font-mono text-[11px] uppercase tracking-[0.14em] text-ink-3">
-                      {String(i + 1).padStart(2, '0')}
-                    </span>
-                  </div>
-                  <p
-                    className="mt-4 font-sans text-[15px] leading-relaxed text-ink-2"
-                    dangerouslySetInnerHTML={{ __html: r.body }}
+              <Reveal key={r.name} delay={i * 0.08}>
+                <GlassCard hover accent={i === 0} className="flex h-full flex-col p-7 md:p-8">
+                  <span
+                    aria-hidden
+                    className={`block h-[3px] w-12 rounded-full ${i === 0 ? 'bg-mint/80' : 'bg-mint/45'}`}
                   />
+                  <h3 className="mt-6 font-serif text-[1.4rem] leading-tight text-ink">{r.name}</h3>
+                  <p className="mt-3 font-sans text-body text-ink-2">{r.body}</p>
                 </GlassCard>
               </Reveal>
             ))}
           </div>
         </Section>
 
-        {/* ════════════════════ 5 · Where it helps ════════════════════ */}
+        {/* ════════════════════ 4 · Use cases ════════════════════ */}
         <Section hairline>
           <Reveal>
             <Eyebrow>Use cases</Eyebrow>
-            <h2 className="mt-4 font-serif text-display-1 text-ink">
+            <h2 className="mt-4 max-w-[22ch] font-serif text-display-1 text-ink">
               The work that eats your week.
             </h2>
             <p className="mt-7 max-w-[58ch] font-sans text-body-lg text-ink-2">
-              The same co-workers that run regulated operations, pointed at the everyday jobs
-              that never quite get done.
+              The same co-workers that run regulated operations, pointed at the everyday jobs that
+              never quite get done.
             </p>
           </Reveal>
 
           <div className="mt-12 grid gap-5 sm:grid-cols-2">
             {USE_CASES.map((u, i) => (
               <Reveal key={u.name} delay={(i % 2) * 0.08}>
-                <GlassCard className="flex h-full flex-col p-7">
-                  <div className="flex items-baseline justify-between">
-                    <h3 className="font-serif text-[1.4rem] leading-none text-ink">{u.name}</h3>
+                <div className="glass lume flex h-full flex-col p-7">
+                  <div className="flex items-baseline justify-between gap-4">
+                    <h3 className="font-serif text-[1.35rem] leading-tight text-ink">{u.name}</h3>
                     <span className="font-mono text-[11px] uppercase tracking-[0.14em] text-ink-3">
                       {String(i + 1).padStart(2, '0')}
                     </span>
                   </div>
-                  <p
-                    className="mt-4 font-sans text-[14.5px] leading-relaxed text-ink-2"
-                    dangerouslySetInnerHTML={{ __html: u.body }}
-                  />
-                </GlassCard>
+                  <p className="mt-3 font-sans text-[15px] leading-relaxed text-ink-2">{u.body}</p>
+                </div>
               </Reveal>
             ))}
           </div>
         </Section>
 
-        {/* ════════════════════ 6 · Impact ════════════════════ */}
+        {/* ════════════════════ 5 · Impact ════════════════════ */}
         <Section hairline>
           <Reveal>
             <Eyebrow tone="dim">What changes</Eyebrow>
@@ -243,34 +223,66 @@ export default function MsmePage() {
               Do more, without doing it all yourself.
             </h2>
           </Reveal>
-          <Reveal delay={0.1}>
-            <div className="mt-12">
-              <GlassCard accent className="p-8 md:p-12">
-                <p className="max-w-[58ch] font-serif text-[clamp(1.5rem,2.8vw,2.15rem)] leading-[1.3] text-ink">
-                  Automate the operations that scale your business — with the confidence that
-                  every action was checked first. Enterprise-grade capability, at a size that
-                  fits.
+          <div className="mt-12 grid gap-5 md:grid-cols-3">
+            {IMPACT.map((it, i) => (
+              <Reveal key={it.name} delay={i * 0.08}>
+                <div className="glass lume h-full p-7 md:p-8">
+                  <span aria-hidden className="block h-[3px] w-12 rounded-full bg-mint/70" />
+                  <h3 className="mt-6 font-serif text-[1.35rem] leading-tight text-ink">
+                    {it.name}
+                  </h3>
+                  <p className="mt-3 font-sans text-body text-ink-2">{it.body}</p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </Section>
+
+        {/* ════════════════════ 6 · Deployment ════════════════════ */}
+        <Section hairline>
+          <div className="grid items-center gap-12 md:grid-cols-[1fr_1fr]">
+            <Reveal>
+              <div>
+                <Eyebrow>Deployment</Eyebrow>
+                <h2 className="mt-4 max-w-[18ch] font-serif text-display-1 text-ink">
+                  Managed, so you can just use it.
+                </h2>
+                <p className="mt-7 max-w-[52ch] font-sans text-body-lg text-ink-2">
+                  KrimOS runs as <span className="text-ink">managed SaaS</span> in a sovereign cloud
+                  region — fully hosted and operated by us. No infrastructure to stand up, nothing
+                  to maintain.
+                </p>
+              </div>
+            </Reveal>
+            <Reveal delay={0.12}>
+              <GlassCard className="p-8 md:p-10">
+                <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-mint">
+                  Managed SaaS
+                </p>
+                <p className="mt-5 font-serif text-[clamp(1.3rem,2.2vw,1.7rem)] leading-snug text-ink">
+                  Enterprise-grade capability, deployed at mid-market reach — affordable, and fast
+                  to start.
                 </p>
               </GlassCard>
-            </div>
-          </Reveal>
+            </Reveal>
+          </div>
         </Section>
 
         {/* ════════════════════ 7 · Close ════════════════════ */}
         <Section hairline>
           <Reveal>
-            <div className="mx-auto max-w-[760px] text-center">
-              <h2 className="font-serif text-[clamp(1.8rem,3.4vw,2.7rem)] leading-tight text-ink">
+            <GlassCard className="mx-auto max-w-[760px] p-10 text-center md:p-14">
+              <h2 className="font-serif text-display-3 leading-tight text-ink">
                 See what it can take off your plate.
               </h2>
-              <p className="mx-auto mt-5 max-w-[52ch] font-sans text-body-lg text-ink-2">
-                Tell us the work that eats your week — we&rsquo;ll show you the same automation
-                banks trust, sized for you.
+              <p className="mx-auto mt-5 max-w-[50ch] font-sans text-body text-ink-2">
+                Tell us the work that eats your week — we&rsquo;ll show you the same automation the
+                giants trust, sized for you.
               </p>
               <div className="mt-9 flex justify-center">
-                <CTA href={DEMO}>Book a demo</CTA>
+                <CTA href={DEMO_HREF}>Book a demo</CTA>
               </div>
-            </div>
+            </GlassCard>
           </Reveal>
         </Section>
       </main>
