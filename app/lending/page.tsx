@@ -138,10 +138,11 @@ export default function LendingPage() {
             </Reveal>
             <Reveal delay={0.12}>
               <p className="mx-auto mt-7 max-w-[60ch] font-sans text-body-lg text-ink-2">
-                One system carries every customer conversation and every back-office task — from
-                application to payoff. Every action is{' '}
-                <span className="text-mint">validated before it executes</span>, and the operation{' '}
-                <span className="text-cyan">gets sharper</span> from every outcome it records.
+                Both sides of the wall — every customer conversation and every back-office task,
+                application to payoff — on{' '}
+                <span className="text-ink">one system</span> that{' '}
+                <span className="text-mint">validates each action</span> before it fires and{' '}
+                <span className="text-cyan">learns the operation</span> as it runs.
               </p>
             </Reveal>
             <Reveal delay={0.2}>
@@ -335,9 +336,9 @@ export default function LendingPage() {
               Sovereign by construction, wherever you run it.
             </h2>
             <p className="mt-6 max-w-[60ch] font-sans text-body-lg text-ink-2">
-              Three deployments, one architecture — your data, your regulator and your preference
-              decide which. Whichever you choose, everything stays inside the perimeter you define,
-              with <span className="text-ink">no foreign API in the loop</span>.
+              Three deployments, one architecture — your data and your regulator decide which.
+              Whichever you pick, everything stays inside the perimeter you draw, with{' '}
+              <span className="text-ink">no foreign API in the loop</span>.
             </p>
           </Reveal>
 

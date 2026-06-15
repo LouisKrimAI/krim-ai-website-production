@@ -148,7 +148,7 @@ export default function ArchitecturePage() {
       <main className="relative z-10">
         {/* ---- 1 · Hero: answer-first — the decision layer your systems report into ---- */}
         <Section className="!pt-24">
-          <div className="mx-auto max-w-[860px]">
+          <div className="mx-auto max-w-[820px] text-center">
             <Reveal>
               <Eyebrow>Architecture</Eyebrow>
               <h1 className="mt-5 font-serif text-display-hero text-ink">
@@ -156,7 +156,7 @@ export default function ArchitecturePage() {
               </h1>
             </Reveal>
             <Reveal delay={0.12}>
-              <p className="mt-7 max-w-[60ch] font-sans text-body-lg text-ink-2">
+              <p className="mx-auto mt-7 max-w-[60ch] font-sans text-body-lg text-ink-2">
                 KrimOS does not replace your core banking, origination or servicing systems — it sits
                 above them. Your systems stay canonical;{' '}
                 <span className="text-mint">KrimOS reads from them and writes back only on
@@ -166,7 +166,7 @@ export default function ArchitecturePage() {
               </p>
             </Reveal>
             <Reveal delay={0.2}>
-              <div className="mt-10 flex flex-wrap items-center gap-6">
+              <div className="mt-10 flex flex-wrap items-center justify-center gap-6">
                 <CTA href={DEMO_HREF}>Book a demo</CTA>
                 <CTA href="/platform/kendra" variant="secondary">
                   See how validation works
@@ -295,8 +295,8 @@ export default function ArchitecturePage() {
             <p className="mt-6 max-w-[62ch] font-sans text-body-lg text-ink-2">
               KrimOS runs the same architecture in the US, UK and India —{' '}
               <span className="text-ink">only Krim-Fabric&rsquo;s rule set changes</span>. Each
-              region stays sovereign within its own perimeter, with the jurisdiction&rsquo;s law
-              already encoded, so the same runtime, audit trail and governance carry across.
+              region runs self-contained behind its own walls, the local law already loaded, so one
+              runtime, audit trail and governance carry from market to market unchanged.
             </p>
           </Reveal>
           <div className="mt-12 grid gap-5 md:grid-cols-3">

@@ -5,8 +5,8 @@
  *
  * Framing is CONFIDENCE, not compliance: medium-sized firms in any industry
  * aren't heavily regulated, but still can't afford AI that gets it wrong in
- * front of customers or with money. So they get the same validated, auditable,
- * reliable AI workers the regulated giants run — managed and affordable.
+ * front of customers or with money. So they get the regulated giants' rigor —
+ * managed and affordable.
  *
  * Facts: docs/krim-content.md (search MSME / mid-market / managed SaaS).
  */
@@ -23,7 +23,7 @@ const DEMO_HREF = '/contact'
 export const metadata: Metadata = {
   title: 'MSME',
   description:
-    'Regulation-grade AI workers, now for everyday operations. Medium-sized enterprises automate customer service and back-office work with the same validated, auditable, reliable AI the regulated giants run — managed, affordable and fast to deploy.',
+    'Regulation-grade AI workers, now for everyday operations. Medium-sized enterprises automate customer service and back-office work with automation they can actually trust — fully managed, affordable and fast to deploy.',
   alternates: { canonical: 'https://krim.ai/msme' },
   openGraph: { title: 'MSME — Krim', url: 'https://krim.ai/msme' },
 }
@@ -39,12 +39,12 @@ const breadcrumbLd = {
 
 // ---------------------------------------------------------------- content
 
-// section 4 — why Krim fits. The first card is the heart: the same validated,
-// auditable, reliable automation the regulated giants run.
+// section 4 — why Krim fits. The first card is the heart: every action checked
+// before it acts — the rigor the regulated giants rely on.
 const REASONS = [
   {
     name: 'Automation you can trust',
-    body: 'The same validated, auditable, reliable AI workers banks and governments rely on — every action checked before it acts, and kept on the record.',
+    body: 'Every action is checked before it acts and kept on the record — the rigor banks and governments rely on, working for you.',
   },
   {
     name: 'Managed, affordable, fast',
@@ -114,8 +114,8 @@ export default function MsmePage() {
             <Reveal delay={0.12}>
               <p className="mx-auto mt-7 max-w-[58ch] font-sans text-body-lg text-ink-2">
                 The same validated, auditable, reliable AI workers the regulated giants run —{' '}
-                <span className="text-ink">sized for a growing business</span>. Automate customer
-                service and back-office work with automation you can{' '}
+                <span className="text-ink">sized for a growing business</span>, and ready for
+                customer service and back-office work you can{' '}
                 <span className="text-mint">actually trust</span>.
               </p>
             </Reveal>
@@ -163,9 +163,9 @@ export default function MsmePage() {
               The rigor the giants rely on, made accessible.
             </h2>
             <p className="mt-7 max-w-[58ch] font-sans text-body-lg text-ink-2">
-              The same validated, auditable AI workers — automation you can{' '}
-              <span className="text-ink">actually trust</span> — deployed for you, and getting
-              sharper the longer it runs.
+              Every action checked before it acts, and on the record after — automation you can{' '}
+              <span className="text-ink">actually trust</span>, deployed for you and getting sharper
+              the longer it runs.
             </p>
           </Reveal>
 

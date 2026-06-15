@@ -181,9 +181,13 @@ export default function TrustPage() {
               the side.
             </p>
           </Reveal>
-          <div className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-6">
             {POSTURE.map((p, i) => (
-              <Reveal key={p.title} delay={(i % 3) * 0.08}>
+              <Reveal
+                key={p.title}
+                delay={(i % 3) * 0.08}
+                className={`lg:col-span-2 ${i === 3 ? 'lg:col-start-2' : ''}`}
+              >
                 <div className={`glass lume h-full p-7 ${p.accent ? 'glass-mint' : ''}`}>
                   <span
                     aria-hidden
@@ -245,9 +249,9 @@ export default function TrustPage() {
                   Krim-Ledger streams every action, decision, prompt, output and validation to one
                   immutable trail. An auditor can replay any decision deterministically — what
                   happened, the policy that applied, and the{' '}
-                  <span className="text-mint">validation result behind it.</span> Because the evidence
-                  is complete by construction, an inspection response that took a compliance team
-                  three days takes minutes.
+                  <span className="text-mint">validation result behind it.</span> The record is built
+                  as the work runs, so an inspection that once meant days of reconstruction is
+                  answered the same afternoon.
                 </p>
               </div>
             </Reveal>

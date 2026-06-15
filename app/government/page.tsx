@@ -243,10 +243,17 @@ export default function GovernmentPage() {
               </div>
             </Reveal>
             <Reveal delay={0.12}>
-              <div className="grid gap-px overflow-hidden rounded-lg border border-soft bg-soft sm:grid-cols-2">
-                {IMPACT.map(([title, body]) => (
-                  <div key={title} className="bg-[#09090C] p-7">
-                    <h3 className="font-serif text-[1.2rem] leading-tight text-ink">{title}</h3>
+              <div className="grid gap-4 sm:grid-cols-2">
+                {IMPACT.map(([title, body], i) => (
+                  <div
+                    key={title}
+                    className={`glass lume h-full bg-bg p-7 ${i === 0 ? 'glass-mint' : ''}`}
+                  >
+                    <span
+                      aria-hidden
+                      className={`block h-[3px] w-12 rounded-full ${i === 0 ? 'bg-mint' : 'bg-mint/45'}`}
+                    />
+                    <h3 className="mt-6 font-serif text-[1.2rem] leading-tight text-ink">{title}</h3>
                     <p className="mt-3 font-sans text-[14px] leading-relaxed text-ink-2">{body}</p>
                   </div>
                 ))}

@@ -25,7 +25,7 @@ const DEMO = '/contact'
 export const metadata: Metadata = {
   title: 'Large Enterprise',
   description:
-    'One operating system over your whole estate: KrimOS automates regulated customer and back-office work at scale — every action validated before it executes, sovereign by construction, across every region and system at once.',
+    'One operating system over your whole estate: KrimOS automates regulated customer and back-office work at scale — every action validated before it executes, running inside your own perimeter, across every region and system at once.',
   alternates: { canonical: 'https://krim.ai/enterprise' },
   openGraph: {
     title: 'Large Enterprise — KrimOS',
@@ -59,8 +59,8 @@ const SECTORS = [
 // § 4 — why Krim fits: one safe layer over everything they run
 const FITS = [
   {
-    name: 'Safe to automate',
-    body: 'Every regulated action is validated against law, policy and context before it executes — so AI can finally act at scale, not just advise.',
+    name: 'Validated before it acts',
+    body: 'Every regulated action is checked against law, policy and context before it executes — so AI can finally act at scale, not just advise.',
   },
   {
     name: 'One stack, many systems',
@@ -96,7 +96,7 @@ const USE_CASES = [
   },
   {
     name: 'Compliance reporting',
-    body: 'Audit packs and regulatory submissions assembled on demand — evidence is complete by construction, not reconstructed after the fact.',
+    body: 'Audit packs and regulatory submissions assembled on demand — the evidence is already captured as the work runs, never pieced together afterward.',
   },
 ]
 
@@ -124,7 +124,7 @@ export default function EnterprisePage() {
       <main className="relative z-10">
         {/* ---- 1 · Hero ---- */}
         <Section className="!pt-24">
-          <div className="max-w-[780px]">
+          <div className="mx-auto max-w-[820px] text-center">
             <Reveal>
               <Eyebrow tone="dim">Large Enterprise</Eyebrow>
               <h1 className="mt-5 font-serif text-display-hero text-ink">
@@ -132,7 +132,7 @@ export default function EnterprisePage() {
               </h1>
             </Reveal>
             <Reveal delay={0.12}>
-              <p className="mt-7 max-w-[58ch] font-sans text-body-lg text-ink-2">
+              <p className="mx-auto mt-7 max-w-[58ch] font-sans text-body-lg text-ink-2">
                 For enterprises running millions of regulated interactions across systems that never
                 quite talk to each other — one operating system that automates customer and
                 back-office work,{' '}
@@ -140,7 +140,7 @@ export default function EnterprisePage() {
               </p>
             </Reveal>
             <Reveal delay={0.2}>
-              <div className="mt-10">
+              <div className="mt-10 flex justify-center">
                 <CTA href={DEMO}>Book a demo</CTA>
               </div>
             </Reveal>
@@ -158,9 +158,13 @@ export default function EnterprisePage() {
               rules bite hardest:
             </p>
           </Reveal>
-          <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-6">
             {SECTORS.map((s, i) => (
-              <Reveal key={s.name} delay={(i % 3) * 0.07}>
+              <Reveal
+                key={s.name}
+                delay={(i % 3) * 0.07}
+                className={`lg:col-span-2 ${i === 3 ? 'lg:col-start-2' : ''}`}
+              >
                 <div className="glass lume h-full p-7">
                   <h3 className="font-serif text-[1.3rem] leading-tight text-ink">{s.name}</h3>
                   <p className="mt-3 font-sans text-body text-ink-2">{s.body}</p>
@@ -243,9 +247,13 @@ export default function EnterprisePage() {
               executes and logged after.
             </p>
           </Reveal>
-          <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-6">
             {USE_CASES.map((u, i) => (
-              <Reveal key={u.name} delay={(i % 3) * 0.07}>
+              <Reveal
+                key={u.name}
+                delay={(i % 3) * 0.07}
+                className={`lg:col-span-2 ${i === 3 ? 'lg:col-start-2' : ''}`}
+              >
                 <div className="glass lume flex h-full flex-col p-7">
                   <div className="flex items-baseline justify-between gap-4">
                     <h3 className="font-serif text-[1.3rem] leading-tight text-ink">{u.name}</h3>
@@ -279,8 +287,8 @@ export default function EnterprisePage() {
             <Reveal delay={0.12}>
               <GlassCard accent className="p-8 md:p-10">
                 <p className="font-serif text-[clamp(1.4rem,2.4vw,1.9rem)] leading-snug text-ink">
-                  Every regulated action audit-ready, every region on one stack — proof complete by
-                  construction, not reassembled three days later.
+                  Every regulated action audit-ready, every region on one stack — the proof recorded
+                  as work runs, ready the moment a regulator asks.
                 </p>
                 <p className="mt-6 font-mono text-[11px] uppercase tracking-[0.18em] text-mint">
                   Lower cost to serve · consistent compliance · scale without headcount
@@ -295,11 +303,11 @@ export default function EnterprisePage() {
           <Reveal>
             <Eyebrow>Deployment</Eyebrow>
             <h2 className="mt-4 max-w-[22ch] font-serif text-display-1 text-ink">
-              Sovereign by construction.
+              It runs inside your walls.
             </h2>
             <p className="mt-6 max-w-[58ch] font-sans text-body-lg text-ink-2">
-              Sovereignty is a commitment, not a deployment option. Run it entirely inside your own
-              walls, or split inference from orchestration — the architecture is the same either way.
+              Sovereignty isn&rsquo;t a setting you toggle. Run the full stack entirely inside your
+              own walls, or split inference from orchestration — the architecture holds either way.
             </p>
           </Reveal>
           <div className="mt-12 grid gap-5 md:grid-cols-2">
