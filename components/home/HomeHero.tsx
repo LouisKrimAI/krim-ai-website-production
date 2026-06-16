@@ -106,6 +106,10 @@ export default function HomeHero() {
 
   // resolved (final) orb state — also the reduced-motion state.
   const orbResolved = { scale: 1.6, opacity: 0.34 }
+  // After the arrival choreography settles, the orb breathes perpetually:
+  // slowly contracting to a pin and growing back to full, forever. Seamless
+  // (start === end === 1.6, GPU transform only), reduced-motion holds it still.
+  const [breathing, setBreathing] = useState(false)
 
   return (
     <>
@@ -123,9 +127,24 @@ export default function HomeHero() {
         <div className="absolute left-1/2 top-1/2 flex -translate-x-1/2 -translate-y-1/2 items-center justify-center">
           <motion.div
             initial={reduce ? orbResolved : { scale: 0.3, opacity: 0 }}
-            animate={reduce ? orbResolved : { scale: 1.6, opacity: 0.34 }}
-            transition={reduce ? { duration: 0 } : { duration: 4.6, ease: [0.6, 0, 0.3, 1] }}
-            style={{ transformOrigin: 'center' }}
+            animate={
+              reduce
+                ? orbResolved
+                : breathing
+                  ? { scale: [1.6, 0.05, 1.6], opacity: [0.34, 0.52, 0.34] }
+                  : { scale: 1.6, opacity: 0.34 }
+            }
+            transition={
+              reduce
+                ? { duration: 0 }
+                : breathing
+                  ? { duration: 30, ease: 'easeInOut', repeat: Infinity, repeatType: 'loop', times: [0, 0.5, 1] }
+                  : { duration: 4.6, ease: [0.6, 0, 0.3, 1] }
+            }
+            onAnimationComplete={() => {
+              if (!reduce && !breathing) setBreathing(true)
+            }}
+            style={{ transformOrigin: 'center', willChange: 'transform, opacity' }}
           >
             <WaveOrb size="min(88vmin, 880px)" speed={0.5} density={0.6} />
           </motion.div>

@@ -39,10 +39,10 @@ const LAYERS: Layer[] = [
   {
     key: 'faces',
     name: 'Kula & Kupa',
-    role: 'Enterprise-facing — talk to your operation in plain language, and supervise, configure and audit it from the cockpit.',
+    role: 'Run your operation in plain language — supervise, configure and audit it from one command center.',
     tag: 'YOUR TEAMS',
     name2: 'Kira & Krimkar',
-    role2: 'Customer-facing — the AI advisor your customers meet on every channel, in the Krimkar app.',
+    role2: 'The AI advisor your customers meet on every channel, in the Krimkar app.',
     tag2: 'YOUR CUSTOMERS',
     tone: 'surface',
   },
@@ -56,7 +56,7 @@ const LAYERS: Layer[] = [
   {
     key: 'kriya',
     name: 'Kriya',
-    role: 'The finite vocabulary of validated, credit-native actions every co-worker is built from — 250+ in all.',
+    role: 'The validated, credit-native actions every co-worker is built from — 250+ in all.',
     tag: 'PRIMITIVES',
     tone: 'operating',
   },
@@ -239,13 +239,13 @@ function LayerRow({
 }
 
 function Face({ name, role, tag }: { name: string; role: string; tag: string }) {
+  // Stacked + centred so both faces share one structure — the tag always sits
+  // on its own line beneath the name, regardless of name length (no wrap drift).
   return (
     <div className="min-w-0 px-2 text-center">
-      <div className="flex flex-wrap items-center justify-center gap-x-2.5 gap-y-1">
-        <span className="font-serif text-[1.25rem] leading-none text-ink">{name}</span>
-        <span className="font-mono text-[9.5px] uppercase tracking-[0.16em] text-ink-3">{tag}</span>
-      </div>
-      <p className="mx-auto mt-2 max-w-[34ch] font-sans text-[12.5px] leading-snug text-ink-2">{role}</p>
+      <p className="font-serif text-[1.25rem] leading-none text-ink">{name}</p>
+      <p className="mt-2 font-mono text-[9.5px] uppercase tracking-[0.18em] text-ink-3">{tag}</p>
+      <p className="mx-auto mt-2.5 max-w-[32ch] font-sans text-[12.5px] leading-snug text-ink-2">{role}</p>
     </div>
   )
 }

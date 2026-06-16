@@ -99,22 +99,58 @@ const TESTS = [
   },
 ]
 
-// The three Navya-Nyāya validator families — substance, not mysticism.
-const FAMILIES = [
+// The lineage, told as an alternating story: history → the words (with
+// pronunciation, romanised — no Devanagari) → the three questions → why it
+// matters now. Rows alternate side as the reader scrolls.
+const LINEAGE: {
+  kicker: string
+  title: string
+  body: string
+  tint: 'mint' | 'cyan'
+  terms?: [name: string, say: string, mean: string][]
+  aside?: { label: string; text: string }
+}[] = [
   {
-    name: 'Pramāṇa',
-    gloss: 'Sources of knowledge',
-    body: 'Every premise an action rests on must be verifiable before it proceeds. No claim without a source.',
+    kicker: 'The tradition',
+    title: 'Navya-Nyāya — the “new logic.”',
+    body: 'In Mithila, a tradition of reasoning was refined over many centuries around one question: stating exactly when a conclusion is warranted. Around the 14th century, Gangeśa Upādhyāya sharpened it into Navya-Nyāya — a technical, predicate-precise logic for the conditions under which a claim holds.',
+    tint: 'mint',
+    aside: {
+      label: 'Why it survived',
+      text: 'It was built to take ambiguity out of reasoning — the same demand a regulator makes of every decision today.',
+    },
   },
   {
-    name: 'Doṣa',
-    gloss: 'Classes of error',
-    body: 'The action is checked against a catalogue of formal failure modes — the known ways a regulated step goes wrong.',
+    kicker: 'How to read it',
+    title: 'The words, and how they sound.',
+    body: 'Substance, not mysticism — and not hard to say. Three names carry the lineage from the tradition to the runtime.',
+    tint: 'cyan',
+    terms: [
+      ['Nyāya', 'NYAA-yuh', 'method — “that by which one reaches a sound conclusion.” The school of logic itself.'],
+      ['Navya-Nyāya', 'NUHV-yuh NYAA-yuh', 'the “new logic” — its later, rigorous, technical phase.'],
+      ['Krim-Nyāya', 'krim NYAA-yuh', 'Krim’s runtime: the tradition turned into 33 validators that clear every action.'],
+    ],
   },
   {
-    name: 'Yogyatā',
-    gloss: 'Fitness for action',
-    body: 'Time, place, agent, recipient, instrument, manner and purpose must all be satisfied for the action to be fit to take.',
+    kicker: 'The three questions',
+    title: 'What it asks of every action.',
+    body: 'Krim-Nyāya inherits three families of test. Each runs before an action fires, and each returns pass, amber or fail.',
+    tint: 'mint',
+    terms: [
+      ['Pramāṇa', 'pruh-MAA-nuh', 'sources of knowledge — is every premise the action rests on verifiable?'],
+      ['Doṣa', 'DOH-shuh', 'classes of error — does the reasoning match a known failure mode?'],
+      ['Yogyatā', 'YOHG-yuh-TAA', 'fitness for action — right time, place, party, instrument, manner and purpose?'],
+    ],
+  },
+  {
+    kicker: 'Why it matters now',
+    title: 'A centuries-old answer to a modern problem.',
+    body: 'Today’s AI is fluent but cannot say, in advance, why an action is warranted. Navya-Nyāya spent centuries on exactly that — written precisely enough that its conditions can become checks a machine runs before it acts. The lineage isn’t ornament; it is the engineering.',
+    tint: 'cyan',
+    aside: {
+      label: 'The throughline',
+      text: 'State when a conclusion holds, precisely enough to check it. That is the whole problem — then and now.',
+    },
   },
 ]
 
@@ -262,34 +298,69 @@ export default function EpistemicAIPage() {
           </Reveal>
         </Section>
 
-        {/* ---- 5 · The lineage — Krim-Nyāya, Navya-Nyāya, Mithila ---- */}
+        {/* ---- 5 · The lineage — alternating story: history → words → questions → relevance ---- */}
         <Section hairline>
           <Reveal>
             <Eyebrow>The lineage</Eyebrow>
             <h2 className="mt-4 max-w-[24ch] font-serif text-display-1 text-ink">
-              The logic of valid knowledge, written down two thousand years ago.
+              The logic of valid knowledge, refined over centuries.
             </h2>
             <p className="mt-6 max-w-[64ch] font-sans text-body-lg text-ink-2">
-              The justification half runs on <span className="text-ink">Krim-Nyāya</span> — a gate
-              of <span className="text-mint">33 validators</span> derived from{' '}
-              <span className="text-ink">Navya-Nyāya</span>, the formal logic tradition of Mithila.
-              It is a real predicate calculus for testing whether a claim is justified, not a
-              metaphor. It asks three questions of every action, each returning pass, amber or fail.
+              The justification half of KrimOS runs on <span className="text-ink">Krim-Nyāya</span> —
+              a gate of <span className="text-mint">33 validators</span> derived from{' '}
+              <span className="text-ink">Navya-Nyāya</span>, the formal-logic tradition of Mithila.
+              It is a real predicate calculus for testing whether a claim is justified — not a
+              metaphor.
             </p>
           </Reveal>
-          <div className="mt-12 grid gap-5 md:grid-cols-3">
-            {FAMILIES.map((f, i) => (
-              <Reveal key={f.name} delay={i * 0.08}>
-                <div className="glass lume h-full p-7">
-                  <span aria-hidden className="block h-[3px] w-12 rounded-full bg-mint/70" />
-                  <h3 className="mt-6 font-serif text-[1.5rem] leading-none text-ink">{f.name}</h3>
-                  <p className="mt-2 font-mono text-[12px] uppercase tracking-[0.16em] text-ink-3">
-                    {f.gloss}
-                  </p>
-                  <p className="mt-4 font-sans text-body text-ink-2">{f.body}</p>
+
+          <div className="mt-16 flex flex-col gap-14 md:gap-20">
+            {LINEAGE.map((row, i) => {
+              const flip = i % 2 === 1
+              return (
+                <div key={row.title} className="grid items-center gap-8 md:grid-cols-2 md:gap-12">
+                  <Reveal>
+                    <div className={flip ? 'md:order-2' : ''}>
+                      <Eyebrow tone={row.tint}>{row.kicker}</Eyebrow>
+                      <h3 className="mt-4 max-w-[20ch] font-serif text-display-3 leading-tight text-ink">
+                        {row.title}
+                      </h3>
+                      <p className="mt-5 max-w-[48ch] font-sans text-body-lg text-ink-2">{row.body}</p>
+                    </div>
+                  </Reveal>
+                  <Reveal delay={0.1}>
+                    <div className={flip ? 'md:order-1' : ''}>
+                      {row.terms ? (
+                        <div className="glass lume p-7 md:p-8">
+                          <ul className="divide-y divide-soft">
+                            {row.terms.map(([name, say, mean]) => (
+                              <li key={name} className="py-4 first:pt-0 last:pb-0">
+                                <div className="flex items-baseline justify-between gap-4">
+                                  <span className="font-serif text-[1.35rem] leading-none text-ink">{name}</span>
+                                  <span className="font-mono text-[11px] tracking-[0.04em] text-ink-3">{say}</span>
+                                </div>
+                                <p className="mt-2 font-sans text-[14px] leading-relaxed text-ink-2">{mean}</p>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      ) : (
+                        <GlassCard accent className="p-8 md:p-10">
+                          <p
+                            className={`font-mono text-[11px] uppercase tracking-[0.18em] ${row.tint === 'mint' ? 'text-mint' : 'text-cyan'}`}
+                          >
+                            {row.aside!.label}
+                          </p>
+                          <p className="mt-5 font-serif text-[clamp(1.3rem,2.4vw,1.75rem)] leading-snug text-ink">
+                            {row.aside!.text}
+                          </p>
+                        </GlassCard>
+                      )}
+                    </div>
+                  </Reveal>
                 </div>
-              </Reveal>
-            ))}
+              )
+            })}
           </div>
         </Section>
 

@@ -41,6 +41,25 @@ const MARKETS = [
   { region: 'India', note: 'RBI circulars · Fair Practices Code encoded' },
 ]
 
+// Monogram avatar — placeholder until real headshots are supplied. When they
+// land, swap the initials span for a next/image fill inside the same circle.
+function initials(name: string) {
+  const parts = name.trim().split(/\s+/)
+  return ((parts[0]?.[0] ?? '') + (parts[parts.length - 1]?.[0] ?? '')).toUpperCase()
+}
+
+function Avatar({ name, size = 'md' }: { name: string; size?: 'md' | 'lg' }) {
+  const dim = size === 'lg' ? 'h-20 w-20 text-[1.45rem]' : 'h-16 w-16 text-[1.15rem]'
+  return (
+    <span
+      aria-hidden
+      className={`flex shrink-0 items-center justify-center rounded-full border border-strong bg-white/[0.03] font-serif tracking-[0.02em] text-mint ${dim}`}
+    >
+      {initials(name)}
+    </span>
+  )
+}
+
 export default function CompanyPage() {
   return (
     <>
@@ -128,6 +147,53 @@ export default function CompanyPage() {
                 </p>
               </GlassCard>
             </Reveal>
+          </div>
+        </Section>
+
+        {/* ---- 3.5 · Team — founder + founding team (monogram placeholders until headshots land) ---- */}
+        <Section hairline>
+          <div className="mx-auto max-w-[820px] text-center">
+            <Reveal>
+              <Eyebrow>Team</Eyebrow>
+              <h2 className="mt-4 font-serif text-display-1 text-ink">The people behind the proof.</h2>
+              <p className="mx-auto mt-6 max-w-[48ch] font-sans text-body-lg text-ink-2">
+                A research-and-engineering team building KrimOS across the US, UK and India.
+              </p>
+            </Reveal>
+          </div>
+
+          {/* Founder */}
+          <Reveal delay={0.08}>
+            <div className="mx-auto mt-12 max-w-[520px]">
+              <div className="glass lume flex items-center gap-6 p-7 md:p-8">
+                <Avatar name="Vishwa Nath Jha" size="lg" />
+                <div>
+                  <h3 className="font-serif text-[1.5rem] leading-none text-ink">Vishwa Nath Jha</h3>
+                  <p className="mt-2.5 font-mono text-[11px] uppercase tracking-[0.18em] text-mint">
+                    CEO &amp; Founder
+                  </p>
+                </div>
+              </div>
+            </div>
+          </Reveal>
+
+          {/* Founding team */}
+          <Reveal delay={0.12}>
+            <p className="mt-14 text-center font-mono text-[11px] uppercase tracking-[0.2em] text-ink-3">
+              Founding team
+            </p>
+          </Reveal>
+          <div className="mx-auto mt-8 grid max-w-[880px] grid-cols-2 gap-5 sm:grid-cols-3">
+            {['Om Mishra', 'Nachiketa Jha', 'Nakshatra Kanchan', 'Mohit Singh', 'Devansh Jindal', 'Divyansh Gupta'].map(
+              (name, i) => (
+                <Reveal key={name} delay={0.04 * i}>
+                  <div className="glass flex h-full flex-col items-center gap-4 p-6 text-center">
+                    <Avatar name={name} size="md" />
+                    <p className="font-serif text-[1.15rem] leading-tight text-ink">{name}</p>
+                  </div>
+                </Reveal>
+              ),
+            )}
           </div>
         </Section>
 

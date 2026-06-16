@@ -64,7 +64,7 @@ const FITS = [
   },
   {
     name: 'One stack, many systems',
-    body: 'KrimOS sits over the estate you already run, reading from your systems and writing back on validated channels. No rip, no replace.',
+    body: 'KrimOS sits over the estate you already run, reading from your systems and writing back on validated channels. Nothing to tear out, nothing to migrate.',
   },
   {
     name: 'Sovereign where it matters',

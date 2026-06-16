@@ -80,7 +80,7 @@ export default function LayerShell({ slug, children }: { slug: LayerSlug; childr
               See {layer.name} on the stack you already run.
             </h2>
             <p className="mx-auto mt-4 max-w-[46ch] font-sans text-body text-ink-2">
-              No rip, no replace — KrimOS slots onto your existing systems.
+              Nothing to tear out — KrimOS layers onto the systems you already run.
             </p>
             <div className="mt-8 flex flex-wrap items-center justify-center gap-6">
               <CTA href={DEMO_HREF}>Book a demo</CTA>

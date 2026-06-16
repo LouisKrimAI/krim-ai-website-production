@@ -63,7 +63,7 @@ const STAGES = [
 // What Krim brings — concise, the approach that makes a quarter realistic.
 const BRINGS = [
   {
-    title: 'No rip, no replace',
+    title: 'Nothing to tear out',
     body: 'KrimOS reads from your systems and writes back on validated channels. 40+ connectors mean the deep-dive scopes a fit, not a migration.',
   },
   {

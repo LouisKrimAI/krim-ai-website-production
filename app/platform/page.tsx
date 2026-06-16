@@ -54,7 +54,7 @@ const softwareLd = {
     'Natural-language interface for teams (Kula) and a customer advisor (Kira)',
     'Immutable, metered audit trail (Krim-Ledger, Krim Work Units)',
     'Sovereign deployment — on-prem, hybrid or managed',
-    '40+ connectors; no rip, no replace',
+    '40+ connectors; nothing to tear out, nothing to migrate',
   ],
   offers: { '@type': 'Offer', availability: 'https://schema.org/InStock', url: 'https://krim.ai/platform' },
 }
@@ -69,11 +69,14 @@ export default function PlatformPage() {
       <main className="relative z-10">
         {/* ---- 1 · Hero: the claim + the architecture, seen whole ---- */}
         <Section className="!pt-24">
-          <div className="mx-auto max-w-[860px] text-center">
+          <div className="mx-auto max-w-[1000px] text-center">
             <Reveal>
-              <Eyebrow>KrimOS</Eyebrow>
-              <h1 className="mt-5 font-serif text-display-hero text-ink">
-                One operating system for regulated operations.
+              <p className="font-mono text-[clamp(15px,1.7vw,18px)] uppercase tracking-[0.34em] text-mint">
+                KrimOS
+              </p>
+              <h1 className="mt-6 font-serif text-[clamp(2.5rem,5vw,4.1rem)] leading-[1.05] tracking-[-0.018em] text-ink">
+                <span className="block">One operating system</span>
+                <span className="block">for regulated operations.</span>
               </h1>
             </Reveal>
             <Reveal delay={0.12}>
@@ -134,9 +137,9 @@ export default function PlatformPage() {
           <div className="mx-auto max-w-[760px] text-center">
             <Reveal>
               <Eyebrow>Who it&rsquo;s for</Eyebrow>
-              <h2 className="mt-4 font-serif text-display-1 text-ink">One core, every regulated domain.</h2>
+              <h2 className="mt-4 font-serif text-display-1 text-ink">One core, across regulated operations.</h2>
               <p className="mx-auto mt-6 max-w-[52ch] font-sans text-body-lg text-ink-2">
-                The same stack runs across every regulated industry — only the rules and use cases
+                The same stack runs wherever the work is regulated — only the rules and use cases
                 change. See it in your world:
               </p>
             </Reveal>
@@ -187,6 +190,55 @@ export default function PlatformPage() {
           </div>
         </Section>
 
+        {/* ---- 3.5 · Impacts to your business — general, cross-domain (no invented metrics) ---- */}
+        <Section hairline>
+          <Reveal>
+            <Eyebrow>Impacts to your business</Eyebrow>
+            <h2 className="mt-4 max-w-[24ch] font-serif text-display-1 text-ink">
+              What changes when machines can finally act.
+            </h2>
+            <p className="mt-6 max-w-[60ch] font-sans text-body-lg text-ink-2">
+              The outcomes hold across every regulated operation — only the use cases change.
+            </p>
+          </Reveal>
+          <div className="mt-12 grid gap-5 sm:grid-cols-2">
+            {[
+              [
+                'Automate the work you couldn’t risk before',
+                'The highest-consequence operations — the ones kept manual because one mistake is a compliance event — can finally run on AI, because every action is proven before it fires.',
+              ],
+              [
+                'Compliance becomes built-in, not bolted-on',
+                'Validation moves in front of the action and the evidence is complete by construction — so audits and inspections are answered from a record that is already there.',
+              ],
+              [
+                'Cost-to-serve falls as the system learns',
+                'Every validated outcome makes the next one sharper. The same team handles more, and the operation gets more efficient the longer it runs.',
+              ],
+              [
+                'Serve more people, to the same standard',
+                'Lower the cost and risk of running operations at scale and good service reaches further — more customers, more cases, the same accountable bar.',
+              ],
+            ].map(([title, body], i) => (
+              <Reveal key={title} delay={(i % 2) * 0.08}>
+                <div className="glass lume flex h-full flex-col p-7 md:p-8">
+                  <span aria-hidden className="block h-[3px] w-12 rounded-full bg-mint/70" />
+                  <h3 className="mt-6 font-serif text-[1.4rem] leading-tight text-ink">{title}</h3>
+                  <p className="mt-3 flex-1 font-sans text-body text-ink-2">{body}</p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+          <Reveal delay={0.1}>
+            <p className="mx-auto mt-10 max-w-[70ch] text-center font-sans text-body text-ink-2">
+              In <span className="text-ink">lending</span>, that is collections and servicing that
+              move faster without adding regulatory risk. In{' '}
+              <span className="text-ink">government</span>, citizen services that clear faster while
+              staying fully accountable.
+            </p>
+          </Reveal>
+        </Section>
+
         {/* ---- 4 · Close ---- */}
         <Section hairline>
           <Reveal>
@@ -195,7 +247,7 @@ export default function PlatformPage() {
                 See it on the stack you already run.
               </h2>
               <p className="mx-auto mt-5 max-w-[48ch] font-sans text-body text-ink-2">
-                No rip, no replace — KrimOS reads from your systems and writes back on validated channels.
+                Nothing to tear out — KrimOS reads from your systems and writes back on validated channels.
               </p>
               <div className="mt-9 flex flex-wrap items-center justify-center gap-6">
                 <CTA href={DEMO_HREF}>Book a demo</CTA>

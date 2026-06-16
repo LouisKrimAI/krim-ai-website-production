@@ -33,8 +33,14 @@ const DOMAINS = [
   ['MSME', '/msme'],
 ] as const
 
+// Research — the work under the product, with its two anchors
+const RESEARCH = [
+  ['Overview', 'The work under the product', '/research'],
+  ['Epistemic AI', 'The category we define', '/epistemic-ai'],
+  ['World Lending Model', 'The model we build toward', '/research/world-lending-model'],
+] as const
+
 const FLAT_RIGHT = [
-  ['Epistemic AI', '/epistemic-ai'],
   ['Trust', '/trust'],
   ['Company', '/company'],
 ] as const
@@ -43,7 +49,7 @@ const DEMO_HREF = '/contact'
 
 const linkCls = 'font-sans text-[14px] text-ink-2 transition-colors duration-fast hover:text-ink'
 
-type MenuKey = 'krimos' | 'domains' | null
+type MenuKey = 'krimos' | 'domains' | 'research' | null
 
 function Caret({ open }: { open: boolean }) {
   return (
@@ -169,6 +175,41 @@ export default function SiteHeader({ scrollReveal = false }: { scrollReveal?: bo
             )}
           </div>
 
+          {/* Research group — Epistemic AI + the World Lending Model */}
+          <div
+            className="relative"
+            onMouseEnter={() => setOpen('research')}
+            onMouseLeave={() => setOpen(null)}
+          >
+            <button
+              type="button"
+              className={`flex items-center gap-1.5 ${linkCls}`}
+              aria-expanded={open === 'research'}
+              aria-haspopup="true"
+              onClick={() => setOpen((v) => (v === 'research' ? null : 'research'))}
+            >
+              Research
+              <Caret open={open === 'research'} />
+            </button>
+            {open === 'research' && (
+              <div className="absolute left-1/2 top-full z-50 w-[300px] -translate-x-1/2 pt-3">
+                <div className="overflow-hidden rounded-[14px] border border-strong bg-[rgba(14,15,19,0.97)] p-2 shadow-[0_24px_60px_rgba(0,0,0,0.55)] backdrop-blur-xl">
+                  {RESEARCH.map(([label, role, href]) => (
+                    <Link
+                      key={href}
+                      href={href}
+                      className="block rounded-[10px] px-3.5 py-2.5 transition-colors hover:bg-white/[0.05]"
+                      onClick={() => setOpen(null)}
+                    >
+                      <span className="block font-sans text-[14px] text-ink">{label}</span>
+                      <span className="mt-0.5 block font-sans text-[12.5px] text-ink-3">{role}</span>
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+
           {FLAT_RIGHT.map(([label, href]) => (
             <Link key={href} href={href} className={linkCls}>
               {label}
@@ -211,6 +252,12 @@ export default function SiteHeader({ scrollReveal = false }: { scrollReveal?: bo
             ))}
             <p className="pb-1 pt-3 font-mono text-[11px] uppercase tracking-[0.2em] text-ink-3">Domains</p>
             {DOMAINS.map(([label, href]) => (
+              <Link key={href} href={href} onClick={() => setMenuOpen(false)} className="block py-2 pl-3 font-sans text-[15px] text-ink-2 hover:text-ink">
+                {label}
+              </Link>
+            ))}
+            <p className="pb-1 pt-3 font-mono text-[11px] uppercase tracking-[0.2em] text-ink-3">Research</p>
+            {RESEARCH.map(([label, , href]) => (
               <Link key={href} href={href} onClick={() => setMenuOpen(false)} className="block py-2 pl-3 font-sans text-[15px] text-ink-2 hover:text-ink">
                 {label}
               </Link>

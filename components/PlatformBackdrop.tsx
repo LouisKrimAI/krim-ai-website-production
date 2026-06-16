@@ -24,22 +24,24 @@ export default function PlatformBackdrop() {
         style={{ background: 'radial-gradient(58% 48% at 50% 38%, rgba(57,214,255,0.09), rgba(4,6,12,0) 70%)' }}
       />
 
-      {/* the layers render, large + faint, breathing slowly */}
+      {/* the layers render — high-definition source (1783×2400), held crisp and
+          faint, breathing slowly so the stack reads clearly behind the content */}
       <motion.div
         className="absolute inset-0"
-        style={{ opacity: 0.28, willChange: 'transform' }}
+        style={{ opacity: 0.34, willChange: 'transform' }}
         initial={false}
-        animate={reduce ? { scale: 1.0, y: 0 } : { scale: [0.98, 1.04, 0.98], y: ['0%', '-1.4%', '0%'] }}
-        transition={reduce ? { duration: 0 } : { duration: 30, ease: 'easeInOut', repeat: Infinity }}
+        animate={reduce ? { scale: 1.0, y: 0 } : { scale: [0.99, 1.035, 0.99], y: ['0%', '-1.2%', '0%'] }}
+        transition={reduce ? { duration: 0 } : { duration: 34, ease: 'easeInOut', repeat: Infinity }}
       >
         <Image
           src="/images/krimos/layers.png"
           alt=""
           fill
           priority
+          quality={90}
           sizes="100vw"
           className="object-contain"
-          style={{ objectPosition: '50% 50%', filter: 'blur(1.5px)' }}
+          style={{ objectPosition: '50% 50%' }}
         />
       </motion.div>
 

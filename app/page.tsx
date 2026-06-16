@@ -227,11 +227,11 @@ export default function HomePage() {
             <Reveal>
               <Eyebrow>One operating system</Eyebrow>
               <h2 className="mt-4 font-serif text-display-1 text-ink">
-                KrimOS — one core, every regulated domain.
+                KrimOS — one core, across regulated operations.
               </h2>
               <p className="mx-auto mt-6 max-w-[48ch] font-sans text-body-lg text-ink-2">
-                The same brain, vocabulary and co-workers across every industry. Only the rules and
-                use cases change.
+                The same brain, vocabulary and co-workers wherever the work is regulated. Only the
+                rules and use cases change.
               </p>
             </Reveal>
           </div>
@@ -257,8 +257,8 @@ export default function HomePage() {
               Built for the operations that can&rsquo;t afford to be wrong.
             </h2>
             <p className="mt-6 max-w-[60ch] font-sans text-body-lg text-ink-2">
-              One core, every regulated industry. The rules and use cases change; the proof and the
-              learning do not.
+              One core, across regulated operations. The rules and use cases change; the proof and
+              the learning do not.
             </p>
           </Reveal>
           <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
@@ -300,7 +300,7 @@ export default function HomePage() {
         <Section hairline id="integrations">
           <Reveal>
             <p className="text-center font-serif text-[clamp(1.6rem,2.8vw,2.2rem)] leading-tight text-ink">
-              No rip, no replace.
+              It layers onto the systems you already run.
             </p>
             <p className="mx-auto mt-4 max-w-[50ch] text-center font-sans text-body text-ink-2">
               KrimOS is the decision layer your existing systems report into.

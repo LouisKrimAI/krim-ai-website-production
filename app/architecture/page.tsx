@@ -42,7 +42,7 @@ const faqLd = {
       name: 'Does KrimOS replace our core banking, LOS or CRM?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'No. KrimOS is the decision layer your existing systems report into. Your systems stay canonical; KrimOS reads from them and writes back only on validated channels. No rip, no replace.',
+        text: 'No. KrimOS is the decision layer your existing systems report into. Your systems stay canonical; KrimOS reads from them and writes back only on validated channels. Nothing to tear out, nothing to migrate.',
       },
     },
     {
@@ -162,7 +162,7 @@ export default function ArchitecturePage() {
                 <span className="text-mint">KrimOS reads from them and writes back only on
                 validated channels</span>. AI co-workers do the work inside your own perimeter, and{' '}
                 <span className="text-cyan">every action they propose is validated before it
-                fires</span>. No rip, no replace.
+                fires</span>. Nothing to tear out, nothing to migrate.
               </p>
             </Reveal>
             <Reveal delay={0.2}>
@@ -342,8 +342,8 @@ export default function ArchitecturePage() {
                     <>
                       No. KrimOS is the decision layer your existing systems report into. Your
                       systems stay canonical; KrimOS reads from them and{' '}
-                      <span className="text-mint">writes back only on validated channels</span>. No
-                      rip, no replace.
+                      <span className="text-mint">writes back only on validated channels</span>.
+                      Nothing to tear out, nothing to migrate.
                     </>
                   ),
                 },
