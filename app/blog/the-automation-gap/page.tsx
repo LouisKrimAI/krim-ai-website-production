@@ -98,13 +98,12 @@ export default function Page() {
                 McKinsey’s 2024 state-of-AI survey found{' '}
                 <span className="text-ink">65% of organisations regularly using generative AI</span>{' '}
                 — yet only about <span className="text-ink">5%</span> attributed more than a tenth of
-                their EBIT to it, and <span className="text-gold">44%</span> reported at least one
-                negative consequence from using it. The tools spread fast and the returns did not
-                follow. The pattern is consistent: AI lands easily where a mistake is cheap, and
-                stalls where it is not.
+                their EBIT to it, and inaccuracy was the harm respondents most often said they had
+                already hit. The tools spread fast and the returns did not follow. The pattern is
+                consistent: AI lands easily where a mistake is cheap, and stalls where it is not.
               </p>
               <p className="mt-5 font-sans text-body text-ink-2">
-                The same survey by some estimates has a darker companion. MIT’s NANDA initiative
+                That picture has a darker companion. MIT’s NANDA initiative
                 reported in 2025 that <span className="text-gold">around 95%</span> of enterprise
                 generative-AI pilots delivered no measurable return — a figure worth treating as
                 directional rather than precise, but one that rhymes with what every operations

@@ -59,7 +59,7 @@ const STRANDS = [
     n: '03',
     title: 'Proof before action',
     body: 'Treating pre-execution validation as its own discipline: proving an action against law, policy, consent and context before it can fire — not explaining it after.',
-    link: ['See it in the runtime → Kendra', '/platform/kendra'] as const,
+    link: ['In the runtime → Kendra', '/platform/kendra'] as const,
     tint: 'mint' as const,
   },
 ]

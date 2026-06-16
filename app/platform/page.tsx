@@ -81,9 +81,8 @@ export default function PlatformPage() {
             </Reveal>
             <Reveal delay={0.12}>
               <p className="mx-auto mt-7 max-w-[60ch] font-sans text-body-lg text-ink-2">
-                KrimOS is the agent-native operating system for regulated operations. AI co-workers
-                do the work; every action is validated before it executes, and the system gets
-                sharper from every outcome it records — all inside your own perimeter.
+                AI co-workers do the work; every action is validated before it executes, and the
+                system gets sharper from every outcome it records — all inside your own perimeter.
               </p>
             </Reveal>
             <Reveal delay={0.2}>
@@ -117,7 +116,7 @@ export default function PlatformPage() {
 
           <Reveal>
             <div className="mt-14 flex flex-wrap items-center justify-center gap-x-8 gap-y-3 border-t border-soft pt-9 font-sans text-[15px]">
-              <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-ink-3">Open any layer</span>
+              <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-ink-3">Go deeper, layer by layer</span>
               {LAYERS.map((l) => (
                 <Link
                   key={l.slug}

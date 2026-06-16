@@ -44,7 +44,7 @@ export const POSTS: Post[] = [
   {
     slug: 'the-cost-of-being-wrong',
     title: 'The cost of being wrong',
-    dek: 'One non-compliant action can’t be unmade — and per-violation statutory exposure scales terrifyingly across millions of automated touches. Post-hoc audit explains the harm after it is done. Pre-execution validation prevents it.',
+    dek: 'One non-compliant action can’t be unmade — and per-violation statutory exposure scales without limit across millions of automated touches. Post-hoc audit explains the harm after it is done. Pre-execution validation prevents it.',
     category: 'Risk',
     date: '2026-03-03',
     readingMinutes: 7,

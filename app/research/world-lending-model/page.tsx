@@ -187,7 +187,7 @@ export default function WorldLendingModelPage() {
                   </div>
                   <div className="border-t border-soft pt-7">
                     <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-mint">
-                      What it does
+                      What it’s built to do
                     </p>
                     <p className="mt-2 font-sans text-body text-ink-2">
                       Anticipate how an operation behaves · choose the action that fits the moment ·
