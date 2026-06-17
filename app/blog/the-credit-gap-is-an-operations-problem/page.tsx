@@ -142,7 +142,7 @@ export default function Page() {
                 the cost and risk of <span className="text-ink">operating</span> a loan — not pricing
                 it — then the highest-leverage move is to make safe operations cheap. Drive down the
                 marginal cost of a compliant communication, a serviced account, a hardship
-                conversation, and accounts that never penciled out start to.
+                conversation, and the math on the underserved shifts.
               </p>
               <p className="mt-5 font-sans text-body text-ink-2">
                 That is the leverage: when compliant operation stops being the expensive option,

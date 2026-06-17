@@ -205,7 +205,7 @@ export default function WorldLendingModelPage() {
                 <p className="mt-7 max-w-[52ch] font-sans text-body-lg text-ink-2">
                   Agents work the stack — origination, a validated{' '}
                   <span className="text-ink">AI underwriter</span>, servicing, collections. Each
-                  action a credit decision among them — is scored against the model, then{' '}
+                  action — a credit decision among them — is scored against the model, then{' '}
                   <span className="text-mint">validated against policy before it fires</span>, carries
                   the reasons that cleared it, and feeds its outcome back so the model gets truer.
                 </p>

@@ -1,7 +1,7 @@
 /**
  * /architecture — the engineer-facing page (GEO-strong, standalone shell).
  * Answer-first: KrimOS is the decision layer your systems report into — no rip,
- * no replace. Then the runtime (seven Kendra modules), the substrate (memory,
+ * no replace. Then the runtime (eight Kendra modules), the substrate (memory,
  * durable orchestration, the shared domain model), the integration fabric, and
  * one architecture across three geographies. Glass + type only — no devices.
  * Facts: docs/krim-content.md (Inside Kendra · technical depth · integration fabric).
@@ -17,12 +17,12 @@ import { Section, Eyebrow, GlassCard, CTA } from '@/components/ui'
 export const metadata: Metadata = {
   title: 'Architecture',
   description:
-    'How KrimOS is built: the decision layer your existing systems report into. Seven Kendra runtime modules (Core, Fabric, Govern, Nyāya, Learn, Ledger, Sense), a shared substrate of memory tiers, durable orchestration and a 15-entity domain model, a 40+ connector integration fabric, and one architecture across three sovereign geographies.',
+    'How KrimOS is built: the decision layer your existing systems report into. Eight Kendra runtime modules (Core, Karya, Fabric, Govern, Nyāya, Learn, Ledger, Sense), a shared substrate of memory tiers, durable orchestration and a 15-entity domain model, a 40+ connector integration fabric, and one architecture across three sovereign geographies.',
   alternates: { canonical: 'https://krim.ai/architecture' },
   openGraph: {
     title: 'Architecture — KrimOS',
     description:
-      'How KrimOS is built: the decision layer your existing systems report into. Seven Kendra runtime modules (Core, Fabric, Govern, Nyāya, Learn, Ledger, Sense), a shared substrate of memory tiers, durable orchestration and a 15-entity domain model, a 40+ connector integration fabric, and one architecture across three sovereign geographies.',
+      'How KrimOS is built: the decision layer your existing systems report into. Eight Kendra runtime modules (Core, Karya, Fabric, Govern, Nyāya, Learn, Ledger, Sense), a shared substrate of memory tiers, durable orchestration and a 15-entity domain model, a 40+ connector integration fabric, and one architecture across three sovereign geographies.',
     url: 'https://krim.ai/architecture',
   },
 }
@@ -69,7 +69,7 @@ const faqLd = {
   ],
 }
 
-// The seven Kendra runtime modules — one crisp line each (docs/krim-content.md · Inside Kendra).
+// The eight Kendra runtime modules — one crisp line each (docs/krim-content.md · Inside Kendra).
 const MODULES = [
   {
     name: 'Krim-Core',
@@ -186,7 +186,7 @@ export default function ArchitecturePage() {
           </div>
         </Section>
 
-        {/* ---- 2 · The runtime — the seven Kendra modules ---- */}
+        {/* ---- 2 · The runtime — the eight Kendra modules ---- */}
         <Section hairline>
           <Reveal>
             <Eyebrow>Inside the runtime</Eyebrow>
@@ -195,7 +195,7 @@ export default function ArchitecturePage() {
             </h2>
             <p className="mt-6 max-w-[62ch] font-sans text-body-lg text-ink-2">
               The runtime layer is named <span className="text-ink">Kendra</span>. It is realised as
-              seven engineering modules — each does one job, and together they are why validated AI
+              eight engineering modules — each does one job, and together they are why validated AI
               can act in regulated work.
             </p>
           </Reveal>

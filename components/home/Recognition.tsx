@@ -17,7 +17,7 @@ export default function Recognition() {
   return (
     <div className="glass px-6 py-6 md:px-10 md:py-7">
       <p className="text-center font-mono text-[11px] uppercase tracking-[0.2em] text-ink-3">
-        Backed &amp; recognised
+        Recognised by
       </p>
       <ul className="mt-5 flex flex-wrap items-center justify-center gap-x-10 gap-y-4 md:gap-x-14">
         {MARKS.map((m) => (

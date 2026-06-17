@@ -15,7 +15,7 @@ import { Section, Eyebrow, GlassCard, CTA } from '@/components/ui'
 const SLUG = 'the-cost-of-being-wrong'
 const TITLE = 'The cost of being wrong'
 const DEK =
-  'One non-compliant action can’t be unmade — and per-violation statutory exposure scales terrifyingly across millions of automated touches. Post-hoc audit explains the harm after it is done. Pre-execution validation prevents it.'
+  'One non-compliant action can’t be unmade — and per-violation statutory exposure scales without limit across millions of automated touches. Post-hoc audit explains the harm after it is done. Pre-execution validation prevents it.'
 const CATEGORY = 'Risk'
 const DATE_ISO = '2026-03-03'
 const DATE_LONG = '3 March 2026'
