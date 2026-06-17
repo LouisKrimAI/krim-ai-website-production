@@ -35,8 +35,9 @@ AI" (implies no human; regulators reject it) and "safe AI" (defensive; doesn't r
 - Promise: every action validated before it executes; reasoning an auditor can read end to end.
 - Validation: Krim-Nyāya — 33 validators (pass/amber/fail) from Mithila's Navya-Nyāya formal logic,
   in three families: Pramāṇa (sources of knowledge), Doṣa (classes of error), Yogyatā (fitness for action).
-- Operational decisioning only — Karta do not approve, deny or price loans; underwriting stays with
-  the institution.
+- Operational decisioning today — Karta segment, suggest next-best-action and resolve conflicts; the
+  credit decision stays with the institution for now. The full stack, a safe AI underwriter included,
+  is the build direction (the World Lending Model).
 - Metering: every action is metered in Krim Work Units (KWUs); one immutable ledger serves both audit
   and usage-based billing.
 - Learning is federated: patterns admitted above ~80% effectiveness, anonymised, with per-tenant opt-out.
@@ -114,7 +115,7 @@ Sitemap: https://krim.ai/sitemap.xml
     "Composable architecture: Kriya primitives, Karta co-workers, the Kendra runtime, and the Kula/Kira interfaces (in Kupa and Krimkar)",
     "Kendra runtime with seven modules: Core, Fabric, Govern, Nyāya, Learn, Ledger, Sense",
     "250+ credit-native action primitives in ten categories",
-    "Operational decisioning only — not underwriting",
+    "Operational decisioning today; a safe AI underwriter is the build direction (World Lending Model)",
     "Immutable, metered audit trail (Krim-Ledger, Krim Work Units)",
     "Federated learning with per-tenant opt-out",
     "Sovereign deployment — on-prem, hybrid or managed",
@@ -142,7 +143,7 @@ Sitemap: https://krim.ai/sitemap.xml
     { "@type": "Question", "name": "What are the parts of KrimOS?",
       "acceptedAnswer": { "@type": "Answer", "text": "Kriya (250+ validated, credit-native action primitives), Karta (utility-based AI co-workers composed from them), and Kendra (the runtime, built from seven modules, where validation and learning live). People reach the system through two interfaces: Kula, the enterprise natural-language interface in the Kupa command center, and Kira, the customer advisor in the Krimkar app." } },
     { "@type": "Question", "name": "Does KrimOS make credit decisions or underwrite loans?",
-      "acceptedAnswer": { "@type": "Answer", "text": "No. KrimOS performs operational decisioning only — segmentation, next-best-action and conflict resolution. Its Karta co-workers do not approve, deny or price loans and do not override the institution's credit or risk engines. Underwriting authority stays with the institution." } },
+      "acceptedAnswer": { "@type": "Answer", "text": "Today, KrimOS performs operational decisioning — segmentation, next-best-action and conflict resolution — and the credit decision stays with the institution. A safe, validated AI underwriter is the direction Krim is building through the World Lending Model: it clears the same pre-execution validation as every other action." } },
     { "@type": "Question", "name": "How is KrimOS priced?",
       "acceptedAnswer": { "@type": "Answer", "text": "Work is metered in Krim Work Units (KWUs). Every primitive meters its own consumption, so the same immutable ledger that proves what happened also prices it — Krim earns when validated work executes, not as a fee on assets under management." } },
     { "@type": "Question", "name": "Which markets and regulations does KrimOS support?",

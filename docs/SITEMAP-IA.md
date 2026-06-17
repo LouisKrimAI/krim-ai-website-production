@@ -10,7 +10,7 @@ Regulated operations couldn't run on AI you can't prove, or risk what leaves you
 /platform             KrimOS — the architecture at a glance (hub; don't force a tidy count)
   /platform/kendra      The brain — Krim-Nyāya (validation) + Krim-Learn (intelligence) + the runtime modules
   /platform/kriya       The vocabulary — 250+ validated, credit-native primitives
-  /platform/karta       The co-workers — operational decisioning, not underwriting
+  /platform/karta       The co-workers — operational decisioning today; AI underwriter is the direction
   /platform/kula        The enterprise interface — natural language; a role-tailored digital twin per user (in Kupa)
   /platform/kira        The customer advisor — every channel + the consumer app & public site (Krimkar)
 /lending              Domain · flagship — end-to-end lending operations (deeply documented)
@@ -48,7 +48,7 @@ Regulated operations couldn't run on AI you can't prove, or risk what leaves you
 
 **/platform/kriya** — Hero (the vocabulary) · Why primitives (finite, validated, credit-native) · The ten categories (progressive disclosure, not a wall) · One primitive, end to end (MAKE_CALL as a clean receipt) · CTA.
 
-**/platform/karta** — Hero (co-workers, not bots) · The catalog (the eight, scannable) · The hard boundary (operational decisioning, not underwriting) · Operating modes (autonomous → human-in-the-loop) · CTA.
+**/platform/karta** — Hero (co-workers, not bots) · The catalog (the eight, scannable) · Today's line (operations today; the AI underwriter is the direction) · Operating modes (autonomous → human-in-the-loop) · CTA.
 
 **/platform/kula** — Hero (talk to your operation) · The enterprise natural-language interface (ask in words; the brain — Kendra — does the thinking) · A digital twin per role (each user gets one tailored to their function) · From intent to governed action (Ask→Suggest→Act→Learn; every step validated) · The Kupa command centre (one real cockpit surface — visibility, queues, kill switches, human oversight) · CTA.
 

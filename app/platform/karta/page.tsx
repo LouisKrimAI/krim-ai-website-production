@@ -14,7 +14,7 @@ import { Section, Eyebrow, GlassCard } from '@/components/ui'
 export const metadata: Metadata = {
   title: 'Karta — the co-workers',
   description:
-    'Karta are the AI co-workers of KrimOS: composed from validated Kriya primitives, configured not coded, and run under pre-execution validation with humans in the loop — operational decisioning, never underwriting.',
+    'Karta are the AI co-workers of KrimOS: composed from validated Kriya primitives, configured not coded, and run under pre-execution validation with humans in the loop. Operational decisioning today, as Krim builds toward the full lending stack — a safe AI underwriter included, via the World Lending Model.',
   alternates: { canonical: 'https://krim.ai/platform/karta' },
   openGraph: { title: 'Karta — the co-workers', url: 'https://krim.ai/platform/karta' },
 }
@@ -57,12 +57,12 @@ const ROSTER = [
   { name: 'Report', line: 'Operational reporting, aggregated for ops, risk, compliance and executive stakeholders.' },
 ]
 
-// what they will never do (the hard boundary — docs/krim-content.md)
-const NEVER = [
+// what today's co-workers don't do — operations, not the credit decision (docs/krim-content.md)
+const NOT_TODAY = [
   'Approve or deny loans',
   'Price credit',
   'Override the institution’s credit or risk engines',
-  'Touch underwriting authority',
+  'Make the credit decision',
 ]
 
 export default function KartaPage() {
@@ -151,21 +151,21 @@ export default function KartaPage() {
                 aria-hidden
                 className="absolute inset-y-0 left-0 w-px bg-gradient-to-b from-transparent via-gold to-transparent opacity-70"
               />
-              <Eyebrow tone="gold">The hard boundary</Eyebrow>
-              <h2 className="mt-4 max-w-[20ch] font-serif text-display-1 text-ink">
-                Operational decisioning. Never underwriting.
+              <Eyebrow tone="gold">Today&rsquo;s line</Eyebrow>
+              <h2 className="mt-4 max-w-[22ch] font-serif text-display-1 text-ink">
+                Today, the credit decision is yours.
               </h2>
               <p className="mt-6 max-w-[64ch] font-sans text-body-lg text-ink-2">
                 Karta-Risk and Karta-Decide segment portfolios, suggest the next best action,
                 resolve conflicts and gate actions on the institution&rsquo;s own risk and fraud
-                flags. That is the whole of their authority.
+                flags. That is the whole of their authority today.
               </p>
 
               <p className="mt-10 font-mono text-[10.5px] uppercase tracking-[0.18em] text-gold">
-                What they will never do
+                What today&rsquo;s co-workers don&rsquo;t do
               </p>
               <ul className="mt-5 grid gap-x-10 gap-y-3.5 sm:grid-cols-2">
-                {NEVER.map((item) => (
+                {NOT_TODAY.map((item) => (
                   <li key={item} className="flex items-start gap-3">
                     <span
                       aria-hidden
@@ -178,8 +178,10 @@ export default function KartaPage() {
                 ))}
               </ul>
 
-              <p className="mt-10 max-w-[60ch] border-t border-[rgba(200,161,74,0.28)] pt-7 font-serif text-[clamp(1.15rem,2vw,1.45rem)] leading-snug text-ink">
-                Underwriting authority stays exactly where the regulator expects it — with you.
+              <p className="mt-10 max-w-[64ch] border-t border-[rgba(200,161,74,0.28)] pt-7 font-serif text-[clamp(1.15rem,2vw,1.45rem)] leading-snug text-ink">
+                Today, the credit decision stays with you. The AI underwriter we are building — the
+                evolving, self-learning World Lending Model — earns its place by clearing the{' '}
+                <span className="text-mint">same validation gate</span> as every other action.
               </p>
             </GlassCard>
           </Reveal>

@@ -183,15 +183,15 @@ export default function KriyaPage() {
         <Section hairline>
           <Reveal>
             <GlassCard accent className="mx-auto max-w-[760px] p-8 md:p-10">
-              <Eyebrow tone="gold">Where the line is</Eyebrow>
+              <Eyebrow tone="dim">What a primitive is</Eyebrow>
               <h2 className="mt-4 font-serif text-display-2 leading-tight text-ink">
-                A primitive moves a workflow — it never decides the credit.
+                A primitive moves a workflow — it isn&rsquo;t the credit decision.
               </h2>
               <p className="mt-6 max-w-[58ch] font-sans text-body-lg text-ink-2">
-                In the library, APPROVE means approval of a step in a workflow — never a credit
-                decision. Primitives segment, route and execute under the institution&rsquo;s own rules.
-                They do not approve, deny or price loans. Underwriting authority stays exactly where
-                the regulator expects it.
+                In the library, APPROVE means approval of a step in a workflow — not, in itself, a
+                credit decision. Primitives segment, route and execute under the institution&rsquo;s
+                own rules. The credit decision is a higher-order act — and the safe AI underwriter
+                that will make it is the direction we are building, on this same validated foundation.
               </p>
             </GlassCard>
           </Reveal>

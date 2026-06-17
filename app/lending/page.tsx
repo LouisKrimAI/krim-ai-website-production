@@ -10,9 +10,9 @@
  * Rhythm: hero → the problem → the lifecycle → compliance by jurisdiction →
  * impact + the learning curve → deployment → close.
  *
- * HARD RULE (krim-content.md): Karta do operational decisioning and NEVER
- * underwrite — they never approve, deny or price loans, and never override the
- * institution's own credit/risk engines.
+ * DIRECTION (krim-content.md): Karta do operational decisioning TODAY; the credit
+ * decision stays with the institution for now. The full lending stack — a safe AI
+ * underwriter included — is the build direction, via the World Lending Model.
  */
 
 import type { Metadata } from 'next'
@@ -233,10 +233,10 @@ export default function LendingPage() {
 
           <Reveal delay={0.1}>
             <p className="mt-9 max-w-[64ch] font-sans text-[14px] leading-relaxed text-ink-3">
-              A hard line holds throughout: Karta segment risk, suggest the next best action and
-              gate on your own flags — they <span className="text-ink-2">never approve, deny or
-              price a loan</span>, and never override your credit and risk engines. Underwriting
-              authority stays where the regulator expects it.
+              Today the line is clear: Karta segment risk, suggest the next best action and gate on
+              your own flags — the <span className="text-ink-2">credit decision stays yours</span>.
+              The safe AI underwriter we are building — the World Lending Model — is the direction,
+              and it will clear the same validation gate as every action that runs today.
             </p>
           </Reveal>
         </Section>
