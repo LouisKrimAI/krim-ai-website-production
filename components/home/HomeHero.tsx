@@ -76,25 +76,13 @@ function useTyped(disabled: boolean) {
   return { shown, active, done }
 }
 
-function Caret({ on }: { on: boolean }) {
-  if (!on) return null
-  return (
-    <span
-      aria-hidden
-      className="ml-[0.07em] inline-block h-[0.82em] w-[2px] translate-y-[0.12em] rounded-full bg-mint"
-      style={{ animation: 'krim-caret 1s steps(1, end) infinite' }}
-    />
-  )
-}
-
-function TypedLine({ full, shown, caret }: { full: string; shown: string; caret: boolean }) {
+function TypedLine({ full, shown }: { full: string; shown: string }) {
   return (
     <span className="relative block">
       {/* invisible full copy reserves the exact box (no layout shift) and keeps the text in SSR HTML */}
       <span className="invisible">{full || ' '}</span>
       <span aria-hidden className="absolute inset-0">
         {shown}
-        <Caret on={caret} />
       </span>
     </span>
   )
@@ -102,7 +90,7 @@ function TypedLine({ full, shown, caret }: { full: string; shown: string; caret:
 
 export default function HomeHero() {
   const reduce = useReducedMotion()
-  const { shown, active, done } = useTyped(!!reduce)
+  const { shown, done } = useTyped(!!reduce)
 
   // resolved (final) orb state — also the reduced-motion state.
   const orbResolved = { scale: 1.6, opacity: 0.34 }
@@ -113,8 +101,6 @@ export default function HomeHero() {
 
   return (
     <>
-      <style dangerouslySetInnerHTML={{ __html: '@keyframes krim-caret{0%,50%{opacity:1}50.01%,100%{opacity:0}}' }} />
-
       {/* ---- the orb: fixed, behind the whole page ---- */}
       <div aria-hidden className="pointer-events-none fixed inset-0 z-0 overflow-hidden bg-bg">
         <div
@@ -171,12 +157,12 @@ export default function HomeHero() {
             </motion.div>
 
             <h1 className="mt-10 font-serif text-[clamp(2.5rem,5.2vw,4.25rem)] leading-[1.06] tracking-[-0.02em] text-ink">
-              <TypedLine full={LINES[0]} shown={shown[0]} caret={active === 0} />
-              <TypedLine full={LINES[1]} shown={shown[1]} caret={active === 1} />
+              <TypedLine full={LINES[0]} shown={shown[0]} />
+              <TypedLine full={LINES[1]} shown={shown[1]} />
             </h1>
 
             <p className="mt-7 max-w-[52ch] font-sans text-body-lg text-ink-2">
-              <TypedLine full={LINES[2]} shown={shown[2]} caret={active === 2} />
+              <TypedLine full={LINES[2]} shown={shown[2]} />
             </p>
 
             <motion.div
