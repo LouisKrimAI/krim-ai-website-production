@@ -159,7 +159,10 @@ export default function HomePage() {
                 <div className="glass lume h-full p-7 md:p-8">
                   {/* the cyan "blocked" cue — resolves to mint in the powers below */}
                   <span aria-hidden className="block h-[3px] w-12 rounded-full bg-cyan/70" />
-                  <h3 className="mt-6 font-serif text-[1.4rem] leading-tight text-ink">{p.heading}</h3>
+                  <p className="mt-6 font-mono text-[10.5px] uppercase tracking-[0.18em] text-ink-3">
+                    {String(i + 1).padStart(2, '0')}
+                  </p>
+                  <h3 className="mt-2 font-serif text-[1.4rem] leading-tight text-ink">{p.heading}</h3>
                   <p className="mt-3 font-sans text-body text-ink-2">{p.body}</p>
                 </div>
               </Reveal>
@@ -171,16 +174,11 @@ export default function HomePage() {
         <Section hairline id="powers">
           <Reveal>
             <Eyebrow>What Krim changes</Eyebrow>
-            <h2 className="mt-4 font-serif text-display-1 text-ink">Three things, locked together.</h2>
+            <h2 className="mt-4 font-serif text-display-1 text-ink">Each one makes the others possible.</h2>
           </Reveal>
           <div className="mt-12">
             <PowerCards powers={POWERS} />
           </div>
-          <Reveal delay={0.2}>
-            <p className="mt-10 text-center font-serif text-[1.15rem] italic text-ink-2">
-              Not features you choose between — each makes the others possible.
-            </p>
-          </Reveal>
         </Section>
 
         {/* ---- 4 · The flywheel ---- */}
@@ -210,13 +208,13 @@ export default function HomePage() {
             </div>
             <Reveal delay={0.15}>
               {/* the flywheel render, floated into the canvas — edges feathered, no hard rectangle */}
-              <div className="relative mx-auto aspect-square w-full max-w-[440px]">
+              <div className="relative mx-auto aspect-square w-full max-w-[520px]">
                 <Image
                   src="/images/krimos/flywheel.png"
                   alt="The KrimOS flywheel — a glass ring of light turning through validate, act, record and learn, cyan warming to mint as the cycle compounds."
                   width={1400}
                   height={1400}
-                  sizes="(max-width: 768px) 84vw, 440px"
+                  sizes="(max-width: 768px) 88vw, 520px"
                   className="h-full w-full object-contain"
                 />
                 <div
@@ -304,32 +302,32 @@ export default function HomePage() {
           </div>
         </Section>
 
-        {/* ---- 8 · Fits the stack you already run ---- */}
+        {/* ---- 8 · Trust strip — fits your stack + recognition (merged: was §8 + §9) ---- */}
         <Section hairline id="integrations">
-          <Reveal>
-            <p className="text-center font-serif text-[clamp(1.6rem,2.8vw,2.2rem)] leading-tight text-ink">
-              Fits the stack you already run.
-            </p>
-            <p className="mx-auto mt-4 max-w-[52ch] text-center font-sans text-body text-ink-2">
-              The decision layer your systems report into — KrimOS reads from them and writes back
-              only on validated channels.
-            </p>
-          </Reveal>
+          <div className="mx-auto max-w-[760px] text-center">
+            <Reveal>
+              <h2 className="font-serif text-display-2 leading-tight text-ink">
+                Fits the stack you already run.
+              </h2>
+              <p className="mx-auto mt-4 max-w-[50ch] font-sans text-body text-ink-2">
+                The decision layer your systems report into — read from, and written back only on
+                validated channels.
+              </p>
+            </Reveal>
+          </div>
           <Reveal delay={0.1}>
             <div className="mt-12">
               <IntegrationsMarquee />
             </div>
           </Reveal>
-        </Section>
-
-        {/* ---- 9 · Recognition — slim honest credibility strip ---- */}
-        <Section hairline id="recognition">
-          <Reveal>
-            <Recognition />
+          <Reveal delay={0.15}>
+            <div className="mt-10">
+              <Recognition />
+            </div>
           </Reveal>
         </Section>
 
-        {/* ---- 10 · Close ---- */}
+        {/* ---- 9 · Close ---- */}
         <Section hairline id="close">
           <Reveal>
             <GlassCard className="mx-auto max-w-[720px] p-10 text-center md:p-14">

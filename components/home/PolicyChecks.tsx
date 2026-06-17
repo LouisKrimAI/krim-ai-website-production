@@ -35,12 +35,13 @@ export default function PolicyChecks() {
       <div className="grid gap-5 md:grid-cols-3">
         {CHECKS.map((c, i) => (
           <Reveal key={c.name} delay={i * 0.1}>
-            <div className="glass lume h-full p-7 md:p-8">
-              <div className="flex items-baseline gap-3">
-                <h3 className="font-serif text-[1.5rem] leading-none text-ink">{c.name}</h3>
+            <div className="glass lume flex h-full flex-col p-7 md:p-8">
+              <span aria-hidden className="block h-[3px] w-12 rounded-full bg-mint/70" />
+              <div className="mt-6 flex items-baseline gap-3">
+                <h3 className="font-serif text-[1.7rem] leading-none text-ink">{c.name}</h3>
                 <span className="font-mono text-[11px] uppercase tracking-[0.16em] text-mint">{c.gloss}</span>
               </div>
-              <p className="mt-5 font-sans text-body text-ink-2">{c.body}</p>
+              <p className="mt-4 font-sans text-body text-ink-2">{c.body}</p>
             </div>
           </Reveal>
         ))}
