@@ -166,13 +166,9 @@ export default function ArchitecturePage() {
               </h1>
             </Reveal>
             <Reveal delay={0.12}>
-              <p className="mx-auto mt-7 max-w-[60ch] font-sans text-body-lg text-ink-2">
-                KrimOS does not replace your core banking, origination or servicing systems — it sits
-                above them. Your systems stay canonical;{' '}
-                <span className="text-mint">KrimOS reads from them and writes back only on
-                validated channels</span>. AI co-workers do the work inside your own perimeter, and{' '}
-                <span className="text-cyan">every action they propose is validated before it
-                fires</span>. Nothing to tear out, nothing to migrate.
+              <p className="mx-auto mt-7 max-w-[54ch] font-sans text-body-lg text-ink-2">
+                KrimOS doesn&rsquo;t replace your core systems — it sits above them, reading from each
+                and writing back <span className="text-mint">only on validated channels</span>.
               </p>
             </Reveal>
             <Reveal delay={0.2}>

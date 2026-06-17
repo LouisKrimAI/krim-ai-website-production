@@ -97,13 +97,10 @@ export default function WorldLendingModelPage() {
               </h1>
             </Reveal>
             <Reveal delay={0.12}>
-              <p className="mx-auto mt-7 max-w-[64ch] font-sans text-body-lg text-ink-2">
-                A world model is what lets an intelligence weigh the consequences of an action{' '}
-                <span className="text-ink">before it takes it</span>. The World Lending Model brings
-                that to lending — a complete, learned model of how borrowers, products, markets and
-                rules actually move — so every agent across the stack, from origination to
-                collections, reasons and plans against the same picture. Safe by construction:{' '}
-                <span className="text-mint">nothing acts until it has cleared the model</span>.
+              <p className="mx-auto mt-7 max-w-[48ch] font-sans text-body-lg text-ink-2">
+                A learned model of how lending actually behaves — so every agent, origination to
+                collections, plans against one picture.{' '}
+                <span className="text-mint">Nothing acts until it has cleared the model.</span>
               </p>
             </Reveal>
             <Reveal delay={0.2}>

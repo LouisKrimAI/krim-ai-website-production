@@ -142,12 +142,9 @@ export default function LendingPage() {
               </h1>
             </Reveal>
             <Reveal delay={0.12}>
-              <p className="mx-auto mt-7 max-w-[60ch] font-sans text-body-lg text-ink-2">
-                Both sides of the wall — every customer conversation and every back-office task,
-                application to payoff — on{' '}
-                <span className="text-ink">one system</span> that{' '}
-                <span className="text-mint">validates each action</span> before it fires and{' '}
-                <span className="text-cyan">learns the operation</span> as it runs.
+              <p className="mx-auto mt-7 max-w-[52ch] font-sans text-body-lg text-ink-2">
+                Every customer conversation and every back-office task, application to payoff — on one
+                system that <span className="text-mint">validates each action before it fires</span>.
               </p>
             </Reveal>
             <Reveal delay={0.2}>

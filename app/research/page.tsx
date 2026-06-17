@@ -86,12 +86,9 @@ export default function ResearchPage() {
               </h1>
             </Reveal>
             <Reveal delay={0.12}>
-              <p className="mx-auto mt-7 max-w-[60ch] font-sans text-body-lg text-ink-2">
-                Krim is a research company before it is a product company. Three hard questions sit
-                underneath everything we ship: how do you make a human judgment{' '}
-                <span className="text-mint">machine-checkable</span>, how does a system learn a whole
-                operation, and how do you <span className="text-ink">prove an action before it
-                acts</span>. The product is what those answers look like in production.
+              <p className="mx-auto mt-7 max-w-[50ch] font-sans text-body-lg text-ink-2">
+                A research company before it is a product company — the product is what our answers
+                look like <span className="text-ink">in production</span>.
               </p>
             </Reveal>
             <Reveal delay={0.2}>

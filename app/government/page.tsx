@@ -126,12 +126,9 @@ export default function GovernmentPage() {
               </h1>
             </Reveal>
             <Reveal delay={0.12}>
-              <p className="mx-auto mt-7 max-w-[58ch] font-sans text-body-lg text-ink-2">
-                KrimOS brings the runtime built for regulated work to the public sector — AI
-                co-workers that automate citizen-facing and back-office operations{' '}
-                <span className="text-ink">inside your own jurisdiction</span>, with a{' '}
-                <span className="text-mint">lawful basis</span> and a clear record behind everything
-                they do.
+              <p className="mx-auto mt-7 max-w-[54ch] font-sans text-body-lg text-ink-2">
+                AI co-workers for citizen-facing and back-office work — inside your own jurisdiction,
+                with a <span className="text-mint">lawful basis</span> behind every action.
               </p>
             </Reveal>
             <Reveal delay={0.2}>

@@ -177,13 +177,10 @@ export default function EpistemicAIPage() {
               </h1>
             </Reveal>
             <Reveal delay={0.12}>
-              <p className="mt-7 max-w-[64ch] font-sans text-body-lg text-ink-2">
-                <span className="text-ink">Epistemic AI is AI that can justify every action before it
-                takes it — and read its own reasoning back to you.</span> It is the category Krim
-                defines: AI whose every action is{' '}
-                <span className="text-mint">validated before it fires</span>, and whose reasoning an
-                auditor can follow end to end. Not a model that talks. A system that can answer for
-                what it did.
+              <p className="mt-7 max-w-[52ch] font-sans text-body-lg text-ink-2">
+                <span className="text-ink">AI that can justify every action before it takes it — and
+                read its own reasoning back to you.</span> Not a model that talks; a system that can
+                answer for what it did.
               </p>
             </Reveal>
             <Reveal delay={0.2}>

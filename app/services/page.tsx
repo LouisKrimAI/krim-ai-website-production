@@ -102,11 +102,9 @@ export default function ServicesPage() {
               </h1>
             </Reveal>
             <Reveal delay={0.12}>
-              <p className="mx-auto mt-7 max-w-[58ch] font-sans text-body-lg text-ink-2">
-                You do not buy KrimOS on a promise. You see it work on{' '}
-                <span className="text-ink">your own data</span>, measured against your own baseline —
-                and you go live only once the proof is in. The path runs in three stages, with a{' '}
-                <span className="text-mint">clear exit</span> at every one.
+              <p className="mx-auto mt-7 max-w-[52ch] font-sans text-body-lg text-ink-2">
+                See it work on <span className="text-ink">your own data</span>, measured against your
+                own baseline — and go live only once the proof is in.
               </p>
             </Reveal>
             <Reveal delay={0.2}>
