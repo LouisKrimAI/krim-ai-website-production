@@ -27,9 +27,9 @@ AI" (implies no human; regulators reject it) and "safe AI" (defensive; doesn't r
   (utility-based AI co-workers — Vox-Out, Vox-In, Doc, Risk, Decide, Cure, Audit, Report), and
   Kendra (the runtime). People reach the system through two interfaces — Kula (enterprise, in the
   Kupa command center) and Kira (customer advisor, in the Krimkar app).
-- Kendra is realised as seven modules: Krim-Core (orchestration), Krim-Fabric (knowledge base),
-  Krim-Govern (seven-level policy engine), Krim-Nyāya (validator), Krim-Learn (learning orchestrator),
-  Krim-Ledger (metered immutable record), Krim-Sense (telemetry).
+- Kendra is realised as eight modules: Krim-Core (orchestration), Krim-Karya (scheduler),
+  Krim-Fabric (knowledge base), Krim-Govern (seven-level policy engine), Krim-Nyāya (validator),
+  Krim-Learn (learning orchestrator), Krim-Ledger (metered immutable record), Krim-Sense (telemetry).
 
 ## Key facts
 - Promise: every action validated before it executes; reasoning an auditor can read end to end.
@@ -113,7 +113,7 @@ Sitemap: https://krim.ai/sitemap.xml
   "featureList": [
     "Pre-execution validation (Krim-Nyāya, 33 validators)",
     "Composable architecture: Kriya primitives, Karta co-workers, the Kendra runtime, and the Kula/Kira interfaces (in Kupa and Krimkar)",
-    "Kendra runtime with seven modules: Core, Fabric, Govern, Nyāya, Learn, Ledger, Sense",
+    "Kendra runtime with eight modules: Core, Karya, Fabric, Govern, Nyāya, Learn, Ledger, Sense",
     "250+ credit-native action primitives in ten categories",
     "Operational decisioning today; a safe AI underwriter is the build direction (World Lending Model)",
     "Immutable, metered audit trail (Krim-Ledger, Krim Work Units)",
@@ -141,7 +141,7 @@ Sitemap: https://krim.ai/sitemap.xml
     { "@type": "Question", "name": "What is Krim-Nyāya?",
       "acceptedAnswer": { "@type": "Answer", "text": "Krim-Nyāya is the KrimOS validation runtime: 33 validators derived from Mithila's Navya-Nyāya formal logic, in three families — Pramāṇa (is the premise verifiable?), Doṣa (does it match a known failure mode?), and Yogyatā (is it fit for action — time, place, agent, recipient, instrument, manner, purpose?)." } },
     { "@type": "Question", "name": "What are the parts of KrimOS?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Kriya (250+ validated, credit-native action primitives), Karta (utility-based AI co-workers composed from them), and Kendra (the runtime, built from seven modules, where validation and learning live). People reach the system through two interfaces: Kula, the enterprise natural-language interface in the Kupa command center, and Kira, the customer advisor in the Krimkar app." } },
+      "acceptedAnswer": { "@type": "Answer", "text": "Kriya (250+ validated, credit-native action primitives), Karta (utility-based AI co-workers composed from them), and Kendra (the runtime, built from eight modules, where validation and learning live). People reach the system through two interfaces: Kula, the enterprise natural-language interface in the Kupa command center, and Kira, the customer advisor in the Krimkar app." } },
     { "@type": "Question", "name": "Does KrimOS make credit decisions or underwrite loans?",
       "acceptedAnswer": { "@type": "Answer", "text": "Today, KrimOS performs operational decisioning — segmentation, next-best-action and conflict resolution — and the credit decision stays with the institution. A safe, validated AI underwriter is the direction Krim is building through the World Lending Model: it clears the same pre-execution validation as every other action." } },
     { "@type": "Question", "name": "How is KrimOS priced?",
@@ -172,8 +172,9 @@ Sitemap: https://krim.ai/sitemap.xml
 - **Krimkar** — the KrimOS consumer app, home of the Kira advisor.
 - **Kira** — the customer advisor: one relationship across the lifecycle, every channel, in the Krimkar app.
 
-**Kendra's seven modules**
+**Kendra's eight modules**
 - **Krim-Core** — the orchestration engine that routes requests and runs durable workflows.
+- **Krim-Karya** — the scheduler: timed and recurring tasks, deferred actions, retries, and contact-window / deadline timing.
 - **Krim-Fabric** — the knowledge base of per-jurisdiction rules and the anonymised pattern library.
 - **Krim-Govern** — the seven-level policy engine enforcing law and guardrails per tenant.
 - **Krim-Nyāya** — the pre-execution validator: 33 validators in three Navya-Nyāya families.

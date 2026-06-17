@@ -15,12 +15,12 @@ import { Section, Eyebrow, GlassCard } from '@/components/ui'
 export const metadata: Metadata = {
   title: 'Kendra — the runtime',
   description:
-    'Kendra is the runtime of KrimOS — the brain the co-workers think in. Krim-Nyāya validates every action before it executes; Krim-Learn turns every recorded outcome into intelligence. Seven engineering modules make the guarantees hold.',
+    'Kendra is the runtime of KrimOS — the brain the co-workers think in. Krim-Nyāya validates every action before it executes; Krim-Learn turns every recorded outcome into intelligence. Eight engineering modules make the guarantees hold.',
   alternates: { canonical: 'https://krim.ai/platform/kendra' },
   openGraph: {
     title: 'Kendra — the runtime',
     description:
-      'Kendra is the runtime of KrimOS — the brain the co-workers think in. Krim-Nyāya validates every action before it executes; Krim-Learn turns every recorded outcome into intelligence. Seven engineering modules make the guarantees hold.',
+      'Kendra is the runtime of KrimOS — the brain the co-workers think in. Krim-Nyāya validates every action before it executes; Krim-Learn turns every recorded outcome into intelligence. Eight engineering modules make the guarantees hold.',
     url: 'https://krim.ai/platform/kendra',
   },
 }
@@ -35,9 +35,10 @@ const breadcrumbLd = {
   ],
 }
 
-// the seven engineering modules of the runtime (docs/krim-content.md · the seven runtime modules)
+// the eight engineering modules of the runtime (docs/krim-content.md · the runtime modules)
 const MODULES = [
   { name: 'Krim-Core', role: 'orchestration', body: 'Routes each task to the right co-worker and runs the workflow — sequential, parallel or hand-off — with retries and graceful fallbacks.' },
+  { name: 'Krim-Karya', role: 'scheduling', body: 'Owns when work runs — timed and recurring tasks, deferred actions, retry and back-off timing, and time-window rules like contact hours and regulatory deadlines, so every action fires only at a moment it is allowed to.' },
   { name: 'Krim-Fabric', role: 'knowledge', body: 'The regulatory rule set for each jurisdiction, each institution’s own policies, and the shared, anonymised pattern library.' },
   { name: 'Krim-Govern', role: 'policy', body: 'A seven-level hierarchy of law, regulator guidance and house rules, enforced per tenant and updated as the rules change.' },
   { name: 'Krim-Nyāya', role: 'validation', body: 'The pre-execution gate — 33 validators that decide whether a proposed action is allowed to happen at all.' },
@@ -136,12 +137,12 @@ export default function KendraPage() {
           </Reveal>
         </Section>
 
-        {/* ---- The seven modules ---- */}
+        {/* ---- The eight modules ---- */}
         <Section hairline>
           <Reveal>
             <Eyebrow tone="dim">Inside the runtime</Eyebrow>
             <h2 className="mt-4 max-w-[24ch] font-serif text-display-1 text-ink">
-              Seven modules make the guarantees hold.
+              Eight modules make the guarantees hold.
             </h2>
             <p className="mt-6 max-w-[60ch] font-sans text-body-lg text-ink-2">
               Nyāya and Learn get the attention; these are the engineering that makes them possible.

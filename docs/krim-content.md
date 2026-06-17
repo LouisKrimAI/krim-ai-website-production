@@ -7,7 +7,7 @@ Every fact, claim and on-brand line for **krim.ai**, reconciled from two sources
 ## Changes the Product Memo introduced (read first)
 - `[DECISION]` **Kriya primitives: 250+ (ten categories)** — the deck said "20+." Set to **250+** here as the more current/authoritative figure. Confirm which number is public-facing.
 - **Geography is US · UK · India**, not India-only. Compliance and language framing broadened accordingly.
-- **Kendra is realised as seven modules** (Core, Fabric, Govern, Nyāya, Learn, Ledger, Sense) — the deck only named Ledger/Learn.
+- **Kendra is realised as eight modules** (Core, Karya, Fabric, Govern, Nyāya, Learn, Ledger, Sense) — the deck only named Ledger/Learn. Krim-Karya is the scheduler (owns *when* work runs).
 - **Karta is a named, utility-based catalog of eight** (was "~10 utility workers").
 - **New commercial concept: Krim Work Units (KWUs)** — usage-based metering and billing.
 - `[RESOLVED]` **Primary descriptor** — KRIM-BRIEF sets it: KrimOS is **"the operating system for regulated operations"** (domain-neutral, lending first). The older "agent-native operating system for end-to-end lending operations" is retired.
@@ -32,7 +32,7 @@ Every fact, claim and on-brand line for **krim.ai**, reconciled from two sources
 
 **Reusable on-brand lines** (verbatim — lead sections with these): "The AI your regulator can read." · "Every action validated before it executes." · "Compliance as physics." · "No rip. No replace." · "Safety is the architecture, not an add-on." · "Pre-execution, not post-audit." · "One stack. Both sides of the wall." · "Sovereign by construction. Auditable by default." · "Validation is the runtime, not a wrapper bolted on." · "The runtime is the product." · "Sovereignty is a commitment, not a deployment option." · "Intelligence by policy." · "The operating system for the operations that cannot afford to be wrong."
 
-**Two vocabularies, one system:** the Sanskrit **layer** names (Kriya, Karta, Kendra, Krimkar, Kupa) describe how the platform thinks; the seven **engineering modules** inside Kendra (Core, Fabric, Govern, Nyāya, Learn, Ledger, Sense) describe how the runtime runs.
+**Two vocabularies, one system:** the Sanskrit **layer** names (Kriya, Karta, Kendra, Krimkar, Kupa) describe how the platform thinks; the eight **engineering modules** inside Kendra (Core, Karya, Fabric, Govern, Nyāya, Learn, Ledger, Sense) describe how the runtime runs.
 
 **Voice:** punchy, declarative, quietly literary. Short sentences. Tasteful em-dashes. Lead with the quotable claim, then elaborate. Avoid AI-slop ("revolutionary," "cutting-edge," "unlock," "leverage," "empower," "game-changing") and timid hedging.
 
@@ -113,16 +113,17 @@ Body: Capability composes from the bottom up — primitives build into co-worker
 | **Kupa** *(command center)* | **Kula** — the enterprise natural-language interface: each user meets a digital twin tailored to their role, in the glass cockpit where humans supervise, configure and audit. |
 | **Karta** *(AI co-workers)* | A utility-based catalog — voice, document, risk, decision, cure, audit, report — composed from primitives, not coded. |
 | **Kriya** *(action primitives)* | **250+** validated, credit-native primitives in ten categories — the metered vocabulary every worker is built from. |
-| **Kendra** *(the runtime)* | The intelligence substrate, realised as seven modules: Core, Fabric, Govern, Nyāya, Learn, Ledger, Sense. |
+| **Kendra** *(the runtime)* | The intelligence substrate, realised as eight modules: Core, Karya, Fabric, Govern, Nyāya, Learn, Ledger, Sense. |
 
 ---
 
-## Inside Kendra — the seven runtime modules
-Eyebrow: INSIDE THE RUNTIME · Headline: **Seven modules make the guarantees hold.**
+## Inside Kendra — the eight runtime modules
+Eyebrow: INSIDE THE RUNTIME · Headline: **Eight modules make the guarantees hold.**
 
 | Module | Role |
 |---|---|
 | **Krim-Core** | Orchestration engine — routes each request to the right Karta; runs sequential, parallel and hierarchical workflows; manages context, retries, fallbacks and human-in-the-loop; emits events. |
+| **Krim-Karya** | Scheduler — owns *when* work runs: timed and recurring tasks, deferred actions, retry and back-off timing, and time-window rules such as contact hours and regulatory deadlines, so every action fires only when permitted. |
 | **Krim-Fabric** | Knowledge base — the per-jurisdiction regulatory calendar and rule set, the anonymised cross-tenant pattern library, and each tenant's own policies and product rules. |
 | **Krim-Govern** | Policy engine — a seven-level policy hierarchy encoding law, regulator guidance, internal rules and operational guardrails, enforced per tenant. |
 | **Krim-Nyāya** | Validator — the staged pre-execution pipeline of 33 validators across three Navya-Nyāya families that gates every action before it fires. |

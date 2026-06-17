@@ -77,6 +77,11 @@ const MODULES = [
     body: 'Routes each request to the right co-worker; runs sequential, parallel and hierarchical workflows; manages context, retries, fallbacks and human-in-the-loop; emits events.',
   },
   {
+    name: 'Krim-Karya',
+    role: 'Scheduler',
+    body: 'Owns when work runs — timed and recurring tasks, deferred actions, retry and back-off timing, and time-window rules such as contact hours and regulatory deadlines, so every action fires only when it is permitted.',
+  },
+  {
     name: 'Krim-Fabric',
     role: 'Knowledge base',
     body: 'The per-jurisdiction regulatory calendar and rule set, the anonymised cross-tenant pattern library, and each tenant’s own policies and product rules.',
@@ -186,7 +191,7 @@ export default function ArchitecturePage() {
           <Reveal>
             <Eyebrow>Inside the runtime</Eyebrow>
             <h2 className="mt-4 max-w-[24ch] font-serif text-display-1 text-ink">
-              Seven modules make the guarantees hold.
+              Eight modules make the guarantees hold.
             </h2>
             <p className="mt-6 max-w-[62ch] font-sans text-body-lg text-ink-2">
               The runtime layer is named <span className="text-ink">Kendra</span>. It is realised as
