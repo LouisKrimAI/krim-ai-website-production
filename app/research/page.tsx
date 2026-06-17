@@ -25,7 +25,12 @@ export const metadata: Metadata = {
   description:
     'Research at Krim is the work under the product: making human judgment machine-checkable (the formal logic behind the 33 validators), learning a model of how a whole lending operation behaves, and treating pre-execution validation as a discipline — proving an action before it acts, not auditing it after.',
   alternates: { canonical: 'https://krim.ai/research' },
-  openGraph: { title: 'Research — the work under the product', url: 'https://krim.ai/research' },
+  openGraph: {
+    title: 'Research — the work under the product',
+    description:
+      'Research at Krim is the work under the product: making human judgment machine-checkable (the formal logic behind the 33 validators), learning a model of how a whole lending operation behaves, and treating pre-execution validation as a discipline — proving an action before it acts, not auditing it after.',
+    url: 'https://krim.ai/research',
+  },
 }
 
 const DEMO_HREF = '/contact'

@@ -17,7 +17,12 @@ export const metadata: Metadata = {
   description:
     'Kendra is the runtime of KrimOS — the brain the co-workers think in. Krim-Nyāya validates every action before it executes; Krim-Learn turns every recorded outcome into intelligence. Seven engineering modules make the guarantees hold.',
   alternates: { canonical: 'https://krim.ai/platform/kendra' },
-  openGraph: { title: 'Kendra — the runtime', url: 'https://krim.ai/platform/kendra' },
+  openGraph: {
+    title: 'Kendra — the runtime',
+    description:
+      'Kendra is the runtime of KrimOS — the brain the co-workers think in. Krim-Nyāya validates every action before it executes; Krim-Learn turns every recorded outcome into intelligence. Seven engineering modules make the guarantees hold.',
+    url: 'https://krim.ai/platform/kendra',
+  },
 }
 
 const breadcrumbLd = {

@@ -20,7 +20,12 @@ export const metadata: Metadata = {
   description:
     'Kula is how your teams reach KrimOS in plain language: each user meets a digital twin tuned to their role. Kula is the way in; the thinking happens in the runtime behind it — and it never bypasses human sign-off.',
   alternates: { canonical: 'https://krim.ai/platform/kula' },
-  openGraph: { title: 'Kula — for your teams', url: 'https://krim.ai/platform/kula' },
+  openGraph: {
+    title: 'Kula — for your teams',
+    description:
+      'Kula is how your teams reach KrimOS in plain language: each user meets a digital twin tuned to their role. Kula is the way in; the thinking happens in the runtime behind it — and it never bypasses human sign-off.',
+    url: 'https://krim.ai/platform/kula',
+  },
 }
 
 const breadcrumbLd = {

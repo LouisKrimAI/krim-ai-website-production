@@ -21,7 +21,12 @@ export const metadata: Metadata = {
   description:
     'From technical deep-dive to production go-live in a quarter: a scoped pilot, proof of value on ring-fenced data measured against your own baseline, then a contracted go-live — with a clear exit at every stage.',
   alternates: { canonical: 'https://krim.ai/services' },
-  openGraph: { title: 'Services — pilot to go-live', url: 'https://krim.ai/services' },
+  openGraph: {
+    title: 'Services — pilot to go-live',
+    description:
+      'From technical deep-dive to production go-live in a quarter: a scoped pilot, proof of value on ring-fenced data measured against your own baseline, then a contracted go-live — with a clear exit at every stage.',
+    url: 'https://krim.ai/services',
+  },
 }
 
 const DEMO_HREF = '/contact'

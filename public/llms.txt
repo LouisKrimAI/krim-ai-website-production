@@ -1,0 +1,38 @@
+# Krim
+
+> KrimOS is the operating system for regulated operations: AI co-workers whose every action is validated before it executes (Krim-Nyāya, pre-execution validation), and that learn from every recorded outcome (Krim-Learn) — all inside the institution's own perimeter. Krim is building toward the full lending stack, including a safe, validated AI underwriter, through the World Lending Model. Tagline: "The AI your regulator can read."
+
+## Platform (KrimOS)
+- [KrimOS](https://krim.ai/platform): one operating system for regulated operations — the whole stack, core to interface.
+- [Kendra](https://krim.ai/platform/kendra): the runtime — validates every action before it fires and learns from every outcome.
+- [Kriya](https://krim.ai/platform/kriya): the vocabulary — 250+ validated, credit-native action primitives.
+- [Karta](https://krim.ai/platform/karta): the AI co-workers, composed from validated primitives.
+- [Kupa](https://krim.ai/platform/kupa): the command center where teams supervise, configure and audit live work.
+- [Kula](https://krim.ai/platform/kula): the natural-language interface for your teams.
+- [Kira & Krimkar](https://krim.ai/platform/kira): the AI advisor your customers meet, in the Krimkar app.
+
+## Research
+- [Epistemic AI](https://krim.ai/epistemic-ai): the category Krim defines — AI whose every action is validated before it fires and whose reasoning an auditor can read end to end. Built on Navya-Nyāya formal logic.
+- [World Lending Model](https://krim.ai/research/world-lending-model): a complete, safe world model of lending with an agent harness — borrowers, products, markets, rules and the whole lifecycle — that agents reason and plan against across the full stack, from origination to a validated AI underwriter to collections.
+- [Research](https://krim.ai/research): the work under the product — making judgment machine-checkable, learning the operation, and pre-execution validation.
+
+## Who it's for
+- [Lending](https://krim.ai/lending): the first and primary domain.
+- [Government](https://krim.ai/government): capability for public-sector operations.
+- [Large Enterprise](https://krim.ai/enterprise) and [MSME](https://krim.ai/msme).
+
+## Writing
+- [The automation gap](https://krim.ai/blog/the-automation-gap): why the most consequential work still runs by hand.
+- [The cost of being wrong](https://krim.ai/blog/the-cost-of-being-wrong): what a non-compliant action costs a lender.
+- [The credit gap is an operations problem](https://krim.ai/blog/the-credit-gap-is-an-operations-problem).
+- [Audit after the fact is a confession](https://krim.ai/blog/audit-after-the-fact-is-a-confession): the case for pre-execution validation.
+- [Sovereignty is not optional](https://krim.ai/blog/sovereignty-is-not-optional): why regulated AI must run inside the perimeter.
+
+## More
+- [Architecture](https://krim.ai/architecture): how KrimOS fits the stack you already run.
+- [Trust](https://krim.ai/trust): the safety, sovereignty and audit posture.
+- [Company](https://krim.ai/company) · [Contact](https://krim.ai/contact)
+
+## Notes
+- Krim does not publish customer names or deployment metrics. Government framing is capability, not a claimed track record.
+- The World Lending Model and AI underwriter are presented as Krim's build direction and an active area of research.

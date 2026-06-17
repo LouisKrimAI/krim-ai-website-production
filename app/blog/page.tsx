@@ -22,7 +22,12 @@ export const metadata: Metadata = {
   description:
     'Writing from Krim — the thinking behind validated, sovereign AI for regulated work: why pilots stall at the compliance ceiling, what a non-compliant action really costs, and why proof has to come before the action, not after.',
   alternates: { canonical: 'https://krim.ai/blog' },
-  openGraph: { title: 'Writing — Krim', url: 'https://krim.ai/blog' },
+  openGraph: {
+    title: 'Writing — Krim',
+    description:
+      'Writing from Krim — the thinking behind validated, sovereign AI for regulated work: why pilots stall at the compliance ceiling, what a non-compliant action really costs, and why proof has to come before the action, not after.',
+    url: 'https://krim.ai/blog',
+  },
 }
 
 const DEMO_HREF = '/contact'

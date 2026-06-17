@@ -19,7 +19,12 @@ export const metadata: Metadata = {
   description:
     'Krim is a technology research, product and services company operating across the US, UK and India. We made proof the runtime and keep the system inside your perimeter — so machines can finally act in regulated work, and the system compounds.',
   alternates: { canonical: 'https://krim.ai/company' },
-  openGraph: { title: 'Company — Krim', url: 'https://krim.ai/company' },
+  openGraph: {
+    title: 'Company — Krim',
+    description:
+      'Krim is a technology research, product and services company operating across the US, UK and India. We made proof the runtime and keep the system inside your perimeter — so machines can finally act in regulated work, and the system compounds.',
+    url: 'https://krim.ai/company',
+  },
 }
 
 const DEMO_HREF = '/contact'

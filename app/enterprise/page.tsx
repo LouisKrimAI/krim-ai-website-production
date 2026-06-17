@@ -29,6 +29,8 @@ export const metadata: Metadata = {
   alternates: { canonical: 'https://krim.ai/enterprise' },
   openGraph: {
     title: 'Large Enterprise — KrimOS',
+    description:
+      'One operating system over your whole estate: KrimOS automates regulated customer and back-office work at scale — every action validated before it executes, running inside your own perimeter, across every region and system at once.',
     url: 'https://krim.ai/enterprise',
   },
 }

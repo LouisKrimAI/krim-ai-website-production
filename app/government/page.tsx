@@ -21,7 +21,12 @@ export const metadata: Metadata = {
   description:
     'KrimOS fits public-sector work: AI co-workers that automate citizen-facing and back-office operations inside your own jurisdiction — every action resting on a lawful basis, every action kept on an immutable record.',
   alternates: { canonical: 'https://krim.ai/government' },
-  openGraph: { title: 'Government — Krim', url: 'https://krim.ai/government' },
+  openGraph: {
+    title: 'Government — Krim',
+    description:
+      'KrimOS fits public-sector work: AI co-workers that automate citizen-facing and back-office operations inside your own jurisdiction — every action resting on a lawful basis, every action kept on an immutable record.',
+    url: 'https://krim.ai/government',
+  },
 }
 
 const breadcrumbLd = {

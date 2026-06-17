@@ -22,6 +22,13 @@ import { Section, Eyebrow, GlassCard, CTA } from '@/components/ui'
 
 export const metadata: Metadata = {
   alternates: { canonical: 'https://krim.ai' },
+  openGraph: {
+    description:
+      'KrimOS is the operating system for regulated operations: AI co-workers whose every action is validated before it executes — and that learn from everything they do, inside your own walls.',
+    url: 'https://krim.ai',
+    siteName: 'Krim',
+    type: 'website',
+  },
 }
 
 const orgLd = {
@@ -29,8 +36,9 @@ const orgLd = {
   '@type': 'Organization',
   name: 'Krim',
   url: 'https://krim.ai',
+  logo: 'https://krim.ai/opengraph-image',
   description:
-    'Krim is a technology research, product and services company operating across the US, UK and India. Its product, KrimOS, is the agent-native operating system for regulated operations, where every action is validated before it executes.',
+    'Krim is a technology research, product and services company operating across the US, UK and India. Its product, KrimOS, is the operating system for regulated operations, where every action is validated before it executes.',
   areaServed: ['US', 'GB', 'IN'],
   email: 'sales@krim.ai',
   contactPoint: {

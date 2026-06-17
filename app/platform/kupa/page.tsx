@@ -15,7 +15,12 @@ export const metadata: Metadata = {
   description:
     'Kupa is the command center of KrimOS: the glass cockpit where your teams supervise live work, set policy, monitor every co-worker and audit every action — in one place.',
   alternates: { canonical: 'https://krim.ai/platform/kupa' },
-  openGraph: { title: 'Kupa — the command center', url: 'https://krim.ai/platform/kupa' },
+  openGraph: {
+    title: 'Kupa — the command center',
+    description:
+      'Kupa is the command center of KrimOS: the glass cockpit where your teams supervise live work, set policy, monitor every co-worker and audit every action — in one place.',
+    url: 'https://krim.ai/platform/kupa',
+  },
 }
 
 const breadcrumbLd = {

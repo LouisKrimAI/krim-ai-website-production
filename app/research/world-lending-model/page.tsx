@@ -31,7 +31,12 @@ export const metadata: Metadata = {
   description:
     'The World Lending Model is Krim’s research direction: a complete, safe world model of lending — borrowers, products, markets, rules and the whole lifecycle — that AI agents reason and plan against across the entire stack, from origination to a validated AI underwriter to collections. Every action is validated against the model before it fires, and the model sharpens from every outcome it records, inside the institution’s own walls.',
   alternates: { canonical: 'https://krim.ai/research/world-lending-model' },
-  openGraph: { title: 'World Lending Model — Krim Research', url: 'https://krim.ai/research/world-lending-model' },
+  openGraph: {
+    title: 'World Lending Model — Krim Research',
+    description:
+      'The World Lending Model is Krim’s research direction: a complete, safe world model of lending — borrowers, products, markets, rules and the whole lifecycle — that AI agents reason and plan against across the entire stack, from origination to a validated AI underwriter to collections. Every action is validated against the model before it fires, and the model sharpens from every outcome it records, inside the institution’s own walls.',
+    url: 'https://krim.ai/research/world-lending-model',
+  },
 }
 
 const breadcrumbLd = {

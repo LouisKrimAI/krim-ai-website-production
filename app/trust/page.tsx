@@ -22,7 +22,12 @@ export const metadata: Metadata = {
   description:
     'KrimOS is sovereign by construction: the full stack runs inside your perimeter — on-prem by default — with end-to-end encryption, granular RBAC, customer-held keys and an immutable, cryptographically sealed audit trail. US, UK and India frameworks are encoded in the runtime and validated before every action.',
   alternates: { canonical: 'https://krim.ai/trust' },
-  openGraph: { title: 'Trust — sovereignty, security & deployment', url: 'https://krim.ai/trust' },
+  openGraph: {
+    title: 'Trust — sovereignty, security & deployment',
+    description:
+      'KrimOS is sovereign by construction: the full stack runs inside your perimeter — on-prem by default — with end-to-end encryption, granular RBAC, customer-held keys and an immutable, cryptographically sealed audit trail. US, UK and India frameworks are encoded in the runtime and validated before every action.',
+    url: 'https://krim.ai/trust',
+  },
 }
 
 const DEMO_HREF = '/contact'

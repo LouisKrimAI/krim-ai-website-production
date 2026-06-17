@@ -22,7 +22,12 @@ export const metadata: Metadata = {
   description:
     'KrimOS is one operating system for regulated operations: the runtime that validates and learns (Kendra), a vocabulary of validated actions (Kriya), the co-workers built from it (Karta), the command center your teams run them from (Kupa), and two ways in — Kula for your teams, Kira for your customers.',
   alternates: { canonical: 'https://krim.ai/platform' },
-  openGraph: { title: 'KrimOS — the platform', url: 'https://krim.ai/platform' },
+  openGraph: {
+    title: 'KrimOS — the platform',
+    description:
+      'KrimOS is one operating system for regulated operations: the runtime that validates and learns (Kendra), a vocabulary of validated actions (Kriya), the co-workers built from it (Karta), the command center your teams run them from (Kupa), and two ways in — Kula for your teams, Kira for your customers.',
+    url: 'https://krim.ai/platform',
+  },
 }
 
 const DEMO_HREF = '/contact'

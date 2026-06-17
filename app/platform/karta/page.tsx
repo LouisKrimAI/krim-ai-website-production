@@ -16,7 +16,12 @@ export const metadata: Metadata = {
   description:
     'Karta are the AI co-workers of KrimOS: composed from validated Kriya primitives, configured not coded, and run under pre-execution validation with humans in the loop. Operational decisioning today, as Krim builds toward the full lending stack — a safe AI underwriter included, via the World Lending Model.',
   alternates: { canonical: 'https://krim.ai/platform/karta' },
-  openGraph: { title: 'Karta — the co-workers', url: 'https://krim.ai/platform/karta' },
+  openGraph: {
+    title: 'Karta — the co-workers',
+    description:
+      'Karta are the AI co-workers of KrimOS: composed from validated Kriya primitives, configured not coded, and run under pre-execution validation with humans in the loop. Operational decisioning today, as Krim builds toward the full lending stack — a safe AI underwriter included, via the World Lending Model.',
+    url: 'https://krim.ai/platform/karta',
+  },
 }
 
 const breadcrumbLd = {

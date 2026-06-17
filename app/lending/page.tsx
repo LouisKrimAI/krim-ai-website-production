@@ -29,7 +29,12 @@ export const metadata: Metadata = {
   description:
     'KrimOS runs the whole loan lifecycle — every customer conversation and every back-office task on one system that validates each action before it executes, and learns the operation as it runs. Built against RBI, FCA and US lending law by construction.',
   alternates: { canonical: 'https://krim.ai/lending' },
-  openGraph: { title: 'Lending — Krim', url: 'https://krim.ai/lending' },
+  openGraph: {
+    title: 'Lending — Krim',
+    description:
+      'KrimOS runs the whole loan lifecycle — every customer conversation and every back-office task on one system that validates each action before it executes, and learns the operation as it runs. Built against RBI, FCA and US lending law by construction.',
+    url: 'https://krim.ai/lending',
+  },
 }
 
 const breadcrumbLd = {

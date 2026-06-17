@@ -19,7 +19,12 @@ export const metadata: Metadata = {
   description:
     'How KrimOS is built: the decision layer your existing systems report into. Seven Kendra runtime modules (Core, Fabric, Govern, Nyāya, Learn, Ledger, Sense), a shared substrate of memory tiers, durable orchestration and a 15-entity domain model, a 40+ connector integration fabric, and one architecture across three sovereign geographies.',
   alternates: { canonical: 'https://krim.ai/architecture' },
-  openGraph: { title: 'Architecture — KrimOS', url: 'https://krim.ai/architecture' },
+  openGraph: {
+    title: 'Architecture — KrimOS',
+    description:
+      'How KrimOS is built: the decision layer your existing systems report into. Seven Kendra runtime modules (Core, Fabric, Govern, Nyāya, Learn, Ledger, Sense), a shared substrate of memory tiers, durable orchestration and a 15-entity domain model, a 40+ connector integration fabric, and one architecture across three sovereign geographies.',
+    url: 'https://krim.ai/architecture',
+  },
 }
 
 const DEMO_HREF = '/contact'

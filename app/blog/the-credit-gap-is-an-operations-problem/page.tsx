@@ -47,6 +47,7 @@ const articleLd = {
   headline: TITLE,
   description: DEK,
   datePublished: DATE_ISO,
+  dateModified: DATE_ISO,
   author: { '@type': 'Organization', name: 'Krim' },
   publisher: { '@type': 'Organization', name: 'Krim' },
   mainEntityOfPage: `https://krim.ai/blog/${SLUG}`,

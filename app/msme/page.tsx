@@ -25,7 +25,12 @@ export const metadata: Metadata = {
   description:
     'Regulation-grade AI workers, now for everyday operations. Medium-sized enterprises automate customer service and back-office work with automation they can actually trust — fully managed, affordable and fast to deploy.',
   alternates: { canonical: 'https://krim.ai/msme' },
-  openGraph: { title: 'MSME — Krim', url: 'https://krim.ai/msme' },
+  openGraph: {
+    title: 'MSME — Krim',
+    description:
+      'Regulation-grade AI workers, now for everyday operations. Medium-sized enterprises automate customer service and back-office work with automation they can actually trust — fully managed, affordable and fast to deploy.',
+    url: 'https://krim.ai/msme',
+  },
 }
 
 const breadcrumbLd = {

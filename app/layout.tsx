@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { Newsreader, Inter, IBM_Plex_Mono, Montserrat } from 'next/font/google'
 import './globals.css'
+import Analytics from '@/components/Analytics'
 
 const display = Newsreader({
   subsets: ['latin'],
@@ -45,12 +46,21 @@ export const metadata: Metadata = {
     url: 'https://krim.ai',
   },
   twitter: { card: 'summary_large_image', site: '@TheKrimAI' },
+  verification: {
+    google: process.env.GOOGLE_SITE_VERIFICATION,
+    other: process.env.BING_SITE_VERIFICATION
+      ? { 'msvalidate.01': process.env.BING_SITE_VERIFICATION }
+      : undefined,
+  },
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${display.variable} ${body.variable} ${mono.variable} ${logo.variable}`}>
-      <body>{children}</body>
+      <body>
+        {children}
+        <Analytics />
+      </body>
     </html>
   )
 }
