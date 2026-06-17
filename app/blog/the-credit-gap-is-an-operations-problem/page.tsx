@@ -2,7 +2,9 @@
  * /blog/the-credit-gap-is-an-operations-problem — article. STANDALONE shell.
  * Category: Markets. Every statistic traces to a VERIFIED FACT (see Sources).
  * Author is the organization "Krim" — no individual byline.
- * NOTE: Krim does NOT underwrite. Frame is operations around lending, not credit decisions.
+ * NOTE: thesis = the operations-cost lever on inclusion. It now also points to Krim's
+ * direction — the full stack incl. a safe AI underwriter (the World Lending Model).
+ * Confident, no line-drawing disclaimers; never fabricate live deployments/metrics.
  */
 
 import type { Metadata } from 'next'
@@ -142,14 +144,14 @@ export default function Page() {
                 conversation, and accounts that never penciled out start to.
               </p>
               <p className="mt-5 font-sans text-body text-ink-2">
-                To be clear about the line: KrimOS does not underwrite, approve, deny or price loans —
-                those are the lender’s credit decisions. KrimOS runs the{' '}
-                <span className="text-ink">operations around</span> the loan, with every action{' '}
-                <span className="text-mint">validated before it acts</span>. When compliant operation
-                stops being the expensive option, the math on the underserved changes — not by taking
-                on risk the institution wouldn’t, but by making the safe way the affordable way. The
-                credit gap was never only about who deserves a loan. It was about who could be{' '}
-                <span className="text-ink">reached</span> without breaking the rules or the budget.
+                That is the leverage: when compliant operation stops being the expensive option,
+                accounts that never penciled out start to — not by taking on risk the institution
+                wouldn’t, but by <span className="text-mint">making the safe way the affordable
+                way</span>. It is the same reason we are building toward the whole stack — origination
+                and a safe AI underwriter included — so the system that makes operations cheap can also
+                widen who is reachable in the first place. The credit gap was never only about who
+                deserves a loan. It was about who could be <span className="text-ink">reached</span>{' '}
+                without breaking the rules or the budget.
               </p>
             </Reveal>
 
