@@ -29,41 +29,27 @@ type Row = {
 
 const BASE = '/brand/integrations'
 
+// One calm, slow drift — not three competing rows. Restraint over spectacle.
 const ROWS: Row[] = [
   {
-    label: 'Systems of record',
+    label: '40+ connectors',
     dir: 'l',
-    duration: 48,
+    duration: 66,
     logos: [
       { src: `${BASE}/temenos.png`, alt: 'Temenos' },
       { src: `${BASE}/oracle.png`, alt: 'Oracle' },
       { src: `${BASE}/fis.png`, alt: 'FIS' },
       { src: `${BASE}/fiserv.png`, alt: 'Fiserv' },
       { src: `${BASE}/jackhenry.png`, alt: 'Jack Henry' },
-    ],
-  },
-  {
-    label: 'Cloud & data',
-    dir: 'r',
-    duration: 54,
-    logos: [
       { src: `${BASE}/aws.png`, alt: 'AWS' },
       { src: `${BASE}/azure.png`, alt: 'Microsoft Azure' },
-      { src: `${BASE}/microsoft.png`, alt: 'Microsoft' },
       { src: `${BASE}/snowflake.png`, alt: 'Snowflake' },
       { src: `${BASE}/databricks.png`, alt: 'Databricks' },
-    ],
-  },
-  {
-    label: 'Channels & engagement',
-    dir: 'l',
-    duration: 50,
-    logos: [
       { src: `${BASE}/salesforce.png`, alt: 'Salesforce' },
       { src: `${BASE}/hubspot.png`, alt: 'HubSpot' },
-      { src: `${BASE}/zoom.png`, alt: 'Zoom' },
       { src: `${BASE}/slack.png`, alt: 'Slack' },
       { src: `${BASE}/teams.png`, alt: 'Microsoft Teams' },
+      { src: `${BASE}/zoom.png`, alt: 'Zoom' },
     ],
   },
 ]
