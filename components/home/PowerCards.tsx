@@ -21,8 +21,8 @@ export default function PowerCards({ powers }: { powers: readonly Power[] }) {
         <motion.div
           key={p.name}
           className="glass lume h-full p-8 md:p-9"
-          initial={reduce ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={reduce ? { y: 0 } : { y: 16 }}
+          whileInView={{ y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
           transition={reduce ? { duration: 0 } : { duration: 0.7, ease: OUT_SOFT, delay: i * 0.12 }}
         >

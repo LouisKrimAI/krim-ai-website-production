@@ -166,8 +166,8 @@ function LayerRow({
 
   return (
     <motion.div
-      initial={reduce ? false : { opacity: 0, y: 12 }}
-      whileInView={{ opacity: 1, y: 0 }}
+      initial={reduce ? false : { y: 12 }}
+      whileInView={{ y: 0 }}
       viewport={{ once: true, amount: 0.4 }}
       transition={{ duration: 0.6, ease: EASE, delay: reduce ? 0 : index * 0.08 }}
     >

@@ -1,10 +1,11 @@
 'use client'
 
 /**
- * Reveal — the site's one scroll-entrance: a deliberate "settle into place" —
- * fade + 20px rise + a 1% scale-up on --ease-out-soft, once, when ~18% visible.
- * GPU-only (transform/opacity). Reduced motion: instant. Pair with a per-item
- * `delay` (e.g. i * 0.08) so cards in a grid arrive one after another.
+ * Reveal — the site's one scroll-entrance: a gentle 16px rise into place on
+ * --ease-out-soft, once, when ~18% visible. NO opacity fade — glass cards hold
+ * their transparency as they enter (no "solidifying" on scroll-in), per the
+ * fixed-opacity direction. GPU-only (transform). Reduced motion: instant. Pair
+ * with a per-item `delay` (e.g. i * 0.08) so cards arrive one after another.
  */
 
 import { motion, useReducedMotion } from 'framer-motion'
@@ -23,10 +24,10 @@ export default function Reveal({
   const reduce = useReducedMotion()
   return (
     <motion.div
-      initial={reduce ? false : { opacity: 0, y: 20, scale: 0.99 }}
-      whileInView={{ opacity: 1, y: 0, scale: 1 }}
+      initial={reduce ? false : { y: 16 }}
+      whileInView={{ y: 0 }}
       viewport={{ once: true, amount: 0.18 }}
-      transition={{ duration: 0.78, ease: EASE, delay }}
+      transition={{ duration: 0.7, ease: EASE, delay }}
       className={className}
     >
       {children}
