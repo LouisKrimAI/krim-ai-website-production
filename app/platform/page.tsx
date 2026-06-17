@@ -136,34 +136,6 @@ export default function PlatformPage() {
           </Reveal>
         </Section>
 
-        {/* ---- 3 · Who it's for ---- */}
-        <Section hairline>
-          <div className="mx-auto max-w-[760px] text-center">
-            <Reveal>
-              <Eyebrow>Who it&rsquo;s for</Eyebrow>
-              <h2 className="mt-4 font-serif text-display-1 text-ink">One core, across regulated operations.</h2>
-              <p className="mx-auto mt-6 max-w-[52ch] font-sans text-body-lg text-ink-2">
-                The same stack runs wherever the work is regulated — only the rules and use cases
-                change. See it in your world:
-              </p>
-            </Reveal>
-            <Reveal delay={0.12}>
-              <div className="mt-8 flex flex-wrap items-center justify-center gap-x-8 gap-y-3 font-sans text-[15px]">
-                {[
-                  ['Lending', '/lending'],
-                  ['Government', '/government'],
-                  ['Large Enterprise', '/enterprise'],
-                  ['MSME', '/msme'],
-                ].map(([label, href]) => (
-                  <Link key={href} href={href} className="text-ink-2 underline-offset-4 transition-colors hover:text-mint hover:underline">
-                    {label}
-                  </Link>
-                ))}
-              </div>
-            </Reveal>
-          </div>
-        </Section>
-
         {/* ---- 3 · Why it holds together (the two powers) ---- */}
         <Section hairline>
           <div className="grid items-center gap-12 md:grid-cols-[1fr_1fr]">
@@ -171,7 +143,7 @@ export default function PlatformPage() {
               <div>
                 <Eyebrow>Why it holds together</Eyebrow>
                 <h2 className="mt-4 max-w-[18ch] font-serif text-display-1 text-ink">
-                  Validated before it acts. Smarter after.
+                  Safe to run, and sharper for having run.
                 </h2>
                 <p className="mt-7 max-w-[52ch] font-sans text-body-lg text-ink-2">
                   Nothing runs until it has cleared the gate. Everything that runs makes the next
@@ -194,7 +166,7 @@ export default function PlatformPage() {
           </div>
         </Section>
 
-        {/* ---- 3.5 · Impacts to your business — general, cross-domain (no invented metrics) ---- */}
+        {/* ---- 4 · Impacts to your business — general, cross-domain (no invented metrics) ---- */}
         <Section hairline>
           <Reveal>
             <Eyebrow>Impacts to your business</Eyebrow>
@@ -243,7 +215,7 @@ export default function PlatformPage() {
           </Reveal>
         </Section>
 
-        {/* ---- 4 · Close ---- */}
+        {/* ---- 5 · Close ---- */}
         <Section hairline>
           <Reveal>
             <div className="glass mx-auto max-w-[760px] p-10 text-center md:p-14">
