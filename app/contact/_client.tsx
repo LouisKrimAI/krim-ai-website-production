@@ -231,7 +231,7 @@ export function DemoForm() {
           disabled={status === 'submitting'}
           className="inline-block rounded bg-mint px-7 py-3.5 font-sans text-[15px] font-medium text-on-mint transition-all duration-fast ease-standard hover:bg-mint-bright hover:-translate-y-0.5 active:translate-y-0 active:bg-mint-dim disabled:cursor-not-allowed disabled:opacity-60 motion-reduce:hover:translate-y-0"
         >
-          {status === 'submitting' ? 'Sending…' : 'Request a demo'}
+          {status === 'submitting' ? 'Sending…' : 'Book a demo'}
         </button>
       </div>
     </form>
@@ -245,50 +245,89 @@ const CAL_URL = 'https://cal.com/krim-website/30min'
 
 export function CalScheduler() {
   const initialised = useRef(false)
+  const [status, setStatus] = useState<'loading' | 'ready' | 'error'>('loading')
 
   useEffect(() => {
     if (initialised.current) return
     initialised.current = true
+    let done = false
 
     function init() {
       const Cal = (window as unknown as { Cal?: (...args: unknown[]) => void }).Cal
-      if (typeof Cal !== 'function') return
-      Cal('inline', { elementOrSelector: '#cal-inline', calLink: CAL_LINK })
+      if (typeof Cal !== 'function') {
+        setStatus('error')
+        return
+      }
+      try {
+        Cal('inline', { elementOrSelector: '#cal-inline', calLink: CAL_LINK })
+        done = true
+        setStatus('ready')
+      } catch {
+        setStatus('error')
+      }
     }
 
     const existing = document.querySelector<HTMLScriptElement>('script[data-cal-embed]')
     if (existing) {
-      // script already present — Cal global should be ready
       init()
-      return
+    } else {
+      const script = document.createElement('script')
+      script.src = 'https://app.cal.com/embed/embed.js'
+      script.async = true
+      script.dataset.calEmbed = 'true'
+      script.onload = init
+      script.onerror = () => setStatus('error')
+      document.body.appendChild(script)
     }
 
-    const script = document.createElement('script')
-    script.src = 'https://app.cal.com/embed/embed.js'
-    script.async = true
-    script.dataset.calEmbed = 'true'
-    script.onload = init
-    document.body.appendChild(script)
+    // never leave a blank box: if the embed hasn't taken over in time, show the fallback
+    const timer = setTimeout(() => {
+      if (!done) setStatus((s) => (s === 'ready' ? s : 'error'))
+    }, 9000)
+    return () => clearTimeout(timer)
   }, [])
 
   return (
     <div>
       <div className="glass overflow-hidden p-2 md:p-3">
-        <div id="cal-inline" style={{ minHeight: 640, width: '100%' }} />
+        {status !== 'ready' && (
+          <div className="flex min-h-[260px] flex-col items-center justify-center gap-5 p-8 text-center">
+            {status === 'loading' ? (
+              <p className="font-mono text-[12px] uppercase tracking-[0.18em] text-ink-3">
+                Loading the scheduler…
+              </p>
+            ) : (
+              <p className="max-w-[40ch] font-sans text-body text-ink-2">
+                Pick a time directly — opens in a new tab.
+              </p>
+            )}
+            <a
+              href={CAL_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block rounded bg-mint px-6 py-3 font-sans text-[14px] font-medium text-on-mint transition-colors hover:bg-mint-bright"
+            >
+              Open scheduling →
+            </a>
+          </div>
+        )}
+        <div id="cal-inline" style={{ minHeight: status === 'ready' ? 640 : 0, width: '100%' }} />
       </div>
-      <p className="mt-5 text-center font-sans text-[14px]">
-        <a
-          href={CAL_URL}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="group inline-flex items-baseline gap-1.5 text-ink-2 transition-colors hover:text-mint"
-        >
-          <span className="underline-offset-4 group-hover:underline">Open scheduling in a new tab</span>
-          <span aria-hidden className="transition-transform duration-fast group-hover:translate-x-0.5">
-            →
-          </span>
-        </a>
-      </p>
+      {status === 'ready' && (
+        <p className="mt-5 text-center font-sans text-[14px]">
+          <a
+            href={CAL_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group inline-flex items-baseline gap-1.5 text-ink-2 transition-colors hover:text-mint"
+          >
+            <span className="underline-offset-4 group-hover:underline">Open scheduling in a new tab</span>
+            <span aria-hidden className="transition-transform duration-fast group-hover:translate-x-0.5">
+              →
+            </span>
+          </a>
+        </p>
+      )}
     </div>
   )
 }

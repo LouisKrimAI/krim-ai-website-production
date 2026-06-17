@@ -396,7 +396,7 @@ export default function ArchitecturePage() {
           <Reveal>
             <div className="glass mx-auto max-w-[760px] p-10 text-center md:p-14">
               <h2 className="font-serif text-display-3 leading-tight text-ink">
-                See it on the stack you already run.
+                See it slot into your architecture.
               </h2>
               <p className="mx-auto mt-5 max-w-[50ch] font-sans text-body text-ink-2">
                 A two-week technical deep-dive covers architecture, security and integration — then a

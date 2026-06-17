@@ -77,7 +77,7 @@ export default function LayerShell({ slug, children }: { slug: LayerSlug; childr
         <Section hairline>
           <div className="glass mx-auto max-w-[760px] p-10 text-center md:p-14">
             <h2 className="font-serif text-display-3 leading-tight text-ink">
-              See {layer.name} on the stack you already run.
+              See {layer.name} at work.
             </h2>
             <p className="mx-auto mt-4 max-w-[46ch] font-sans text-body text-ink-2">
               Nothing to tear out — KrimOS layers onto the systems you already run.

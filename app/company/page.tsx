@@ -253,7 +253,7 @@ export default function CompanyPage() {
           <Reveal delay={0.1}>
             <GlassCard className="mx-auto mt-14 max-w-[720px] p-10 text-center md:p-14">
               <h2 className="font-serif text-display-3 leading-tight text-ink">
-                See it on the stack you already run.
+                See the proof for yourself.
               </h2>
               <p className="mx-auto mt-5 max-w-[48ch] font-sans text-body text-ink-2">
                 Talk to us about a pilot, or write to{' '}

@@ -76,6 +76,18 @@ export default function ContactPage() {
                 <DemoForm />
               </GlassCard>
             </Reveal>
+            <Reveal delay={0.16}>
+              <p className="mt-6 text-center font-sans text-[14px] text-ink-3">
+                Prefer email or phone?{' '}
+                <a href="mailto:sales@krim.ai" className="text-ink-2 underline-offset-4 transition-colors hover:text-mint hover:underline">
+                  sales@krim.ai
+                </a>
+                {' · '}
+                <a href="tel:+15103455686" className="text-ink-2 underline-offset-4 transition-colors hover:text-mint hover:underline">
+                  +1 510 345 5686
+                </a>
+              </p>
+            </Reveal>
           </div>
         </Section>
 
@@ -84,10 +96,10 @@ export default function ContactPage() {
           <div className="mx-auto max-w-[820px]">
             <Reveal>
               <div className="text-center">
-                <Eyebrow>Straight to a call</Eyebrow>
-                <h2 className="mt-4 font-serif text-display-1 text-ink">Prefer to just talk?</h2>
-                <p className="mx-auto mt-6 max-w-[44ch] font-sans text-body-lg text-ink-2">
-                  Grab a slot directly.
+                <Eyebrow>Or pick a time</Eyebrow>
+                <h2 className="mt-4 font-serif text-display-2 text-ink">Prefer to just talk?</h2>
+                <p className="mx-auto mt-5 max-w-[44ch] font-sans text-body text-ink-2">
+                  Grab a slot directly — no form needed.
                 </p>
               </div>
             </Reveal>
@@ -99,39 +111,6 @@ export default function ContactPage() {
           </div>
         </Section>
 
-        {/* ---- 4 · Direct ---- */}
-        <Section hairline>
-          <div className="mx-auto max-w-[760px]">
-            <Reveal>
-              <div className="text-center">
-                <Eyebrow>Or reach us</Eyebrow>
-                <h2 className="mt-4 font-serif text-display-1 text-ink">Direct lines.</h2>
-              </div>
-            </Reveal>
-            <Reveal delay={0.12}>
-              <div className="glass-quiet mt-10 grid gap-6 p-8 sm:grid-cols-2 md:p-10">
-                <div>
-                  <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-ink-3">Email</p>
-                  <a
-                    href="mailto:sales@krim.ai"
-                    className="mt-2 inline-block font-sans text-body-lg text-ink transition-colors hover:text-mint"
-                  >
-                    sales@krim.ai
-                  </a>
-                </div>
-                <div>
-                  <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-ink-3">Phone</p>
-                  <a
-                    href="tel:+15103455686"
-                    className="mt-2 inline-block font-sans text-body-lg text-ink transition-colors hover:text-mint"
-                  >
-                    +1 510 345 5686
-                  </a>
-                </div>
-              </div>
-            </Reveal>
-          </div>
-        </Section>
       </main>
       <SiteFooter />
     </>

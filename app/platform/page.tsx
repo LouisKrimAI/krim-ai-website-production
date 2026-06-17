@@ -248,7 +248,7 @@ export default function PlatformPage() {
           <Reveal>
             <div className="glass mx-auto max-w-[760px] p-10 text-center md:p-14">
               <h2 className="font-serif text-display-3 leading-tight text-ink">
-                See it on the stack you already run.
+                See the operating system on yours.
               </h2>
               <p className="mx-auto mt-5 max-w-[48ch] font-sans text-body text-ink-2">
                 Nothing to tear out — KrimOS reads from your systems and writes back on validated channels.

@@ -34,7 +34,7 @@ export function Section({
 
 export function Eyebrow({
   children,
-  tone = 'mint',
+  tone = 'dim',
   className = '',
 }: {
   children: React.ReactNode

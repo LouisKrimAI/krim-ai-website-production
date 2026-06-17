@@ -89,7 +89,7 @@ const DOORS = [
   ['Lending', 'The whole loan lifecycle, validated and learning.', '/lending'],
   ['Government', 'Public services that must answer for every action.', '/government'],
   ['Large Enterprise', 'Regulated operations at scale, compliance built in.', '/enterprise'],
-  ['MSME', 'Regulation-grade AI workers for everyday customer and back-office operations.', '/msme'],
+  ['MSME', 'Regulation-grade co-workers for everyday customer and back-office work.', '/msme'],
 ] as const
 
 /** faint geometric motifs for the four doors — barely-there, top-right */
@@ -265,8 +265,8 @@ export default function HomePage() {
               Built for the operations that can&rsquo;t afford to be wrong.
             </h2>
             <p className="mt-6 max-w-[60ch] font-sans text-body-lg text-ink-2">
-              One core, across regulated operations. The rules and use cases change; the proof and
-              the learning do not.
+              The rules and the use cases change with the industry. The proof and the learning do
+              not.
             </p>
           </Reveal>
           <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
@@ -308,10 +308,11 @@ export default function HomePage() {
         <Section hairline id="integrations">
           <Reveal>
             <p className="text-center font-serif text-[clamp(1.6rem,2.8vw,2.2rem)] leading-tight text-ink">
-              It layers onto the systems you already run.
+              Fits the stack you already run.
             </p>
-            <p className="mx-auto mt-4 max-w-[50ch] text-center font-sans text-body text-ink-2">
-              KrimOS is the decision layer your existing systems report into.
+            <p className="mx-auto mt-4 max-w-[52ch] text-center font-sans text-body text-ink-2">
+              The decision layer your systems report into — KrimOS reads from them and writes back
+              only on validated channels.
             </p>
           </Reveal>
           <Reveal delay={0.1}>
