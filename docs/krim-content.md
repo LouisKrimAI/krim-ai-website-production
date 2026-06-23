@@ -10,7 +10,7 @@ Every fact, claim and on-brand line for **krim.ai**, reconciled from two sources
 - **Kendra is realised as eight modules** (Core, Karya, Fabric, Govern, Nyāya, Learn, Ledger, Sense) — the deck only named Ledger/Learn. Krim-Karya is the scheduler (owns *when* work runs).
 - **Karta is a named, utility-based catalog of eight** (was "~10 utility workers").
 - **New commercial concept: Krim Work Units (KWUs)** — usage-based metering and billing.
-- `[RESOLVED]` **Primary descriptor** — KRIM-BRIEF sets it: KrimOS is **"the operating system for regulated operations"** (domain-neutral, lending first). The older "agent-native operating system for end-to-end lending operations" is retired.
+- `[RESOLVED]` **Primary descriptor (REPOSITIONED 2026-06, banking-led)** — `docs/POSITIONING.md` now sets it: KrimOS is **"the operating system for banking & financial services"**, **lending front-and-center** as the flagship. **"Regulated operations" is demoted to the secondary descriptor** — the wider category these same capabilities generalise to, never the headline. The older domain-neutral "operating system for regulated operations" lead, and the still-older "agent-native operating system for end-to-end lending operations," are both retired as the *lead*.
 
 ## Things only you can provide
 - `[PROVIDE]` Lead/form backend · scheduling URL · social URLs (LinkedIn · X · Substack · Medium · Instagram) · blog feeds · analytics choice
@@ -22,7 +22,7 @@ Every fact, claim and on-brand line for **krim.ai**, reconciled from two sources
 
 - **Company:** Krim — a technology research, product and services company. Markets: **US · UK · India** (2026).
 - **Recognition (confirmed; official badge images to be supplied):** NVIDIA Inception · DPIIT (Startup India) · STPI-incubated.
-- **Product:** **KrimOS** — the operating system for regulated operations (lending first). *(Descriptor reconciled to KRIM-BRIEF: domain-neutral "regulated operations," never "lending," at the top level; earlier drafts said "agent-native operating system for end-to-end lending operations.")*
+- **Product:** **KrimOS** — the operating system for **banking & financial services**, **lending front-and-center**. *(Banking-led per `docs/POSITIONING.md`. "Regulated operations" is the secondary descriptor / horizon, not the lead. Lending is the flagship and proving ground; banking is the umbrella the homepage lives under. Earlier leads — "operating system for regulated operations" and "agent-native operating system for end-to-end lending operations" — are retired.)*
 - **One-line concept:** KrimOS is not software — it is an operating system for intelligence. The runtime is the product; the workflows that run inside it are how value is delivered.
 - **Promise:** *Every action validated before it executes.* **The AI your regulator can read.**
 - **Closing signature:** *Intelligence by policy. The AI your regulator can read.*
@@ -40,9 +40,11 @@ Every fact, claim and on-brand line for **krim.ai**, reconciled from two sources
 
 ## Homepage sections
 
+> **REPOSITION NOTE (2026-06):** the homepage section copy below is the *prior* domain-neutral reference. The banking-led re-centre — section spine, hero candidate, and the lending lens on KrimOS — lives in `docs/POSITIONING.md` §8–§9 and supersedes this when the site phase runs. Facts below remain valid; the *framing* moves to banking & financial services, lending front-and-center. The hero/title are being **evolved** (POSITIONING §9), not locked here.
+
 ### 1. Hero
-- Headline: **The AI your regulator can read.**
-- Sub: The operating system for regulated operations. Every action validated before it executes.
+- Headline: **The AI your regulator can read.** *(evolving — banking-led candidate in POSITIONING §9: "Sovereign Superintelligence for Banking")*
+- Sub: For banking & financial services — lending first. Every action validated before it executes. *(was: "The operating system for regulated operations.")*
 - CTA: Book a demo
 
 ### 2. The shift
@@ -311,3 +313,34 @@ Headline: **Book a demo.**
 Body: See KrimOS on the stack you already run — and a path from pilot to go-live.
 Form fields: institution · role · work email · message → routes to sales@krim.ai. `[PROVIDE]` scheduling option (Cal.com).
 sales@krim.ai · krim.ai · +1 510 345 5686 · US · UK · India
+
+---
+
+## Market landscape — verified facts (banking & lending)
+
+*Added 2026-06 with the banking-led reposition. These are the **only** external market stats the site may cite, and only with attribution. Confidence is flagged: **HIGH-CONF** = citable as a fact with its source; **LOWER-CONF** = directional, use as "notoriously…/on the order of…", never as a precise published number. Full argument in `docs/POSITIONING.md` §2. Krim's own product facts (validators, primitives, modules) remain governed by the sections above — these are about the **market**, not Krim.*
+
+**The cost trap**
+- ~**70% of bank IT budget** runs legacy rather than building; bank tech cost has grown ~**4× faster than revenue** over ~15 years. *(Accenture, 2026 — HIGH-CONF.)*
+- Banking **cost-to-income ≈ 51%**. *(McKinsey, 2024 — HIGH-CONF.)*
+- A loan application = ~**12 manual touches at ~$15–$40 each**. *(McKinsey — HIGH-CONF.)*
+- Core systems still rest heavily on **COBOL** (220B+ lines in production across finance/government); core replacement is a **$50M–$500M, 3–5-year** programme that often runs **50%+ over** — the case for **"no rip, no replace."** *(Industry estimates — LOWER-CONF; use qualitatively.)*
+- Industry tech spend is on the order of **~$600B/yr with roughly flat productivity**. *(Aggregate — LOWER-CONF.)*
+
+**The AI chasm**
+- **75% of UK FS firms use AI** (up from 58%); **46% report only "partial understanding"** of what they've deployed. *(Bank of England / FCA, 2024 — HIGH-CONF.)*
+- ~**95% of enterprise GenAI pilots show no P&L return** against **$30–40B** spent; ~5% deliver material value. *(MIT NANDA, 2025 — HIGH-CONF.)*
+- **Third-party concentration:** top-3 cloud ≈ **73%** of FS cloud, ≈ **44%** of model provision, ≈ **33%** of data services — the empirical case for sovereignty. *(BoE/FCA, 2024 — HIGH-CONF.)*
+- **Deloitte** catalogued **350+ agentic-AI risk types**, with the canonical example: *"a loan agent that declines applicants without a clear rationale could violate fair-lending law."* *(Deloitte — HIGH-CONF.)*
+
+**The regulatory spec (these define the product, not just constrain it)**
+- **SR 11-7 (US):** models validated *before* use + continuously monitored. HIGH-CONF.
+- **ECOA / Reg B (US):** adverse-action reasons required (~30-day window); **CFPB Circular 2022-03: "too complex" is NOT a defence.** HIGH-CONF. *(The single sharpest fact — black-box lending AI is effectively unshippable.)*
+- **EU AI Act:** credit scoring is **high-risk**; obligations phase in through **2 Aug 2026**; penalties up to **€35M / 7%** (prohibited) and **€15M / 3%** (high-risk). HIGH-CONF — use these exact figures (NOT the misquoted €30M/6%).
+- **FCA Consumer Duty (UK):** outcomes-based, no AI-specific rulebook → the firm must *evidence* good outcomes. HIGH-CONF.
+- **RBI FREE-AI (India, Aug 2025):** **7 Sutras, 6 Pillars, 26 recommendations** + data-localisation. HIGH-CONF.
+
+**The prize (dual ROI)**
+- GenAI could add **$200–340B/yr** to banking (≈2.8–4.7% of revenue); agentic operating models → **15–20% cost reduction**; a ~**4pp ROTE gap** opening between pioneers and laggards. *(McKinsey — HIGH-CONF.)*
+- Agentic AI could **erode ~$170B (≈9%) of bank profit pools** over 5–10 years for non-reinventors — **card lending −34%**, **consumer deposits −27%**. *(McKinsey — HIGH-CONF.)*
+- **MSME finance gap ≈ $5.7T** across 119 markets (~$8T incl. informal; women-owned ≈ $1.9T / ~32%). *(IFC — HIGH-CONF.)*

@@ -49,7 +49,7 @@ const LAYERS: Layer[] = [
   {
     key: 'karta',
     name: 'Karta',
-    role: 'The AI co-workers that do the work — each composed from validated primitives and held to measured outcomes.',
+    role: 'The AI co-workers that run the lending lifecycle — each composed from validated primitives and held to measured outcomes.',
     tag: 'CO-WORKERS',
     tone: 'operating',
   },
@@ -63,7 +63,7 @@ const LAYERS: Layer[] = [
   {
     key: 'kendra',
     name: 'Kendra',
-    role: 'The brain: the governed runtime where Krim-Nyāya validates every action and Krim-Learn turns each outcome into intelligence.',
+    role: 'The brain: the governed runtime where Krim-Nyāya validates every action and Krim-Learn builds the World Lending Model from every outcome.',
     tag: 'RUNTIME · NYĀYA · LEARN',
     tone: 'core',
   },

@@ -35,9 +35,11 @@ export default function PowerCards({ powers }: { powers: readonly Power[] }) {
             viewport={{ once: true, amount: 0.3 }}
             transition={reduce ? { duration: 0 } : { duration: 0.9, ease: OUT_SOFT, delay: 0.2 + i * 0.12 }}
           />
-          <h3 className="mt-7 font-serif text-[1.85rem] leading-tight text-ink">{p.name}</h3>
-          <p className="mt-2.5 font-serif text-[1.15rem] italic text-mint">&ldquo;{p.tagline}&rdquo;</p>
-          <p className="mt-5 font-sans text-body text-ink-2">{p.body}</p>
+          {/* min-heights reserve two lines for the title and the outcome so the body aligns across all three cards */}
+          <h3 className="mt-7 flex min-h-[2.4em] items-start font-serif text-[1.85rem] leading-tight text-ink">{p.name}</h3>
+          {/* the plain big-outcome line — what the reader gets, in mint */}
+          <p className="mt-3 flex min-h-[2.2em] items-start font-serif text-[1.2rem] leading-snug text-mint">{p.tagline}</p>
+          <p className="mt-4 font-sans text-body text-ink-2">{p.body}</p>
         </motion.div>
       ))}
     </div>

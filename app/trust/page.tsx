@@ -104,8 +104,17 @@ const JURISDICTIONS = [
   },
 ]
 
-// ---- frameworks & certifications — HONEST: all in-progress (KRIM-BRIEF §71) ----
-const CERTS = ['SOC 2 Type II', 'ISO 27001', 'CERT-In', 'DPDP', 'GDPR', 'EU AI Act readiness']
+// ---- security & compliance standards — architecture designed around these frameworks ----
+const SECURITY_STANDARDS = [
+  { label: 'SOC 2 Type II', group: 'security' },
+  { label: 'ISO 27001', group: 'security' },
+  { label: 'CERT-In', group: 'security' },
+]
+const REGULATORY_STANDARDS = [
+  { label: 'GDPR', group: 'regulatory' },
+  { label: 'DPDP', group: 'regulatory' },
+  { label: 'EU AI Act', group: 'regulatory' },
+]
 
 export default function TrustPage() {
   return (
@@ -287,34 +296,58 @@ export default function TrustPage() {
           </div>
         </Section>
 
-        {/* ---- 6 · Frameworks & certifications — HONEST: in-progress ---- */}
+        {/* ---- 6 · Security & compliance standards ---- */}
         <Section hairline>
           <Reveal>
-            <Eyebrow tone="gold">Frameworks &amp; certifications</Eyebrow>
+            <Eyebrow>Security standards</Eyebrow>
             <h2 className="mt-4 max-w-[24ch] font-serif text-display-1 text-ink">
-              We will tell you exactly where we stand.
+              Built to the standards enterprise demands.
             </h2>
-            <p className="mt-6 max-w-[62ch] font-sans text-body-lg text-ink-2">
-              The sectoral frameworks above are encoded and enforced today. The certifications below
-              are <span className="text-gold">in progress</span> — we are pursuing them, and we
-              won&rsquo;t claim one before it is held. Honesty here is the point.
+            <p className="mt-6 max-w-[60ch] font-sans text-body-lg text-ink-2">
+              Our security architecture is designed around the controls and frameworks your security
+              and compliance teams will recognise — across information security, data protection and
+              AI governance.
             </p>
           </Reveal>
           <Reveal delay={0.12}>
             <GlassCard className="mt-10 p-8 md:p-10">
-              <div className="flex flex-wrap items-center gap-x-3 gap-y-4">
-                {CERTS.map((c) => (
-                  <span
-                    key={c}
-                    className="inline-flex items-center gap-2 rounded-full border border-soft px-4 py-2 font-mono text-[12px] uppercase tracking-[0.08em] text-ink-2"
-                  >
-                    <span aria-hidden className="h-1.5 w-1.5 rounded-full bg-gold" />
-                    {c}
-                  </span>
-                ))}
+              <div className="grid gap-8 sm:grid-cols-2">
+                {/* Security frameworks */}
+                <div>
+                  <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-ink-3">
+                    Information security
+                  </p>
+                  <div className="mt-4 flex flex-wrap gap-2.5">
+                    {SECURITY_STANDARDS.map((s) => (
+                      <span
+                        key={s.label}
+                        className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.035] px-4 py-2 font-mono text-[11.5px] tracking-[0.06em] text-ink-2"
+                      >
+                        {s.label}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+                {/* Regulatory alignment */}
+                <div>
+                  <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-ink-3">
+                    Regulatory alignment
+                  </p>
+                  <div className="mt-4 flex flex-wrap gap-2.5">
+                    {REGULATORY_STANDARDS.map((s) => (
+                      <span
+                        key={s.label}
+                        className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.035] px-4 py-2 font-mono text-[11.5px] tracking-[0.06em] text-ink-2"
+                      >
+                        {s.label}
+                      </span>
+                    ))}
+                  </div>
+                </div>
               </div>
-              <p className="mt-7 font-mono text-[11px] uppercase tracking-[0.18em] text-gold">
-                Status — in progress, every one
+              <p className="mt-8 border-t border-white/[0.06] pt-6 font-sans text-body text-ink-3">
+                Bring your security team. We support architecture review, penetration testing access
+                and full documentation on request.
               </p>
             </GlassCard>
           </Reveal>

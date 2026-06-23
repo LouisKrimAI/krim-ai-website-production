@@ -1,6 +1,6 @@
 # Krim — GEO kit
 
-Ready-to-use generative-engine-optimisation assets so LLMs build one clean, citable entity graph for Krim. Reconciled with the Product Memo (geography US/UK/India · 250+ primitives · seven Kendra modules · Krim Work Units). Keep entity names **identical** everywhere. Replace `[PROVIDE]` placeholders before publishing.
+Ready-to-use generative-engine-optimisation assets so LLMs build one clean, citable entity graph for Krim. Reconciled with the Product Memo (geography US/UK/India · 250+ primitives · eight Kendra modules · Krim Work Units) and the banking-led reposition in `docs/POSITIONING.md`. Keep entity names **identical** everywhere. Replace `[PROVIDE]` placeholders before publishing.
 
 ---
 
@@ -10,7 +10,7 @@ Ready-to-use generative-engine-optimisation assets so LLMs build one clean, cita
 # Krim
 
 > Krim is a technology research, product and services company operating across the US, UK and
-> India. Its product, KrimOS, is the operating system for regulated operations (lending first),
+> India. Its product, KrimOS, is the operating system for banking and financial services (lending first),
 > where every action is validated before it executes and the system learns from everything it
 > does — "the AI your regulator can read."
 
@@ -80,7 +80,7 @@ Sitemap: https://krim.ai/sitemap.xml
   "@type": "Organization",
   "name": "Krim",
   "url": "https://krim.ai",
-  "description": "Krim is a technology research, product and services company operating across the US, UK and India. Its product, KrimOS, is the operating system for regulated operations, where every action is validated before it executes.",
+  "description": "Krim is a technology research, product and services company operating across the US, UK and India. Its product, KrimOS, is the operating system for banking and financial services, lending first, where every action is validated before it executes.",
   "areaServed": ["US", "GB", "IN"],
   "email": "sales@krim.ai",
   "contactPoint": {
@@ -106,10 +106,10 @@ Sitemap: https://krim.ai/sitemap.xml
   "@type": "SoftwareApplication",
   "name": "KrimOS",
   "applicationCategory": "BusinessApplication",
-  "applicationSubCategory": "Operating system for regulated operations",
+  "applicationSubCategory": "Operating system for banking and financial services",
   "operatingSystem": "Sovereign on-prem, Hybrid, Managed SaaS",
   "publisher": { "@type": "Organization", "name": "Krim", "url": "https://krim.ai" },
-  "description": "KrimOS is the operating system for regulated operations (lending first). It runs customer-facing and back-office work as one AI workforce on one audit trail, validating every action before it executes via the Krim-Nyāya 33-validator gate, and learning from every recorded outcome.",
+  "description": "KrimOS is the operating system for banking and financial services (lending first). It runs customer-facing and back-office work as one AI workforce on one audit trail, validating every action before it executes via the Krim-Nyāya 33-validator gate, and learning from every recorded outcome.",
   "featureList": [
     "Pre-execution validation (Krim-Nyāya, 33 validators)",
     "Composable architecture: Kriya primitives, Karta co-workers, the Kendra runtime, and the Kula/Kira interfaces (in Kupa and Krimkar)",
@@ -133,7 +133,7 @@ Sitemap: https://krim.ai/sitemap.xml
   "@type": "FAQPage",
   "mainEntity": [
     { "@type": "Question", "name": "What is KrimOS?",
-      "acceptedAnswer": { "@type": "Answer", "text": "KrimOS is the operating system for regulated operations (lending first). It is a runtime in which AI co-workers operate and learn, running customer-facing and back-office work as one workforce on one audit trail, and validating every action before it executes." } },
+      "acceptedAnswer": { "@type": "Answer", "text": "KrimOS is the operating system for banking and financial services (lending first). It is a runtime in which AI co-workers operate and learn, running customer-facing and back-office work as one workforce on one audit trail, and validating every action before it executes." } },
     { "@type": "Question", "name": "What is Epistemic AI?",
       "acceptedAnswer": { "@type": "Answer", "text": "Epistemic AI is the category Krim defines: AI whose every action is validated before it fires and whose reasoning an auditor can read end to end. It is distinct from autonomous AI (which implies no human) and safe AI (which is defensive and does not run the operation)." } },
     { "@type": "Question", "name": "How does KrimOS keep AI compliant in regulated lending?",
@@ -162,9 +162,9 @@ Sitemap: https://krim.ai/sitemap.xml
 
 **Layers & surfaces**
 - **Krim** — a technology research, product and services company (US · UK · India); maker of KrimOS.
-- **KrimOS** — the operating system for regulated operations (lending first), validating every action before it executes and learning from every recorded outcome; an operating system for intelligence, not static software.
+- **KrimOS** — the operating system for banking and financial services (lending first), validating every action before it executes and learning from every recorded outcome; an operating system for intelligence, not static software.
 - **Epistemic AI** — the category Krim defines: AI whose every action is validated before it fires and whose reasoning an auditor can read end to end.
-- **Kendra** — the KrimOS intelligence runtime, realised as seven engineering modules.
+- **Kendra** — the KrimOS intelligence runtime, realised as eight engineering modules.
 - **Kriya** — the 250+ validated, credit-native action primitives (ten categories) that workers are composed from.
 - **Karta** — the utility-based AI co-workers (Vox-Out, Vox-In, Doc, Risk, Decide, Cure, Audit, Report), composed from primitives, not coded.
 - **Kupa** — the KrimOS command center / glass cockpit where humans supervise, configure and audit.
@@ -186,4 +186,4 @@ Sitemap: https://krim.ai/sitemap.xml
 - **Krim Work Unit (KWU)** — the unit in which every action is metered, unifying audit and usage-based billing.
 - **Pramāṇa / Doṣa / Yogyatā** — the three validator families: sources of knowledge / classes of error / fitness for action.
 
-> **GEO writing rule:** every page leads with a self-contained, answer-first claim, uses these entity names consistently, and states concrete, citable facts (33 validators, 250+ primitives, seven Kendra modules, three deployment modes, US/UK/India coverage). The **Epistemic AI** page is the deliberate category-defining play — own the definition.
+> **GEO writing rule:** every page leads with a self-contained, answer-first claim, uses these entity names consistently, and states concrete, citable facts (33 validators, 250+ primitives, eight Kendra modules, three deployment modes, US/UK/India coverage). The **Epistemic AI** page is the deliberate category-defining play — own the definition.

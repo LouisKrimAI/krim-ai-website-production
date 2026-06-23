@@ -7,14 +7,13 @@
  */
 
 import type { Metadata } from 'next'
-import Link from 'next/link'
 import SiteHeader from '@/components/SiteHeader'
 import SiteFooter from '@/components/SiteFooter'
 import Reveal from '@/components/Reveal'
 import Image from 'next/image'
 import HomeHero from '@/components/home/HomeHero'
 import PowerCards from '@/components/home/PowerCards'
-import PlatformLayers from '@/components/home/PlatformLayers'
+import PlatformExplorer from '@/components/home/PlatformExplorer'
 import PolicyChecks from '@/components/home/PolicyChecks'
 import IntegrationsMarquee from '@/components/home/IntegrationsMarquee'
 import Recognition from '@/components/home/Recognition'
@@ -24,7 +23,7 @@ export const metadata: Metadata = {
   alternates: { canonical: 'https://krim.ai' },
   openGraph: {
     description:
-      'KrimOS is the operating system for regulated operations: AI co-workers whose every action is validated before it executes — and that learn from everything they do, inside your own walls.',
+      'KrimOS is the operating system for banking and financial services — a world model for lending with AI co-workers that run the whole lifecycle, every action validated before it acts, inside your own walls.',
     url: 'https://krim.ai',
     siteName: 'Krim',
     type: 'website',
@@ -38,7 +37,7 @@ const orgLd = {
   url: 'https://krim.ai',
   logo: 'https://krim.ai/brand-logo',
   description:
-    'Krim is a technology research, product and services company operating across the US, UK and India. Its product, KrimOS, is the operating system for regulated operations, where every action is validated before it executes.',
+    'Krim is a technology research, product and services company operating across the US, UK and India. Its product, KrimOS, is the operating system for banking and financial services, lending first, where every action is validated before it executes.',
   areaServed: ['US', 'GB', 'IN'],
   email: 'sales@krim.ai',
   contactPoint: {
@@ -54,84 +53,46 @@ const orgLd = {
 
 const PROBLEMS = [
   {
-    heading: 'Advice, not action',
-    body: 'AI can recommend, but few institutions will let it act — in regulated work, one wrong move can become a compliance event.',
+    heading: 'Hallucinations lead to violations.',
+    body: 'In lending, errors carry real consequences. A wrong call, a misquoted term, a non-compliant contact — with no rollback — is a costly compliance event waiting to be filed.',
   },
   {
-    heading: 'Data that can’t leave',
-    body: 'Sensitive records often can’t go to a third-party cloud, which rules out most off-the-shelf AI.',
+    heading: "AI makes decisions. But you can't explain them.",
+    body: "Every credit action, every automated contact carries the bank's signature. When an examiner asks to see the reasoning, most AI has no audit trail a human can follow.",
   },
   {
-    heading: 'Stuck in manual',
-    body: 'So much of the work stays manual — slow, costly, and hard to scale.',
+    heading: 'Many point-solutions. No unified intelligence.',
+    body: 'Each tool handles a slice — origination here, collections there, servicing somewhere else. No single system builds understanding from the whole. The intelligence your operation should be generating never forms.',
   },
 ]
 
 const POWERS = [
   {
-    name: 'Validation',
-    tagline: 'Validated before it acts.',
-    body: 'Every action passes 33 checks against law, policy and context before it can execute. Now AI can act in regulated work.',
+    name: 'Safer & Auditable',
+    tagline: 'Every action validated before it reaches a borrower.',
+    body: 'Compliance breaches de-risked. Every decision leaves a trail regulators can understand.',
   },
   {
-    name: 'Sovereignty',
-    tagline: 'Never leaves your walls.',
-    body: 'The whole system runs inside your perimeter. No data leaves.',
+    name: 'Faster & Scalable',
+    tagline: 'Co-workers that act, not just advise.',
+    body: "Agents execute across the full lending lifecycle — without manual handoffs. As your book grows, the operation keeps pace. The headcount doesn't have to.",
   },
   {
-    name: 'Intelligence',
-    tagline: 'Smarter after it acts.',
-    body: 'Every action teaches the system, building a model of your whole operation. Automation that compounds.',
+    name: 'Self-Evolving',
+    tagline: 'Gets sharper with every decision your operation makes.',
+    body: 'A world model that learns from every action and outcome. The longer it runs, the more precisely it performs. A truly intelligence-driven operation.',
   },
 ]
 
-const DOORS = [
-  ['Lending', 'The whole loan lifecycle, validated and learning.', '/lending'],
-  ['Government', 'Public services that must answer for every action.', '/government'],
-  ['Large Enterprise', 'Regulated operations at scale, compliance built in.', '/enterprise'],
-  ['MSME', 'Regulation-grade co-workers for everyday customer and back-office work.', '/msme'],
+// Who actually uses KrimOS — the lending roles, and what changes for each.
+const USERS = [
+  ['Origination', 'Underwriters and analysts onboard in hours, not days. Every decision auditable. Applications move at digital speed.'],
+  ['Risk & Credit', 'AI decisions are provable and on the record — model risk and fair-lending exposure, contained.'],
+  ['Servicing', 'Cure and serve at scale. Every contact, every language — inside the rules, without adding headcount.'],
+  ['Collections', 'Right-party contact at scale. Recovery improves. Collections flow into the operation as validated actions.'],
+  ['Compliance & Audit', 'Reconstruct any action, any time, in plain words your examiner can read. Inspections close in hours, not weeks.'],
+  ['Operations', 'The manual backlog from origination to collections runs on validated co-workers. The team scales without the headcount.'],
 ] as const
-
-/** faint geometric motifs for the four doors — barely-there, top-right */
-function DoorMotif({ kind }: { kind: string }) {
-  const stroke = 'rgba(255,255,255,0.09)'
-  return (
-    <svg width="56" height="56" viewBox="0 0 56 56" aria-hidden className="absolute right-4 top-4">
-      {kind === 'Lending' && (
-        <g stroke={stroke} strokeWidth="1" fill="none">
-          {/* an amortising curve */}
-          <path d="M6 10 C 18 38, 34 46, 50 48" />
-          <path d="M6 10 L6 48 L50 48" />
-        </g>
-      )}
-      {kind === 'Government' && (
-        <g stroke={stroke} strokeWidth="1" fill="none">
-          {/* a portico */}
-          <path d="M8 18 L28 8 L48 18" />
-          <line x1="14" y1="22" x2="14" y2="46" />
-          <line x1="28" y1="22" x2="28" y2="46" />
-          <line x1="42" y1="22" x2="42" y2="46" />
-          <line x1="10" y1="48" x2="46" y2="48" />
-        </g>
-      )}
-      {kind === 'Large Enterprise' && (
-        <g stroke={stroke} strokeWidth="1" fill="none">
-          {/* a tower grid */}
-          {[14, 26, 38].map((x) =>
-            [12, 24, 36].map((y) => <rect key={`${x}${y}`} x={x} y={y} width="8" height="8" />),
-          )}
-        </g>
-      )}
-      {kind === 'MSME' && (
-        <g stroke={stroke} strokeWidth="1" fill="none">
-          {/* one small unit beside the larger outline it grows into */}
-          <rect x="10" y="30" width="14" height="14" />
-          <rect x="28" y="14" width="20" height="30" strokeDasharray="3 3" />
-        </g>
-      )}
-    </svg>
-  )
-}
 
 const DEMO_HREF = '/contact'
 
@@ -147,63 +108,63 @@ export default function HomePage() {
         {/* everything below sits above the fixed orb (z-0) */}
         <div className="relative z-10">
 
-        {/* ---- 2 · The challenge ---- */}
-        <Section hairline id="challenge">
-          <Reveal>
-            <Eyebrow tone="gold">The challenge</Eyebrow>
-            <h2 className="mt-4 font-serif text-display-1 text-ink">Regulated work is stuck.</h2>
-          </Reveal>
-          <div className="mt-12 grid gap-5 md:grid-cols-3">
-            {PROBLEMS.map((p, i) => (
-              <Reveal key={p.heading} delay={i * 0.1}>
-                <div className="glass lume h-full p-7 md:p-8">
-                  {/* the cyan "blocked" cue — resolves to mint in the powers below */}
-                  <span aria-hidden className="block h-[3px] w-12 rounded-full bg-cyan/70" />
-                  <p className="mt-6 font-mono text-[10.5px] uppercase tracking-[0.18em] text-ink-3">
-                    {String(i + 1).padStart(2, '0')}
-                  </p>
-                  <h3 className="mt-2 font-serif text-[1.4rem] leading-tight text-ink">{p.heading}</h3>
-                  <p className="mt-3 font-sans text-body text-ink-2">{p.body}</p>
-                </div>
-              </Reveal>
-            ))}
+        {/* ---- 2 · The platform ---- */}
+        <Section hairline id="platform">
+          <div className="mx-auto max-w-[760px] text-center">
+            <Reveal>
+              <Eyebrow>One operating system</Eyebrow>
+              <h2 className="mt-4 font-serif text-display-1 text-ink">
+                KrimOS — the operating system for lending.
+              </h2>
+              <p className="mx-auto mt-6 max-w-[48ch] font-sans text-body-lg text-ink-2">
+                One system runs the whole lending operation — doing the work, proving every action,
+                learning from every outcome.
+              </p>
+            </Reveal>
           </div>
+          <Reveal delay={0.15}>
+            <div className="mt-14">
+              <PlatformExplorer />
+            </div>
+          </Reveal>
+          <Reveal delay={0.2}>
+            <div className="mt-12 text-center">
+              <CTA href="/platform" variant="secondary">
+                Explore the platform
+              </CTA>
+            </div>
+          </Reveal>
         </Section>
 
-        {/* ---- 3 · The three powers — the heart of the page ---- */}
-        <Section hairline id="powers">
-          <Reveal>
-            <Eyebrow>What Krim changes</Eyebrow>
-            <h2 className="mt-4 font-serif text-display-1 text-ink">Each one makes the others possible.</h2>
-          </Reveal>
-          <div className="mt-12">
-            <PowerCards powers={POWERS} />
-          </div>
-        </Section>
-
-        {/* ---- 4 · The flywheel ---- */}
+        {/* ---- 3 · The flywheel ---- */}
         <Section hairline id="flywheel">
           <div className="grid items-center gap-12 md:grid-cols-[1.15fr_1fr]">
             <div>
               <Reveal>
-                <Eyebrow>Why it compounds</Eyebrow>
-                <h2 className="mt-4 max-w-[20ch] font-serif text-display-1 text-ink">
-                  Safety and intelligence build each other.
+                <Eyebrow>The world model</Eyebrow>
+                <h2 className="mt-4 max-w-[24ch] font-serif text-display-1 text-ink">
+                  One model for your whole lending operation.
                 </h2>
               </Reveal>
               <Reveal delay={0.12}>
                 <p className="mt-7 max-w-[52ch] font-sans text-body-lg text-ink-2">
-                  Validation lets the co-workers act. Every action leaves a complete record, and that
-                  record makes them sharper — so more of what they propose clears the gate. They do
-                  more, safely, the longer they run.
+                  One runtime runs the whole lifecycle and records every action with its reasoning on
+                  one ledger — so KrimOS builds a connected model of how lending actually behaves, and
+                  sharpens with every outcome. Validation lets it act; the record, kept inside your
+                  walls, lets it learn.
                 </p>
               </Reveal>
               <Reveal delay={0.2}>
                 <GlassCard className="mt-9 inline-block px-8 py-6">
                   <p className="font-serif text-[clamp(1.3rem,2.2vw,1.7rem)] text-ink">
-                    The longer it runs, the better it gets.
+                    Know what happens next — before it happens.
                   </p>
                 </GlassCard>
+                <div className="mt-8">
+                  <CTA href="/research/world-lending-model" variant="secondary">
+                    Explore the World Lending Model
+                  </CTA>
+                </div>
               </Reveal>
             </div>
             <Reveal delay={0.15}>
@@ -227,78 +188,78 @@ export default function HomePage() {
           </div>
         </Section>
 
-        {/* ---- 5 · The platform ---- */}
-        <Section hairline id="platform">
-          <div className="mx-auto max-w-[760px] text-center">
-            <Reveal>
-              <Eyebrow>One operating system</Eyebrow>
-              <h2 className="mt-4 font-serif text-display-1 text-ink">
-                KrimOS — one core, across regulated operations.
-              </h2>
-              <p className="mx-auto mt-6 max-w-[48ch] font-sans text-body-lg text-ink-2">
-                The same brain, vocabulary and co-workers wherever the work is regulated. Only the
-                rules and use cases change.
-              </p>
-            </Reveal>
-          </div>
-          <Reveal delay={0.15}>
-            <div className="mt-14">
-              <PlatformLayers />
-            </div>
-          </Reveal>
-          <Reveal delay={0.2}>
-            <div className="mt-12 text-center">
-              <CTA href="/platform" variant="secondary">
-                Explore the platform
-              </CTA>
-            </div>
-          </Reveal>
-        </Section>
-
-        {/* ---- 6 · The domains ---- */}
-        <Section hairline id="domains">
+        {/* ---- 4 · The challenge ---- */}
+        <Section hairline id="challenge">
           <Reveal>
-            <Eyebrow>Who it&rsquo;s for</Eyebrow>
-            <h2 className="mt-4 max-w-[26ch] font-serif text-display-1 text-ink">
-              Built for the operations that can&rsquo;t afford to be wrong.
-            </h2>
-            <p className="mt-6 max-w-[60ch] font-sans text-body-lg text-ink-2">
-              The rules and the use cases change with the industry. The proof and the learning do
-              not.
-            </p>
+            <Eyebrow tone="gold">The challenge</Eyebrow>
+            <h2 className="mt-4 font-serif text-display-1 text-ink">What&rsquo;s stopping AI from running banking?</h2>
+            <p className="mt-3 font-sans text-body-lg italic text-ink-3">AI in banking — The pilot that never lands.</p>
           </Reveal>
-          <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-            {DOORS.map(([name, line, href], i) => (
-              <Reveal key={href} delay={i * 0.08}>
-                <Link href={href} className="block h-full">
-                  <GlassCard hover className="relative flex h-full flex-col overflow-hidden p-7">
-                    <DoorMotif kind={name} />
-                    <h3 className="font-serif text-[1.35rem] text-ink">{name}</h3>
-                    <p className="mt-3 flex-1 font-sans text-[14px] leading-relaxed text-ink-2">{line}</p>
-                    <p className="mt-6 font-mono text-[13px] text-mint" aria-hidden>
-                      →
-                    </p>
-                  </GlassCard>
-                </Link>
+          <div className="mt-12 grid gap-5 md:grid-cols-3">
+            {PROBLEMS.map((p, i) => (
+              <Reveal key={p.heading} delay={i * 0.1}>
+                <div className="glass lume h-full p-7 md:p-8">
+                  {/* the cyan "blocked" cue — resolves to mint in the powers below */}
+                  <span aria-hidden className="block h-[3px] w-12 rounded-full bg-cyan/70" />
+                  <p className="mt-6 font-mono text-[10.5px] uppercase tracking-[0.18em] text-ink-3">
+                    {String(i + 1).padStart(2, '0')}
+                  </p>
+                  <h3 className="mt-2 font-serif text-[1.4rem] leading-tight text-ink">{p.heading}</h3>
+                  <p className="mt-3 font-sans text-body text-ink-2">{p.body}</p>
+                </div>
               </Reveal>
             ))}
           </div>
         </Section>
 
-        {/* ---- 7 · Intelligence by policy — what Kendra checks ---- */}
+        {/* ---- 5 · Powers that transform ---- */}
+        <Section hairline id="powers">
+          <Reveal>
+            <Eyebrow>What Krim changes</Eyebrow>
+            <h2 className="mt-4 font-serif text-display-1 text-ink">When validation, execution and intelligence run as one.</h2>
+            <p className="mt-4 max-w-[52ch] font-sans text-body-lg text-ink-2">
+              Lending doesn&rsquo;t improve. It transforms.
+            </p>
+          </Reveal>
+          <div className="mt-12">
+            <PowerCards powers={POWERS} />
+          </div>
+        </Section>
+
+        {/* ---- 6 · Intelligence by policy — what Kendra checks ---- */}
         <Section hairline id="intelligence">
           <Reveal>
             <Eyebrow>Intelligence by policy</Eyebrow>
             <h2 className="mt-4 max-w-[20ch] font-serif text-display-1 text-ink">
-              Every action has to earn its execution.
+              Every action is checked before it happens.
             </h2>
-            <p className="mt-6 max-w-[60ch] font-sans text-body-lg text-ink-2">
-              Before a co-worker acts, Kendra puts the proposed action through Krim-Nyāya — a gate
-              built on a formal logic tradition. Three questions decide it, every time.
+            <p className="mt-6 max-w-[54ch] font-sans text-body-lg text-ink-2">
+              Before a co-worker acts, Kendra runs it through Krim-Nyāya — a gate of 33 validators in
+              three families: grounding, soundness, permission. Here is one action meeting the gate.
             </p>
           </Reveal>
           <div className="mt-12">
             <PolicyChecks />
+          </div>
+        </Section>
+
+        {/* ---- 7 · Who uses it — lending roles + the impact on each ---- */}
+        <Section hairline id="who">
+          <Reveal>
+            <Eyebrow>Who uses it</Eyebrow>
+            <h2 className="mt-4 max-w-[22ch] font-serif text-display-1 text-ink">
+              Built for the teams who run lending.
+            </h2>
+          </Reveal>
+          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {USERS.map(([role, impact], i) => (
+              <Reveal key={role} delay={i * 0.06}>
+                <div className="glass-quiet h-full rounded-lg p-6">
+                  <h3 className="font-serif text-[1.2rem] leading-tight text-ink">{role}</h3>
+                  <p className="mt-2.5 font-sans text-[14px] leading-relaxed text-ink-2">{impact}</p>
+                </div>
+              </Reveal>
+            ))}
           </div>
         </Section>
 
@@ -309,9 +270,8 @@ export default function HomePage() {
               <h2 className="font-serif text-display-2 leading-tight text-ink">
                 Fits the stack you already run.
               </h2>
-              <p className="mx-auto mt-4 max-w-[50ch] font-sans text-body text-ink-2">
-                The decision layer your systems report into — read from, and written back only on
-                validated channels.
+              <p className="mx-auto mt-4 max-w-[44ch] font-sans text-body text-ink-2">
+                Sits on top of your core, LOS and LMS. No rip, no replace. 40+ connectors.
               </p>
             </Reveal>
           </div>
@@ -327,23 +287,21 @@ export default function HomePage() {
           </Reveal>
         </Section>
 
-        {/* ---- 9 · Close ---- */}
+        {/* ---- 9 · Close — open, tight, confident (no heavy box) ---- */}
         <Section hairline id="close">
           <Reveal>
-            <GlassCard className="mx-auto max-w-[720px] p-10 text-center md:p-14">
-              {/* the faint perimeter motif — the sovereign boundary */}
-              <div className="rounded-lg border border-soft px-6 py-10 md:px-10">
-                <h2 className="font-serif text-display-3 leading-tight text-ink">
-                  The operating system for regulated operations.
-                </h2>
-                <p className="mt-5 font-sans text-body text-ink-2">
-                  Sovereign by default. Auditable by design.
-                </p>
-                <div className="mt-9">
-                  <CTA href={DEMO_HREF}>Book a demo</CTA>
-                </div>
+            <div className="mx-auto max-w-[680px] text-center">
+              <span aria-hidden className="mx-auto block h-[3px] w-14 rounded-full bg-mint" />
+              <h2 className="mt-8 font-serif text-display-2 leading-[1.05] text-ink">
+                Auditable AI at every step.
+              </h2>
+              <p className="mt-5 font-sans text-body-lg text-ink-2">
+                Proven on your data. Live on day one.
+              </p>
+              <div className="mt-9">
+                <CTA href={DEMO_HREF}>Book a demo</CTA>
               </div>
-            </GlassCard>
+            </div>
           </Reveal>
         </Section>
         </div>

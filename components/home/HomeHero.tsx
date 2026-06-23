@@ -24,9 +24,9 @@ const DEMO_HREF = '/contact'
 
 // Two serif headline lines, then the sans subline — typed in this order.
 const LINES = [
-  'Sovereign Superintelligence',
-  'for Safe Automation',
-  'AI workers run your operations — Intelligence by Policy.',
+  'Safe Superintelligence for',
+  'Autonomous Banking',
+  'Sovereign world model & governed agent harness — Banking\'s future.',
 ]
 
 function useTyped(disabled: boolean) {

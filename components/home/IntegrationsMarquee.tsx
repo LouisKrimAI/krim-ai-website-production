@@ -29,22 +29,37 @@ type Row = {
 
 const BASE = '/brand/integrations'
 
-// One calm, slow drift — not three competing rows. Restraint over spectacle.
+// Three categorised flows, alternating direction (l · r · l) — a calm,
+// premium partner strip that reads as one system across the lifecycle.
 const ROWS: Row[] = [
   {
-    label: '40+ connectors',
+    label: 'Core & lending',
     dir: 'l',
-    duration: 66,
+    duration: 64,
     logos: [
       { src: `${BASE}/temenos.png`, alt: 'Temenos' },
       { src: `${BASE}/oracle.png`, alt: 'Oracle' },
       { src: `${BASE}/fis.png`, alt: 'FIS' },
       { src: `${BASE}/fiserv.png`, alt: 'Fiserv' },
       { src: `${BASE}/jackhenry.png`, alt: 'Jack Henry' },
+    ],
+  },
+  {
+    label: 'Cloud & data',
+    dir: 'r',
+    duration: 58,
+    logos: [
       { src: `${BASE}/aws.png`, alt: 'AWS' },
       { src: `${BASE}/azure.png`, alt: 'Microsoft Azure' },
       { src: `${BASE}/snowflake.png`, alt: 'Snowflake' },
       { src: `${BASE}/databricks.png`, alt: 'Databricks' },
+    ],
+  },
+  {
+    label: 'Channels & CRM',
+    dir: 'l',
+    duration: 70,
+    logos: [
       { src: `${BASE}/salesforce.png`, alt: 'Salesforce' },
       { src: `${BASE}/hubspot.png`, alt: 'HubSpot' },
       { src: `${BASE}/slack.png`, alt: 'Slack' },

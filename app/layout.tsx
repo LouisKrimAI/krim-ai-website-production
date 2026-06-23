@@ -29,11 +29,11 @@ const logo = Montserrat({
 export const metadata: Metadata = {
   metadataBase: new URL('https://krim.ai'),
   title: {
-    default: 'Krim - Safe Superintelligence',
+    default: 'Krim — Safe Superintelligence for Banking',
     template: '%s — Krim',
   },
   description:
-    'KrimOS is the operating system for regulated operations: AI co-workers whose every action is validated before it executes — and that learn from everything they do, inside your own walls.',
+    'KrimOS is the operating system for banking and financial services — a world model for lending with AI co-workers that run the whole lifecycle, every action validated before it acts, inside your own walls.',
   icons: {
     icon: [
       { url: '/brand/krim-mark.svg', type: 'image/svg+xml' },
