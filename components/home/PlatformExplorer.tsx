@@ -77,24 +77,24 @@ const LAYERS: Layer[] = [
   {
     key: 'krimkar',
     name: 'Krimkar',
-    tag: 'The workspace',
-    summary: 'Enterprise command center — the operations floor your team owns.',
+    tag: 'The consumer app',
+    summary: 'The customer-facing application — one relationship, every channel.',
     points: [
-      'One place to oversee the whole lending operation.',
-      'Every action supervised, reversible and auditable.',
-      'Kula, the copilot, answers questions and proposes next steps — all validated before they fire.',
+      'Kira, the AI advisor: one thread from application to payoff — context preserved across every channel.',
+      'Voice, SMS, WhatsApp, email, in-app — 50+ languages, one voice.',
+      'Validated before every action — safe to put in front of customers.',
     ],
-    href: '/platform/kupa',
+    href: '/platform/kira',
   },
   {
     key: 'kira',
     name: 'Kira',
     tag: 'The advisor',
-    summary: 'The borrower\'s relationship — every channel, one voice.',
+    summary: 'The AI that customers talk to — one relationship, the whole lifecycle.',
     points: [
-      'One AI advisor from application to payoff — consistent, personal, auditable.',
-      'Every channel in 50+ languages: voice, SMS, WhatsApp, email, in-app.',
-      'Powered by the same validation that protects your operation — safe for customers.',
+      'Meets borrowers on WhatsApp, voice, IVR, email, SMS and in the app — one thread, full context.',
+      'Speaks the customer\'s language, auto-clarifies ambiguous fields, acts only within consent rules.',
+      'Hands off to humans with full context for disputes, hardship or sensitive segments.',
     ],
     href: '/platform/kira',
   },
@@ -108,9 +108,10 @@ export default function PlatformExplorer() {
   const layer = LAYERS.find((l) => l.key === active) ?? LAYERS[0]
 
   return (
-    <div className="mx-auto grid w-full max-w-[1040px] gap-5 lg:grid-cols-[300px_1fr] lg:gap-7">
-      {/* ---- left: selectable layer stack ---- */}
-      <div className="flex flex-col gap-1.5 lg:h-[420px]" role="tablist" aria-label="The KrimOS platform layers">
+    <div className="mx-auto w-full max-w-[1040px]">
+      {/* ---- left: selectable layer stack — responsive layout ---- */}
+      <div className="grid gap-5 lg:grid-cols-[300px_1fr] lg:gap-7">
+        <div className="flex flex-col gap-1.5 lg:h-[420px]" role="tablist" aria-label="The KrimOS platform layers">
         {LAYERS.map((l) => {
           const isActive = l.key === active
           return (
@@ -224,6 +225,7 @@ export default function PlatformExplorer() {
             </div>
           </motion.div>
         </AnimatePresence>
+      </div>
       </div>
     </div>
   )

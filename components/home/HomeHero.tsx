@@ -26,7 +26,7 @@ const DEMO_HREF = '/contact'
 const LINES = [
   'Safe Superintelligence for',
   'Autonomous Banking',
-  'Sovereign world model & governed agent harness — Banking\'s future.',
+  'Sovereign world model & governed agent harness — Banking has a new foundation.',
 ]
 
 function useTyped(disabled: boolean) {
