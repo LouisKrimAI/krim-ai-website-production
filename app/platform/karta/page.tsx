@@ -1,8 +1,8 @@
 /**
  * /platform/karta — Karta, the AI co-workers (a core KrimOS layer).
  * Built to the house standard: content-first, homepage glass, no devices.
- * Shape: what they are (hero) → how they're made → the roster of eight →
- *   the hard boundary (the one gold moment) → how control works → impact.
+ * Shape: what they are (hero) → how they're made → the roster by lifecycle →
+ *   channels & languages → the anatomy → the hard boundary → control → impact.
  * Facts: docs/krim-content.md (Karta — the AI co-workers). Invent nothing.
  */
 
@@ -50,16 +50,64 @@ const MAKEUP = [
   },
 ]
 
-// the roster — exactly EIGHT (docs/krim-content.md · Karta table)
-const ROSTER = [
-  { name: 'Vox-Out', line: 'Outbound voice across the lifecycle — acquisition, onboarding, servicing, collections, hardship, retention and cross-sell.' },
-  { name: 'Vox-In', line: 'Inbound voice — servicing and payment queries, disputes, hardship signposting, and warm transfer to a human.' },
-  { name: 'Doc', line: 'Documents and notices — arrears notices, restructuring offers, regulatory letters and payment confirmations.' },
-  { name: 'Risk', line: 'Operational risk segmentation and gating by the institution’s own external risk flags.' },
-  { name: 'Decide', line: 'Next-best-action and conflict resolution across competing strategies.' },
-  { name: 'Cure', line: 'Delinquency cure — multi-step journeys that bring borrowers back to good standing.' },
-  { name: 'Audit', line: 'Interaction review, pattern detection and anomaly surfacing for compliance and audit teams.' },
-  { name: 'Report', line: 'Operational reporting, aggregated for ops, risk, compliance and executive stakeholders.' },
+// the roster, organised by the operational section each co-worker owns —
+// across the lending lifecycle. A representative set, configured per institution.
+const PHASES = [
+  {
+    phase: 'Origination',
+    summary: 'Turn an applicant into a funded loan, without the manual back-and-forth.',
+    workers: [
+      ['Onboard', 'Guides the application end to end — identity, documents and the path to a decision.'],
+      ['Doc', 'Generates agreements, key-facts statements, schedules and sanction letters, ready to sign.'],
+    ],
+  },
+  {
+    phase: 'Servicing',
+    summary: 'Keep every live loan healthy and every question answered.',
+    workers: [
+      ['Vox-In', 'Answers inbound calls and chats — balances, schedules, payments — or hands to a person.'],
+      ['Account', 'Handles servicing changes, statements, preferences and self-service requests.'],
+      ['Pay', 'Runs billing, mandates, payment plans and reconciliation across payment rails.'],
+    ],
+  },
+  {
+    phase: 'Collections & recovery',
+    summary: 'Bring borrowers back to good standing — inside the rules at every step.',
+    workers: [
+      ['Vox-Out', 'Outbound voice across the lifecycle — reminders, negotiation and retention.'],
+      ['Cure', 'Multi-step journeys that move a delinquent borrower back to current.'],
+      ['Hardship', 'Intake, eligibility and restructuring for borrowers in genuine difficulty.'],
+      ['Legal', 'Coordinates statutory recovery, with the right hard blocks always in force.'],
+      ['Closure', 'Payoff, settlement, no-dues and write-off — the end of a loan, handled cleanly.'],
+    ],
+  },
+  {
+    phase: 'Risk & oversight',
+    summary: 'Keep the whole operation measured, gated and accountable.',
+    workers: [
+      ['Risk', 'Segments and gates actions on the institution’s own risk and fraud flags.'],
+      ['Monitor', 'Watches the portfolio for delinquency, drift and early-warning signals.'],
+      ['Audit', 'Reviews interactions, detects patterns and surfaces anomalies for compliance.'],
+      ['Report', 'Aggregates operational reporting for ops, risk, compliance and the board.'],
+    ],
+  },
+]
+
+// the channels co-workers operate across — inbound and outbound, one thread
+const CHANNELS = ['Voice', 'SMS', 'WhatsApp', 'Email', 'Web chat']
+
+// what every co-worker is made of — its attributes (docs/krim-content.md · Karta)
+const ANATOMY = [
+  ['Purpose', 'the job it owns'],
+  ['Capabilities', 'what it can do'],
+  ['Primitives', 'the validated actions it composes'],
+  ['Inputs & outputs', 'what it reads and produces'],
+  ['Metrics', 'how its work is measured'],
+  ['Cost', 'metered per action, in Krim Work Units'],
+  ['Governance', 'the policies it runs inside'],
+  ['Learning loops', 'how it sharpens from outcomes'],
+  ['Human-in-the-loop', 'when it defers to a person'],
+  ['Autonomy', 'how far it goes on its own'],
 ]
 
 // what today's co-workers don't do — operations, not the credit decision (docs/krim-content.md)
@@ -121,27 +169,113 @@ export default function KartaPage() {
           </div>
         </Section>
 
-        {/* ---- The roster of eight ---- */}
+        {/* ---- Across the lifecycle — co-workers by operational section ---- */}
         <Section hairline>
           <Reveal>
             <Eyebrow>The roster</Eyebrow>
-            <h2 className="mt-4 max-w-[24ch] font-serif text-display-1 text-ink">
-              Eight co-workers cover the operation end to end.
+            <h2 className="mt-4 max-w-[26ch] font-serif text-display-1 text-ink">
+              A co-worker for every part of the operation.
             </h2>
-            <p className="mt-6 max-w-[60ch] font-sans text-body-lg text-ink-2">
-              Voice in both directions, the paperwork, the operational calls, the cure journeys,
-              and the review that keeps it all accountable — each configured to your segments,
-              scripts and policies.
+            <p className="mt-6 max-w-[62ch] font-sans text-body-lg text-ink-2">
+              They span the lending lifecycle — origination through to recovery — each configured to
+              your segments, scripts and policies. A representative line-up; it{' '}
+              <span className="text-mint">flexes to how you run</span>.
             </p>
           </Reveal>
-          <div className="mt-12 grid gap-5 md:grid-cols-2">
-            {ROSTER.map((c, i) => (
-              <Reveal key={c.name} delay={(i % 2) * 0.08}>
-                <div className="glass lume h-full p-7">
-                  <h3 className="font-serif text-[1.5rem] leading-tight text-ink">{c.name}</h3>
-                  <p className="mt-3 font-sans text-body text-ink-2">{c.line}</p>
+          <div className="mt-12">
+            {PHASES.map((p, i) => (
+              <Reveal key={p.phase} delay={(i % 2) * 0.06}>
+                <div className="grid gap-6 border-t border-white/[0.07] py-9 md:grid-cols-[250px_1fr] md:gap-10">
+                  <div>
+                    <h3 className="font-serif text-[1.55rem] leading-tight text-ink">{p.phase}</h3>
+                    <p className="mt-2 font-sans text-body text-ink-3">{p.summary}</p>
+                  </div>
+                  <div className="grid gap-x-8 gap-y-5 sm:grid-cols-2">
+                    {p.workers.map(([name, line]) => (
+                      <div key={name} className="flex gap-3.5">
+                        <span aria-hidden className="mt-[0.5em] h-1.5 w-1.5 shrink-0 rounded-full bg-mint/70" />
+                        <p className="font-sans text-body text-ink-2">
+                          <span className="font-serif text-[1.15rem] text-ink">{name}</span>
+                          <span className="mx-1.5 text-ink-3">·</span>
+                          {line}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </Reveal>
+            ))}
+          </div>
+        </Section>
+
+        {/* ---- Channels & languages — omnichannel, one thread ---- */}
+        <Section hairline>
+          <div className="grid items-center gap-12 md:grid-cols-[1fr_1fr]">
+            <Reveal>
+              <div>
+                <Eyebrow>Where they work</Eyebrow>
+                <h2 className="mt-4 max-w-[20ch] font-serif text-display-1 text-ink">
+                  They meet customers where they already are.
+                </h2>
+                <p className="mt-7 max-w-[52ch] font-sans text-body-lg text-ink-2">
+                  Inbound and outbound, across the channels people actually use — one thread that
+                  remembers the conversation, in the{' '}
+                  <span className="text-mint">customer&rsquo;s own language</span>, and hands to a
+                  person with full context the moment it matters. Running in real time, across the
+                  whole book at once.
+                </p>
+              </div>
+            </Reveal>
+            <Reveal delay={0.12}>
+              <GlassCard className="p-8 md:p-10">
+                <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-ink-3">Channels</p>
+                <div className="mt-5 flex flex-wrap gap-2.5">
+                  {CHANNELS.map((c) => (
+                    <span
+                      key={c}
+                      className="rounded-full border border-mint/25 bg-mint/[0.04] px-4 py-1.5 font-sans text-body text-ink"
+                    >
+                      {c}
+                    </span>
+                  ))}
+                </div>
+                <ul className="mt-7 grid gap-4 border-t border-soft pt-7">
+                  {[
+                    ['One thread', 'inbound and outbound, unified — no cold restarts'],
+                    ['The customer’s language', 'the conversation meets them in theirs'],
+                    ['Warm hand-off', 'to a person, with the full context attached'],
+                  ].map(([t, d]) => (
+                    <li key={t} className="flex items-start gap-3 font-sans text-body text-ink-2">
+                      <span aria-hidden className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-mint" />
+                      <span>
+                        <span className="text-ink">{t}</span> — {d}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </GlassCard>
+            </Reveal>
+          </div>
+        </Section>
+
+        {/* ---- The anatomy of a co-worker — the attributes ---- */}
+        <Section hairline>
+          <Reveal>
+            <Eyebrow>The anatomy</Eyebrow>
+            <h2 className="mt-4 max-w-[24ch] font-serif text-display-1 text-ink">
+              Every co-worker is defined, not hard-coded.
+            </h2>
+            <p className="mt-6 max-w-[60ch] font-sans text-body-lg text-ink-2">
+              The same set of attributes describes each one — change them in a studio and the
+              co-worker changes with them. <span className="text-mint">No engineering cycle.</span>
+            </p>
+          </Reveal>
+          <div className="mt-12 grid gap-px overflow-hidden rounded-xl border border-white/[0.07] sm:grid-cols-2">
+            {ANATOMY.map(([label, gloss]) => (
+              <div key={label} className="flex items-baseline gap-3 bg-white/[0.015] px-6 py-4">
+                <span className="shrink-0 font-serif text-[1.15rem] text-ink">{label}</span>
+                <span className="font-sans text-body text-ink-3">— {gloss}</span>
+              </div>
             ))}
           </div>
         </Section>
@@ -211,7 +345,7 @@ export default function KartaPage() {
                 <ul className="grid gap-5">
                   {[
                     ['Configured, not coded', 'Every co-worker is set by its attributes — no engineering cycle to change behaviour.'],
-                    ['Autonomy you choose', 'Run a co-worker hands-off, with oversight, as a copilot, or fully human-in-the-loop.'],
+                    ['Autonomy you choose', 'Run each co-worker manual, supervised or autonomous — and move the line as confidence grows.'],
                     ['Humans in the loop', 'Low-confidence and high-risk actions route to a person before anything executes.'],
                   ].map(([title, body]) => (
                     <li key={title} className="flex items-start gap-4">
