@@ -21,7 +21,10 @@ export default function OrbBackdrop({ opacity = 0.18 }: { opacity?: number }) {
       />
       <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2" style={{ opacity }}>
         <div className="orb-drift">
-          <WaveOrb size="min(86vmin, 860px)" speed={0.42} density={0.55} />
+          {/* matched to the homepage orb's effective size + params (HomeHero renders
+              min(88vmin,880px) at scale 1.5 → ~132vmin), so every page's orb reads
+              the same size and fade */}
+          <WaveOrb size="min(132vmin, 1320px)" speed={0.36} density={0.6} />
         </div>
       </div>
       <div

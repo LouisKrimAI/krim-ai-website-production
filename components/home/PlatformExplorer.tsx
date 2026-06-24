@@ -18,11 +18,11 @@ const LAYERS: Layer[] = [
     key: 'kendra',
     name: 'Kendra',
     tag: 'The runtime',
-    summary: 'The governed perimeter that lets a risk committee say yes to AI.',
+    summary: 'The governed runtime a risk committee can say yes to.',
     points: [
-      'Every action gated before it fires — against regulatory frameworks and policy.',
-      'One immutable record: what ran, why, and under which rule.',
-      'Every outcome feeds the World Lending Model — the operation sharpens as it runs.',
+      'Every action gated before it fires — against your rules.',
+      'One immutable record: what ran, why, under which rule.',
+      'Every outcome feeds the World Lending Model.',
     ],
     href: '/platform/kendra',
   },
@@ -32,8 +32,8 @@ const LAYERS: Layer[] = [
     tag: 'The actions',
     summary: 'Change a rule once — not across a hundred scripts.',
     points: [
-      '250+ validated, credit-native actions: bureau pulls, payments, notices, calls.',
-      'Rules travel with the action — a policy change lands everywhere at once.',
+      '250+ validated, credit-native actions, ready to use.',
+      'Rules travel with the action — change once, live everywhere.',
       'The layer that gets you past Compliance and Legal.',
     ],
     href: '/platform/kriya',
@@ -44,9 +44,9 @@ const LAYERS: Layer[] = [
     tag: 'The co-workers',
     summary: 'The book can grow without the cost line growing with it.',
     points: [
-      'AI co-workers across the full lifecycle — onboarding, servicing, collections.',
-      'Every channel, every language: voice, SMS, email, WhatsApp, in-app.',
-      'They act, not just advise — credit decisions stay with you.',
+      'AI co-workers across the full lending lifecycle.',
+      'Every channel and language — voice, SMS, email, WhatsApp.',
+      'They act, not just advise — credit decisions stay yours.',
     ],
     href: '/platform/karta',
   },
@@ -54,11 +54,11 @@ const LAYERS: Layer[] = [
     key: 'kupa',
     name: 'Kupa',
     tag: 'The command center',
-    summary: 'Watch the whole operation live — and step in the moment it matters.',
+    summary: 'See the whole operation live — and step in when it matters.',
     points: [
-      'Live dashboards and analytics: every queue, call, SLA and segment, as it happens.',
-      'Real-time escalation and one-click intervention — pause, reroute or roll back any co-worker.',
-      'Every action supervised, reversible and on the record — always.',
+      'Live dashboards and analytics — every queue, call and SLA.',
+      'Real-time escalation; one-click pause, reroute or rollback.',
+      'Every action supervised, reversible and on the record.',
     ],
     href: '/platform/kupa',
   },
@@ -66,11 +66,11 @@ const LAYERS: Layer[] = [
     key: 'kula',
     name: 'Kula',
     tag: 'The digital twin',
-    summary: 'A role-tuned interface that doesn\'t just answer — it acts.',
+    summary: "A role-tuned interface that doesn't just answer — it acts.",
     points: [
-      'Ask in plain language, by text or voice; it reasons in the Kendra runtime.',
-      'It proposes a plan, builds the workflow, then runs it — validated, on your sign-off.',
-      'Tuned to your role: a risk lead and a collections head each meet a different Kula.',
+      'Ask in plain language — by text or voice.',
+      'It builds the workflow and runs it, on your sign-off.',
+      'Tuned to your role: each seat meets a different Kula.',
     ],
     href: '/platform/kula',
   },
@@ -78,11 +78,11 @@ const LAYERS: Layer[] = [
     key: 'kira',
     name: 'Kira & Krimkar',
     tag: 'The customer advisor',
-    summary: 'The AI advisor your customers talk to — and the app they meet it in.',
+    summary: 'The advisor your customers meet — and the app it lives in.',
     points: [
-      'One thread from application to payoff — WhatsApp, voice, IVR, SMS, email and the Krimkar app, in 50+ languages.',
-      'Speaks the customer’s language, clarifies ambiguity, acts only within consent.',
-      'Validated before every action; hands off to a person — with full context — when a moment needs one.',
+      'One thread from application to payoff, every channel.',
+      'Speaks their language; acts only within consent.',
+      'Hands to a person — with full context — when it matters.',
     ],
     href: '/platform/kira',
   },
@@ -99,7 +99,7 @@ export default function PlatformExplorer() {
     <div className="mx-auto w-full max-w-[1040px]">
       {/* ---- left: selectable layer stack — responsive layout ---- */}
       <div className="grid gap-5 lg:grid-cols-[300px_1fr] lg:gap-7">
-        <div className="flex flex-col gap-1.5 lg:h-[460px]" role="tablist" aria-label="The KrimOS platform layers">
+        <div className="flex flex-col gap-1.5 lg:h-[420px]" role="tablist" aria-label="The KrimOS platform layers">
         {LAYERS.map((l) => {
           const isActive = l.key === active
           return (
@@ -150,7 +150,7 @@ export default function PlatformExplorer() {
       <div
         id="krim-layer-detail"
         role="tabpanel"
-        className="lume glass relative overflow-hidden rounded-lg p-8 md:p-10 lg:h-[460px]"
+        className="lume glass relative overflow-hidden rounded-lg p-8 md:p-10 lg:h-[420px]"
       >
         {/* faint cyan core glow */}
         <span
@@ -178,8 +178,9 @@ export default function PlatformExplorer() {
               </h3>
             </div>
 
-            {/* summary */}
-            <p className="mt-4 font-sans text-body-lg text-ink-2">
+            {/* summary — fixed 2-line reserve so the bullets below always start at
+                the same Y, whatever the summary length */}
+            <p className="mt-4 min-h-[3.4rem] font-sans text-body-lg text-ink-2">
               {layer.summary}
             </p>
 
