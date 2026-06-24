@@ -45,7 +45,7 @@ const LAYERS: Layer[] = [
     summary: 'The book can grow without the cost line growing with it.',
     points: [
       'AI co-workers across the full lending lifecycle.',
-      'Every channel and language — voice, SMS, email, WhatsApp.',
+      'Voice, SMS, email and WhatsApp — in the customer’s own language.',
       'They act, not just advise — credit decisions stay yours.',
     ],
     href: '/platform/karta',

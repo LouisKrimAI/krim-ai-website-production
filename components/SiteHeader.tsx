@@ -23,7 +23,7 @@ const KRIMOS = [
   ['Karta', 'The AI co-workers', '/platform/karta'],
   ['Kupa', 'The command center', '/platform/kupa'],
   ['Kula', 'For your teams', '/platform/kula'],
-  ['Kira', 'The customer advisor', '/platform/kira'],
+  ['Kira & Krimkar', 'The customer advisor', '/platform/kira'],
 ] as const
 
 const DOMAINS = [

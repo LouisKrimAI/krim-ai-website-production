@@ -89,7 +89,7 @@ const POWERS = [
 const USERS = [
   { role: 'Origination', impact: 'Underwriters and analysts onboard in hours, not days — every decision auditable, applications moving at digital speed.', hl: 'in hours, not days' },
   { role: 'Risk & Credit', impact: 'Every AI decision is provable and on the record, so model risk and fair-lending exposure stay contained.', hl: 'provable and on the record' },
-  { role: 'Servicing', impact: 'Cure and serve at scale — every contact, every language, inside the rules and without adding headcount.', hl: 'inside the rules' },
+  { role: 'Servicing', impact: 'Cure and serve at scale — every contact, in the customer’s own language, inside the rules and without adding headcount.', hl: 'inside the rules' },
   { role: 'Collections', impact: 'Right-party contact at scale and better recovery — collections flow into the operation as validated actions.', hl: 'validated actions' },
   { role: 'Compliance & Audit', impact: 'Reconstruct any action, any time, in plain words your examiner can read — inspections close in hours, not weeks.', hl: 'your examiner can read' },
   { role: 'Operations', impact: 'The manual backlog from origination to collections runs on validated co-workers — the team scales without the headcount.', hl: 'without the headcount' },

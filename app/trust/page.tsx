@@ -68,23 +68,23 @@ const DEPLOYMENTS = [
 const POSTURE = [
   {
     title: 'Encrypted end to end',
-    body: 'Encryption at rest and in transit across the whole stack — no plaintext gaps between systems.',
+    body: 'Encrypted at rest and in transit across the whole stack — no plaintext gaps.',
   },
   {
     title: 'Granular RBAC',
-    body: 'Role-based access on every action, each one recorded in the same audit trail it governs.',
+    body: 'Role-based access on every action, recorded in the trail it governs.',
   },
   {
     title: 'Customer-held keys',
-    body: 'You hold the keys. Krim cannot read what you have not chosen to share — even in managed deployments.',
+    body: 'You hold the keys — Krim can’t read what you haven’t chosen to share.',
   },
   {
     title: 'PII isolated by tenancy',
-    body: 'Sensitive records are isolated per tenant; no shared pool, no cross-tenant leakage of customer data.',
+    body: 'Records isolated per tenant — no shared pool, no cross-tenant leakage.',
   },
   {
     title: 'Sealed, immutable trail',
-    body: 'Every action, decision and validation streams to a cryptographically sealed, append-only record — a court-admissible chain of custody.',
+    body: 'Every action streams to a sealed, append-only, court-admissible record.',
     accent: true,
   },
 ]
@@ -98,15 +98,17 @@ const JURISDICTIONS = [
 ]
 
 // ---- security & compliance standards — architecture designed around these frameworks ----
-const SECURITY_STANDARDS = [
-  { label: 'SOC 2 Type II', group: 'security' },
-  { label: 'ISO 27001', group: 'security' },
-  { label: 'CERT-In', group: 'security' },
-]
-const REGULATORY_STANDARDS = [
-  { label: 'GDPR', group: 'regulatory' },
-  { label: 'DPDP', group: 'regulatory' },
-  { label: 'EU AI Act', group: 'regulatory' },
+// Mix of international standards and the Indian banking/data frameworks a security team checks for.
+const STANDARDS = [
+  { label: 'SOC 2 Type II', kind: 'Information security' },
+  { label: 'ISO 27001', kind: 'Information security' },
+  { label: 'PCI DSS', kind: 'Payments security' },
+  { label: 'RBI Cyber Security Framework', kind: 'Banking security' },
+  { label: 'CERT-In', kind: 'Cybersecurity' },
+  { label: 'DPDP Act 2023', kind: 'Data protection' },
+  { label: 'IT Act 2000', kind: 'Data protection' },
+  { label: 'GDPR', kind: 'Data protection' },
+  { label: 'EU AI Act', kind: 'AI governance' },
 ]
 
 export default function TrustPage() {
@@ -160,10 +162,7 @@ export default function TrustPage() {
                     aria-hidden
                     className={`block h-[3px] w-12 rounded-full ${d.primary ? 'bg-mint' : 'bg-mint/45'}`}
                   />
-                  <p className="mt-6 font-mono text-caption uppercase tracking-[0.16em] text-ink-3">
-                    {d.note}
-                  </p>
-                  <h3 className="mt-2 font-serif text-[1.5rem] leading-tight text-ink">{d.name}</h3>
+                  <h3 className="mt-6 font-serif text-[1.5rem] leading-tight text-ink">{d.name}</h3>
                   <p className="mt-3 font-sans text-body text-ink-2">{d.body}</p>
                   {d.primary && (
                     <p className="mt-6 font-mono text-[11px] uppercase tracking-[0.18em] text-mint">
@@ -181,21 +180,21 @@ export default function TrustPage() {
           <Reveal>
             <Eyebrow>The posture</Eyebrow>
             <h2 className="mt-4 max-w-[24ch] font-serif text-display-1 text-ink">
-              Security that holds whether or not anyone is watching.
+              Security, built into the runtime.
             </h2>
             <p className="mt-6 max-w-[60ch] font-sans text-body-lg text-ink-2">
-              The controls a regulated buyer asks for first — built into the runtime, not bolted on
-              the side.
+              Encryption, access, isolation and a sealed audit trail — the controls a regulated buyer
+              checks first, engineered in from the start.
             </p>
           </Reveal>
-          <div className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-6">
+          <div className="mt-12 grid gap-5 md:grid-cols-2 lg:auto-rows-fr lg:grid-cols-6">
             {POSTURE.map((p, i) => (
               <Reveal
                 key={p.title}
                 delay={(i % 3) * 0.08}
                 className={`lg:col-span-2 ${i === 3 ? 'lg:col-start-2' : ''}`}
               >
-                <div className={`glass lume h-full p-7 ${p.accent ? 'glass-mint' : ''}`}>
+                <div className={`glass lume flex h-full flex-col p-7 ${p.accent ? 'glass-mint' : ''}`}>
                   <span
                     aria-hidden
                     className={`block h-[3px] w-12 rounded-full ${p.accent ? 'bg-mint' : 'bg-mint/45'}`}
@@ -289,7 +288,7 @@ export default function TrustPage() {
             </p>
           </Reveal>
           <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {[...SECURITY_STANDARDS, ...REGULATORY_STANDARDS].map((s, i) => (
+            {STANDARDS.map((s, i) => (
               <Reveal key={s.label} delay={(i % 3) * 0.07}>
                 <div className="glass lume flex h-full items-center gap-4 rounded-lg p-5">
                   <span
@@ -301,7 +300,7 @@ export default function TrustPage() {
                   <div>
                     <p className="font-serif text-[1.15rem] leading-tight text-ink">{s.label}</p>
                     <p className="mt-0.5 font-mono text-[9.5px] uppercase tracking-[0.18em] text-ink-3">
-                      {s.group === 'security' ? 'Information security' : 'Regulatory alignment'}
+                      {s.kind}
                     </p>
                   </div>
                 </div>
@@ -309,10 +308,8 @@ export default function TrustPage() {
             ))}
           </div>
           <Reveal delay={0.12}>
-            <p className="mx-auto mt-9 max-w-[68ch] text-center font-sans text-body text-ink-3">
-              The architecture is built to these frameworks today; formal certifications are in
-              progress. Bring your security team — we support architecture review, penetration-testing
-              access and full documentation on request.
+            <p className="mx-auto mt-9 max-w-[60ch] text-center font-sans text-body text-ink-3">
+              Documented, and ready for your security team to review.
             </p>
           </Reveal>
         </Section>
