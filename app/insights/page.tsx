@@ -60,16 +60,15 @@ export default function BlogPage() {
             <Reveal>
               <Eyebrow>Insights</Eyebrow>
               <h1 className="mt-5 font-serif text-display-hero text-ink">
-                The thinking behind the machine.
+                Before the action, the argument.
               </h1>
             </Reveal>
             <Reveal delay={0.12}>
               <p className="mx-auto mt-7 max-w-[58ch] font-sans text-body-lg text-ink-2">
                 Why the most consequential work still runs by hand, what a single wrong action
-                really costs, and why proof has to come <span className="text-ink">before</span> the
-                action — not after. Notes on building{' '}
-                <span className="text-mint">validated</span>,{' '}
-                <span className="text-ink">sovereign</span> AI for regulated work.
+                really costs, and why proof has to come <span className="text-ink">first</span> — not
+                after. Notes on building <span className="text-mint">validated</span>,{' '}
+                <span className="text-ink">sovereign</span> AI for banking — lending first.
               </p>
             </Reveal>
           </div>

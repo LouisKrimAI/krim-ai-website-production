@@ -98,7 +98,7 @@ export default function ServicesPage() {
             <Reveal>
               <Eyebrow>From pilot to scale</Eyebrow>
               <h1 className="mt-5 font-serif text-display-hero text-ink">
-                From deep-dive to production go-live in a quarter.
+                Prove it on your own data first.
               </h1>
             </Reveal>
             <Reveal delay={0.12}>

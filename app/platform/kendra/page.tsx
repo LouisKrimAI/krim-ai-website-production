@@ -15,12 +15,12 @@ import { Section, Eyebrow, GlassCard } from '@/components/ui'
 export const metadata: Metadata = {
   title: 'Kendra — the runtime',
   description:
-    'Kendra is the runtime of KrimOS — the brain the co-workers think in. Krim-Nyāya validates every action before it executes; Krim-Learn turns every recorded outcome into intelligence. Eight engineering modules make the guarantees hold.',
+    'Kendra is the runtime of KrimOS — the brain the co-workers think in. Krim-Nyāya validates every action before it executes; Krim-Learn turns every recorded outcome into intelligence. The runtime your regulator can read.',
   alternates: { canonical: 'https://krim.ai/platform/kendra' },
   openGraph: {
     title: 'Kendra — the runtime',
     description:
-      'Kendra is the runtime of KrimOS — the brain the co-workers think in. Krim-Nyāya validates every action before it executes; Krim-Learn turns every recorded outcome into intelligence. Eight engineering modules make the guarantees hold.',
+      'Kendra is the runtime of KrimOS — the brain the co-workers think in. Krim-Nyāya validates every action before it executes; Krim-Learn turns every recorded outcome into intelligence. The runtime your regulator can read.',
     url: 'https://krim.ai/platform/kendra',
   },
 }
@@ -169,8 +169,8 @@ export default function KendraPage() {
                       className="pointer-events-none absolute inset-0"
                       style={{ background: 'radial-gradient(60% 60% at 50% 50%, rgba(57,214,255,0.16) 0%, rgba(57,214,255,0) 70%)' }}
                     />
-                    <span className="relative font-serif text-[2.6rem] leading-none text-ink" aria-hidden>
-                      कृ
+                    <span className="relative font-serif text-[2rem] leading-none text-ink" aria-hidden>
+                      केंद्र
                     </span>
                     <p className="relative mt-4 font-serif text-[1.35rem] leading-none text-ink">Kendra</p>
                     <p className="relative mt-2.5 font-mono text-[10px] uppercase tracking-[0.2em] text-cyan/80">

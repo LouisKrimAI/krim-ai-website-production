@@ -1,9 +1,10 @@
 /**
- * /contact — "Book a demo". The conversion page: a glass demo form routed to
- * sales@krim.ai (Formspree), a Cal.com inline embed for self-serve scheduling,
- * and the direct lines. Standalone shell (header + orb + footer); content-first,
- * homepage glass + type only — the form and Cal embed are the real interactive
- * content (HOUSE-STYLE §0/§7). Copy: docs/copy/contact.md.
+ * /contact — "Book a demo". The conversion page: a glass demo form posting to
+ * /api/demo (Supabase capture + confirmation/drip + sales notice via Resend), a
+ * Calendly inline embed for self-serve scheduling, and the direct lines.
+ * Standalone shell (header + orb + footer); content-first, homepage glass + type
+ * only — the form and embed are the real interactive content (HOUSE-STYLE §0/§7).
+ * Copy: docs/copy/contact.md.
  */
 
 import type { Metadata } from 'next'
@@ -12,7 +13,7 @@ import SiteFooter from '@/components/SiteFooter'
 import OrbBackdrop from '@/components/OrbBackdrop'
 import Reveal from '@/components/Reveal'
 import { Section, Eyebrow, GlassCard } from '@/components/ui'
-import { DemoForm, CalScheduler } from './_client'
+import { DemoForm, CalendlyScheduler } from './_client'
 
 export const metadata: Metadata = {
   title: 'Book a demo',
@@ -105,7 +106,7 @@ export default function ContactPage() {
             </Reveal>
             <Reveal delay={0.12}>
               <div className="mt-10">
-                <CalScheduler />
+                <CalendlyScheduler />
               </div>
             </Reveal>
           </div>

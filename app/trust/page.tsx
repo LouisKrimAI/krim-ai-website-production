@@ -290,7 +290,7 @@ export default function TrustPage() {
           <Reveal>
             <Eyebrow>Security standards</Eyebrow>
             <h2 className="mt-4 max-w-[24ch] font-serif text-display-1 text-ink">
-              Built to the standards enterprise demands.
+              Designed around the standards your security team will recognise.
             </h2>
             <p className="mt-6 max-w-[60ch] font-sans text-body-lg text-ink-2">
               Our security architecture is designed around the controls and frameworks your security
@@ -304,11 +304,9 @@ export default function TrustPage() {
                 <div className="glass lume flex h-full items-center gap-4 rounded-lg p-5">
                   <span
                     aria-hidden
-                    className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-mint/30 bg-mint/[0.06]"
+                    className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-mint/25 bg-mint/[0.05]"
                   >
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#00FFB2" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                      <path d="M20 6 9 17l-5-5" />
-                    </svg>
+                    <span className="h-2 w-2 rounded-full bg-mint/70" />
                   </span>
                   <div>
                     <p className="font-serif text-[1.15rem] leading-tight text-ink">{s.label}</p>
@@ -321,9 +319,10 @@ export default function TrustPage() {
             ))}
           </div>
           <Reveal delay={0.12}>
-            <p className="mx-auto mt-9 max-w-[64ch] text-center font-sans text-body text-ink-3">
-              Bring your security team — we support architecture review, penetration-testing access
-              and full documentation on request.
+            <p className="mx-auto mt-9 max-w-[68ch] text-center font-sans text-body text-ink-3">
+              The architecture is built to these frameworks today; formal certifications are in
+              progress. Bring your security team — we support architecture review, penetration-testing
+              access and full documentation on request.
             </p>
           </Reveal>
         </Section>

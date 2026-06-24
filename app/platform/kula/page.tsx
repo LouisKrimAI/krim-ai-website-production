@@ -91,10 +91,11 @@ export default function KulaPage() {
               </h1>
             </Reveal>
             <Reveal delay={0.12}>
-              <p className="mx-auto mt-7 max-w-[54ch] font-sans text-body-lg text-ink-2">
-                Ask for an outcome in <span className="text-mint">plain English</span>. Kula turns it
-                into a governed plan — <span className="text-ink">yours to approve</span> before
-                anything runs. No query language, no ticket, no build team.
+              <p className="mx-auto mt-7 max-w-[56ch] font-sans text-body-lg text-ink-2">
+                Ask for an outcome in <span className="text-mint">plain language — by text or
+                voice</span>. Kula reasons in the runtime, builds the plan, and{' '}
+                <span className="text-ink">runs it on your sign-off</span> — tuned to your role, not a
+                generic chatbot.
               </p>
             </Reveal>
           </div>

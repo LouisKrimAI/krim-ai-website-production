@@ -138,10 +138,7 @@ export default function KartaPage() {
             {ROSTER.map((c, i) => (
               <Reveal key={c.name} delay={(i % 2) * 0.08}>
                 <div className="glass lume h-full p-7">
-                  <h3 className="font-serif text-[1.5rem] leading-tight text-ink">
-                    <span className="text-ink-3">Karta-</span>
-                    {c.name}
-                  </h3>
+                  <h3 className="font-serif text-[1.5rem] leading-tight text-ink">{c.name}</h3>
                   <p className="mt-3 font-sans text-body text-ink-2">{c.line}</p>
                 </div>
               </Reveal>

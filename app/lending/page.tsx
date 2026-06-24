@@ -261,13 +261,7 @@ export default function LendingPage() {
             {JURISDICTIONS.map((j, i) => (
               <Reveal key={j.place} delay={0.06 * i}>
                 <GlassCard className="flex h-full flex-col p-7">
-                  <div className="flex items-center justify-between">
-                    <h3 className="font-serif text-[1.5rem] leading-none text-ink">{j.place}</h3>
-                    <span className="flex items-center gap-2 font-mono text-[9.5px] uppercase tracking-[0.12em] text-mint">
-                      <span aria-hidden className="h-1.5 w-1.5 rounded-full bg-mint" />
-                      Pre-validated
-                    </span>
-                  </div>
+                  <h3 className="font-serif text-[1.5rem] leading-none text-ink">{j.place}</h3>
                   <ul className="mt-6 flex flex-wrap gap-2">
                     {j.frameworks.map((f) => (
                       <li
@@ -292,9 +286,9 @@ export default function LendingPage() {
               Measured against your own baseline.
             </h2>
             <p className="mt-6 max-w-[60ch] font-sans text-body-lg text-ink-2">
-              Ranges, not commitments — calibrated to your deployment and{' '}
-              <span className="text-ink">proven on your data in a 30-day pilot</span> before
-              anything goes live.
+              Illustrative ranges, not commitments — each one calibrated to your operation and{' '}
+              <span className="text-ink">measured against your own numbers</span>, never promised in
+              a deck.
             </p>
           </Reveal>
 

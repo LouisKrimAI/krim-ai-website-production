@@ -78,14 +78,14 @@ export default function CompanyPage() {
             <Reveal>
               <Eyebrow>Company · US · UK · India</Eyebrow>
               <h1 className="mt-5 font-serif text-display-hero text-ink">
-                We build the proof that lets machines act.
+                We make AI provable enough to run a bank.
               </h1>
             </Reveal>
             <Reveal delay={0.12}>
               <p className="mx-auto mt-7 max-w-[56ch] font-sans text-body-lg text-ink-2">
                 Krim is a technology research, product and services company. We make one thing:{' '}
-                <span className="text-ink">KrimOS</span>, the operating system for regulated
-                operations — built and run across the US, UK and India.
+                <span className="text-ink">KrimOS</span>, the operating system for banking &amp;
+                financial services — built and run across the US, UK and India.
               </p>
             </Reveal>
           </div>
