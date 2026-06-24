@@ -3,8 +3,9 @@
  * defines, and owns, the term "Epistemic AI". Answer-first throughout so an
  * answer-engine can quote the definition cleanly.
  *
- * Standalone shell (SiteHeader + OrbBackdrop + main z-10 + SiteFooter), not
- * LayerShell — matches app/platform/page.tsx and app/page.tsx.
+ * Standalone shell (SiteHeader + main z-10 + SiteFooter), not LayerShell —
+ * matches app/platform/page.tsx and app/page.tsx. The shared research backdrop
+ * (the KrimOS lab) is root-mounted via ResearchBackdrop.
  *
  * Flow: answer-first hero → the two neighbours (autonomous / safe) → the
  * ceiling post-hoc AI hits → the two tests / one epistemology (justify + revise)
@@ -16,7 +17,6 @@
 import type { Metadata } from 'next'
 import SiteHeader from '@/components/SiteHeader'
 import SiteFooter from '@/components/SiteFooter'
-import OrbBackdrop from '@/components/OrbBackdrop'
 import Reveal from '@/components/Reveal'
 import { Section, Eyebrow, GlassCard, CTA } from '@/components/ui'
 import CinematicBand from '@/components/CinematicBand'
@@ -166,7 +166,6 @@ export default function EpistemicAIPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }} />
       <SiteHeader />
-      <OrbBackdrop />
       <main className="relative z-10">
         {/* ---- 1 · Hero — the answer, quotable and self-contained ---- */}
         <Section className="!pt-24">

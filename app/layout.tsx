@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Newsreader, Inter, IBM_Plex_Mono, Montserrat } from 'next/font/google'
 import './globals.css'
 import Analytics from '@/components/Analytics'
+import ResearchBackdrop from '@/components/ResearchBackdrop'
 
 const display = Newsreader({
   subsets: ['latin'],
@@ -58,6 +59,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={`${display.variable} ${body.variable} ${mono.variable} ${logo.variable}`}>
       <body>
+        {/* shared, persistent backdrop for the research cluster — renders only
+            on those routes, stays mounted across them (see component) */}
+        <ResearchBackdrop />
         {children}
         <Analytics />
       </body>

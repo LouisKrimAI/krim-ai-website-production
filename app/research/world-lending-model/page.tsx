@@ -13,7 +13,8 @@
  * validation + learning are built in — is framed as a design principle, not a
  * hedge. Do not fabricate live deployments, customers or metrics.
  *
- * Standalone shell (SiteHeader + OrbBackdrop + main z-10 + SiteFooter).
+ * Standalone shell (SiteHeader + main z-10 + SiteFooter); the shared research
+ * backdrop (the KrimOS lab) is root-mounted via ResearchBackdrop.
  * Grounding: world-model architecture (encode → predict → plan), the lending
  * lifecycle, and the fair-lending / SR 11-7 / EU-AI-Act frame for a safe AI
  * underwriter.
@@ -22,7 +23,6 @@
 import type { Metadata } from 'next'
 import SiteHeader from '@/components/SiteHeader'
 import SiteFooter from '@/components/SiteFooter'
-import OrbBackdrop from '@/components/OrbBackdrop'
 import Reveal from '@/components/Reveal'
 import CinematicBand from '@/components/CinematicBand'
 import { Section, Eyebrow, GlassCard, CTA } from '@/components/ui'
@@ -86,7 +86,6 @@ export default function WorldLendingModelPage() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }} />
       <SiteHeader />
-      <OrbBackdrop />
       <main className="relative z-10">
         {/* ---- 1 · Hero ---- */}
         <Section className="!pt-24">

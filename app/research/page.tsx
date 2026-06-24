@@ -4,7 +4,8 @@
  * The Navya-Nyāya lineage lives on /epistemic-ai; the world model has its own
  * page (/research/world-lending-model); validation science is told in full here.
  *
- * STANDALONE shell (SiteHeader + OrbBackdrop + main z-10 + SiteFooter), like
+ * STANDALONE shell (SiteHeader + main z-10 + SiteFooter); the shared research
+ * backdrop (the KrimOS lab) is root-mounted via ResearchBackdrop, like
  * app/page.tsx and app/platform/page.tsx.
  *
  * HONESTY: a positioning statement of foundations and directions — it invents no
@@ -16,7 +17,6 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import SiteHeader from '@/components/SiteHeader'
 import SiteFooter from '@/components/SiteFooter'
-import OrbBackdrop from '@/components/OrbBackdrop'
 import Reveal from '@/components/Reveal'
 import { Section, Eyebrow, GlassCard, CTA } from '@/components/ui'
 import CinematicBand from '@/components/CinematicBand'
@@ -75,7 +75,6 @@ export default function ResearchPage() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }} />
       <SiteHeader />
-      <OrbBackdrop />
       <main className="relative z-10">
         {/* ---- 1 · Hero — answer-first ---- */}
         <Section className="!pt-24">
