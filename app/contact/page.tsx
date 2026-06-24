@@ -55,7 +55,7 @@ export default function ContactPage() {
             </Reveal>
             <Reveal delay={0.12}>
               <p className="mx-auto mt-7 max-w-[54ch] font-sans text-body-lg text-ink-2">
-                Book a demo, or tell us what you&rsquo;re trying to solve — we&rsquo;ll come prepared.
+                Book a demo, or tell us the problem — we&rsquo;ll come prepared.
               </p>
             </Reveal>
           </div>
@@ -67,10 +67,6 @@ export default function ContactPage() {
             <Reveal>
               <Eyebrow>Book a demo</Eyebrow>
               <h2 className="mt-4 font-serif text-display-1 text-ink">Tell us where you are.</h2>
-              <p className="mt-6 max-w-[52ch] font-sans text-body text-ink-2">
-                Routed to <span className="text-mint">sales@krim.ai</span>. We reply within one
-                business day.
-              </p>
             </Reveal>
             <Reveal delay={0.12}>
               <GlassCard className="mt-10 p-7 md:p-10">
@@ -78,13 +74,13 @@ export default function ContactPage() {
               </GlassCard>
             </Reveal>
             <Reveal delay={0.16}>
-              <p className="mt-6 text-center font-sans text-[14px] text-ink-3">
-                Prefer email or phone?{' '}
-                <a href="mailto:sales@krim.ai" className="text-ink-2 underline-offset-4 transition-colors hover:text-mint hover:underline">
+              <p className="mt-8 text-center font-sans text-[15px] text-ink-3">Prefer email or phone?</p>
+              <p className="mt-2 flex flex-wrap items-center justify-center gap-x-5 gap-y-1 text-center font-sans text-[clamp(17px,2vw,20px)] text-ink">
+                <a href="mailto:sales@krim.ai" className="underline-offset-4 transition-colors hover:text-mint hover:underline">
                   sales@krim.ai
                 </a>
-                {' · '}
-                <a href="tel:+15103455686" className="text-ink-2 underline-offset-4 transition-colors hover:text-mint hover:underline">
+                <span aria-hidden className="hidden text-ink-3 sm:inline">·</span>
+                <a href="tel:+15103455686" className="underline-offset-4 transition-colors hover:text-mint hover:underline">
                   +1 510 345 5686
                 </a>
               </p>

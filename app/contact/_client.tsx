@@ -30,7 +30,7 @@ const EMPTY = {
   email: '',
   organisation: '',
   role: '',
-  market: 'US',
+  market: '',
   automate: '',
   message: '',
 }
@@ -171,17 +171,15 @@ export function DemoForm() {
           <label htmlFor="contact-market" className={LABEL}>
             Market
           </label>
-          <select
+          <input
             id="contact-market"
             name="market"
+            type="text"
             value={fields.market}
             onChange={update('market')}
-            className={`${FIELD} appearance-none`}
-          >
-            <option value="US">US</option>
-            <option value="UK">UK</option>
-            <option value="India">India</option>
-          </select>
+            placeholder="e.g. US, UK, India, EU…"
+            className={FIELD}
+          />
         </div>
         <div>
           <label htmlFor="contact-automate" className={LABEL}>

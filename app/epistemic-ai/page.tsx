@@ -19,6 +19,7 @@ import SiteFooter from '@/components/SiteFooter'
 import OrbBackdrop from '@/components/OrbBackdrop'
 import Reveal from '@/components/Reveal'
 import { Section, Eyebrow, GlassCard, CTA } from '@/components/ui'
+import CinematicBand from '@/components/CinematicBand'
 
 export const metadata: Metadata = {
   title: 'Epistemic AI',
@@ -169,7 +170,7 @@ export default function EpistemicAIPage() {
       <main className="relative z-10">
         {/* ---- 1 · Hero — the answer, quotable and self-contained ---- */}
         <Section className="!pt-24">
-          <div className="mx-auto max-w-[860px]">
+          <div className="mx-auto max-w-[860px] text-center">
             <Reveal>
               <Eyebrow>Epistemic AI</Eyebrow>
               <h1 className="mt-5 font-serif text-display-hero text-ink">
@@ -177,14 +178,14 @@ export default function EpistemicAIPage() {
               </h1>
             </Reveal>
             <Reveal delay={0.12}>
-              <p className="mt-7 max-w-[52ch] font-sans text-body-lg text-ink-2">
+              <p className="mx-auto mt-7 max-w-[52ch] font-sans text-body-lg text-ink-2">
                 <span className="text-ink">AI that can justify every action before it takes it — and
                 read its own reasoning back to you.</span> Not a model that talks; a system that can
                 answer for what it did.
               </p>
             </Reveal>
             <Reveal delay={0.2}>
-              <div className="mt-10 flex flex-wrap items-center gap-6">
+              <div className="mt-10 flex flex-wrap items-center justify-center gap-6">
                 <CTA href={DEMO_HREF}>Book a demo</CTA>
                 <CTA href="/platform/kendra" variant="secondary">
                   See how it validates
@@ -193,6 +194,15 @@ export default function EpistemicAIPage() {
             </Reveal>
           </div>
         </Section>
+
+        {/* ---- Cinematic band: reasoning, made legible ---- */}
+        <CinematicBand
+          src="/images/cinematic/kendra-brain.jpg"
+          alt="A luminous mind held in a cathedral of moving data — reasoning made legible."
+          heightClass="h-[clamp(220px,32vw,400px)]"
+          objectPosition="50% 38%"
+          tint="cyan"
+        />
 
         {/* ---- 2 · The two neighbours it is defined against ---- */}
         <Section hairline>

@@ -19,6 +19,7 @@ import SiteFooter from '@/components/SiteFooter'
 import OrbBackdrop from '@/components/OrbBackdrop'
 import Reveal from '@/components/Reveal'
 import { Section, Eyebrow, GlassCard, CTA } from '@/components/ui'
+import CinematicBand from '@/components/CinematicBand'
 
 export const metadata: Metadata = {
   title: 'Research',
@@ -101,6 +102,15 @@ export default function ResearchPage() {
             </Reveal>
           </div>
         </Section>
+
+        {/* ---- Cinematic band: the frontier ---- */}
+        <CinematicBand
+          src="/images/cinematic/insight-wave.jpg"
+          alt="A great wave breaking over a lattice of data — the frontier the research works at."
+          heightClass="h-[clamp(220px,30vw,360px)]"
+          objectPosition="50% 45%"
+          tint="cyan"
+        />
 
         {/* ---- 2 · The three strands — a map, with doors to the depth ---- */}
         <Section hairline>
