@@ -24,12 +24,12 @@ export default function PlatformBackdrop() {
         style={{ background: 'radial-gradient(58% 48% at 50% 38%, rgba(57,214,255,0.09), rgba(4,6,12,0) 70%)' }}
       />
 
-      {/* the layers render — background cut out (transparent), held very faint and
-          softly blurred so it reads as atmosphere and blends into the black ground,
-          breathing slowly behind the content */}
+      {/* the layers render — background cut out (transparent) so it blends into
+          the black ground, held only slightly faded and kept sharp (no blur) so
+          the stack stays defined, breathing slowly behind the content */}
       <motion.div
         className="absolute inset-0"
-        style={{ opacity: 0.2, filter: 'blur(2px)', willChange: 'transform' }}
+        style={{ opacity: 0.32, willChange: 'transform' }}
         initial={false}
         animate={reduce ? { scale: 1.0, y: 0 } : { scale: [0.99, 1.035, 0.99], y: ['0%', '-1.2%', '0%'] }}
         transition={reduce ? { duration: 0 } : { duration: 34, ease: 'easeInOut', repeat: Infinity }}

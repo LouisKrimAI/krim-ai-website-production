@@ -14,12 +14,12 @@ import { Section, Eyebrow, GlassCard } from '@/components/ui'
 export const metadata: Metadata = {
   title: 'Kriya — the vocabulary',
   description:
-    'Kriya is the vocabulary of KrimOS: 250+ validated, credit-native primitives — atomic operations that ship with their own checks, metered in KWUs and logged by construction. A finite vocabulary, endless combinations.',
+    'Kriya is the vocabulary of KrimOS: 500+ validated, credit-native primitives — atomic operations that ship with their own checks, metered in KWUs and logged by construction. A finite vocabulary, endless combinations.',
   alternates: { canonical: 'https://krim.ai/platform/kriya' },
   openGraph: {
     title: 'Kriya — the vocabulary',
     description:
-      'Kriya is the vocabulary of KrimOS: 250+ validated, credit-native primitives — atomic operations that ship with their own checks, metered in KWUs and logged by construction. A finite vocabulary, endless combinations.',
+      'Kriya is the vocabulary of KrimOS: 500+ validated, credit-native primitives — atomic operations that ship with their own checks, metered in KWUs and logged by construction. A finite vocabulary, endless combinations.',
     url: 'https://krim.ai/platform/kriya',
   },
 }
@@ -81,7 +81,7 @@ export default function KriyaPage() {
             <Reveal delay={0.12}>
               <p className="mx-auto mt-7 max-w-[58ch] font-sans text-body-lg text-ink-2">
                 Every action a co-worker takes is one of{' '}
-                <span className="text-mint">250+ validated, credit-native primitives</span> — the
+                <span className="text-mint">500+ validated, credit-native primitives</span> — the
                 atomic operations of regulated lending. The list is finite;{' '}
                 <span className="text-ink">what you build from it isn&rsquo;t</span>.
               </p>
@@ -123,7 +123,7 @@ export default function KriyaPage() {
               The whole grammar of regulated lending, in one library.
             </h2>
             <p className="mt-6 max-w-[60ch] font-sans text-body-lg text-ink-2">
-              250+ primitives span the operations a lender actually performs — voice, documents,
+              500+ primitives span the operations a lender actually performs — voice, documents,
               compliance, data, payments and decisions — so there are no generic tool-calls for an
               integrator to assemble. It ships credit-native.
             </p>

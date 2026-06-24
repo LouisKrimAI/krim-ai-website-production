@@ -5,7 +5,7 @@ Every fact, claim and on-brand line for **krim.ai**, reconciled from two sources
 > `[PROVIDE]` = you supply it. `[CONFIRM]` = verify before publishing. `[DECISION]` = a choice the memo forced.
 
 ## Changes the Product Memo introduced (read first)
-- `[DECISION]` **Kriya primitives: 250+ (ten categories)** — the deck said "20+." Set to **250+** here as the more current/authoritative figure. Confirm which number is public-facing.
+- `[DECISION]` **Kriya primitives: 500+ across 20+ domains** — updated 2026-06 from the platform capabilities export (`KRIMOS_CAPABILITIES_OVERVIEW.md`, origin/main); supersedes the earlier 250+/ten-categories figure. The public Kriya page may still curate a tighter category view; the canonical count is 500+ / 20+ domains.
 - **Geography is US · UK · India**, not India-only. Compliance and language framing broadened accordingly.
 - **Kendra is realised as eight modules** (Core, Karya, Fabric, Govern, Nyāya, Learn, Ledger, Sense) — the deck only named Ledger/Learn. Krim-Karya is the scheduler (owns *when* work runs).
 - **Karta is a named, utility-based catalog of eight** (was "~10 utility workers").
@@ -114,7 +114,7 @@ Body: Capability composes from the bottom up — primitives build into co-worker
 | **Krimkar** *(consumer app + public site)* | **Kira** — the AI customer advisor. One relationship across the whole lifecycle, on every channel; the face customers meet in the app and on the public site. |
 | **Kupa** *(command center)* | **Kula** — the enterprise natural-language interface: each user meets a digital twin tailored to their role, in the glass cockpit where humans supervise, configure and audit. |
 | **Karta** *(AI co-workers)* | A utility-based catalog — voice, document, risk, decision, cure, audit, report — composed from primitives, not coded. |
-| **Kriya** *(action primitives)* | **250+** validated, credit-native primitives in ten categories — the metered vocabulary every worker is built from. |
+| **Kriya** *(action primitives)* | **500+** validated, credit-native primitives across 20+ domains — the metered vocabulary every worker is built from. |
 | **Kendra** *(the runtime)* | The intelligence substrate, realised as eight modules: Core, Karya, Fabric, Govern, Nyāya, Learn, Ledger, Sense. |
 
 ---
@@ -142,7 +142,7 @@ Eyebrow: INSIDE THE RUNTIME · Headline: **Eight modules make the guarantees hol
 ---
 
 ## Kriya — the credit-native primitives
-Eyebrow: ACTION PRIMITIVES · Headline: **250+ validated, credit-native primitives.**
+Eyebrow: ACTION PRIMITIVES · Headline: **500+ validated, credit-native primitives.**
 Body: Every action a Karta can take is composed from validated primitives — the atomic operations of regulated lending. The library is credit-native: it ships with the voice, document, compliance, payment and data operations a lender actually performs, not generic tool-calls an integrator must assemble. The library is finite; the workflows composed from it are not.
 
 | Category | Count | Representative primitives |

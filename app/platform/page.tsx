@@ -53,7 +53,7 @@ const softwareLd = {
     'KrimOS is the operating system for banking & financial services: AI co-workers whose every action is validated before it executes, and that learn from everything they do — inside the institution’s own perimeter.',
   featureList: [
     'Pre-execution validation — Krim-Nyāya, 33 validators',
-    '250+ validated, credit-native action primitives (Kriya, ten categories)',
+    '500+ validated, credit-native action primitives (Kriya, 20+ domains)',
     'Utility-based AI co-workers (Karta) — operational decisioning today, a safe AI underwriter as the build direction',
     'One runtime that validates every action and learns from every outcome (Kendra)',
     'Natural-language interface for teams (Kula) and a customer advisor (Kira)',
