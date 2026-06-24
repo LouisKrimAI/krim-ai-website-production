@@ -15,7 +15,6 @@ import SiteHeader from '@/components/SiteHeader'
 import SiteFooter from '@/components/SiteFooter'
 import OrbBackdrop from '@/components/OrbBackdrop'
 import Reveal from '@/components/Reveal'
-import CinematicBand from '@/components/CinematicBand'
 import JurisdictionTabs from '@/components/trust/JurisdictionTabs'
 import { Section, Eyebrow, GlassCard, CTA } from '@/components/ui'
 
@@ -140,15 +139,6 @@ export default function TrustPage() {
             </Reveal>
           </div>
         </Section>
-
-        {/* ---- Cinematic band: a quiet atmospheric divider (no text over it) ---- */}
-        <CinematicBand
-          src="/images/cinematic/ledger-data.jpg"
-          alt="A single record of light held on a dark server floor — every action sealed inside your own walls."
-          heightClass="h-[clamp(220px,30vw,360px)]"
-          objectPosition="50% 42%"
-          tint="cyan"
-        />
 
         {/* ---- 2 · Deployment — three models, on-prem the hero ---- */}
         <Section hairline>

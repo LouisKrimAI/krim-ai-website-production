@@ -27,8 +27,8 @@ export default function ResearchBackdrop() {
 
   return (
     <div aria-hidden className="pointer-events-none fixed inset-0 z-0 overflow-hidden bg-bg">
-      {/* the lab render — large (cover), held a little faded, centred on the
-          floating panel so the focal point survives the crop on any viewport */}
+      {/* the lab render — shown whole (contain) and centred so the full scene
+          fits on one screen, held well faded so it reads as quiet atmosphere */}
       <Image
         src="/images/krimos/control-room.png"
         alt=""
@@ -36,26 +36,26 @@ export default function ResearchBackdrop() {
         priority
         quality={62}
         sizes="100vw"
-        className="object-cover"
-        style={{ objectPosition: '50% 40%', opacity: 0.55 }}
+        className="object-contain"
+        style={{ objectPosition: '50% 50%', opacity: 0.42 }}
       />
 
-      {/* vertical scrim — darkens the top and bottom so the nav, hero and
-          footer stay fully legible, with a calmer band through the middle */}
+      {/* scrim — keeps the nav, hero copy and footer legible over the render
+          while leaving the scene readable through the middle */}
       <div
         className="absolute inset-0"
         style={{
           background:
-            'linear-gradient(180deg, rgba(9,9,12,0.66) 0%, rgba(9,9,12,0.34) 24%, rgba(9,9,12,0.34) 62%, rgba(9,9,12,0.8) 100%)',
+            'linear-gradient(180deg, rgba(9,9,12,0.6) 0%, rgba(9,9,12,0.28) 24%, rgba(9,9,12,0.28) 60%, rgba(9,9,12,0.72) 100%)',
         }}
       />
 
-      {/* gentle vignette to settle the edges and keep the centre quiet */}
+      {/* gentle vignette to settle the edges into the canvas */}
       <div
         className="absolute inset-0"
         style={{
           background:
-            'radial-gradient(120% 78% at 50% 38%, rgba(9,9,12,0) 42%, rgba(9,9,12,0.5) 100%)',
+            'radial-gradient(120% 82% at 50% 44%, rgba(9,9,12,0) 48%, rgba(9,9,12,0.34) 100%)',
         }}
       />
     </div>

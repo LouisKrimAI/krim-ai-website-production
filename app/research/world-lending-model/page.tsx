@@ -24,7 +24,6 @@ import type { Metadata } from 'next'
 import SiteHeader from '@/components/SiteHeader'
 import SiteFooter from '@/components/SiteFooter'
 import Reveal from '@/components/Reveal'
-import CinematicBand from '@/components/CinematicBand'
 import { Section, Eyebrow, GlassCard, CTA } from '@/components/ui'
 
 export const metadata: Metadata = {
@@ -113,16 +112,6 @@ export default function WorldLendingModelPage() {
             </Reveal>
           </div>
         </Section>
-
-        {/* ---- Cinematic band: one model of the whole operation ---- */}
-        <CinematicBand
-          src="/images/cinematic/kupa-control-room.jpg"
-          alt="A calm, darkened command room — one luminous model of the whole operation, seen from a single vantage."
-          objectPosition="50% 72%"
-          tint="cyan"
-          eyebrow="The world model"
-          caption="One picture of the whole."
-        />
 
         {/* ---- 2 · What a world model is + the structural-alignment hook ---- */}
         <Section hairline>

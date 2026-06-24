@@ -19,7 +19,6 @@ import SiteHeader from '@/components/SiteHeader'
 import SiteFooter from '@/components/SiteFooter'
 import Reveal from '@/components/Reveal'
 import { Section, Eyebrow, GlassCard, CTA } from '@/components/ui'
-import CinematicBand from '@/components/CinematicBand'
 
 export const metadata: Metadata = {
   title: 'Epistemic AI',
@@ -193,15 +192,6 @@ export default function EpistemicAIPage() {
             </Reveal>
           </div>
         </Section>
-
-        {/* ---- Cinematic band: reasoning, made legible ---- */}
-        <CinematicBand
-          src="/images/cinematic/kendra-brain.jpg"
-          alt="A luminous mind held in a cathedral of moving data — reasoning made legible."
-          heightClass="h-[clamp(220px,32vw,400px)]"
-          objectPosition="50% 38%"
-          tint="cyan"
-        />
 
         {/* ---- 2 · The two neighbours it is defined against ---- */}
         <Section hairline>
