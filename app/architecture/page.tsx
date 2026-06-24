@@ -12,6 +12,7 @@ import SiteHeader from '@/components/SiteHeader'
 import SiteFooter from '@/components/SiteFooter'
 import OrbBackdrop from '@/components/OrbBackdrop'
 import Reveal from '@/components/Reveal'
+import CinematicBand from '@/components/CinematicBand'
 import { Section, Eyebrow, GlassCard, CTA } from '@/components/ui'
 
 export const metadata: Metadata = {
@@ -182,12 +183,22 @@ export default function ArchitecturePage() {
           </div>
         </Section>
 
+        {/* ---- Cinematic band: the lattice the stack reports into ---- */}
+        <CinematicBand
+          src="/images/cinematic/architecture-lattice.jpg"
+          alt="An endless teal lattice of interconnected nodes — one decision layer over the systems a bank already runs."
+          objectPosition="50% 50%"
+          tint="cyan"
+          eyebrow="The decision layer"
+          caption="Over the systems you already run."
+        />
+
         {/* ---- 2 · The runtime — the eight Kendra modules ---- */}
         <Section hairline>
           <Reveal>
             <Eyebrow>Inside the runtime</Eyebrow>
             <h2 className="mt-4 max-w-[24ch] font-serif text-display-1 text-ink">
-              Eight modules make the guarantees hold.
+              The machinery that makes the guarantees hold.
             </h2>
             <p className="mt-6 max-w-[62ch] font-sans text-body-lg text-ink-2">
               The runtime layer is named <span className="text-ink">Kendra</span>. It is realised as

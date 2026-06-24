@@ -24,6 +24,7 @@ import SiteHeader from '@/components/SiteHeader'
 import SiteFooter from '@/components/SiteFooter'
 import OrbBackdrop from '@/components/OrbBackdrop'
 import Reveal from '@/components/Reveal'
+import CinematicBand from '@/components/CinematicBand'
 import { Section, Eyebrow, GlassCard, CTA } from '@/components/ui'
 
 export const metadata: Metadata = {
@@ -114,6 +115,16 @@ export default function WorldLendingModelPage() {
           </div>
         </Section>
 
+        {/* ---- Cinematic band: one model of the whole operation ---- */}
+        <CinematicBand
+          src="/images/cinematic/kupa-control-room.jpg"
+          alt="A calm, darkened command room — one luminous model of the whole operation, seen from a single vantage."
+          objectPosition="50% 72%"
+          tint="cyan"
+          eyebrow="The world model"
+          caption="One picture of the whole."
+        />
+
         {/* ---- 2 · What a world model is + the structural-alignment hook ---- */}
         <Section hairline>
           <div className="grid items-center gap-12 md:grid-cols-[1fr_1fr]">
@@ -157,7 +168,7 @@ export default function WorldLendingModelPage() {
           <Reveal>
             <Eyebrow>Inside the model</Eyebrow>
             <h2 className="mt-4 max-w-[24ch] font-serif text-display-1 text-ink">
-              Five models of the world, learned as one.
+              Many models of the world, learned as one.
             </h2>
             <p className="mt-6 max-w-[62ch] font-sans text-body-lg text-ink-2">
               The world of lending is too large for a single function. The World Lending Model

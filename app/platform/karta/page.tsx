@@ -85,10 +85,11 @@ export default function KartaPage() {
               </h1>
             </Reveal>
             <Reveal delay={0.12}>
-              <p className="mx-auto mt-7 max-w-[58ch] font-sans text-body-lg text-ink-2">
-                Karta are the AI co-workers that run your operation — composed from validated
-                primitives, configured to your institution, and held to every rule before they act.
-                A small, capable team that does the work while you stay in control.
+              <p className="mx-auto mt-7 max-w-[56ch] font-sans text-body-lg text-ink-2">
+                Karta are the AI co-workers that run your operation — built from validated primitives
+                and <span className="text-mint">held to every rule before they act</span>. A small,
+                capable team that does the work while <span className="text-ink">you stay in
+                control</span>.
               </p>
             </Reveal>
           </div>

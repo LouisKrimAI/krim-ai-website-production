@@ -23,7 +23,7 @@ const KRIMOS = [
   ['Karta', 'The AI co-workers', '/platform/karta'],
   ['Kupa', 'The command center', '/platform/kupa'],
   ['Kula', 'For your teams', '/platform/kula'],
-  ['Kira & Krimkar', 'For your customers', '/platform/kira'],
+  ['Kira', 'The customer advisor', '/platform/kira'],
 ] as const
 
 const DOMAINS = [
@@ -102,7 +102,7 @@ export default function SiteHeader({ scrollReveal = false }: { scrollReveal?: bo
     >
       <div className="mx-auto flex h-16 max-w-site items-center justify-between px-6 md:px-10">
         <Link href="/" className="flex items-center" aria-label="Krim — home">
-          <KrimLogoAnimated className="h-7 w-auto" />
+          <KrimLogoAnimated className="h-[26px] w-auto" />
         </Link>
 
         <nav ref={navRef} className="hidden items-center gap-7 lg:flex" aria-label="Primary">

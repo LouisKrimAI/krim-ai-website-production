@@ -20,7 +20,7 @@ const NAV: Array<[string, Array<[string, string]>]> = [
       ['Karta', '/platform/karta'],
       ['Kupa', '/platform/kupa'],
       ['Kula', '/platform/kula'],
-      ['Kira & Krimkar', '/platform/kira'],
+      ['Kira', '/platform/kira'],
     ],
   ],
   [
@@ -47,7 +47,7 @@ const NAV: Array<[string, Array<[string, string]>]> = [
     [
       ['About', '/company'],
       ['Services', '/services'],
-      ['Writing', '/blog'],
+      ['Insights', '/insights'],
       ['Contact', '/contact'],
     ],
   ],
@@ -64,7 +64,7 @@ export default function SiteFooter() {
       {/* visual device — large faded triangle mark bleeding off the right edge */}
       <img
         aria-hidden
-        src="/brand/krim-mark.svg"
+        src="/brand/logo/KRIM-icon-mint.svg"
         alt=""
         width={520}
         height={520}
@@ -109,7 +109,7 @@ export default function SiteFooter() {
         {/* brand row */}
         <div className="mt-14 flex flex-wrap items-center justify-between gap-x-8 gap-y-5 border-t border-soft pt-8">
           <div className="flex items-center gap-3.5">
-            <KrimLogoAnimated className="h-7 w-auto" />
+            <KrimLogoAnimated className="h-[26px] w-auto" />
             <span aria-hidden className="hidden h-4 w-px bg-strong sm:block" />
             <span className="hidden font-serif text-[0.95rem] italic text-ink-2 sm:inline">
               Intelligence by policy.
@@ -143,7 +143,7 @@ export default function SiteFooter() {
 
         {/* legal strip */}
         <p className="mt-6 font-mono text-[11px] tracking-[0.06em] text-ink-3">
-          © {new Date().getFullYear()} Krim AI · US · UK · India
+          © {new Date().getFullYear()} Krim · US · UK · India
         </p>
       </div>
     </footer>

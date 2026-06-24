@@ -80,9 +80,10 @@ export default function KriyaPage() {
             </Reveal>
             <Reveal delay={0.12}>
               <p className="mx-auto mt-7 max-w-[58ch] font-sans text-body-lg text-ink-2">
-                Every action a co-worker can take is one of 250+ validated, credit-native
-                primitives — the atomic operations of regulated lending. The list is finite; what
-                you build from it isn&rsquo;t.
+                Every action a co-worker takes is one of{' '}
+                <span className="text-mint">250+ validated, credit-native primitives</span> — the
+                atomic operations of regulated lending. The list is finite;{' '}
+                <span className="text-ink">what you build from it isn&rsquo;t</span>.
               </p>
             </Reveal>
           </div>
@@ -133,21 +134,13 @@ export default function KriyaPage() {
                 <div className="glass lume h-full p-6">
                   <div className="flex items-baseline justify-between gap-4">
                     <h3 className="font-serif text-[1.3rem] leading-tight text-ink">{c.name}</h3>
-                    <span className="shrink-0 font-mono text-[12px] tabular-nums text-ink-3">{c.count}</span>
+                    <span className="shrink-0 font-mono text-[15px] tabular-nums text-mint/85">{c.count}</span>
                   </div>
-                  <p className="mt-3 font-sans text-body text-ink-2">{c.body}</p>
+                  <p className="mt-3 font-sans text-[14px] leading-relaxed text-ink-2">{c.body}</p>
                 </div>
               </Reveal>
             ))}
           </div>
-          <Reveal delay={0.14}>
-            <p className="mt-8 max-w-[74ch] font-sans text-[14.5px] leading-relaxed text-ink-3">
-              Counts are approximate; the library passed{' '}
-              <span className="text-ink-2">250+</span> primitives and keeps growing. Each one is
-              uniform by construction — explicit inputs and outputs, built-in validation, self-metering
-              in KWUs, logged and versioned.
-            </p>
-          </Reveal>
         </Section>
 
         {/* ---- How they compose ---- */}
@@ -195,8 +188,10 @@ export default function KriyaPage() {
               <p className="mt-6 max-w-[58ch] font-sans text-body-lg text-ink-2">
                 In the library, APPROVE means approval of a step in a workflow — not, in itself, a
                 credit decision. Primitives segment, route and execute under the institution&rsquo;s
-                own rules. The credit decision is a higher-order act — and the safe AI underwriter
-                that will make it is the direction we are building, on this same validated foundation.
+                own rules. The credit decision is a higher-order act — and the{' '}
+                <span className="text-cyan">safe AI underwriter</span> that will make it is{' '}
+                <span className="text-ink">the direction we are building</span>, on this same
+                validated foundation.
               </p>
             </GlassCard>
           </Reveal>
@@ -210,9 +205,10 @@ export default function KriyaPage() {
                 Safety written once, inherited everywhere.
               </h2>
               <p className="mx-auto mt-5 max-w-[52ch] font-sans text-body-lg text-ink-2">
-                Build on a vocabulary that is validated, metered and logged at the root, and every
-                co-worker you compose is accountable from its first action. Next, the co-workers that
-                put the vocabulary to work.
+                Build on a vocabulary that is{' '}
+                <span className="text-mint">validated, metered and logged at the root</span>, and
+                every co-worker you compose is accountable from its first action. Next, the
+                co-workers that put the vocabulary to work.
               </p>
             </GlassCard>
           </Reveal>

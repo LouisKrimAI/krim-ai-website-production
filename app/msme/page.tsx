@@ -113,7 +113,7 @@ export default function MsmePage() {
             <Reveal>
               <Eyebrow>MSME</Eyebrow>
               <h1 className="mt-5 font-serif text-display-hero text-ink">
-                Regulation-grade AI workers, now for everyday operations.
+                Regulation-grade AI, your scale.
               </h1>
             </Reveal>
             <Reveal delay={0.12}>

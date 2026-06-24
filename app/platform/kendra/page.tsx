@@ -38,13 +38,21 @@ const breadcrumbLd = {
 // the eight engineering modules of the runtime (docs/krim-content.md · the runtime modules)
 const MODULES = [
   { name: 'Krim-Core', role: 'orchestration', body: 'Routes each task to the right co-worker and runs the workflow — sequential, parallel or hand-off — with retries and graceful fallbacks.' },
-  { name: 'Krim-Karya', role: 'scheduling', body: 'Owns when work runs — timed and recurring tasks, deferred actions, retry and back-off timing, and time-window rules like contact hours and regulatory deadlines, so every action fires only at a moment it is allowed to.' },
+  { name: 'Krim-Karya', role: 'scheduling', body: 'Owns when work runs — recurring tasks, deferred actions, and time-window rules like contact hours and regulatory deadlines, so nothing fires before it is allowed to.' },
   { name: 'Krim-Fabric', role: 'knowledge', body: 'The regulatory rule set for each jurisdiction, each institution’s own policies, and the shared, anonymised pattern library.' },
   { name: 'Krim-Govern', role: 'policy', body: 'A seven-level hierarchy of law, regulator guidance and house rules, enforced per tenant and updated as the rules change.' },
   { name: 'Krim-Nyāya', role: 'validation', body: 'The pre-execution gate — 33 validators that decide whether a proposed action is allowed to happen at all.' },
   { name: 'Krim-Learn', role: 'learning', body: 'Ten learning loops that read every recorded outcome and feed back what actually worked across the workforce.' },
   { name: 'Krim-Ledger', role: 'the record', body: 'Every action logged immutably and metered in the same pass — one trail that serves both audit and billing.' },
   { name: 'Krim-Sense', role: 'telemetry', body: 'The metrics, logs, alerts and dashboards that show what is happening across the whole stack.' },
+]
+
+// The eight modules laid out as a lattice around a single core — the parts that
+// compose into one runtime. 'core' is the centre cell of the 3×3 grid (lg+).
+const LATTICE: Array<(typeof MODULES)[number] | 'core'> = [
+  MODULES[0], MODULES[1], MODULES[2],
+  MODULES[3], 'core', MODULES[4],
+  MODULES[5], MODULES[6], MODULES[7],
 ]
 
 export default function KendraPage() {
@@ -65,10 +73,10 @@ export default function KendraPage() {
               </h1>
             </Reveal>
             <Reveal delay={0.12}>
-              <p className="mx-auto mt-7 max-w-[56ch] font-sans text-body-lg text-ink-2">
-                Kendra is the runtime of KrimOS — where every co-worker reasons, and where the
-                rules of what they may do actually live. It validates each action before it acts,
-                and gets sharper from each outcome it records.
+              <p className="mx-auto mt-7 max-w-[54ch] font-sans text-body-lg text-ink-2">
+                Kendra is the runtime of KrimOS — where every co-worker reasons. It{' '}
+                <span className="text-mint">validates each action before it acts</span>, and{' '}
+                <span className="text-ink">gets sharper with every outcome</span> it records.
               </p>
             </Reveal>
           </div>
@@ -137,36 +145,56 @@ export default function KendraPage() {
           </Reveal>
         </Section>
 
-        {/* ---- The eight modules ---- */}
+        {/* ---- The runtime modules — eight parts around one core ---- */}
         <Section hairline>
           <Reveal>
             <Eyebrow tone="dim">Inside the runtime</Eyebrow>
             <h2 className="mt-4 max-w-[24ch] font-serif text-display-1 text-ink">
-              Eight modules make the guarantees hold.
+              The machinery that makes the guarantees hold.
             </h2>
             <p className="mt-6 max-w-[60ch] font-sans text-body-lg text-ink-2">
               Nyāya and Learn get the attention; these are the engineering that makes them possible.
-              Each does one job, and together they are the runtime.
+              Each does one job — together they are the runtime.
             </p>
           </Reveal>
 
           <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {MODULES.map((m, i) => (
-              <Reveal key={m.name} delay={(i % 3) * 0.07}>
-                <div className="glass lume flex h-full flex-col p-7">
-                  <span aria-hidden className="block h-[3px] w-12 rounded-full bg-mint/70" />
-                  <div className="mt-6 flex items-baseline gap-2.5">
-                    <h3 className="font-serif text-[1.3rem] leading-none text-ink">{m.name}</h3>
-                    <span className="font-mono text-[10.5px] uppercase tracking-[0.14em] text-ink-3">
-                      {m.role}
+            {LATTICE.map((cell, i) =>
+              cell === 'core' ? (
+                // the centre of the lattice — the parts compose into one runtime
+                <Reveal key="core" delay={0.07}>
+                  <div className="glass glass-cyan relative flex h-full min-h-[210px] flex-col items-center justify-center overflow-hidden rounded-lg p-7 text-center">
+                    <span
+                      aria-hidden
+                      className="pointer-events-none absolute inset-0"
+                      style={{ background: 'radial-gradient(60% 60% at 50% 50%, rgba(57,214,255,0.16) 0%, rgba(57,214,255,0) 70%)' }}
+                    />
+                    <span className="relative font-serif text-[2.6rem] leading-none text-ink" aria-hidden>
+                      कृ
                     </span>
+                    <p className="relative mt-4 font-serif text-[1.35rem] leading-none text-ink">Kendra</p>
+                    <p className="relative mt-2.5 font-mono text-[10px] uppercase tracking-[0.2em] text-cyan/80">
+                      One runtime
+                    </p>
                   </div>
-                  <p className="mt-3 flex-1 font-sans text-[14px] leading-relaxed text-ink-2">
-                    {m.body}
-                  </p>
-                </div>
-              </Reveal>
-            ))}
+                </Reveal>
+              ) : (
+                <Reveal key={cell.name} delay={(i % 3) * 0.07}>
+                  <div className="glass lume flex h-full min-h-[210px] flex-col p-7">
+                    <span aria-hidden className="block h-[3px] w-12 rounded-full bg-mint/70" />
+                    <div className="mt-6 flex items-baseline gap-2.5">
+                      <h3 className="font-serif text-[1.3rem] leading-none text-ink">{cell.name}</h3>
+                      <span className="font-mono text-[10.5px] uppercase tracking-[0.14em] text-ink-3">
+                        {cell.role}
+                      </span>
+                    </div>
+                    <p className="mt-3 flex-1 font-sans text-[14px] leading-relaxed text-ink-2">
+                      {cell.body}
+                    </p>
+                  </div>
+                </Reveal>
+              )
+            )}
           </div>
         </Section>
 

@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     'KrimOS is the operating system for banking and financial services — a world model for lending with AI co-workers that run the whole lifecycle, every action validated before it acts, inside your own walls.',
   icons: {
     icon: [
-      { url: '/brand/krim-mark.svg', type: 'image/svg+xml' },
+      { url: '/brand/logo/KRIM-icon-mint.svg', type: 'image/svg+xml' },
       { url: '/favicon.ico', sizes: 'any' },
     ],
   },

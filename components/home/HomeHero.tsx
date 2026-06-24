@@ -26,11 +26,12 @@ const DEMO_HREF = '/contact'
 const LINES = [
   'Safe Superintelligence for',
   'Autonomous Banking',
-  'Sovereign world model & governed agent harness — Banking has a new foundation.',
+  'Sovereign world model & governed agent harness.',
+  'Banking has a new foundation.',
 ]
 
 function useTyped(disabled: boolean) {
-  const [shown, setShown] = useState<string[]>(disabled ? LINES : ['', '', ''])
+  const [shown, setShown] = useState<string[]>(disabled ? LINES : ['', '', '', ''])
   const [active, setActive] = useState(disabled ? LINES.length : -1)
   const [done, setDone] = useState(disabled)
 
@@ -58,7 +59,7 @@ function useTyped(disabled: boolean) {
           return next
         })
         const ch = line[ci - 1]
-        const delay = ch === ' ' ? 20 : li === 2 ? 32 : 48 // 0.5× speed — slow, deliberate typing
+        const delay = ch === ' ' ? 20 : li >= 2 ? 32 : 48 // 0.5× speed — slow, deliberate typing
         timers.push(setTimeout(step, delay))
       } else {
         li += 1
@@ -92,11 +93,12 @@ export default function HomeHero() {
   const reduce = useReducedMotion()
   const { shown, done } = useTyped(!!reduce)
 
-  // resolved (final) orb state — also the reduced-motion state.
-  const orbResolved = { scale: 1.6, opacity: 0.34 }
-  // After the arrival choreography settles, the orb breathes perpetually:
-  // slowly contracting to a pin and growing back to full, forever. Seamless
-  // (start === end === 1.6, GPU transform only), reduced-motion holds it still.
+  // resolved (final) orb state — also the reduced-motion state. Held faint so it
+  // never competes with content.
+  const orbResolved = { scale: 1.5, opacity: 0.18 }
+  // After the arrival choreography settles, the orb breathes perpetually: a gentle,
+  // seamless swell and ease back, forever (start === end, easeInOut, GPU transform
+  // only) — calm, never a jump. Reduced motion holds it still.
   const [breathing, setBreathing] = useState(false)
 
   return (
@@ -117,14 +119,14 @@ export default function HomeHero() {
               reduce
                 ? orbResolved
                 : breathing
-                  ? { scale: [1.6, 0.05, 1.6], opacity: [0.34, 0.52, 0.34] }
-                  : { scale: 1.6, opacity: 0.34 }
+                  ? { scale: [1.5, 1.62, 1.5], opacity: [0.18, 0.26, 0.18] }
+                  : { scale: 1.5, opacity: 0.18 }
             }
             transition={
               reduce
                 ? { duration: 0 }
                 : breathing
-                  ? { duration: 30, ease: 'easeInOut', repeat: Infinity, repeatType: 'loop', times: [0, 0.5, 1] }
+                  ? { duration: 42, ease: 'easeInOut', repeat: Infinity, repeatType: 'loop', times: [0, 0.5, 1] }
                   : { duration: 4.6, ease: [0.6, 0, 0.3, 1] }
             }
             onAnimationComplete={() => {
@@ -132,7 +134,7 @@ export default function HomeHero() {
             }}
             style={{ transformOrigin: 'center', willChange: 'transform, opacity' }}
           >
-            <WaveOrb size="min(88vmin, 880px)" speed={0.5} density={0.6} />
+            <WaveOrb size="min(88vmin, 880px)" speed={0.36} density={0.6} />
           </motion.div>
         </div>
         <div
@@ -153,7 +155,7 @@ export default function HomeHero() {
               animate={{ opacity: 1, y: 0 }}
               transition={reduce ? { duration: 0 } : { duration: 1.5, delay: 3.8, ease: OUT_SOFT }}
             >
-              <KrimLogoAnimated className="h-[clamp(116px,17vw,232px)] w-auto" />
+              <KrimLogoAnimated className="h-auto w-[clamp(300px,48vw,600px)]" />
             </motion.div>
 
             <h1 className="mt-10 font-serif text-[clamp(2.5rem,5.2vw,4.25rem)] leading-[1.06] tracking-[-0.02em] text-ink">
@@ -161,8 +163,9 @@ export default function HomeHero() {
               <TypedLine full={LINES[1]} shown={shown[1]} />
             </h1>
 
-            <p className="mt-7 max-w-[52ch] font-sans text-body-lg text-ink-2">
+            <p className="mt-7 max-w-[60ch] font-sans text-body-lg text-ink-2">
               <TypedLine full={LINES[2]} shown={shown[2]} />
+              <TypedLine full={LINES[3]} shown={shown[3]} />
             </p>
 
             <motion.div

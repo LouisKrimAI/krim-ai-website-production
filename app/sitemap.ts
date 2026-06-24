@@ -1,10 +1,10 @@
 import type { MetadataRoute } from 'next'
-import { POSTS } from './blog/_posts'
+import { POSTS } from './insights/_posts'
 
 /**
  * Sitemap — every indexable route, generated at build. Referenced by the
  * `Sitemap:` line in public/robots.txt. Blog posts are appended from the
- * single source of truth (app/blog/_posts.ts) so new writing is never orphaned.
+ * single source of truth (app/insights/_posts.ts) so new writing is never orphaned.
  */
 
 const BASE = 'https://krim.ai'
@@ -31,7 +31,7 @@ const ROUTES: { path: string; priority: number; changeFrequency: Change }[] = [
   { path: '/trust', priority: 0.7, changeFrequency: 'monthly' },
   { path: '/company', priority: 0.7, changeFrequency: 'monthly' },
   { path: '/services', priority: 0.7, changeFrequency: 'monthly' },
-  { path: '/blog', priority: 0.7, changeFrequency: 'weekly' },
+  { path: '/insights', priority: 0.7, changeFrequency: 'weekly' },
   { path: '/contact', priority: 0.6, changeFrequency: 'yearly' },
 ]
 
@@ -44,7 +44,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: r.priority,
   }))
   const postEntries = POSTS.map((p) => ({
-    url: `${BASE}/blog/${p.slug}`,
+    url: `${BASE}/insights/${p.slug}`,
     lastModified: new Date(p.date),
     changeFrequency: 'yearly' as Change,
     priority: 0.6,

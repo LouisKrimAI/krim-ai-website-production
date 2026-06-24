@@ -20,12 +20,12 @@ import { Section, Eyebrow, GlassCard, CTA } from '@/components/ui'
 export const metadata: Metadata = {
   title: 'KrimOS',
   description:
-    'KrimOS is one operating system for regulated operations: the runtime that validates and learns (Kendra), a vocabulary of validated actions (Kriya), the co-workers built from it (Karta), the command center your teams run them from (Kupa), and two ways in — Kula for your teams, Kira for your customers.',
+    'KrimOS is one operating system for banking & financial services: the runtime that validates and learns (Kendra), a vocabulary of validated actions (Kriya), the co-workers built from it (Karta), the command center your teams run them from (Kupa), and two ways in — Kula for your teams, Kira for your customers.',
   alternates: { canonical: 'https://krim.ai/platform' },
   openGraph: {
     title: 'KrimOS — the platform',
     description:
-      'KrimOS is one operating system for regulated operations: the runtime that validates and learns (Kendra), a vocabulary of validated actions (Kriya), the co-workers built from it (Karta), the command center your teams run them from (Kupa), and two ways in — Kula for your teams, Kira for your customers.',
+      'KrimOS is one operating system for banking & financial services: the runtime that validates and learns (Kendra), a vocabulary of validated actions (Kriya), the co-workers built from it (Karta), the command center your teams run them from (Kupa), and two ways in — Kula for your teams, Kira for your customers.',
     url: 'https://krim.ai/platform',
   },
 }
@@ -46,11 +46,11 @@ const softwareLd = {
   '@type': 'SoftwareApplication',
   name: 'KrimOS',
   applicationCategory: 'BusinessApplication',
-  applicationSubCategory: 'Operating system for regulated operations',
+  applicationSubCategory: 'Operating system for banking & financial services',
   operatingSystem: 'Sovereign on-prem, Hybrid, Managed SaaS',
   publisher: { '@type': 'Organization', name: 'Krim', url: 'https://krim.ai' },
   description:
-    'KrimOS is the operating system for regulated operations: AI co-workers whose every action is validated before it executes, and that learn from everything they do — inside the institution’s own perimeter.',
+    'KrimOS is the operating system for banking & financial services: AI co-workers whose every action is validated before it executes, and that learn from everything they do — inside the institution’s own perimeter.',
   featureList: [
     'Pre-execution validation — Krim-Nyāya, 33 validators',
     '250+ validated, credit-native action primitives (Kriya, ten categories)',
@@ -80,8 +80,8 @@ export default function PlatformPage() {
                 KrimOS
               </p>
               <h1 className="mt-6 font-serif text-[clamp(2.5rem,5vw,4.1rem)] leading-[1.05] tracking-[-0.018em] text-ink">
-                <span className="block">One operating system</span>
-                <span className="block">for regulated operations.</span>
+                <span className="block">One operating system for</span>
+                <span className="block">banking &amp; financial services.</span>
               </h1>
             </Reveal>
             <Reveal delay={0.12}>

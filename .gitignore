@@ -5,5 +5,10 @@ next-env.d.ts
 .vercel
 .DS_Store
 
+# local env (secrets — never commit)
+.env
+.env.local
+.env*.local
+
 # claude session worktrees
 .claude/worktrees/

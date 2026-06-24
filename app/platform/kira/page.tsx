@@ -14,12 +14,12 @@ import Reveal from '@/components/Reveal'
 import { Section, Eyebrow, GlassCard } from '@/components/ui'
 
 export const metadata: Metadata = {
-  title: 'Kira & Krimkar — for your customers',
+  title: 'Kira — the customer advisor',
   description:
     'Kira is the AI customer advisor your customers meet in the Krimkar app and across every channel — WhatsApp, voice, chat, SMS and email. One conversation that remembers, in the customer’s own language, always within the rules.',
   alternates: { canonical: 'https://krim.ai/platform/kira' },
   openGraph: {
-    title: 'Kira & Krimkar — for your customers',
+    title: 'Kira — the customer advisor',
     description:
       'Kira is the AI customer advisor your customers meet in the Krimkar app and across every channel — WhatsApp, voice, chat, SMS and email. One conversation that remembers, in the customer’s own language, always within the rules.',
     url: 'https://krim.ai/platform/kira',
@@ -69,8 +69,9 @@ export default function KiraPage() {
             <Reveal delay={0.12}>
               <p className="mx-auto mt-7 max-w-[58ch] font-sans text-body-lg text-ink-2">
                 Kira is the AI customer advisor your customers actually meet — in the Krimkar app, on
-                your public site, and across every channel they already use. One conversation that
-                remembers, in their own language, always within the rules.
+                your public site, and across every channel they already use.{' '}
+                <span className="text-ink">One conversation that remembers</span>, in their own
+                language, <span className="text-mint">always within the rules</span>.
               </p>
             </Reveal>
           </div>

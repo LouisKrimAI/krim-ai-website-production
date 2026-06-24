@@ -91,14 +91,10 @@ export default function KulaPage() {
               </h1>
             </Reveal>
             <Reveal delay={0.12}>
-              <p className="mx-auto mt-7 max-w-[58ch] font-sans text-body-lg text-ink-2">
-                Kula is how your people reach <span className="text-ink">KrimOS</span> — in plain
-                language. It is the way in; the thinking happens in{' '}
-                <Link href="/platform/kendra" className="text-ink underline-offset-4 transition-colors hover:text-mint hover:underline">
-                  Kendra
-                </Link>
-                , the runtime behind it. You ask for the outcome; the system proposes the work and
-                waits for your sign-off.
+              <p className="mx-auto mt-7 max-w-[54ch] font-sans text-body-lg text-ink-2">
+                Ask for an outcome in <span className="text-mint">plain English</span>. Kula turns it
+                into a governed plan — <span className="text-ink">yours to approve</span> before
+                anything runs. No query language, no ticket, no build team.
               </p>
             </Reveal>
           </div>

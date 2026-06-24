@@ -200,3 +200,13 @@ body {
   .ring-comet { animation: none; visibility: hidden; }
   .ring-node { animation: none; stroke: rgba(0, 255, 178, 0.5); fill: rgba(0, 255, 178, 0.08); }
 }
+
+/* ---------- flywheel image — slow, calm turn (it is, after all, a flywheel) ---------- */
+@keyframes krim-flywheel-spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+.krim-flywheel { animation: krim-flywheel-spin 90s linear infinite; transform-origin: center; will-change: transform; }
+@media (prefers-reduced-motion: reduce) { .krim-flywheel { animation: none; } }
+
+/* ---------- cinematic image band — slow, calm push-in (GPU only) ---------- */
+@keyframes krim-band-breathe { 0%,100% { transform: scale(1.04); } 50% { transform: scale(1.11); } }
+.krim-band-img { animation: krim-band-breathe 32s ease-in-out infinite; will-change: transform; }
+@media (prefers-reduced-motion: reduce) { .krim-band-img { animation: none; transform: scale(1.04); } }

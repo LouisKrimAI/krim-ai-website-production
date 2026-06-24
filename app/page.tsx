@@ -78,20 +78,21 @@ const POWERS = [
     body: "Agents execute across the full lending lifecycle — without manual handoffs. As your book grows, the operation keeps pace. The headcount doesn't have to.",
   },
   {
-    name: 'Self-Evolving',
+    name: 'Evolving & Predictive',
     tagline: 'Gets sharper with every decision your operation makes.',
     body: 'A world model that learns from every action and outcome. The longer it runs, the more precisely it performs. A truly intelligence-driven operation.',
   },
 ]
 
 // Who actually uses KrimOS — the lending roles, and what changes for each.
+// `hl` = the load-bearing phrase, lit in mint so each card reads at a glance.
 const USERS = [
-  ['Origination', 'Underwriters and analysts onboard in hours, not days. Every decision auditable. Applications move at digital speed.'],
-  ['Risk & Credit', 'AI decisions are provable and on the record — model risk and fair-lending exposure, contained.'],
-  ['Servicing', 'Cure and serve at scale. Every contact, every language — inside the rules, without adding headcount.'],
-  ['Collections', 'Right-party contact at scale. Recovery improves. Collections flow into the operation as validated actions.'],
-  ['Compliance & Audit', 'Reconstruct any action, any time, in plain words your examiner can read. Inspections close in hours, not weeks.'],
-  ['Operations', 'The manual backlog from origination to collections runs on validated co-workers. The team scales without the headcount.'],
+  { role: 'Origination', impact: 'Underwriters and analysts onboard in hours, not days — every decision auditable, applications moving at digital speed.', hl: 'in hours, not days' },
+  { role: 'Risk & Credit', impact: 'Every AI decision is provable and on the record, so model risk and fair-lending exposure stay contained.', hl: 'provable and on the record' },
+  { role: 'Servicing', impact: 'Cure and serve at scale — every contact, every language, inside the rules and without adding headcount.', hl: 'inside the rules' },
+  { role: 'Collections', impact: 'Right-party contact at scale and better recovery — collections flow into the operation as validated actions.', hl: 'validated actions' },
+  { role: 'Compliance & Audit', impact: 'Reconstruct any action, any time, in plain words your examiner can read — inspections close in hours, not weeks.', hl: 'your examiner can read' },
+  { role: 'Operations', impact: 'The manual backlog from origination to collections runs on validated co-workers — the team scales without the headcount.', hl: 'without the headcount' },
 ] as const
 
 const DEMO_HREF = '/contact'
@@ -157,7 +158,7 @@ export default function HomePage() {
               <Reveal delay={0.2}>
                 <GlassCard className="mt-9 inline-block px-8 py-6">
                   <p className="font-serif text-[clamp(1.3rem,2.2vw,1.7rem)] text-ink">
-                    Know what happens next — before it happens.
+                    Fragmented flows transformed into a unified intelligence.
                   </p>
                 </GlassCard>
                 <div className="mt-8">
@@ -168,20 +169,21 @@ export default function HomePage() {
               </Reveal>
             </div>
             <Reveal delay={0.15}>
-              {/* the flywheel render, floated into the canvas — edges feathered, no hard rectangle */}
+              {/* the flywheel render — a backgroundless cutout floating in the canvas, turning slowly */}
               <div className="relative mx-auto aspect-square w-full max-w-[520px]">
-                <Image
-                  src="/images/krimos/flywheel.png"
-                  alt="The KrimOS flywheel — a glass ring of light turning through validate, act, record and learn, cyan warming to mint as the cycle compounds."
-                  width={1400}
-                  height={1400}
-                  sizes="(max-width: 768px) 88vw, 520px"
-                  className="h-full w-full object-contain"
-                />
+                {/* faint cyan→mint ground glow behind the ring */}
                 <div
                   aria-hidden
                   className="pointer-events-none absolute inset-0"
-                  style={{ background: 'radial-gradient(82% 82% at 50% 50%, transparent 60%, #09090C 100%)' }}
+                  style={{ background: 'radial-gradient(50% 50% at 50% 50%, rgba(57,214,255,0.10) 0%, rgba(0,255,178,0.04) 40%, transparent 70%)' }}
+                />
+                <Image
+                  src="/images/krimos/flywheel-clear.png"
+                  alt="The KrimOS flywheel — a glass ring of light turning through validate, act, record and learn, cyan warming to mint as the cycle compounds."
+                  width={1196}
+                  height={1196}
+                  sizes="(max-width: 768px) 88vw, 520px"
+                  className="krim-flywheel relative h-full w-full object-contain"
                 />
               </div>
             </Reveal>
@@ -201,10 +203,7 @@ export default function HomePage() {
                 <div className="glass lume h-full p-7 md:p-8">
                   {/* the cyan "blocked" cue — resolves to mint in the powers below */}
                   <span aria-hidden className="block h-[3px] w-12 rounded-full bg-cyan/70" />
-                  <p className="mt-6 font-mono text-[10.5px] uppercase tracking-[0.18em] text-ink-3">
-                    {String(i + 1).padStart(2, '0')}
-                  </p>
-                  <h3 className="mt-2 font-serif text-[1.4rem] leading-tight text-ink">{p.heading}</h3>
+                  <h3 className="mt-6 font-serif text-[1.4rem] leading-tight text-ink">{p.heading}</h3>
                   <p className="mt-3 font-sans text-body text-ink-2">{p.body}</p>
                 </div>
               </Reveal>
@@ -252,14 +251,21 @@ export default function HomePage() {
             </h2>
           </Reveal>
           <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {USERS.map(([role, impact], i) => (
-              <Reveal key={role} delay={i * 0.06}>
-                <div className="glass-quiet h-full rounded-lg p-6">
-                  <h3 className="font-serif text-[1.2rem] leading-tight text-ink">{role}</h3>
-                  <p className="mt-2.5 font-sans text-[14px] leading-relaxed text-ink-2">{impact}</p>
-                </div>
-              </Reveal>
-            ))}
+            {USERS.map(({ role, impact, hl }, i) => {
+              const [before, after] = impact.split(hl)
+              return (
+                <Reveal key={role} delay={i * 0.06}>
+                  <div className="glass-quiet lume h-full rounded-lg p-6">
+                    <h3 className="font-serif text-[1.2rem] leading-tight text-ink">{role}</h3>
+                    <p className="mt-2.5 font-sans text-[14px] leading-relaxed text-ink-2">
+                      {before}
+                      <span className="text-mint">{hl}</span>
+                      {after}
+                    </p>
+                  </div>
+                </Reveal>
+              )
+            })}
           </div>
         </Section>
 
@@ -293,10 +299,10 @@ export default function HomePage() {
             <div className="mx-auto max-w-[680px] text-center">
               <span aria-hidden className="mx-auto block h-[3px] w-14 rounded-full bg-mint" />
               <h2 className="mt-8 font-serif text-display-2 leading-[1.05] text-ink">
-                Auditable AI at every step.
+                Watch your operations come alive.
               </h2>
               <p className="mt-5 font-sans text-body-lg text-ink-2">
-                Proven on your data. Live on day one.
+                Powered by sovereign superintelligence.
               </p>
               <div className="mt-9">
                 <CTA href={DEMO_HREF}>Book a demo</CTA>

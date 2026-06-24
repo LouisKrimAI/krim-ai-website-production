@@ -29,12 +29,12 @@
 - **Headlines AND eyebrows sell or evoke — they never label, instruct, or inventory.** A headline earns attention and carries one idea; an eyebrow orients with character, never reduces. Three banned archetypes, all real failures we have shipped and had to rip out:
   - **Meta-label** — describes the section instead of saying something: *"Named for what each one does."*, *"The parts"*, *"The named pieces."*
   - **UI instruction** — an imperative that belongs on a button, not a headline: *"Open the part you came for."*, *"Choose your path."*, *"Click to explore."*
-  - **Parts-bin inventory** — reduces one system to a counted catalogue of components: *"Five parts"*, *"The modules"*, *"Our components."* Sell the whole; never make the buyer feel they're reading a parts list. (A hub that links to sub-pages routes by *what the buyer needs*, not by enumerating pieces.)
+  - **Parts-bin inventory / number-led** — reduces one system to a counted catalogue: *"Five parts"*, *"Eight modules make the guarantees hold"*, *"Three things that change everything."* **Leading a heading with a count is banned even when the count is accurate** — the number is almost never the interesting thing; if it were removed, the line should still carry the idea. Sell the whole; never make the buyer feel they're reading a parts list. (The validator count "33 validators" as a *factual* phrase inside body copy is fine — that's proof, not a headline hook.)
   The test: read it aloud. If it could sit on a filing-cabinet drawer or in a tooltip, rewrite it.
 
 ## 4 · Glass (the signature surface)
-- `.glass` — the showcase surface for cards that carry key information: real backdrop-blur, a hairline light border, a faint top-edge highlight, a soft lift. `.glass-quiet` for secondary; `.glass-cyan` / `.glass-mint` for the **one** accent per view; `.lume` for interactive hover lift.
-- Glass is for content floating above the system — never wallpaper. **One mint-accent card per view, max.**
+- `.glass` — the showcase surface for cards that carry key information: real backdrop-blur, a hairline light border, a faint top-edge highlight, a soft lift. `.glass-quiet` for secondary; `.glass-cyan` / `.glass-mint` for accent; `.lume` for interactive hover lift.
+- Glass is for content floating above the system — never wallpaper. Prefer **one mint-accent card per view** — but a section may carry the highlight **more than once when it genuinely earns engagement** (a livelier section, a deliberate rhythm of cues). The test is "is each use load-bearing?", not a hard count. Never rainbow; never decorative.
 - **Cards are crafted objects, not boxes.** A small, clear hierarchy (mono eyebrow/label → serif title → calm body), the 3px accent bar, generous padding, a luminous `.lume` hover. Beautiful and stylish — never bland, never busy, never ugly. If a card looks like a plain bordered rectangle, it isn't finished.
 
 ## 5 · Layout & rhythm
@@ -44,9 +44,9 @@
 
 ## 6 · Motion budget (read this twice)
 - Motion is purposeful or it is absent. **Per page: at most one or two earned "signature" moments**, and only where motion explains something words/static can't. Everything else is subtle scroll reveals (fade + small rise, once) and luminous hovers.
-- The hero's orb choreography is the site's one big motion. Interior pages inherit the calm resting orb — they do **not** each invent a new spectacle.
+- The homepage hero's arrival choreography — the orb resolving, the animated mark, and the one **deliberate line-by-line type-in of the hero copy** — is the site's signature motion and is sanctioned. (The "no typewriters" ban below means: don't sprinkle typewriter effects on body copy elsewhere — it does not forbid the hero's one arrival beat.) Interior pages inherit the calm resting orb; they don't each invent a new spectacle.
 - Always GPU-only (opacity/transform/colour); reduced-motion settles to the meaningful end state instantly; 60fps; zero CLS.
-- **Banned:** a signature device in every section, spinning loaders, springy overshoot, gratuitous count-ups, auto-carousels, typewriters, gradient-shifting buttons, motion for motion's sake.
+- **Banned:** a signature device in every section, spinning loaders, springy overshoot, gratuitous count-ups, auto-carousels, **typewriter effects on ordinary body/section copy** (the hero arrival is the one sanctioned exception), gradient-shifting buttons, motion for motion's sake.
 
 ## 7 · Graphics policy (real images, or one earned signature — never slop, never a gadget per section)
 - The aesthetic is carried by **orb + glass + type + colour grammar**. Most content graphics should be **real, high-quality images** (dropped into `public/images/<category>/`, used via `next/image` in glass-framed slots like the homepage's) — or a clean glass + type section.
@@ -74,3 +74,49 @@ AA contrast on all text · visible `:focus-visible` · logical heading order (on
 ## How this is used
 - It is the **rubric the `design-critic` grades against**, alongside the live homepage as the reference standard. `content-critic` grades copy against this voice + `krim-content.md` + the page's brief.
 - **Style is governed here; structure is decided per page.** A page brief names that page's job, audience, the facts it must carry, and its one signature idea — then it's built in this style, through the critic gate, until it ships.
+
+---
+
+## 11 · The quality bar, language & self-QA (P0 — read before shipping any page)
+
+These are hard rules added after repeated, avoidable misses. The agent is expected to **find and fix these without being told.**
+
+### Design must be engaging — bland is a defect
+- **A wall of equal-weight text is not finished.** Every content section must be *browsable in seconds*: the eye should catch the key points first. Achieve this with type scale, the colour grammar, deliberate layout, and whitespace — not density.
+- **Always choose the strongest layout option**, not the first that works. A flat 3×N grid of look-alike cards is usually the lazy choice — vary emphasis, size a hero element, lead with one strong idea. If a section is "dull / bland / dense," it has failed the bar.
+- **Card sets MUST align perfectly.** Identical heights, identical divider and button positions, identical internal rhythm across every card in a group — at every breakpoint. Misaligned cards are a P0 defect; verify by eye (and by measuring) before shipping.
+
+### Language — normal, concise, exciting
+- **Speak like a smart human, fast.** Make the reader understand what a thing is and *why it's exciting* in one or two plain sentences. Then stop.
+- **Do NOT mechanically spell out "what each part does" in dense, parallel list-prose.** That reads like a spec sheet. Lead with the point; cut the scaffolding. Never overly complex, dense, or repetitive.
+- **Highlight the load-bearing words in every section** with the colour grammar (mint = validated/proof/brand · cyan = thinking/proposed · bright `ink` = emphasis). A content section with *zero* inline highlights is almost always under-styled. Aim for a few tasteful, deliberate highlights per section — enough that the key points land at a glance. Never rainbow, never every other word.
+
+### Naming — be straightforward
+- Pick one clear name for a thing and use it consistently across breadcrumb, page title, nav, hero and body (e.g. decide "Kira" vs "Kira & Krimkar" once). No drift, no ambiguity.
+
+### Mandatory self-QA before declaring anything done
+Render every changed view at desktop width (and check mobile) and confirm, fixing anything that fails **without waiting to be told**:
+1. **Alignment** — every card set aligns; nothing clipped; dividers/buttons share a baseline.
+2. **Engagement** — no bland/dense section; key points highlighted; layout earns attention.
+3. **Language** — concise, plain, exciting; no spec-sheet enumeration.
+4. **Highlights** — colour used on the right words, tasteful, present.
+5. **Naming + facts** — consistent names; claims true to `krim-content.md`.
+6. **Brand** — "Krim" never "Krim AI"; logos/assets correct.
+The reviewer's time is expensive — never ship work that an obvious self-review would have caught.
+
+---
+
+## 12 · Judgment over rote — and how images sit with text (added after over-rigid passes)
+
+**These rules are guardrails, not a straitjacket.** Apply expert judgment and best design practice first; the rules exist to keep quality high, not to be followed blindly into a worse result. If a rule, applied literally, makes a page *worse* (blander, more generic, less clear), the rule is being misapplied — step back and design. Examples of past over-rigidity to avoid:
+- Stripping deliberate signature graphics (orb, stacked-layers) under "anti-slop" — wrong; those are brand.
+- Making the header/footer logo static "for calm" — the brand wants the **dynamic animated mark with the moving dots** in header and footer.
+- Refusing images behind text on principle — see below.
+
+**Images behind text — the expert rule.** A photographic/cinematic image *can* sit behind text, and it often looks premium — **but only when legibility is guaranteed**, never by default. Get it right one of these ways:
+1. **Negative space:** place the text over a genuinely empty/quiet region of the image (sky, shadow, blur), not over busy detail.
+2. **Faded enough:** drop the image back with a strong scrim (≈0.45–0.65 darken) so it reads as *texture*, and the type sits clearly on top.
+3. **A real scrim behind the words:** a focused dark gradient *behind the text itself* (centre, not edges — a centre caption needs the centre darkened). An edge-only vignette does NOT help centred text.
+A full-bleed image strip with bright detail directly under centred text is a defect — you must catch it yourself. `CinematicBand` now bakes in the fade + centre scrim; if a band still fights its caption, fade harder, move the text to negative space, or drop the caption and let the image be pure atmosphere.
+
+**Consistency of alignment.** Section headlines should follow one deliberate pattern per page — don't mix centred and cramped-left headlines arbitrarily. A 2-column text+card section is fine, but its headline shouldn't read as "randomly shoved left" next to other full-width sections; if it does, centre it or make it full-width.

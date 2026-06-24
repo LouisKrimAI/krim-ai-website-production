@@ -202,3 +202,20 @@ A brutal review found the imported critic rules confused "don't fabricate" with 
 - **Management-intelligence layer, as real.** Kupa + Kula give leadership a portfolio window — **early-warning on deteriorating segments, roll-rate / cure-rate / cost-to-collect dashboards, cohort/vintage analysis, and champion/challenger strategy testing.** Management is a **user**, not just the buyer.
 - **World Lending Model as a forward tool** — simulate-before-you-act / strategy optimisation may be mentioned **broadly, as part of the model's evolving capabilities — not headlined** (user steer).
 - **Operational depth (real; feature where useful):** consent/DNC/contact-window management, segmentation + behavioural profiling, payment orchestration + plans, knowledge-base grounding, BI/reporting, role-based access, sovereign / hybrid / managed deployment, 40+ connectors (core · LOS · LMS · dialer · CRM · data).
+
+---
+
+## 11. Word choice — "banking" vs "lending" vs "banking & financial services" (LOCKED 2026-06)
+
+The site has three words for the market and they are **not** interchangeable. Distilled rule, so every page and every agent loop is consistent:
+
+> **Banking is the door we walk through. Lending is the room we're deepest in. "Financial services" is the formal name on the building.**
+
+| Word | What it's for | Where it goes |
+|---|---|---|
+| **Banking** | the market & the ambition, in one punchy word | heroes, big statements (e.g. *"Safe Superintelligence for Autonomous Banking"*) |
+| **Banking & financial services** | the formal category descriptor | **once per page max** — meta/OG descriptions, JSON-LD, the "who we serve" line. Too long for headlines |
+| **Lending** | the flagship & proving ground — where we go concrete and deep | capabilities, the lifecycle, the World Lending Model, proof, domain depth. When a CRO must see *their actual operation* |
+| **Regulated operations** *(+ government / enterprise / MSME)* | the horizon / generalisation | secondary, sparingly — those specific pages only, **never the lead** |
+
+**Rule of thumb:** naming the *market or ambition* → **Banking**. Being *concrete about the product* → **Lending**. The formal SEO/identity line → **banking & financial services**. The broader reach beyond banking → **regulated operations** (secondary). "Regulated operations" as a *lead* descriptor is retired (POSITIONING §1) — purge it from page metadata/H1s when found.

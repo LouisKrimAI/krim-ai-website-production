@@ -15,6 +15,8 @@ import SiteHeader from '@/components/SiteHeader'
 import SiteFooter from '@/components/SiteFooter'
 import OrbBackdrop from '@/components/OrbBackdrop'
 import Reveal from '@/components/Reveal'
+import CinematicBand from '@/components/CinematicBand'
+import JurisdictionTabs from '@/components/trust/JurisdictionTabs'
 import { Section, Eyebrow, GlassCard, CTA } from '@/components/ui'
 
 export const metadata: Metadata = {
@@ -89,19 +91,11 @@ const POSTURE = [
 ]
 
 // ---- encoded jurisdictions (krim-content.md · Krim-Nyāya; Trust footprint) ----
+// Order: USA · India · UK — surfaced as tabs.
 const JURISDICTIONS = [
-  {
-    region: 'United States',
-    frameworks: 'FDCPA · TCPA · Reg F · FCRA · SCRA · GLBA · ECOA · CFPB · ACA',
-  },
-  {
-    region: 'United Kingdom',
-    frameworks: 'FCA Consumer Duty · CONC sourcebook · Consumer Credit Act · UK GDPR',
-  },
-  {
-    region: 'India',
-    frameworks: 'RBI circulars · Fair Practices Code',
-  },
+  { region: 'United States', short: 'USA', frameworks: ['FDCPA', 'TCPA', 'Reg F', 'FCRA', 'SCRA', 'GLBA', 'ECOA', 'CFPB', 'ACA'] },
+  { region: 'India', short: 'India', frameworks: ['RBI circulars', 'Fair Practices Code'] },
+  { region: 'United Kingdom', short: 'UK', frameworks: ['FCA Consumer Duty', 'CONC sourcebook', 'Consumer Credit Act', 'UK GDPR'] },
 ]
 
 // ---- security & compliance standards — architecture designed around these frameworks ----
@@ -146,6 +140,15 @@ export default function TrustPage() {
             </Reveal>
           </div>
         </Section>
+
+        {/* ---- Cinematic band: a quiet atmospheric divider (no text over it) ---- */}
+        <CinematicBand
+          src="/images/cinematic/ledger-data.jpg"
+          alt="A single record of light held on a dark server floor — every action sealed inside your own walls."
+          heightClass="h-[clamp(220px,30vw,360px)]"
+          objectPosition="50% 42%"
+          tint="cyan"
+        />
 
         {/* ---- 2 · Deployment — three models, on-prem the hero ---- */}
         <Section hairline>
@@ -215,39 +218,25 @@ export default function TrustPage() {
           </div>
         </Section>
 
-        {/* ---- 4 · Encoded jurisdictions ---- */}
+        {/* ---- 4 · Encoded jurisdictions — centred headline + USA/India/UK tabs ---- */}
         <Section hairline>
-          <div className="grid items-start gap-12 md:grid-cols-[0.95fr_1.05fr]">
+          <div className="mx-auto max-w-[760px] text-center">
             <Reveal>
-              <div>
-                <Eyebrow>The law, encoded</Eyebrow>
-                <h2 className="mt-4 max-w-[20ch] font-serif text-display-1 text-ink">
-                  The rules live in the runtime — and gate every action.
-                </h2>
-                <p className="mt-7 max-w-[52ch] font-sans text-body-lg text-ink-2">
-                  Each jurisdiction&rsquo;s sectoral law is encoded in Krim-Fabric and enforced by
-                  Krim-Nyāya before an action can fire. A lender in any market inherits the same
-                  runtime and audit trail, with{' '}
-                  <span className="text-mint">the jurisdiction&rsquo;s rules already in place.</span>{' '}
-                  As rules change, they update without restarting the runtime.
-                </p>
-              </div>
-            </Reveal>
-            <Reveal delay={0.12}>
-              <GlassCard className="p-8 md:p-10">
-                <ul className="space-y-7">
-                  {JURISDICTIONS.map((j) => (
-                    <li key={j.region}>
-                      <p className="font-serif text-[1.3rem] leading-tight text-ink">{j.region}</p>
-                      <p className="mt-2 font-mono text-[12px] leading-relaxed tracking-[0.06em] text-ink-3">
-                        {j.frameworks}
-                      </p>
-                    </li>
-                  ))}
-                </ul>
-              </GlassCard>
+              <Eyebrow>The law, encoded</Eyebrow>
+              <h2 className="mt-4 font-serif text-display-1 text-ink">
+                The rules live in the runtime — and gate every action.
+              </h2>
+              <p className="mx-auto mt-6 max-w-[58ch] font-sans text-body-lg text-ink-2">
+                Each market&rsquo;s sectoral law is encoded in Krim-Fabric and enforced before an
+                action can fire — so a lender in any jurisdiction inherits{' '}
+                <span className="text-mint">the rules already in place</span>, updated as they change
+                without restarting the runtime.
+              </p>
             </Reveal>
           </div>
+          <Reveal delay={0.12}>
+            <JurisdictionTabs items={JURISDICTIONS} />
+          </Reveal>
         </Section>
 
         {/* ---- 5 · The audit experience — Krim-Ledger replay ---- */}
@@ -309,47 +298,33 @@ export default function TrustPage() {
               AI governance.
             </p>
           </Reveal>
+          <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {[...SECURITY_STANDARDS, ...REGULATORY_STANDARDS].map((s, i) => (
+              <Reveal key={s.label} delay={(i % 3) * 0.07}>
+                <div className="glass lume flex h-full items-center gap-4 rounded-lg p-5">
+                  <span
+                    aria-hidden
+                    className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-mint/30 bg-mint/[0.06]"
+                  >
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#00FFB2" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M20 6 9 17l-5-5" />
+                    </svg>
+                  </span>
+                  <div>
+                    <p className="font-serif text-[1.15rem] leading-tight text-ink">{s.label}</p>
+                    <p className="mt-0.5 font-mono text-[9.5px] uppercase tracking-[0.18em] text-ink-3">
+                      {s.group === 'security' ? 'Information security' : 'Regulatory alignment'}
+                    </p>
+                  </div>
+                </div>
+              </Reveal>
+            ))}
+          </div>
           <Reveal delay={0.12}>
-            <GlassCard className="mt-10 p-8 md:p-10">
-              <div className="grid gap-8 sm:grid-cols-2">
-                {/* Security frameworks */}
-                <div>
-                  <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-ink-3">
-                    Information security
-                  </p>
-                  <div className="mt-4 flex flex-wrap gap-2.5">
-                    {SECURITY_STANDARDS.map((s) => (
-                      <span
-                        key={s.label}
-                        className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.035] px-4 py-2 font-mono text-[11.5px] tracking-[0.06em] text-ink-2"
-                      >
-                        {s.label}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-                {/* Regulatory alignment */}
-                <div>
-                  <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-ink-3">
-                    Regulatory alignment
-                  </p>
-                  <div className="mt-4 flex flex-wrap gap-2.5">
-                    {REGULATORY_STANDARDS.map((s) => (
-                      <span
-                        key={s.label}
-                        className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.035] px-4 py-2 font-mono text-[11.5px] tracking-[0.06em] text-ink-2"
-                      >
-                        {s.label}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </div>
-              <p className="mt-8 border-t border-white/[0.06] pt-6 font-sans text-body text-ink-3">
-                Bring your security team. We support architecture review, penetration testing access
-                and full documentation on request.
-              </p>
-            </GlassCard>
+            <p className="mx-auto mt-9 max-w-[64ch] text-center font-sans text-body text-ink-3">
+              Bring your security team — we support architecture review, penetration-testing access
+              and full documentation on request.
+            </p>
           </Reveal>
         </Section>
 

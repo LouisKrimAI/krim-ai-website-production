@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-38.20 -33.20 506.40 436.40"><defs><filter id="glowiconlight" x="-100%" y="-100%" width="300%" height="300%">
+<feGaussianBlur stdDeviation="5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs><style>
+@keyframes flow_top{0%{transform:translate(0,0);opacity:0}13%{opacity:1}
+48%{transform:translate(0.00px,71.60px);opacity:1}
+84%{transform:translate(0,0);opacity:.15}100%{transform:translate(0,0);opacity:0}}
+.dot_top{animation:flow_top 2.5384615384615383s cubic-bezier(.45,0,.25,1) infinite;animation-delay:-2.538s;transform-box:fill-box;will-change:transform,opacity}
+@keyframes flow_left{0%{transform:translate(0,0);opacity:0}13%{opacity:1}
+48%{transform:translate(54.86px,-36.96px);opacity:1}
+84%{transform:translate(0,0);opacity:.15}100%{transform:translate(0,0);opacity:0}}
+.dot_left{animation:flow_left 2.5384615384615383s cubic-bezier(.45,0,.25,1) infinite;animation-delay:-1.692s;transform-box:fill-box;will-change:transform,opacity}
+@keyframes flow_right{0%{transform:translate(0,0);opacity:0}13%{opacity:1}
+48%{transform:translate(-54.86px,-36.96px);opacity:1}
+84%{transform:translate(0,0);opacity:.15}100%{transform:translate(0,0);opacity:0}}
+.dot_right{animation:flow_right 2.5384615384615383s cubic-bezier(.45,0,.25,1) infinite;animation-delay:-0.846s;transform-box:fill-box;will-change:transform,opacity}
+@keyframes corePulse{0%,100%{transform:scale(1);opacity:.9}50%{transform:scale(1.09);opacity:1}}
+.core{animation:corePulse 2.5384615384615383s ease-in-out infinite;transform-box:fill-box;transform-origin:center;will-change:transform}
+@media (prefers-reduced-motion:reduce){.dot_top,.dot_left,.dot_right{animation:none;opacity:0}.core{animation:none;opacity:1}}</style><g transform="translate(0.000,0.000) scale(1.00000) translate(-4.000,-9.000)"><path d="M 274.000 9.000 L 274.000 16.000 L 413.643 16.000 L 335.117 147.000 L 343.278 147.000 L 426.000 9.000 L 274.000 9.000 Z M 215.000 347.385 L 157.224 251.000 L 149.062 251.000 L 215.000 361.000 L 280.938 251.000 L 272.776 251.000 L 215.000 347.385 Z M 16.357 16.000 L 156.000 16.000 L 156.000 9.000 L 4.000 9.000 L 86.722 147.000 L 94.883 147.000 L 16.357 16.000 Z " fill="#0A0A0C"/><path class="core" d="M 171.000 136.000 a 44.000 44.000 0 1 0 88.000 0 a 44.000 44.000 0 1 0 -88.000 0 Z " fill="#0A0A0C"/><circle class="dot_top" cx="215" cy="16" r="11" fill="#138A43" filter="url(#glowiconlight)"/><circle class="dot_left" cx="120" cy="200" r="11" fill="#D32018" filter="url(#glowiconlight)"/><circle class="dot_right" cx="310" cy="200" r="11" fill="#0A5FCF" filter="url(#glowiconlight)"/></g></svg>

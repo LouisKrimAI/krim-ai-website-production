@@ -80,9 +80,9 @@ const LAYERS: Layer[] = [
     tag: 'The consumer app',
     summary: 'The customer-facing application — one relationship, every channel.',
     points: [
-      'Kira, the AI advisor: one thread from application to payoff — context preserved across every channel.',
+      'Kira, the AI advisor — one thread from application to payoff, every channel.',
       'Voice, SMS, WhatsApp, email, in-app — 50+ languages, one voice.',
-      'Validated before every action — safe to put in front of customers.',
+      'Validated before every action — safe in front of customers.',
     ],
     href: '/platform/kira',
   },
@@ -92,9 +92,9 @@ const LAYERS: Layer[] = [
     tag: 'The advisor',
     summary: 'The AI that customers talk to — one relationship, the whole lifecycle.',
     points: [
-      'Meets borrowers on WhatsApp, voice, IVR, email, SMS and in the app — one thread, full context.',
-      'Speaks the customer\'s language, auto-clarifies ambiguous fields, acts only within consent rules.',
-      'Hands off to humans with full context for disputes, hardship or sensitive segments.',
+      'Meets borrowers on WhatsApp, voice, IVR, email and SMS — one thread.',
+      'Speaks their language, clarifies ambiguity, acts only within consent.',
+      'Hands off to a person — with full context — when a moment needs one.',
     ],
     href: '/platform/kira',
   },
@@ -111,7 +111,7 @@ export default function PlatformExplorer() {
     <div className="mx-auto w-full max-w-[1040px]">
       {/* ---- left: selectable layer stack — responsive layout ---- */}
       <div className="grid gap-5 lg:grid-cols-[300px_1fr] lg:gap-7">
-        <div className="flex flex-col gap-1.5 lg:h-[420px]" role="tablist" aria-label="The KrimOS platform layers">
+        <div className="flex flex-col gap-1.5 lg:h-[460px]" role="tablist" aria-label="The KrimOS platform layers">
         {LAYERS.map((l) => {
           const isActive = l.key === active
           return (
@@ -162,7 +162,7 @@ export default function PlatformExplorer() {
       <div
         id="krim-layer-detail"
         role="tabpanel"
-        className="lume glass relative overflow-hidden rounded-lg p-8 md:p-10 pb-7 md:pb-10 lg:h-[420px]"
+        className="lume glass relative overflow-hidden rounded-lg p-8 md:p-10 lg:h-[460px]"
       >
         {/* faint cyan core glow */}
         <span
@@ -178,7 +178,7 @@ export default function PlatformExplorer() {
             animate={{ opacity: 1, y: 0 }}
             exit={reduce ? { opacity: 0 } : { opacity: 0, y: -8 }}
             transition={{ duration: reduce ? 0 : 0.28, ease: EASE }}
-            className="relative flex h-full flex-col"
+            className="relative grid h-full grid-rows-[auto_auto_1fr_auto]"
           >
             {/* tag + name */}
             <div>
@@ -208,16 +208,16 @@ export default function PlatformExplorer() {
               ))}
             </ul>
 
-            {/* explore link — anchored to bottom */}
+            {/* explore link — anchored to bottom, stylish ghost-mint pill */}
             <div className="mt-auto border-t border-white/[0.06] pt-6">
               <Link
                 href={layer.href}
-                className="group inline-flex items-center gap-2.5 font-mono text-[10px] uppercase tracking-[0.2em] text-mint/60 transition-colors duration-200 hover:text-mint"
+                className="group inline-flex items-center gap-2.5 rounded-full border border-mint/25 bg-mint/[0.04] px-5 py-2.5 font-mono text-[10px] uppercase tracking-[0.2em] text-mint/90 transition-all duration-300 hover:border-mint/55 hover:bg-mint/[0.10] hover:text-mint hover:shadow-[0_0_26px_-8px_rgba(0,255,178,0.55)]"
               >
                 Explore {layer.name}
                 <span
                   aria-hidden
-                  className="inline-block transition-transform duration-200 group-hover:translate-x-0.5"
+                  className="inline-block transition-transform duration-300 group-hover:translate-x-1"
                 >
                   →
                 </span>
