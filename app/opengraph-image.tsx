@@ -66,7 +66,7 @@ export default function OpengraphImage() {
         </div>
 
         <div style={{ display: 'flex', fontSize: 26, color: '#A9ADB6' }}>
-          The operating system for regulated operations.
+          The operating system for banking & financial services.
         </div>
       </div>
     ),

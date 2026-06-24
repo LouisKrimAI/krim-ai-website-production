@@ -115,9 +115,9 @@ export default function ResearchPage() {
         {/* ---- 2 · The three strands — a map, with doors to the depth ---- */}
         <Section hairline>
           <Reveal>
-            <Eyebrow>The three strands</Eyebrow>
+            <Eyebrow>The strands</Eyebrow>
             <h2 className="mt-4 max-w-[22ch] font-serif text-display-1 text-ink">
-              Three questions, one body of work.
+              Hard questions, one body of work.
             </h2>
             <p className="mt-6 max-w-[58ch] font-sans text-body-lg text-ink-2">
               Each strand is a research problem in its own right. Start anywhere — each opens onto

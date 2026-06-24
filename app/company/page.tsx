@@ -230,7 +230,7 @@ export default function CompanyPage() {
             <div className="mx-auto max-w-[760px] text-center">
               <Eyebrow>Markets</Eyebrow>
               <h2 className="mt-4 font-serif text-display-1 text-ink">
-                Three jurisdictions, one runtime.
+                Different jurisdictions, one runtime.
               </h2>
               <p className="mx-auto mt-6 max-w-[52ch] font-sans text-body-lg text-ink-2">
                 We build and deploy across three regulatory worlds. The same system runs in each —

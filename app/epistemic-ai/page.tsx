@@ -447,8 +447,8 @@ export default function EpistemicAIPage() {
                 See AI that can answer for itself.
               </h2>
               <p className="mx-auto mt-5 max-w-[50ch] font-sans text-body text-ink-2">
-                Epistemic AI runs as KrimOS — the operating system for regulated operations, where
-                every action is validated before it fires.
+                Epistemic AI runs as KrimOS — the operating system for banking and financial services,
+                where every action is validated before it fires.
               </p>
               <div className="mt-9 flex flex-wrap items-center justify-center gap-6">
                 <CTA href={DEMO_HREF}>Book a demo</CTA>
