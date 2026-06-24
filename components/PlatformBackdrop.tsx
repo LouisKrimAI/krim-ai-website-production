@@ -38,7 +38,8 @@ export default function PlatformBackdrop() {
           src="/images/krimos/layers-clear.png"
           alt=""
           fill
-          quality={62}
+          priority
+          quality={60}
           sizes="100vw"
           className="object-contain"
           style={{ objectPosition: '50% 50%' }}
