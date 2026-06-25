@@ -78,6 +78,16 @@ const IMPACTS: [string, string][] = [
   ['Better recovery', 'More right-party contact and more cures — always within the rules.'],
 ]
 
+// what you do in Agent Studio — build and tune a co-worker, no code
+const STUDIO: string[] = [
+  'Create a new co-worker — from scratch, or clone one and adapt it.',
+  'Program its voice — a custom voice, and how it speaks.',
+  'Set its personality — tone, manner and escalation style.',
+  'Design its workflow — the steps it follows, with branches and checks.',
+  'Bind its skills and knowledge — the actions it can take, the policies it knows.',
+  'Set its limits — authority, autonomy, and when to hand to a person.',
+]
+
 function AreaPanel({
   kicker,
   title,
@@ -179,6 +189,47 @@ export default function KartaPage() {
                 </div>
               </Reveal>
             ))}
+          </div>
+        </Section>
+
+        {/* ---- Agent Studio — build your own co-worker ---- */}
+        <Section hairline>
+          <div className="grid items-center gap-12 md:grid-cols-[0.95fr_1.05fr]">
+            <Reveal>
+              <div>
+                <Eyebrow>Agent Studio</Eyebrow>
+                <h2 className="mt-4 max-w-[16ch] font-serif text-display-1 text-ink">
+                  Build a co-worker, no code.
+                </h2>
+                <p className="mt-6 max-w-[46ch] font-sans text-body-lg text-ink-2">
+                  Your team creates and tunes co-workers in{' '}
+                  <span className="text-mint">Agent Studio</span> — the same place every Karta is
+                  configured. No engineering ticket, no release cycle.
+                </p>
+              </div>
+            </Reveal>
+            <Reveal delay={0.12}>
+              <GlassCard className="p-8 md:p-9">
+                <span aria-hidden className="block h-[3px] w-12 rounded-full bg-mint/70" />
+                <p className="mt-5 font-mono text-[11px] uppercase tracking-[0.2em] text-ink-3">
+                  In the studio
+                </p>
+                <ul className="mt-6 space-y-5 border-t border-soft pt-6">
+                  {STUDIO.map((item) => {
+                    const [lead, rest] = item.split(' — ')
+                    return (
+                      <li key={item} className="flex gap-3.5">
+                        <span aria-hidden className="mt-[0.5em] h-1.5 w-1.5 shrink-0 rounded-full bg-mint" />
+                        <span className="font-sans text-body text-ink-2">
+                          <span className="text-ink">{lead}</span>
+                          {rest ? ` — ${rest}` : ''}
+                        </span>
+                      </li>
+                    )
+                  })}
+                </ul>
+              </GlassCard>
+            </Reveal>
           </div>
         </Section>
 
