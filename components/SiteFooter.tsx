@@ -142,9 +142,15 @@ export default function SiteFooter() {
         </div>
 
         {/* legal strip */}
-        <p className="mt-6 font-mono text-[11px] tracking-[0.06em] text-ink-3">
-          © {new Date().getFullYear()} Krim · US · UK · India
-        </p>
+        <div className="mt-6 flex flex-wrap items-center gap-x-4 gap-y-1.5 font-mono text-[11px] tracking-[0.06em] text-ink-3">
+          <span>© {new Date().getFullYear()} Krim · US · UK · India</span>
+          <a href="/privacy" className="transition-colors hover:text-ink-2">
+            Privacy
+          </a>
+          <a href="/terms" className="transition-colors hover:text-ink-2">
+            Terms
+          </a>
+        </div>
       </div>
     </footer>
   )

@@ -234,6 +234,14 @@ export function DemoForm() {
           {status === 'submitting' ? 'Sending…' : 'Book a demo'}
         </button>
       </div>
+
+      <p className="mt-1 font-sans text-caption leading-relaxed text-ink-3">
+        By submitting, you agree to our{' '}
+        <a href="/privacy" className="underline decoration-soft underline-offset-2 transition-colors hover:text-ink-2">
+          Privacy Policy
+        </a>
+        . Please don&rsquo;t include confidential or customer data in your message.
+      </p>
     </form>
   )
 }
