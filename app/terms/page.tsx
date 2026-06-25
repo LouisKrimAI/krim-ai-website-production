@@ -99,9 +99,9 @@ Nothing in these Terms excludes or limits any liability that cannot lawfully be 
   },
   {
     heading: 'Governing law and disputes',
-    body: `These Terms, and any dispute arising out of or relating to them or the Site, are governed by the laws of the State of New York, United States, without regard to conflict-of-laws rules.
+    body: `These Terms, and any dispute arising out of or relating to them or the Site, are governed by the laws of the State of Delaware, United States, without regard to conflict-of-laws rules.
 
-You and Krim agree that the courts located in New York, New York will have non-exclusive jurisdiction over any dispute relating to the Site or these Terms, except where mandatory local law gives you the right to bring proceedings elsewhere. Nothing here affects any mandatory consumer-protection rights you may have where you live.`,
+You and Krim agree that the courts located in the State of Delaware will have non-exclusive jurisdiction over any dispute relating to the Site or these Terms, except where mandatory local law gives you the right to bring proceedings elsewhere. Nothing here affects any mandatory consumer-protection rights you may have where you live.`,
   },
   {
     heading: 'General',
