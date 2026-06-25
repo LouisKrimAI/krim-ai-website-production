@@ -18,30 +18,36 @@ export default function PlatformBackdrop() {
 
   return (
     <div aria-hidden className="pointer-events-none fixed inset-0 z-0 overflow-hidden bg-bg">
-      {/* faint cyan ground glow — the brand's living light, behind the render */}
+      {/* cyan ground glow — widened to fill the side gutters, so the field (not
+          black) sits beside the stack on widescreen; plus a faint mint glow under
+          the crown to give the recoloured brain's mint highlights something to sit in */}
       <div
         className="absolute inset-0"
-        style={{ background: 'radial-gradient(58% 48% at 50% 38%, rgba(57,214,255,0.09), rgba(4,6,12,0) 70%)' }}
+        style={{ background: 'radial-gradient(88% 66% at 50% 44%, rgba(57,214,255,0.10), rgba(4,6,12,0) 72%)' }}
+      />
+      <div
+        className="absolute inset-0"
+        style={{ background: 'radial-gradient(42% 30% at 50% 24%, rgba(0,255,178,0.06), transparent 70%)' }}
       />
 
-      {/* the layers render — background cut out (transparent) so it blends into
-          the black ground, held only slightly faded and kept sharp (no blur) so
-          the stack stays defined, breathing slowly behind the content */}
+      {/* the layers render — a widescreen bake (stack centred, bottom feathered to
+          transparent, rainbow brain recoloured cyan→mint) shown object-cover so it
+          fills the viewport edge to edge, held faint and breathing slowly */}
       <motion.div
         className="absolute inset-0"
         style={{ opacity: 0.32, willChange: 'transform' }}
         initial={false}
-        animate={reduce ? { scale: 1.0, y: 0 } : { scale: [0.99, 1.035, 0.99], y: ['0%', '-1.2%', '0%'] }}
-        transition={reduce ? { duration: 0 } : { duration: 34, ease: 'easeInOut', repeat: Infinity }}
+        animate={reduce ? { scale: 1.0, y: 0 } : { scale: [0.99, 1.025, 0.99], y: ['0%', '-1.0%', '0%'] }}
+        transition={reduce ? { duration: 0 } : { duration: 38, ease: 'easeInOut', repeat: Infinity }}
       >
         <Image
-          src="/images/krimos/layers-clear.png"
+          src="/images/krimos/layers-wide.png"
           alt=""
           fill
           priority
-          quality={60}
+          quality={62}
           sizes="100vw"
-          className="object-contain"
+          className="object-cover"
           style={{ objectPosition: '50% 50%' }}
         />
       </motion.div>
