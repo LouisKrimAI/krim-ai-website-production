@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Newsreader, Inter, IBM_Plex_Mono, Montserrat } from 'next/font/google'
 import './globals.css'
 import Analytics from '@/components/Analytics'
+import ArrivalBoot from '@/components/ArrivalBoot'
 import ResearchBackdrop from '@/components/ResearchBackdrop'
 import WovenRingBackdrop from '@/components/WovenRingBackdrop'
 
@@ -67,6 +68,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <WovenRingBackdrop />
         {children}
         <Analytics />
+        <ArrivalBoot />
       </body>
     </html>
   )

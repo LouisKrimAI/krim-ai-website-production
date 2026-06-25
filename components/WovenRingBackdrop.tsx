@@ -18,6 +18,7 @@
 
 import { useEffect, useRef } from 'react'
 import { usePathname } from 'next/navigation'
+import { isFreshArrival } from '@/lib/arrival'
 
 const RESEARCH_ROUTES = new Set(['/research', '/research/world-lending-model', '/epistemic-ai'])
 
@@ -42,6 +43,13 @@ function WovenRingCanvas() {
     const small =
       Math.min(window.innerWidth, window.innerHeight) < 720 ||
       (window.matchMedia && window.matchMedia('(pointer: coarse)').matches)
+
+    // The full cloud→swirl→sphere→ring morph plays only on a fresh document load
+    // (cold visit or refresh) AND only when the homepage is the page being loaded.
+    // Every other mount — interior pages, or the homepage reached by in-site
+    // navigation — starts on the settled ring. Shared with the hero (lib/arrival)
+    // so the ring build-up and the hero build-up can never desync.
+    const playMorph = isFreshArrival() && window.location.pathname === '/'
 
     // ---------- viewport ----------
     let W = 0, H = 0, DPR = 1, U = 1, sized = false
@@ -356,9 +364,12 @@ function WovenRingCanvas() {
     // ---------- loop (paused while tab hidden) ----------
     let raf = 0
     let startTime: number | null = null
+    // Non-morph mounts begin the clock past T_END so the first frame is already the
+    // settled, breathing ring — no cloud/swirl/sphere build-up.
+    const RING_OFFSET = (T_END + 2) * 1000
     function frame(now: number) {
       if (!sized) { if (!resize()) { raf = requestAnimationFrame(frame); return } startTime = null }
-      if (startTime === null) startTime = now
+      if (startTime === null) startTime = playMorph ? now : now - RING_OFFSET
       render((now - startTime) / 1000)
       raf = requestAnimationFrame(frame)
     }

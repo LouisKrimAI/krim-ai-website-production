@@ -18,6 +18,7 @@ import { useEffect, useState } from 'react'
 import { motion, useReducedMotion } from 'framer-motion'
 import KrimLogoAnimated from '../KrimLogoAnimated'
 import { CTA } from '../ui'
+import { isFreshArrival } from '@/lib/arrival'
 
 const OUT_SOFT = [0.16, 1, 0.3, 1] as const
 const DEMO_HREF = '/contact'
@@ -91,7 +92,14 @@ function TypedLine({ full, shown }: { full: string; shown: string }) {
 
 export default function HomeHero() {
   const reduce = useReducedMotion()
-  const { shown, done } = useTyped(!!reduce)
+  // Settle instantly (no choreography) when the homepage is reached by in-site
+  // navigation — only a fresh document load of the homepage plays the build-up,
+  // in step with the woven ring (lib/arrival). Computed in a useState initialiser
+  // so an in-site mount renders fully in place on its first frame (no blank-then-
+  // fill flash); SSR + first load fall through to the animated path.
+  const [settled] = useState(() => typeof window !== 'undefined' && !isFreshArrival())
+  const disabled = !!reduce || settled
+  const { shown, done } = useTyped(disabled)
 
   return (
     <>
@@ -100,9 +108,9 @@ export default function HomeHero() {
         <div className="mx-auto w-full max-w-site px-6 md:px-10">
           <div className="mx-auto flex max-w-[860px] flex-col items-center text-center">
             <motion.div
-              initial={reduce ? { opacity: 1, y: 0 } : { opacity: 0, y: 12 }}
+              initial={disabled ? { opacity: 1, y: 0 } : { opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={reduce ? { duration: 0 } : { duration: 1.4, delay: 5.0, ease: OUT_SOFT }}
+              transition={disabled ? { duration: 0 } : { duration: 1.4, delay: 5.0, ease: OUT_SOFT }}
             >
               <KrimLogoAnimated className="h-auto w-[clamp(300px,48vw,600px)]" />
             </motion.div>
@@ -119,9 +127,9 @@ export default function HomeHero() {
 
             <motion.div
               className="mt-11 flex flex-wrap items-center justify-center gap-6"
-              initial={reduce ? { opacity: 1, y: 0 } : { opacity: 0, y: 14 }}
+              initial={disabled ? { opacity: 1, y: 0 } : { opacity: 0, y: 14 }}
               animate={done ? { opacity: 1, y: 0 } : { opacity: 0, y: 14 }}
-              transition={reduce ? { duration: 0 } : { duration: 1.0, ease: OUT_SOFT }}
+              transition={disabled ? { duration: 0 } : { duration: 1.0, ease: OUT_SOFT }}
             >
               <CTA href={DEMO_HREF}>Book a demo</CTA>
               <CTA href="#intelligence" variant="secondary">
