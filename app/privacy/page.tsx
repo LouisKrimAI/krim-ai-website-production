@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   alternates: { canonical: 'https://krim.ai/privacy' },
 }
 
-const EFFECTIVE = 'Effective date: [PLACEHOLDER: effective date] · Last updated: [PLACEHOLDER: last-updated date]'
+const EFFECTIVE = 'Last updated: 25 June 2026'
 
 const INTRO = `This Privacy Policy explains how Krim handles personal information collected through our website at krim.ai (the "Site"). It applies to the Site only.
 
@@ -16,7 +16,7 @@ Krim is a B2B enterprise-software company. Our product, KrimOS, is sold to banks
 
 This policy does not cover any personal data we may process inside the KrimOS product or under a separate written agreement with a customer. That data is governed by that agreement and any related data-processing terms, not by this policy.
 
-In this policy, "Krim", "we", "us", and "our" mean [PLACEHOLDER: registered legal entity name], a company registered at [PLACEHOLDER: registered address]. For privacy questions, you can reach us at [PLACEHOLDER: privacy contact email].`
+In this policy, "Krim", "we", "us", and "our" mean Krim AI Inc., a company registered at 169 Madison Ave, STE 15775, New York, NY 10016, United States. For privacy questions, you can reach us at privacy@krim.ai.`
 
 const SECTIONS = [
   {
@@ -79,7 +79,7 @@ We may add or change providers and will keep this list current. We may also disc
     heading: 'International transfers',
     body: `We and our providers operate in more than one country, and your information may be processed in the United States, the European Union, the United Kingdom, or India, depending on the provider involved.
 
-Where we transfer personal data out of the UK, EEA, or India, we put appropriate safeguards in place as required by applicable law, such as [PLACEHOLDER: transfer mechanism, e.g. the European Commission's Standard Contractual Clauses, the UK International Data Transfer Addendum, or transfers to countries recognised as providing adequate protection]. You can ask us for more detail using the contact below.`,
+Where we transfer personal data out of the UK, EEA, or India, we put appropriate safeguards in place as required by applicable law, such as the European Commission's Standard Contractual Clauses, the UK International Data Transfer Addendum, or transfers to countries recognised as providing an adequate level of protection. You can ask us for more detail using the contact below.`,
   },
   {
     heading: 'Marketing email and unsubscribing',
@@ -89,21 +89,15 @@ Once you unsubscribe, we stop the follow-up sequence and suppress your address f
   },
   {
     heading: 'How long we keep it',
-    body: `We keep enquiry and follow-up records for as long as needed to handle your enquiry and for a reasonable period afterwards for our legitimate business and record-keeping purposes, and then we delete or anonymise them.
+    body: `We keep enquiry and follow-up records for as long as we need them to handle your enquiry and for a reasonable period afterwards for our legitimate business and record-keeping purposes, and then we delete or anonymise them. Server logs are kept only for a short period.
 
-- Enquiry and follow-up records: [PLACEHOLDER: retention period, e.g. retained for X months after last contact]
-- Email-engagement events: [PLACEHOLDER: retention period]
-- Server logs: [PLACEHOLDER: short retention period, e.g. up to 30 to 90 days]
-
-We may keep information longer where the law requires it or to establish, exercise, or defend legal claims. Aggregate analytics data is not tied to you.`,
+We may keep information longer where the law requires it, or to establish, exercise, or defend legal claims. Aggregate analytics data is not tied to you.`,
   },
   {
     heading: 'Cookies and analytics',
     body: `The Site is designed to set minimal or no cookies. Our analytics provider, Plausible, is cookieless: it does not store cookies on your device, does not track you across other websites, and does not collect personal data. Because there is no tracking that requires it, the Site does not display a cookie-consent banner.
 
-Our embedded scheduling tool, Calendly, may set its own cookies when it loads. That tool is governed by its provider's privacy policy.
-
-[PLACEHOLDER: If a cookie-setting analytics tool such as Google Analytics is enabled in future, this section must be updated to describe those cookies, and any consent mechanism required by law must be implemented before they are used.]`,
+Our embedded scheduling tool, Calendly, may set its own cookies when it loads. That tool is governed by its provider's privacy policy.`,
   },
   {
     heading: 'How we protect your information',
@@ -131,17 +125,17 @@ If you are in India (DPDP Act, 2023), as a Data Principal you can:
 - access information about the personal data we process about you
 - request correction, completion, updating, or erasure of your data
 - nominate another person to exercise your rights in the event of death or incapacity
-- raise a grievance with our Grievance Officer (see below)
+- raise a grievance with us (see "Contact us")
 
 If your concern is not resolved, you may approach the Data Protection Board of India.
 
 If you are a California resident (CCPA / CPRA), you have the right to know what personal information we collect and how we use and disclose it, to access and obtain a copy of it, to correct it, to delete it, and not to be discriminated against for exercising your rights. We do not sell or share your personal information, so no opt-out of sale or sharing is needed.
 
-How to exercise your rights. Email us at [PLACEHOLDER: privacy contact email]. We may need to verify your identity before acting, and we will respond within the timeframes required by applicable law. You may use an authorised agent where the law allows. We will not charge a fee unless your request is excessive or repetitive, as permitted by law.`,
+How to exercise your rights. Email us at privacy@krim.ai. We may need to verify your identity before acting, and we will respond within the timeframes required by applicable law. You may use an authorised agent where the law allows. We will not charge a fee unless your request is excessive or repetitive, as permitted by law.`,
   },
   {
     heading: 'Children',
-    body: `The Site is intended for business users and is not directed at children. We do not knowingly collect personal information from children under the age of [PLACEHOLDER: applicable minimum age per jurisdiction, e.g. 16 (GDPR) / 18 (DPDP Act)].
+    body: `The Site is intended for business users and is not directed at children. We do not knowingly collect personal information from anyone under the age of 18.
 
 If you believe a child has provided us personal information, please contact us and we will delete it.`,
   },
@@ -153,17 +147,11 @@ If you believe a child has provided us personal information, please contact us a
     heading: 'Contact us',
     body: `For any privacy question, or to exercise your rights:
 
-- Privacy contact: [PLACEHOLDER: privacy contact email]
-- [PLACEHOLDER: registered legal entity name]
-- [PLACEHOLDER: registered address]
+- Privacy contact: privacy@krim.ai
+- Krim AI Inc.
+- 169 Madison Ave, STE 15775, New York, NY 10016, United States
 
-Grievance Officer (India, DPDP Act). If you are in India, you may contact our Grievance Officer:
-
-- [PLACEHOLDER: Grievance Officer name]
-- [PLACEHOLDER: Grievance Officer contact email]
-- [PLACEHOLDER: Grievance Officer contact address]
-
-[PLACEHOLDER: If/when required, add UK/EU Representative or Data Protection Officer contact details here.]`,
+If you are in India, you may also raise a grievance with us at privacy@krim.ai, and we will address it within the timeframes the law requires.`,
   },
 ]
 

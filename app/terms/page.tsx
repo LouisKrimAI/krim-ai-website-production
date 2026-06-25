@@ -8,9 +8,9 @@ export const metadata: Metadata = {
   alternates: { canonical: 'https://krim.ai/terms' },
 }
 
-const EFFECTIVE = 'Effective date: [PLACEHOLDER: effective date] · Last updated: [PLACEHOLDER: last-updated date]'
+const EFFECTIVE = 'Last updated: 25 June 2026'
 
-const INTRO = `These Terms of Use ("Terms") govern your access to and use of the Krim website at krim.ai (the "Site"), operated by [PLACEHOLDER: registered legal entity name] ("Krim", "we", "us", "our"), registered at [PLACEHOLDER: registered address].
+const INTRO = `These Terms of Use ("Terms") govern your access to and use of the Krim website at krim.ai (the "Site"), operated by Krim AI Inc. ("Krim", "we", "us", "our"), registered at 169 Madison Ave, STE 15775, New York, NY 10016, United States.
 
 By accessing or using the Site, you agree to these Terms. If you do not agree, please do not use the Site.`
 
@@ -61,7 +61,7 @@ Please do not send confidential, sensitive, or regulated information through the
     heading: 'Intellectual property and trademarks',
     body: `The Site and its content, including text, graphics, design, logos, and software, are owned by or licensed to Krim and are protected by intellectual-property laws. We grant you a limited, personal, non-exclusive, non-transferable, revocable licence to view the Site for your own informational and business-evaluation purposes. You may not copy, reproduce, republish, modify, distribute, or create derivative works from the Site without our prior written permission, except as allowed by law. All rights not expressly granted are reserved.
 
-"Krim" and "KrimOS", together with the Krim logo and related names and marks, are trademarks of [PLACEHOLDER: registered legal entity name]. [PLACEHOLDER: list any registered trademark / registration details if applicable.] You may not use them without our prior written permission, except to refer to Krim fairly and accurately. Other names and marks are the property of their respective owners.`,
+"Krim" and "KrimOS", together with the Krim logo and related names and marks, are trademarks of Krim AI Inc. You may not use them without our prior written permission, except to refer to Krim fairly and accurately. Other names and marks are the property of their respective owners.`,
   },
   {
     heading: 'Third-party links and services',
@@ -77,7 +77,7 @@ We do not warrant that the Site will be uninterrupted, error-free, secure, or fr
     heading: 'Limitation of liability',
     body: `To the fullest extent permitted by law, Krim and its affiliates, officers, employees, agents, and suppliers will not be liable for any indirect, incidental, special, consequential, or punitive damages, or for any loss of profits, revenue, data, goodwill, or business, arising out of or relating to your use of (or inability to use) the Site, even if we have been advised of the possibility of such damages.
 
-To the fullest extent permitted by law, our total aggregate liability arising out of or relating to the Site will not exceed [PLACEHOLDER: liability cap, e.g. one hundred US dollars (US$100)].
+To the fullest extent permitted by law, our total aggregate liability arising out of or relating to the Site will not exceed one hundred US dollars (US$100).
 
 Nothing in these Terms excludes or limits any liability that cannot lawfully be excluded or limited, such as liability for death or personal injury caused by negligence, or for fraud.`,
   },
@@ -99,11 +99,9 @@ Nothing in these Terms excludes or limits any liability that cannot lawfully be 
   },
   {
     heading: 'Governing law and disputes',
-    body: `These Terms, and any dispute arising out of or relating to them or the Site, are governed by the laws of [PLACEHOLDER: governing-law jurisdiction], without regard to conflict-of-laws rules.
+    body: `These Terms, and any dispute arising out of or relating to them or the Site, are governed by the laws of the State of New York, United States, without regard to conflict-of-laws rules.
 
-You and Krim agree that the courts of [PLACEHOLDER: forum / courts for disputes] will have [PLACEHOLDER: exclusive / non-exclusive] jurisdiction over any dispute relating to the Site or these Terms, except where mandatory local law gives you the right to bring proceedings elsewhere. [PLACEHOLDER: insert any agreed dispute-resolution mechanism, e.g. an arbitration clause with seat, rules, and administering body, an informal-resolution step, or a class-action waiver, if desired and enforceable in the chosen jurisdiction. Counsel must confirm the approach across the US, UK, and India markets.]
-
-Nothing here affects any mandatory consumer-protection rights you may have where you live.`,
+You and Krim agree that the courts located in New York, New York will have non-exclusive jurisdiction over any dispute relating to the Site or these Terms, except where mandatory local law gives you the right to bring proceedings elsewhere. Nothing here affects any mandatory consumer-protection rights you may have where you live.`,
   },
   {
     heading: 'General',
@@ -115,9 +113,9 @@ You may not assign these Terms without our consent; we may assign them in connec
     heading: 'Contact',
     body: `Questions about these Terms:
 
-- [PLACEHOLDER: legal / general contact email]
-- [PLACEHOLDER: registered legal entity name]
-- [PLACEHOLDER: registered address]`,
+- legal@krim.ai
+- Krim AI Inc.
+- 169 Madison Ave, STE 15775, New York, NY 10016, United States`,
   },
 ]
 

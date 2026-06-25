@@ -79,14 +79,6 @@ export default function LegalDoc({ title, effectiveNote, intro, sections }: Lega
               <p className="mt-4 font-mono text-[11px] uppercase tracking-[0.18em] text-ink-3">
                 {effectiveNote}
               </p>
-              {/* Draft notice — remove once counsel has finalised the copy and the placeholders are filled. */}
-              <div className="mt-6 rounded-lg border border-gold/30 bg-gold/[0.06] p-4">
-                <p className="font-sans text-caption leading-relaxed text-ink-2">
-                  Working draft, pending legal review. The highlighted{' '}
-                  <span className="text-gold">[PLACEHOLDER]</span> items must be completed before this
-                  page is published.
-                </p>
-              </div>
               <div className="mt-8 border-t border-soft pt-8">
                 <Body text={intro} />
               </div>
