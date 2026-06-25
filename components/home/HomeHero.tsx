@@ -1,12 +1,13 @@
 'use client'
 
 /**
- * HomeHero — the first-load choreography and the persistent orb backdrop.
+ * HomeHero — the first-load choreography.
  *
- * Sequence (once, GPU-only): orb alone, centred, bright → shrinks inward and
- * dims → the animated Krim logo fades up large in its place → the hero lines
- * TYPE in, one after another, with a blinking caret → the orb settles as the
- * faded living backdrop; the CTAs fade up once the lines finish.
+ * Sequence (once, GPU-only): the global Woven Ring forms behind the hero, then
+ * the animated Krim logo fades up large as the ring takes shape (~5s), then the
+ * hero lines TYPE in one after another with a blinking caret, then the CTAs fade
+ * up once the lines finish. The living background is the global Woven Ring
+ * backdrop (see WovenRingBackdrop); the timings below are tuned to its morph.
  *
  * No layout shift: each line reserves its full box via an invisible copy (which
  * also keeps the full hero text in the server-rendered HTML for search/answer
@@ -15,7 +16,6 @@
 
 import { useEffect, useState } from 'react'
 import { motion, useReducedMotion } from 'framer-motion'
-import WaveOrb from '../WaveOrb'
 import KrimLogoAnimated from '../KrimLogoAnimated'
 import { CTA } from '../ui'
 
@@ -67,7 +67,7 @@ function useTyped(disabled: boolean) {
         timers.push(setTimeout(step, 400)) // a beat between lines
       }
     }
-    timers.push(setTimeout(step, 4200)) // begin once the logo has arrived
+    timers.push(setTimeout(step, 6000)) // begin once the ring has formed and the logo has arrived
     return () => {
       cancelled = true
       timers.forEach(clearTimeout)
@@ -93,67 +93,16 @@ export default function HomeHero() {
   const reduce = useReducedMotion()
   const { shown, done } = useTyped(!!reduce)
 
-  // resolved (final) orb state — also the reduced-motion state. Held faint so it
-  // never competes with content.
-  const orbResolved = { scale: 1.5, opacity: 0.18 }
-  // After the arrival choreography settles, the orb breathes perpetually: a gentle,
-  // seamless swell and ease back, forever (start === end, easeInOut, GPU transform
-  // only) — calm, never a jump. Reduced motion holds it still.
-  const [breathing, setBreathing] = useState(false)
-
   return (
     <>
-      {/* ---- the orb: fixed, behind the whole page ---- */}
-      <div aria-hidden className="pointer-events-none fixed inset-0 z-0 overflow-hidden bg-bg">
-        <div
-          className="absolute inset-0"
-          style={{
-            background:
-              'radial-gradient(56% 50% at 50% 40%, #04060C 0%, rgba(4,6,12,0.55) 55%, rgba(9,9,12,0) 100%)',
-          }}
-        />
-        <div className="absolute left-1/2 top-1/2 flex -translate-x-1/2 -translate-y-1/2 items-center justify-center">
-          <motion.div
-            initial={reduce ? orbResolved : { scale: 0.3, opacity: 0 }}
-            animate={
-              reduce
-                ? orbResolved
-                : breathing
-                  ? { scale: [1.5, 1.62, 1.5], opacity: [0.18, 0.26, 0.18] }
-                  : { scale: 1.5, opacity: 0.18 }
-            }
-            transition={
-              reduce
-                ? { duration: 0 }
-                : breathing
-                  ? { duration: 42, ease: 'easeInOut', repeat: Infinity, repeatType: 'loop', times: [0, 0.5, 1] }
-                  : { duration: 4.6, ease: [0.6, 0, 0.3, 1] }
-            }
-            onAnimationComplete={() => {
-              if (!reduce && !breathing) setBreathing(true)
-            }}
-            style={{ transformOrigin: 'center', willChange: 'transform, opacity' }}
-          >
-            <WaveOrb size="min(88vmin, 880px)" speed={0.36} density={0.6} />
-          </motion.div>
-        </div>
-        <div
-          className="absolute inset-0"
-          style={{
-            background:
-              'linear-gradient(180deg, rgba(9,9,12,0.38) 0%, rgba(9,9,12,0) 26%, rgba(9,9,12,0) 70%, rgba(9,9,12,0.5) 100%)',
-          }}
-        />
-      </div>
-
-      {/* ---- hero content ---- */}
+      {/* ---- hero content (the living background is the global Woven Ring) ---- */}
       <section className="relative z-10 flex min-h-[92vh] items-center">
         <div className="mx-auto w-full max-w-site px-6 md:px-10">
           <div className="mx-auto flex max-w-[860px] flex-col items-center text-center">
             <motion.div
               initial={reduce ? { opacity: 1, y: 0 } : { opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={reduce ? { duration: 0 } : { duration: 1.5, delay: 3.8, ease: OUT_SOFT }}
+              transition={reduce ? { duration: 0 } : { duration: 1.4, delay: 5.0, ease: OUT_SOFT }}
             >
               <KrimLogoAnimated className="h-auto w-[clamp(300px,48vw,600px)]" />
             </motion.div>

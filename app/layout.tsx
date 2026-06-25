@@ -3,6 +3,7 @@ import { Newsreader, Inter, IBM_Plex_Mono, Montserrat } from 'next/font/google'
 import './globals.css'
 import Analytics from '@/components/Analytics'
 import ResearchBackdrop from '@/components/ResearchBackdrop'
+import WovenRingBackdrop from '@/components/WovenRingBackdrop'
 
 const display = Newsreader({
   subsets: ['latin'],
@@ -59,9 +60,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={`${display.variable} ${body.variable} ${mono.variable} ${logo.variable}`}>
       <body>
-        {/* shared, persistent backdrop for the research cluster — renders only
-            on those routes, stays mounted across them (see component) */}
+        {/* shared, persistent backdrops, each gated by route (see components):
+            the research cluster keeps the lab render; everything except /platform*
+            and the research routes gets the woven ring */}
         <ResearchBackdrop />
+        <WovenRingBackdrop />
         {children}
         <Analytics />
       </body>
