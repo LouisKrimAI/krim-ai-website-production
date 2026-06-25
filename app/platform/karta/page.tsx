@@ -34,24 +34,24 @@ const breadcrumbLd = {
   ],
 }
 
-// where they run — two surfaces, each operation run by specific co-workers
-// (the canonical eight plus the logical agents each operation needs)
-type Op = { op: string; desc: string; agents: string[] }
+// where they run — two surfaces. Each operation is a focused co-worker; the
+// cases below are the work it actually covers (what tells a reader its scope).
+type Op = { op: string; cases: string[] }
 const CONTACT_CENTRE: Op[] = [
-  { op: 'Inbound support', desc: 'Calls, chats and messages answered — or warm-transferred to a person.', agents: ['Vox-In', 'Chat'] },
-  { op: 'Outbound voice', desc: 'Acquisition, servicing and collections calls across the lifecycle.', agents: ['Vox-Out'] },
-  { op: 'Reminders & dunning', desc: 'Pre-due nudges and missed-payment notices, on smart timing.', agents: ['Nudge'] },
-  { op: 'Onboarding & KYC', desc: 'New applications taken, identity verified, and guided to a decision.', agents: ['Onboard', 'KYC'] },
-  { op: 'Collections & promises', desc: 'Right-party contact and promise-to-pay captured, inside the rules.', agents: ['Collect'] },
-  { op: 'Disputes & hardship', desc: 'Grievances and hardship logged, assessed and resolved.', agents: ['Dispute', 'Hardship'] },
+  { op: 'Inbound support', cases: ['Balance, schedule & statements', 'Payment help', 'Complaint capture', 'Warm transfer to a person'] },
+  { op: 'Outbound voice', cases: ['Welcome & onboarding calls', 'Payment reminders', 'Collections outreach', 'Renewal & retention'] },
+  { op: 'Reminders & dunning', cases: ['Pre-due nudges', 'Missed-payment notices', 'Payment-link follow-ups', 'Smart channel & timing'] },
+  { op: 'Onboarding & KYC', cases: ['Application intake', 'Identity verification', 'Document collection', 'Guided to a decision'] },
+  { op: 'Collections & promises', cases: ['Right-party contact', 'Negotiation within authority', 'Promise-to-pay capture', 'Payment plans'] },
+  { op: 'Disputes & hardship', cases: ['Grievance intake', 'Dispute investigation', 'Hardship eligibility', 'Restructuring offers'] },
 ]
 const BACK_OFFICE: Op[] = [
-  { op: 'Documentation', desc: 'Agreements, statements, schedules and notices — generated and tracked.', agents: ['Doc'] },
-  { op: 'Payments & reconciliation', desc: 'Billing, mandates, payment plans and reconciliation across rails.', agents: ['Pay', 'Recon'] },
-  { op: 'Risk & decisioning', desc: 'Segmentation, gating and next-best-action on your own flags.', agents: ['Risk', 'Decide'] },
-  { op: 'Cure journeys', desc: 'Multi-step journeys that bring delinquent borrowers back to current.', agents: ['Cure'] },
-  { op: 'Recovery & closure', desc: 'Statutory recovery, settlement, payoff and write-off.', agents: ['Legal', 'Close'] },
-  { op: 'Monitoring & reporting', desc: 'The portfolio watched for early warnings; every action audited and reported.', agents: ['Monitor', 'Audit', 'Report'] },
+  { op: 'Documentation', cases: ['Loan agreements', 'Key-fact statements', 'EMI schedules', 'Arrears & legal notices'] },
+  { op: 'Payments & reconciliation', cases: ['Billing & EMI runs', 'Auto-debit mandates', 'Refunds & retries', 'Reconciliation across rails'] },
+  { op: 'Risk & decisioning', cases: ['Portfolio segmentation', 'Risk & fraud gating', 'Next-best-action', 'Strategy selection'] },
+  { op: 'Cure & recovery', cases: ['Multi-step cure journeys', 'Settlement & OTS', 'Legal recovery', 'Payoff & write-off'] },
+  { op: 'Monitoring', cases: ['Early-warning signals', 'Roll-rate tracking', 'Drift & anomaly detection', 'Fraud watch'] },
+  { op: 'Audit & reporting', cases: ['Interaction audit', 'Decision traces', 'MIS & board packs', 'Regulatory returns'] },
 ]
 
 // what every co-worker can do
@@ -105,23 +105,20 @@ function SurfaceHeader({
   )
 }
 
-// one operation card — the work + the co-workers that run it
-function OpCard({ op, desc, agents, accent }: Op & { accent: 'cyan' | 'mint' }) {
-  const chip = accent === 'cyan' ? 'border-cyan/25 bg-cyan/[0.06]' : 'border-mint/25 bg-mint/[0.06]'
+// one operation card — a focused co-worker and the cases it covers
+function OpCard({ op, cases, accent }: Op & { accent: 'cyan' | 'mint' }) {
+  const dot = accent === 'cyan' ? 'bg-cyan/70' : 'bg-mint/70'
   return (
-    <div className="glass lume flex h-full flex-col rounded-lg p-6">
-      <p className="font-serif text-[1.2rem] leading-tight text-ink">{op}</p>
-      <p className="mt-2 font-sans text-body text-ink-2">{desc}</p>
-      <div className="mt-auto flex flex-wrap gap-1.5 pt-5">
-        {agents.map((a) => (
-          <span
-            key={a}
-            className={`rounded-full border px-2.5 py-0.5 font-mono text-[10px] uppercase tracking-[0.1em] text-ink ${chip}`}
-          >
-            {a}
-          </span>
+    <div className="glass lume h-full rounded-lg p-6">
+      <p className="font-serif text-[1.25rem] leading-tight text-ink">{op}</p>
+      <ul className="mt-4 space-y-2.5">
+        {cases.map((c) => (
+          <li key={c} className="flex items-start gap-2.5 font-sans text-body text-ink-2">
+            <span aria-hidden className={`mt-[0.5em] h-1 w-1 shrink-0 rounded-full ${dot}`} />
+            <span>{c}</span>
+          </li>
         ))}
-      </div>
+      </ul>
     </div>
   )
 }
@@ -177,8 +174,8 @@ export default function KartaPage() {
                 <span className="text-mint">back office</span>.
               </h2>
               <p className="mx-auto mt-6 font-sans text-body-lg text-ink-2">
-                Every operation has the co-workers that run it — the customer-facing surface, and the
-                operational engine behind it.
+                Each operation runs on a co-worker focused on it alone — these are the cases each one
+                covers.
               </p>
             </div>
           </Reveal>
