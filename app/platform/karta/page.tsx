@@ -34,32 +34,24 @@ const breadcrumbLd = {
   ],
 }
 
-// the co-workers — the canonical eight (docs/krim-content.md · Karta)
-const TYPES: [string, string][] = [
-  ['Vox-Out', 'Outbound voice — reminders, negotiation, retention, across the lifecycle.'],
-  ['Vox-In', 'Inbound voice — servicing and payment queries, disputes, warm transfer to a person.'],
-  ['Doc', 'Documents and notices — agreements, statements, arrears notices, confirmations.'],
-  ['Risk', 'Operational risk — segments and gates actions on your own risk and fraud flags.'],
-  ['Decide', 'Next-best-action — resolves conflicts across competing strategies.'],
-  ['Cure', 'Delinquency cure — journeys that bring borrowers back to good standing.'],
-  ['Audit', 'Interaction review — pattern detection and anomaly surfacing for compliance.'],
-  ['Report', 'Operational reporting — aggregated for ops, risk, compliance and the board.'],
-]
-
 // where they run — two surfaces, each operation run by specific co-workers
 // (the canonical eight plus the logical agents each operation needs)
 type Op = { op: string; desc: string; agents: string[] }
 const CONTACT_CENTRE: Op[] = [
   { op: 'Inbound support', desc: 'Calls, chats and messages answered — or warm-transferred to a person.', agents: ['Vox-In', 'Chat'] },
-  { op: 'Outbound outreach', desc: 'Reminders, negotiation and retention, on the right channel at the right time.', agents: ['Vox-Out', 'Nudge'] },
-  { op: 'Onboarding', desc: 'New applications taken, verified and guided to a decision.', agents: ['Onboard', 'KYC'] },
-  { op: 'Disputes & hardship', desc: 'Grievances and hardship logged, assessed and resolved — clock tracked.', agents: ['Dispute', 'Hardship'] },
+  { op: 'Outbound voice', desc: 'Acquisition, servicing and collections calls across the lifecycle.', agents: ['Vox-Out'] },
+  { op: 'Reminders & dunning', desc: 'Pre-due nudges and missed-payment notices, on smart timing.', agents: ['Nudge'] },
+  { op: 'Onboarding & KYC', desc: 'New applications taken, identity verified, and guided to a decision.', agents: ['Onboard', 'KYC'] },
+  { op: 'Collections & promises', desc: 'Right-party contact and promise-to-pay captured, inside the rules.', agents: ['Collect'] },
+  { op: 'Disputes & hardship', desc: 'Grievances and hardship logged, assessed and resolved.', agents: ['Dispute', 'Hardship'] },
 ]
 const BACK_OFFICE: Op[] = [
   { op: 'Documentation', desc: 'Agreements, statements, schedules and notices — generated and tracked.', agents: ['Doc'] },
   { op: 'Payments & reconciliation', desc: 'Billing, mandates, payment plans and reconciliation across rails.', agents: ['Pay', 'Recon'] },
-  { op: 'Risk, decisioning & cure', desc: 'Segmentation and gating, next-best-action, and cure journeys back to good standing.', agents: ['Risk', 'Decide', 'Cure'] },
-  { op: 'Monitoring, audit & reporting', desc: 'The portfolio watched for early warnings; every action audited and reported.', agents: ['Monitor', 'Audit', 'Report'] },
+  { op: 'Risk & decisioning', desc: 'Segmentation, gating and next-best-action on your own flags.', agents: ['Risk', 'Decide'] },
+  { op: 'Cure journeys', desc: 'Multi-step journeys that bring delinquent borrowers back to current.', agents: ['Cure'] },
+  { op: 'Recovery & closure', desc: 'Statutory recovery, settlement, payoff and write-off.', agents: ['Legal', 'Close'] },
+  { op: 'Monitoring & reporting', desc: 'The portfolio watched for early warnings; every action audited and reported.', agents: ['Monitor', 'Audit', 'Report'] },
 ]
 
 // what every co-worker can do
@@ -176,29 +168,40 @@ export default function KartaPage() {
           </div>
         </Section>
 
-        {/* ---- The co-workers — named cards ---- */}
+        {/* ---- The co-workers, by surface — contact centre + back office ---- */}
         <Section hairline>
           <Reveal>
-            <div className="mx-auto max-w-[640px] text-center">
+            <div className="mx-auto max-w-[720px] text-center">
               <Eyebrow>The co-workers</Eyebrow>
               <h2 className="mt-4 font-serif text-display-1 text-ink">
-                Meet the <span className="text-mint">team</span>.
+                Across the <span className="text-cyan">contact centre</span> and the{' '}
+                <span className="text-mint">back office</span>.
               </h2>
               <p className="mx-auto mt-6 font-sans text-body-lg text-ink-2">
-                A set of specialised co-workers, each owning one kind of work — configured to your
-                segments, scripts and policies.
+                Every operation has the co-workers that run it — the customer-facing surface, and the
+                operational engine behind it.
               </p>
             </div>
           </Reveal>
-          <div className="mt-12 grid gap-5 sm:grid-cols-2 md:auto-rows-fr">
-            {TYPES.map(([name, line], i) => (
-              <Reveal key={name} delay={(i % 2) * 0.08} className="h-full">
-                <div className="glass lume h-full rounded-lg p-6 md:p-7">
-                  <h3 className="font-serif text-[1.4rem] leading-none text-ink">{name}</h3>
-                  <p className="mt-3 font-sans text-body text-ink-2">{line}</p>
-                </div>
-              </Reveal>
-            ))}
+          <div className="mt-12 grid items-stretch gap-5 md:grid-cols-2 md:gap-6">
+            <Reveal className="h-full">
+              <AreaPanel
+                kicker="Contact centre"
+                title="The customer-facing surface."
+                blurb="Inbound and outbound, across voice, SMS, WhatsApp, email and chat — one conversation that remembers."
+                accent="cyan"
+                ops={CONTACT_CENTRE}
+              />
+            </Reveal>
+            <Reveal delay={0.1} className="h-full">
+              <AreaPanel
+                kicker="Back office"
+                title="The operational engine."
+                blurb="The work behind every loan — documents, money, risk and the record, handled and kept straight."
+                accent="mint"
+                ops={BACK_OFFICE}
+              />
+            </Reveal>
           </div>
         </Section>
 
@@ -239,42 +242,6 @@ export default function KartaPage() {
                   })}
                 </ul>
               </GlassCard>
-            </Reveal>
-          </div>
-        </Section>
-
-        {/* ---- Where they run — contact centre + back office ---- */}
-        <Section hairline>
-          <Reveal>
-            <div className="mx-auto max-w-[680px] text-center">
-              <Eyebrow>Where they run</Eyebrow>
-              <h2 className="mt-4 font-serif text-display-1 text-ink">
-                Across the contact centre and the back office.
-              </h2>
-              <p className="mx-auto mt-6 font-sans text-body-lg text-ink-2">
-                Every operation has the co-workers that run it — across the customer-facing contact
-                centre and the back office behind it.
-              </p>
-            </div>
-          </Reveal>
-          <div className="mt-12 grid items-stretch gap-5 md:grid-cols-2 md:gap-6">
-            <Reveal className="h-full">
-              <AreaPanel
-                kicker="Contact centre"
-                title="The customer-facing surface."
-                blurb="Inbound and outbound, across voice, SMS, WhatsApp, email and chat — one conversation that remembers."
-                accent="cyan"
-                ops={CONTACT_CENTRE}
-              />
-            </Reveal>
-            <Reveal delay={0.1} className="h-full">
-              <AreaPanel
-                kicker="Back office"
-                title="The operational engine."
-                blurb="The work behind every loan — documents, money, risk and the record, handled and kept straight."
-                accent="mint"
-                ops={BACK_OFFICE}
-              />
             </Reveal>
           </div>
         </Section>
