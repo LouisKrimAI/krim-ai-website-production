@@ -60,6 +60,24 @@ const BACK_OFFICE: [string, string][] = [
   ['Compliance & reporting', 'Every action audited, explained and reported.'],
 ]
 
+// what every co-worker can do
+const CAPABILITIES: [string, string][] = [
+  ['Act, not just answer', 'They complete real work — calls, documents, payments — not just replies.'],
+  ['Across channels', 'Voice, SMS, WhatsApp, email and chat, in one thread that remembers.'],
+  ['In the customer’s language', 'They meet people in their own language.'],
+  ['Within the rules', 'Every action clears the validation gate before it fires.'],
+  ['Hand off to a person', 'A warm transfer with full context, the moment it’s needed.'],
+  ['Around the clock', 'Every hour, at any volume, without a queue.'],
+]
+
+// the outcomes — qualitative, not promised numbers
+const IMPACTS: [string, string][] = [
+  ['Scale without the headcount', 'The book can grow without the cost line growing with it.'],
+  ['Faster, every time', 'Applications, queries and resolutions move at digital speed.'],
+  ['Consistent and compliant', 'The same standard on every contact — and on the record.'],
+  ['Better recovery', 'More right-party contact and more cures — always within the rules.'],
+]
+
 function AreaPanel({
   kicker,
   title,
@@ -197,6 +215,50 @@ export default function KartaPage() {
                 areas={BACK_OFFICE}
               />
             </Reveal>
+          </div>
+        </Section>
+
+        {/* ---- Capabilities ---- */}
+        <Section hairline>
+          <Reveal>
+            <div className="mx-auto max-w-[640px] text-center">
+              <Eyebrow>Capabilities</Eyebrow>
+              <h2 className="mt-4 font-serif text-display-1 text-ink">What every co-worker can do.</h2>
+              <p className="mx-auto mt-6 font-sans text-body-lg text-ink-2">
+                The same core abilities, whichever co-worker you put to work.
+              </p>
+            </div>
+          </Reveal>
+          <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:auto-rows-fr lg:grid-cols-3">
+            {CAPABILITIES.map(([title, line], i) => (
+              <Reveal key={title} delay={(i % 3) * 0.06} className="h-full">
+                <div className="glass lume h-full rounded-lg p-7">
+                  <span aria-hidden className="block h-1.5 w-1.5 rounded-full bg-mint" />
+                  <h3 className="mt-5 font-serif text-[1.3rem] leading-tight text-ink">{title}</h3>
+                  <p className="mt-2.5 font-sans text-body text-ink-2">{line}</p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </Section>
+
+        {/* ---- Impacts ---- */}
+        <Section hairline>
+          <Reveal>
+            <div className="mx-auto max-w-[640px] text-center">
+              <Eyebrow>The impact</Eyebrow>
+              <h2 className="mt-4 font-serif text-display-1 text-ink">What changes when they run it.</h2>
+            </div>
+          </Reveal>
+          <div className="mt-12 grid gap-5 md:auto-rows-fr md:grid-cols-2">
+            {IMPACTS.map(([title, line], i) => (
+              <Reveal key={title} delay={(i % 2) * 0.08} className="h-full">
+                <div className="glass lume h-full rounded-lg p-8">
+                  <h3 className="font-serif text-[1.5rem] leading-tight text-ink">{title}</h3>
+                  <p className="mt-3 font-sans text-body-lg text-ink-2">{line}</p>
+                </div>
+              </Reveal>
+            ))}
           </div>
         </Section>
 
