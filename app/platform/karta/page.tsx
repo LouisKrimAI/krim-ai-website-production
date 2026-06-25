@@ -1,26 +1,25 @@
 /**
  * /platform/karta — Karta, the AI co-workers (a core KrimOS layer).
  *
- * Deliberately simple and clear: hero → what they are (one statement) → the
- * lifecycle in plain language (the main event) → channels → control → close.
- * No dossier numbering, no spine, no attribute manifest — restraint is the design.
- * Facts: docs/krim-content.md + KRIMOS_CAPABILITIES_OVERVIEW.md.
+ * Standard layer-page shape: hero → what they are → the co-workers (named
+ * cards) → where they run (contact centre + back office) → close. Grounded in
+ * the canonical eight (docs/krim-content.md), not the deeper platform list.
  */
 
 import type { Metadata } from 'next'
 import LayerShell from '@/components/platform/LayerShell'
 import Reveal from '@/components/Reveal'
-import { Section, Eyebrow } from '@/components/ui'
+import { Section, Eyebrow, GlassCard } from '@/components/ui'
 
 export const metadata: Metadata = {
   title: 'Karta — the co-workers',
   description:
-    'Karta are the AI co-workers of KrimOS — software co-workers that run the lending operation across its whole lifecycle, configured not coded, on the channels customers use, with the autonomy you set.',
+    'Karta are the AI co-workers of KrimOS — software co-workers that run the lending operation across the contact centre and the back office, configured not coded, in the customer’s own language.',
   alternates: { canonical: 'https://krim.ai/platform/karta' },
   openGraph: {
     title: 'Karta — the co-workers',
     description:
-      'Karta are the AI co-workers of KrimOS — software co-workers that run the lending operation across its whole lifecycle, configured not coded, with the autonomy you set.',
+      'Karta are the AI co-workers of KrimOS — software co-workers that run the lending operation across the contact centre and the back office, configured not coded.',
     url: 'https://krim.ai/platform/karta',
   },
 }
@@ -35,21 +34,70 @@ const breadcrumbLd = {
   ],
 }
 
-// the lending lifecycle in plain language — what the co-workers do at each stage
-const LIFECYCLE: [string, string][] = [
-  ['Origination', 'Take the application, verify identity, prepare the documents, and disburse.'],
-  ['Servicing', 'Answer questions, take payments, and make changes — by voice or chat, day or night.'],
-  ['Collections', 'Remind, negotiate, and set up payment plans — every step inside the rules.'],
-  ['Recovery', 'Work hardship, disputes, legal steps and closure for the difficult cases.'],
-  ['Oversight', 'Score risk, watch the portfolio, and keep every action audited and explainable.'],
+// the co-workers — the canonical eight (docs/krim-content.md · Karta)
+const TYPES: [string, string][] = [
+  ['Vox-Out', 'Outbound voice — reminders, negotiation, retention, across the lifecycle.'],
+  ['Vox-In', 'Inbound voice — servicing and payment queries, disputes, warm transfer to a person.'],
+  ['Doc', 'Documents and notices — agreements, statements, arrears notices, confirmations.'],
+  ['Risk', 'Operational risk — segments and gates actions on your own risk and fraud flags.'],
+  ['Decide', 'Next-best-action — resolves conflicts across competing strategies.'],
+  ['Cure', 'Delinquency cure — journeys that bring borrowers back to good standing.'],
+  ['Audit', 'Interaction review — pattern detection and anomaly surfacing for compliance.'],
+  ['Report', 'Operational reporting — aggregated for ops, risk, compliance and the board.'],
 ]
 
-const CHANNELS = ['Voice', 'SMS', 'WhatsApp', 'Email', 'Web chat']
-const MODES: [string, string][] = [
-  ['Manual', 'it drafts; a person sends'],
-  ['Supervised', 'it acts; a person can step in'],
-  ['Autonomous', 'it runs on its own, inside the rules'],
+// where they run — two operational surfaces
+const CONTACT_CENTRE: [string, string][] = [
+  ['Inbound support', 'Queries, payments and disputes — answered, or handed to a person.'],
+  ['Outbound campaigns', 'Reminders, collections and retention, on the right channel.'],
+  ['Onboarding', 'Applications taken and customers guided to a decision.'],
+  ['Retention', 'Renewals, cross-sell and win-back, at the right moment.'],
 ]
+const BACK_OFFICE: [string, string][] = [
+  ['Documentation', 'Agreements, statements, schedules and notices, generated and tracked.'],
+  ['Payments & reconciliation', 'Billing, mandates, plans and reconciliation across rails.'],
+  ['Risk & monitoring', 'The portfolio watched for delinquency, drift and fraud.'],
+  ['Compliance & reporting', 'Every action audited, explained and reported.'],
+]
+
+function AreaPanel({
+  kicker,
+  title,
+  blurb,
+  accent,
+  areas,
+}: {
+  kicker: string
+  title: string
+  blurb: string
+  accent: 'cyan' | 'mint'
+  areas: [string, string][]
+}) {
+  return (
+    <GlassCard className="h-full p-8 md:p-9">
+      <span
+        aria-hidden
+        className={`block h-[3px] w-12 rounded-full ${accent === 'cyan' ? 'bg-cyan/70' : 'bg-mint/70'}`}
+      />
+      <p className="mt-5 font-mono text-[11px] uppercase tracking-[0.2em] text-ink-3">{kicker}</p>
+      <h3 className="mt-2 font-serif text-[1.6rem] leading-tight text-ink">{title}</h3>
+      <p className="mt-3 font-sans text-body text-ink-2">{blurb}</p>
+      <ul className="mt-7 space-y-5 border-t border-soft pt-7">
+        {areas.map(([name, line]) => (
+          <li key={name} className="flex gap-3.5">
+            <span
+              aria-hidden
+              className={`mt-[0.5em] h-1.5 w-1.5 shrink-0 rounded-full ${accent === 'cyan' ? 'bg-cyan' : 'bg-mint'}`}
+            />
+            <span className="font-sans text-body text-ink-2">
+              <span className="text-ink">{name}</span> — {line}
+            </span>
+          </li>
+        ))}
+      </ul>
+    </GlassCard>
+  )
+}
 
 export default function KartaPage() {
   return (
@@ -75,7 +123,7 @@ export default function KartaPage() {
           </div>
         </Section>
 
-        {/* ---- What they are — one clear statement ---- */}
+        {/* ---- What they are ---- */}
         <Section hairline>
           <div className="mx-auto max-w-[760px] text-center">
             <Reveal>
@@ -85,99 +133,69 @@ export default function KartaPage() {
               </h2>
               <p className="mx-auto mt-6 max-w-[58ch] font-sans text-body-lg text-ink-2">
                 Each one runs a real part of your operation. You{' '}
-                <span className="text-mint">configure</span> what it can do, its limits, and how far
-                it acts on its own — no engineering cycle. And every action it takes clears the same
-                validation gate first.
+                <span className="text-mint">configure</span> what it can do and its limits — no
+                engineering cycle — and every action it takes clears the validation gate first.
               </p>
             </Reveal>
           </div>
         </Section>
 
-        {/* ---- The lifecycle, in plain language — the main event ---- */}
+        {/* ---- The co-workers — named cards ---- */}
         <Section hairline>
-          <div className="mx-auto max-w-[940px]">
-            <Reveal>
-              <div className="max-w-[640px]">
-                <Eyebrow>Across the lifecycle</Eyebrow>
-                <h2 className="mt-4 font-serif text-display-1 text-ink">
-                  A co-worker for every stage of the loan.
-                </h2>
-                <p className="mt-6 font-sans text-body-lg text-ink-2">
-                  From the first application to final closure — each stage handled, configured to
-                  your products and policies.
-                </p>
-              </div>
-            </Reveal>
-
-            <div className="mt-12 border-t border-soft">
-              {LIFECYCLE.map(([stage, does], i) => (
-                <Reveal key={stage} delay={(i % 5) * 0.05}>
-                  <div className="grid items-baseline gap-x-10 gap-y-1.5 border-b border-soft py-7 md:grid-cols-[260px_1fr] md:py-8">
-                    <h3 className="font-serif text-[clamp(1.5rem,2.4vw,1.9rem)] leading-tight text-ink">
-                      {stage}
-                    </h3>
-                    <p className="max-w-[52ch] font-sans text-body-lg text-ink-2">{does}</p>
-                  </div>
-                </Reveal>
-              ))}
+          <Reveal>
+            <div className="mx-auto max-w-[640px] text-center">
+              <Eyebrow>The co-workers</Eyebrow>
+              <h2 className="mt-4 font-serif text-display-1 text-ink">Meet the team.</h2>
+              <p className="mx-auto mt-6 font-sans text-body-lg text-ink-2">
+                A set of specialised co-workers, each owning one kind of work — configured to your
+                segments, scripts and policies.
+              </p>
             </div>
+          </Reveal>
+          <div className="mt-12 grid gap-5 md:grid-cols-2">
+            {TYPES.map(([name, line], i) => (
+              <Reveal key={name} delay={(i % 2) * 0.08}>
+                <div className="glass lume flex h-full items-baseline gap-5 rounded-lg p-6 md:p-7">
+                  <span className="shrink-0 font-serif text-[1.4rem] leading-none text-ink">{name}</span>
+                  <span className="font-sans text-body text-ink-2">{line}</span>
+                </div>
+              </Reveal>
+            ))}
           </div>
         </Section>
 
-        {/* ---- Channels ---- */}
+        {/* ---- Where they run — contact centre + back office ---- */}
         <Section hairline>
-          <div className="mx-auto max-w-[760px] text-center">
-            <Reveal>
-              <Eyebrow>Where they work</Eyebrow>
+          <Reveal>
+            <div className="mx-auto max-w-[680px] text-center">
+              <Eyebrow>Where they run</Eyebrow>
               <h2 className="mt-4 font-serif text-display-1 text-ink">
-                They meet customers where they are.
+                Across the contact centre and the back office.
               </h2>
-              <p className="mx-auto mt-6 max-w-[54ch] font-sans text-body-lg text-ink-2">
-                One conversation that remembers — inbound and outbound, in the customer&rsquo;s own
-                language, handed to a person the moment it&rsquo;s needed.
+              <p className="mx-auto mt-6 font-sans text-body-lg text-ink-2">
+                The same co-workers cover the customer-facing surface and the operational engine
+                behind it — one workforce, end to end.
               </p>
-            </Reveal>
-            <Reveal delay={0.12}>
-              <div className="mt-9 flex flex-wrap items-center justify-center gap-2.5">
-                {CHANNELS.map((c) => (
-                  <span
-                    key={c}
-                    className="rounded-full border border-white/12 bg-white/[0.03] px-5 py-2 font-sans text-body text-ink"
-                  >
-                    {c}
-                  </span>
-                ))}
-              </div>
-            </Reveal>
-          </div>
-        </Section>
-
-        {/* ---- Control ---- */}
-        <Section hairline>
-          <div className="mx-auto max-w-[940px]">
-            <Reveal>
-              <div className="mx-auto max-w-[640px] text-center">
-                <Eyebrow>In your control</Eyebrow>
-                <h2 className="mt-4 font-serif text-display-1 text-ink">You decide how far they go.</h2>
-                <p className="mx-auto mt-6 max-w-[52ch] font-sans text-body-lg text-ink-2">
-                  Set the autonomy of each co-worker, and move the line as confidence grows.
-                </p>
-              </div>
-            </Reveal>
-            <div className="mt-12 grid gap-5 md:grid-cols-3">
-              {MODES.map(([mode, gloss], i) => (
-                <Reveal key={mode} delay={i * 0.08}>
-                  <div className="h-full rounded-lg border border-soft bg-white/[0.015] p-7 text-center">
-                    <p className="font-serif text-[1.5rem] leading-tight text-ink">{mode}</p>
-                    <p className="mt-2 font-sans text-body text-ink-2">{gloss}</p>
-                  </div>
-                </Reveal>
-              ))}
             </div>
-            <Reveal delay={0.12}>
-              <p className="mx-auto mt-8 max-w-[52ch] text-center font-sans text-body text-ink-3">
-                Low-confidence or high-risk actions always wait for a person.
-              </p>
+          </Reveal>
+          <div className="mt-12 grid items-stretch gap-5 md:grid-cols-2 md:gap-6">
+            <Reveal className="h-full">
+              <AreaPanel
+                kicker="Contact centre"
+                title="The customer-facing surface."
+                blurb="Inbound and outbound, across voice, SMS, WhatsApp, email and chat — one conversation that remembers."
+                accent="cyan"
+                areas={CONTACT_CENTRE}
+              />
+            </Reveal>
+            <Reveal delay={0.1} className="h-full">
+              <AreaPanel
+                kicker="Back office"
+                title="The operational engine."
+                blurb="The work behind every loan — documents, money, risk and the record, handled and kept straight."
+                accent="mint"
+                areas={BACK_OFFICE}
+              />
             </Reveal>
           </div>
         </Section>
