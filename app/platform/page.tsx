@@ -81,7 +81,7 @@ export default function PlatformPage() {
               </p>
               <h1 className="mt-6 font-serif text-[clamp(2.5rem,5vw,4.1rem)] leading-[1.05] tracking-[-0.018em] text-ink">
                 <span className="block">One operating system for</span>
-                <span className="block">banking &amp; financial services.</span>
+                <span className="block">banking and lending.</span>
               </h1>
             </Reveal>
             <Reveal delay={0.12}>

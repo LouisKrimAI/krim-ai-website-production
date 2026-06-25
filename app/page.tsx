@@ -115,7 +115,7 @@ export default function HomePage() {
             <Reveal>
               <Eyebrow>One operating system</Eyebrow>
               <h2 className="mt-4 font-serif text-display-1 text-ink">
-                KrimOS — the operating system for lending.
+                KrimOS — the operating system for banking and lending.
               </h2>
               <p className="mx-auto mt-6 max-w-[48ch] font-sans text-body-lg text-ink-2">
                 One system runs the whole lending operation — doing the work, proving every action,
