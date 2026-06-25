@@ -37,7 +37,7 @@ const orgLd = {
   url: 'https://krim.ai',
   logo: 'https://krim.ai/brand-logo',
   description:
-    'Krim is a technology research, product and services company operating across the US, UK and India. Its product, KrimOS, is the operating system for banking and financial services, lending first, where every action is validated before it executes.',
+    'Krim is a technology research, product and services company. Its product, KrimOS, is the operating system for banking and lending, where every action is validated before it executes.',
   areaServed: ['US', 'GB', 'IN'],
   email: 'sales@krim.ai',
   contactPoint: {

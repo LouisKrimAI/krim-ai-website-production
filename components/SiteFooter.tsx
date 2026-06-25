@@ -143,7 +143,7 @@ export default function SiteFooter() {
 
         {/* legal strip */}
         <div className="mt-6 flex flex-wrap items-center gap-x-4 gap-y-1.5 font-mono text-[11px] tracking-[0.06em] text-ink-3">
-          <span>© {new Date().getFullYear()} Krim · US · UK · India</span>
+          <span>© {new Date().getFullYear()} Krim</span>
           <a href="/privacy" className="transition-colors hover:text-ink-2">
             Privacy
           </a>

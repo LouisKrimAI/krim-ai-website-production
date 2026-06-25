@@ -16,7 +16,7 @@ Krim is a B2B enterprise-software company. Our product, KrimOS, is sold to banks
 
 This policy does not cover any personal data we may process inside the KrimOS product or under a separate written agreement with a customer. That data is governed by that agreement and any related data-processing terms, not by this policy.
 
-In this policy, "Krim", "we", "us", and "our" mean Krim AI Inc., a company registered at 169 Madison Ave, STE 15775, New York, NY 10016, United States. For privacy questions, you can reach us at privacy@krim.ai.`
+In this policy, "Krim", "we", "us", and "our" mean Krim AI Inc., a company registered at 169 Madison Ave, STE 15775, New York, NY 10016, United States. For privacy questions, you can reach us at legal@krim.ai.`
 
 const SECTIONS = [
   {
@@ -131,7 +131,7 @@ If your concern is not resolved, you may approach the Data Protection Board of I
 
 If you are a California resident (CCPA / CPRA), you have the right to know what personal information we collect and how we use and disclose it, to access and obtain a copy of it, to correct it, to delete it, and not to be discriminated against for exercising your rights. We do not sell or share your personal information, so no opt-out of sale or sharing is needed.
 
-How to exercise your rights. Email us at privacy@krim.ai. We may need to verify your identity before acting, and we will respond within the timeframes required by applicable law. You may use an authorised agent where the law allows. We will not charge a fee unless your request is excessive or repetitive, as permitted by law.`,
+How to exercise your rights. Email us at legal@krim.ai. We may need to verify your identity before acting, and we will respond within the timeframes required by applicable law. You may use an authorised agent where the law allows. We will not charge a fee unless your request is excessive or repetitive, as permitted by law.`,
   },
   {
     heading: 'Children',
@@ -147,11 +147,11 @@ If you believe a child has provided us personal information, please contact us a
     heading: 'Contact us',
     body: `For any privacy question, or to exercise your rights:
 
-- Privacy contact: privacy@krim.ai
+- Privacy contact: legal@krim.ai
 - Krim AI Inc.
 - 169 Madison Ave, STE 15775, New York, NY 10016, United States
 
-If you are in India, you may also raise a grievance with us at privacy@krim.ai, and we will address it within the timeframes the law requires.`,
+If you are in India, you may also raise a grievance with us at legal@krim.ai, and we will address it within the timeframes the law requires.`,
   },
 ]
 

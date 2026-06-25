@@ -17,12 +17,12 @@ import { Section, Eyebrow, GlassCard, CTA } from '@/components/ui'
 export const metadata: Metadata = {
   title: 'Company',
   description:
-    'Krim is a technology research, product and services company operating across the US, UK and India. We made proof the runtime and keep the system inside your perimeter — so machines can finally act in regulated work, and the system compounds.',
+    'Krim is a technology research, product and services company. We made proof the runtime and keep the system inside your perimeter — so machines can finally act in regulated work, and the system compounds.',
   alternates: { canonical: 'https://krim.ai/company' },
   openGraph: {
     title: 'Company — Krim',
     description:
-      'Krim is a technology research, product and services company operating across the US, UK and India. We made proof the runtime and keep the system inside your perimeter — so machines can finally act in regulated work, and the system compounds.',
+      'Krim is a technology research, product and services company. We made proof the runtime and keep the system inside your perimeter — so machines can finally act in regulated work, and the system compounds.',
     url: 'https://krim.ai/company',
   },
 }
@@ -76,7 +76,7 @@ export default function CompanyPage() {
         <Section className="!pt-24">
           <div className="mx-auto max-w-[860px] text-center">
             <Reveal>
-              <Eyebrow>Company · US · UK · India</Eyebrow>
+              <Eyebrow>Company</Eyebrow>
               <h1 className="mt-5 font-serif text-display-hero text-ink">
                 We make AI provable enough to run a bank.
               </h1>
@@ -84,8 +84,8 @@ export default function CompanyPage() {
             <Reveal delay={0.12}>
               <p className="mx-auto mt-7 max-w-[56ch] font-sans text-body-lg text-ink-2">
                 Krim is a technology research, product and services company. We make one thing:{' '}
-                <span className="text-ink">KrimOS</span>, the operating system for banking &amp;
-                financial services — built and run across the US, UK and India.
+                <span className="text-ink">KrimOS</span>, the operating system for banking and
+                lending.
               </p>
             </Reveal>
           </div>
@@ -162,7 +162,7 @@ export default function CompanyPage() {
               <Eyebrow>Team</Eyebrow>
               <h2 className="mt-4 font-serif text-display-1 text-ink">The people behind the proof.</h2>
               <p className="mx-auto mt-6 max-w-[48ch] font-sans text-body-lg text-ink-2">
-                A research-and-engineering team building KrimOS across the US, UK and India.
+                A research-and-engineering team building KrimOS.
               </p>
             </Reveal>
           </div>
