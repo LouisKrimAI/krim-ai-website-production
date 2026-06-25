@@ -29,12 +29,12 @@ import { Section, Eyebrow, GlassCard, CTA } from '@/components/ui'
 export const metadata: Metadata = {
   title: 'World Lending Model',
   description:
-    'The World Lending Model is Krim’s research direction: a complete, safe world model of lending — borrowers, products, markets, rules and the whole lifecycle — that AI agents reason and plan against across the entire stack, from origination to a validated AI underwriter to collections. Every action is validated against the model before it fires, and the model sharpens from every outcome it records, inside the institution’s own walls.',
+    'The World Lending Model is Krim’s research direction: a learned, safe model of how lending actually behaves, across borrowers, products, markets, rules and the whole lifecycle. AI agents simulate an action against it and clear it through the compliance gate before they act, from origination to a validated AI underwriter to collections. Every recorded outcome makes the model sharper, inside the institution’s own walls.',
   alternates: { canonical: 'https://krim.ai/research/world-lending-model' },
   openGraph: {
-    title: 'World Lending Model — Krim Research',
+    title: 'World Lending Model · Krim Research',
     description:
-      'The World Lending Model is Krim’s research direction: a complete, safe world model of lending — borrowers, products, markets, rules and the whole lifecycle — that AI agents reason and plan against across the entire stack, from origination to a validated AI underwriter to collections. Every action is validated against the model before it fires, and the model sharpens from every outcome it records, inside the institution’s own walls.',
+      'A learned, safe model of how lending actually behaves, that AI agents simulate against and clear through the compliance gate before they act, from origination to a validated AI underwriter to collections. Every recorded outcome makes the model sharper, inside the institution’s own walls.',
     url: 'https://krim.ai/research/world-lending-model',
   },
 }
@@ -55,27 +55,27 @@ const DEMO_HREF = '/contact'
 const COMPONENTS = [
   {
     name: 'The borrower model',
-    body: 'A living representation of ability and willingness to repay — and how it moves with income, behaviour and life events. Not a static score; a model that changes as the borrower does.',
+    body: 'A living read on a borrower’s ability and willingness to repay, and how it shifts with income, behaviour and life events. It moves as their life does, so it never goes stale like a fixed credit score.',
     tint: 'mint',
   },
   {
     name: 'Products & cashflows',
-    body: 'How a loan’s terms, balances and repayments behave across its life, under each borrower trajectory — the link between a structure and the economics it actually produces.',
+    body: 'How a loan’s terms, balances and repayments behave over its life, under each path a borrower might take. It links the way a loan is built to the economics it produces.',
     tint: 'mint',
   },
   {
     name: 'Market & macro',
-    body: 'The world outside the loan: rates, employment, sector and regional conditions — and how a shift in them moves both borrower behaviour and portfolio outcomes.',
+    body: 'The world outside the loan: interest rates, employment, sector and regional conditions. It captures how a shift out there moves both borrower behaviour and portfolio outcomes.',
     tint: 'cyan',
   },
   {
     name: 'Policy & rules',
-    body: 'The encoded, machine-checkable constraints — fair lending, each jurisdiction’s rules, the institution’s own risk appetite — that every proposed action is tested against before it can fire.',
+    body: 'The rules in a form the machine can check: fair-lending law, each jurisdiction’s regulations, the institution’s own risk appetite. Every proposed action is tested against them before it goes ahead.',
     tint: 'mint',
   },
   {
     name: 'Lifecycle dynamics',
-    body: 'How a case actually moves through origination, underwriting, servicing and collections — and how one action at any stage changes what becomes possible at the next.',
+    body: 'How a case moves through origination, underwriting, servicing and collections, and how one action at any stage changes what is possible at the next.',
     tint: 'cyan',
   },
 ]
@@ -96,10 +96,13 @@ export default function WorldLendingModelPage() {
               </h1>
             </Reveal>
             <Reveal delay={0.12}>
-              <p className="mx-auto mt-7 max-w-[48ch] font-sans text-body-lg text-ink-2">
-                A learned model of how lending actually behaves — so every agent, origination to
-                collections, plans against one picture.{' '}
-                <span className="text-mint">Nothing acts until it has cleared the model.</span>
+              <p className="mx-auto mt-7 max-w-[54ch] font-sans text-body-lg text-ink-2">
+                A learned model of how lending actually behaves, so every agent from origination to
+                collections plans against the same picture.{' '}
+                <span className="text-mint">
+                  No action fires until the model has simulated it and the compliance gate has
+                  cleared it.
+                </span>
               </p>
             </Reveal>
             <Reveal delay={0.2}>
@@ -123,13 +126,15 @@ export default function WorldLendingModelPage() {
                   Borrowed from the frontier of AI.
                 </h2>
                 <p className="mt-7 max-w-[52ch] font-sans text-body-lg text-ink-2">
-                  A world model is a learned model of an environment an agent can{' '}
-                  <span className="text-ink">simulate and plan against</span> — so it can judge where
-                  an action leads before committing to it, rather than reacting blindly.
+                  A world model is the AI’s picture of its environment, detailed enough to play an
+                  action forward and see what happens. Our agents run thousands of these{' '}
+                  <span className="text-ink">look-ahead simulations in a secure sandbox</span>,
+                  checking the likely borrower response and compliance risk before they take an action
+                  for real.
                 </p>
                 <p className="mt-5 max-w-[52ch] font-sans text-body text-ink-2">
-                  Lending is the domain where that matters most. Every action is consequential and
-                  often irreversible — and one validated runtime can finally see the whole of it.
+                  Lending is where that matters most. Its decisions are consequential and hard to
+                  reverse, so testing one before it happens is worth more here than anywhere.
                 </p>
               </div>
             </Reveal>
@@ -140,11 +145,11 @@ export default function WorldLendingModelPage() {
                 </p>
                 <p className="mt-5 font-serif text-[clamp(1.35rem,2.4vw,1.8rem)] leading-snug text-ink">
                   “Check an action against its consequences before you take it” is the world model’s
-                  safety property — and the exact thing a regulator demands of a credit decision.
+                  safety property. It is also the exact thing a regulator demands of a credit decision.
                 </p>
                 <p className="mt-5 font-sans text-body text-ink-2">
-                  Not an analogy. The same control. That is why a world model is the right way to
-                  build lending that is both powerful and safe.
+                  It is the same control in both worlds, which is why a world model is the right way
+                  to build lending that is both powerful and safe.
                 </p>
               </GlassCard>
             </Reveal>
@@ -159,9 +164,8 @@ export default function WorldLendingModelPage() {
               Many models of the world, learned as one.
             </h2>
             <p className="mt-6 max-w-[62ch] font-sans text-body-lg text-ink-2">
-              The world of lending is too large for a single function. The World Lending Model
-              composes it from parts — each learned from real, recorded outcomes, each sharpening the
-              others.
+              The world of lending is too large for one function to capture. The World Lending Model
+              builds it from parts, each learned from real outcomes, each sharpening the others.
             </p>
           </Reveal>
           <div className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
@@ -182,7 +186,8 @@ export default function WorldLendingModelPage() {
               <div className="glass flex h-full flex-col justify-center p-7 md:p-8" style={{ borderColor: 'rgba(0,255,178,0.45)' }}>
                 <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-mint">+ the agent harness</p>
                 <p className="mt-3 font-serif text-[1.2rem] leading-snug text-ink">
-                  The part that acts on the other five — and the part that keeps it safe.
+                  The layer that carries the model’s predictions into the real world, enforcing every
+                  compliance boundary as it acts.
                 </p>
               </div>
             </Reveal>
@@ -199,16 +204,18 @@ export default function WorldLendingModelPage() {
                   A powerful world model, made safe enough to act.
                 </h2>
                 <p className="mt-7 max-w-[52ch] font-sans text-body-lg text-ink-2">
-                  Agents work the stack — origination, a validated{' '}
-                  <span className="text-ink">AI underwriter</span>, servicing, collections. Each
-                  action — a credit decision among them — is scored against the model, then{' '}
-                  <span className="text-mint">validated against policy before it fires</span>, carries
-                  the reasons that cleared it, and feeds its outcome back so the model gets truer.
+                  Agents work the whole stack: origination, a{' '}
+                  <span className="text-ink">validated AI underwriter</span>, servicing and
+                  collections. Every action, including each credit decision, is scored against the
+                  model and then{' '}
+                  <span className="text-mint">cleared by the compliance gate before it can fire</span>.
+                  It carries the reasons it was approved, and its outcome feeds back so the model gets
+                  truer.
                 </p>
                 <p className="mt-5 max-w-[52ch] font-sans text-body text-ink-2">
-                  A model is only as good as its accuracy — which is why validation and learning are
-                  the harness, not an afterthought. Validated, explainable, and corrected by real
-                  outcomes: that is what makes an AI underwriter fit for regulated credit.
+                  A model is only as good as its accuracy, so validation and learning are part of the
+                  harness itself. Validated before it acts, explainable in its reasoning, corrected by
+                  real outcomes: that is what makes an AI underwriter fit for regulated credit.
                 </p>
               </div>
             </Reveal>
@@ -216,10 +223,10 @@ export default function WorldLendingModelPage() {
               <GlassCard className="p-8 md:p-10">
                 <ul className="space-y-6">
                   {[
-                    ['Validated before it acts', 'Every action clears Krim-Nyāya against law, policy and risk appetite before it can fire.'],
-                    ['Explainable by construction', 'Each decision carries the specific reasons that cleared it — no black box, by design.'],
-                    ['Corrected by outcomes', 'Krim-Learn feeds every recorded result back, so the model tracks how lending actually behaves.'],
-                    ['Sovereign', 'It reasons, acts and improves inside the institution’s own walls.'],
+                    ['Validated before it acts', 'Every proposed action clears Krim-Nyāya, our cognitive compliance engine, against local law, policy and the institution’s risk limits before it can fire.'],
+                    ['Explainable by construction', 'Every decision carries a step-by-step reasoning trace, recorded immutably in Krim-Ledger: cryptographic proof on demand, ready for any audit.'],
+                    ['Corrected by outcomes', 'Krim-Learn, our closed-loop feedback engine, routes payment outcomes back into the model, so its accuracy improves the more lending it sees.'],
+                    ['Sovereign', 'It reasons, acts and improves entirely inside the institution’s own walls.'],
                   ].map(([name, body]) => (
                     <li key={name}>
                       <p className="font-serif text-[1.15rem] leading-none text-ink">{name}</p>
@@ -240,11 +247,15 @@ export default function WorldLendingModelPage() {
               <h2 className="mt-4 font-serif text-display-1 text-ink">
                 One model, the whole of lending.
               </h2>
-              <p className="mx-auto mt-7 max-w-[62ch] font-sans text-body-lg text-ink-2">
-                Origination, the AI underwriter, servicing, collections — every agent reasoning
-                against the same world, every action proven before it acts. That is what reaches the
-                borrowers the bureau file misses while keeping every decision accountable:{' '}
-                <span className="text-mint">access and accountability from one system</span>.
+              <p className="mx-auto mt-7 max-w-[64ch] font-sans text-body-lg text-ink-2">
+                Origination, the AI underwriter, servicing and collections all reason against the same
+                model, every action proven before it acts. That breaks the wall between the front and
+                back of the book: collections data retrains origination, and a borrower’s underwriting
+                file guides the recovery conversation later.{' '}
+                <span className="text-mint">
+                  One shared intelligence means access for underserved borrowers and full
+                  accountability for regulators.
+                </span>
               </p>
             </Reveal>
           </div>
@@ -268,8 +279,8 @@ export default function WorldLendingModelPage() {
                 The model that gets better the more lending it sees.
               </h2>
               <p className="mx-auto mt-5 max-w-[54ch] font-sans text-body text-ink-2">
-                The World Lending Model is the frontier of our research, and it compounds with every
-                validated outcome it records. Kendra — the runtime that validates and learns — is the
+                The World Lending Model is the frontier of our research, compounding with every
+                validated outcome it records. Kendra, the runtime that validates and learns, is the
                 part you can watch run today.
               </p>
               <div className="mt-9 flex flex-wrap items-center justify-center gap-6">
