@@ -82,48 +82,47 @@ const STUDIO: string[] = [
   'Set its limits — authority, autonomy, and when to hand to a person.',
 ]
 
-function AreaPanel({
+// a surface sub-section header (contact centre / back office)
+function SurfaceHeader({
+  accent,
   kicker,
   title,
   blurb,
-  accent,
-  ops,
 }: {
+  accent: 'cyan' | 'mint'
   kicker: string
   title: string
   blurb: string
-  accent: 'cyan' | 'mint'
-  ops: Op[]
 }) {
   const bar = accent === 'cyan' ? 'bg-cyan/70' : 'bg-mint/70'
+  return (
+    <div className="max-w-[620px]">
+      <span aria-hidden className={`block h-[3px] w-12 rounded-full ${bar}`} />
+      <p className="mt-4 font-mono text-[11px] uppercase tracking-[0.2em] text-ink-3">{kicker}</p>
+      <h3 className="mt-2 font-serif text-[1.7rem] leading-tight text-ink">{title}</h3>
+      <p className="mt-2 font-sans text-body-lg text-ink-2">{blurb}</p>
+    </div>
+  )
+}
+
+// one operation card — the work + the co-workers that run it
+function OpCard({ op, desc, agents, accent }: Op & { accent: 'cyan' | 'mint' }) {
   const chip = accent === 'cyan' ? 'border-cyan/25 bg-cyan/[0.06]' : 'border-mint/25 bg-mint/[0.06]'
   return (
-    <GlassCard className="h-full p-8 md:p-10">
-      <span aria-hidden className={`block h-[3px] w-12 rounded-full ${bar}`} />
-      <p className="mt-5 font-mono text-[11px] uppercase tracking-[0.2em] text-ink-3">{kicker}</p>
-      <h3 className="mt-2 font-serif text-[1.7rem] leading-tight text-ink">{title}</h3>
-      <p className="mt-3 max-w-[42ch] font-sans text-body text-ink-2">{blurb}</p>
-      <ul className="mt-8 divide-y divide-soft border-t border-soft">
-        {ops.map(({ op, desc, agents }) => (
-          <li key={op} className="py-6 first:pt-7">
-            <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-2">
-              <p className="font-serif text-[1.25rem] leading-tight text-ink">{op}</p>
-              <div className="flex flex-wrap gap-1.5">
-                {agents.map((a) => (
-                  <span
-                    key={a}
-                    className={`rounded-full border px-2.5 py-0.5 font-mono text-[10px] uppercase tracking-[0.1em] text-ink ${chip}`}
-                  >
-                    {a}
-                  </span>
-                ))}
-              </div>
-            </div>
-            <p className="mt-2 font-sans text-body text-ink-2">{desc}</p>
-          </li>
+    <div className="glass lume flex h-full flex-col rounded-lg p-6">
+      <p className="font-serif text-[1.2rem] leading-tight text-ink">{op}</p>
+      <p className="mt-2 font-sans text-body text-ink-2">{desc}</p>
+      <div className="mt-auto flex flex-wrap gap-1.5 pt-5">
+        {agents.map((a) => (
+          <span
+            key={a}
+            className={`rounded-full border px-2.5 py-0.5 font-mono text-[10px] uppercase tracking-[0.1em] text-ink ${chip}`}
+          >
+            {a}
+          </span>
         ))}
-      </ul>
-    </GlassCard>
+      </div>
+    </div>
   )
 }
 
@@ -183,25 +182,42 @@ export default function KartaPage() {
               </p>
             </div>
           </Reveal>
-          <div className="mt-12 grid items-stretch gap-5 md:grid-cols-2 md:gap-6">
-            <Reveal className="h-full">
-              <AreaPanel
+          {/* Contact centre — its operations as cards */}
+          <div className="mt-14">
+            <Reveal>
+              <SurfaceHeader
+                accent="cyan"
                 kicker="Contact centre"
                 title="The customer-facing surface."
                 blurb="Inbound and outbound, across voice, SMS, WhatsApp, email and chat — one conversation that remembers."
-                accent="cyan"
-                ops={CONTACT_CENTRE}
               />
             </Reveal>
-            <Reveal delay={0.1} className="h-full">
-              <AreaPanel
+            <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:auto-rows-fr lg:grid-cols-3">
+              {CONTACT_CENTRE.map((o, i) => (
+                <Reveal key={o.op} delay={(i % 3) * 0.06} className="h-full">
+                  <OpCard {...o} accent="cyan" />
+                </Reveal>
+              ))}
+            </div>
+          </div>
+
+          {/* Back office — its operations as cards */}
+          <div className="mt-16">
+            <Reveal>
+              <SurfaceHeader
+                accent="mint"
                 kicker="Back office"
                 title="The operational engine."
                 blurb="The work behind every loan — documents, money, risk and the record, handled and kept straight."
-                accent="mint"
-                ops={BACK_OFFICE}
               />
             </Reveal>
+            <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:auto-rows-fr lg:grid-cols-3">
+              {BACK_OFFICE.map((o, i) => (
+                <Reveal key={o.op} delay={(i % 3) * 0.06} className="h-full">
+                  <OpCard {...o} accent="mint" />
+                </Reveal>
+              ))}
+            </div>
           </div>
         </Section>
 
