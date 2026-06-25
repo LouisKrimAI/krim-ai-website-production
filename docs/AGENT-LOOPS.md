@@ -51,7 +51,9 @@ Run these against the running app (preview_eval / preview_inspect) — they are 
 - **2-column vs centred sections:** both are fine; just don't leave a headline looking "randomly shoved left" beside other full-width sections (§12).
 
 ## 6 · Anti-patterns we have actually shipped (catch these yourself)
-Misaligned card sets · "regulated operations" as a lead · dark/busy image under centred text · bland equal-weight walls of text · dense spec-sheet enumeration ("X does A, Y does B…") · number-led headings ("Eight modules…") · naming drift (Writing vs Insights, Kira vs Kira & Krimkar) · "Krim AI" · forgetting highlights · building with the dev server running.
+Misaligned card sets · "regulated operations" as a lead · dark/busy image under centred text · bland equal-weight walls of text · dense spec-sheet enumeration ("X does A, Y does B…") · number-led headings ("Eight modules…") · naming drift (Writing vs Insights, Kira vs Kira & Krimkar) · "Krim AI" · forgetting highlights · building with the dev server running · **AI-prose tells: em-dash overuse (the same "— x —" construction in every card blurb) and the "X, not Y" antithesis cliché ("software co-workers, not chatbots").**
+
+> **Copy must read human, not AI-generated (HOUSE-STYLE §10/§11, P0).** Two tells the `content-critic` now grades for and the build loop must catch before shipping: (1) **em-dash overuse** — at most one per paragraph, never repeated across a card set; prefer the full stop, colon, comma, or a reworked clause; (2) **the "X, not Y" antithesis** — state it positively and concretely instead. Don't over-correct into quirky tics to "look human"; just write plainly and well with varied, natural punctuation.
 
 ## 7 · Open items the loop is tracking
 - **Demo-booking rebuild** — `/contact` runs an unsanctioned Cal.com embed; rebuild to Calendly + Supabase lead capture + follow-up email sequence (see memory `demo-booking-rebuild`). Confirm stack before building.

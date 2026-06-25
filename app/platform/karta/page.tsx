@@ -1,9 +1,10 @@
 /**
  * /platform/karta — Karta, the AI co-workers (a core KrimOS layer).
  *
- * Standard layer-page shape: hero → what they are → the co-workers (named
- * cards) → where they run (contact centre + back office) → close. Grounded in
- * the canonical eight (docs/krim-content.md), not the deeper platform list.
+ * Standard layer-page shape: hero → what they are → the co-workers by surface
+ * (contact centre + back office) → Agent Studio → capabilities → impacts →
+ * close. Grounded in the canonical eight (docs/krim-content.md), not the
+ * deeper platform list.
  */
 
 import type { Metadata } from 'next'
@@ -14,12 +15,12 @@ import { Section, Eyebrow, GlassCard } from '@/components/ui'
 export const metadata: Metadata = {
   title: 'Karta — the co-workers',
   description:
-    'Karta are the AI co-workers of KrimOS — software co-workers that run the lending operation across the contact centre and the back office, configured not coded, in the customer’s own language.',
+    'Karta are the autonomous co-workers of KrimOS. They run the lending operation across the contact centre and the back office, in the customer’s own language, with every action cleared by the validation gate before it fires.',
   alternates: { canonical: 'https://krim.ai/platform/karta' },
   openGraph: {
     title: 'Karta — the co-workers',
     description:
-      'Karta are the AI co-workers of KrimOS — software co-workers that run the lending operation across the contact centre and the back office, configured not coded.',
+      'Karta are the autonomous co-workers of KrimOS, running the lending operation across the contact centre and the back office. Configured in the studio in plain language, without an engineering cycle.',
     url: 'https://krim.ai/platform/karta',
   },
 }
@@ -38,25 +39,25 @@ const breadcrumbLd = {
 // the altitude of what it owns end to end, not a checklist of micro-tasks.
 type Op = { op: string; blurb: string }
 const CONTACT_CENTRE: Op[] = [
-  { op: 'Inbound support', blurb: 'Answers the calls, chats and messages customers start — resolving balances, payments and complaints, or handing to a person with the full context attached.' },
-  { op: 'Outbound voice', blurb: 'Carries the voice relationship across the whole lifecycle — welcome and onboarding, servicing, reminders, collections and retention.' },
-  { op: 'Reminders & dunning', blurb: 'Keeps accounts current — pre-due nudges and missed-payment notices, on the channel and timing each borrower actually responds to.' },
-  { op: 'Onboarding', blurb: 'Takes a new applicant from first touch to a decision — application, identity, documents and eligibility, guided the whole way.' },
-  { op: 'Collections', blurb: 'Recovers arrears through every stage of delinquency — reaching borrowers across channels, negotiating within your authority, and following promises through to payment.' },
-  { op: 'Disputes & hardship', blurb: 'Handles the sensitive cases with care — grievances investigated, hardship assessed, and restructuring offered where it genuinely fits.' },
+  { op: 'Inbound support', blurb: 'Answers the calls, chats and messages customers start. It resolves balances, payments and complaints, or hands off to a person with the full context attached.' },
+  { op: 'Outbound voice', blurb: 'Carries the voice relationship across the whole lifecycle: welcome and onboarding, servicing, reminders, collections and retention.' },
+  { op: 'Reminders & dunning', blurb: 'Keeps accounts current with pre-due nudges and missed-payment notices, on the channel and at the timing each borrower actually responds to.' },
+  { op: 'Onboarding', blurb: 'Takes a new applicant from first touch to a decision, guiding them through application, identity, documents and eligibility the whole way.' },
+  { op: 'Collections', blurb: 'Recovers arrears through every stage of delinquency. It reaches borrowers across channels, negotiates within your authority, and follows each promise through to payment.' },
+  { op: 'Disputes & hardship', blurb: 'Handles the sensitive cases with care: grievances investigated, hardship assessed, and restructuring offered where it genuinely fits.' },
 ]
 const BACK_OFFICE: Op[] = [
-  { op: 'Documentation', blurb: 'Produces the paperwork a loan runs on — agreements, key-fact statements, repayment schedules and statutory notices, generated and tracked.' },
-  { op: 'Payments & reconciliation', blurb: 'Runs the money end to end — billing, mandates, payment plans and refunds — reconciled across every rail, with failed payments retried.' },
-  { op: 'Risk & decisioning', blurb: 'Segments the book and chooses the next best action — gating on your own risk and fraud engines, never overriding the credit decision.' },
-  { op: 'Cure & recovery', blurb: 'Brings the hard cases home — multi-step cure journeys, settlements, statutory recovery, payoff and write-off.' },
-  { op: 'Monitoring', blurb: 'Watches the whole portfolio for what is coming — delinquency, roll-rate drift, anomalies and fraud — and raises the flag early.' },
-  { op: 'Audit & reporting', blurb: 'Makes the operation explainable — every action audited and traced, and reported to ops, risk, compliance and the board.' },
+  { op: 'Documentation', blurb: 'Produces the paperwork a loan runs on, from agreements and key-fact statements to repayment schedules and statutory notices, all generated and tracked.' },
+  { op: 'Payments & reconciliation', blurb: 'Runs the money end to end: billing, mandates, payment plans and refunds, reconciled across every rail, with failed payments retried automatically.' },
+  { op: 'Risk & decisioning', blurb: 'Segments the book and chooses the next best action, gating on your own risk and fraud engines and never overriding the credit decision.' },
+  { op: 'Cure & recovery', blurb: 'Brings the hard cases home through multi-step cure journeys, settlements, statutory recovery, payoff and write-off.' },
+  { op: 'Monitoring', blurb: 'Watches the whole portfolio for delinquency, roll-rate drift, anomalies and fraud, and raises the flag early.' },
+  { op: 'Audit & reporting', blurb: 'Makes the operation explainable. Every action is audited, traced, and reported to ops, risk, compliance and the board.' },
 ]
 
 // what every co-worker can do
 const CAPABILITIES: [string, string][] = [
-  ['Act, not just answer', 'They complete real work — calls, documents, payments — not just replies.'],
+  ['Take action', 'They complete the task itself: calls answered, documents produced, payments taken and reconciled.'],
   ['Across channels', 'Voice, SMS, WhatsApp, email and chat, in one thread that remembers.'],
   ['In the customer’s language', 'They meet people in their own language.'],
   ['Within the rules', 'Every action clears the validation gate before it fires.'],
@@ -68,18 +69,18 @@ const CAPABILITIES: [string, string][] = [
 const IMPACTS: [string, string][] = [
   ['Scale without the headcount', 'The book can grow without the cost line growing with it.'],
   ['Faster, every time', 'Applications, queries and resolutions move at digital speed.'],
-  ['Consistent and compliant', 'The same standard on every contact — and on the record.'],
-  ['Better recovery', 'More right-party contact and more cures — always within the rules.'],
+  ['Consistent and compliant', 'The same standard on every contact, and on the record.'],
+  ['Better recovery', 'More right-party contact and more cures, always within the rules.'],
 ]
 
 // what you do in Agent Studio — build and tune a co-worker, no code
 const STUDIO: string[] = [
-  'Create a new co-worker — from scratch, or clone one and adapt it.',
-  'Program its voice — a custom voice, and how it speaks.',
-  'Set its personality — tone, manner and escalation style.',
-  'Design its workflow — the steps it follows, with branches and checks.',
-  'Bind its skills and knowledge — the actions it can take, the policies it knows.',
-  'Set its limits — authority, autonomy, and when to hand to a person.',
+  'Create a new co-worker: from scratch, or by cloning one and adapting it.',
+  'Program its voice: a custom sound, and how it speaks.',
+  'Set its personality: tone, manner and escalation style.',
+  'Design its workflow: the steps it follows, with branches and checks.',
+  'Bind its skills and knowledge: the actions it can take and the policies it knows.',
+  'Set its limits: authority, autonomy, and when to hand to a person.',
 ]
 
 // a surface sub-section header (contact centre / back office)
@@ -133,7 +134,7 @@ export default function KartaPage() {
             </Reveal>
             <Reveal delay={0.12}>
               <p className="mx-auto mt-7 max-w-[52ch] font-sans text-body-lg text-ink-2">
-                The AI co-workers that do the operation&rsquo;s work — across the whole lending
+                The AI co-workers that do the operation&rsquo;s work across the whole lending
                 lifecycle, in the <span className="text-mint">customer&rsquo;s own language</span>,
                 with you setting how far each one goes.
               </p>
@@ -147,12 +148,12 @@ export default function KartaPage() {
             <Reveal>
               <Eyebrow>What they are</Eyebrow>
               <h2 className="mt-4 font-serif text-display-1 text-ink">
-                Software <span className="text-mint">co-workers</span>, not chatbots.
+                <span className="text-mint">Autonomous</span> co-workers.
               </h2>
               <p className="mx-auto mt-6 max-w-[58ch] font-sans text-body-lg text-ink-2">
-                Each one runs a real part of your operation. You configure what it can do and its
-                limits — no engineering cycle — and every action it takes clears the validation gate
-                first.
+                Each one runs a real part of your operation. You set what it can do and how far it
+                goes, without an engineering cycle, and every action it takes clears the validation
+                gate before it fires.
               </p>
             </Reveal>
           </div>
@@ -168,7 +169,7 @@ export default function KartaPage() {
               </h2>
               <p className="mx-auto mt-6 font-sans text-body-lg text-ink-2">
                 From a borrower&rsquo;s first touch to final closure, focused co-workers run the whole
-                lending operation — across the customer-facing contact centre and the operational back
+                lending operation across the customer-facing contact centre and the operational back
                 office.
               </p>
             </div>
@@ -180,7 +181,7 @@ export default function KartaPage() {
                 accent="cyan"
                 kicker="Contact centre"
                 title="The customer-facing surface."
-                blurb="Inbound and outbound, across voice, SMS, WhatsApp, email and chat — one conversation that remembers."
+                blurb="Inbound and outbound, across voice, SMS, WhatsApp, email and chat, in one conversation that remembers."
               />
             </Reveal>
             <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:auto-rows-fr lg:grid-cols-3">
@@ -199,7 +200,7 @@ export default function KartaPage() {
                 accent="mint"
                 kicker="Back office"
                 title="The operational engine."
-                blurb="The work behind every loan — documents, money, risk and the record, handled and kept straight."
+                blurb="Everything behind every loan: documents, money, risk and the record, all handled and kept straight."
               />
             </Reveal>
             <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:auto-rows-fr lg:grid-cols-3">
@@ -223,7 +224,7 @@ export default function KartaPage() {
                 </h2>
                 <p className="mt-6 max-w-[46ch] font-sans text-body-lg text-ink-2">
                   Your team creates and tunes co-workers in{' '}
-                  <span className="text-mint">Agent Studio</span> — the same place every Karta is
+                  <span className="text-mint">Agent Studio</span>, the same place every Karta is
                   configured. No engineering ticket, no release cycle.
                 </p>
               </div>
@@ -236,13 +237,14 @@ export default function KartaPage() {
                 </p>
                 <ul className="mt-6 space-y-5 border-t border-soft pt-6">
                   {STUDIO.map((item) => {
-                    const [lead, rest] = item.split(' — ')
+                    const [lead, ...rest] = item.split(': ')
+                    const restText = rest.join(': ')
                     return (
                       <li key={item} className="flex gap-3.5">
                         <span aria-hidden className="mt-[0.5em] h-1.5 w-1.5 shrink-0 rounded-full bg-mint" />
                         <span className="font-sans text-body text-ink-2">
                           <span className="text-ink">{lead}</span>
-                          {rest ? ` — ${rest}` : ''}
+                          {restText ? `: ${restText}` : ''}
                         </span>
                       </li>
                     )
@@ -308,7 +310,7 @@ export default function KartaPage() {
                 A workforce that <span className="text-mint">compounds</span>.
               </h2>
               <p className="mx-auto mt-5 max-w-[50ch] font-sans text-body-lg text-ink-2">
-                Configured by you, governed by the runtime, and sharper with every interaction — so
+                Configured by you, governed by the runtime, and sharper with every interaction, so
                 the operation improves the more it runs.
               </p>
             </Reveal>

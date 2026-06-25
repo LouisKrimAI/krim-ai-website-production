@@ -27,8 +27,10 @@ export default function ResearchBackdrop() {
 
   return (
     <div aria-hidden className="pointer-events-none fixed inset-0 z-0 overflow-hidden bg-bg">
-      {/* the lab render — shown whole (contain) and centred so the full scene
-          fits on one screen, held well faded so it reads as quiet atmosphere */}
+      {/* the lab render — full-bleed (cover) so the scene fills the whole
+          screen edge to edge and you feel like you're standing in it; held
+          well faded so it reads as quiet atmosphere under the copy. Wants a
+          wide landscape source with its focal subject centred. */}
       <Image
         src="/images/krimos/control-room.png"
         alt=""
@@ -36,7 +38,7 @@ export default function ResearchBackdrop() {
         priority
         quality={62}
         sizes="100vw"
-        className="object-contain"
+        className="object-cover"
         style={{ objectPosition: '50% 50%', opacity: 0.42 }}
       />
 
