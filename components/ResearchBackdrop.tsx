@@ -3,17 +3,26 @@
 /**
  * ResearchBackdrop — the Research cluster's shared ground.
  *
- * Instead of the orb, the three research pages (/research,
- * /research/world-lending-model, /epistemic-ai) sit on one fixed, faded render
- * of the KrimOS lab. Mounted ONCE in the root layout and gated on the path, so
- * it stays put as you move between the research pages — it never remounts and
- * the image never reloads. priority-loaded so it paints before the copy.
- * Fixed + GPU-cheap (a static image under two scrims); reduced-motion-safe by
- * construction (no animation).
+ * The three research pages (/research, /research/world-lending-model,
+ * /epistemic-ai) sit on one fixed render of the KrimOS lab, with our signature
+ * orb projected on the podium at its centre. Mounted ONCE in the root layout and
+ * gated on the path, so it stays put as you move between the research pages — it
+ * never remounts and the image never reloads.
+ *
+ * Speed + load order are the point here. The lab plate is a tiny optimised WebP
+ * (~70KB) served as a plain <img> (no image-optimiser round-trip), eager-loaded,
+ * and warmed ahead of time by BackgroundPrefetch — so by the time you arrive it
+ * is usually already cached and paints instantly. The orb is held hidden until
+ * that image has ACTUALLY loaded (onLoad, plus an immediate check for the cached
+ * case), then powers up — so the background is always there first; you never see
+ * the orb on an empty room. Reduced-motion settles the orb to a single frame.
  */
 
-import Image from 'next/image'
 import { usePathname } from 'next/navigation'
+import { useEffect, useState } from 'react'
+import { motion, useReducedMotion } from 'framer-motion'
+import WaveOrb from './WaveOrb'
+import { markBackdropReady } from '@/lib/backdropReady'
 
 const RESEARCH_ROUTES = new Set([
   '/research',
@@ -21,26 +30,69 @@ const RESEARCH_ROUTES = new Set([
   '/epistemic-ai',
 ])
 
+const LAB_SRC = '/images/research/lab-stage.webp'
+
 export default function ResearchBackdrop() {
   const pathname = usePathname()
-  if (!pathname || !RESEARCH_ROUTES.has(pathname)) return null
+  const reduce = useReducedMotion()
+  const [bgLoaded, setBgLoaded] = useState(false)
+  const active = !!pathname && RESEARCH_ROUTES.has(pathname)
+
+  // Safety net only: if onLoad never fires (very slow or failed fetch) reveal the
+  // orb anyway after a generous wait, so it can't get permanently stranded. The
+  // common paths (cached/prefetched, or a fast WebP) reveal it the instant the
+  // background paints — well before this fires — so the orb never precedes the room.
+  useEffect(() => {
+    if (!active) return
+    const t = setTimeout(() => setBgLoaded(true), 4000)
+    return () => clearTimeout(t)
+  }, [active])
+
+  // Tell the page text the room has rendered → orb grows, then the copy reveals.
+  useEffect(() => {
+    if (active && bgLoaded) markBackdropReady('research')
+  }, [active, bgLoaded])
+
+  if (!active) return null
+
+  const orbShown = bgLoaded || reduce
 
   return (
     <div aria-hidden className="pointer-events-none fixed inset-0 z-0 overflow-hidden bg-bg">
-      {/* the lab render — full-bleed (cover) so the scene fills the whole
-          screen edge to edge and you feel like you're standing in it; held
-          well faded so it reads as quiet atmosphere under the copy. Wants a
-          wide landscape source with its focal subject centred. */}
-      <Image
-        src="/images/krimos/control-room.png"
+      {/* the lab render — full-bleed (cover), held well faded as quiet atmosphere.
+          Optimised WebP served as a plain eager <img> so it paints fast; the orb
+          waits on its onLoad (and the cached case below) so the room is always
+          there first. */}
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src={LAB_SRC}
         alt=""
-        fill
-        priority
-        quality={62}
-        sizes="100vw"
-        className="object-cover"
-        style={{ objectPosition: '50% 50%', opacity: 0.42 }}
+        decoding="async"
+        ref={(el) => {
+          // cached/prefetched image: onLoad may not fire, so reveal immediately
+          if (el && el.complete && el.naturalWidth > 0) setBgLoaded(true)
+        }}
+        onLoad={() => setBgLoaded(true)}
+        className="absolute inset-0 h-full w-full object-cover"
+        style={{ objectPosition: '50% 74%', opacity: 0.42 }}
       />
+
+      {/* the living core — our signature orb, projected on the podium. It follows
+          the lab plate: hidden until the image has loaded, then grows from a
+          bright nucleus to full size as it spins. Screen-blended so it reads as
+          light inside the room, not a sticker on top. The outer div holds the
+          position; the inner motion layer owns the grow so the two transforms
+          (centring vs scale) never collide. */}
+      <div className="absolute left-1/2 top-[calc(51%_-_1cm)] -translate-x-1/2 -translate-y-1/2">
+        <motion.div
+          style={{ mixBlendMode: 'screen' }}
+          initial={reduce ? { opacity: 0.6, scale: 1 } : { opacity: 0, scale: 0.18 }}
+          animate={orbShown ? { opacity: 0.6, scale: 1 } : { opacity: 0, scale: 0.18 }}
+          transition={{ duration: reduce ? 0 : 2.4, ease: [0.16, 1, 0.3, 1] }}
+        >
+          <WaveOrb size="min(52vmin, 540px)" speed={0.6} density={0.6} />
+        </motion.div>
+      </div>
 
       {/* scrim — keeps the nav, hero copy and footer legible over the render
           while leaving the scene readable through the middle */}

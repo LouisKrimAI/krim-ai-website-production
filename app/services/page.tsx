@@ -1,6 +1,6 @@
 /**
  * /services — engagement: pilot to go-live. STANDALONE page (not LayerShell),
- * built on the homepage/platform design DNA: SiteHeader + OrbBackdrop + Reveal,
+ * built on the homepage/krimos design DNA: SiteHeader + OrbBackdrop + Reveal,
  * calm glass + type, no devices, no hero image.
  * Shape: hero (pilot → go-live in a quarter) → the path (three stages as glass
  * cards, each with what happens + a clear exit) → what Krim brings → expansion
@@ -19,12 +19,12 @@ import { Section, Eyebrow, GlassCard, CTA } from '@/components/ui'
 export const metadata: Metadata = {
   title: 'Services',
   description:
-    'From technical deep-dive to production go-live in a quarter: a scoped pilot, proof of value on ring-fenced data measured against your own baseline, then a contracted go-live — with a clear exit at every stage.',
+    'From technical deep-dive to production go-live in a quarter: a scoped pilot, proof of value on ring-fenced data measured against your own baseline, then a contracted go-live, with a clear exit at every stage.',
   alternates: { canonical: 'https://krim.ai/services' },
   openGraph: {
     title: 'Services — pilot to go-live',
     description:
-      'From technical deep-dive to production go-live in a quarter: a scoped pilot, proof of value on ring-fenced data measured against your own baseline, then a contracted go-live — with a clear exit at every stage.',
+      'From technical deep-dive to production go-live in a quarter: a scoped pilot, proof of value on ring-fenced data measured against your own baseline, then a contracted go-live, with a clear exit at every stage.',
     url: 'https://krim.ai/services',
   },
 }
@@ -46,21 +46,21 @@ const STAGES = [
     no: '01',
     span: '2 weeks',
     title: 'Technical deep-dive',
-    body: 'Our engineers sit with yours for an architecture, security and integration review — how KrimOS reads from and writes to the systems you already run, inside your perimeter.',
+    body: 'Our engineers sit with yours for an architecture, security and integration review: how KrimOS reads from and writes to the systems you already run, inside your perimeter.',
     exit: 'A scoped pilot and a signed data-handling envelope.',
   },
   {
     no: '02',
     span: '30 days',
     title: 'Proof of value',
-    body: 'One workflow — usually collections or servicing — runs on synthetic or ring-fenced data. Real co-workers, real validation, no exposure to live records until you are ready.',
+    body: 'One workflow, usually collections or servicing, runs on synthetic or ring-fenced data. Real co-workers, real validation, no exposure to live records until you are ready.',
     exit: 'Measured outcomes against your own baseline.',
   },
   {
     no: '03',
     span: '60–90 days',
     title: 'Pilot to go-live',
-    body: 'The proven workflow moves into production with full audit and governance live — every action validated before it executes, every outcome recorded in the ledger.',
+    body: 'The proven workflow moves into production with full audit and governance live: every action validated before it executes, every outcome recorded in the ledger.',
     exit: 'A contracted go-live and an expansion roadmap.',
   },
 ] as const
@@ -73,7 +73,7 @@ const BRINGS = [
   },
   {
     title: 'Proof on your own data',
-    body: 'Ring-fenced and benchmarked against your baseline — so the proof of value is measured in your numbers, not a generic case study.',
+    body: 'Ring-fenced and benchmarked against your baseline, so the proof of value is measured in your numbers, not a generic case study.',
   },
   {
     title: 'A clear exit at every stage',
@@ -81,7 +81,7 @@ const BRINGS = [
   },
   {
     title: 'Audit and governance from day one',
-    body: 'The validation gate and the immutable ledger are live in the pilot, not bolted on at go-live — the regulator-grade version is the only version.',
+    body: 'The validation gate and the immutable ledger are live in the pilot, not bolted on at go-live. The regulator-grade version is the only version.',
   },
 ] as const
 
@@ -104,14 +104,14 @@ export default function ServicesPage() {
             <Reveal delay={0.12}>
               <p className="mx-auto mt-7 max-w-[52ch] font-sans text-body-lg text-ink-2">
                 See it work on <span className="text-ink">your own data</span>, measured against your
-                own baseline — and go live only once the proof is in.
+                own baseline, and go live only once the proof is in.
               </p>
             </Reveal>
             <Reveal delay={0.2}>
               <div className="mt-10 flex flex-wrap items-center justify-center gap-6">
                 <CTA href={DEMO_HREF}>Book a demo</CTA>
-                <CTA href="/platform" variant="secondary">
-                  See the platform
+                <CTA href="/krimos" variant="secondary">
+                  See KrimOS
                 </CTA>
               </div>
             </Reveal>
@@ -127,7 +127,7 @@ export default function ServicesPage() {
             </h2>
             <p className="mt-6 max-w-[60ch] font-sans text-body-lg text-ink-2">
               No big-bang rollout, no leap of faith. Prove the architecture, then the value, then run
-              it in production — and step out at any stage with the work to date in hand.
+              it in production, and step out at any stage with the work to date in hand.
             </p>
           </Reveal>
           <div className="mt-12 grid gap-5 md:grid-cols-3">
@@ -161,8 +161,8 @@ export default function ServicesPage() {
               Why a quarter is enough, and a leap of faith is not.
             </h2>
             <p className="mt-6 max-w-[60ch] font-sans text-body-lg text-ink-2">
-              A quarter is realistic because the hard parts — fitting your stack, governing every
-              action, proving the numbers — are how we work from the first week, not promises kept
+              A quarter is realistic because the hard parts (fitting your stack, governing every
+              action, proving the numbers) are how we work from the first week, not promises kept
               for later.
             </p>
           </Reveal>
@@ -189,7 +189,7 @@ export default function ServicesPage() {
                   Go-live is the first workflow, not the last.
                 </h2>
                 <p className="mt-7 max-w-[52ch] font-sans text-body-lg text-ink-2">
-                  Expansion goes domain by domain, workflow by workflow — the{' '}
+                  Expansion goes domain by domain, workflow by workflow, the{' '}
                   <span className="text-ink">same runtime, the same audit trail, the same governance</span>{' '}
                   carrying across. Every new co-worker inherits what the last one proved, and the
                   ledger that records them keeps making the next decision sharper.
@@ -199,7 +199,7 @@ export default function ServicesPage() {
             <Reveal delay={0.12}>
               <GlassCard accent className="p-8 md:p-10">
                 <p className="font-serif text-[clamp(1.4rem,2.4vw,1.85rem)] leading-snug text-ink">
-                  More co-workers, more of the lifecycle — and a system that is materially better than
+                  More co-workers, more of the lifecycle, and a system that is materially better than
                   go-live by year two.
                 </p>
                 <p className="mt-6 font-mono text-[11px] uppercase tracking-[0.18em] text-mint">
@@ -218,7 +218,7 @@ export default function ServicesPage() {
                 Start with the proof.
               </h2>
               <p className="mx-auto mt-5 max-w-[48ch] font-sans text-body text-ink-2">
-                See KrimOS on the stack you already run — and a path from pilot to go-live, on your
+                See KrimOS on the stack you already run, and a path from pilot to go-live, on your
                 own data.
               </p>
               <div className="mt-9 flex flex-wrap items-center justify-center gap-6">

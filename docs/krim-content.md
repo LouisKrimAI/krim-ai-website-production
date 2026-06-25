@@ -195,7 +195,7 @@ Body: No action a Karta proposes fires until it has passed validation. It is not
 - **Doṣa** — classes of error: the action is checked against the catalogue of formal failure modes Navya-Nyāya defines.
 - **Yogyatā** — fitness for action: time, place, agent, recipient, instrument, manner and purpose must all be satisfied.
 
-**The runtime cannot escape its own validation.** Operators see validated actions execute and rejected actions land in an exception queue with the blocking rule and its reasoning. Auditors see every validation decision — including passes — captured in Krim-Ledger. Compliance violations are not reduced; they are made structurally impossible. Across jurisdictions: US (FDCPA, TCPA, Reg F, FCRA, SCRA, GLBA, ECOA, CFPB), UK (FCA Consumer Duty, CONC sourcebook, Consumer Credit Act), India (RBI circulars, Fair Practices Code). As rules change, Krim-Govern updates them in real time without restarting the runtime; existing Karta inherit new constraints immediately.
+**The runtime cannot escape its own validation.** Operators see validated actions execute and rejected actions land in an exception queue with the blocking rule and its reasoning. Auditors see every validation decision — including passes — captured in Krim-Ledger. Compliance violations are not reduced; they are made structurally impossible. Across jurisdictions: US (FDCPA, Reg F, TCPA, FCRA, ECOA/Reg B, TILA/Reg Z, SCRA, GLBA, UDAAP), UK (FCA Consumer Duty, CONC sourcebook, Consumer Credit Act 1974, FCA Principles, DISP, UK GDPR, MLR 2017), India (RBI Digital Lending Guidelines, Fair Practices Code, KYC Master Direction, SARFAESI, DPDP Act 2023, TRAI TCCCPR, CIC reporting, RBI recovery-agent norms). As rules change, Krim-Govern updates them in real time without restarting the runtime; existing Karta inherit new constraints immediately.
 
 ---
 
@@ -284,7 +284,7 @@ Body: Customer data, model weights, orchestration and telemetry stay inside the 
 - **Managed SaaS** — *fintechs · pilots.* Fully managed in the customer's preferred sovereign cloud region.
 
 **Posture:** end-to-end encryption (rest + transit) · granular RBAC with full audit trail · PII isolation by tenancy · customer-held keys · immutable, cryptographically sealed trail.
-**Compliance footprint:** SOC 2 Type II · ISO 27001 · CERT-In · DPDP · GDPR · EU AI Act readiness — alongside the sectoral frameworks encoded in Krim-Fabric: **US** (FDCPA, TCPA, Reg F, FCRA, SCRA, GLBA, ECOA, CFPB, ACA) · **UK** (FCA Consumer Duty, CONC, Consumer Credit Act, UK GDPR) · **India** (RBI circulars, Fair Practices Code).
+**Compliance footprint:** SOC 2 Type II · ISO 27001 · CERT-In · DPDP · GDPR · EU AI Act readiness — alongside the sectoral frameworks encoded in Krim-Fabric: **US** (FDCPA, Reg F, TCPA, FCRA, ECOA/Reg B, TILA/Reg Z, SCRA, GLBA, UDAAP) · **UK** (FCA Consumer Duty, CONC, Consumer Credit Act 1974, FCA Principles, DISP, UK GDPR, MLR 2017) · **India** (RBI Digital Lending Guidelines, Fair Practices Code, KYC Master Direction, SARFAESI, DPDP Act 2023, TRAI TCCCPR, CIC reporting, RBI recovery-agent norms).
 `[CONFIRM]` Present certifications honestly as **held vs in-progress** — split the list before publishing.
 
 ---

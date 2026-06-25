@@ -17,13 +17,13 @@ const OUT_SOFT = [0.16, 1, 0.3, 1] as const
 
 // KrimOS — overview + the layer pages (Kira now also covers the Krimkar app)
 const KRIMOS = [
-  ['Overview', 'The operating system, end to end', '/platform'],
-  ['Kendra', 'The runtime — validates & learns', '/platform/kendra'],
-  ['Kriya', 'The vocabulary of actions', '/platform/kriya'],
-  ['Karta', 'The AI co-workers', '/platform/karta'],
-  ['Kupa', 'The command center', '/platform/kupa'],
-  ['Kula', 'For your teams', '/platform/kula'],
-  ['Kira & Krimkar', 'The customer advisor', '/platform/kira'],
+  ['Overview', 'The operating system, end to end', '/krimos'],
+  ['Kendra', 'The runtime, validates & learns', '/krimos/kendra'],
+  ['Kriya', 'The vocabulary of actions', '/krimos/kriya'],
+  ['Karta', 'The AI co-workers', '/krimos/karta'],
+  ['Kupa', 'The command center', '/krimos/kupa'],
+  ['Kula', 'For your teams', '/krimos/kula'],
+  ['Kira & Krimkar', 'The customer advisor', '/krimos/kira'],
 ] as const
 
 const DOMAINS = [
@@ -56,6 +56,80 @@ function Caret({ open }: { open: boolean }) {
     <svg width="9" height="9" viewBox="0 0 10 10" aria-hidden className={`transition-transform duration-fast ${open ? 'rotate-180' : ''}`}>
       <path d="M1 3l4 4 4-4" fill="none" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
+  )
+}
+
+/**
+ * A top-level nav group: the LABEL is a link to the overview/hub page, and the
+ * caret beside it is a separate button that toggles the dropdown. Mouse users
+ * also get hover-to-open on the whole group; keyboard users tab to the link
+ * (Enter → navigate) then the caret (Enter/Space → open the menu).
+ */
+function NavGroup({
+  menuKey,
+  label,
+  overviewHref,
+  width,
+  items,
+  open,
+  setOpen,
+}: {
+  menuKey: Exclude<MenuKey, null>
+  label: string
+  overviewHref: string
+  width: string
+  items: ReadonlyArray<{ label: string; role?: string; href: string }>
+  open: MenuKey
+  setOpen: (v: MenuKey) => void
+}) {
+  const isOpen = open === menuKey
+  const menuId = `nav-menu-${menuKey}`
+  return (
+    <div
+      className="relative flex items-center"
+      onMouseEnter={() => setOpen(menuKey)}
+      onMouseLeave={() => setOpen(null)}
+    >
+      <Link href={overviewHref} className={linkCls}>
+        {label}
+      </Link>
+      <button
+        type="button"
+        className={`ml-1 flex h-6 w-5 items-center justify-center ${linkCls}`}
+        aria-label={`${label} menu`}
+        aria-haspopup="true"
+        aria-expanded={isOpen}
+        aria-controls={menuId}
+        onClick={() => setOpen(isOpen ? null : menuKey)}
+      >
+        <Caret open={isOpen} />
+      </button>
+      {isOpen && (
+        <div id={menuId} className={`absolute left-1/2 top-full z-50 ${width} -translate-x-1/2 pt-3`}>
+          <div className="overflow-hidden rounded-[14px] border border-strong bg-[rgba(14,15,19,0.97)] p-2 shadow-[0_24px_60px_rgba(0,0,0,0.55)] backdrop-blur-xl">
+            {items.map((it) => (
+              <Link
+                key={it.href}
+                href={it.href}
+                className="block rounded-[10px] px-3.5 py-2.5 transition-colors hover:bg-white/[0.05]"
+                onClick={() => setOpen(null)}
+              >
+                {it.role ? (
+                  <>
+                    <span className="block font-sans text-[14px] text-ink">{it.label}</span>
+                    <span className="mt-0.5 block font-sans text-[12.5px] text-ink-3">{it.role}</span>
+                  </>
+                ) : (
+                  <span className="block font-sans text-[14px] text-ink-2 transition-colors hover:text-ink">
+                    {it.label}
+                  </span>
+                )}
+              </Link>
+            ))}
+          </div>
+        </div>
+      )}
+    </div>
   )
 }
 
@@ -106,109 +180,38 @@ export default function SiteHeader({ scrollReveal = false }: { scrollReveal?: bo
         </Link>
 
         <nav ref={navRef} className="hidden items-center gap-7 lg:flex" aria-label="Primary">
-          {/* KrimOS group — the product + its layers */}
-          <div
-            className="relative"
-            onMouseEnter={() => setOpen('krimos')}
-            onMouseLeave={() => setOpen(null)}
-          >
-            <button
-              type="button"
-              className={`flex items-center gap-1.5 ${linkCls}`}
-              aria-expanded={open === 'krimos'}
-              aria-haspopup="true"
-              onClick={() => setOpen((v) => (v === 'krimos' ? null : 'krimos'))}
-            >
-              KrimOS
-              <Caret open={open === 'krimos'} />
-            </button>
-            {open === 'krimos' && (
-              <div className="absolute left-1/2 top-full z-50 w-[300px] -translate-x-1/2 pt-3">
-                <div className="overflow-hidden rounded-[14px] border border-strong bg-[rgba(14,15,19,0.97)] p-2 shadow-[0_24px_60px_rgba(0,0,0,0.55)] backdrop-blur-xl">
-                  {KRIMOS.map(([label, role, href]) => (
-                    <Link
-                      key={href}
-                      href={href}
-                      className="block rounded-[10px] px-3.5 py-2.5 transition-colors hover:bg-white/[0.05]"
-                      onClick={() => setOpen(null)}
-                    >
-                      <span className="block font-sans text-[14px] text-ink">{label}</span>
-                      <span className="mt-0.5 block font-sans text-[12.5px] text-ink-3">{role}</span>
-                    </Link>
-                  ))}
-                </div>
-              </div>
-            )}
-          </div>
+          {/* KrimOS — label links to the overview; caret opens the menu */}
+          <NavGroup
+            menuKey="krimos"
+            label="KrimOS"
+            overviewHref="/krimos"
+            width="w-[300px]"
+            items={KRIMOS.map(([label, role, href]) => ({ label, role, href }))}
+            open={open}
+            setOpen={setOpen}
+          />
 
-          {/* Domains group */}
-          <div
-            className="relative"
-            onMouseEnter={() => setOpen('domains')}
-            onMouseLeave={() => setOpen(null)}
-          >
-            <button
-              type="button"
-              className={`flex items-center gap-1.5 ${linkCls}`}
-              aria-expanded={open === 'domains'}
-              aria-haspopup="true"
-              onClick={() => setOpen((v) => (v === 'domains' ? null : 'domains'))}
-            >
-              Domains
-              <Caret open={open === 'domains'} />
-            </button>
-            {open === 'domains' && (
-              <div className="absolute left-1/2 top-full z-50 w-[230px] -translate-x-1/2 pt-3">
-                <div className="overflow-hidden rounded-[14px] border border-strong bg-[rgba(14,15,19,0.97)] p-2 shadow-[0_24px_60px_rgba(0,0,0,0.55)] backdrop-blur-xl">
-                  {DOMAINS.map(([label, href]) => (
-                    <Link
-                      key={href}
-                      href={href}
-                      className="block rounded-[10px] px-3.5 py-2.5 font-sans text-[14px] text-ink-2 transition-colors hover:bg-white/[0.05] hover:text-ink"
-                      onClick={() => setOpen(null)}
-                    >
-                      {label}
-                    </Link>
-                  ))}
-                </div>
-              </div>
-            )}
-          </div>
+          {/* Domains — label links to Lending; caret opens the menu */}
+          <NavGroup
+            menuKey="domains"
+            label="Domains"
+            overviewHref="/lending"
+            width="w-[230px]"
+            items={DOMAINS.map(([label, href]) => ({ label, href }))}
+            open={open}
+            setOpen={setOpen}
+          />
 
-          {/* Research group — Epistemic AI + the World Lending Model */}
-          <div
-            className="relative"
-            onMouseEnter={() => setOpen('research')}
-            onMouseLeave={() => setOpen(null)}
-          >
-            <button
-              type="button"
-              className={`flex items-center gap-1.5 ${linkCls}`}
-              aria-expanded={open === 'research'}
-              aria-haspopup="true"
-              onClick={() => setOpen((v) => (v === 'research' ? null : 'research'))}
-            >
-              Research
-              <Caret open={open === 'research'} />
-            </button>
-            {open === 'research' && (
-              <div className="absolute left-1/2 top-full z-50 w-[300px] -translate-x-1/2 pt-3">
-                <div className="overflow-hidden rounded-[14px] border border-strong bg-[rgba(14,15,19,0.97)] p-2 shadow-[0_24px_60px_rgba(0,0,0,0.55)] backdrop-blur-xl">
-                  {RESEARCH.map(([label, role, href]) => (
-                    <Link
-                      key={href}
-                      href={href}
-                      className="block rounded-[10px] px-3.5 py-2.5 transition-colors hover:bg-white/[0.05]"
-                      onClick={() => setOpen(null)}
-                    >
-                      <span className="block font-sans text-[14px] text-ink">{label}</span>
-                      <span className="mt-0.5 block font-sans text-[12.5px] text-ink-3">{role}</span>
-                    </Link>
-                  ))}
-                </div>
-              </div>
-            )}
-          </div>
+          {/* Research — label links to the overview; caret opens the menu */}
+          <NavGroup
+            menuKey="research"
+            label="Research"
+            overviewHref="/research"
+            width="w-[300px]"
+            items={RESEARCH.map(([label, role, href]) => ({ label, role, href }))}
+            open={open}
+            setOpen={setOpen}
+          />
 
           {FLAT_RIGHT.map(([label, href]) => (
             <Link key={href} href={href} className={linkCls}>

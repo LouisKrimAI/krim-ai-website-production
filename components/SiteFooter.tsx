@@ -14,13 +14,13 @@ const NAV: Array<[string, Array<[string, string]>]> = [
   [
     'KrimOS',
     [
-      ['Overview', '/platform'],
-      ['Kendra', '/platform/kendra'],
-      ['Kriya', '/platform/kriya'],
-      ['Karta', '/platform/karta'],
-      ['Kupa', '/platform/kupa'],
-      ['Kula', '/platform/kula'],
-      ['Kira', '/platform/kira'],
+      ['Overview', '/krimos'],
+      ['Kendra', '/krimos/kendra'],
+      ['Kriya', '/krimos/kriya'],
+      ['Karta', '/krimos/karta'],
+      ['Kupa', '/krimos/kupa'],
+      ['Kula', '/krimos/kula'],
+      ['Kira', '/krimos/kira'],
     ],
   ],
   [
@@ -55,25 +55,16 @@ const NAV: Array<[string, Array<[string, string]>]> = [
 
 export default function SiteFooter() {
   return (
-    <footer className="relative overflow-hidden border-t border-soft">
-      {/* visual device — luminous mint top hairline */}
+    <footer className="relative overflow-hidden">
+      {/* the one allowed divider — a luminous mint hairline marking the footer */}
       <div
         aria-hidden
         className="pointer-events-none absolute inset-x-0 top-0 h-px bg-[linear-gradient(90deg,transparent_8%,rgba(0,255,178,0.55)_50%,transparent_92%)]"
       />
-      {/* visual device — large faded triangle mark bleeding off the right edge */}
-      <img
-        aria-hidden
-        src="/brand/logo/KRIM-icon-mint.svg"
-        alt=""
-        width={520}
-        height={520}
-        className="pointer-events-none absolute -right-24 -top-16 hidden w-[34rem] select-none opacity-[0.05] md:block"
-      />
 
       <div className="relative mx-auto max-w-site px-6 py-16 md:px-10 md:py-20">
         {/* hero close — tagline + primary CTA */}
-        <div className="flex flex-col gap-8 border-b border-soft pb-12 md:flex-row md:items-end md:justify-between md:gap-12">
+        <div className="flex flex-col gap-8 pb-12 md:flex-row md:items-end md:justify-between md:gap-12">
           <h2 className="max-w-[18ch] font-serif text-display-2 leading-tight text-ink md:text-[clamp(2rem,3.6vw,3rem)]">
             The AI your regulator can read.
           </h2>
@@ -107,7 +98,7 @@ export default function SiteFooter() {
         </nav>
 
         {/* brand row */}
-        <div className="mt-14 flex flex-wrap items-center justify-between gap-x-8 gap-y-5 border-t border-soft pt-8">
+        <div className="mt-14 flex flex-wrap items-center justify-between gap-x-8 gap-y-5 pt-8">
           <div className="flex items-center gap-3.5">
             <KrimLogoAnimated className="h-[26px] w-auto" />
             <span aria-hidden className="hidden h-4 w-px bg-strong sm:block" />

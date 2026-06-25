@@ -118,7 +118,7 @@ export default function ProofPanel() {
             </p>
           </div>
           <p className="mt-2 font-sans text-[13.5px] leading-relaxed text-ink-3">
-            Pre-flight clearances — every one must pass before the line connects.
+            Pre-flight clearances: every one must pass before the line connects.
           </p>
 
           {/* the clearance sequence — a slim instrument readout */}
@@ -203,7 +203,7 @@ export default function ProofPanel() {
         </div>
 
         <p className="mt-4 font-sans text-[13px] leading-relaxed text-ink-2">
-          Settlement terms fall outside the approved range. Not refused outright — held, with its
+          Settlement terms fall outside the approved range. Not refused outright: held, with its
           reasoning attached, and routed to a person to decide.
         </p>
 

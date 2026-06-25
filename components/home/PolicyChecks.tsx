@@ -18,7 +18,7 @@ const CHECKS: Check[] = [
   {
     name: 'Pramāṇa',
     gloss: 'grounding',
-    line: 'Balance and status confirmed against the system of record — no guessing.',
+    line: 'Balance and status confirmed against the system of record, no guessing.',
     state: 'pass',
   },
   {
@@ -30,7 +30,7 @@ const CHECKS: Check[] = [
   {
     name: 'Yogyatā',
     gloss: 'permission',
-    line: 'Consent is on file — but it’s before legal calling hours in their timezone.',
+    line: 'Consent is on file, but it’s before legal calling hours in their timezone.',
     state: 'hold',
   },
 ]
@@ -66,7 +66,7 @@ export default function PolicyChecks() {
         <span aria-hidden className="h-px flex-1 bg-white/10" />
       </div>
       <p className="mt-3 font-serif text-[1.4rem] leading-snug text-ink">
-        Call this borrower — 14 days past due — about a payment plan.
+        Call this borrower, 14 days past due, about a payment plan.
       </p>
 
       {/* the gate: three checks */}
@@ -102,7 +102,7 @@ export default function PolicyChecks() {
       <motion.div variants={item} className="mt-6 flex items-start gap-3">
         <span aria-hidden className="mt-[0.45em] h-[6px] w-[6px] shrink-0 rounded-full" style={{ background: 'var(--gold)' }} />
         <p className="font-sans text-body text-ink-2">
-          <span className="text-ink">Held — and rescheduled</span> to 9:00 am in the borrower’s timezone, with the reason on
+          <span className="text-ink">Held, and rescheduled</span> to 9:00 am in the borrower’s timezone, with the reason on
           the record. Nothing fires until it clears.
         </p>
       </motion.div>

@@ -31,13 +31,13 @@ export default function NotFound() {
             <Reveal delay={0.12}>
               <p className="mx-auto mt-6 max-w-[48ch] font-sans text-body-lg text-ink-2">
                 This page moved, retired, or never existed. Everything that does run on KrimOS
-                leaves a trail — this just isn&rsquo;t one of them.
+                leaves a trail. This just isn&rsquo;t one of them.
               </p>
             </Reveal>
             <Reveal delay={0.2}>
               <div className="mt-10 flex flex-wrap items-center justify-center gap-6">
                 <CTA href="/">Back to home</CTA>
-                <CTA href="/platform" variant="secondary">
+                <CTA href="/krimos" variant="secondary">
                   Explore KrimOS
                 </CTA>
                 <CTA href="/contact" variant="secondary">

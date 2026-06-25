@@ -23,12 +23,12 @@ const DEMO_HREF = '/contact'
 export const metadata: Metadata = {
   title: 'MSME',
   description:
-    'Regulation-grade AI workers, now for everyday operations. Medium-sized enterprises automate customer service and back-office work with automation they can actually trust — fully managed, affordable and fast to deploy.',
+    'Regulation-grade AI workers, now for everyday operations. Medium-sized enterprises automate customer service and back-office work with automation they can actually trust: fully managed, affordable and fast to deploy.',
   alternates: { canonical: 'https://krim.ai/msme' },
   openGraph: {
     title: 'MSME — Krim',
     description:
-      'Regulation-grade AI workers, now for everyday operations. Medium-sized enterprises automate customer service and back-office work with automation they can actually trust — fully managed, affordable and fast to deploy.',
+      'Regulation-grade AI workers, now for everyday operations. Medium-sized enterprises automate customer service and back-office work with automation they can actually trust: fully managed, affordable and fast to deploy.',
     url: 'https://krim.ai/msme',
   },
 }
@@ -49,11 +49,11 @@ const breadcrumbLd = {
 const REASONS = [
   {
     name: 'Automation you can trust',
-    body: 'Every action is checked before it acts and kept on the record — the rigor banks and governments rely on, working for you.',
+    body: 'Every action is checked before it acts and kept on the record, the rigor banks and governments rely on, working for you.',
   },
   {
     name: 'Managed, affordable, fast',
-    body: 'Fully managed deployment with no infrastructure to stand up. You don’t run it; we do — enterprise-grade capability at mid-market reach.',
+    body: 'Fully managed deployment with no infrastructure to stand up. You don’t run it; we do. Enterprise-grade capability at mid-market reach.',
   },
   {
     name: 'Sharper as it works',
@@ -69,15 +69,15 @@ const USE_CASES = [
   },
   {
     name: 'Outbound',
-    body: 'Reminders, follow-ups and renewals, on time — the re-engagement that quietly slips when the team is stretched.',
+    body: 'Reminders, follow-ups and renewals, on time, the re-engagement that quietly slips when the team is stretched.',
   },
   {
     name: 'Receivables',
-    body: 'Collections handled steadily and fairly, in a tone you’d stand behind — money chased without the awkwardness.',
+    body: 'Collections handled steadily and fairly, in a tone you’d stand behind. Money chased without the awkwardness.',
   },
   {
     name: 'Document processing & back-office',
-    body: 'Documents, data and routine workflows, done — the paperwork that piles up between the work that pays.',
+    body: 'Documents, data and routine workflows, done. The paperwork that piles up between the work that pays.',
   },
 ]
 
@@ -89,7 +89,7 @@ const IMPACT = [
   },
   {
     name: 'Reliable by construction',
-    body: 'Automation you can put in front of customers and against money — because nothing acts until it’s been checked.',
+    body: 'Automation you can put in front of customers and against money, because nothing acts until it’s been checked.',
   },
   {
     name: 'Enterprise-grade, mid-market reach',
@@ -118,7 +118,7 @@ export default function MsmePage() {
             </Reveal>
             <Reveal delay={0.12}>
               <p className="mx-auto mt-7 max-w-[58ch] font-sans text-body-lg text-ink-2">
-                The same validated, auditable, reliable AI workers the regulated giants run —{' '}
+                The same validated, auditable, reliable AI workers the regulated giants run,{' '}
                 <span className="text-ink">sized for a growing business</span>, and ready for
                 customer service and back-office work you can{' '}
                 <span className="text-mint">actually trust</span>.
@@ -152,7 +152,7 @@ export default function MsmePage() {
                 eat time and cost faster than you can hire. You may not have a regulator looking over
                 your shoulder, but you{' '}
                 <span className="text-ink">still can&rsquo;t afford AI that gets it wrong</span> in
-                front of customers, or with money — and off-the-shelf AI is quick to start and{' '}
+                front of customers, or with money. Off-the-shelf AI is quick to start and{' '}
                 <span className="text-ink">unreliable</span>. So the work stays manual.
               </p>
             </Reveal>
@@ -168,7 +168,7 @@ export default function MsmePage() {
               The rigor the giants rely on, made accessible.
             </h2>
             <p className="mt-7 max-w-[58ch] font-sans text-body-lg text-ink-2">
-              Every action checked before it acts, and on the record after — automation you can{' '}
+              Every action checked before it acts, and on the record after. Automation you can{' '}
               <span className="text-ink">actually trust</span>, deployed for you and getting sharper
               the longer it runs.
             </p>
@@ -254,7 +254,7 @@ export default function MsmePage() {
                 </h2>
                 <p className="mt-7 max-w-[52ch] font-sans text-body-lg text-ink-2">
                   KrimOS runs as <span className="text-ink">managed SaaS</span> in a sovereign cloud
-                  region — fully hosted and operated by us. No infrastructure to stand up, nothing
+                  region, fully hosted and operated by us. No infrastructure to stand up, nothing
                   to maintain.
                 </p>
               </div>
@@ -265,7 +265,7 @@ export default function MsmePage() {
                   Managed SaaS
                 </p>
                 <p className="mt-5 font-serif text-[clamp(1.3rem,2.2vw,1.7rem)] leading-snug text-ink">
-                  Enterprise-grade capability, deployed at mid-market reach — affordable, and fast
+                  Enterprise-grade capability, deployed at mid-market reach: affordable, and fast
                   to start.
                 </p>
               </GlassCard>
@@ -281,7 +281,7 @@ export default function MsmePage() {
                 See what it can take off your plate.
               </h2>
               <p className="mx-auto mt-5 max-w-[50ch] font-sans text-body text-ink-2">
-                Tell us the work that eats your week — we&rsquo;ll show you the same automation the
+                Tell us the work that eats your week, and we&rsquo;ll show you the same automation the
                 giants trust, sized for you.
               </p>
               <div className="mt-9 flex justify-center">

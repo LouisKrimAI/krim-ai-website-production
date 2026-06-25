@@ -6,6 +6,14 @@ const nextConfig = {
   images: {
     formats: ['image/avif', 'image/webp'],
   },
+  // KrimOS moved from /platform → /krimos (it is "KrimOS", never "the platform").
+  // Permanently redirect the old paths so existing links never 404.
+  async redirects() {
+    return [
+      { source: '/platform', destination: '/krimos', permanent: true },
+      { source: '/platform/:slug', destination: '/krimos/:slug', permanent: true },
+    ]
+  },
 }
 
 export default nextConfig

@@ -6,7 +6,7 @@
  *
  * STANDALONE shell (SiteHeader + main z-10 + SiteFooter); the shared research
  * backdrop (the KrimOS lab) is root-mounted via ResearchBackdrop, like
- * app/page.tsx and app/platform/page.tsx.
+ * app/page.tsx and app/krimos/page.tsx.
  *
  * HONESTY: a positioning statement of foundations and directions — it invents no
  * publications, papers, citations, named researchers, partnerships or results.
@@ -23,12 +23,12 @@ import { Section, Eyebrow, GlassCard, CTA } from '@/components/ui'
 export const metadata: Metadata = {
   title: 'Research',
   description:
-    'Research at Krim is the work under the product: making human judgment machine-checkable (the formal logic behind the 33 validators), learning a model of how a whole lending operation behaves, and treating pre-execution validation as a discipline — proving an action before it acts, not auditing it after.',
+    'Research at Krim is the work under the product: making human judgment machine-checkable (the formal logic behind the 33 validators), learning a model of how a whole lending operation behaves, and treating pre-execution validation as a discipline, proving an action before it acts rather than auditing it after.',
   alternates: { canonical: 'https://krim.ai/research' },
   openGraph: {
     title: 'Research — the work under the product',
     description:
-      'Research at Krim is the work under the product: making human judgment machine-checkable (the formal logic behind the 33 validators), learning a model of how a whole lending operation behaves, and treating pre-execution validation as a discipline — proving an action before it acts, not auditing it after.',
+      'Research at Krim is the work under the product: making human judgment machine-checkable (the formal logic behind the 33 validators), learning a model of how a whole lending operation behaves, and treating pre-execution validation as a discipline, proving an action before it acts rather than auditing it after.',
     url: 'https://krim.ai/research',
   },
 }
@@ -49,22 +49,22 @@ const STRANDS = [
   {
     n: '01',
     title: 'Judgment, made checkable',
-    body: 'Turning a regulation into a check a machine can run — the formal-logic foundation behind the 33 validators that clear every action.',
+    body: 'Turning a regulation into a check a machine can run: the formal-logic foundation behind the 33 validators that clear every action.',
     link: ['The lineage → Epistemic AI', '/epistemic-ai'] as const,
     tint: 'mint' as const,
   },
   {
     n: '02',
     title: 'A model of the operation',
-    body: 'Learning how a whole lending operation behaves, from the validated outcomes the system records — a world model it can reason and plan against.',
+    body: 'Learning how a whole lending operation behaves, from the validated outcomes the system records: a world model it can reason and plan against.',
     link: ['The direction → World Lending Model', '/research/world-lending-model'] as const,
     tint: 'cyan' as const,
   },
   {
     n: '03',
     title: 'Proof before action',
-    body: 'Treating pre-execution validation as its own discipline: proving an action against law, policy, consent and context before it can fire — not explaining it after.',
-    link: ['In the runtime → Kendra', '/platform/kendra'] as const,
+    body: 'Treating pre-execution validation as its own discipline: proving an action against law, policy, consent and context before it can fire, not explaining it after.',
+    link: ['In the runtime → Kendra', '/krimos/kendra'] as const,
     tint: 'mint' as const,
   },
 ]
@@ -85,15 +85,15 @@ export default function ResearchPage() {
               </h1>
             </Reveal>
             <Reveal delay={0.12}>
-              <p className="mx-auto mt-7 max-w-[50ch] font-sans text-body-lg text-ink-2">
-                A research company before it is a product company — the product is what our answers
-                look like <span className="text-ink">in production</span>.
+              <p className="mx-auto mt-7 max-w-[52ch] font-sans text-body-lg text-ink-2">
+                Krim is a research company first. Everything we ship is that research,{' '}
+                <span className="text-mint">proven in production</span>.
               </p>
             </Reveal>
             <Reveal delay={0.2}>
               <div className="mt-10 flex flex-wrap items-center justify-center gap-6">
                 <CTA href={DEMO_HREF}>Book a demo</CTA>
-                <CTA href="/platform/kendra" variant="secondary">
+                <CTA href="/krimos/kendra" variant="secondary">
                   See it in the runtime
                 </CTA>
               </div>
@@ -109,7 +109,7 @@ export default function ResearchPage() {
               Hard questions, one body of work.
             </h2>
             <p className="mt-6 max-w-[58ch] font-sans text-body-lg text-ink-2">
-              Each strand is a research problem in its own right. Start anywhere — each opens onto
+              Each strand is a research problem in its own right. Start anywhere. Each opens onto
               where it goes deeper.
             </p>
           </Reveal>
@@ -142,10 +142,10 @@ export default function ResearchPage() {
                   Proving before acting is the harder path. We chose it.
                 </h2>
                 <p className="mt-7 max-w-[52ch] font-sans text-body-lg text-ink-2">
-                  Most AI safety is read after the fact — a log to inspect once something has
+                  Most AI safety is read after the fact, a log to inspect once something has
                   happened. In regulated work that is too late: a wrongful disclosure cannot be
                   unmade, a misquoted figure cannot be unspoken. So we treat{' '}
-                  <span className="text-mint">pre-execution validation</span> as its own discipline —
+                  <span className="text-mint">pre-execution validation</span> as its own discipline,
                   checking a proposed action against law, policy, consent and context{' '}
                   <span className="text-ink">before</span> it can fire.
                 </p>
@@ -155,7 +155,7 @@ export default function ResearchPage() {
               <GlassCard accent className="p-8 md:p-10">
                 <p className="font-serif text-[clamp(1.3rem,2.3vw,1.75rem)] leading-snug text-ink">
                   The aim isn’t fewer violations. It is to make the worst ones structurally
-                  impossible — a research problem before it is a product one.
+                  impossible, a research problem before it is a product one.
                 </p>
                 <p className="mt-6 font-mono text-[11px] uppercase tracking-[0.18em] text-mint">
                   Pre-execution, not post-audit
@@ -182,8 +182,8 @@ export default function ResearchPage() {
                   How a learned model of an operation and a formal validator should be composed; how a
                   system improves from its own outcomes without drifting from the rules; how proof
                   stays fast enough to sit in front of every action. These are unsolved, and we say so.
-                  The foundations here are real and credible{' '}
-                  <span className="text-ink">— and they are built to grow.</span>
+                  The foundations here are real and credible,{' '}
+                  <span className="text-ink">and they are built to grow.</span>
                 </p>
               </GlassCard>
             </Reveal>
@@ -198,13 +198,13 @@ export default function ResearchPage() {
                 See where the research already runs in production.
               </h2>
               <p className="mx-auto mt-5 max-w-[50ch] font-sans text-body text-ink-2">
-                The foundations aren’t a roadmap slide — they are the runtime your teams can watch
+                The foundations aren’t a roadmap slide. They are the runtime your teams can watch
                 validate every action, live.
               </p>
               <div className="mt-9 flex flex-wrap items-center justify-center gap-6">
                 <CTA href={DEMO_HREF}>Book a demo</CTA>
-                <CTA href="/platform" variant="secondary">
-                  Explore the platform
+                <CTA href="/krimos" variant="secondary">
+                  Explore KrimOS
                 </CTA>
               </div>
             </div>

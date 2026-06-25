@@ -21,12 +21,12 @@ import { Section, Eyebrow, GlassCard, CTA } from '@/components/ui'
 export const metadata: Metadata = {
   title: 'Trust',
   description:
-    'KrimOS is sovereign by construction: the full stack runs inside your perimeter — on-prem by default — with end-to-end encryption, granular RBAC, customer-held keys and an immutable, cryptographically sealed audit trail. US, UK and India frameworks are encoded in the runtime and validated before every action.',
+    'KrimOS is sovereign by construction: the full stack runs inside your perimeter, on-prem by default, with end-to-end encryption, granular RBAC, customer-held keys and an immutable, cryptographically sealed audit trail. US, UK, EU, India, Nigeria and Brazil frameworks are encoded in the runtime and validated before every action.',
   alternates: { canonical: 'https://krim.ai/trust' },
   openGraph: {
     title: 'Trust — sovereignty, security & deployment',
     description:
-      'KrimOS is sovereign by construction: the full stack runs inside your perimeter — on-prem by default — with end-to-end encryption, granular RBAC, customer-held keys and an immutable, cryptographically sealed audit trail. US, UK and India frameworks are encoded in the runtime and validated before every action.',
+      'KrimOS is sovereign by construction: the full stack runs inside your perimeter, on-prem by default, with end-to-end encryption, granular RBAC, customer-held keys and an immutable, cryptographically sealed audit trail. US, UK, EU, India, Nigeria and Brazil frameworks are encoded in the runtime and validated before every action.',
     url: 'https://krim.ai/trust',
   },
 }
@@ -47,7 +47,7 @@ const DEPLOYMENTS = [
   {
     name: 'Sovereign on-prem',
     note: 'Default · regulated lenders & government',
-    body: 'The full stack runs inside your data centre. Data, model weights, orchestration and telemetry stay behind your perimeter — nothing leaves.',
+    body: 'The full stack runs inside your data centre. Data, model weights, orchestration and telemetry stay behind your perimeter. Nothing leaves.',
     primary: true,
   },
   {
@@ -59,7 +59,7 @@ const DEPLOYMENTS = [
   {
     name: 'Managed SaaS',
     note: 'Fintechs & pilots',
-    body: 'Fully managed inside your preferred sovereign cloud region — the same runtime, the same guarantees, run for you in-jurisdiction.',
+    body: 'Fully managed inside your preferred sovereign cloud region. The same runtime, the same guarantees, run for you in-jurisdiction.',
     primary: false,
   },
 ]
@@ -68,7 +68,7 @@ const DEPLOYMENTS = [
 const POSTURE = [
   {
     title: 'Encrypted end to end',
-    body: 'Encrypted at rest and in transit across the whole stack — no plaintext gaps.',
+    body: 'Encrypted at rest and in transit across the whole stack, with no plaintext gaps.',
   },
   {
     title: 'Granular RBAC',
@@ -76,11 +76,11 @@ const POSTURE = [
   },
   {
     title: 'Customer-held keys',
-    body: 'You hold the keys — Krim can’t read what you haven’t chosen to share.',
+    body: 'You hold the keys. Krim can’t read what you haven’t chosen to share.',
   },
   {
     title: 'PII isolated by tenancy',
-    body: 'Records isolated per tenant — no shared pool, no cross-tenant leakage.',
+    body: 'Records isolated per tenant. No shared pool, no cross-tenant leakage.',
   },
   {
     title: 'Sealed, immutable trail',
@@ -90,11 +90,14 @@ const POSTURE = [
 ]
 
 // ---- encoded jurisdictions (krim-content.md · Krim-Nyāya; Trust footprint) ----
-// Order: USA · India · UK — surfaced as tabs.
+// Order: USA · UK · EU · India · Nigeria · Brazil — surfaced as tabs.
 const JURISDICTIONS = [
-  { region: 'United States', short: 'USA', frameworks: ['FDCPA', 'TCPA', 'Reg F', 'FCRA', 'SCRA', 'GLBA', 'ECOA', 'CFPB', 'ACA'] },
-  { region: 'India', short: 'India', frameworks: ['RBI circulars', 'Fair Practices Code'] },
-  { region: 'United Kingdom', short: 'UK', frameworks: ['FCA Consumer Duty', 'CONC sourcebook', 'Consumer Credit Act', 'UK GDPR'] },
+  { region: 'United States', short: 'USA', frameworks: ['FDCPA', 'Reg F', 'TCPA', 'FCRA', 'ECOA / Reg B', 'TILA / Reg Z', 'SCRA', 'GLBA', 'UDAAP'] },
+  { region: 'United Kingdom', short: 'UK', frameworks: ['FCA Consumer Duty', 'CONC sourcebook', 'Consumer Credit Act 1974', 'FCA Principles', 'DISP (complaints)', 'UK GDPR / DPA 2018', 'PECR', 'MLR 2017'] },
+  { region: 'European Union', short: 'EU', frameworks: ['GDPR', 'EU AI Act', 'Consumer Credit Directive (CCD2)', 'PSD2', 'DORA', 'AMLD / AMLR', 'Credit Servicers Directive', 'ePrivacy Directive'] },
+  { region: 'India', short: 'India', frameworks: ['RBI Digital Lending Guidelines', 'Fair Practices Code', 'KYC Master Direction', 'SARFAESI Act', 'DPDP Act 2023', 'TRAI TCCCPR', 'CIC reporting (CICRA)', 'PMLA / AML', 'RBI recovery-agent norms'] },
+  { region: 'Nigeria', short: 'Nigeria', frameworks: ['CBN Prudential Guidelines', 'BOFIA 2020', 'FCCPC Digital Lending Regulations', 'NDPA 2023 (NDPC)', 'CBN Consumer Protection Framework', 'Credit Reporting Act 2017', 'CBN AML/CFT Regulations'] },
+  { region: 'Brazil', short: 'Brazil', frameworks: ['LGPD (ANPD)', 'Código de Defesa do Consumidor (CDC)', 'Lei do Superendividamento', 'CMN / BCB resolutions', 'Cadastro Positivo', 'SCR credit reporting', 'COAF / Law 9.613'] },
 ]
 
 // ---- security & compliance standards — architecture designed around these frameworks ----
@@ -122,15 +125,15 @@ export default function TrustPage() {
         <Section className="!pt-24">
           <div className="mx-auto max-w-[860px] text-center">
             <Reveal>
-              <Eyebrow>Sovereign · compliant · auditable</Eyebrow>
+              <Eyebrow>Inside your walls</Eyebrow>
               <h1 className="mt-5 font-serif text-display-hero text-ink">
                 Sovereign by construction. Auditable by default.
               </h1>
             </Reveal>
             <Reveal delay={0.12}>
               <p className="mx-auto mt-7 max-w-[60ch] font-sans text-body-lg text-ink-2">
-                KrimOS runs <span className="text-ink">inside your perimeter</span> — on-prem by
-                preference, no foreign API in the loop. Customer data, model weights, orchestration
+                KrimOS runs <span className="text-ink">inside your perimeter</span>, on-prem by
+                preference, with no foreign API in the loop. Customer data, model weights, orchestration
                 and telemetry stay behind your wall. <span className="text-mint">Nothing leaves.</span>
               </p>
             </Reveal>
@@ -147,7 +150,7 @@ export default function TrustPage() {
           <Reveal>
             <Eyebrow>Where it runs</Eyebrow>
             <h2 className="mt-4 max-w-[22ch] font-serif text-display-1 text-ink">
-              Your walls are the boundary — three ways to honour them.
+              Your walls are the boundary: three ways to honour them.
             </h2>
             <p className="mt-6 max-w-[60ch] font-sans text-body-lg text-ink-2">
               One architecture, three deployments. On-prem is how regulated institutions run it; the
@@ -183,7 +186,7 @@ export default function TrustPage() {
               Security, built into the runtime.
             </h2>
             <p className="mt-6 max-w-[60ch] font-sans text-body-lg text-ink-2">
-              Encryption, access, isolation and a sealed audit trail — the controls a regulated buyer
+              Encryption, access, isolation and a sealed audit trail: the controls a regulated buyer
               checks first, engineered in from the start.
             </p>
           </Reveal>
@@ -207,17 +210,17 @@ export default function TrustPage() {
           </div>
         </Section>
 
-        {/* ---- 4 · Encoded jurisdictions — centred headline + USA/India/UK tabs ---- */}
+        {/* ---- 4 · Encoded jurisdictions — centred headline + global jurisdiction tabs ---- */}
         <Section hairline>
           <div className="mx-auto max-w-[760px] text-center">
             <Reveal>
               <Eyebrow>The law, encoded</Eyebrow>
               <h2 className="mt-4 font-serif text-display-1 text-ink">
-                The rules live in the runtime — and gate every action.
+                The rules live in the runtime, and gate every action.
               </h2>
               <p className="mx-auto mt-6 max-w-[58ch] font-sans text-body-lg text-ink-2">
                 Each market&rsquo;s sectoral law is encoded in Krim-Fabric and enforced before an
-                action can fire — so a lender in any jurisdiction inherits{' '}
+                action can fire, so a lender in any jurisdiction inherits{' '}
                 <span className="text-mint">the rules already in place</span>, updated as they change
                 without restarting the runtime.
               </p>
@@ -235,11 +238,11 @@ export default function TrustPage() {
               <div>
                 <Eyebrow>The audit experience</Eyebrow>
                 <h2 className="mt-4 max-w-[22ch] font-serif text-display-1 text-ink">
-                  Every action, its rule and its verdict — on one record.
+                  Every action, its rule and its verdict, on one record.
                 </h2>
                 <p className="mt-7 max-w-[52ch] font-sans text-body-lg text-ink-2">
                   Krim-Ledger streams every action, decision, prompt, output and validation to one
-                  immutable trail. An auditor can replay any decision deterministically — what
+                  immutable trail. An auditor can replay any decision deterministically: what
                   happened, the policy that applied, and the{' '}
                   <span className="text-mint">validation result behind it.</span> The record is built
                   as the work runs, so an inspection that once meant days of reconstruction is
@@ -261,7 +264,7 @@ export default function TrustPage() {
                     <li key={k} className="flex items-baseline gap-3 font-sans text-body text-ink-2">
                       <span aria-hidden className="h-1.5 w-1.5 shrink-0 translate-y-1.5 rounded-full bg-mint" />
                       <span>
-                        <span className="text-ink">{k}</span> — {v}
+                        <span className="text-ink">{k}</span>: {v}
                       </span>
                     </li>
                   ))}
@@ -283,7 +286,7 @@ export default function TrustPage() {
             </h2>
             <p className="mt-6 max-w-[60ch] font-sans text-body-lg text-ink-2">
               Our security architecture is designed around the controls and frameworks your security
-              and compliance teams will recognise — across information security, data protection and
+              and compliance teams will recognise, across information security, data protection and
               AI governance.
             </p>
           </Reveal>
@@ -307,12 +310,6 @@ export default function TrustPage() {
               </Reveal>
             ))}
           </div>
-          <Reveal delay={0.12}>
-            <p className="mx-auto mt-9 max-w-[60ch] text-center font-sans text-body text-ink-3">
-              The architecture is built to these frameworks today, with formal certifications in
-              progress. Documented and ready for your security team to review.
-            </p>
-          </Reveal>
         </Section>
 
         {/* ---- 7 · Close ---- */}
@@ -324,7 +321,7 @@ export default function TrustPage() {
                   Bring your security team. Bring your regulator.
                 </h2>
                 <p className="mx-auto mt-5 max-w-[50ch] font-sans text-body text-ink-2">
-                  Start with an architecture, security and integration review — and see KrimOS run
+                  Start with an architecture, security and integration review, then see KrimOS run
                   inside the perimeter you already defend.
                 </p>
                 <div className="mt-9">

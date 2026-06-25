@@ -16,7 +16,7 @@ import CinematicBand from '@/components/CinematicBand'
 const SLUG = 'the-automation-gap'
 const TITLE = 'The automation gap'
 const DEK =
-  'AI is everywhere except where an action carries legal or financial consequence. Pilots stall at the compliance ceiling — you can’t ship what you can’t prove. The way through is to validate before acting.'
+  'AI is everywhere except where an action carries legal or financial consequence. Pilots stall at the compliance ceiling. You can’t ship what you can’t prove. The way through is to validate before acting.'
 const CATEGORY = 'Problem'
 const DATE_ISO = '2026-01-28'
 const DATE_LONG = '28 January 2026'
@@ -94,12 +94,12 @@ export default function Page() {
             <Reveal>
               <p className="font-sans text-body-lg text-ink-2">
                 Adoption is no longer the story. By the 2024 count, most large organisations had put
-                generative AI to work somewhere — drafting, summarising, answering. The story now is
+                generative AI to work somewhere: drafting, summarising, answering. The story now is
                 where it <span className="text-ink">isn’t</span>: the desk where an action carries
                 legal or financial weight. The right-party check on a collections call. The hardship
                 response on a delinquent account. The wording of a default notice. That work still
-                moves at the speed of a person, because the cost of getting it wrong is not a typo —
-                it is a regulator.
+                moves at the speed of a person, because the cost of getting it wrong is not a typo.
+                It is a regulator.
               </p>
 
               <h2 className="mt-12 font-serif text-[1.5rem] leading-tight text-ink">
@@ -107,8 +107,8 @@ export default function Page() {
               </h2>
               <p className="mt-5 font-sans text-body-lg text-ink-2">
                 McKinsey’s 2024 state-of-AI survey found{' '}
-                <span className="text-ink">65% of organisations regularly using generative AI</span>{' '}
-                — yet only about <span className="text-ink">5%</span> attributed more than a tenth of
+                <span className="text-ink">65% of organisations regularly using generative AI</span>,{' '}
+                yet only about <span className="text-ink">5%</span> attributed more than a tenth of
                 their EBIT to it, and inaccuracy was the harm respondents most often said they had
                 already hit. The tools spread fast and the returns did not follow. The pattern is
                 consistent: AI lands easily where a mistake is cheap, and stalls where it is not.
@@ -116,8 +116,8 @@ export default function Page() {
               <p className="mt-5 font-sans text-body text-ink-2">
                 That picture has a darker companion. MIT’s NANDA initiative
                 reported in 2025 that <span className="text-gold">around 95%</span> of enterprise
-                generative-AI pilots delivered no measurable return — a figure worth treating as
-                directional rather than precise, but one that rhymes with what every operations
+                generative-AI pilots delivered no measurable return, a figure worth treating as
+                directional rather than precise but one that rhymes with what every operations
                 leader already feels. The demos work. The deployments don’t.
               </p>
 
@@ -138,10 +138,10 @@ export default function Page() {
                 <span className="text-ink">at least 30% of generative-AI projects to be abandoned
                 after proof-of-concept</span> by the end of 2025, and forecasts that{' '}
                 <span className="text-ink">more than 40% of agentic-AI projects</span> will be
-                cancelled by the end of 2027 — citing costs, unclear value and inadequate risk
+                cancelled by the end of 2027, citing costs, unclear value and inadequate risk
                 controls. In regulated operations, that last clause is the whole story. A
                 proof-of-concept can show a model drafting a perfect hardship letter. It cannot, by
-                itself, show that the letter was permitted to be sent — to this borrower, on this
+                itself, show that the letter was permitted to be sent: to this borrower, on this
                 account, under today’s rule, with consent on file.
               </p>
               <p className="mt-5 font-sans text-body text-ink-2">
@@ -162,7 +162,7 @@ export default function Page() {
                 with it; what fails never happens.
               </p>
               <p className="mt-5 font-sans text-body text-ink-2">
-                That is the discipline KrimOS is built on —{' '}
+                That is the discipline KrimOS is built on:{' '}
                 <span className="text-mint">validated before it acts</span>. It is also why
                 automation finally reaches the consequential desk: not because the work got less
                 risky, but because the risk is now resolved up front, on the record, where a
@@ -192,12 +192,12 @@ export default function Page() {
               <ul className="mt-4 space-y-2 font-mono text-[12px] leading-relaxed text-ink-3">
                 <li>
                   <a href="https://www.gartner.com/en/newsroom/press-releases/2025-06-25-gartner-predicts-over-40-percent-of-agentic-ai-projects-will-be-canceled-by-end-of-2027" target="_blank" rel="noopener noreferrer" className="underline decoration-soft underline-offset-4 transition-colors hover:text-mint">
-                    Gartner — agentic-AI project cancellations forecast (2025)
+                    Gartner: agentic-AI project cancellations forecast (2025)
                   </a>
                 </li>
                 <li>
                   <a href="https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai-2024" target="_blank" rel="noopener noreferrer" className="underline decoration-soft underline-offset-4 transition-colors hover:text-mint">
-                    McKinsey — The state of AI 2024
+                    McKinsey: The state of AI 2024
                   </a>
                 </li>
               </ul>
@@ -213,13 +213,13 @@ export default function Page() {
                 See automation reach the desk that matters.
               </h2>
               <p className="mx-auto mt-5 max-w-[50ch] font-sans text-body text-ink-2">
-                KrimOS validates every action before it fires — so the consequential work can finally
+                KrimOS validates every action before it fires, so the consequential work can finally
                 run without leaving compliance behind.
               </p>
               <div className="mt-9 flex flex-wrap items-center justify-center gap-6">
                 <CTA href="/contact">Book a demo</CTA>
-                <CTA href="/platform" variant="secondary">
-                  Explore the platform
+                <CTA href="/krimos" variant="secondary">
+                  Explore KrimOS
                 </CTA>
               </div>
             </div>

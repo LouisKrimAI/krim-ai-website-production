@@ -2,13 +2,13 @@
 
 /**
  * WovenRingBackdrop — the brand's living ground for the homepage and the general
- * interior pages (everything except the KrimOS /platform cluster and the Research
+ * interior pages (everything except the KrimOS /krimos cluster and the Research
  * cluster, which keep their own backdrops).
  *
  * A canvas piece: a volume of light that morphs cloud → swirl → sphere → a woven
  * luminous ring, then breathes on a loop, in the brand teal/aqua palette. Ported
  * from the standalone export into a single client component:
- *   - gated by route (renders nothing on /platform* and the research routes),
+ *   - gated by route (renders nothing on /krimos* and the research routes),
  *   - DPR capped and strand/segment counts reduced on small/touch screens,
  *   - paused while the tab is hidden (saves battery), rAF + listeners cleaned up,
  *   - reduced-motion settles to a single still frame,
@@ -25,7 +25,7 @@ const RESEARCH_ROUTES = new Set(['/research', '/research/world-lending-model', '
 export default function WovenRingBackdrop() {
   const pathname = usePathname()
   // KrimOS + Research own their backdrops; everything else gets the woven ring.
-  if (!pathname || pathname.startsWith('/platform') || RESEARCH_ROUTES.has(pathname)) return null
+  if (!pathname || pathname.startsWith('/krimos') || RESEARCH_ROUTES.has(pathname)) return null
   return <WovenRingCanvas />
 }
 

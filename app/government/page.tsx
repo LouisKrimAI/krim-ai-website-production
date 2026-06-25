@@ -19,12 +19,12 @@ import { Section, Eyebrow, GlassCard, CTA } from '@/components/ui'
 export const metadata: Metadata = {
   title: 'Government',
   description:
-    'KrimOS fits public-sector work: AI co-workers that automate citizen-facing and back-office operations inside your own jurisdiction — every action resting on a lawful basis, every action kept on an immutable record.',
+    'KrimOS fits public-sector work: AI co-workers that automate citizen-facing and back-office operations inside your own jurisdiction, every action resting on a lawful basis, every action kept on an immutable record.',
   alternates: { canonical: 'https://krim.ai/government' },
   openGraph: {
     title: 'Government — Krim',
     description:
-      'KrimOS fits public-sector work: AI co-workers that automate citizen-facing and back-office operations inside your own jurisdiction — every action resting on a lawful basis, every action kept on an immutable record.',
+      'KrimOS fits public-sector work: AI co-workers that automate citizen-facing and back-office operations inside your own jurisdiction, every action resting on a lawful basis, every action kept on an immutable record.',
     url: 'https://krim.ai/government',
   },
 }
@@ -49,7 +49,7 @@ const CHALLENGES = [
   },
   {
     name: 'A lawful basis for everything',
-    body: 'Every action a public body takes must rest on a rule that permits it — and survive scrutiny after the fact.',
+    body: 'Every action a public body takes must rest on a rule that permits it, and survive scrutiny after the fact.',
   },
   {
     name: 'Citizen trust',
@@ -65,7 +65,7 @@ const CHALLENGES = [
 const FITS = [
   {
     title: 'Sovereignty is decisive',
-    body: 'KrimOS runs inside your perimeter, in your jurisdiction. Model weights, orchestration and citizens’ data never leave — the property that rules most AI out is the one Krim is built on.',
+    body: 'KrimOS runs inside your perimeter, in your jurisdiction. Model weights, orchestration and citizens’ data never leave. The property that rules most AI out is the one Krim is built on.',
   },
   {
     title: 'Validation is a lawful basis',
@@ -74,7 +74,7 @@ const FITS = [
   },
   {
     title: 'The ledger is accountability',
-    body: 'Every action is sealed to an immutable record — the action, the rule that applied, and the validation result. The answer to “why did this happen?” is always on file.',
+    body: 'Every action is sealed to an immutable record: the action, the rule that applied, and the validation result. The answer to “why did this happen?” is always on file.',
   },
 ]
 
@@ -82,7 +82,7 @@ const FITS = [
 const USE_CASES = [
   {
     name: 'Citizen communication',
-    body: 'Answers, reminders and status updates across channels and languages — always within the rules.',
+    body: 'Answers, reminders and status updates across channels and languages, always within the rules.',
   },
   {
     name: 'Receivables',
@@ -90,7 +90,7 @@ const USE_CASES = [
   },
   {
     name: 'Casework & documents',
-    body: 'Applications and filings processed, checked and moved along — with officials kept in the loop.',
+    body: 'Applications and filings processed, checked and moved along, with officials kept in the loop.',
   },
   {
     name: 'Benefits servicing',
@@ -127,7 +127,7 @@ export default function GovernmentPage() {
             </Reveal>
             <Reveal delay={0.12}>
               <p className="mx-auto mt-7 max-w-[54ch] font-sans text-body-lg text-ink-2">
-                AI co-workers for citizen-facing and back-office work — inside your own jurisdiction,
+                AI co-workers for citizen-facing and back-office work, inside your own jurisdiction,
                 with a <span className="text-mint">lawful basis</span> behind every action.
               </p>
             </Reveal>
@@ -147,7 +147,7 @@ export default function GovernmentPage() {
               Citizens expect more. Accountability allows no shortcuts.
             </h2>
             <p className="mt-6 max-w-[62ch] font-sans text-body-lg text-ink-2">
-              AI could carry the load — but in government every action has to rest on a rule,
+              AI could carry the load, but in government every action has to rest on a rule,
               withstand scrutiny, and keep citizens’ data within the nation’s borders. Generic AI
               clears none of these.
             </p>
@@ -207,7 +207,7 @@ export default function GovernmentPage() {
               The same co-workers, in public-sector form.
             </h2>
             <p className="mt-6 max-w-[58ch] font-sans text-body-lg text-ink-2">
-              Capability built to the work the public sector actually carries — not a claim of who
+              Capability built to the work the public sector actually carries, not a claim of who
               already runs it.
             </p>
           </Reveal>
@@ -275,8 +275,8 @@ export default function GovernmentPage() {
                 </h2>
               </div>
               <p className="flex-1 font-sans text-body text-ink-2">
-                The default for the public sector is the full stack inside your data centre —
-                nothing leaves the perimeter. Sovereignty is a commitment we hold to by default.
+                The default for the public sector is the full stack inside your data centre.
+                Nothing leaves the perimeter. Sovereignty is a commitment we hold to by default.
               </p>
             </GlassCard>
           </Reveal>

@@ -12,7 +12,9 @@ export function Section({
   id,
   children,
   className = '',
-  hairline = false,
+  // kept for API compatibility; section dividers (thin rules) are intentionally
+  // gone — separation is carried by vertical rhythm alone.
+  hairline: _hairline = false,
 }: {
   id?: string
   children: React.ReactNode
@@ -22,7 +24,7 @@ export function Section({
   return (
     <section
       id={id}
-      className={`scroll-mt-16 ${hairline ? 'border-t border-soft' : ''} ${className}`}
+      className={`scroll-mt-16 ${className}`}
       style={{ paddingTop: 'var(--section-y)', paddingBottom: 'var(--section-y)' }}
     >
       <div className="mx-auto max-w-site px-6 md:px-10">{children}</div>
@@ -119,13 +121,15 @@ export function CTA({
       </Link>
     )
   }
+  // Secondary — a classy outlined mint pill (not a bland text link), so it reads
+  // as a deliberate, confident action and pairs with the filled primary.
   return (
     <Link
       href={href}
-      className={`group inline-flex items-baseline gap-2 font-sans text-[15px] text-ink-2 transition-colors hover:text-mint ${className}`}
+      className={`group inline-flex items-center gap-2.5 rounded-full border border-mint/30 bg-mint/[0.05] px-6 py-3 font-sans text-[14.5px] font-medium text-ink transition-all duration-fast ease-standard hover:-translate-y-0.5 hover:border-mint/60 hover:bg-mint/[0.10] hover:shadow-[0_0_30px_-10px_rgba(0,255,178,0.6)] active:translate-y-0 motion-reduce:hover:translate-y-0 ${className}`}
     >
-      <span className="underline-offset-4 group-hover:underline">{children}</span>
-      <span aria-hidden className="transition-transform duration-fast group-hover:translate-x-0.5">→</span>
+      <span>{children}</span>
+      <span aria-hidden className="text-mint transition-transform duration-fast group-hover:translate-x-1">→</span>
     </Link>
   )
 }

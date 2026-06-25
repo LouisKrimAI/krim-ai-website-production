@@ -19,12 +19,12 @@ import { POSTS } from './_posts'
 export const metadata: Metadata = {
   title: 'Insights',
   description:
-    'Insights from Krim — the thinking behind validated, sovereign AI for regulated work: why pilots stall at the compliance ceiling, what a non-compliant action really costs, and why proof has to come before the action, not after.',
+    'Insights from Krim: the thinking behind validated, sovereign AI for regulated work. Why pilots stall at the compliance ceiling, what a non-compliant action really costs, and why proof has to come before the action, not after.',
   alternates: { canonical: 'https://krim.ai/insights' },
   openGraph: {
     title: 'Insights — Krim',
     description:
-      'Insights from Krim — the thinking behind validated, sovereign AI for regulated work: why pilots stall at the compliance ceiling, what a non-compliant action really costs, and why proof has to come before the action, not after.',
+      'Insights from Krim: the thinking behind validated, sovereign AI for regulated work. Why pilots stall at the compliance ceiling, what a non-compliant action really costs, and why proof has to come before the action, not after.',
     url: 'https://krim.ai/insights',
   },
 }
@@ -64,9 +64,9 @@ export default function BlogPage() {
             <Reveal delay={0.12}>
               <p className="mx-auto mt-7 max-w-[58ch] font-sans text-body-lg text-ink-2">
                 Why the most consequential work still runs by hand, what a single wrong action
-                really costs, and why proof has to come <span className="text-ink">first</span> — not
+                really costs, and why proof has to come <span className="text-ink">first</span>, not
                 after. Notes on building <span className="text-mint">validated</span>,{' '}
-                <span className="text-ink">sovereign</span> AI for banking — lending first.
+                <span className="text-ink">sovereign</span> AI for banking, lending first.
               </p>
             </Reveal>
           </div>

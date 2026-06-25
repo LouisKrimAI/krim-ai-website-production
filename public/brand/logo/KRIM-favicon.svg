@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <rect width="512" height="512" rx="112" fill="#0A0B0F"/>
+  <g transform="translate(256 256) scale(0.86) translate(-215 -185)" fill="#00FFB2">
+    <path d="M 274 9 L 274 16 L 413.643 16 L 335.117 147 L 343.278 147 L 426 9 L 274 9 Z M 215 347.385 L 157.224 251 L 149.062 251 L 215 361 L 280.938 251 L 272.776 251 L 215 347.385 Z M 16.357 16 L 156 16 L 156 9 L 4 9 L 86.722 147 L 94.883 147 L 16.357 16 Z"/>
+    <circle cx="215" cy="136" r="44"/>
+  </g>
+</svg>

@@ -19,7 +19,7 @@ import CinematicBand from '@/components/CinematicBand'
 const SLUG = 'the-credit-gap-is-an-operations-problem'
 const TITLE = 'The credit gap is an operations problem'
 const DEK =
-  'Billions stay underserved not only because risk is hard to price, but because the cost and risk of operating lending at scale — compliant communications, servicing, collections — is prohibitive. Make safe operations cheap and the reachable market grows.'
+  'Billions stay underserved not only because risk is hard to price, but because the cost and risk of operating lending at scale (compliant communications, servicing, collections) is prohibitive. Make safe operations cheap and the reachable market grows.'
 const CATEGORY = 'Markets'
 const DATE_ISO = '2026-04-21'
 const DATE_LONG = '21 April 2026'
@@ -97,7 +97,7 @@ export default function Page() {
             <Reveal>
               <p className="font-sans text-body-lg text-ink-2">
                 The size of the unmet demand is not in dispute. The IFC puts the MSME finance gap in
-                emerging markets at roughly <span className="text-ink">$5.7 trillion</span> — about
+                emerging markets at roughly <span className="text-ink">$5.7 trillion</span>, about
                 19% of those economies’ combined GDP, up from $4.4 trillion in 2015. Women-owned MSMEs
                 account for some <span className="text-ink">$1.9 trillion</span> of it. In India
                 alone, an RBI-commissioned committee estimated the MSME credit gap at{' '}
@@ -105,7 +105,7 @@ export default function Page() {
                 Global Findex counted <span className="text-ink">1.4 billion</span> adults still
                 unbanked in 2021. Even in the United States, the CFPB found{' '}
                 <span className="text-ink">26 million</span> adults are credit-invisible and another
-                19 million unscorable — roughly one in five.
+                19 million unscorable, roughly one in five.
               </p>
               <p className="mt-5 font-sans text-body text-ink-2">
                 The reflex is to read all of this as a pricing problem: if only we could score thin-
@@ -119,8 +119,8 @@ export default function Page() {
               </h2>
               <p className="mt-5 font-sans text-body-lg text-ink-2">
                 A loan is not a moment of approval. It is a relationship that has to be{' '}
-                <span className="text-ink">operated</span> — onboarding, disclosures, statements,
-                reminders, hardship handling, collections, complaints — every step bound by rules
+                <span className="text-ink">operated</span>: onboarding, disclosures, statements,
+                reminders, hardship handling, collections, complaints. Every step is bound by rules
                 that differ by product, channel and jurisdiction. For small-ticket and thin-file
                 lending, that operational load barely shrinks while the revenue per account does. The
                 economics break not because the borrower is too risky to price, but because the
@@ -130,7 +130,7 @@ export default function Page() {
               <Reveal>
                 <GlassCard accent className="my-10 p-8 md:p-10">
                   <p className="font-serif text-[1.5rem] leading-snug text-ink">
-                    A borrower can be creditworthy and still go unserved — because the cost of running
+                    A borrower can be creditworthy and still go unserved, because the cost of running
                     the loan compliantly is larger than the loan.
                   </p>
                 </GlassCard>
@@ -138,7 +138,7 @@ export default function Page() {
 
               <p className="mt-5 font-sans text-body text-ink-2">
                 And the cost is not only labour. It is risk. As covered elsewhere in this series, a
-                single mishandled communication carries real statutory exposure — so every cheap way
+                single mishandled communication carries real statutory exposure. Every cheap way
                 to operate at scale tends to be the unsafe way, and every safe way tends to be the
                 expensive, manual one. That trade-off is the quiet reason the frontier of who gets
                 served sits where it does.
@@ -149,17 +149,17 @@ export default function Page() {
               </h2>
               <p className="mt-5 font-sans text-body-lg text-ink-2">
                 This reframes the problem in a useful way. If the binding constraint on inclusion is
-                the cost and risk of <span className="text-ink">operating</span> a loan — not pricing
-                it — then the highest-leverage move is to make safe operations cheap. Drive down the
+                the cost and risk of <span className="text-ink">operating</span> a loan, not pricing
+                it, then the highest-leverage move is to make safe operations cheap. Drive down the
                 marginal cost of a compliant communication, a serviced account, a hardship
                 conversation, and the math on the underserved shifts.
               </p>
               <p className="mt-5 font-sans text-body text-ink-2">
                 That is the leverage: when compliant operation stops being the expensive option,
-                accounts that never penciled out start to — not by taking on risk the institution
+                accounts that never penciled out start to, not by taking on risk the institution
                 wouldn’t, but by <span className="text-mint">making the safe way the affordable
-                way</span>. It is the same reason we are building toward the whole stack — origination
-                and a safe AI underwriter included — so the system that makes operations cheap can also
+                way</span>. It is the same reason we are building toward the whole stack, origination
+                and a safe AI underwriter included, so the system that makes operations cheap can also
                 widen who is reachable in the first place. The credit gap was never only about who
                 deserves a loan. It was about who could be <span className="text-ink">reached</span>{' '}
                 without breaking the rules or the budget.
@@ -187,22 +187,22 @@ export default function Page() {
               <ul className="mt-4 space-y-2 font-mono text-[12px] leading-relaxed text-ink-3">
                 <li>
                   <a href="https://www.smefinanceforum.org/data-sites/msme-finance-gap" target="_blank" rel="noopener noreferrer" className="underline decoration-soft underline-offset-4 transition-colors hover:text-mint">
-                    IFC / SME Finance Forum — MSME finance gap
+                    IFC / SME Finance Forum: MSME finance gap
                   </a>
                 </li>
                 <li>
                   <a href="https://dcmsme.gov.in/Report%20of%20Expert%20Committee%20on%20MSMEs%20-%20The%20U%20K%20Sinha%20Committee%20constitutes%20by%20RBI.pdf" target="_blank" rel="noopener noreferrer" className="underline decoration-soft underline-offset-4 transition-colors hover:text-mint">
-                    RBI — U.K. Sinha Committee report on MSMEs (2019)
+                    RBI: U.K. Sinha Committee report on MSMEs (2019)
                   </a>
                 </li>
                 <li>
                   <a href="https://www.worldbank.org/en/publication/globalfindex" target="_blank" rel="noopener noreferrer" className="underline decoration-soft underline-offset-4 transition-colors hover:text-mint">
-                    World Bank — Global Findex 2021
+                    World Bank: Global Findex 2021
                   </a>
                 </li>
                 <li>
                   <a href="https://www.consumerfinance.gov/data-research/research-reports/who-are-credit-invisibles/" target="_blank" rel="noopener noreferrer" className="underline decoration-soft underline-offset-4 transition-colors hover:text-mint">
-                    CFPB — Who are the credit invisibles? (2015)
+                    CFPB: Who are the credit invisibles? (2015)
                   </a>
                 </li>
               </ul>
@@ -218,7 +218,7 @@ export default function Page() {
                 Make safe operations the affordable ones.
               </h2>
               <p className="mx-auto mt-5 max-w-[50ch] font-sans text-body text-ink-2">
-                KrimOS runs the operations around lending — communications, servicing, collections —
+                KrimOS runs the operations around lending (communications, servicing, collections),
                 validated before they act, so more borrowers can be reached without bending the rules
                 or the budget.
               </p>

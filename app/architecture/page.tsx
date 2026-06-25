@@ -3,7 +3,7 @@
  * Answer-first: KrimOS is the decision layer your systems report into — no rip,
  * no replace. Then the runtime (eight Kendra modules), the substrate (memory,
  * durable orchestration, the shared domain model), the integration fabric, and
- * one architecture across three geographies. Glass + type only — no devices.
+ * one architecture, sovereign in every market. Glass + type only, no devices.
  * Facts: docs/krim-content.md (Inside Kendra · technical depth · integration fabric).
  */
 
@@ -18,12 +18,12 @@ import { Section, Eyebrow, GlassCard, CTA } from '@/components/ui'
 export const metadata: Metadata = {
   title: 'Architecture',
   description:
-    'How KrimOS is built: the decision layer your existing systems report into. Eight Kendra runtime modules (Core, Karya, Fabric, Govern, Nyāya, Learn, Ledger, Sense), a shared substrate of memory tiers, durable orchestration and a 15-entity domain model, a 40+ connector integration fabric, and one architecture across three sovereign geographies.',
+    'How KrimOS is built: the decision layer your existing systems report into. Eight Kendra runtime modules (Core, Karya, Fabric, Govern, Nyāya, Learn, Ledger, Sense), a shared substrate of memory tiers, durable orchestration and a 15-entity domain model, a 40+ connector integration fabric, and one architecture that runs sovereign in every market.',
   alternates: { canonical: 'https://krim.ai/architecture' },
   openGraph: {
     title: 'Architecture — KrimOS',
     description:
-      'How KrimOS is built: the decision layer your existing systems report into. Eight Kendra runtime modules (Core, Karya, Fabric, Govern, Nyāya, Learn, Ledger, Sense), a shared substrate of memory tiers, durable orchestration and a 15-entity domain model, a 40+ connector integration fabric, and one architecture across three sovereign geographies.',
+      'How KrimOS is built: the decision layer your existing systems report into. Eight Kendra runtime modules (Core, Karya, Fabric, Govern, Nyāya, Learn, Ledger, Sense), a shared substrate of memory tiers, durable orchestration and a 15-entity domain model, a 40+ connector integration fabric, and one architecture that runs sovereign in every market.',
     url: 'https://krim.ai/architecture',
   },
 }
@@ -61,7 +61,7 @@ const faqLd = {
     },
     {
       '@type': 'Question',
-      name: 'Does the same architecture run in the US, UK and India?',
+      name: 'Does the same architecture run in every market?',
       acceptedAnswer: {
         '@type': 'Answer',
         text: 'Yes. One architecture runs in every market; only Krim-Fabric’s per-jurisdiction rule set changes. Each region runs sovereign within its own perimeter, and a lender adopting KrimOS in any market inherits the same runtime, audit trail and governance with the jurisdiction’s law already encoded.',
@@ -80,7 +80,7 @@ const MODULES = [
   {
     name: 'Krim-Karya',
     role: 'Scheduler',
-    body: 'Owns when work runs — timed and recurring tasks, deferred actions, retry and back-off timing, and time-window rules such as contact hours and regulatory deadlines, so every action fires only when it is permitted.',
+    body: 'Owns when work runs: timed and recurring tasks, deferred actions, retry and back-off timing, and time-window rules such as contact hours and regulatory deadlines, so every action fires only when it is permitted.',
   },
   {
     name: 'Krim-Fabric',
@@ -90,7 +90,7 @@ const MODULES = [
   {
     name: 'Krim-Govern',
     role: 'Policy engine',
-    body: 'A seven-level policy hierarchy encoding law, regulator guidance, internal rules and operational guardrails — enforced per tenant.',
+    body: 'A seven-level policy hierarchy encoding law, regulator guidance, internal rules and operational guardrails, enforced per tenant.',
   },
   {
     name: 'Krim-Nyāya',
@@ -100,12 +100,12 @@ const MODULES = [
   {
     name: 'Krim-Learn',
     role: 'Learning orchestrator',
-    body: 'Coordinates ten learning loops — outcome feedback, error and pattern analysis, temporal and semantic learning — across the workforce.',
+    body: 'Coordinates ten learning loops across the workforce: outcome feedback, error and pattern analysis, temporal and semantic learning.',
   },
   {
     name: 'Krim-Ledger',
     role: 'Metered record',
-    body: 'Logs every action immutably and meters it in Krim Work Units — serving the audit trail and usage-based billing from one source.',
+    body: 'Logs every action immutably and meters it in Krim Work Units, serving the audit trail and usage-based billing from one source.',
   },
   {
     name: 'Krim-Sense',
@@ -120,7 +120,7 @@ const SUBSTRATE = [
     title: 'Shared memory',
     body: (
       <>
-        Four tiers — <span className="text-ink">working, short-term, long-term, episodic</span> —
+        Four tiers (<span className="text-ink">working, short-term, long-term, episodic</span>),
         shared across the workforce, so a pattern one co-worker learns is available to the rest
         without retraining.
       </>
@@ -130,8 +130,8 @@ const SUBSTRATE = [
     title: 'Durable orchestration',
     body: (
       <>
-        Long-running workflows run on Temporal-class orchestration in Krim-Core —
-        <span className="text-ink"> durable across crashes and deploys</span>, with automatic
+        Long-running workflows run on Temporal-class orchestration in Krim-Core,{' '}
+        <span className="text-ink">durable across crashes and deploys</span>, with automatic
         retries, saga-pattern rollbacks, event sourcing and deterministic replay for incident
         investigation.
       </>
@@ -141,9 +141,9 @@ const SUBSTRATE = [
     title: 'Shared domain model',
     body: (
       <>
-        One model of <span className="text-ink">15 core entities</span> — Tenant, Account,
+        One model of <span className="text-ink">15 core entities</span>: Tenant, Account,
         Borrower, Loan, Interaction, Decision, PaymentPlan, Policy, ComplianceEvent, AuditLog and
-        more — the common language every co-worker reads from and writes to.
+        more. It is the common language every co-worker reads from and writes to.
       </>
     ),
   },
@@ -168,14 +168,14 @@ export default function ArchitecturePage() {
             </Reveal>
             <Reveal delay={0.12}>
               <p className="mx-auto mt-7 max-w-[54ch] font-sans text-body-lg text-ink-2">
-                KrimOS doesn&rsquo;t replace your core systems — it sits above them, reading from each
+                KrimOS doesn&rsquo;t replace your core systems. It sits above them, reading from each
                 and writing back <span className="text-mint">only on validated channels</span>.
               </p>
             </Reveal>
             <Reveal delay={0.2}>
               <div className="mt-10 flex flex-wrap items-center justify-center gap-6">
                 <CTA href={DEMO_HREF}>Book a demo</CTA>
-                <CTA href="/platform/kendra" variant="secondary">
+                <CTA href="/krimos/kendra" variant="secondary">
                   See how validation works
                 </CTA>
               </div>
@@ -186,7 +186,7 @@ export default function ArchitecturePage() {
         {/* ---- Cinematic band: the lattice the stack reports into ---- */}
         <CinematicBand
           src="/images/cinematic/architecture-lattice.jpg"
-          alt="An endless teal lattice of interconnected nodes — one decision layer over the systems a bank already runs."
+          alt="An endless teal lattice of interconnected nodes, one decision layer over the systems a bank already runs."
           objectPosition="50% 50%"
           tint="cyan"
           eyebrow="The decision layer"
@@ -202,7 +202,7 @@ export default function ArchitecturePage() {
             </h2>
             <p className="mt-6 max-w-[62ch] font-sans text-body-lg text-ink-2">
               The runtime layer is named <span className="text-ink">Kendra</span>. It is realised as
-              eight engineering modules — each does one job, and together they are why validated AI
+              eight engineering modules. Each does one job, and together they are why validated AI
               can act in regulated work.
             </p>
           </Reveal>
@@ -230,7 +230,7 @@ export default function ArchitecturePage() {
               What the co-workers stand on.
             </h2>
             <p className="mt-6 max-w-[62ch] font-sans text-body-lg text-ink-2">
-              Beneath the modules sits a shared substrate — the memory the workforce thinks with, the
+              Beneath the modules sits a shared substrate: the memory the workforce thinks with, the
               orchestration that keeps long work durable, and the single domain model they all speak.
             </p>
           </Reveal>
@@ -260,7 +260,7 @@ export default function ArchitecturePage() {
                   <span className="text-ink">40+ connectors</span> span core banking, loan
                   origination and servicing, CRM, telephony, messaging, payments, credit bureaus and
                   document management. Event-driven where systems allow, with batch and polling
-                  fallback for legacy — and one common behaviour for auth, field mapping, retries,
+                  fallback for legacy. One common behaviour handles auth, field mapping, retries,
                   sync and observability.
                 </p>
                 <p className="mt-5 max-w-[52ch] font-sans text-body text-ink-2">
@@ -278,21 +278,21 @@ export default function ArchitecturePage() {
                   <li className="flex items-baseline gap-3">
                     <span aria-hidden className="h-1.5 w-1.5 shrink-0 translate-y-1.5 rounded-full bg-cyan" />
                     <span>
-                      <span className="text-ink">Event + stream</span> — webhooks and streaming for
+                      <span className="text-ink">Event + stream</span>: webhooks and streaming for
                       systems that emit changes in real time.
                     </span>
                   </li>
                   <li className="flex items-baseline gap-3">
                     <span aria-hidden className="h-1.5 w-1.5 shrink-0 translate-y-1.5 rounded-full bg-cyan" />
                     <span>
-                      <span className="text-ink">Batch + poll</span> — scheduled extracts and polling
+                      <span className="text-ink">Batch + poll</span>: scheduled extracts and polling
                       for legacy systems that don&rsquo;t.
                     </span>
                   </li>
                   <li className="flex items-baseline gap-3">
                     <span aria-hidden className="h-1.5 w-1.5 shrink-0 translate-y-1.5 rounded-full bg-mint" />
                     <span>
-                      <span className="text-mint">Validated write-back</span> — nothing returns to
+                      <span className="text-mint">Validated write-back</span>: nothing returns to
                       your systems until it has cleared the gate.
                     </span>
                   </li>
@@ -302,16 +302,16 @@ export default function ArchitecturePage() {
           </div>
         </Section>
 
-        {/* ---- 5 · One architecture, three geographies ---- */}
+        {/* ---- 5 · One architecture, every market ---- */}
         <Section hairline>
           <Reveal>
-            <Eyebrow>One architecture, three geographies</Eyebrow>
+            <Eyebrow>One architecture, every geography</Eyebrow>
             <h2 className="mt-4 max-w-[24ch] font-serif text-display-1 text-ink">
               The same runtime, sovereign in every market.
             </h2>
             <p className="mt-6 max-w-[62ch] font-sans text-body-lg text-ink-2">
-              KrimOS runs the same architecture in the US, UK and India —{' '}
-              <span className="text-ink">only Krim-Fabric&rsquo;s rule set changes</span>. Each
+              KrimOS runs the same architecture across the US, UK, EU, India, Nigeria and Brazil.{' '}
+              <span className="text-ink">Only Krim-Fabric&rsquo;s rule set changes</span>. Each
               region runs self-contained behind its own walls, the local law already loaded, so one
               runtime, audit trail and governance carry from market to market unchanged.
             </p>
@@ -320,15 +320,27 @@ export default function ArchitecturePage() {
             {[
               {
                 region: 'United States',
-                body: 'FDCPA, TCPA, Reg F, FCRA, SCRA, GLBA, ECOA and CFPB encoded in Krim-Fabric.',
+                body: 'FDCPA, Reg F, TCPA, FCRA, ECOA / Reg B, TILA / Reg Z, SCRA, GLBA and UDAAP, encoded in Krim-Fabric.',
               },
               {
                 region: 'United Kingdom',
-                body: 'FCA Consumer Duty, the CONC sourcebook and the Consumer Credit Act encoded in Krim-Fabric.',
+                body: 'FCA Consumer Duty, the CONC sourcebook, the Consumer Credit Act 1974, the FCA Principles, DISP, UK GDPR and the Money Laundering Regulations, encoded in Krim-Fabric.',
+              },
+              {
+                region: 'European Union',
+                body: 'GDPR, the EU AI Act, the Consumer Credit Directive (CCD2), PSD2, DORA, the AML Directives and the Credit Servicers Directive, encoded in Krim-Fabric.',
               },
               {
                 region: 'India',
-                body: 'RBI circulars and the Fair Practices Code encoded in Krim-Fabric.',
+                body: 'RBI Digital Lending Guidelines, the Fair Practices Code, the KYC Master Direction, SARFAESI, the DPDP Act 2023, TRAI TCCCPR, CIC reporting and RBI recovery-agent norms, encoded in Krim-Fabric.',
+              },
+              {
+                region: 'Nigeria',
+                body: 'CBN Prudential Guidelines, BOFIA 2020, the FCCPC Digital Lending Regulations, the NDPA 2023, the CBN Consumer Protection Framework and the Credit Reporting Act 2017, encoded in Krim-Fabric.',
+              },
+              {
+                region: 'Brazil',
+                body: 'The LGPD, the Consumer Defence Code (CDC), the Lei do Superendividamento, CMN and BCB resolutions, the Cadastro Positivo and COAF AML rules, encoded in Krim-Fabric.',
               },
             ].map((g, i) => (
               <Reveal key={g.region} delay={i * 0.08}>
@@ -370,13 +382,13 @@ export default function ArchitecturePage() {
                     <>
                       Through an integration fabric of <span className="text-ink">40+ connectors</span>{' '}
                       across core banking, origination and servicing, CRM, telephony, messaging,
-                      payments, credit bureaus and document management — event-driven where systems
+                      payments, credit bureaus and document management. It is event-driven where systems
                       allow, with batch and polling fallback for legacy.
                     </>
                   ),
                 },
                 {
-                  q: 'Does the same architecture run in the US, UK and India?',
+                  q: 'Does the same architecture run in every market?',
                   a: (
                     <>
                       Yes. One architecture runs in every market; only{' '}
@@ -406,13 +418,13 @@ export default function ArchitecturePage() {
                 See it slot into your architecture.
               </h2>
               <p className="mx-auto mt-5 max-w-[50ch] font-sans text-body text-ink-2">
-                A two-week technical deep-dive covers architecture, security and integration — then a
-                scoped pilot on ring-fenced data.
+                A two-week technical deep-dive covers architecture, security and integration, then a
+                scoped pilot follows on ring-fenced data.
               </p>
               <div className="mt-9 flex flex-wrap items-center justify-center gap-6">
                 <CTA href={DEMO_HREF}>Book a demo</CTA>
-                <CTA href="/platform" variant="secondary">
-                  Explore the platform
+                <CTA href="/krimos" variant="secondary">
+                  Explore KrimOS
                 </CTA>
               </div>
             </div>

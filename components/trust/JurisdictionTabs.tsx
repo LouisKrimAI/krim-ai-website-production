@@ -2,9 +2,10 @@
 
 /**
  * JurisdictionTabs — the regulation set per market, behind a tab.
- * USA · India · UK. Each tab reveals that jurisdiction's encoded frameworks as
- * mint-dotted chips. Calm pill tabs (mint = active), one panel that cross-fades.
- * Reduced motion settles instantly.
+ * USA · UK · EU · India · Nigeria · Brazil. Each tab reveals that jurisdiction's
+ * encoded frameworks as mint-dotted chips. Calm pill tabs (mint = active), one
+ * panel that cross-fades; the tab row wraps on narrow screens. Reduced motion
+ * settles instantly.
  */
 
 import { useState } from 'react'
@@ -23,7 +24,7 @@ export default function JurisdictionTabs({ items }: { items: Jurisdiction[] }) {
       <div
         role="tablist"
         aria-label="Jurisdiction"
-        className="mx-auto flex w-fit gap-1 rounded-full border border-white/10 bg-white/[0.02] p-1.5"
+        className="mx-auto flex w-fit max-w-full flex-wrap justify-center gap-1.5 rounded-2xl border border-white/10 bg-white/[0.02] p-1.5"
       >
         {items.map((j, i) => {
           const on = i === active
@@ -34,7 +35,7 @@ export default function JurisdictionTabs({ items }: { items: Jurisdiction[] }) {
               aria-selected={on}
               type="button"
               onClick={() => setActive(i)}
-              className="rounded-full px-6 py-2 font-mono text-[11px] uppercase tracking-[0.18em] transition-all duration-300"
+              className="rounded-full px-4 py-2 font-mono text-[11px] uppercase tracking-[0.18em] transition-all duration-300"
               style={{
                 backgroundColor: on ? 'rgba(0,255,178,0.10)' : 'transparent',
                 color: on ? 'var(--mint)' : 'var(--text-3)',

@@ -23,7 +23,7 @@ export const metadata: Metadata = {
   alternates: { canonical: 'https://krim.ai' },
   openGraph: {
     description:
-      'KrimOS is the operating system for banking and financial services — a world model for lending with AI co-workers that run the whole lifecycle, every action validated before it acts, inside your own walls.',
+      'KrimOS is the operating system for banking and financial services: a world model for lending with AI co-workers that run the whole lifecycle, every action validated before it acts, inside your own walls.',
     url: 'https://krim.ai',
     siteName: 'Krim',
     type: 'website',
@@ -62,7 +62,7 @@ const PROBLEMS = [
   },
   {
     heading: 'Many point-solutions. No unified intelligence.',
-    body: 'Each tool handles a slice — origination here, collections there, servicing somewhere else. No single system builds understanding from the whole. The intelligence your operation should be generating never forms.',
+    body: 'Each tool handles a slice: origination here, collections there, servicing somewhere else. No single system builds understanding from the whole. The intelligence your operation should be generating never forms.',
   },
 ]
 
@@ -75,7 +75,7 @@ const POWERS = [
   {
     name: 'Faster & Scalable',
     tagline: 'Co-workers that do the work, not just advise on it.',
-    body: "Agents execute across the full lending lifecycle — without manual handoffs. As your book grows, the operation keeps pace. The headcount doesn't have to.",
+    body: "Agents execute across the full lending lifecycle, without manual handoffs. As your book grows, the operation keeps pace. The headcount doesn't have to.",
   },
   {
     name: 'Evolving & Predictive',
@@ -87,12 +87,12 @@ const POWERS = [
 // Who actually uses KrimOS — the lending roles, and what changes for each.
 // `hl` = the load-bearing phrase, lit in mint so each card reads at a glance.
 const USERS = [
-  { role: 'Origination', impact: 'Underwriters and analysts onboard in hours, not days — every decision auditable, applications moving at digital speed.', hl: 'in hours, not days' },
+  { role: 'Origination', impact: 'Underwriters and analysts onboard in hours, not days. Every decision auditable, applications moving at digital speed.', hl: 'in hours, not days' },
   { role: 'Risk & Credit', impact: 'Every AI decision is provable and on the record, so model risk and fair-lending exposure stay contained.', hl: 'provable and on the record' },
-  { role: 'Servicing', impact: 'Cure and serve at scale — every contact, in the customer’s own language, inside the rules and without adding headcount.', hl: 'inside the rules' },
-  { role: 'Collections', impact: 'Right-party contact at scale and better recovery — collections flow into the operation as validated actions.', hl: 'validated actions' },
-  { role: 'Compliance & Audit', impact: 'Reconstruct any action, any time, in plain words your examiner can read — inspections close in hours, not weeks.', hl: 'your examiner can read' },
-  { role: 'Operations', impact: 'The manual backlog from origination to collections runs on validated co-workers — the team scales without the headcount.', hl: 'without the headcount' },
+  { role: 'Servicing', impact: 'Cure and serve at scale: every contact, in the customer’s own language, inside the rules and without adding headcount.', hl: 'inside the rules' },
+  { role: 'Collections', impact: 'Right-party contact at scale and better recovery: collections flow into the operation as validated actions.', hl: 'validated actions' },
+  { role: 'Compliance & Audit', impact: 'Reconstruct any action, any time, in plain words your examiner can read. Inspections close in hours, not weeks.', hl: 'your examiner can read' },
+  { role: 'Operations', impact: 'The manual backlog from origination to collections runs on validated co-workers. The team scales without the headcount.', hl: 'without the headcount' },
 ] as const
 
 const DEMO_HREF = '/contact'
@@ -113,13 +113,14 @@ export default function HomePage() {
         <Section hairline id="platform">
           <div className="mx-auto max-w-[760px] text-center">
             <Reveal>
-              <Eyebrow>One operating system</Eyebrow>
+              <Eyebrow>Meet KrimOS</Eyebrow>
               <h2 className="mt-4 font-serif text-display-1 text-ink">
-                KrimOS — the operating system for banking and lending.
+                The operating system for banking and lending.
               </h2>
-              <p className="mx-auto mt-6 max-w-[48ch] font-sans text-body-lg text-ink-2">
-                One system runs the whole lending operation — doing the work, proving every action,
-                learning from every outcome.
+              <p className="mx-auto mt-6 max-w-[52ch] font-sans text-body-lg text-ink-2">
+                One system runs the whole operation, from origination to collections. AI co-workers do
+                the work, <span className="text-mint">every action is validated before it acts</span>,
+                and it all runs inside your own walls.
               </p>
             </Reveal>
           </div>
@@ -130,8 +131,8 @@ export default function HomePage() {
           </Reveal>
           <Reveal delay={0.2}>
             <div className="mt-12 text-center">
-              <CTA href="/platform" variant="secondary">
-                Explore the platform
+              <CTA href="/krimos" variant="secondary">
+                Explore KrimOS
               </CTA>
             </div>
           </Reveal>
@@ -150,7 +151,7 @@ export default function HomePage() {
               <Reveal delay={0.12}>
                 <p className="mt-7 max-w-[52ch] font-sans text-body-lg text-ink-2">
                   One runtime runs the whole lifecycle and records every action with its reasoning on
-                  one ledger — so KrimOS builds a connected model of how lending actually behaves, and
+                  one ledger, so KrimOS builds a connected model of how lending actually behaves, and
                   sharpens with every outcome. Validation lets it act; the record, kept inside your
                   walls, lets it learn.
                 </p>
@@ -179,7 +180,7 @@ export default function HomePage() {
                 />
                 <Image
                   src="/images/krimos/flywheel-clear.png"
-                  alt="The KrimOS flywheel — a glass ring of light turning through validate, act, record and learn, cyan warming to mint as the cycle compounds."
+                  alt="The KrimOS flywheel, a glass ring of light turning through validate, act, record and learn, cyan warming to mint as the cycle compounds."
                   width={1196}
                   height={1196}
                   sizes="(max-width: 768px) 88vw, 520px"
@@ -195,7 +196,7 @@ export default function HomePage() {
           <Reveal>
             <Eyebrow tone="gold">The challenge</Eyebrow>
             <h2 className="mt-4 font-serif text-display-1 text-ink">What&rsquo;s stopping AI from running banking?</h2>
-            <p className="mt-3 font-sans text-body-lg italic text-ink-3">AI in banking — The pilot that never lands.</p>
+            <p className="mt-3 font-sans text-body-lg italic text-ink-3">AI in banking: the pilot that never lands.</p>
           </Reveal>
           <div className="mt-12 grid gap-5 md:grid-cols-3">
             {PROBLEMS.map((p, i) => (
@@ -233,7 +234,7 @@ export default function HomePage() {
               Every action is checked before it happens.
             </h2>
             <p className="mt-6 max-w-[54ch] font-sans text-body-lg text-ink-2">
-              Before a co-worker acts, Kendra runs it through Krim-Nyāya — a gate of 33 validators in
+              Before a co-worker acts, Kendra runs it through Krim-Nyāya, a gate of 33 validators in
               three families: grounding, soundness, permission. Here is one action meeting the gate.
             </p>
           </Reveal>

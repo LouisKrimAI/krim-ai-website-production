@@ -1,73 +1,192 @@
 /**
- * IntegrationsMarquee — homepage integrations strip: real partner /
- * integration logos drifting horizontally across three labelled rows
- * (Linear/Vercel-grade partner strip). Rows alternate direction
- * (left · right · left), loop slowly and seamlessly (logo set is
- * duplicated so the translate wraps with no jump), and pause on hover.
+ * IntegrationsMarquee — homepage integrations strip: real integration logos
+ * drifting horizontally across labelled rows (Linear/Vercel-grade partner strip).
+ * Rows alternate direction, loop slowly and seamlessly (the logo set is duplicated
+ * so the translate wraps with no jump), and pause on hover.
  *
- * Logos are recovered PNGs under /public/brand/integrations/. They are
- * unified to monochrome white via a CSS filter and normalised height so
- * the mismatched source art reads as one calm system.
+ * Logos live as monochrome-friendly assets under /public/brand/integrations/
+ * (svg or png, transparent). They are unified to white via a CSS filter and
+ * normalised height so mismatched source art reads as one calm system.
  *
- * Self-contained: the @keyframes live in a local <style> with uniquely
- * named animations (krim-marquee-l / krim-marquee-r) so globals.css is
- * untouched. GPU-only transforms (translate3d); prefers-reduced-motion
- * pins every row static. No props.
+ * SELF-FILLING: each row declares the brands we intend to show; at render the
+ * strip keeps only those whose asset is actually present on disk, and drops any
+ * row left empty. So new categories (Credit & identity, Models & AI) appear the
+ * moment their first logo is dropped in — no broken images, no code change. The
+ * full target catalogue (the sourcing list) lives in CATALOGUE below.
+ *
+ * Server component (uses fs to resolve present assets). The @keyframes live in a
+ * local <style> with uniquely named animations so globals.css is untouched.
+ * GPU-only transforms; prefers-reduced-motion pins every row static. No props.
  */
 
-type Logo = { src: string; alt: string }
+import fs from 'node:fs'
+import path from 'node:path'
 
-type Row = {
+type Brand = { slug: string; alt: string }
+type RowDef = {
   /** uppercase mono label shown beside the row */
   label: string
   /** scroll direction — drives which keyframe + which fill order */
   dir: 'l' | 'r'
   /** loop duration in seconds (slow, premium drift) */
   duration: number
-  logos: Logo[]
+  brands: Brand[]
 }
 
 const BASE = '/brand/integrations'
+const DIR = path.join(process.cwd(), 'public', 'brand', 'integrations')
 
-// Three categorised flows, alternating direction (l · r · l) — a calm,
-// premium partner strip that reads as one system across the lifecycle.
-const ROWS: Row[] = [
+// Target catalogue — lifecycle-ordered. Drop assets named <slug>.svg|png into
+// /public/brand/integrations to light each one up. Brands without an asset are
+// skipped; rows with no present assets are hidden entirely.
+const CATALOGUE: RowDef[] = [
   {
     label: 'Core & lending',
     dir: 'l',
     duration: 64,
-    logos: [
-      { src: `${BASE}/temenos.png`, alt: 'Temenos' },
-      { src: `${BASE}/oracle.png`, alt: 'Oracle' },
-      { src: `${BASE}/fis.png`, alt: 'FIS' },
-      { src: `${BASE}/fiserv.png`, alt: 'Fiserv' },
-      { src: `${BASE}/jackhenry.png`, alt: 'Jack Henry' },
+    brands: [
+      { slug: 'temenos', alt: 'Temenos' },
+      { slug: 'finastra', alt: 'Finastra' },
+      { slug: 'oracle', alt: 'Oracle' },
+      { slug: 'fis', alt: 'FIS' },
+      { slug: 'fiserv', alt: 'Fiserv' },
+      { slug: 'jackhenry', alt: 'Jack Henry' },
+      { slug: 'ncino', alt: 'nCino' },
+      { slug: 'mambu', alt: 'Mambu' },
+      { slug: 'thoughtmachine', alt: 'Thought Machine' },
+      { slug: 'backbase', alt: 'Backbase' },
+      { slug: 'finacle', alt: 'Infosys Finacle' },
+      { slug: 'blend', alt: 'Blend' },
+      { slug: 'q2', alt: 'Q2' },
+      { slug: 'icemortgage', alt: 'ICE Mortgage Technology' },
+      { slug: 'meridianlink', alt: 'MeridianLink' },
+      { slug: 'tcsbancs', alt: 'TCS BaNCS' },
+      { slug: 'nucleus', alt: 'Nucleus Software' },
+      { slug: 'newgen', alt: 'Newgen' },
+    ],
+  },
+  {
+    label: 'Credit & identity',
+    dir: 'r',
+    duration: 60,
+    brands: [
+      { slug: 'experian', alt: 'Experian' },
+      { slug: 'equifax', alt: 'Equifax' },
+      { slug: 'transunion', alt: 'TransUnion' },
+      { slug: 'fico', alt: 'FICO' },
+      { slug: 'plaid', alt: 'Plaid' },
+      { slug: 'socure', alt: 'Socure' },
+      { slug: 'lexisnexis', alt: 'LexisNexis' },
+      { slug: 'onfido', alt: 'Onfido' },
+      { slug: 'persona', alt: 'Persona' },
+      { slug: 'jumio', alt: 'Jumio' },
+      { slug: 'crif', alt: 'CRIF High Mark' },
+      { slug: 'truelayer', alt: 'TrueLayer' },
+      { slug: 'perfios', alt: 'Perfios' },
     ],
   },
   {
     label: 'Cloud & data',
-    dir: 'r',
+    dir: 'l',
     duration: 58,
-    logos: [
-      { src: `${BASE}/aws.png`, alt: 'AWS' },
-      { src: `${BASE}/azure.png`, alt: 'Microsoft Azure' },
-      { src: `${BASE}/snowflake.png`, alt: 'Snowflake' },
-      { src: `${BASE}/databricks.png`, alt: 'Databricks' },
+    brands: [
+      { slug: 'aws', alt: 'AWS' },
+      { slug: 'azure', alt: 'Microsoft Azure' },
+      { slug: 'googlecloud', alt: 'Google Cloud' },
+      { slug: 'snowflake', alt: 'Snowflake' },
+      { slug: 'databricks', alt: 'Databricks' },
+      { slug: 'confluent', alt: 'Confluent' },
+      { slug: 'postgresql', alt: 'PostgreSQL' },
+      { slug: 'mongodb', alt: 'MongoDB' },
+      { slug: 'elastic', alt: 'Elastic' },
+    ],
+  },
+  {
+    // Model-agnostic: KrimOS orchestrates and validates any model.
+    label: 'Models & AI',
+    dir: 'r',
+    duration: 54,
+    brands: [
+      { slug: 'openai', alt: 'OpenAI' },
+      { slug: 'anthropic', alt: 'Anthropic' },
+      { slug: 'gemini', alt: 'Google Gemini' },
+      { slug: 'meta-llama', alt: 'Meta Llama' },
+      { slug: 'mistral', alt: 'Mistral AI' },
+      { slug: 'cohere', alt: 'Cohere' },
+      { slug: 'nvidia', alt: 'NVIDIA' },
+      { slug: 'huggingface', alt: 'Hugging Face' },
+      { slug: 'langchain', alt: 'LangChain' },
+      { slug: 'pinecone', alt: 'Pinecone' },
     ],
   },
   {
     label: 'Channels & CRM',
     dir: 'l',
     duration: 70,
-    logos: [
-      { src: `${BASE}/salesforce.png`, alt: 'Salesforce' },
-      { src: `${BASE}/hubspot.png`, alt: 'HubSpot' },
-      { src: `${BASE}/slack.png`, alt: 'Slack' },
-      { src: `${BASE}/teams.png`, alt: 'Microsoft Teams' },
-      { src: `${BASE}/zoom.png`, alt: 'Zoom' },
+    brands: [
+      { slug: 'salesforce', alt: 'Salesforce' },
+      { slug: 'hubspot', alt: 'HubSpot' },
+      { slug: 'dynamics', alt: 'Microsoft Dynamics' },
+      { slug: 'twilio', alt: 'Twilio' },
+      { slug: 'whatsapp', alt: 'WhatsApp' },
+      { slug: 'genesys', alt: 'Genesys' },
+      { slug: 'slack', alt: 'Slack' },
+      { slug: 'teams', alt: 'Microsoft Teams' },
+      { slug: 'zoom', alt: 'Zoom' },
+      { slug: 'zendesk', alt: 'Zendesk' },
+      { slug: 'docusign', alt: 'DocuSign' },
+      { slug: 'intercom', alt: 'Intercom' },
+      { slug: 'five9', alt: 'Five9' },
+      { slug: 'nice', alt: 'NICE' },
+      { slug: 'sinch', alt: 'Sinch' },
+      { slug: 'adobesign', alt: 'Adobe Acrobat Sign' },
+      { slug: 'gupshup', alt: 'Gupshup' },
+      { slug: 'freshworks', alt: 'Freshworks' },
+    ],
+  },
+  {
+    // The money layer — disbursement, repayment, cards and networks.
+    label: 'Payments & rails',
+    dir: 'r',
+    duration: 62,
+    brands: [
+      { slug: 'visa', alt: 'Visa' },
+      { slug: 'mastercard', alt: 'Mastercard' },
+      { slug: 'stripe', alt: 'Stripe' },
+      { slug: 'adyen', alt: 'Adyen' },
+      { slug: 'paypal', alt: 'PayPal' },
+      { slug: 'worldpay', alt: 'Worldpay' },
+      { slug: 'checkout', alt: 'Checkout.com' },
+      { slug: 'moderntreasury', alt: 'Modern Treasury' },
+      { slug: 'marqeta', alt: 'Marqeta' },
+      { slug: 'galileo', alt: 'Galileo' },
+      { slug: 'swift', alt: 'Swift' },
+      { slug: 'gocardless', alt: 'GoCardless' },
+      { slug: 'razorpay', alt: 'Razorpay' },
     ],
   },
 ]
+
+type Logo = { src: string; alt: string }
+type Row = { label: string; dir: 'l' | 'r'; duration: number; logos: Logo[] }
+
+/** First existing asset for a slug (svg → png → webp), or null if none present. */
+function resolveSrc(slug: string): string | null {
+  for (const ext of ['svg', 'png', 'webp']) {
+    if (fs.existsSync(path.join(DIR, `${slug}.${ext}`))) return `${BASE}/${slug}.${ext}`
+  }
+  return null
+}
+
+// Resolve the catalogue down to only what exists, dropping empty rows.
+const ROWS: Row[] = CATALOGUE.map((row) => ({
+  label: row.label,
+  dir: row.dir,
+  duration: row.duration,
+  logos: row.brands
+    .map((b) => ({ src: resolveSrc(b.slug), alt: b.alt }))
+    .filter((l): l is Logo => l.src !== null),
+})).filter((row) => row.logos.length > 0)
 
 /** Soft fade at both ends of every row so logos dissolve at the edges. */
 const EDGE_MASK =
@@ -81,8 +200,8 @@ function LogoItem({ logo }: { logo: Logo }) {
       loading="lazy"
       decoding="async"
       draggable={false}
-      // h-7 normalises every source PNG to one height; the filter renders
-      // each mark monochrome white so mismatched art reads as one system.
+      // h-7 normalises every source asset to one height; the filter renders each
+      // mark monochrome white so mismatched art reads as one system.
       className="h-7 w-auto select-none opacity-[0.52] transition-opacity duration-300 ease-out hover:opacity-100"
       style={{ filter: 'brightness(0) invert(1)' }}
     />

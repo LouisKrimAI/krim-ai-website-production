@@ -39,7 +39,7 @@ const LAYERS: Layer[] = [
   {
     key: 'faces',
     name: 'Kula & Kupa',
-    role: 'Run your operation in plain language — supervise, configure and audit it from one command center.',
+    role: 'Run your operation in plain language. Supervise, configure and audit it from one command center.',
     tag: 'YOUR TEAMS',
     name2: 'Kira & Krimkar',
     role2: 'The AI advisor your customers meet on every channel, in the Krimkar app.',
@@ -49,14 +49,14 @@ const LAYERS: Layer[] = [
   {
     key: 'karta',
     name: 'Karta',
-    role: 'The AI co-workers that run the lending lifecycle — each composed from validated primitives and held to measured outcomes.',
+    role: 'The AI co-workers that run the lending lifecycle, each composed from validated primitives and held to measured outcomes.',
     tag: 'CO-WORKERS',
     tone: 'operating',
   },
   {
     key: 'kriya',
     name: 'Kriya',
-    role: 'The validated, credit-native actions every co-worker is built from — 500+ in all.',
+    role: 'The validated, credit-native actions every co-worker is built from: 500+ in all.',
     tag: 'PRIMITIVES',
     tone: 'operating',
   },

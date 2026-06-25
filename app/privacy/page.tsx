@@ -4,7 +4,7 @@ import LegalDoc from '@/components/LegalDoc'
 export const metadata: Metadata = {
   title: 'Privacy Policy',
   description:
-    'How Krim handles personal information collected through the krim.ai website — what we collect, why, who we share it with, and your rights.',
+    'How Krim handles personal information collected through the krim.ai website: what we collect, why, who we share it with, and your rights.',
   alternates: { canonical: 'https://krim.ai/privacy' },
 }
 

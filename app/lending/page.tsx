@@ -27,12 +27,12 @@ const DEMO = '/contact'
 export const metadata: Metadata = {
   title: 'Lending',
   description:
-    'KrimOS runs the whole loan lifecycle — every customer conversation and every back-office task on one system that validates each action before it executes, and learns the operation as it runs. Built against RBI, FCA and US lending law by construction.',
+    'KrimOS runs the whole loan lifecycle: every customer conversation and every back-office task on one system that validates each action before it executes, and learns the operation as it runs. Built against RBI, FCA and US lending law by construction.',
   alternates: { canonical: 'https://krim.ai/lending' },
   openGraph: {
     title: 'Lending — Krim',
     description:
-      'KrimOS runs the whole loan lifecycle — every customer conversation and every back-office task on one system that validates each action before it executes, and learns the operation as it runs. Built against RBI, FCA and US lending law by construction.',
+      'KrimOS runs the whole loan lifecycle: every customer conversation and every back-office task on one system that validates each action before it executes, and learns the operation as it runs. Built against RBI, FCA and US lending law by construction.',
     url: 'https://krim.ai/lending',
   },
 }
@@ -58,7 +58,7 @@ const LIFECYCLE = [
   {
     stage: 'Underwriting & decision',
     customer: 'Collects what is missing, sets expectations.',
-    back: 'Credit-analysis support, policy checks and sanction prep — the decision stays yours.',
+    back: 'Credit-analysis support, policy checks and sanction prep. The decision stays yours.',
   },
   {
     stage: 'Disbursal',
@@ -67,7 +67,7 @@ const LIFECYCLE = [
   },
   {
     stage: 'Servicing',
-    customer: 'Payments, queries and statements — one advisor, always on.',
+    customer: 'Payments, queries and statements, one advisor, always on.',
     back: 'Account maintenance, reconciliation and monitoring.',
   },
   {
@@ -86,15 +86,27 @@ const LIFECYCLE = [
 const JURISDICTIONS = [
   {
     place: 'India',
-    frameworks: ['RBI circulars', 'Fair Practices Code', 'DPDP'],
+    frameworks: ['RBI Digital Lending Guidelines', 'Fair Practices Code', 'KYC Master Direction', 'SARFAESI Act', 'DPDP Act 2023', 'TRAI TCCCPR', 'CIC reporting'],
   },
   {
     place: 'United Kingdom',
-    frameworks: ['FCA Consumer Duty', 'CONC sourcebook', 'Consumer Credit Act', 'UK GDPR'],
+    frameworks: ['FCA Consumer Duty', 'CONC sourcebook', 'Consumer Credit Act 1974', 'FCA Principles', 'UK GDPR / DPA 2018', 'PECR'],
   },
   {
     place: 'United States',
-    frameworks: ['FDCPA', 'TCPA', 'Reg F', 'FCRA', 'SCRA', 'ECOA'],
+    frameworks: ['FDCPA', 'Reg F', 'TCPA', 'FCRA', 'ECOA / Reg B', 'TILA / Reg Z', 'SCRA', 'UDAAP'],
+  },
+  {
+    place: 'European Union',
+    frameworks: ['EU AI Act', 'Consumer Credit Directive (CCD2)', 'GDPR', 'PSD2', 'Credit Servicers Directive', 'DORA'],
+  },
+  {
+    place: 'Nigeria',
+    frameworks: ['CBN Prudential Guidelines', 'FCCPC Digital Lending Regulations', 'NDPA 2023', 'Credit Reporting Act 2017', 'CBN Consumer Protection Framework'],
+  },
+  {
+    place: 'Brazil',
+    frameworks: ['LGPD', 'Código de Defesa do Consumidor (CDC)', 'Lei do Superendividamento', 'CMN / BCB resolutions', 'Cadastro Positivo'],
   },
 ]
 
@@ -110,7 +122,7 @@ const IMPACT = [
 const DEPLOYMENTS = [
   {
     name: 'Sovereign on-prem',
-    body: 'The full stack inside your own data centre — model, data and every action stay behind walls you already trust. The default for Tier-1 banks.',
+    body: 'The full stack inside your own data centre. Model, data and every action stay behind walls you already trust. The default for Tier-1 banks.',
   },
   {
     name: 'Hybrid',
@@ -118,7 +130,7 @@ const DEPLOYMENTS = [
   },
   {
     name: 'Managed',
-    body: 'Run for you in your preferred sovereign cloud region — no foreign API anywhere in the loop.',
+    body: 'Run for you in your preferred sovereign cloud region, with no foreign API anywhere in the loop.',
   },
 ]
 
@@ -143,14 +155,14 @@ export default function LendingPage() {
             </Reveal>
             <Reveal delay={0.12}>
               <p className="mx-auto mt-7 max-w-[52ch] font-sans text-body-lg text-ink-2">
-                Every customer conversation and every back-office task, application to payoff — on one
+                Every customer conversation and every back-office task, application to payoff, on one
                 system that <span className="text-mint">validates each action before it fires</span>.
               </p>
             </Reveal>
             <Reveal delay={0.2}>
               <div className="mt-10 flex flex-wrap items-center justify-center gap-x-7 gap-y-4">
                 <CTA href={DEMO}>Book a demo</CTA>
-                <CTA href="/platform" variant="secondary">
+                <CTA href="/krimos" variant="secondary">
                   See how KrimOS works
                 </CTA>
               </div>
@@ -179,7 +191,7 @@ export default function LendingPage() {
             <Reveal delay={0.12}>
               <GlassCard accent className="p-8 md:p-10">
                 <p className="font-serif text-[clamp(1.4rem,2.4vw,1.85rem)] leading-snug text-ink">
-                  KrimOS gates every action before it fires — so the work you couldn&rsquo;t trust
+                  KrimOS gates every action before it fires, so the work you couldn&rsquo;t trust
                   to software becomes work you can.
                 </p>
                 <p className="mt-6 font-mono text-[11px] uppercase tracking-[0.18em] text-mint">
@@ -200,7 +212,7 @@ export default function LendingPage() {
             <p className="mt-6 max-w-[60ch] font-sans text-body-lg text-ink-2">
               <span className="text-cyan">Kira</span> meets the customer on every channel;{' '}
               <span className="text-mint">Karta</span> co-workers do the back-office work. They meet
-              at every stage — and each action passes the validation gate before it executes.
+              at every stage, and each action passes the validation gate before it executes.
             </p>
           </Reveal>
 
@@ -236,7 +248,7 @@ export default function LendingPage() {
           <Reveal delay={0.1}>
             <p className="mt-9 max-w-[64ch] font-sans text-[14px] leading-relaxed text-ink-3">
               Today the line is clear: Karta segment risk, suggest the next best action and gate on
-              your own flags — the <span className="text-ink-2">credit decision stays yours</span>.
+              your own flags. The <span className="text-ink-2">credit decision stays yours</span>.
               The safe AI underwriter we are building, the World Lending Model, is the direction,
               and it will clear the same validation gate as every action that runs today.
             </p>
@@ -251,7 +263,7 @@ export default function LendingPage() {
               Your jurisdiction&rsquo;s law, applied before each action.
             </h2>
             <p className="mt-6 max-w-[60ch] font-sans text-body-lg text-ink-2">
-              The same architecture runs in every market — only the rulebook changes. Each action
+              The same architecture runs in every market. Only the rulebook changes. Each action
               is checked against the law where you lend{' '}
               <span className="text-mint">before it executes</span>, not after.
             </p>
@@ -286,7 +298,7 @@ export default function LendingPage() {
               Measured against your own baseline.
             </h2>
             <p className="mt-6 max-w-[60ch] font-sans text-body-lg text-ink-2">
-              Illustrative ranges, not commitments — each one calibrated to your operation and{' '}
+              Illustrative ranges, not commitments. Each one calibrated to your operation and{' '}
               <span className="text-ink">measured against your own numbers</span>, never promised in
               a deck.
             </p>
@@ -332,7 +344,7 @@ export default function LendingPage() {
               Sovereign by construction, wherever you run it.
             </h2>
             <p className="mt-6 max-w-[60ch] font-sans text-body-lg text-ink-2">
-              Three deployments, one architecture — your data and your regulator decide which.
+              Three deployments, one architecture. Your data and your regulator decide which.
               Whichever you pick, everything stays inside the perimeter you draw, with{' '}
               <span className="text-ink">no foreign API in the loop</span>.
             </p>
@@ -361,12 +373,12 @@ export default function LendingPage() {
                 See it run a loan, end to end.
               </h2>
               <p className="mx-auto mt-5 max-w-[50ch] font-sans text-body-lg text-ink-2">
-                One conversation, one validated action, one clean trail — application to payoff, on
+                One conversation, one validated action, one clean trail, application to payoff, on
                 the stack you already run.
               </p>
               <div className="mt-9 flex flex-wrap items-center justify-center gap-6">
                 <CTA href={DEMO}>Book a demo</CTA>
-                <CTA href="/platform" variant="secondary">
+                <CTA href="/krimos" variant="secondary">
                   Explore KrimOS
                 </CTA>
               </div>

@@ -108,7 +108,7 @@ export default function WorldLendingModelPage() {
             <Reveal delay={0.2}>
               <div className="mt-10 flex flex-wrap items-center justify-center gap-6">
                 <CTA href={DEMO_HREF}>Book a demo</CTA>
-                <CTA href="/platform/kendra" variant="secondary">
+                <CTA href="/krimos/kendra" variant="secondary">
                   See the runtime it learns from
                 </CTA>
               </div>
@@ -222,13 +222,15 @@ export default function WorldLendingModelPage() {
             <Reveal delay={0.12}>
               <GlassCard className="p-8 md:p-10">
                 <ul className="space-y-6">
-                  {[
-                    ['Validated before it acts', 'Every proposed action clears Krim-Nyāya, our cognitive compliance engine, against local law, policy and the institution’s risk limits before it can fire.'],
-                    ['Explainable by construction', 'Every decision carries a step-by-step reasoning trace, recorded immutably in Krim-Ledger: cryptographic proof on demand, ready for any audit.'],
-                    ['Corrected by outcomes', 'Krim-Learn, our closed-loop feedback engine, routes payment outcomes back into the model, so its accuracy improves the more lending it sees.'],
-                    ['Sovereign', 'It reasons, acts and improves entirely inside the institution’s own walls.'],
-                  ].map(([name, body]) => (
-                    <li key={name}>
+                  {([
+                    // key word per heading, coloured by the grammar:
+                    // mint = validated/learned, cyan = thinking/reasoning, gold = the sovereign boundary
+                    [<><span className="text-mint">Validated</span> before it acts</>, 'Every proposed action clears Krim-Nyāya, our cognitive compliance engine, against local law, policy and the institution’s risk limits before it can fire.'],
+                    [<><span className="text-cyan">Explainable</span> by construction</>, 'Every decision carries a step-by-step reasoning trace, recorded immutably in Krim-Ledger: cryptographic proof on demand, ready for any audit.'],
+                    [<><span className="text-mint">Corrected</span> by outcomes</>, 'Krim-Learn, our closed-loop feedback engine, routes payment outcomes back into the model, so its accuracy improves the more lending it sees.'],
+                    [<><span className="text-gold">Sovereign</span></>, 'It reasons, acts and improves entirely inside the institution’s own walls.'],
+                  ] as const).map(([name, body], i) => (
+                    <li key={i}>
                       <p className="font-serif text-[1.15rem] leading-none text-ink">{name}</p>
                       <p className="mt-1.5 font-sans text-caption leading-relaxed text-ink-2">{body}</p>
                     </li>
@@ -260,13 +262,73 @@ export default function WorldLendingModelPage() {
             </Reveal>
           </div>
           <Reveal delay={0.1}>
-            <div className="mx-auto mt-10 flex max-w-[860px] flex-wrap items-center justify-center gap-x-3 gap-y-3 font-mono text-[12px] uppercase tracking-[0.14em] text-ink-3">
-              {['Origination', 'AI underwriting', 'Pricing', 'Servicing', 'Collections', 'Portfolio'].map((s, i, a) => (
-                <span key={s} className="flex items-center gap-3">
-                  <span className="text-ink-2">{s}</span>
-                  {i < a.length - 1 && <span aria-hidden className="text-mint/60">→</span>}
-                </span>
-              ))}
+            <div className="relative mx-auto mt-12 max-w-[940px]">
+              {/* Luminous cyan→mint track — one shared model across the lifecycle.
+                  Spans the row on desktop; becomes a vertical spine when nodes stack. */}
+              <span
+                aria-hidden
+                className="pointer-events-none absolute left-[7%] right-[7%] top-1/2 hidden h-px -translate-y-1/2 sm:block"
+                style={{
+                  background:
+                    'linear-gradient(90deg, rgba(57,214,255,0) 0%, rgba(57,214,255,0.55) 18%, rgba(0,255,178,0.55) 82%, rgba(0,255,178,0) 100%)',
+                }}
+              />
+              <span
+                aria-hidden
+                className="pointer-events-none absolute left-1/2 top-6 bottom-6 block w-px -translate-x-1/2 sm:hidden"
+                style={{
+                  background:
+                    'linear-gradient(180deg, rgba(57,214,255,0) 0%, rgba(57,214,255,0.5) 16%, rgba(0,255,178,0.5) 84%, rgba(0,255,178,0) 100%)',
+                }}
+              />
+              <ol className="relative flex flex-col items-stretch gap-3 sm:flex-row sm:items-stretch sm:justify-between sm:gap-2">
+                {([
+                  ['01', 'Origination'],
+                  ['02', 'AI underwriting'], // the differentiator
+                  ['03', 'Pricing'],
+                  ['04', 'Servicing'],
+                  ['05', 'Collections'],
+                  ['06', 'Portfolio'],
+                ] as const).map(([num, label]) => {
+                  const isKey = label === 'AI underwriting'
+                  return (
+                    <li key={label} className="flex flex-1 items-center justify-center sm:block">
+                      <div
+                        className={[
+                          'group relative flex w-full items-center gap-3 rounded-[10px] border px-3.5 py-3 backdrop-blur-md transition-colors duration-200 sm:flex-col sm:gap-2 sm:px-2 sm:py-4 sm:text-center',
+                          isKey
+                            ? 'border-mint/55 bg-mint/[0.06] hover:border-mint/80'
+                            : 'border-white/10 bg-white/[0.02] hover:border-white/20',
+                        ].join(' ')}
+                        style={isKey ? { boxShadow: '0 0 0 1px rgba(0,255,178,0.10), 0 0 28px -10px rgba(0,255,178,0.45)' } : undefined}
+                      >
+                        {/* node dot — mint ring for the AI underwriter, quiet otherwise */}
+                        <span
+                          aria-hidden
+                          className={[
+                            'h-2 w-2 shrink-0 rounded-full',
+                            isKey ? 'bg-mint shadow-[0_0_10px_2px_rgba(0,255,178,0.6)]' : 'bg-ink-3',
+                          ].join(' ')}
+                        />
+                        <div className="flex flex-col sm:items-center">
+                          <span className="font-mono text-[10px] tracking-[0.2em] text-ink-3">{num}</span>
+                          <span
+                            className={[
+                              'mt-0.5 font-mono text-[11px] uppercase leading-tight tracking-[0.12em]',
+                              isKey ? 'text-mint' : 'text-ink-2',
+                            ].join(' ')}
+                          >
+                            {label}
+                          </span>
+                        </div>
+                      </div>
+                    </li>
+                  )
+                })}
+              </ol>
+              <p className="mt-6 text-center font-mono text-[10px] uppercase tracking-[0.22em] text-ink-3">
+                One model · the whole lifecycle
+              </p>
             </div>
           </Reveal>
         </Section>

@@ -1,6 +1,6 @@
 /**
  * /company — who Krim is: the thesis, the name, the markets.
- * STANDALONE pattern (like app/page.tsx + app/platform/page.tsx):
+ * STANDALONE pattern (like app/page.tsx + app/krimos/page.tsx):
  * SiteHeader + OrbBackdrop + <main className="relative z-10"> + SiteFooter,
  * metadata + BreadcrumbList JSON-LD. NOT LayerShell.
  * Content-first, calm, premium. No team/leadership section (by decision).
@@ -13,16 +13,17 @@ import SiteFooter from '@/components/SiteFooter'
 import OrbBackdrop from '@/components/OrbBackdrop'
 import Reveal from '@/components/Reveal'
 import { Section, Eyebrow, GlassCard, CTA } from '@/components/ui'
+import Recognition from '@/components/home/Recognition'
 
 export const metadata: Metadata = {
   title: 'Company',
   description:
-    'Krim is a technology research, product and services company. We made proof the runtime and keep the system inside your perimeter — so machines can finally act in regulated work, and the system compounds.',
+    'Krim is a technology research, product and services company. We made proof the runtime and keep the system inside your perimeter, so machines can finally act in regulated work, and the system compounds.',
   alternates: { canonical: 'https://krim.ai/company' },
   openGraph: {
     title: 'Company — Krim',
     description:
-      'Krim is a technology research, product and services company. We made proof the runtime and keep the system inside your perimeter — so machines can finally act in regulated work, and the system compounds.',
+      'Krim is a technology research, product and services company. We made proof the runtime and keep the system inside your perimeter, so machines can finally act in regulated work, and the system compounds.',
     url: 'https://krim.ai/company',
   },
 }
@@ -38,12 +39,13 @@ const breadcrumbLd = {
   ],
 }
 
-const RECOGNITION = ['NVIDIA Inception', 'DPIIT · Startup India', 'STPI-incubated']
-
 const MARKETS = [
-  { region: 'United States', note: 'FDCPA · TCPA · Reg F encoded' },
-  { region: 'United Kingdom', note: 'FCA Consumer Duty · CONC encoded' },
-  { region: 'India', note: 'RBI circulars · Fair Practices Code encoded' },
+  { region: 'United States', note: 'FDCPA · Reg F · TCPA · ECOA encoded' },
+  { region: 'United Kingdom', note: 'FCA Consumer Duty · CONC · UK GDPR encoded' },
+  { region: 'European Union', note: 'EU AI Act · GDPR · Consumer Credit Directive · DORA encoded' },
+  { region: 'India', note: 'RBI Digital Lending Guidelines · DPDP Act · SARFAESI encoded' },
+  { region: 'Nigeria', note: 'CBN guidelines · NDPA 2023 · FCCPC digital lending encoded' },
+  { region: 'Brazil', note: 'LGPD · Consumer Defence Code · BCB / CMN resolutions encoded' },
 ]
 
 // Monogram avatar — placeholder until real headshots are supplied. When they
@@ -102,12 +104,12 @@ export default function CompanyPage() {
                 <p className="font-serif text-[clamp(1.5rem,3vw,2.15rem)] leading-[1.32] text-ink">
                   The institutions that move the world&rsquo;s money and serve its citizens could
                   never run on AI they couldn&rsquo;t prove, or risk what left their walls. So the
-                  most consequential work stayed manual — too important to automate, too costly to
+                  most consequential work stayed manual: too important to automate, too costly to
                   leave alone.
                 </p>
                 <p className="mt-7 font-serif text-[clamp(1.5rem,3vw,2.15rem)] leading-[1.32] text-ink-2">
-                  Krim made <span className="text-mint">proof the runtime</span> — every action
-                  validated before it can execute — and kept the whole system{' '}
+                  Krim made <span className="text-mint">proof the runtime</span>, every action
+                  validated before it can execute, and kept the whole system{' '}
                   <span className="text-ink">inside the perimeter</span>, where the data already
                   lives. With those two settled, the machines can finally act. And because they act
                   on a single record, the system learns the operation and{' '}
@@ -132,7 +134,7 @@ export default function CompanyPage() {
                 </h2>
                 <p className="mt-7 max-w-[52ch] font-sans text-body-lg text-ink-2">
                   Our validator is <span className="text-ink">Krim-Nyāya</span>. It draws on{' '}
-                  <span className="text-ink">Navya-Nyāya</span> — the formal-logic tradition of
+                  <span className="text-ink">Navya-Nyāya</span>, the formal-logic tradition of
                   Mithila, two thousand years of rigorous reasoning about what follows from what.
                 </p>
                 <p className="mt-5 max-w-[52ch] font-sans text-body-lg text-ink-2">
@@ -202,26 +204,11 @@ export default function CompanyPage() {
           </div>
         </Section>
 
-        {/* ---- 4 · Recognition — modest, honest text strip (no badge images) ---- */}
-        <Section hairline>
-          <div className="mx-auto max-w-[760px] text-center">
-            <Reveal>
-              <Eyebrow tone="dim">Recognition</Eyebrow>
-              <p className="mt-5 font-serif text-[clamp(1.3rem,2.4vw,1.7rem)] leading-snug text-ink-2">
-                Recognised by{' '}
-                <span className="text-ink">NVIDIA Inception</span>,{' '}
-                <span className="text-ink">DPIIT (Startup India)</span> and{' '}
-                <span className="text-ink">STPI</span>.
-              </p>
-            </Reveal>
-            <Reveal delay={0.1}>
-              <ul className="mt-8 flex flex-wrap items-center justify-center gap-x-10 gap-y-3 font-mono text-[12px] uppercase tracking-[0.14em] text-ink-3">
-                {RECOGNITION.map((r) => (
-                  <li key={r}>{r}</li>
-                ))}
-              </ul>
-            </Reveal>
-          </div>
+        {/* ---- 4 · Recognition — official marks, true-colour, precise language ---- */}
+        <Section>
+          <Reveal>
+            <Recognition />
+          </Reveal>
         </Section>
 
         {/* ---- 5 · Markets & contact ---- */}
@@ -233,8 +220,8 @@ export default function CompanyPage() {
                 Different jurisdictions, one runtime.
               </h2>
               <p className="mx-auto mt-6 max-w-[52ch] font-sans text-body-lg text-ink-2">
-                We build and deploy across three regulatory worlds. The same system runs in each —
-                only the rules it enforces change.
+                The frameworks of six regulatory worlds are encoded in the runtime. The same system
+                runs in each. Only the rules it enforces change.
               </p>
             </div>
           </Reveal>
@@ -267,7 +254,7 @@ export default function CompanyPage() {
               </p>
               <div className="mt-9 flex flex-wrap items-center justify-center gap-6">
                 <CTA href={DEMO_HREF}>Book a demo</CTA>
-                <CTA href="/platform" variant="secondary">
+                <CTA href="/krimos" variant="secondary">
                   Explore KrimOS
                 </CTA>
               </div>

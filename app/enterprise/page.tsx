@@ -22,12 +22,12 @@ const DEMO = '/contact'
 export const metadata: Metadata = {
   title: 'Large Enterprise',
   description:
-    'One operating system over your whole estate: KrimOS automates regulated customer and back-office work at scale — every action validated before it executes, inside your own perimeter, one standard across every region and system.',
+    'One operating system over your whole estate: KrimOS automates regulated customer and back-office work at scale, with every action validated before it executes, inside your own perimeter, one standard across every region and system.',
   alternates: { canonical: 'https://krim.ai/enterprise' },
   openGraph: {
     title: 'Large Enterprise — KrimOS',
     description:
-      'One operating system over your whole estate: KrimOS automates regulated customer and back-office work at scale — every action validated before it executes, inside your own perimeter, one standard across every region and system.',
+      'One operating system over your whole estate: KrimOS automates regulated customer and back-office work at scale, with every action validated before it executes, inside your own perimeter, one standard across every region and system.',
     url: 'https://krim.ai/enterprise',
   },
 }
@@ -45,7 +45,7 @@ const breadcrumbLd = {
 const FITS = [
   {
     name: 'Over the whole estate',
-    body: 'KrimOS sits over the systems you already run, reading from each and writing back on validated channels. One way of working across all of them — nothing torn out.',
+    body: 'KrimOS sits over the systems you already run, reading from each and writing back on validated channels. One way of working across all of them, nothing torn out.',
   },
   {
     name: 'One standard, every region',
@@ -84,14 +84,14 @@ export default function EnterprisePage() {
             <Reveal delay={0.12}>
               <p className="mx-auto mt-7 max-w-[56ch] font-sans text-body-lg text-ink-2">
                 For enterprises running millions of regulated interactions across systems that never
-                quite talk to each other — one operating system that automates customer and
+                quite talk to each other. One operating system that automates customer and
                 back-office work, <span className="text-ink">safely, everywhere at once</span>.
               </p>
             </Reveal>
             <Reveal delay={0.18}>
               <p className="mx-auto mt-6 max-w-[60ch] font-sans text-[15px] leading-relaxed text-ink-3">
-                Built for insurers, telecoms, utilities, healthcare payers and large financial groups
-                — wherever compliance meets volume.
+                Built for insurers, telecoms, utilities, healthcare payers and large financial groups,
+                wherever compliance meets volume.
               </p>
             </Reveal>
             <Reveal delay={0.24}>
@@ -112,8 +112,8 @@ export default function EnterprisePage() {
                   Scale multiplies every problem.
                 </h2>
                 <p className="mt-7 max-w-[52ch] font-sans text-body-lg text-ink-2">
-                  Dozens of systems, several jurisdictions, an audit obligation behind all of it —
-                  and <span className="text-ink">generic AI can&rsquo;t be trusted</span> with a
+                  Dozens of systems, several jurisdictions, an audit obligation behind all of it.
+                  And <span className="text-ink">generic AI can&rsquo;t be trusted</span> with a
                   regulated message. Bolting it onto each system, one at a time, never ends.
                 </p>
               </div>
@@ -146,7 +146,7 @@ export default function EnterprisePage() {
               One safe layer over everything you run.
             </h2>
             <p className="mt-6 max-w-[56ch] font-sans text-body-lg text-ink-2">
-              KrimOS makes regulated work <span className="text-mint">safe to automate</span> — and
+              KrimOS makes regulated work <span className="text-mint">safe to automate</span>, and
               ties the whole estate to one way of working, one audit trail.
             </p>
           </Reveal>
@@ -169,7 +169,7 @@ export default function EnterprisePage() {
             <Eyebrow>Use cases</Eyebrow>
             <h2 className="mt-4 font-serif text-display-1 text-ink">Across customer and back office.</h2>
             <p className="mt-6 max-w-[56ch] font-sans text-body-lg text-ink-2">
-              The work an enterprise carries at volume — each action validated before it runs, and
+              The work an enterprise carries at volume: each action validated before it runs, and
               recorded after.
             </p>
           </Reveal>
@@ -195,12 +195,12 @@ export default function EnterprisePage() {
                   Scale the operation, not the headcount.
                 </h2>
                 <p className="mt-7 max-w-[52ch] font-sans text-body-lg text-ink-2">
-                  One way of working across regions and systems — lower cost to serve, compliance
+                  One way of working across regions and systems: lower cost to serve, compliance
                   consistent by construction, and an operation that grows without the team growing in
                   step.
                 </p>
                 <p className="mt-6 font-sans text-[15px] text-ink-3">
-                  Sovereign by default — on-prem, hybrid or managed.{' '}
+                  Sovereign by default: on-prem, hybrid or managed.{' '}
                   <Link href="/trust" className="text-ink-2 underline-offset-4 transition-colors hover:text-mint hover:underline">
                     See how it deploys →
                   </Link>
@@ -210,7 +210,7 @@ export default function EnterprisePage() {
             <Reveal delay={0.12}>
               <GlassCard accent className="p-8 md:p-10">
                 <p className="font-serif text-[clamp(1.4rem,2.4vw,1.9rem)] leading-snug text-ink">
-                  Every regulated action audit-ready, every region on one stack — the proof recorded
+                  Every regulated action audit-ready, every region on one stack. The proof recorded
                   as the work runs, ready the moment a regulator asks.
                 </p>
               </GlassCard>
@@ -226,7 +226,7 @@ export default function EnterprisePage() {
                 See it run across your estate.
               </h2>
               <p className="mx-auto mt-5 max-w-[48ch] font-sans text-body text-ink-2">
-                Bring the systems, the regions and the rules — we&rsquo;ll show you one layer over all
+                Bring the systems, the regions and the rules, and we&rsquo;ll show you one layer over all
                 of it.
               </p>
               <div className="mt-9">

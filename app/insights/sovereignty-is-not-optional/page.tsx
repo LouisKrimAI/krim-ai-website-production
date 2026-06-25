@@ -16,7 +16,7 @@ import CinematicBand from '@/components/CinematicBand'
 const SLUG = 'sovereignty-is-not-optional'
 const TITLE = 'Sovereignty is not optional'
 const DEK =
-  'Regulated AI has to run inside the institution’s own perimeter. Shipping customer data to a third-party model is a non-starter on the rules and on the risk — and it is the same reason the system can ever learn the whole operation.'
+  'Regulated AI has to run inside the institution’s own perimeter. Shipping customer data to a third-party model is a non-starter on the rules and on the risk, and it is the same reason the system can ever learn the whole operation.'
 const CATEGORY = 'Architecture'
 const DATE_ISO = '2026-06-09'
 const DATE_LONG = '9 June 2026'
@@ -108,7 +108,7 @@ export default function Page() {
                 India</span>; where processing happens abroad, the data must be brought back within{' '}
                 <span className="text-ink">24 hours</span>. The GDPR’s Article 44 restricts transfers
                 of personal data outside the EU and EEA, permitting them only under specific
-                safeguards. These are not abstractions — they define a perimeter, and any AI that
+                safeguards. These are not abstractions. They define a perimeter, and any AI that
                 operates on regulated data has to operate <span className="text-ink">inside it</span>.
                 A design that routes customer records to a third-party model has already left the
                 jurisdiction the data was supposed to stay in.
@@ -125,7 +125,7 @@ export default function Page() {
                 <span className="text-ink">$6.08 million</span> in 2024. The AI-specific findings are
                 sharper still: IBM reports that <span className="text-ink">97%</span> of organisations
                 that suffered an AI-related breach lacked proper AI access controls, and that{' '}
-                <span className="text-gold">“shadow AI”</span> — tools used outside governance — added
+                <span className="text-gold">“shadow AI”</span>, tools used outside governance, added
                 around <span className="text-ink">$670,000</span> to the average breach cost. Every
                 external hop is a new boundary to breach, a new processor to trust, a new place the
                 data can leak.
@@ -134,7 +134,7 @@ export default function Page() {
               <Reveal>
                 <GlassCard accent className="my-10 p-8 md:p-10">
                   <p className="font-serif text-[1.5rem] leading-snug text-ink">
-                    Don’t send the data to the model. Bring the model to the data — and keep both
+                    Don’t send the data to the model. Bring the model to the data, and keep both
                     inside the institution’s walls.
                   </p>
                 </GlassCard>
@@ -146,7 +146,7 @@ export default function Page() {
               <p className="mt-5 font-sans text-body-lg text-ink-2">
                 Sovereignty reads like a restriction. It is also the precondition for the most
                 valuable thing the system can do. A model that runs inside the perimeter doesn’t just
-                satisfy the data-residency rule — it gets to <span className="text-ink">live where
+                satisfy the data-residency rule. It gets to <span className="text-ink">live where
                 the operation lives</span>. It sees the whole lifecycle: the communications, the
                 servicing events, the hardship cases, the outcomes, on one ledger, over time. That is
                 what lets it learn the operation as a connected whole rather than as a stream of
@@ -155,8 +155,8 @@ export default function Page() {
               <p className="mt-5 font-sans text-body text-ink-2">
                 So the two commitments collapse into one. The architecture that keeps regulated data
                 safe is the same architecture that lets the system understand the business deeply
-                enough to be useful in it. KrimOS is built to run inside the institution’s walls —{' '}
-                <span className="text-mint">validated before it acts, smarter after it acts</span> —
+                enough to be useful in it. KrimOS is built to run inside the institution’s walls{' '}
+                (<span className="text-mint">validated before it acts, smarter after it acts</span>),
                 and it is no accident that those are the same design. Sovereignty isn’t the price of
                 the intelligence. It is the ground the intelligence grows from.
               </p>
@@ -183,17 +183,17 @@ export default function Page() {
               <ul className="mt-4 space-y-2 font-mono text-[12px] leading-relaxed text-ink-3">
                 <li>
                   <a href="https://www.rbi.org.in/commonman/english/scripts/FAQs.aspx?Id=2995" target="_blank" rel="noopener noreferrer" className="underline decoration-soft underline-offset-4 transition-colors hover:text-mint">
-                    RBI — Storage of Payment System Data (FAQ)
+                    RBI: Storage of Payment System Data (FAQ)
                   </a>
                 </li>
                 <li>
                   <a href="https://gdpr-info.eu/art-44-gdpr/" target="_blank" rel="noopener noreferrer" className="underline decoration-soft underline-offset-4 transition-colors hover:text-mint">
-                    GDPR — Article 44 (transfers of personal data)
+                    GDPR: Article 44 (transfers of personal data)
                   </a>
                 </li>
                 <li>
                   <a href="https://www.ibm.com/reports/data-breach" target="_blank" rel="noopener noreferrer" className="underline decoration-soft underline-offset-4 transition-colors hover:text-mint">
-                    IBM — Cost of a Data Breach 2025
+                    IBM: Cost of a Data Breach 2025
                   </a>
                 </li>
               </ul>
@@ -209,13 +209,13 @@ export default function Page() {
                 AI that runs inside your walls.
               </h2>
               <p className="mx-auto mt-5 max-w-[50ch] font-sans text-body text-ink-2">
-                KrimOS lives where your data lives — so it satisfies the residency rule and learns the
+                KrimOS lives where your data lives, so it satisfies the residency rule and learns the
                 whole operation in the same move.
               </p>
               <div className="mt-9 flex flex-wrap items-center justify-center gap-6">
                 <CTA href="/contact">Book a demo</CTA>
-                <CTA href="/platform" variant="secondary">
-                  Explore the platform
+                <CTA href="/krimos" variant="secondary">
+                  Explore KrimOS
                 </CTA>
               </div>
             </div>
