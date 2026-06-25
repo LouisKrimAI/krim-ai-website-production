@@ -168,8 +168,8 @@ export default function LendingPage() {
                   The work is manual because the AI couldn&rsquo;t be proven.
                 </h2>
                 <p className="mt-7 max-w-[54ch] font-sans text-body-lg text-ink-2">
-                  Lending runs on two workforces — the people who speak to customers and the people
-                  who keep the books — held apart by tickets, spreadsheets and hand-offs. Together
+                  Lending runs on two workforces, the people who speak to customers and the people
+                  who keep the books, held apart by tickets, spreadsheets and hand-offs. Together
                   they are <span className="text-ink">40–60% of what every loan costs</span>. AI
                   could close the gap, but a regulated action you can&rsquo;t explain is a risk no
                   lender will take. So the work stays manual.
@@ -237,7 +237,7 @@ export default function LendingPage() {
             <p className="mt-9 max-w-[64ch] font-sans text-[14px] leading-relaxed text-ink-3">
               Today the line is clear: Karta segment risk, suggest the next best action and gate on
               your own flags — the <span className="text-ink-2">credit decision stays yours</span>.
-              The safe AI underwriter we are building — the World Lending Model — is the direction,
+              The safe AI underwriter we are building, the World Lending Model, is the direction,
               and it will clear the same validation gate as every action that runs today.
             </p>
           </Reveal>
@@ -315,7 +315,7 @@ export default function LendingPage() {
               <p className="max-w-[52ch] font-sans text-body text-ink-2">
                 And it improves with use: a first-quarter baseline,{' '}
                 <span className="text-mint">measurable gains by Q2</span>, and materially better
-                than go-live by year two — from the runtime, not from more engineering.
+                than go-live by year two, all from the runtime rather than fresh engineering.
               </p>
               <p className="shrink-0 font-mono text-[10px] uppercase tracking-[0.16em] text-ink-3">
                 The learning curve

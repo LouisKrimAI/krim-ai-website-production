@@ -54,7 +54,7 @@ const orgLd = {
 const PROBLEMS = [
   {
     heading: 'Hallucinations lead to violations.',
-    body: 'In lending, errors carry real consequences. A wrong call, a misquoted term, a non-compliant contact — with no rollback — is a costly compliance event waiting to be filed.',
+    body: 'In lending, errors carry real consequences. A wrong call, a misquoted term, a non-compliant contact with no rollback is a costly compliance event waiting to be filed.',
   },
   {
     heading: "AI makes decisions. But you can't explain them.",
@@ -74,7 +74,7 @@ const POWERS = [
   },
   {
     name: 'Faster & Scalable',
-    tagline: 'Co-workers that act, not just advise.',
+    tagline: 'Co-workers that do the work, not just advise on it.',
     body: "Agents execute across the full lending lifecycle — without manual handoffs. As your book grows, the operation keeps pace. The headcount doesn't have to.",
   },
   {

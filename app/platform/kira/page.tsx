@@ -40,7 +40,7 @@ const breadcrumbLd = {
 const CHANNELS = [
   {
     title: 'Wherever they reach you',
-    body: 'WhatsApp, a phone call, IVR, web chat, SMS or email — the same advisor answers, with the whole history already in hand. The channel changes; the conversation does not.',
+    body: 'WhatsApp, a phone call, IVR, web chat, SMS or email: the same advisor answers, with the whole history already in hand. The channel changes; the conversation does not.',
   },
   {
     title: 'It carries the whole story',
@@ -48,7 +48,7 @@ const CHANNELS = [
   },
   {
     title: 'In their own words',
-    body: 'Kira speaks the customer’s language, including 50+ Indian languages — and clarifies an ambiguous answer mid-conversation rather than failing the form or routing them away.',
+    body: 'Kira speaks the customer’s language, including 50+ Indian languages. It clarifies an ambiguous answer mid-conversation rather than failing the form or routing them away.',
   },
 ]
 
@@ -113,7 +113,7 @@ export default function KiraPage() {
                   Helpful, and never out of line.
                 </h2>
                 <p className="mt-7 max-w-[52ch] font-sans text-body-lg text-ink-2">
-                  Kira does more than answer — it moves a due date, sets up a plan, sends a
+                  Kira takes action: it moves a due date, sets up a plan, sends a
                   statement. Every one of those actions runs only inside consent and the
                   contact-window rules. It reaches out when it&rsquo;s allowed to, stays quiet when
                   it isn&rsquo;t, and never oversteps to get the job done.
@@ -146,7 +146,7 @@ export default function KiraPage() {
                 A dispute, a hardship, a sensitive segment — some moments deserve a human, and Kira
                 hands them over without hesitation. The whole conversation travels with the
                 hand-off, so the person picks up exactly where the customer left off. Nothing to
-                repeat, no story to retell. The hand-off is a feature, not a failure.
+                repeat, no story to retell. The hand-off is built in by design.
               </p>
             </div>
           </Reveal>
@@ -159,7 +159,7 @@ export default function KiraPage() {
               <div>
                 <Eyebrow>Krimkar — where they meet</Eyebrow>
                 <h2 className="mt-4 max-w-[22ch] font-serif text-display-1 text-ink">
-                  A place customers come to, not just hear from.
+                  A place customers come to, on their own time.
                 </h2>
                 <p className="mt-7 max-w-[52ch] font-sans text-body-lg text-ink-2">
                   Krimkar is the consumer app and public site your customers use to check a balance,

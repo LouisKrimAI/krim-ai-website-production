@@ -35,8 +35,8 @@ const breadcrumbLd = {
 
 // Control as four verbs — the page's spine.
 const CONTROLS = [
-  { verb: 'See', title: 'Everything, live', body: 'Dashboards and queues across every stage and segment — what is moving, what is stuck, every SLA.' },
-  { verb: 'Set', title: 'The rules', body: 'Which co-workers run for which segments — contact windows, frequency caps, channels per jurisdiction, offers and tests.' },
+  { verb: 'See', title: 'Everything, live', body: 'Dashboards and queues across every stage and segment: what is moving, what is stuck, every SLA.' },
+  { verb: 'Set', title: 'The rules', body: 'Which co-workers run for which segments, with contact windows, frequency caps, channels per jurisdiction, offers and tests.' },
   { verb: 'Step in', title: 'Whenever it matters', body: 'Sign-off on low-confidence or high-risk decisions, and one-click pause or rollback of any co-worker, campaign or segment.' },
   { verb: 'Prove', title: 'What happened', body: 'Every interaction linked to the policy that applied, the validation result and the decision — what ran, why, and under which rule.' },
 ]

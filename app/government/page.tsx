@@ -69,7 +69,7 @@ const FITS = [
   },
   {
     title: 'Validation is a lawful basis',
-    body: 'Before any co-worker acts, the proposed action is checked against the rules that govern it. Nothing executes without a basis recorded — compliance becomes a property of the runtime, not a department’s vigilance.',
+    body: 'Before any co-worker acts, the proposed action is checked against the rules that govern it. Nothing executes without a basis recorded, so compliance lives in the runtime itself rather than relying on a department’s vigilance.',
     accent: true,
   },
   {
@@ -174,8 +174,8 @@ export default function GovernmentPage() {
               The properties government demands, built in from the core.
             </h2>
             <p className="mt-6 max-w-[60ch] font-sans text-body-lg text-ink-2">
-              Krim fits public-sector work because the things government can’t compromise on are not
-              add-ons here — they are the architecture. Three of them, by construction.
+              Krim fits public-sector work because the things government can’t compromise on are the
+              architecture itself, not features bolted on later. Three of them, by construction.
             </p>
           </Reveal>
 
@@ -276,7 +276,7 @@ export default function GovernmentPage() {
               </div>
               <p className="flex-1 font-sans text-body text-ink-2">
                 The default for the public sector is the full stack inside your data centre —
-                nothing leaves the perimeter. Sovereignty is a commitment, not a deployment option.
+                nothing leaves the perimeter. Sovereignty is a commitment we hold to by default.
               </p>
             </GlassCard>
           </Reveal>

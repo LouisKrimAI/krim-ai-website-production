@@ -65,7 +65,7 @@ const REASONS = [
 const USE_CASES = [
   {
     name: 'Customer support & servicing',
-    body: 'Answers and account servicing across channels, day and night — without the queue or the headcount.',
+    body: 'Answers and account servicing across channels, day and night, without the queue or the headcount.',
   },
   {
     name: 'Outbound',

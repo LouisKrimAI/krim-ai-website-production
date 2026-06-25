@@ -181,10 +181,10 @@ export default function PlatformPage() {
             {[
               [
                 'Automate the work you couldn’t risk before',
-                'The highest-consequence operations — the ones kept manual because one mistake is a compliance event — can finally run on AI, because every action is proven before it fires.',
+                'The highest-consequence operations, kept manual because one mistake is a compliance event, can finally run on AI, because every action is proven before it fires.',
               ],
               [
-                'Compliance becomes built-in, not bolted-on',
+                'Compliance is built into how the work runs',
                 'Validation moves in front of the action and the evidence is complete by construction — so audits and inspections are answered from a record that is already there.',
               ],
               [

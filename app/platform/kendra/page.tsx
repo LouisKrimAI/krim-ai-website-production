@@ -37,7 +37,7 @@ const breadcrumbLd = {
 
 // the eight engineering modules of the runtime (docs/krim-content.md · the runtime modules)
 const MODULES = [
-  { name: 'Krim-Core', role: 'orchestration', body: 'Routes each task to the right co-worker and runs the workflow — sequential, parallel or hand-off — with retries and graceful fallbacks.' },
+  { name: 'Krim-Core', role: 'orchestration', body: 'Routes each task to the right co-worker and runs the workflow, whether sequential, parallel or hand-off, with retries and graceful fallbacks.' },
   { name: 'Krim-Karya', role: 'scheduling', body: 'Owns when work runs — recurring tasks, deferred actions, and time-window rules like contact hours and regulatory deadlines, so nothing fires before it is allowed to.' },
   { name: 'Krim-Fabric', role: 'knowledge', body: 'The regulatory rule set for each jurisdiction, each institution’s own policies, and the shared, anonymised pattern library.' },
   { name: 'Krim-Govern', role: 'policy', body: 'A seven-level hierarchy of law, regulator guidance and house rules, enforced per tenant and updated as the rules change.' },
@@ -121,8 +121,8 @@ export default function KendraPage() {
                 </h3>
                 <p className="mt-4 font-sans text-body text-ink-2">
                   Because every action and its result land on one record, Krim-Learn sees what
-                  actually worked and feeds it back through ten learning loops. It is disciplined,
-                  not magic — a pattern only joins the shared library once it clears an effectiveness
+                  actually worked and feeds it back through ten learning loops. The process is
+                  disciplined: a pattern only joins the shared library once it clears an effectiveness
                   threshold of around 80%, and what is shared is anonymised, aggregated and
                   opt-out. The system compounds; a baseline in the first quarter is materially beyond
                   it by year two.

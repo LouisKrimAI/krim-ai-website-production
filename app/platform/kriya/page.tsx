@@ -97,9 +97,9 @@ export default function KriyaPage() {
               The smallest action that already knows the rules.
             </h2>
             <p className="mt-6 max-w-[60ch] font-sans text-body-lg text-ink-2">
-              A primitive does one thing — make a call, generate a notice, move a payment — and
-              carries its own safety inside it, not bolted on afterward. Because the building blocks
-              are validated, everything built from them inherits that safety.
+              A primitive does one thing, like making a call, generating a notice or moving a
+              payment, and carries its own safety inside it. Because the building blocks are
+              validated, everything built from them inherits that safety.
             </p>
           </Reveal>
           <div className="mt-12 grid gap-5 md:grid-cols-3">
@@ -123,9 +123,9 @@ export default function KriyaPage() {
               The whole grammar of regulated lending, in one library.
             </h2>
             <p className="mt-6 max-w-[60ch] font-sans text-body-lg text-ink-2">
-              500+ primitives span the operations a lender actually performs — voice, documents,
-              compliance, data, payments and decisions — so there are no generic tool-calls for an
-              integrator to assemble. It ships credit-native.
+              500+ primitives span the operations a lender actually performs, across voice,
+              documents, compliance, data, payments and decisions, so there are no generic
+              tool-calls for an integrator to assemble. It ships credit-native.
             </p>
           </Reveal>
           <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -186,7 +186,7 @@ export default function KriyaPage() {
                 A primitive moves a workflow — it isn&rsquo;t the credit decision.
               </h2>
               <p className="mt-6 max-w-[58ch] font-sans text-body-lg text-ink-2">
-                In the library, APPROVE means approval of a step in a workflow — not, in itself, a
+                In the library, APPROVE means approval of a step in a workflow, not, in itself, a
                 credit decision. Primitives segment, route and execute under the institution&rsquo;s
                 own rules. The credit decision is a higher-order act — and the{' '}
                 <span className="text-cyan">safe AI underwriter</span> that will make it is{' '}

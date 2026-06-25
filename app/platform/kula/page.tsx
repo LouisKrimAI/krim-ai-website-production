@@ -92,10 +92,10 @@ export default function KulaPage() {
             </Reveal>
             <Reveal delay={0.12}>
               <p className="mx-auto mt-7 max-w-[56ch] font-sans text-body-lg text-ink-2">
-                Ask for an outcome in <span className="text-mint">plain language — by text or
+                Ask for an outcome in <span className="text-mint">plain language, by text or
                 voice</span>. Kula reasons in the runtime, builds the plan, and{' '}
-                <span className="text-ink">runs it on your sign-off</span> — tuned to your role, not a
-                generic chatbot.
+                <span className="text-ink">runs it on your sign-off</span>, tuned to your role rather
+                than a generic chatbot.
               </p>
             </Reveal>
           </div>

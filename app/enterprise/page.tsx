@@ -53,16 +53,16 @@ const FITS = [
   },
   {
     name: 'Validated before it acts',
-    body: 'Every regulated action is checked against law, policy and context before it executes — so AI can finally act at scale, not just advise.',
+    body: 'Every regulated action is checked against law, policy and context before it executes, so AI can finally act at scale with confidence.',
   },
 ]
 
 // The work an enterprise carries at volume — four, kept distinct.
 const USE_CASES = [
-  { name: 'Customer servicing', body: 'Queries, account changes and support across voice, chat and messaging — routine work self-serves, humans take the hard cases.' },
-  { name: 'Compliant outbound', body: 'Collections, renewals and statutory notices — every contact inside consent, contact-window and frequency rules, per jurisdiction.' },
+  { name: 'Customer servicing', body: 'Queries, account changes and support across voice, chat and messaging. Routine work self-serves, while humans take the hard cases.' },
+  { name: 'Compliant outbound', body: 'Collections, renewals and statutory notices, with every contact inside consent, contact-window and frequency rules, per jurisdiction.' },
   { name: 'Back-office processing', body: 'Documents, data and reconciliation at volume, with explicit inputs and outputs logged by construction.' },
-  { name: 'Disputes & complaints', body: 'Logged, tracked and resolved on one thread — each step linked to the policy that applied.' },
+  { name: 'Disputes & complaints', body: 'Logged, tracked and resolved on one thread, each step linked to the policy that applied.' },
 ]
 
 export default function EnterprisePage() {
