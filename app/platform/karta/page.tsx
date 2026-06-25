@@ -34,24 +34,24 @@ const breadcrumbLd = {
   ],
 }
 
-// where they run — two surfaces. Each operation is a focused co-worker; the
-// cases below are the work it actually covers (what tells a reader its scope).
-type Op = { op: string; cases: string[] }
+// where they run — two surfaces. Each card is a focused co-worker described at
+// the altitude of what it owns end to end, not a checklist of micro-tasks.
+type Op = { op: string; blurb: string }
 const CONTACT_CENTRE: Op[] = [
-  { op: 'Inbound support', cases: ['Balance, schedule & statements', 'Payment help', 'Complaint capture', 'Warm transfer to a person'] },
-  { op: 'Outbound voice', cases: ['Welcome & onboarding calls', 'Payment reminders', 'Collections outreach', 'Renewal & retention'] },
-  { op: 'Reminders & dunning', cases: ['Pre-due nudges', 'Missed-payment notices', 'Payment-link follow-ups', 'Smart channel & timing'] },
-  { op: 'Onboarding & KYC', cases: ['Application intake', 'Identity verification', 'Document collection', 'Guided to a decision'] },
-  { op: 'Collections & promises', cases: ['Right-party contact', 'Negotiation within authority', 'Promise-to-pay capture', 'Payment plans'] },
-  { op: 'Disputes & hardship', cases: ['Grievance intake', 'Dispute investigation', 'Hardship eligibility', 'Restructuring offers'] },
+  { op: 'Inbound support', blurb: 'Answers the calls, chats and messages customers start — resolving balances, payments and complaints, or handing to a person with the full context attached.' },
+  { op: 'Outbound voice', blurb: 'Carries the voice relationship across the whole lifecycle — welcome and onboarding, servicing, reminders, collections and retention.' },
+  { op: 'Reminders & dunning', blurb: 'Keeps accounts current — pre-due nudges and missed-payment notices, on the channel and timing each borrower actually responds to.' },
+  { op: 'Onboarding', blurb: 'Takes a new applicant from first touch to a decision — application, identity, documents and eligibility, guided the whole way.' },
+  { op: 'Collections', blurb: 'Recovers arrears through every stage of delinquency — reaching borrowers across channels, negotiating within your authority, and following promises through to payment.' },
+  { op: 'Disputes & hardship', blurb: 'Handles the sensitive cases with care — grievances investigated, hardship assessed, and restructuring offered where it genuinely fits.' },
 ]
 const BACK_OFFICE: Op[] = [
-  { op: 'Documentation', cases: ['Loan agreements', 'Key-fact statements', 'EMI schedules', 'Arrears & legal notices'] },
-  { op: 'Payments & reconciliation', cases: ['Billing & EMI runs', 'Auto-debit mandates', 'Refunds & retries', 'Reconciliation across rails'] },
-  { op: 'Risk & decisioning', cases: ['Portfolio segmentation', 'Risk & fraud gating', 'Next-best-action', 'Strategy selection'] },
-  { op: 'Cure & recovery', cases: ['Multi-step cure journeys', 'Settlement & OTS', 'Legal recovery', 'Payoff & write-off'] },
-  { op: 'Monitoring', cases: ['Early-warning signals', 'Roll-rate tracking', 'Drift & anomaly detection', 'Fraud watch'] },
-  { op: 'Audit & reporting', cases: ['Interaction audit', 'Decision traces', 'MIS & board packs', 'Regulatory returns'] },
+  { op: 'Documentation', blurb: 'Produces the paperwork a loan runs on — agreements, key-fact statements, repayment schedules and statutory notices, generated and tracked.' },
+  { op: 'Payments & reconciliation', blurb: 'Runs the money end to end — billing, mandates, payment plans and refunds — reconciled across every rail, with failed payments retried.' },
+  { op: 'Risk & decisioning', blurb: 'Segments the book and chooses the next best action — gating on your own risk and fraud engines, never overriding the credit decision.' },
+  { op: 'Cure & recovery', blurb: 'Brings the hard cases home — multi-step cure journeys, settlements, statutory recovery, payoff and write-off.' },
+  { op: 'Monitoring', blurb: 'Watches the whole portfolio for what is coming — delinquency, roll-rate drift, anomalies and fraud — and raises the flag early.' },
+  { op: 'Audit & reporting', blurb: 'Makes the operation explainable — every action audited and traced, and reported to ops, risk, compliance and the board.' },
 ]
 
 // what every co-worker can do
@@ -105,20 +105,14 @@ function SurfaceHeader({
   )
 }
 
-// one operation card — a focused co-worker and the cases it covers
-function OpCard({ op, cases, accent }: Op & { accent: 'cyan' | 'mint' }) {
-  const dot = accent === 'cyan' ? 'bg-cyan/70' : 'bg-mint/70'
+// one operation card — a focused co-worker and the capability it owns
+function OpCard({ op, blurb, accent }: Op & { accent: 'cyan' | 'mint' }) {
+  const bar = accent === 'cyan' ? 'bg-cyan/70' : 'bg-mint/70'
   return (
-    <div className="glass lume h-full rounded-lg p-6">
-      <p className="font-serif text-[1.25rem] leading-tight text-ink">{op}</p>
-      <ul className="mt-4 space-y-2.5">
-        {cases.map((c) => (
-          <li key={c} className="flex items-start gap-2.5 font-sans text-body text-ink-2">
-            <span aria-hidden className={`mt-[0.5em] h-1 w-1 shrink-0 rounded-full ${dot}`} />
-            <span>{c}</span>
-          </li>
-        ))}
-      </ul>
+    <div className="glass lume h-full rounded-lg p-6 md:p-7">
+      <span aria-hidden className={`block h-[3px] w-8 rounded-full ${bar}`} />
+      <p className="mt-4 font-serif text-[1.3rem] leading-tight text-ink">{op}</p>
+      <p className="mt-3 font-sans text-body text-ink-2">{blurb}</p>
     </div>
   )
 }
@@ -170,12 +164,12 @@ export default function KartaPage() {
             <div className="mx-auto max-w-[720px] text-center">
               <Eyebrow>The co-workers</Eyebrow>
               <h2 className="mt-4 font-serif text-display-1 text-ink">
-                Across the <span className="text-cyan">contact centre</span> and the{' '}
-                <span className="text-mint">back office</span>.
+                A specialist for <span className="text-mint">every part</span> of the operation.
               </h2>
               <p className="mx-auto mt-6 font-sans text-body-lg text-ink-2">
-                Each operation runs on a co-worker focused on it alone — these are the cases each one
-                covers.
+                From a borrower&rsquo;s first touch to final closure, focused co-workers run the whole
+                lending operation — across the customer-facing contact centre and the operational back
+                office.
               </p>
             </div>
           </Reveal>
