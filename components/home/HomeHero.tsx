@@ -82,7 +82,8 @@ function TypedLine({ full, shown }: { full: string; shown: string }) {
   return (
     <span className="relative block">
       {/* invisible full copy reserves the exact box (no layout shift) and keeps the text in SSR HTML */}
-      <span className="invisible">{full || ' '}</span>
+      <span className="invisible" aria-hidden>{full || ' '}</span>
+      <span className="sr-only">{full}</span>
       <span aria-hidden className="absolute inset-0">
         {shown}
       </span>
