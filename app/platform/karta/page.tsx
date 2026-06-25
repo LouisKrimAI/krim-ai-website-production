@@ -70,40 +70,12 @@ const CAPABILITIES: [string, string][] = [
   ['Around the clock', 'Every hour, at any volume, without a queue.'],
 ]
 
-// the outcomes — qualitative, not promised numbers; a load-bearing phrase lit per card
-const IMPACTS = [
-  {
-    title: 'Scale without the headcount',
-    body: (
-      <>
-        The book can grow <span className="text-mint">without the cost line growing</span> with it.
-      </>
-    ),
-  },
-  {
-    title: 'Faster, every time',
-    body: (
-      <>
-        Applications, queries and resolutions move at <span className="text-mint">digital speed</span>.
-      </>
-    ),
-  },
-  {
-    title: 'Consistent and compliant',
-    body: (
-      <>
-        The same standard on every contact — and <span className="text-mint">on the record</span>.
-      </>
-    ),
-  },
-  {
-    title: 'Better recovery',
-    body: (
-      <>
-        More right-party contact and more cures — <span className="text-mint">always within the rules</span>.
-      </>
-    ),
-  },
+// the outcomes — qualitative, not promised numbers
+const IMPACTS: [string, string][] = [
+  ['Scale without the headcount', 'The book can grow without the cost line growing with it.'],
+  ['Faster, every time', 'Applications, queries and resolutions move at digital speed.'],
+  ['Consistent and compliant', 'The same standard on every contact — and on the record.'],
+  ['Better recovery', 'More right-party contact and more cures — always within the rules.'],
 ]
 
 // what you do in Agent Studio — build and tune a co-worker, no code
@@ -166,7 +138,7 @@ export default function KartaPage() {
             <Reveal>
               <Eyebrow>The co-workers</Eyebrow>
               <h1 className="mt-4 font-serif text-display-hero text-ink">
-                A workforce for the whole loan.
+                A workforce for the <span className="text-mint">whole loan</span>.
               </h1>
             </Reveal>
             <Reveal delay={0.12}>
@@ -185,12 +157,12 @@ export default function KartaPage() {
             <Reveal>
               <Eyebrow>What they are</Eyebrow>
               <h2 className="mt-4 font-serif text-display-1 text-ink">
-                Software co-workers, not chatbots.
+                Software <span className="text-mint">co-workers</span>, not chatbots.
               </h2>
               <p className="mx-auto mt-6 max-w-[58ch] font-sans text-body-lg text-ink-2">
-                Each one runs a real part of your operation. You{' '}
-                <span className="text-mint">configure</span> what it can do and its limits — no
-                engineering cycle — and every action it takes clears the validation gate first.
+                Each one runs a real part of your operation. You configure what it can do and its
+                limits — no engineering cycle — and every action it takes clears the validation gate
+                first.
               </p>
             </Reveal>
           </div>
@@ -201,10 +173,11 @@ export default function KartaPage() {
           <Reveal>
             <div className="mx-auto max-w-[640px] text-center">
               <Eyebrow>The co-workers</Eyebrow>
-              <h2 className="mt-4 font-serif text-display-1 text-ink">Meet the team.</h2>
+              <h2 className="mt-4 font-serif text-display-1 text-ink">
+                Meet the <span className="text-mint">team</span>.
+              </h2>
               <p className="mx-auto mt-6 font-sans text-body-lg text-ink-2">
-                A set of specialised co-workers,{' '}
-                <span className="text-mint">each owning one kind of work</span> — configured to your
+                A set of specialised co-workers, each owning one kind of work — configured to your
                 segments, scripts and policies.
               </p>
             </div>
@@ -228,7 +201,7 @@ export default function KartaPage() {
               <div>
                 <Eyebrow>Agent Studio</Eyebrow>
                 <h2 className="mt-4 max-w-[16ch] font-serif text-display-1 text-ink">
-                  Build a co-worker, no code.
+                  Build a co-worker, <span className="text-mint">no code</span>.
                 </h2>
                 <p className="mt-6 max-w-[46ch] font-sans text-body-lg text-ink-2">
                   Your team creates and tunes co-workers in{' '}
@@ -272,7 +245,7 @@ export default function KartaPage() {
               </h2>
               <p className="mx-auto mt-6 font-sans text-body-lg text-ink-2">
                 The same co-workers cover the customer-facing surface and the operational engine
-                behind it — <span className="text-mint">one workforce, end to end</span>.
+                behind it — one workforce, end to end.
               </p>
             </div>
           </Reveal>
@@ -305,8 +278,7 @@ export default function KartaPage() {
               <Eyebrow>Capabilities</Eyebrow>
               <h2 className="mt-4 font-serif text-display-1 text-ink">What every co-worker can do.</h2>
               <p className="mx-auto mt-6 font-sans text-body-lg text-ink-2">
-                <span className="text-mint">The same core abilities</span>, whichever co-worker you
-                put to work.
+                The same core abilities, whichever co-worker you put to work.
               </p>
             </div>
           </Reveal>
@@ -328,16 +300,18 @@ export default function KartaPage() {
           <Reveal>
             <div className="mx-auto max-w-[640px] text-center">
               <Eyebrow>The impact</Eyebrow>
-              <h2 className="mt-4 font-serif text-display-1 text-ink">What changes when they run it.</h2>
+              <h2 className="mt-4 font-serif text-display-1 text-ink">
+                What <span className="text-mint">changes</span> when they run it.
+              </h2>
             </div>
           </Reveal>
           <div className="mt-12 grid gap-5 md:auto-rows-fr md:grid-cols-2">
-            {IMPACTS.map(({ title, body }, i) => (
+            {IMPACTS.map(([title, line], i) => (
               <Reveal key={title} delay={(i % 2) * 0.08} className="h-full">
                 <div className="glass lume h-full rounded-lg p-8">
                   <span aria-hidden className="block h-1.5 w-1.5 rounded-full bg-mint" />
                   <h3 className="mt-5 font-serif text-[1.5rem] leading-tight text-ink">{title}</h3>
-                  <p className="mt-3 font-sans text-body-lg text-ink-2">{body}</p>
+                  <p className="mt-3 font-sans text-body-lg text-ink-2">{line}</p>
                 </div>
               </Reveal>
             ))}
@@ -348,11 +322,12 @@ export default function KartaPage() {
         <Section hairline>
           <div className="mx-auto max-w-[720px] text-center">
             <Reveal>
-              <h2 className="font-serif text-display-2 text-ink">A workforce that compounds.</h2>
+              <h2 className="font-serif text-display-2 text-ink">
+                A workforce that <span className="text-mint">compounds</span>.
+              </h2>
               <p className="mx-auto mt-5 max-w-[50ch] font-sans text-body-lg text-ink-2">
-                Configured by you, governed by the runtime, and{' '}
-                <span className="text-mint">sharper with every interaction</span> — so the operation
-                improves the more it runs.
+                Configured by you, governed by the runtime, and sharper with every interaction — so
+                the operation improves the more it runs.
               </p>
             </Reveal>
           </div>
