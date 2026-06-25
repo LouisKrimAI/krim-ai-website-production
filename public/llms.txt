@@ -1,11 +1,11 @@
 # Krim
 
-> KrimOS is the operating system for regulated operations: AI co-workers whose every action is validated before it executes (Krim-Nyāya, pre-execution validation), and that learn from every recorded outcome (Krim-Learn) — all inside the institution's own perimeter. Krim is building toward the full lending stack, including a safe, validated AI underwriter, through the World Lending Model. Tagline: "The AI your regulator can read."
+> KrimOS is the operating system for banking and lending: AI co-workers whose every action is validated before it executes (Krim-Nyāya, pre-execution validation) and that learn from every recorded outcome (Krim-Learn), all inside the institution's own perimeter. Krim is building toward the full lending stack, including a safe, validated AI underwriter, through the World Lending Model. Tagline: "The AI your regulator can read."
 
 ## Platform (KrimOS)
-- [KrimOS](https://krim.ai/platform): one operating system for regulated operations — the whole stack, core to interface.
+- [KrimOS](https://krim.ai/platform): one operating system for banking and lending — the whole stack, core to interface.
 - [Kendra](https://krim.ai/platform/kendra): the runtime — validates every action before it fires and learns from every outcome.
-- [Kriya](https://krim.ai/platform/kriya): the vocabulary — 250+ validated, credit-native action primitives.
+- [Kriya](https://krim.ai/platform/kriya): the vocabulary — 500+ validated, credit-native action primitives across 20+ domains.
 - [Karta](https://krim.ai/platform/karta): the AI co-workers, composed from validated primitives.
 - [Kupa](https://krim.ai/platform/kupa): the command center where teams supervise, configure and audit live work.
 - [Kula](https://krim.ai/platform/kula): the natural-language interface for your teams.
@@ -22,11 +22,11 @@
 - [Large Enterprise](https://krim.ai/enterprise) and [MSME](https://krim.ai/msme).
 
 ## Writing
-- [The automation gap](https://krim.ai/blog/the-automation-gap): why the most consequential work still runs by hand.
-- [The cost of being wrong](https://krim.ai/blog/the-cost-of-being-wrong): what a non-compliant action costs a lender.
-- [The credit gap is an operations problem](https://krim.ai/blog/the-credit-gap-is-an-operations-problem).
-- [Audit after the fact is a confession](https://krim.ai/blog/audit-after-the-fact-is-a-confession): the case for pre-execution validation.
-- [Sovereignty is not optional](https://krim.ai/blog/sovereignty-is-not-optional): why regulated AI must run inside the perimeter.
+- [The automation gap](https://krim.ai/insights/the-automation-gap): why the most consequential work still runs by hand.
+- [The cost of being wrong](https://krim.ai/insights/the-cost-of-being-wrong): what a non-compliant action costs a lender.
+- [The credit gap is an operations problem](https://krim.ai/insights/the-credit-gap-is-an-operations-problem).
+- [Audit after the fact is a confession](https://krim.ai/insights/audit-after-the-fact-is-a-confession): the case for pre-execution validation.
+- [Sovereignty is not optional](https://krim.ai/insights/sovereignty-is-not-optional): why regulated AI must run inside the perimeter.
 
 ## More
 - [Architecture](https://krim.ai/architecture): how KrimOS fits the stack you already run.

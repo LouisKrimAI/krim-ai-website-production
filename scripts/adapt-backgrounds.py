@@ -49,8 +49,10 @@ duo = Image.merge('RGB', (lum.point(LR), lum.point(LG), lum.point(LB)))
 rgb = Image.composite(duo, rgb, mask)
 recol = Image.merge('RGBA', (*rgb.split(), alpha))
 
-# Widescreen bake: stack centred on transparent 2400x1350, bottom feathered to alpha.
-LW, LH = 2400, 1350
+# Widescreen bake: stack centred on a transparent canvas, bottom feathered to alpha.
+# Held at 0.32 opacity as a faded cover, so a viewport-scale canvas is plenty — kept
+# small to keep the asset light on the critical path.
+LW, LH = 1800, 1013
 sh = round(LH * 0.92)                       # 1242
 sw = round(recol.width * sh / recol.height)  # 923
 stack = recol.resize((sw, sh), LANCZOS)

@@ -32,7 +32,7 @@ const LAYERS: Layer[] = [
     tag: 'The actions',
     summary: 'Change a rule once — not across a hundred scripts.',
     points: [
-      '250+ validated, credit-native actions, ready to use.',
+      '500+ validated, credit-native actions, ready to use.',
       'Rules travel with the action — change once, live everywhere.',
       'The layer that gets you past Compliance and Legal.',
     ],
@@ -66,7 +66,7 @@ const LAYERS: Layer[] = [
     key: 'kula',
     name: 'Kula',
     tag: 'The digital twin',
-    summary: "A role-tuned interface that doesn't just answer — it acts.",
+    summary: 'Your operation in plain language: ask, and it does the work.',
     points: [
       'Ask in plain language — by text or voice.',
       'It builds the workflow and runs it, on your sign-off.',

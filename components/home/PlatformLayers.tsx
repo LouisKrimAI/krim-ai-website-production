@@ -56,7 +56,7 @@ const LAYERS: Layer[] = [
   {
     key: 'kriya',
     name: 'Kriya',
-    role: 'The validated, credit-native actions every co-worker is built from — 250+ in all.',
+    role: 'The validated, credit-native actions every co-worker is built from — 500+ in all.',
     tag: 'PRIMITIVES',
     tone: 'operating',
   },

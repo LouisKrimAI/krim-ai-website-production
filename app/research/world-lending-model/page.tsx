@@ -253,8 +253,8 @@ export default function WorldLendingModelPage() {
                 back of the book: collections data retrains origination, and a borrower’s underwriting
                 file guides the recovery conversation later.{' '}
                 <span className="text-mint">
-                  One shared intelligence means access for underserved borrowers and full
-                  accountability for regulators.
+                  One shared intelligence keeps every decision accountable to the regulator, and
+                  creates room to serve more borrowers safely where the risk genuinely supports it.
                 </span>
               </p>
             </Reveal>

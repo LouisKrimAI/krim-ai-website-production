@@ -309,7 +309,8 @@ export default function TrustPage() {
           </div>
           <Reveal delay={0.12}>
             <p className="mx-auto mt-9 max-w-[60ch] text-center font-sans text-body text-ink-3">
-              Documented, and ready for your security team to review.
+              The architecture is built to these frameworks today, with formal certifications in
+              progress. Documented and ready for your security team to review.
             </p>
           </Reveal>
         </Section>

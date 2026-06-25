@@ -20,7 +20,7 @@ export type Layer = {
 
 export const LAYERS: Layer[] = [
   { slug: 'kendra', name: 'Kendra', eyebrow: 'When it has to be right', oneLiner: 'The brain — validates every action, learns from every outcome.', tag: 'RUNTIME' },
-  { slug: 'kriya', name: 'Kriya', eyebrow: 'What it can do', oneLiner: '250+ validated, credit-native action primitives.', tag: 'PRIMITIVES' },
+  { slug: 'kriya', name: 'Kriya', eyebrow: 'What it can do', oneLiner: '500+ validated, credit-native action primitives.', tag: 'PRIMITIVES' },
   { slug: 'karta', name: 'Karta', eyebrow: 'Who does the work', oneLiner: 'Intelligent co-workers, composed from primitives.', tag: 'CO-WORKERS' },
   { slug: 'kupa', name: 'Kupa', eyebrow: 'Where you stay in control', oneLiner: 'The glass cockpit — supervise, configure, monitor and audit every action.', tag: 'COMMAND CENTER' },
   { slug: 'kula', name: 'Kula', eyebrow: 'For your teams', oneLiner: 'Ask in plain language; the runtime proposes the work and waits for your sign-off.', tag: 'ENTERPRISE INTERFACE' },

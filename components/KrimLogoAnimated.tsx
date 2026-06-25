@@ -21,5 +21,8 @@ export default function KrimLogoAnimated({
   title?: string
 }) {
   // eslint-disable-next-line @next/next/no-img-element
-  return <img src="/brand/logo/KRIM-horizontal-animated-dark.svg" alt={title} className={className} />
+  return (
+    // width/height match the SVG viewBox aspect (~4.18:1) so the box is reserved before paint (no CLS)
+    <img src="/brand/logo/KRIM-horizontal-animated-dark.svg" alt={title} width={5919} height={1415} className={className} />
+  )
 }
