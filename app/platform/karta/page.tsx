@@ -46,18 +46,20 @@ const TYPES: [string, string][] = [
   ['Report', 'Operational reporting — aggregated for ops, risk, compliance and the board.'],
 ]
 
-// where they run — two operational surfaces
-const CONTACT_CENTRE: [string, string][] = [
-  ['Inbound support', 'Queries, payments and disputes — answered, or handed to a person.'],
-  ['Outbound campaigns', 'Reminders, collections and retention, on the right channel.'],
-  ['Onboarding', 'Applications taken and customers guided to a decision.'],
-  ['Retention', 'Renewals, cross-sell and win-back, at the right moment.'],
+// where they run — two surfaces, each operation run by specific co-workers
+// (the canonical eight plus the logical agents each operation needs)
+type Op = { op: string; desc: string; agents: string[] }
+const CONTACT_CENTRE: Op[] = [
+  { op: 'Inbound support', desc: 'Calls, chats and messages answered — or warm-transferred to a person.', agents: ['Vox-In', 'Chat'] },
+  { op: 'Outbound outreach', desc: 'Reminders, negotiation and retention, on the right channel at the right time.', agents: ['Vox-Out', 'Nudge'] },
+  { op: 'Onboarding', desc: 'New applications taken, verified and guided to a decision.', agents: ['Onboard', 'KYC'] },
+  { op: 'Disputes & hardship', desc: 'Grievances and hardship logged, assessed and resolved — clock tracked.', agents: ['Dispute', 'Hardship'] },
 ]
-const BACK_OFFICE: [string, string][] = [
-  ['Documentation', 'Agreements, statements, schedules and notices, generated and tracked.'],
-  ['Payments & reconciliation', 'Billing, mandates, plans and reconciliation across rails.'],
-  ['Risk & monitoring', 'The portfolio watched for delinquency, drift and fraud.'],
-  ['Compliance & reporting', 'Every action audited, explained and reported.'],
+const BACK_OFFICE: Op[] = [
+  { op: 'Documentation', desc: 'Agreements, statements, schedules and notices — generated and tracked.', agents: ['Doc'] },
+  { op: 'Payments & reconciliation', desc: 'Billing, mandates, payment plans and reconciliation across rails.', agents: ['Pay', 'Recon'] },
+  { op: 'Risk, decisioning & cure', desc: 'Segmentation and gating, next-best-action, and cure journeys back to good standing.', agents: ['Risk', 'Decide', 'Cure'] },
+  { op: 'Monitoring, audit & reporting', desc: 'The portfolio watched for early warnings; every action audited and reported.', agents: ['Monitor', 'Audit', 'Report'] },
 ]
 
 // what every co-worker can do
@@ -93,33 +95,39 @@ function AreaPanel({
   title,
   blurb,
   accent,
-  areas,
+  ops,
 }: {
   kicker: string
   title: string
   blurb: string
   accent: 'cyan' | 'mint'
-  areas: [string, string][]
+  ops: Op[]
 }) {
+  const bar = accent === 'cyan' ? 'bg-cyan/70' : 'bg-mint/70'
+  const chip = accent === 'cyan' ? 'border-cyan/25 bg-cyan/[0.06]' : 'border-mint/25 bg-mint/[0.06]'
   return (
-    <GlassCard className="h-full p-8 md:p-9">
-      <span
-        aria-hidden
-        className={`block h-[3px] w-12 rounded-full ${accent === 'cyan' ? 'bg-cyan/70' : 'bg-mint/70'}`}
-      />
+    <GlassCard className="h-full p-8 md:p-10">
+      <span aria-hidden className={`block h-[3px] w-12 rounded-full ${bar}`} />
       <p className="mt-5 font-mono text-[11px] uppercase tracking-[0.2em] text-ink-3">{kicker}</p>
-      <h3 className="mt-2 font-serif text-[1.6rem] leading-tight text-ink">{title}</h3>
-      <p className="mt-3 font-sans text-body text-ink-2">{blurb}</p>
-      <ul className="mt-7 space-y-5 border-t border-soft pt-7">
-        {areas.map(([name, line]) => (
-          <li key={name} className="flex gap-3.5">
-            <span
-              aria-hidden
-              className={`mt-[0.5em] h-1.5 w-1.5 shrink-0 rounded-full ${accent === 'cyan' ? 'bg-cyan' : 'bg-mint'}`}
-            />
-            <span className="font-sans text-body text-ink-2">
-              <span className="text-ink">{name}</span> — {line}
-            </span>
+      <h3 className="mt-2 font-serif text-[1.7rem] leading-tight text-ink">{title}</h3>
+      <p className="mt-3 max-w-[42ch] font-sans text-body text-ink-2">{blurb}</p>
+      <ul className="mt-8 divide-y divide-soft border-t border-soft">
+        {ops.map(({ op, desc, agents }) => (
+          <li key={op} className="py-6 first:pt-7">
+            <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-2">
+              <p className="font-serif text-[1.25rem] leading-tight text-ink">{op}</p>
+              <div className="flex flex-wrap gap-1.5">
+                {agents.map((a) => (
+                  <span
+                    key={a}
+                    className={`rounded-full border px-2.5 py-0.5 font-mono text-[10px] uppercase tracking-[0.1em] text-ink ${chip}`}
+                  >
+                    {a}
+                  </span>
+                ))}
+              </div>
+            </div>
+            <p className="mt-2 font-sans text-body text-ink-2">{desc}</p>
           </li>
         ))}
       </ul>
@@ -244,8 +252,8 @@ export default function KartaPage() {
                 Across the contact centre and the back office.
               </h2>
               <p className="mx-auto mt-6 font-sans text-body-lg text-ink-2">
-                The same co-workers cover the customer-facing surface and the operational engine
-                behind it — one workforce, end to end.
+                Every operation has the co-workers that run it — across the customer-facing contact
+                centre and the back office behind it.
               </p>
             </div>
           </Reveal>
@@ -256,7 +264,7 @@ export default function KartaPage() {
                 title="The customer-facing surface."
                 blurb="Inbound and outbound, across voice, SMS, WhatsApp, email and chat — one conversation that remembers."
                 accent="cyan"
-                areas={CONTACT_CENTRE}
+                ops={CONTACT_CENTRE}
               />
             </Reveal>
             <Reveal delay={0.1} className="h-full">
@@ -265,7 +273,7 @@ export default function KartaPage() {
                 title="The operational engine."
                 blurb="The work behind every loan — documents, money, risk and the record, handled and kept straight."
                 accent="mint"
-                areas={BACK_OFFICE}
+                ops={BACK_OFFICE}
               />
             </Reveal>
           </div>
