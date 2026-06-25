@@ -3,9 +3,8 @@
  * main + SiteFooter), like app/research/page.tsx — NOT LayerShell.
  *
  * Renders POSTS (app/insights/_posts.ts, newest-first) as a responsive grid of
- * glass cards linking to each article. Keeps the newsletter note and the close
- * CTA. Real socials only: X (https://x.com/TheKrimAI), LinkedIn
- * (https://www.linkedin.com/company/krim).
+ * glass cards linking to each article, plus a newsletter pointer (Krim's
+ * Substack) and the close CTA.
  */
 
 import type { Metadata } from 'next'
@@ -32,9 +31,8 @@ export const metadata: Metadata = {
 
 const DEMO_HREF = '/contact'
 
-// Real, existing socials only — do not add unverified handles.
-const X_HREF = 'https://x.com/TheKrimAI'
-const LINKEDIN_HREF = 'https://www.linkedin.com/company/krim'
+// Krim's newsletter lives on Substack.
+const SUBSTACK_HREF = 'https://substack.com/@thekrimai'
 
 const breadcrumbLd = {
   '@context': 'https://schema.org',
@@ -79,7 +77,7 @@ export default function BlogPage() {
           <Reveal>
             <Eyebrow>Latest insights</Eyebrow>
             <h2 className="mt-4 max-w-[20ch] font-serif text-display-2 text-ink">
-              Arguments, not announcements.
+              Recent articles.
             </h2>
           </Reveal>
           <div className="mt-12 grid gap-5 md:grid-cols-2">
@@ -121,26 +119,17 @@ export default function BlogPage() {
               </Reveal>
               <Reveal delay={0.12}>
                 <p className="font-sans text-body-lg text-ink-2">
-                  A low-volume newsletter is coming — the longer thinking, sent direct, never more
-                  than it needs to be. Sign-up opens with the first issue. Until then,{' '}
+                  A low-volume letter: the longer thinking, sent direct, never more than it needs to
+                  be.{' '}
                   <a
-                    href={X_HREF}
+                    href={SUBSTACK_HREF}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-ink underline decoration-soft underline-offset-4 transition-colors hover:text-mint"
                   >
-                    follow on X
-                  </a>{' '}
-                  or{' '}
-                  <a
-                    href={LINKEDIN_HREF}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-ink underline decoration-soft underline-offset-4 transition-colors hover:text-mint"
-                  >
-                    LinkedIn
-                  </a>{' '}
-                  and you will not miss it.
+                    Read and subscribe on Substack
+                  </a>
+                  .
                 </p>
               </Reveal>
             </div>
@@ -155,7 +144,7 @@ export default function BlogPage() {
                 Rather see it run than read about it?
               </h2>
               <p className="mx-auto mt-5 max-w-[46ch] font-sans text-body text-ink-2">
-                Book a demo and watch validated, sovereign AI act on the work you already do.
+                Book a demo and see validated, sovereign AI run a lending operation, end to end.
               </p>
               <div className="mt-9">
                 <CTA href={DEMO_HREF}>Book a demo</CTA>
