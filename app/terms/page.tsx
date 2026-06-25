@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 
 const EFFECTIVE = 'Last updated: 25 June 2026'
 
-const INTRO = `These Terms of Use ("Terms") govern your access to and use of the Krim website at krim.ai (the "Site"), operated by Krim AI Inc. ("Krim", "we", "us", "our"), registered at 169 Madison Ave, STE 15775, New York, NY 10016, United States.
+const INTRO = `These Terms of Use ("Terms") govern your access to and use of the Krim website at krim.ai (the "Site"), operated by Krim AI Inc. ("Krim", "we", "us", "our") of 169 Madison Ave, STE 15775, New York, NY 10016, United States.
 
 By accessing or using the Site, you agree to these Terms. If you do not agree, please do not use the Site.`
 
