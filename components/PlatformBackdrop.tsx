@@ -34,7 +34,7 @@ export default function PlatformBackdrop() {
     let SW = 0, SH = 0, DPR = 1
     function layout() {
       const vw = window.innerWidth, vh = window.innerHeight
-      const scale = Math.max(vw / IW, vh / IH) // cover
+      const scale = Math.min(vw / IW, vh / IH) // contain — show the whole artwork
       SW = IW * scale; SH = IH * scale
       stage!.style.width = SW + 'px'
       stage!.style.height = SH + 'px'
