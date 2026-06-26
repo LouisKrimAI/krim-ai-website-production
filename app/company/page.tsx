@@ -43,7 +43,7 @@ const breadcrumbLd = {
 
 const FOUNDER = {
   name: 'Vishwa Nath Jha',
-  role: 'Co-Founder & CEO',
+  role: 'Founder & CEO',
   bio: '16 years as an AI researcher, educator and entrepreneur. Previously founder of Saarthi.ai (2017–2025), India’s largest voice AI platform for banks and financial institutions.',
   linkedin: 'https://www.linkedin.com/in/vishwanathjha1/',
 }
@@ -183,7 +183,7 @@ export default function CompanyPage() {
                 <Eyebrow>Team</Eyebrow>
                 <h2 className="mt-4 font-serif text-display-1 text-ink">The people behind the proof.</h2>
                 <p className="mx-auto mt-6 max-w-[54ch] font-sans text-body-lg text-ink-2">
-                  Built by a team that shipped production AI to India&rsquo;s largest banks.
+                  Built by a founder who shipped production AI to India&rsquo;s largest BFIs.
                 </p>
               </div>
             </Reveal>
