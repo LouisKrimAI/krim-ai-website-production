@@ -183,7 +183,7 @@ export default function CompanyPage() {
                 <Eyebrow>Team</Eyebrow>
                 <h2 className="mt-4 font-serif text-display-1 text-ink">The people behind the proof.</h2>
                 <p className="mx-auto mt-6 max-w-[54ch] font-sans text-body-lg text-ink-2">
-                  Built by a founder who shipped production AI to India&rsquo;s largest BFIs.
+                  Deep experience deploying AI in India&rsquo;s largest BFIs.
                 </p>
               </div>
             </Reveal>
