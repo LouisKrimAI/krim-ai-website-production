@@ -12,3 +12,9 @@ next-env.d.ts
 
 # claude session worktrees
 .claude/worktrees/
+
+# internal reference + loose source assets (confidential / not part of the site)
+KRIMOS_CAPABILITIES_OVERVIEW.md
+Gemini_Generated_Image_*.png
+/Logos for recognition/
+/Logos for website integrations/

@@ -3,9 +3,10 @@
  * (Startup India) recognition, and STPI incubation. NOT customers, investors or
  * endorsements — the precise relationship lives in each mark's alt text.
  *
- * The card itself is the site's dark glass (a touch lighter than a standard card),
- * so it sits in the dark page. The marks are official true-colour lockups built for
- * light grounds, so each rests on its own soft-white chip — legible, never recoloured.
+ * Design: a quiet credential strip on the site's dark glass. Each mark is
+ * monochrome white at reduced opacity (a CSS filter inverts the source PNG to a
+ * single tone), so the row reads as recognition, not advertising. Presence over
+ * colour fidelity — the standard pattern for "recognized by" strips on dark sites.
  * Assets: /public/images/badges/<slug>.png (transparent, normalised height).
  */
 /* eslint-disable @next/next/no-img-element */
@@ -32,20 +33,17 @@ export default function Recognition({ className = '' }: { className?: string }) 
             'inset 0 1px 0 rgba(255,255,255,0.08), 0 30px 70px -40px rgba(0,0,0,0.65)',
         }}
       >
-        <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 md:gap-7">
+        <div className="flex flex-wrap items-center justify-center gap-10 sm:gap-12 md:gap-14">
           {MARKS.map((m) => (
-            <div
+            <img
               key={m.src}
-              className="flex items-center justify-center rounded-xl bg-[#f5f6f8] px-5 py-3.5 shadow-[0_8px_24px_-12px_rgba(0,0,0,0.6)]"
-            >
-              <img
-                src={m.src}
-                alt={m.alt}
-                loading="lazy"
-                decoding="async"
-                className="h-7 w-auto select-none object-contain md:h-9"
-              />
-            </div>
+              src={m.src}
+              alt={m.alt}
+              loading="lazy"
+              decoding="async"
+              className="h-7 w-auto select-none object-contain opacity-70 transition-opacity duration-300 hover:opacity-95 md:h-8"
+              style={{ filter: 'brightness(0) invert(1)' }}
+            />
           ))}
         </div>
       </div>

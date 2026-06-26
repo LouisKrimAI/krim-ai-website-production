@@ -35,14 +35,38 @@ export type DemoLead = {
   email: string
   organisation: string | null
   role: string | null
+  sector: string | null
   market: string | null
   automate: string | null
+  timeline: string | null
+  phone: string | null
+  ai_stage: string | null
+  heard_about: string | null
   message: string | null
-  status: 'new' | 'booked' | 'unsubscribed'
+  status: 'new' | 'booked' | 'unsubscribed' | 'bounced'
   booked_at: string | null
   drip_stage: number
   last_emailed_at: string | null
   calendly_event_uri: string | null
+  notes: string | null
   source: string | null
   unsubscribe_token: string
+}
+
+/** A row in lead_activity — the engagement timeline. */
+export type LeadActivity = {
+  id: string
+  lead_id: string
+  kind:
+    | 'email_sent'
+    | 'email_delivered'
+    | 'email_clicked'
+    | 'email_bounced'
+    | 'email_complained'
+    | 'download'
+    | 'booked'
+    | 'note'
+  detail: string | null
+  resend_email_id: string | null
+  created_at: string
 }

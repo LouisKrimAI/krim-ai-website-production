@@ -1,18 +1,18 @@
 /**
  * POST /api/calendly/webhook — inbound booking events from Calendly.
  *
- * On invitee.created we mark the matching lead 'booked', which removes it from
- * the drip sequence (the cron only touches status='new'). Requests are verified
- * with CALENDLY_WEBHOOK_SIGNING_KEY (HMAC-SHA256 over `${t}.${rawBody}`), so an
- * unsigned/forged call can't flip lead state.
+ * On invitee.created we mark the matching lead 'booked' (removing it from the
+ * drip — the cron only touches status='new') and log a 'booked' activity.
+ * Requests are HMAC-verified with CALENDLY_WEBHOOK_SIGNING_KEY, so a forged call
+ * can't flip lead state.
  *
- * Register this URL once in Calendly (Integrations → Webhooks) for the
- * invitee.created event; Calendly returns the signing key at creation time.
+ * Register this URL once in Calendly (Integrations → Webhooks) for invitee.created.
  */
 
 import { NextResponse } from 'next/server'
 import crypto from 'node:crypto'
 import { getSupabaseAdmin } from '@/lib/supabase-admin'
+import { recordActivity } from '@/lib/leads'
 
 export const runtime = 'nodejs'
 export const dynamic = 'force-dynamic'
@@ -20,9 +20,11 @@ export const dynamic = 'force-dynamic'
 /** Verify Calendly's `t=…,v1=…` signature against the raw request body. */
 function verify(raw: string, header: string | null, key: string): boolean {
   if (!header) return false
-  const parts = Object.fromEntries(
-    header.split(',').map((kv) => kv.split('=').map((s) => s.trim())),
-  ) as { t?: string; v1?: string }
+  const parts: Record<string, string> = {}
+  for (const kv of header.split(',')) {
+    const i = kv.indexOf('=')
+    if (i > 0) parts[kv.slice(0, i).trim()] = kv.slice(i + 1).trim()
+  }
   if (!parts.t || !parts.v1) return false
   const expected = crypto.createHmac('sha256', key).update(`${parts.t}.${raw}`).digest('hex')
   const a = Buffer.from(expected)
@@ -47,21 +49,20 @@ export async function POST(req: Request) {
   }
 
   if (body.event !== 'invitee.created') {
-    return NextResponse.json({ ok: true, ignored: body.event }) // canceled/no-show etc. — leave as-is
+    return NextResponse.json({ ok: true, ignored: body.event })
   }
 
   const payload = body.payload || {}
   const email = String(payload.email || '').trim().toLowerCase()
   const eventUri =
     (payload.scheduled_event as { uri?: string } | undefined)?.uri ||
-    String(payload.uri || '') ||
-    null
+    (typeof payload.uri === 'string' ? payload.uri : null)
   if (!email) return NextResponse.json({ ok: true, ignored: 'no-email' })
 
   const supabase = getSupabaseAdmin()
   if (!supabase) return NextResponse.json({ error: 'Capture not configured.' }, { status: 503 })
 
-  // Mark the most recent active lead with this email as booked.
+  // Mark active leads with this email as booked.
   const { data, error } = await supabase
     .from('demo_leads')
     .update({ status: 'booked', booked_at: new Date().toISOString(), calendly_event_uri: eventUri })
@@ -72,6 +73,10 @@ export async function POST(req: Request) {
   if (error) {
     console.error('[calendly] update failed:', error.message)
     return NextResponse.json({ error: 'Update failed.' }, { status: 500 })
+  }
+
+  for (const row of data || []) {
+    await recordActivity(supabase, { lead_id: row.id, kind: 'booked', detail: eventUri })
   }
 
   return NextResponse.json({ ok: true, matched: data?.length ?? 0 })

@@ -4,12 +4,14 @@
  * /contact client islands — DemoForm + CalendlyScheduler.
  * React-controlled (no raw <form> reload). DemoForm posts JSON to /api/demo,
  * which captures the lead in Supabase and triggers the confirmation + drip emails
- * (Resend). CalendlyScheduler renders the Calendly inline embed, themed to the
- * dark glass palette, with a visible new-tab fallback. Inputs styled to the dark
- * theme; labels are mono eyebrows; ≥44px targets.
+ * (Resend). CalendlyScheduler is a single premium CTA that opens Calendly in a
+ * new tab — the inline embed was slow and visually heavy. Inputs styled to the
+ * dark theme; labels are mono eyebrows; ≥44px targets.
  */
 
 import { useEffect, useRef, useState } from 'react'
+import { Eyebrow, GlassCard } from '@/components/ui'
+import Reveal from '@/components/Reveal'
 
 // ---------------------------------------------------------------- shared styles
 
@@ -25,24 +27,189 @@ const DEMO_ENDPOINT = '/api/demo'
 
 type Status = 'idle' | 'submitting' | 'success' | 'error'
 
+const ROLES = [
+  'Risk / Credit',
+  'Lending / Collections',
+  'Compliance / Regulatory',
+  'Operations',
+  'Technology / Engineering',
+  'Data / AI',
+  'Executive (CEO/COO/Strategy)',
+  'Government / Public sector',
+  'Other',
+]
+const USE_CASES = [
+  'Collections',
+  'Underwriting / credit',
+  'Onboarding / KYC',
+  'Servicing',
+  'Disputes / complaints',
+  'Compliance reporting',
+  'Other',
+]
+const SECTORS = [
+  'Bank',
+  'Non-bank lender / Fintech',
+  'MSME / SME lender',
+  'Government / Public sector',
+  'Enterprise (other regulated)',
+  'Other',
+]
+const REGIONS = ['US', 'UK', 'EU', 'India', 'Middle East', 'Africa', 'APAC', 'Global / multiple']
+const TIMELINES = ['Just exploring', 'This quarter', 'Within 6 months', 'This year', 'Not sure yet']
+const AI_STAGES = ['Not started', 'Piloting', 'In production', 'Scaling']
+const HEARD = ['Search', 'Referral', 'LinkedIn / social', 'Event / conference', 'News / press', 'Other']
+
 const EMPTY = {
   name: '',
   email: '',
   organisation: '',
   role: '',
-  market: '',
-  automate: '',
   message: '',
+  automate: '',
+  sector: '',
+  market: '',
+  timeline: '',
+  phone: '',
+  ai_stage: '',
+  heard_about: '',
 }
 
-export function DemoForm() {
+type FieldKey = keyof typeof EMPTY
+
+// ---------------------------------------------------------------- field atoms
+
+function FieldShell({
+  id,
+  label,
+  required,
+  error,
+  children,
+}: {
+  id: string
+  label: string
+  required?: boolean
+  error?: string
+  children: React.ReactNode
+}) {
+  return (
+    <div>
+      <label htmlFor={id} className={LABEL}>
+        {label}
+        {required && <span className="text-fail"> *</span>}
+      </label>
+      {children}
+      {error && (
+        <p id={`${id}-error`} role="alert" className="mt-1.5 font-sans text-[12px] text-fail">
+          {error}
+        </p>
+      )}
+    </div>
+  )
+}
+
+function TextField(props: {
+  id: string
+  label: string
+  value: string
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
+  error?: string
+  required?: boolean
+  type?: string
+  placeholder?: string
+  autoComplete?: string
+}) {
+  const { id, label, value, onChange, error, required, type = 'text', placeholder, autoComplete } = props
+  return (
+    <FieldShell id={id} label={label} required={required} error={error}>
+      <input
+        id={id}
+        type={type}
+        value={value}
+        onChange={onChange}
+        placeholder={placeholder}
+        autoComplete={autoComplete}
+        aria-invalid={error ? true : undefined}
+        aria-describedby={error ? `${id}-error` : undefined}
+        className={`${FIELD} ${error ? 'border-fail/70 focus:border-fail focus:ring-fail/40' : ''}`}
+      />
+    </FieldShell>
+  )
+}
+
+function SelectField(props: {
+  id: string
+  label: string
+  value: string
+  onChange: (e: React.ChangeEvent<HTMLSelectElement>) => void
+  options: string[]
+  placeholder: string
+  error?: string
+  required?: boolean
+}) {
+  const { id, label, value, onChange, options, placeholder, error, required } = props
+  return (
+    <FieldShell id={id} label={label} required={required} error={error}>
+      <div className="relative">
+        <select
+          id={id}
+          value={value}
+          onChange={onChange}
+          aria-invalid={error ? true : undefined}
+          aria-describedby={error ? `${id}-error` : undefined}
+          className={`${FIELD} appearance-none pr-10 ${value ? 'text-ink' : 'text-ink-3'} ${error ? 'border-fail/70 focus:border-fail focus:ring-fail/40' : ''}`}
+        >
+          <option value="">{placeholder}</option>
+          {options.map((o) => (
+            <option key={o} value={o} className="bg-surface text-ink">
+              {o}
+            </option>
+          ))}
+        </select>
+        <span
+          aria-hidden
+          className="pointer-events-none absolute right-3.5 top-1/2 -translate-y-1/2 text-[12px] text-ink-3"
+        >
+          ▾
+        </span>
+      </div>
+    </FieldShell>
+  )
+}
+
+export function DemoForm({ onSuccess }: { onSuccess?: () => void } = {}) {
   const [fields, setFields] = useState(EMPTY)
   const [honeypot, setHoneypot] = useState('')
   const [status, setStatus] = useState<Status>('idle')
+  const [errors, setErrors] = useState<Partial<Record<FieldKey, string>>>({})
+  const successRef = useRef<HTMLDivElement | null>(null)
 
-  function update(key: keyof typeof EMPTY) {
-    return (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) =>
-      setFields((f) => ({ ...f, [key]: e.target.value }))
+  // On success: notify the parent (which scrolls the form section into view) and
+  // focus the success banner for screen readers — preventScroll so the focus
+  // call doesn't fight the parent's smooth scroll.
+  useEffect(() => {
+    if (status !== 'success') return
+    onSuccess?.()
+    successRef.current?.focus({ preventScroll: true })
+  }, [status, onSuccess])
+
+  function update(key: FieldKey) {
+    return (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+      const { value } = e.target
+      setFields((f) => ({ ...f, [key]: value }))
+      setErrors((prev) => (prev[key] ? { ...prev, [key]: undefined } : prev))
+    }
+  }
+
+  function validate(): Partial<Record<FieldKey, string>> {
+    const e: Partial<Record<FieldKey, string>> = {}
+    if (!fields.name.trim()) e.name = 'Please enter your name.'
+    if (!fields.email.trim()) e.email = 'Please enter your work email.'
+    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(fields.email.trim())) e.email = 'Enter a valid email address.'
+    if (!fields.organisation.trim()) e.organisation = 'Please enter your organisation.'
+    if (!fields.role) e.role = 'Please select your role.'
+    if (!fields.message.trim()) e.message = 'Tell us what you’d like to solve.'
+    return e
   }
 
   async function handleSubmit(e: React.FormEvent) {
@@ -53,6 +220,14 @@ export function DemoForm() {
       setStatus('success')
       return
     }
+    const found = validate()
+    if (Object.keys(found).length > 0) {
+      setErrors(found)
+      const firstKey = (Object.keys(found) as FieldKey[])[0]
+      document.getElementById(`contact-${firstKey}`)?.focus()
+      return
+    }
+    setErrors({})
     setStatus('submitting')
     try {
       const res = await fetch(DEMO_ENDPOINT, {
@@ -73,9 +248,14 @@ export function DemoForm() {
 
   if (status === 'success') {
     return (
-      <div role="status" className="py-6 text-center">
+      <div
+        ref={successRef}
+        role="status"
+        tabIndex={-1}
+        className="py-6 text-center outline-none"
+      >
         <p className="font-serif text-[1.5rem] leading-snug text-ink">
-          Thank you — check your inbox for a link to pick a time. We&rsquo;ll also reply within one
+          Thank you. Check your inbox for a link to pick a time. We&rsquo;ll also reply within one
           business day, from <span className="text-mint">sales@krim.ai</span>.
         </p>
       </div>
@@ -99,117 +279,51 @@ export function DemoForm() {
       </div>
 
       <div className="grid gap-5 sm:grid-cols-2">
-        <div>
-          <label htmlFor="contact-name" className={LABEL}>
-            Name
-          </label>
-          <input
-            id="contact-name"
-            name="name"
-            type="text"
-            required
-            autoComplete="name"
-            value={fields.name}
-            onChange={update('name')}
-            placeholder="Your name"
-            className={FIELD}
-          />
-        </div>
-        <div>
-          <label htmlFor="contact-email" className={LABEL}>
-            Work email
-          </label>
-          <input
-            id="contact-email"
-            name="email"
-            type="email"
-            required
-            autoComplete="email"
-            value={fields.email}
-            onChange={update('email')}
-            placeholder="you@company.com"
-            className={FIELD}
-          />
-        </div>
+        <TextField id="contact-name" label="Name" required value={fields.name} onChange={update('name')} error={errors.name} placeholder="Your name" autoComplete="name" />
+        <TextField id="contact-email" label="Work email" required type="email" value={fields.email} onChange={update('email')} error={errors.email} placeholder="you@company.com" autoComplete="email" />
       </div>
 
       <div className="grid gap-5 sm:grid-cols-2">
-        <div>
-          <label htmlFor="contact-organisation" className={LABEL}>
-            Organisation
-          </label>
-          <input
-            id="contact-organisation"
-            name="organisation"
-            type="text"
-            required
-            autoComplete="organization"
-            value={fields.organisation}
-            onChange={update('organisation')}
-            placeholder="Company or institution"
-            className={FIELD}
-          />
-        </div>
-        <div>
-          <label htmlFor="contact-role" className={LABEL}>
-            Role
-          </label>
-          <input
-            id="contact-role"
-            name="role"
-            type="text"
-            value={fields.role}
-            onChange={update('role')}
-            placeholder="Your title"
-            className={FIELD}
-          />
-        </div>
+        <TextField id="contact-organisation" label="Organisation" required value={fields.organisation} onChange={update('organisation')} error={errors.organisation} placeholder="Company or institution" autoComplete="organization" />
+        <SelectField id="contact-role" label="Role" required value={fields.role} onChange={update('role')} error={errors.role} options={ROLES} placeholder="Select your role…" />
       </div>
 
-      <div className="grid gap-5 sm:grid-cols-2">
-        <div>
-          <label htmlFor="contact-market" className={LABEL}>
-            Market
-          </label>
-          <input
-            id="contact-market"
-            name="market"
-            type="text"
-            value={fields.market}
-            onChange={update('market')}
-            placeholder="e.g. US, UK, India, EU…"
-            className={FIELD}
-          />
-        </div>
-        <div>
-          <label htmlFor="contact-automate" className={LABEL}>
-            What you&rsquo;d like to automate
-          </label>
-          <input
-            id="contact-automate"
-            name="automate"
-            type="text"
-            value={fields.automate}
-            onChange={update('automate')}
-            placeholder="e.g. collections, onboarding…"
-            className={FIELD}
-          />
-        </div>
-      </div>
-
-      <div>
-        <label htmlFor="contact-message" className={LABEL}>
-          Message
-        </label>
+      <FieldShell id="contact-message" label="What would you like to solve or explore?" required error={errors.message}>
         <textarea
           id="contact-message"
-          name="message"
           value={fields.message}
           onChange={update('message')}
-          placeholder="Tell us what you're trying to solve."
-          className={TEXTAREA}
+          placeholder="The problem you’re trying to solve, or what you’d like to see."
+          aria-invalid={errors.message ? true : undefined}
+          aria-describedby={errors.message ? 'contact-message-error' : undefined}
+          className={`${TEXTAREA} ${errors.message ? 'border-fail/70 focus:border-fail focus:ring-fail/40' : ''}`}
         />
+      </FieldShell>
+
+      {/* optional — helps us tailor the demo */}
+      <div className="mt-1 flex items-center gap-3">
+        <span className="font-mono text-[11px] uppercase tracking-[0.16em] text-ink-3">
+          Optional, helps us tailor your demo
+        </span>
+        <span aria-hidden className="h-px flex-1 bg-white/[0.08]" />
       </div>
+
+      <div className="grid gap-5 sm:grid-cols-2">
+        <SelectField id="contact-automate" label="Primary use case" value={fields.automate} onChange={update('automate')} options={USE_CASES} placeholder="Select…" />
+        <SelectField id="contact-sector" label="Sector" value={fields.sector} onChange={update('sector')} options={SECTORS} placeholder="Select…" />
+      </div>
+
+      <div className="grid gap-5 sm:grid-cols-2">
+        <SelectField id="contact-market" label="Region / market" value={fields.market} onChange={update('market')} options={REGIONS} placeholder="Select…" />
+        <SelectField id="contact-timeline" label="Timeline" value={fields.timeline} onChange={update('timeline')} options={TIMELINES} placeholder="Select…" />
+      </div>
+
+      <div className="grid gap-5 sm:grid-cols-2">
+        <TextField id="contact-phone" label="Phone" type="tel" value={fields.phone} onChange={update('phone')} placeholder="Optional" autoComplete="tel" />
+        <SelectField id="contact-ai_stage" label="Current AI maturity" value={fields.ai_stage} onChange={update('ai_stage')} options={AI_STAGES} placeholder="Select…" />
+      </div>
+
+      <SelectField id="contact-heard_about" label="How did you hear about us?" value={fields.heard_about} onChange={update('heard_about')} options={HEARD} placeholder="Select…" />
 
       {status === 'error' && (
         <p role="alert" className="font-sans text-[14px] text-gold">
@@ -246,135 +360,92 @@ export function DemoForm() {
   )
 }
 
-// ---------------------------------------------------------------- CalendlyScheduler
+// ---------------------------------------------------------------- ContactFormSection
 
-const CALENDLY_BASE = process.env.NEXT_PUBLIC_CALENDLY_URL || ''
-
-// Theme the inline widget to the dark glass palette (hex without '#').
-function calendlyUrl(base: string): string {
-  if (!base) return ''
-  const sep = base.includes('?') ? '&' : '?'
-  const params = new URLSearchParams({
-    hide_event_type_details: '0',
-    hide_gdpr_banner: '1',
-    background_color: '09090c',
-    text_color: 'f6f6f4',
-    primary_color: '00ffb2',
-  })
-  return `${base}${sep}${params.toString()}`
-}
-
-export function CalendlyScheduler() {
-  const initialised = useRef(false)
-  const [status, setStatus] = useState<'loading' | 'ready' | 'error'>(
-    CALENDLY_BASE ? 'loading' : 'error',
-  )
-
-  const fullUrl = calendlyUrl(CALENDLY_BASE)
+/**
+ * Wraps the heading + form together so the heading can swap on submit. Before
+ * submission: "Tell us your requirements." After: "Look forward to exploring
+ * further." On success it smooth-scrolls the section into view so the new
+ * heading + thank-you message land together, not stranded at the bottom of the
+ * page where the submit button used to be.
+ */
+export function ContactFormSection() {
+  const [submitted, setSubmitted] = useState(false)
+  const sectionRef = useRef<HTMLDivElement | null>(null)
 
   useEffect(() => {
-    if (!CALENDLY_BASE || initialised.current) return
-    initialised.current = true
-    let done = false
-
-    function init() {
-      const Calendly = (window as unknown as { Calendly?: { initInlineWidget: (o: object) => void } })
-        .Calendly
-      const parent = document.getElementById('calendly-inline')
-      if (!Calendly || !parent) {
-        setStatus('error')
-        return
-      }
-      try {
-        Calendly.initInlineWidget({ url: fullUrl, parentElement: parent })
-        done = true
-        setStatus('ready')
-      } catch {
-        setStatus('error')
-      }
-    }
-
-    const existing = document.querySelector<HTMLScriptElement>('script[data-calendly]')
-    if (existing && (window as unknown as { Calendly?: unknown }).Calendly) {
-      init()
-    } else if (existing) {
-      existing.addEventListener('load', init, { once: true })
-    } else {
-      const script = document.createElement('script')
-      script.src = 'https://assets.calendly.com/assets/external/widget.js'
-      script.async = true
-      script.dataset.calendly = 'true'
-      script.onload = init
-      script.onerror = () => setStatus('error')
-      document.body.appendChild(script)
-    }
-
-    // never leave a blank box: if the embed hasn't taken over in time, show the fallback
-    const timer = setTimeout(() => {
-      if (!done) setStatus((s) => (s === 'ready' ? s : 'error'))
-    }, 9000)
-    return () => clearTimeout(timer)
-  }, [fullUrl])
+    if (!submitted) return
+    const node = sectionRef.current
+    if (!node) return
+    const targetY = window.scrollY + node.getBoundingClientRect().top - 40
+    window.scrollTo({ top: Math.max(0, targetY), behavior: 'smooth' })
+  }, [submitted])
 
   return (
-    <div>
-      <div className="glass overflow-hidden p-2 md:p-3">
-        {status !== 'ready' && (
-          <div className="flex min-h-[260px] flex-col items-center justify-center gap-5 p-8 text-center">
-            {status === 'loading' ? (
-              <p className="font-mono text-[12px] uppercase tracking-[0.18em] text-ink-3">
-                Loading the scheduler…
-              </p>
-            ) : CALENDLY_BASE ? (
-              <p className="max-w-[40ch] font-sans text-body text-ink-2">
-                Pick a time directly — opens in a new tab.
-              </p>
-            ) : (
-              <p className="max-w-[44ch] font-sans text-body text-ink-2">
-                Scheduling is just an email away — reach us at{' '}
-                <a
-                  href="mailto:sales@krim.ai"
-                  className="text-mint underline-offset-4 hover:underline"
-                >
-                  sales@krim.ai
-                </a>
-                .
-              </p>
-            )}
-            {CALENDLY_BASE && (
-              <a
-                href={CALENDLY_BASE}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-block rounded bg-mint px-6 py-3 font-sans text-[14px] font-medium text-on-mint transition-colors hover:bg-mint-bright"
-              >
-                Open scheduling →
-              </a>
-            )}
-          </div>
-        )}
-        <div
-          id="calendly-inline"
-          style={{ minHeight: status === 'ready' ? 700 : 0, width: '100%' }}
-        />
-      </div>
-      {status === 'ready' && CALENDLY_BASE && (
-        <p className="mt-5 text-center font-sans text-[14px]">
+    <>
+      <Reveal>
+        <div ref={sectionRef} className="text-center">
+          <Eyebrow>Book a demo</Eyebrow>
+          <h2 className="mt-4 font-serif text-display-1 text-ink">
+            {submitted ? 'Look forward to exploring further.' : 'Tell us your requirements.'}
+          </h2>
+        </div>
+      </Reveal>
+      <Reveal delay={0.12}>
+        <GlassCard className="mt-10 p-7 md:p-10">
+          <DemoForm onSuccess={() => setSubmitted(true)} />
+        </GlassCard>
+      </Reveal>
+    </>
+  )
+}
+
+// ---------------------------------------------------------------- CalendlyScheduler
+
+const CALENDLY_BASE = process.env.NEXT_PUBLIC_CALENDLY_URL || 'https://calendly.com/louis-oliphant-parkinson/krim-demo'
+
+// A single, premium call-to-action that opens Calendly in a new tab. We dropped
+// the inline embed: it loaded slowly, dominated the page, and didn't fit the dark
+// glass aesthetic. The button is the whole experience — a glass panel with a clear
+// invitation, the named slot length, and a confident primary action.
+export function CalendlyScheduler() {
+  if (!CALENDLY_BASE) {
+    return (
+      <div className="glass mx-auto max-w-[520px] p-9 text-center md:p-10">
+        <p className="font-sans text-body text-ink-2">
+          Scheduling is just an email away. Reach us at{' '}
           <a
-            href={CALENDLY_BASE}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group inline-flex items-baseline gap-1.5 text-ink-2 transition-colors hover:text-mint"
+            href="mailto:sales@krim.ai"
+            className="text-mint underline-offset-4 hover:underline"
           >
-            <span className="underline-offset-4 group-hover:underline">
-              Open scheduling in a new tab
-            </span>
-            <span aria-hidden className="transition-transform duration-fast group-hover:translate-x-0.5">
-              →
-            </span>
+            sales@krim.ai
           </a>
+          .
         </p>
-      )}
+      </div>
+    )
+  }
+
+  return (
+    <div className="glass mx-auto max-w-[520px] p-9 text-center md:p-10">
+      <p className="font-mono text-[11px] uppercase tracking-[0.22em] text-mint">
+        30-minute slot
+      </p>
+      <p className="mx-auto mt-4 max-w-[34ch] font-serif text-[clamp(1.35rem,2.2vw,1.7rem)] leading-snug text-ink">
+        Pick a time that works, and we&rsquo;ll meet you there.
+      </p>
+      <a
+        href={CALENDLY_BASE}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="group mt-7 inline-flex items-center gap-2.5 rounded-full bg-mint px-8 py-3.5 font-sans text-[15px] font-medium text-on-mint shadow-[0_10px_30px_-12px_rgba(0,255,178,0.55)] transition-all duration-fast ease-standard hover:-translate-y-0.5 hover:bg-mint-bright hover:shadow-[0_14px_40px_-12px_rgba(0,255,178,0.7)] motion-reduce:hover:translate-y-0"
+      >
+        <span>Open the calendar</span>
+        <span aria-hidden className="transition-transform duration-fast group-hover:translate-x-0.5">
+          →
+        </span>
+      </a>
+      <p className="mt-5 font-sans text-[13px] text-ink-3">Opens in a new tab.</p>
     </div>
   )
 }

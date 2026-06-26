@@ -49,14 +49,19 @@ export default function KendraPage() {
             <Reveal>
               <Eyebrow>The runtime</Eyebrow>
               <h1 className="mt-4 font-serif text-display-hero text-ink">
-                The brain your co-workers think in.
+                <span className="block">The brain your</span>
+                <span className="block">co-workers think in.</span>
               </h1>
             </Reveal>
             <Reveal delay={0.12}>
               <p className="mx-auto mt-7 max-w-[54ch] font-sans text-body-lg text-ink-2">
-                Kendra is the runtime of KrimOS, where every co-worker reasons. It{' '}
-                <span className="text-mint">validates each action before it acts</span>, and{' '}
-                <span className="text-ink">gets sharper with every outcome</span> it records.
+                <span className="block">
+                  Kendra is the runtime of KrimOS, where every co-worker reasons.
+                </span>
+                <span className="block">
+                  It <span className="text-mint">validates each action before it acts</span>, and gets sharper
+                </span>
+                <span className="block">with every outcome it records.</span>
               </p>
             </Reveal>
           </div>

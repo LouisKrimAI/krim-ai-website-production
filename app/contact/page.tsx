@@ -12,18 +12,18 @@ import SiteHeader from '@/components/SiteHeader'
 import SiteFooter from '@/components/SiteFooter'
 import OrbBackdrop from '@/components/OrbBackdrop'
 import Reveal from '@/components/Reveal'
-import { Section, Eyebrow, GlassCard } from '@/components/ui'
-import { DemoForm, CalendlyScheduler } from './_client'
+import { Section, Eyebrow } from '@/components/ui'
+import { ContactFormSection, CalendlyScheduler } from './_client'
 
 export const metadata: Metadata = {
   title: 'Book a demo',
   description:
-    'See KrimOS run on your operation. Book a demo or grab a call directly — tell us what you are trying to solve and we will come prepared. Routed to sales@krim.ai.',
+    'See KrimOS run on your operation. Book a demo or grab a call directly. Tell us what you are trying to solve and we will come prepared. Routed to sales@krim.ai.',
   alternates: { canonical: 'https://krim.ai/contact' },
   openGraph: {
     title: 'Book a demo — Krim',
     description:
-      'See KrimOS run on your operation. Book a demo or grab a call directly — tell us what you are trying to solve and we will come prepared. Routed to sales@krim.ai.',
+      'See KrimOS run on your operation. Book a demo or grab a call directly. Tell us what you are trying to solve and we will come prepared. Routed to sales@krim.ai.',
     url: 'https://krim.ai/contact',
   },
 }
@@ -55,7 +55,7 @@ export default function ContactPage() {
             </Reveal>
             <Reveal delay={0.12}>
               <p className="mx-auto mt-7 max-w-[54ch] font-sans text-body-lg text-ink-2">
-                Book a demo, or tell us the problem — we&rsquo;ll come prepared.
+                Book a demo, or tell us the problem. We&rsquo;ll come prepared.
               </p>
             </Reveal>
           </div>
@@ -64,15 +64,7 @@ export default function ContactPage() {
         {/* ---- 2 · The form ---- */}
         <Section hairline>
           <div className="mx-auto max-w-[760px]">
-            <Reveal>
-              <Eyebrow>Book a demo</Eyebrow>
-              <h2 className="mt-4 font-serif text-display-1 text-ink">Tell us where you are.</h2>
-            </Reveal>
-            <Reveal delay={0.12}>
-              <GlassCard className="mt-10 p-7 md:p-10">
-                <DemoForm />
-              </GlassCard>
-            </Reveal>
+            <ContactFormSection />
             <Reveal delay={0.16}>
               <p className="mt-8 text-center font-sans text-[15px] text-ink-3">Prefer email or phone?</p>
               <p className="mt-2 flex flex-wrap items-center justify-center gap-x-5 gap-y-1 text-center font-sans text-[clamp(17px,2vw,20px)] text-ink">
@@ -96,7 +88,7 @@ export default function ContactPage() {
                 <Eyebrow>Or pick a time</Eyebrow>
                 <h2 className="mt-4 font-serif text-display-2 text-ink">Prefer to just talk?</h2>
                 <p className="mx-auto mt-5 max-w-[44ch] font-sans text-body text-ink-2">
-                  Grab a slot directly — no form needed.
+                  Grab a slot directly, no form needed.
                 </p>
               </div>
             </Reveal>

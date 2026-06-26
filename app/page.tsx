@@ -115,12 +115,12 @@ export default function HomePage() {
             <Reveal>
               <Eyebrow>Meet KrimOS</Eyebrow>
               <h2 className="mt-4 font-serif text-display-1 text-ink">
-                Built to act. Proven before it acts.
+                The agent-native OS for safe banking and lending.
               </h2>
-              <p className="mx-auto mt-6 max-w-[52ch] font-sans text-body-lg text-ink-2">
-                One system runs the whole operation, from origination to collections. AI co-workers do
-                the work, <span className="text-mint">every action is validated before it acts</span>,
-                and it all runs inside your own walls.
+              <p className="mx-auto mt-6 max-w-[56ch] font-sans text-body-lg text-ink-2">
+                AI co-workers run the whole operation, origination to collections, with{' '}
+                <span className="text-mint">every action validated before it executes</span> and
+                every outcome learned from — inside your own walls.
               </p>
             </Reveal>
           </div>

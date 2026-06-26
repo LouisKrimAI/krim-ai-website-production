@@ -164,15 +164,13 @@ export default function ArchitecturePage() {
             <Reveal>
               <Eyebrow>Architecture</Eyebrow>
               <h1 className="mt-5 font-serif text-display-hero text-ink">
-                The whole lending stack, or a layer on yours.
+                One runtime, under every action.
               </h1>
             </Reveal>
             <Reveal delay={0.12}>
-              <p className="mx-auto mt-7 max-w-[56ch] font-sans text-body-lg text-ink-2">
-                KrimOS is a <span className="text-ink">complete operating system for lending</span>,
-                origination to collections. Run the whole operation on it, or keep the systems you
-                have and let KrimOS layer on top, reading from each and writing back{' '}
-                <span className="text-mint">only on validated channels</span>.
+              <p className="mx-auto mt-7 max-w-[54ch] font-sans text-body-lg text-ink-2">
+                Run the <span className="text-ink">whole lending stack on KrimOS</span>, or layer it
+                onto the systems you keep — origination to collections, every action validated.
               </p>
             </Reveal>
             <Reveal delay={0.2}>
@@ -267,8 +265,10 @@ export default function ArchitecturePage() {
                   sync and observability.
                 </p>
                 <p className="mt-5 max-w-[52ch] font-sans text-body text-ink-2">
-                  Your systems remain the source of truth.{' '}
+                  When you keep your existing systems, they stay the source of truth and{' '}
                   <span className="text-mint">KrimOS writes back only on validated channels</span>.
+                  When KrimOS is the stack, the same gate holds and the source of truth is its own
+                  immutable record.
                 </p>
               </div>
             </Reveal>

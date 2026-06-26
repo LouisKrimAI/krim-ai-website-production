@@ -87,13 +87,15 @@ const LIFECYCLE = [
 // Encoded jurisdictions live in lib/jurisdictions.ts (the five-market set), shared
 // with the Trust page through components/trust/JurisdictionTabs.
 
-// A plain claim first, then the figure that quantifies it — ranges, against the
-// institution's own baseline (krim-content.md · proof). Illustrative, not promised.
+// A plain claim first, then the figure that quantifies it, with a unit caption that
+// names what the number measures (the previous version left the buyer to guess).
+// Ranges, against the institution's own baseline (krim-content.md · proof) —
+// illustrative, not promised.
 const IMPACT = [
-  { area: 'Origination', claim: 'More documents cleared per analyst', value: '5–10×' },
-  { area: 'Servicing', claim: 'Routine requests handled without an agent', value: '40–70%' },
-  { area: 'Collections', claim: 'Lower early roll-rate', value: '1–3 pp' },
-  { area: 'Compliance', claim: 'Faster to audit-ready reporting', value: 'Minutes' },
+  { area: 'Origination', claim: 'More documents cleared per analyst', value: '5–10×', unit: 'throughput per FTE' },
+  { area: 'Servicing', claim: 'Handled without a human', value: '40–70%', unit: 'of routine requests' },
+  { area: 'Collections', claim: 'Lower early roll-rate', value: '1–3 pp', unit: 'reduction (1–30 DPD)' },
+  { area: 'Compliance', claim: 'Faster to audit-ready reporting', value: 'Minutes', unit: 'down from days' },
 ]
 
 // Three modes, one architecture — krim-content.md · sovereignty & deployment.
@@ -275,9 +277,14 @@ export default function LendingPage() {
                   <p className="mt-4 flex-1 font-serif text-[1.3rem] leading-snug text-ink">
                     {it.claim}
                   </p>
-                  <p className="mt-5 font-serif text-[clamp(1.9rem,3vw,2.4rem)] leading-none text-mint">
-                    {it.value}
-                  </p>
+                  <div className="mt-5">
+                    <p className="font-serif text-[clamp(1.9rem,3vw,2.4rem)] leading-none text-mint">
+                      {it.value}
+                    </p>
+                    <p className="mt-1.5 font-sans text-[13px] leading-snug text-ink-3">
+                      {it.unit}
+                    </p>
+                  </div>
                 </div>
               </Reveal>
             ))}
