@@ -115,7 +115,7 @@ export default function HomePage() {
             <Reveal>
               <Eyebrow>Meet KrimOS</Eyebrow>
               <h2 className="mt-4 font-serif text-display-1 text-ink">
-                The agent-native OS for safe banking and lending.
+                Agent-native OS for lending operations.
               </h2>
               <p className="mx-auto mt-6 max-w-[56ch] font-sans text-body-lg text-ink-2">
                 AI co-workers run the whole operation, origination to collections, with{' '}
@@ -277,9 +277,8 @@ export default function HomePage() {
               <h2 className="font-serif text-display-2 leading-tight text-ink">
                 On your stack, or as the stack.
               </h2>
-              <p className="mx-auto mt-5 max-w-[52ch] font-sans text-body-lg text-ink-2">
-                It reads from and writes to your core, LOS and LMS through 40+ connectors. Start
-                alongside the systems you have, and run as much of the operation on KrimOS as you choose.
+              <p className="mx-auto mt-5 max-w-[48ch] font-sans text-body-lg text-ink-2">
+                40+ connectors into your core, LOS and LMS. Nothing to tear out.
               </p>
             </Reveal>
           </div>

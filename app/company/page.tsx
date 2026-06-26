@@ -50,7 +50,7 @@ const FOUNDER = {
 
 // Founding engineering team — name · prior / where they trained.
 const TEAM = [
-  { name: 'Om Mishra', note: 'Sr. FDE · GNIT', linkedin: 'https://www.linkedin.com/in/om-mishra-063101270/' },
+  { name: 'Om Mishra', note: 'Sr. FDE · GNIOT', linkedin: 'https://www.linkedin.com/in/om-mishra-063101270/' },
   { name: 'Nachiketa Jha', note: 'Sr. FDE · Heidelberg', linkedin: 'https://www.linkedin.com/in/nachiketa-jha-416701220/' },
   { name: 'Nakshatra Kanchan', note: 'FDE · IIT Patna', linkedin: 'https://www.linkedin.com/in/nakshatra-kanchan/' },
   { name: 'Mohit Singh', note: 'FDE · IIT Patna', linkedin: 'https://www.linkedin.com/in/mohit-singh-bb5430253/' },
