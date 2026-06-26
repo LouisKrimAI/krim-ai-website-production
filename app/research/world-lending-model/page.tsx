@@ -243,24 +243,22 @@ export default function WorldLendingModelPage() {
 
         {/* ---- 5 · The full stack it enables ---- */}
         <Section hairline>
-          <div className="mx-auto max-w-[820px] text-center">
-            <Reveal>
-              <Eyebrow tone="cyan">End to end</Eyebrow>
-              <h2 className="mt-4 font-serif text-display-1 text-ink">
-                One model, the whole of lending.
-              </h2>
-              <p className="mx-auto mt-7 max-w-[64ch] font-sans text-body-lg text-ink-2">
-                Origination, the AI underwriter, servicing and collections all reason against the same
-                model, every action proven before it acts. That breaks the wall between the front and
-                back of the book: collections data retrains origination, and a borrower’s underwriting
-                file guides the recovery conversation later.{' '}
-                <span className="text-mint">
-                  One shared intelligence keeps every decision accountable to the regulator, and
-                  creates room to serve more borrowers safely where the risk genuinely supports it.
-                </span>
-              </p>
-            </Reveal>
-          </div>
+          <Reveal>
+            <Eyebrow tone="cyan">End to end</Eyebrow>
+            <h2 className="mt-4 max-w-[20ch] font-serif text-display-1 text-ink">
+              One model, the whole of lending.
+            </h2>
+            <p className="mt-6 max-w-[64ch] font-sans text-body-lg text-ink-2">
+              Origination, the AI underwriter, servicing and collections all reason against the same
+              model, every action proven before it acts. That breaks the wall between the front and
+              back of the book: collections data retrains origination, and a borrower’s underwriting
+              file guides the recovery conversation later.{' '}
+              <span className="text-mint">
+                One shared intelligence keeps every decision accountable to the regulator, and
+                creates room to serve more borrowers safely where the risk genuinely supports it.
+              </span>
+            </p>
+          </Reveal>
           <Reveal delay={0.1}>
             <LifecycleExplorer />
           </Reveal>
@@ -274,8 +272,8 @@ export default function WorldLendingModelPage() {
                 The model that gets better the more lending it sees.
               </h2>
               <p className="mx-auto mt-5 max-w-[52ch] font-sans text-body text-ink-2">
-                The World Lending Model is the frontier of our research. Kendra, the runtime that
-                validates and learns, is the part you can run today.
+                Built on Kendra, the runtime that validates every action and learns from every
+                outcome.
               </p>
               <div className="mt-9 flex justify-center">
                 <CTA href="/research" variant="secondary">
