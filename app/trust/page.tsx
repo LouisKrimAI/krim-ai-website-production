@@ -119,8 +119,9 @@ export default function TrustPage() {
           <div className="mx-auto max-w-[860px] text-center">
             <Reveal>
               <Eyebrow>Inside your walls</Eyebrow>
-              <h1 className="mt-5 font-serif text-display-hero text-ink">
-                Sovereign by construction. Auditable by default.
+              <h1 className="mt-5 font-serif text-[clamp(2.2rem,5.4vw,4.6rem)] leading-[1.05] tracking-[-0.018em] text-ink">
+                <span className="block md:whitespace-nowrap">Sovereign by construction.</span>
+                <span className="block md:whitespace-nowrap">Auditable by default.</span>
               </h1>
             </Reveal>
             <Reveal delay={0.12}>
@@ -298,12 +299,6 @@ export default function TrustPage() {
               </Reveal>
             ))}
           </div>
-          <Reveal delay={0.1}>
-            <p className="mt-8 max-w-[60ch] font-sans text-caption text-ink-3">
-              The architecture is built to these frameworks. Formal certification and attestation are
-              in progress, and we&rsquo;ll share status under NDA as part of a security review.
-            </p>
-          </Reveal>
         </Section>
 
         {/* ---- 7 · Close ---- */}

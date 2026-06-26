@@ -55,7 +55,7 @@ const softwareLd = {
   featureList: [
     'Pre-execution validation: Krim-Nyāya, 33 validators',
     '500+ validated, credit-native action primitives (Kriya, 20+ domains)',
-    'Utility-based AI co-workers (Karta): operational decisioning today, a safe AI underwriter as the build direction',
+    'AI co-workers (Karta) that run the lending operation across the contact centre and back office, composed from validated primitives',
     'One runtime that validates every action and learns from every outcome (Kendra)',
     'Natural-language interface for teams (Kula) and a customer advisor (Kira)',
     'Immutable, metered audit trail (Krim-Ledger, Krim Work Units)',

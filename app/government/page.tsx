@@ -208,8 +208,7 @@ export default function GovernmentPage() {
               The same co-workers, in public-sector form.
             </h2>
             <p className="mt-6 max-w-[58ch] font-sans text-body-lg text-ink-2">
-              Capability built to the work the public sector actually carries, not a claim of who
-              already runs it.
+              Capability built to the work the public sector actually carries.
             </p>
           </Reveal>
 

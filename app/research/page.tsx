@@ -165,7 +165,7 @@ export default function ResearchPage() {
           </div>
         </Section>
 
-        {/* ---- 4 · The frontier — an honest note ---- */}
+        {/* ---- 4 · The frontier — where the work goes next ---- */}
         <Section hairline>
           <div className="grid items-center gap-12 md:grid-cols-[1fr_1fr]">
             <Reveal>
@@ -179,11 +179,10 @@ export default function ResearchPage() {
             <Reveal delay={0.12}>
               <GlassCard className="p-8 md:p-10">
                 <p className="font-sans text-body-lg text-ink-2">
-                  How a learned model of an operation and a formal validator should be composed; how a
-                  system improves from its own outcomes without drifting from the rules; how proof
-                  stays fast enough to sit in front of every action. These are unsolved, and we say so.
-                  The foundations here are real and credible,{' '}
-                  <span className="text-ink">and they are built to grow.</span>
+                  How a learned model of an operation and a formal validator compose; how a system
+                  improves from its own outcomes without drifting from the rules; how proof stays fast
+                  enough to sit in front of every action. This is the frontier we are building on,{' '}
+                  <span className="text-ink">and the foundations under it are real today.</span>
                 </p>
               </GlassCard>
             </Reveal>
