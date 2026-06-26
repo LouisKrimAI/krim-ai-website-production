@@ -117,11 +117,14 @@ export default function PlatformPage() {
         <Section hairline>
           <Reveal>
             <Eyebrow>Inside KrimOS</Eyebrow>
-            <h2 className="mt-4 max-w-[20ch] font-serif text-display-1 text-ink">
-              The whole stack, top to bottom.
+            <h2 className="mt-4 max-w-[26ch] font-serif text-display-1 text-ink">
+              Built like an operating system, all the way down.
             </h2>
-            <p className="mt-6 max-w-[54ch] font-sans text-body-lg text-ink-2">
-              Each layer does one job. Together, they are one operating system.
+            <p className="mt-6 max-w-[60ch] font-sans text-body-lg text-ink-2">
+              Most AI is a model with a thin interface bolted on. KrimOS runs deeper: a runtime under
+              every action a co-worker takes, up to the advisor your customers meet. That depth is
+              what lets it <span className="text-mint">run regulated work</span>, where a wrong move
+              is a compliance event.
             </p>
           </Reveal>
           <Reveal delay={0.15}>
