@@ -204,13 +204,13 @@ export default function CompanyPage() {
 
             {/* Founding engineering team */}
             <Reveal delay={0.16}>
-              <p className="mt-14 font-mono text-[11px] uppercase tracking-[0.2em] text-ink-3">
+              <p className="mt-14 text-center font-mono text-[11px] uppercase tracking-[0.2em] text-ink-3">
                 Founding engineering team
               </p>
             </Reveal>
-            <div className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="mt-5 flex flex-wrap justify-center gap-4">
               {TEAM.map((m, i) => (
-                <Reveal key={m.name} delay={0.03 * i}>
+                <Reveal key={m.name} delay={0.03 * i} className="w-full sm:w-[calc(50%-0.5rem)] lg:w-[calc(33.333%-0.667rem)]">
                   <div className="glass flex h-full flex-col items-center gap-2.5 p-5 text-center">
                     <p className="font-serif text-[1.15rem] leading-tight text-ink">{m.name}</p>
                     <p className="font-sans text-[14px] text-ink-3">{m.note}</p>
@@ -222,13 +222,13 @@ export default function CompanyPage() {
 
             {/* Advisory board */}
             <Reveal delay={0.2}>
-              <p className="mt-12 font-mono text-[11px] uppercase tracking-[0.2em] text-ink-3">
+              <p className="mt-12 text-center font-mono text-[11px] uppercase tracking-[0.2em] text-ink-3">
                 Advisory board
               </p>
             </Reveal>
-            <div className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="mt-5 flex flex-wrap justify-center gap-4">
               {ADVISORS.map((a, i) => (
-                <Reveal key={a.name} delay={0.03 * i}>
+                <Reveal key={a.name} delay={0.03 * i} className="w-full sm:w-[calc(50%-0.5rem)] lg:w-[calc(33.333%-0.667rem)]">
                   <div className="glass flex h-full flex-col items-center p-5 text-center">
                     <p className="font-serif text-[1.15rem] leading-tight text-ink">{a.name}</p>
                     <p className="mt-1 font-sans text-[14px] text-ink-3">{a.note}</p>
