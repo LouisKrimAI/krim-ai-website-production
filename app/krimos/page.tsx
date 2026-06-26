@@ -1,7 +1,8 @@
 /**
  * /krimos — the hub / map. Rebuilt to docs/HOUSE-STYLE.md as the reference
- * exemplar. Its own structure (claim → the doorways in → why it holds →
- * close), the homepage's design DNA, marketing-grade copy. The Layershq render
+ * exemplar. Its own structure (claim → the doorways in → why it holds → the
+ * studios → impacts → close), the homepage's design DNA, marketing-grade copy.
+ * The Layershq render
  * (public/images/krimos/layers.png) is the hero visual; hand-built SVG "devices"
  * are gone — real image or clean glass+type only (HOUSE-STYLE §7).
  * Facts: docs/krim-content.md.
@@ -60,9 +61,20 @@ const softwareLd = {
     'Immutable, metered audit trail (Krim-Ledger, Krim Work Units)',
     'Sovereign deployment: on-prem, hybrid or managed',
     '40+ connectors; nothing to tear out, nothing to migrate',
+    'No-code studios: Agent Studio, Strategy Studio, Kriya Studio, Campaign Builder, and a sellable Social content studio (text, image, video)',
   ],
   offers: { '@type': 'Offer', availability: 'https://schema.org/InStock', url: 'https://krim.ai/krimos' },
 }
+
+// The no-code studios your team builds and runs KrimOS from. Grounded in the
+// capability map (Agent / Strategy / Kriya studios, Campaign Builder, the
+// Social content studio). Generalised for a global audience — no vendor names.
+const STUDIOS = [
+  { name: 'Agent Studio', tag: 'Co-workers', body: 'Compose a co-worker and tune it: its persona, its voice, even a video avatar, its workflow, its skills, and how far it can act on its own.' },
+  { name: 'Strategy Studio', tag: 'Decision logic', body: 'Write the rules for origination, collections and segments on a visual canvas, and A/B test them in controlled cohorts before they go live.' },
+  { name: 'Kriya Studio', tag: 'Action library', body: 'Browse the 500+ validated, credit-native actions your co-workers are built from, organised by domain.' },
+  { name: 'Campaign Builder', tag: 'Campaigns', body: 'Design multi-channel campaigns across voice, chat and messaging, every contact kept inside consent and contact-window rules.' },
+]
 
 export default function PlatformPage() {
   return (
@@ -179,7 +191,64 @@ export default function PlatformPage() {
           </div>
         </Section>
 
-        {/* ---- 4 · Impacts to your business — lending-focused; government is the one extension ---- */}
+        {/* ---- 4 · Studios — the no-code surfaces your team builds and runs on ---- */}
+        <Section hairline>
+          <Reveal>
+            <Eyebrow tone="mint">Studios</Eyebrow>
+            <h2 className="mt-4 max-w-[24ch] font-serif text-display-1 text-ink">
+              Build, tune and run it. <span className="text-mint">No code.</span>
+            </h2>
+            <p className="mt-6 max-w-[62ch] font-sans text-body-lg text-ink-2">
+              Your team composes co-workers, writes the rules and ships content from a set of no-code
+              studios, each one wired into the same validated runtime, so everything they build is
+              accountable from its first action.
+            </p>
+          </Reveal>
+          <div className="mt-12 grid gap-5 sm:grid-cols-2">
+            {STUDIOS.map((s, i) => (
+              <Reveal key={s.name} delay={(i % 2) * 0.08}>
+                <div className="glass lume flex h-full flex-col p-7 md:p-8">
+                  <div className="flex items-baseline justify-between gap-4">
+                    <h3 className="font-serif text-[1.4rem] leading-tight text-ink">{s.name}</h3>
+                    <span className="shrink-0 font-mono text-[10px] uppercase tracking-[0.2em] text-mint/85">
+                      {s.tag}
+                    </span>
+                  </div>
+                  <p className="mt-3 font-sans text-body text-ink-2">{s.body}</p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+
+          {/* Featured: Social Studio — a sellable content capability (text, image, video) */}
+          <Reveal delay={0.1}>
+            <div className="glass glass-mint lume mt-5 overflow-hidden rounded-[var(--r-lg)] p-8 md:p-10">
+              <div className="grid gap-6 md:grid-cols-[1.1fr_0.9fr] md:items-center">
+                <div>
+                  <div className="flex flex-wrap items-center gap-3">
+                    <h3 className="font-serif text-[clamp(1.6rem,2.6vw,2.1rem)] leading-tight text-ink">
+                      Social Studio
+                    </h3>
+                    <span className="rounded-full border border-mint/30 bg-mint/[0.07] px-3 py-1 font-mono text-[10px] uppercase tracking-[0.2em] text-mint">
+                      Sellable
+                    </span>
+                  </div>
+                  <p className="mt-4 max-w-[46ch] font-sans text-body-lg text-ink-2">
+                    Generate compliant marketing content,{' '}
+                    <span className="text-mint">text, image and video</span>, from your own data and
+                    brand, ready to review and publish.
+                  </p>
+                </div>
+                <p className="font-sans text-body text-ink-2 md:border-l md:border-soft md:pl-8">
+                  A standalone capability you can buy on its own, or run alongside the lending
+                  operation. Same governed runtime, the same record of what was produced and why.
+                </p>
+              </div>
+            </div>
+          </Reveal>
+        </Section>
+
+        {/* ---- 5 · Impacts to your business — lending-focused; government is the one extension ---- */}
         <Section hairline>
           <Reveal>
             <Eyebrow>Impacts to your business</Eyebrow>
@@ -231,7 +300,7 @@ export default function PlatformPage() {
           </Reveal>
         </Section>
 
-        {/* ---- 5 · Close ---- */}
+        {/* ---- 6 · Close ---- */}
         <Section hairline>
           <Reveal>
             <div className="glass mx-auto max-w-[760px] p-10 text-center md:p-14">
