@@ -69,10 +69,11 @@ const softwareLd = {
 // The no-code studios your team builds and runs KrimOS from. Grounded in the
 // capability map (Agent / Strategy / Kriya studios, Campaign Builder, the
 // Social content studio). Generalised for a global audience — no vendor names.
-const STUDIOS = [
-  { name: 'Agent Studio', tag: 'Co-workers', body: 'Compose a co-worker and tune it: its persona, its voice, even a video avatar, its workflow, its skills, and how far it can act on its own.' },
+type Studio = { name: string; tag: string; body: string; href?: string; link?: string }
+const STUDIOS: Studio[] = [
+  { name: 'Agent Studio', tag: 'Co-workers', body: 'Compose a co-worker and tune it: its persona, its voice, even a video avatar, its workflow, its skills, and how far it can act on its own.', href: '/krimos/karta', link: 'See the co-workers' },
   { name: 'Strategy Studio', tag: 'Decision logic', body: 'Write the rules for origination, collections and segments on a visual canvas, and A/B test them in controlled cohorts before they go live.' },
-  { name: 'Kriya Studio', tag: 'Action library', body: 'Browse the 500+ validated, credit-native actions your co-workers are built from, organised by domain.' },
+  { name: 'Kriya Studio', tag: 'Action library', body: 'Browse the 500+ validated, credit-native actions your co-workers are built from, organised by domain.', href: '/krimos/kriya', link: 'See the vocabulary' },
   { name: 'Campaign Builder', tag: 'Campaigns', body: 'Design multi-channel campaigns across voice, chat and messaging, every contact kept inside consent and contact-window rules.' },
   { name: 'Social Studio', tag: 'Marketing content', body: 'Generate compliant marketing content — text, image and video — from your own data and brand, ready to review and publish.' },
 ]
@@ -209,19 +210,41 @@ export default function PlatformPage() {
             </p>
           </Reveal>
           <div className="mt-12 grid gap-5 sm:grid-cols-2">
-            {STUDIOS.map((s, i) => (
-              <Reveal key={s.name} delay={(i % 2) * 0.08}>
-                <div className="glass lume flex h-full flex-col p-7 md:p-8">
+            {STUDIOS.map((s, i) => {
+              const inner = (
+                <>
                   <div className="flex items-baseline justify-between gap-4">
-                    <h3 className="font-serif text-[1.4rem] leading-tight text-ink">{s.name}</h3>
+                    <h3 className={`font-serif text-[1.4rem] leading-tight text-ink${s.href ? ' transition-colors group-hover:text-mint' : ''}`}>
+                      {s.name}
+                    </h3>
                     <span className="shrink-0 font-mono text-[10px] uppercase tracking-[0.2em] text-mint/85">
                       {s.tag}
                     </span>
                   </div>
-                  <p className="mt-3 font-sans text-body text-ink-2">{s.body}</p>
-                </div>
-              </Reveal>
-            ))}
+                  <p className="mt-3 flex-1 font-sans text-body text-ink-2">{s.body}</p>
+                  {s.href && (
+                    <span className="mt-5 inline-flex items-baseline gap-2 font-sans text-[14.5px] text-mint">
+                      <span className="underline-offset-4 group-hover:underline">{s.link}</span>
+                      <span aria-hidden className="transition-transform duration-fast group-hover:translate-x-0.5">→</span>
+                    </span>
+                  )}
+                </>
+              )
+              return (
+                <Reveal key={s.name} delay={(i % 2) * 0.08}>
+                  {s.href ? (
+                    <Link
+                      href={s.href}
+                      className="glass lume group flex h-full flex-col p-7 outline-none focus-visible:border-mint md:p-8"
+                    >
+                      {inner}
+                    </Link>
+                  ) : (
+                    <div className="glass lume flex h-full flex-col p-7 md:p-8">{inner}</div>
+                  )}
+                </Reveal>
+              )
+            })}
           </div>
 
         </Section>

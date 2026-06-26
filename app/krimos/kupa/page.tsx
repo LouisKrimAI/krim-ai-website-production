@@ -98,7 +98,7 @@ export default function KupaPage() {
           <Reveal>
             <Eyebrow tone="cyan">The cockpit</Eyebrow>
             <h2 className="mt-4 max-w-[24ch] font-serif text-display-1 text-ink">
-              A dashboard for every part of the operation.
+              One cockpit over the whole operation.
             </h2>
             <p className="mt-6 max-w-[62ch] font-sans text-body-lg text-ink-2">
               Kupa draws from <span className="text-mint">one source of truth</span> and refreshes in

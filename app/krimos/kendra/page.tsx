@@ -136,7 +136,7 @@ export default function KendraPage() {
             <Reveal>
               <Eyebrow tone="dim">Inside the runtime</Eyebrow>
               <h2 className="mt-4 font-serif text-display-1 text-ink">
-                Specialised parts, working as one runtime.
+                Many engines, one mind.
               </h2>
               <p className="mx-auto mt-6 max-w-[58ch] font-sans text-body-lg text-ink-2">
                 Validation, learning, scheduling, policy and the record each do one job, and Kendra
