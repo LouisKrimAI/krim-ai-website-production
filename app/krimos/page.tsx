@@ -61,7 +61,7 @@ const softwareLd = {
     'Immutable, metered audit trail (Krim-Ledger, Krim Work Units)',
     'Sovereign deployment: on-prem, hybrid or managed',
     '40+ connectors; nothing to tear out, nothing to migrate',
-    'No-code studios: Agent Studio, Strategy Studio, Kriya Studio, Campaign Builder, and a sellable Social content studio (text, image, video)',
+    'No-code studios: Agent Studio, Strategy Studio, Kriya Studio, Campaign Builder, Social Studio',
   ],
   offers: { '@type': 'Offer', availability: 'https://schema.org/InStock', url: 'https://krim.ai/krimos' },
 }
@@ -74,6 +74,7 @@ const STUDIOS = [
   { name: 'Strategy Studio', tag: 'Decision logic', body: 'Write the rules for origination, collections and segments on a visual canvas, and A/B test them in controlled cohorts before they go live.' },
   { name: 'Kriya Studio', tag: 'Action library', body: 'Browse the 500+ validated, credit-native actions your co-workers are built from, organised by domain.' },
   { name: 'Campaign Builder', tag: 'Campaigns', body: 'Design multi-channel campaigns across voice, chat and messaging, every contact kept inside consent and contact-window rules.' },
+  { name: 'Social Studio', tag: 'Marketing content', body: 'Generate compliant marketing content — text, image and video — from your own data and brand, ready to review and publish.' },
 ]
 
 export default function PlatformPage() {
@@ -223,32 +224,6 @@ export default function PlatformPage() {
             ))}
           </div>
 
-          {/* Featured: Social Studio — a sellable content capability (text, image, video) */}
-          <Reveal delay={0.1}>
-            <div className="glass glass-mint lume mt-5 overflow-hidden rounded-[var(--r-lg)] p-8 md:p-10">
-              <div className="grid gap-6 md:grid-cols-[1.1fr_0.9fr] md:items-center">
-                <div>
-                  <div className="flex flex-wrap items-center gap-3">
-                    <h3 className="font-serif text-[clamp(1.6rem,2.6vw,2.1rem)] leading-tight text-ink">
-                      Social Studio
-                    </h3>
-                    <span className="rounded-full border border-mint/30 bg-mint/[0.07] px-3 py-1 font-mono text-[10px] uppercase tracking-[0.2em] text-mint">
-                      Sellable
-                    </span>
-                  </div>
-                  <p className="mt-4 max-w-[46ch] font-sans text-body-lg text-ink-2">
-                    Generate compliant marketing content,{' '}
-                    <span className="text-mint">text, image and video</span>, from your own data and
-                    brand, ready to review and publish.
-                  </p>
-                </div>
-                <p className="font-sans text-body text-ink-2 md:border-l md:border-soft md:pl-8">
-                  A standalone capability you can buy on its own, or run alongside the lending
-                  operation. Same governed runtime, the same record of what was produced and why.
-                </p>
-              </div>
-            </div>
-          </Reveal>
         </Section>
 
         {/* ---- 5 · Impacts to your business — lending-focused; government is the one extension ---- */}
@@ -259,7 +234,8 @@ export default function PlatformPage() {
               What changes when machines can finally act.
             </h2>
             <p className="mt-6 max-w-[60ch] font-sans text-body-lg text-ink-2">
-              These outcomes hold across banking and lending.
+              The work you kept manual out of caution starts running, costs fall as the system
+              learns, and good service reaches more people.
             </p>
           </Reveal>
           <div className="mt-12 grid gap-5 sm:grid-cols-2">
