@@ -146,7 +146,7 @@ export default function LifecycleExplorer() {
       </div>
 
       <p className="mt-5 text-center font-mono text-[10px] uppercase tracking-[0.22em] text-ink-3">
-        Hover a stage · one model, the whole lifecycle
+        One model, the whole lifecycle
       </p>
     </div>
   )
