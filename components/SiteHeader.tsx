@@ -116,8 +116,8 @@ function NavGroup({
               >
                 {it.role ? (
                   <>
-                    <span className="block font-sans text-[14px] text-ink">{it.label}</span>
-                    <span className="mt-0.5 block font-sans text-[12.5px] text-ink-3">{it.role}</span>
+                    <span className="block font-sans text-[15px] text-ink">{it.label}</span>
+                    <span className="mt-0.5 block font-sans text-[13.5px] text-ink-3">{it.role}</span>
                   </>
                 ) : (
                   <span className="block font-sans text-[14px] text-ink-2 transition-colors hover:text-ink">

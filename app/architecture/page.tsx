@@ -1,9 +1,10 @@
 /**
  * /architecture — the engineer-facing page (GEO-strong, standalone shell).
- * Answer-first: KrimOS is the decision layer your systems report into — no rip,
- * no replace. Then the runtime (eight Kendra modules), the substrate (memory,
- * durable orchestration, the shared domain model), the integration fabric, and
- * one architecture, sovereign in every market. Glass + type only, no devices.
+ * Answer-first: the whole lending stack, or a layer on yours — run it all on
+ * KrimOS, or keep your systems and let it layer on top. Then the runtime (eight
+ * Kendra modules), the substrate (memory, durable orchestration, the shared
+ * domain model), the integration fabric, and one architecture, sovereign in every
+ * market. Glass + type only, no devices.
  * Facts: docs/krim-content.md (Inside Kendra · technical depth · integration fabric).
  */
 
@@ -18,12 +19,12 @@ import { Section, Eyebrow, GlassCard, CTA } from '@/components/ui'
 export const metadata: Metadata = {
   title: 'Architecture',
   description:
-    'How KrimOS is built: the decision layer your existing systems report into. Eight Kendra runtime modules (Core, Karya, Fabric, Govern, Nyāya, Learn, Ledger, Sense), a shared substrate of memory tiers, durable orchestration and a 15-entity domain model, a 40+ connector integration fabric, and one architecture that runs sovereign in every market.',
+    'How KrimOS is built: a complete operating system for lending you can run end to end, or layer onto the systems you keep. Eight Kendra runtime modules (Core, Karya, Fabric, Govern, Nyāya, Learn, Ledger, Sense), a shared substrate of memory tiers, durable orchestration and a 15-entity domain model, a 40+ connector integration fabric, and one architecture that runs sovereign in every market.',
   alternates: { canonical: 'https://krim.ai/architecture' },
   openGraph: {
     title: 'Architecture — KrimOS',
     description:
-      'How KrimOS is built: the decision layer your existing systems report into. Eight Kendra runtime modules (Core, Karya, Fabric, Govern, Nyāya, Learn, Ledger, Sense), a shared substrate of memory tiers, durable orchestration and a 15-entity domain model, a 40+ connector integration fabric, and one architecture that runs sovereign in every market.',
+      'How KrimOS is built: a complete operating system for lending you can run end to end, or layer onto the systems you keep. Eight Kendra runtime modules (Core, Karya, Fabric, Govern, Nyāya, Learn, Ledger, Sense), a shared substrate of memory tiers, durable orchestration and a 15-entity domain model, a 40+ connector integration fabric, and one architecture that runs sovereign in every market.',
     url: 'https://krim.ai/architecture',
   },
 }
@@ -48,7 +49,7 @@ const faqLd = {
       name: 'Does KrimOS replace our core banking, LOS or CRM?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'No. KrimOS is the decision layer your existing systems report into. Your systems stay canonical; KrimOS reads from them and writes back only on validated channels. Nothing to tear out, nothing to migrate.',
+        text: 'Your choice. KrimOS is a complete lending stack of its own — origination, underwriting, servicing and collections — so you can run the operation on it end to end. Or keep the systems you have: KrimOS layers on top, reading from them and writing back on validated channels, so you can start with nothing to tear out and run as much on KrimOS as you choose.',
       },
     },
     {
@@ -157,19 +158,21 @@ export default function ArchitecturePage() {
       <SiteHeader />
       <OrbBackdrop />
       <main className="relative z-10">
-        {/* ---- 1 · Hero: answer-first — the decision layer your systems report into ---- */}
+        {/* ---- 1 · Hero: answer-first — the whole stack, or a layer on yours ---- */}
         <Section className="!pt-24">
           <div className="mx-auto max-w-[820px] text-center">
             <Reveal>
               <Eyebrow>Architecture</Eyebrow>
               <h1 className="mt-5 font-serif text-display-hero text-ink">
-                The decision layer your stack reports into.
+                The whole lending stack, or a layer on yours.
               </h1>
             </Reveal>
             <Reveal delay={0.12}>
-              <p className="mx-auto mt-7 max-w-[54ch] font-sans text-body-lg text-ink-2">
-                KrimOS doesn&rsquo;t replace your core systems. It sits above them, reading from each
-                and writing back <span className="text-mint">only on validated channels</span>.
+              <p className="mx-auto mt-7 max-w-[56ch] font-sans text-body-lg text-ink-2">
+                KrimOS is a <span className="text-ink">complete operating system for lending</span>,
+                origination to collections. Run the whole operation on it, or keep the systems you
+                have and let KrimOS layer on top, reading from each and writing back{' '}
+                <span className="text-mint">only on validated channels</span>.
               </p>
             </Reveal>
             <Reveal delay={0.2}>
@@ -183,14 +186,14 @@ export default function ArchitecturePage() {
           </div>
         </Section>
 
-        {/* ---- Cinematic band: the lattice the stack reports into ---- */}
+        {/* ---- Cinematic band: the runtime under the whole operation ---- */}
         <CinematicBand
           src="/images/cinematic/architecture-lattice.jpg"
-          alt="An endless teal lattice of interconnected nodes, one decision layer over the systems a bank already runs."
+          alt="An endless teal lattice of interconnected nodes, the runtime under a whole lending operation."
           objectPosition="50% 50%"
           tint="cyan"
-          eyebrow="The decision layer"
-          caption="Over the systems you already run."
+          eyebrow="The runtime"
+          caption="Run the whole stack, or layer onto yours."
         />
 
         {/* ---- 2 · The runtime — the eight Kendra modules ---- */}
@@ -310,48 +313,19 @@ export default function ArchitecturePage() {
               The same runtime, sovereign in every market.
             </h2>
             <p className="mt-6 max-w-[62ch] font-sans text-body-lg text-ink-2">
-              KrimOS runs the same architecture across the US, UK, EU, India, Nigeria and Brazil.{' '}
+              KrimOS runs the same architecture in every market it serves.{' '}
               <span className="text-ink">Only Krim-Fabric&rsquo;s rule set changes</span>. Each
               region runs self-contained behind its own walls, the local law already loaded, so one
               runtime, audit trail and governance carry from market to market unchanged.
             </p>
           </Reveal>
-          <div className="mt-12 grid gap-5 md:grid-cols-3">
-            {[
-              {
-                region: 'United States',
-                body: 'FDCPA, Reg F, TCPA, FCRA, ECOA / Reg B, TILA / Reg Z, SCRA, GLBA and UDAAP, encoded in Krim-Fabric.',
-              },
-              {
-                region: 'United Kingdom',
-                body: 'FCA Consumer Duty, the CONC sourcebook, the Consumer Credit Act 1974, the FCA Principles, DISP, UK GDPR and the Money Laundering Regulations, encoded in Krim-Fabric.',
-              },
-              {
-                region: 'European Union',
-                body: 'GDPR, the EU AI Act, the Consumer Credit Directive (CCD2), PSD2, DORA, the AML Directives and the Credit Servicers Directive, encoded in Krim-Fabric.',
-              },
-              {
-                region: 'India',
-                body: 'RBI Digital Lending Guidelines, the Fair Practices Code, the KYC Master Direction, SARFAESI, the DPDP Act 2023, TRAI TCCCPR, CIC reporting and RBI recovery-agent norms, encoded in Krim-Fabric.',
-              },
-              {
-                region: 'Nigeria',
-                body: 'CBN Prudential Guidelines, BOFIA 2020, the FCCPC Digital Lending Regulations, the NDPA 2023, the CBN Consumer Protection Framework and the Credit Reporting Act 2017, encoded in Krim-Fabric.',
-              },
-              {
-                region: 'Brazil',
-                body: 'The LGPD, the Consumer Defence Code (CDC), the Lei do Superendividamento, CMN and BCB resolutions, the Cadastro Positivo and COAF AML rules, encoded in Krim-Fabric.',
-              },
-            ].map((g, i) => (
-              <Reveal key={g.region} delay={i * 0.08}>
-                <div className="glass lume h-full p-7 md:p-8">
-                  <span aria-hidden className="block h-[3px] w-12 rounded-full bg-mint/70" />
-                  <h3 className="mt-6 font-serif text-[1.4rem] leading-tight text-ink">{g.region}</h3>
-                  <p className="mt-3 font-sans text-body text-ink-2">{g.body}</p>
-                </div>
-              </Reveal>
-            ))}
-          </div>
+          <Reveal delay={0.1}>
+            <div className="mt-10">
+              <CTA href="/trust" variant="secondary">
+                See the frameworks encoded per market
+              </CTA>
+            </div>
+          </Reveal>
         </Section>
 
         {/* ---- 6 · FAQ — real Q&As (mirrors FAQPage JSON-LD) ---- */}
@@ -369,10 +343,12 @@ export default function ArchitecturePage() {
                   q: 'Does KrimOS replace our core banking, LOS or CRM?',
                   a: (
                     <>
-                      No. KrimOS is the decision layer your existing systems report into. Your
-                      systems stay canonical; KrimOS reads from them and{' '}
-                      <span className="text-mint">writes back only on validated channels</span>.
-                      Nothing to tear out, nothing to migrate.
+                      Your choice. KrimOS is a complete lending stack of its own — origination,
+                      underwriting, servicing and collections — so you can run the operation on it
+                      end to end. Or keep the systems you have: KrimOS layers on top, reading from
+                      them and <span className="text-mint">writing back only on validated channels</span>,
+                      so you can start with <span className="text-ink">nothing to tear out</span> and
+                      run as much on KrimOS as you choose.
                     </>
                   ),
                 },
@@ -421,8 +397,7 @@ export default function ArchitecturePage() {
                 A two-week technical deep-dive covers architecture, security and integration, then a
                 scoped pilot follows on ring-fenced data.
               </p>
-              <div className="mt-9 flex flex-wrap items-center justify-center gap-6">
-                <CTA href={DEMO_HREF}>Book a demo</CTA>
+              <div className="mt-9 flex justify-center">
                 <CTA href="/krimos" variant="secondary">
                   Explore KrimOS
                 </CTA>

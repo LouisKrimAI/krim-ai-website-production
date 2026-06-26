@@ -197,12 +197,14 @@ function LogoItem({ logo }: { logo: Logo }) {
     <img
       src={logo.src}
       alt={logo.alt}
-      loading="lazy"
+      // eager + sync-ish: every logo must have its real width immediately, or a
+      // late-loading mark resizes the w-max track mid-loop and the -50% wrap jumps.
+      loading="eager"
       decoding="async"
       draggable={false}
       // h-7 normalises every source asset to one height; the filter renders each
       // mark monochrome white so mismatched art reads as one system.
-      className="h-7 w-auto select-none opacity-[0.52] transition-opacity duration-300 ease-out hover:opacity-100"
+      className="h-7 w-auto shrink-0 select-none opacity-[0.52] transition-opacity duration-300 ease-out hover:opacity-100"
       style={{ filter: 'brightness(0) invert(1)' }}
     />
   )

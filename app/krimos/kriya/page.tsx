@@ -75,7 +75,7 @@ export default function KriyaPage() {
             <Reveal>
               <Eyebrow>The vocabulary</Eyebrow>
               <h1 className="mt-4 font-serif text-display-hero text-ink">
-                The actions of lending, with the rules already inside them.
+                The actions of lending, with the rules built in.
               </h1>
             </Reveal>
             <Reveal delay={0.12}>
@@ -123,8 +123,8 @@ export default function KriyaPage() {
               Bureau pulls, payments, notices, calls. The real work, ready to run.
             </h2>
             <p className="mt-6 max-w-[60ch] font-sans text-body-lg text-ink-2">
-              500+ primitives span the operations a lender actually performs, across voice,
-              documents, compliance, data, payments and decisions, so there are no generic
+              The 500+ primitives span 20+ domains of the work a lender actually performs, from voice
+              and documents to compliance, data, payments and decisions, so there are no generic
               tool-calls for an integrator to assemble. It ships credit-native.
             </p>
           </Reveal>
@@ -141,6 +141,11 @@ export default function KriyaPage() {
               </Reveal>
             ))}
           </div>
+          <Reveal delay={0.1}>
+            <p className="mt-7 font-mono text-[11px] uppercase tracking-[0.18em] text-ink-3">
+              A representative ten of the twenty-plus domains · counts approximate
+            </p>
+          </Reveal>
         </Section>
 
         {/* ---- How they compose ---- */}
@@ -154,9 +159,10 @@ export default function KriyaPage() {
                 </h2>
                 <p className="mt-7 max-w-[52ch] font-sans text-body-lg text-ink-2">
                   Co-workers are composed from these primitives the way sentences are composed from
-                  words. The same MAKE_CALL underlies a collections call, a retention call and an
-                  onboarding call. The workflow differs by policy, script and segment, and the
-                  compliance scaffolding comes along for free.
+                  words. Take <span className="font-mono text-[0.9em] text-ink">MAKE_CALL</span>, the
+                  validated action that places an outbound call: the same primitive underlies a
+                  collections call, a retention call and an onboarding call. Only the policy, script
+                  and segment change, and the compliance checks come built into the primitive.
                 </p>
               </div>
             </Reveal>
@@ -175,26 +181,6 @@ export default function KriyaPage() {
               </GlassCard>
             </Reveal>
           </div>
-        </Section>
-
-        {/* ---- The boundary ---- */}
-        <Section hairline>
-          <Reveal>
-            <GlassCard accent className="mx-auto max-w-[760px] p-8 md:p-10">
-              <Eyebrow tone="dim">Where the line sits</Eyebrow>
-              <h2 className="mt-4 font-serif text-display-2 leading-tight text-ink">
-                Primitives carry out the work. They don&rsquo;t make the credit call.
-              </h2>
-              <p className="mt-6 max-w-[58ch] font-sans text-body-lg text-ink-2">
-                In the library, APPROVE means approval of a step in a workflow, not, in itself, a
-                credit decision. Primitives segment, route and execute under the institution&rsquo;s
-                own rules. The credit decision is a higher-order act, and the{' '}
-                <span className="text-cyan">safe AI underwriter</span> that will make it is{' '}
-                <span className="text-ink">the direction we are building</span>, on this same
-                validated foundation.
-              </p>
-            </GlassCard>
-          </Reveal>
         </Section>
 
         {/* ---- Impact ---- */}

@@ -253,9 +253,9 @@ export default function MsmePage() {
                   Managed, so you can just use it.
                 </h2>
                 <p className="mt-7 max-w-[52ch] font-sans text-body-lg text-ink-2">
-                  KrimOS runs as <span className="text-ink">managed SaaS</span> in a sovereign cloud
-                  region, fully hosted and operated by us. No infrastructure to stand up, nothing
-                  to maintain.
+                  For a lean team, the simplest path is <span className="text-ink">fully managed</span>:
+                  KrimOS hosted and run for you in a sovereign cloud region, with nothing to stand up
+                  and nothing to maintain. As you grow, it can move closer to your own walls.
                 </p>
               </div>
             </Reveal>
@@ -284,9 +284,6 @@ export default function MsmePage() {
                 Tell us the work that eats your week, and we&rsquo;ll show you the same automation the
                 giants trust, sized for you.
               </p>
-              <div className="mt-9 flex justify-center">
-                <CTA href={DEMO_HREF}>Book a demo</CTA>
-              </div>
             </GlassCard>
           </Reveal>
         </Section>

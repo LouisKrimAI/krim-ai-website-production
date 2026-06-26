@@ -3,11 +3,13 @@
  * STANDALONE pattern (like app/page.tsx + app/krimos/page.tsx):
  * SiteHeader + OrbBackdrop + <main className="relative z-10"> + SiteFooter,
  * metadata + BreadcrumbList JSON-LD. NOT LayerShell.
- * Content-first, calm, premium. No team/leadership section (by decision).
+ * Content-first, calm, premium. Includes a team section (founder + founding team;
+ * advisors to follow) — real, named people; keep provenance accurate.
  * No hero image, no devices. Facts: docs/krim-content.md (Global · Contact).
  */
 
 import type { Metadata } from 'next'
+import Link from 'next/link'
 import SiteHeader from '@/components/SiteHeader'
 import SiteFooter from '@/components/SiteFooter'
 import OrbBackdrop from '@/components/OrbBackdrop'
@@ -39,31 +41,46 @@ const breadcrumbLd = {
   ],
 }
 
-const MARKETS = [
-  { region: 'United States', note: 'FDCPA · Reg F · TCPA · ECOA encoded' },
-  { region: 'United Kingdom', note: 'FCA Consumer Duty · CONC · UK GDPR encoded' },
-  { region: 'European Union', note: 'EU AI Act · GDPR · Consumer Credit Directive · DORA encoded' },
-  { region: 'India', note: 'RBI Digital Lending Guidelines · DPDP Act · SARFAESI encoded' },
-  { region: 'Nigeria', note: 'CBN guidelines · NDPA 2023 · FCCPC digital lending encoded' },
-  { region: 'Brazil', note: 'LGPD · Consumer Defence Code · BCB / CMN resolutions encoded' },
-]
-
-// Monogram avatar — placeholder until real headshots are supplied. When they
-// land, swap the initials span for a next/image fill inside the same circle.
-function initials(name: string) {
-  const parts = name.trim().split(/\s+/)
-  return ((parts[0]?.[0] ?? '') + (parts[parts.length - 1]?.[0] ?? '')).toUpperCase()
+const FOUNDER = {
+  name: 'Vishwa Nath Jha',
+  role: 'Co-Founder & CEO',
+  bio: '16 years as an AI researcher, educator and entrepreneur. Previously founder of Saarthi.ai (2017–2025), India’s largest voice AI platform for banks and financial institutions.',
+  linkedin: 'https://www.linkedin.com/in/vishwanathjha1/',
 }
 
-function Avatar({ name, size = 'md' }: { name: string; size?: 'md' | 'lg' }) {
-  const dim = size === 'lg' ? 'h-20 w-20 text-[1.45rem]' : 'h-16 w-16 text-[1.15rem]'
+// Founding engineering team — name · prior / where they trained.
+const TEAM = [
+  { name: 'Om Mishra', note: 'Sr. FDE · GNIT', linkedin: 'https://www.linkedin.com/in/om-mishra-063101270/' },
+  { name: 'Nachiketa Jha', note: 'Sr. FDE · Heidelberg', linkedin: 'https://www.linkedin.com/in/nachiketa-jha-416701220/' },
+  { name: 'Nakshatra Kanchan', note: 'FDE · IIT Patna', linkedin: 'https://www.linkedin.com/in/nakshatra-kanchan/' },
+  { name: 'Mohit Singh', note: 'FDE · IIT Patna', linkedin: 'https://www.linkedin.com/in/mohit-singh-bb5430253/' },
+  { name: 'Devansh Jindal', note: 'FDE · IIT Patna', linkedin: 'https://www.linkedin.com/in/devansh-jindal-409a75300/' },
+  { name: 'Divyansh Gupta', note: 'FDE · IIT Patna', linkedin: 'https://www.linkedin.com/in/divyanshg0319/' },
+]
+
+// Advisory board — senior banking & tech leaders (name · reference).
+const ADVISORS = [
+  { name: 'Deepak Maheshwari', note: 'fmr CFO, SBI Cards', linkedin: 'https://www.linkedin.com/in/deepak-maheshwari-0605b86/' },
+  { name: 'R. Shyam Shyamsunder', note: 'fmr MD Investments, Temasek', linkedin: 'https://www.linkedin.com/in/shyam-shyamsunder/' },
+  { name: 'Sanjay Thakur', note: 'EVP, Kotak Mahindra Bank', linkedin: 'https://www.linkedin.com/in/sanjay-thakur-a83ab111/' },
+  { name: 'Rudra Mishra', note: 'fmr DGM, ICICI Bank', linkedin: 'https://www.linkedin.com/in/rudramishra/' },
+  { name: 'Srinivas Gopal', note: 'fmr Spotify advisor', linkedin: 'https://www.linkedin.com/in/srinivas-gopal-710a242/' },
+]
+
+// Minimalist LinkedIn link — a small circular icon button (no headshots, no initials).
+function LinkedInLink({ href, name }: { href: string; name: string }) {
   return (
-    <span
-      aria-hidden
-      className={`flex shrink-0 items-center justify-center rounded-full border border-strong bg-white/[0.03] font-serif tracking-[0.02em] text-mint ${dim}`}
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label={`${name} on LinkedIn`}
+      className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-soft text-ink-3 transition-colors hover:border-mint/40 hover:bg-mint/[0.04] hover:text-mint"
     >
-      {initials(name)}
-    </span>
+      <svg viewBox="0 0 24 24" className="h-[15px] w-[15px]" fill="currentColor" aria-hidden>
+        <path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.25 8h4.5v15H.25V8zM8.5 8h4.31v2.05h.06c.6-1.14 2.07-2.34 4.26-2.34 4.56 0 5.4 3 5.4 6.9V23h-4.5v-6.49c0-1.55-.03-3.54-2.16-3.54-2.16 0-2.49 1.69-2.49 3.43V23H8.5V8z" />
+      </svg>
+    </a>
   )
 }
 
@@ -157,50 +174,71 @@ export default function CompanyPage() {
           </div>
         </Section>
 
-        {/* ---- 3.5 · Team — founder + founding team (monogram placeholders until headshots land) ---- */}
+        {/* ---- 3.5 · Team — founder (bio) + Saarthi track record + founding engineering team
+               + advisory board. Real, named people; affiliations as provided. ---- */}
         <Section hairline>
-          <div className="mx-auto max-w-[820px] text-center">
+          <div className="mx-auto max-w-[940px]">
             <Reveal>
-              <Eyebrow>Team</Eyebrow>
-              <h2 className="mt-4 font-serif text-display-1 text-ink">The people behind the proof.</h2>
-              <p className="mx-auto mt-6 max-w-[48ch] font-sans text-body-lg text-ink-2">
-                A research-and-engineering team building KrimOS.
-              </p>
+              <div className="text-center">
+                <Eyebrow>Team</Eyebrow>
+                <h2 className="mt-4 font-serif text-display-1 text-ink">The people behind the proof.</h2>
+                <p className="mx-auto mt-6 max-w-[54ch] font-sans text-body-lg text-ink-2">
+                  Built by a team that shipped production AI to India&rsquo;s largest banks.
+                </p>
+              </div>
             </Reveal>
-          </div>
 
-          {/* Founder */}
-          <Reveal delay={0.08}>
-            <div className="mx-auto mt-12 max-w-[520px]">
-              <div className="glass lume flex items-center gap-6 p-7 md:p-8">
-                <Avatar name="Vishwa Nath Jha" size="lg" />
-                <div>
-                  <h3 className="font-serif text-[1.5rem] leading-none text-ink">Vishwa Nath Jha</h3>
-                  <p className="mt-2.5 font-mono text-[11px] uppercase tracking-[0.18em] text-mint">
-                    CEO &amp; Founder
-                  </p>
+            {/* Founder */}
+            <Reveal delay={0.08}>
+              <div className="glass lume mx-auto mt-12 max-w-[660px] p-8 text-center md:p-9">
+                <h3 className="font-serif text-[1.6rem] leading-none text-ink">{FOUNDER.name}</h3>
+                <p className="mt-2.5 font-mono text-[11px] uppercase tracking-[0.18em] text-mint">
+                  {FOUNDER.role}
+                </p>
+                <p className="mx-auto mt-4 max-w-[52ch] font-sans text-body text-ink-2">{FOUNDER.bio}</p>
+                <div className="mt-5 flex justify-center">
+                  <LinkedInLink href={FOUNDER.linkedin} name={FOUNDER.name} />
                 </div>
               </div>
-            </div>
-          </Reveal>
+            </Reveal>
 
-          {/* Founding team */}
-          <Reveal delay={0.12}>
-            <p className="mt-14 text-center font-mono text-[11px] uppercase tracking-[0.2em] text-ink-3">
-              Founding team
-            </p>
-          </Reveal>
-          <div className="mx-auto mt-8 grid max-w-[880px] grid-cols-2 gap-5 sm:grid-cols-3">
-            {['Om Mishra', 'Nachiketa Jha', 'Nakshatra Kanchan', 'Mohit Singh', 'Devansh Jindal', 'Divyansh Gupta'].map(
-              (name, i) => (
-                <Reveal key={name} delay={0.04 * i}>
-                  <div className="glass flex h-full flex-col items-center gap-4 p-6 text-center">
-                    <Avatar name={name} size="md" />
-                    <p className="font-serif text-[1.15rem] leading-tight text-ink">{name}</p>
+            {/* Founding engineering team */}
+            <Reveal delay={0.16}>
+              <p className="mt-14 font-mono text-[11px] uppercase tracking-[0.2em] text-ink-3">
+                Founding engineering team
+              </p>
+            </Reveal>
+            <div className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              {TEAM.map((m, i) => (
+                <Reveal key={m.name} delay={0.03 * i}>
+                  <div className="glass flex h-full flex-col items-center gap-2.5 p-5 text-center">
+                    <p className="font-serif text-[1.15rem] leading-tight text-ink">{m.name}</p>
+                    <p className="font-sans text-[14px] text-ink-3">{m.note}</p>
+                    <LinkedInLink href={m.linkedin} name={m.name} />
                   </div>
                 </Reveal>
-              ),
-            )}
+              ))}
+            </div>
+
+            {/* Advisory board */}
+            <Reveal delay={0.2}>
+              <p className="mt-12 font-mono text-[11px] uppercase tracking-[0.2em] text-ink-3">
+                Advisory board
+              </p>
+            </Reveal>
+            <div className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              {ADVISORS.map((a, i) => (
+                <Reveal key={a.name} delay={0.03 * i}>
+                  <div className="glass flex h-full flex-col items-center p-5 text-center">
+                    <p className="font-serif text-[1.15rem] leading-tight text-ink">{a.name}</p>
+                    <p className="mt-1 font-sans text-[14px] text-ink-3">{a.note}</p>
+                    <div className="mt-3.5">
+                      <LinkedInLink href={a.linkedin} name={a.name} />
+                    </div>
+                  </div>
+                </Reveal>
+              ))}
+            </div>
           </div>
         </Section>
 
@@ -211,7 +249,8 @@ export default function CompanyPage() {
           </Reveal>
         </Section>
 
-        {/* ---- 5 · Markets & contact ---- */}
+        {/* ---- 5 · Markets & contact — kept high-level; the per-jurisdiction
+               detail lives on /trust, so this stays general and doesn't over-commit ---- */}
         <Section hairline>
           <Reveal>
             <div className="mx-auto max-w-[760px] text-center">
@@ -219,23 +258,23 @@ export default function CompanyPage() {
               <h2 className="mt-4 font-serif text-display-1 text-ink">
                 Different jurisdictions, one runtime.
               </h2>
-              <p className="mx-auto mt-6 max-w-[52ch] font-sans text-body-lg text-ink-2">
-                The frameworks of six regulatory worlds are encoded in the runtime. The same system
-                runs in each. Only the rules it enforces change.
+              <p className="mx-auto mt-6 max-w-[54ch] font-sans text-body-lg text-ink-2">
+                Each market&rsquo;s rules are encoded in the runtime, so the{' '}
+                <span className="text-ink">same system runs in every jurisdiction</span> we serve, and
+                only what it enforces changes.
               </p>
+              <Reveal delay={0.1}>
+                <p className="mt-6 font-sans text-body text-ink-2">
+                  <Link
+                    href="/trust"
+                    className="text-mint underline-offset-4 transition-colors hover:underline"
+                  >
+                    See how the rules are encoded &rarr;
+                  </Link>
+                </p>
+              </Reveal>
             </div>
           </Reveal>
-          <div className="mt-12 grid gap-5 md:grid-cols-3">
-            {MARKETS.map((m, i) => (
-              <Reveal key={m.region} delay={i * 0.08}>
-                <div className="glass lume h-full p-7">
-                  <span aria-hidden className="block h-[3px] w-12 rounded-full bg-mint/70" />
-                  <h3 className="mt-6 font-serif text-[1.4rem] leading-tight text-ink">{m.region}</h3>
-                  <p className="mt-3 font-sans text-body text-ink-2">{m.note}</p>
-                </div>
-              </Reveal>
-            ))}
-          </div>
 
           <Reveal delay={0.1}>
             <GlassCard className="mx-auto mt-14 max-w-[720px] p-10 text-center md:p-14">
@@ -252,8 +291,7 @@ export default function CompanyPage() {
                 </a>
                 .
               </p>
-              <div className="mt-9 flex flex-wrap items-center justify-center gap-6">
-                <CTA href={DEMO_HREF}>Book a demo</CTA>
+              <div className="mt-9 flex justify-center">
                 <CTA href="/krimos" variant="secondary">
                   Explore KrimOS
                 </CTA>

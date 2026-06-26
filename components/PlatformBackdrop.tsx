@@ -3,7 +3,7 @@
 /**
  * PlatformBackdrop — the KrimOS cluster's living ground.
  *
- * The "neural stack" artwork (public/images/krimos/neural-stack-2.webp, 1783×2400)
+ * The "neural stack" artwork (public/images/krimos/neural-stack-3.webp, 1783×2400)
  * — a rainbow brain crowning stacked chip-plates, a rising central beam and
  * cyan/gold strand swirls, all on black — shown CONTAIN (the whole stack) so its
  * black ground blends into the page, with the rectangle edges feathered away. Four
@@ -12,7 +12,7 @@
  * plate sheens, a brain shimmer and junction glints — all additive, with the beam
  * occluded behind each solid plate.
  *
- * Ported from the standalone export (neural-stack-animated-background (2)): image
+ * Ported from the standalone export (neural-stack-animated-background (3)): image
  * extracted to an optimised WebP (~281KB, prewarmed by BackgroundPrefetch), DPR
  * capped, paused while the tab is hidden, reduced-motion settles to one still
  * frame, rAF + listeners cleaned up. Held under a scrim + edge feather so the nav,
@@ -22,7 +22,7 @@
 import { useEffect, useRef } from 'react'
 import { markBackdropReady } from '@/lib/backdropReady'
 
-const SRC = '/images/krimos/neural-stack-2.webp'
+const SRC = '/images/krimos/neural-stack-3.webp'
 
 type Ring = { cy: number; rx: number; ry: number; hue: 'cy' | 'go'; count: number }
 type Pt = { x: number; y: number }
@@ -332,7 +332,7 @@ export default function PlatformBackdrop() {
       ` }} />
 
       {/* the artwork stage + masked parallax layers + fx canvas, held faint */}
-      <div ref={stageRef} className="ns-stage" style={{ opacity: 0.58 }}>
+      <div ref={stageRef} className="ns-stage" style={{ opacity: 0.4 }}>
         <div className="ns-img ns-base" style={{ backgroundImage: `url(${SRC})` }} />
         <div className="ns-img ns-layer ns-la" style={{ backgroundImage: `url(${SRC})` }} />
         <div className="ns-img ns-layer ns-lb" style={{ backgroundImage: `url(${SRC})` }} />
@@ -344,7 +344,7 @@ export default function PlatformBackdrop() {
       {/* edge feather — fades the artwork's rectangle into the page black on every side */}
       <div
         className="absolute inset-0"
-        style={{ background: 'radial-gradient(74% 76% at 50% 48%, transparent 50%, #09090C 100%)' }}
+        style={{ background: 'radial-gradient(70% 72% at 50% 47%, transparent 40%, #09090C 90%)' }}
       />
 
       {/* vertical scrim — keeps the nav, hero and footer legible over the artwork */}

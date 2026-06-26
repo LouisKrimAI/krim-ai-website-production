@@ -80,7 +80,7 @@ const POWERS = [
   {
     name: 'Evolving & Predictive',
     tagline: 'Gets sharper with every decision your operation makes.',
-    body: 'A world model that learns from every action and outcome. The longer it runs, the more precisely it performs. A truly intelligence-driven operation.',
+    body: 'A world model that learns from every action and outcome. The longer it runs, the more precisely it performs.',
   },
 ]
 
@@ -115,7 +115,7 @@ export default function HomePage() {
             <Reveal>
               <Eyebrow>Meet KrimOS</Eyebrow>
               <h2 className="mt-4 font-serif text-display-1 text-ink">
-                The operating system for banking and lending.
+                Built to act. Proven before it acts.
               </h2>
               <p className="mx-auto mt-6 max-w-[52ch] font-sans text-body-lg text-ink-2">
                 One system runs the whole operation, from origination to collections. AI co-workers do
@@ -151,9 +151,9 @@ export default function HomePage() {
               <Reveal delay={0.12}>
                 <p className="mt-7 max-w-[52ch] font-sans text-body-lg text-ink-2">
                   One runtime runs the whole lifecycle and records every action with its reasoning on
-                  one ledger, so KrimOS builds a connected model of how lending actually behaves, and
-                  sharpens with every outcome. Validation lets it act; the record, kept inside your
-                  walls, lets it learn.
+                  one ledger, so KrimOS builds a connected model of how lending actually behaves, and{' '}
+                  <span className="text-mint">sharpens with every outcome</span>. Validation lets it
+                  act; the record, kept inside your walls, lets it learn.
                 </p>
               </Reveal>
               <Reveal delay={0.2}>
@@ -275,10 +275,11 @@ export default function HomePage() {
           <div className="mx-auto max-w-[760px] text-center">
             <Reveal>
               <h2 className="font-serif text-display-2 leading-tight text-ink">
-                Fits the stack you already run.
+                On your stack, or as the stack.
               </h2>
-              <p className="mx-auto mt-4 max-w-[44ch] font-sans text-body text-ink-2">
-                Sits on top of your core, LOS and LMS. No rip, no replace. 40+ connectors.
+              <p className="mx-auto mt-5 max-w-[52ch] font-sans text-body-lg text-ink-2">
+                It reads from and writes to your core, LOS and LMS through 40+ connectors. Start
+                alongside the systems you have, and run as much of the operation on KrimOS as you choose.
               </p>
             </Reveal>
           </div>
@@ -305,9 +306,6 @@ export default function HomePage() {
               <p className="mt-5 font-sans text-body-lg text-ink-2">
                 Powered by sovereign superintelligence.
               </p>
-              <div className="mt-9">
-                <CTA href={DEMO_HREF}>Book a demo</CTA>
-              </div>
             </div>
           </Reveal>
         </Section>

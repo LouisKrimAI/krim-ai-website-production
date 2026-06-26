@@ -24,6 +24,7 @@ import type { Metadata } from 'next'
 import SiteHeader from '@/components/SiteHeader'
 import SiteFooter from '@/components/SiteFooter'
 import Reveal from '@/components/Reveal'
+import LifecycleExplorer from '@/components/research/LifecycleExplorer'
 import { Section, Eyebrow, GlassCard, CTA } from '@/components/ui'
 
 export const metadata: Metadata = {
@@ -127,10 +128,9 @@ export default function WorldLendingModelPage() {
                 </h2>
                 <p className="mt-7 max-w-[52ch] font-sans text-body-lg text-ink-2">
                   A world model is the AI’s picture of its environment, detailed enough to play an
-                  action forward and see what happens. Our agents run thousands of these{' '}
-                  <span className="text-ink">look-ahead simulations in a secure sandbox</span>,
-                  checking the likely borrower response and compliance risk before they take an action
-                  for real.
+                  action forward and see what happens. The aim is for an agent to{' '}
+                  <span className="text-ink">simulate an action against the model in a sandbox</span>,
+                  checking the likely borrower response and compliance risk, before taking it for real.
                 </p>
                 <p className="mt-5 max-w-[52ch] font-sans text-body text-ink-2">
                   Lending is where that matters most. Its decisions are consequential and hard to
@@ -145,11 +145,11 @@ export default function WorldLendingModelPage() {
                 </p>
                 <p className="mt-5 font-serif text-[clamp(1.35rem,2.4vw,1.8rem)] leading-snug text-ink">
                   “Check an action against its consequences before you take it” is the world model’s
-                  safety property. It is also the exact thing a regulator demands of a credit decision.
+                  safety property. It is also, in essence, what a regulator asks of a credit decision.
                 </p>
                 <p className="mt-5 font-sans text-body text-ink-2">
                   It is the same control in both worlds, which is why a world model is the right way
-                  to build lending that is both powerful and safe.
+                  to build lending that scales without scaling its risk.
                 </p>
               </GlassCard>
             </Reveal>
@@ -225,9 +225,9 @@ export default function WorldLendingModelPage() {
                   {([
                     // key word per heading, coloured by the grammar:
                     // mint = validated/learned, cyan = thinking/reasoning, gold = the sovereign boundary
-                    [<><span className="text-mint">Validated</span> before it acts</>, 'Every proposed action clears Krim-Nyāya, our cognitive compliance engine, against local law, policy and the institution’s risk limits before it can fire.'],
+                    [<><span className="text-mint">Validated</span> before it acts</>, 'Every proposed action clears Krim-Nyāya, our pre-execution validator, against local law, policy and the institution’s risk limits before it can fire.'],
                     [<><span className="text-cyan">Explainable</span> by construction</>, 'Every decision carries a step-by-step reasoning trace, recorded immutably in Krim-Ledger: cryptographic proof on demand, ready for any audit.'],
-                    [<><span className="text-mint">Corrected</span> by outcomes</>, 'Krim-Learn, our closed-loop feedback engine, routes payment outcomes back into the model, so its accuracy improves the more lending it sees.'],
+                    [<><span className="text-mint">Corrected</span> by outcomes</>, 'Krim-Learn, our learning loop, routes payment outcomes back into the model, so its accuracy improves the more lending it sees.'],
                     [<><span className="text-gold">Sovereign</span></>, 'It reasons, acts and improves entirely inside the institution’s own walls.'],
                   ] as const).map(([name, body], i) => (
                     <li key={i}>
@@ -262,74 +262,7 @@ export default function WorldLendingModelPage() {
             </Reveal>
           </div>
           <Reveal delay={0.1}>
-            <div className="relative mx-auto mt-12 max-w-[940px]">
-              {/* Luminous cyan→mint track — one shared model across the lifecycle.
-                  Spans the row on desktop; becomes a vertical spine when nodes stack. */}
-              <span
-                aria-hidden
-                className="pointer-events-none absolute left-[7%] right-[7%] top-1/2 hidden h-px -translate-y-1/2 sm:block"
-                style={{
-                  background:
-                    'linear-gradient(90deg, rgba(57,214,255,0) 0%, rgba(57,214,255,0.55) 18%, rgba(0,255,178,0.55) 82%, rgba(0,255,178,0) 100%)',
-                }}
-              />
-              <span
-                aria-hidden
-                className="pointer-events-none absolute left-1/2 top-6 bottom-6 block w-px -translate-x-1/2 sm:hidden"
-                style={{
-                  background:
-                    'linear-gradient(180deg, rgba(57,214,255,0) 0%, rgba(57,214,255,0.5) 16%, rgba(0,255,178,0.5) 84%, rgba(0,255,178,0) 100%)',
-                }}
-              />
-              <ol className="relative flex flex-col items-stretch gap-3 sm:flex-row sm:items-stretch sm:justify-between sm:gap-2">
-                {([
-                  ['01', 'Origination'],
-                  ['02', 'AI underwriting'], // the differentiator
-                  ['03', 'Pricing'],
-                  ['04', 'Servicing'],
-                  ['05', 'Collections'],
-                  ['06', 'Portfolio'],
-                ] as const).map(([num, label]) => {
-                  const isKey = label === 'AI underwriting'
-                  return (
-                    <li key={label} className="flex flex-1 items-center justify-center sm:block">
-                      <div
-                        className={[
-                          'group relative flex w-full items-center gap-3 rounded-[10px] border px-3.5 py-3 backdrop-blur-md transition-colors duration-200 sm:flex-col sm:gap-2 sm:px-2 sm:py-4 sm:text-center',
-                          isKey
-                            ? 'border-mint/55 bg-mint/[0.06] hover:border-mint/80'
-                            : 'border-white/10 bg-white/[0.02] hover:border-white/20',
-                        ].join(' ')}
-                        style={isKey ? { boxShadow: '0 0 0 1px rgba(0,255,178,0.10), 0 0 28px -10px rgba(0,255,178,0.45)' } : undefined}
-                      >
-                        {/* node dot — mint ring for the AI underwriter, quiet otherwise */}
-                        <span
-                          aria-hidden
-                          className={[
-                            'h-2 w-2 shrink-0 rounded-full',
-                            isKey ? 'bg-mint shadow-[0_0_10px_2px_rgba(0,255,178,0.6)]' : 'bg-ink-3',
-                          ].join(' ')}
-                        />
-                        <div className="flex flex-col sm:items-center">
-                          <span className="font-mono text-[10px] tracking-[0.2em] text-ink-3">{num}</span>
-                          <span
-                            className={[
-                              'mt-0.5 font-mono text-[11px] uppercase leading-tight tracking-[0.12em]',
-                              isKey ? 'text-mint' : 'text-ink-2',
-                            ].join(' ')}
-                          >
-                            {label}
-                          </span>
-                        </div>
-                      </div>
-                    </li>
-                  )
-                })}
-              </ol>
-              <p className="mt-6 text-center font-mono text-[10px] uppercase tracking-[0.22em] text-ink-3">
-                One model · the whole lifecycle
-              </p>
-            </div>
+            <LifecycleExplorer />
           </Reveal>
         </Section>
 
@@ -340,13 +273,11 @@ export default function WorldLendingModelPage() {
               <h2 className="font-serif text-display-3 leading-tight text-ink">
                 The model that gets better the more lending it sees.
               </h2>
-              <p className="mx-auto mt-5 max-w-[54ch] font-sans text-body text-ink-2">
-                The World Lending Model is the frontier of our research, compounding with every
-                validated outcome it records. Kendra, the runtime that validates and learns, is the
-                part you can watch run today.
+              <p className="mx-auto mt-5 max-w-[52ch] font-sans text-body text-ink-2">
+                The World Lending Model is the frontier of our research. Kendra, the runtime that
+                validates and learns, is the part you can run today.
               </p>
-              <div className="mt-9 flex flex-wrap items-center justify-center gap-6">
-                <CTA href={DEMO_HREF}>Book a demo</CTA>
+              <div className="mt-9 flex justify-center">
                 <CTA href="/research" variant="secondary">
                   Back to research
                 </CTA>

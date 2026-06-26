@@ -86,7 +86,7 @@ export default function SiteFooter() {
                   <li key={href}>
                     <Link
                       href={href}
-                      className="font-sans text-[13.5px] text-ink-2 transition-colors hover:text-ink"
+                      className="font-sans text-[14.5px] text-ink-2 transition-colors hover:text-ink"
                     >
                       {label}
                     </Link>

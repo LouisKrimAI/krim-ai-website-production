@@ -87,7 +87,7 @@ export default function ResearchPage() {
             <Reveal delay={0.12}>
               <p className="mx-auto mt-7 max-w-[52ch] font-sans text-body-lg text-ink-2">
                 Krim is a research company first. Everything we ship is that research,{' '}
-                <span className="text-mint">proven in production</span>.
+                <span className="text-mint">built to run today</span>.
               </p>
             </Reveal>
             <Reveal delay={0.2}>
@@ -122,7 +122,7 @@ export default function ResearchPage() {
                     <p className="mt-6 font-mono text-[11px] uppercase tracking-[0.18em] text-ink-3">{s.n}</p>
                     <h3 className="mt-2 font-serif text-[1.4rem] leading-tight text-ink">{s.title}</h3>
                     <p className="mt-3 flex-1 font-sans text-body text-ink-2">{s.body}</p>
-                    <p className={`mt-6 font-sans text-[13.5px] ${s.tint === 'mint' ? 'text-mint' : 'text-cyan'}`}>
+                    <p className={`mt-6 font-sans text-[14.5px] ${s.tint === 'mint' ? 'text-mint' : 'text-cyan'}`}>
                       <span className="underline-offset-4 group-hover:underline">{s.link[0]}</span>
                     </p>
                   </div>
@@ -195,14 +195,13 @@ export default function ResearchPage() {
           <Reveal>
             <div className="glass mx-auto max-w-[760px] p-10 text-center md:p-14">
               <h2 className="font-serif text-display-3 leading-tight text-ink">
-                See where the research already runs in production.
+                See the research run, end to end.
               </h2>
               <p className="mx-auto mt-5 max-w-[50ch] font-sans text-body text-ink-2">
-                The foundations aren’t a roadmap slide. They are the runtime your teams can watch
-                validate every action, live.
+                The foundations aren’t a roadmap slide. They are a working runtime your teams can
+                watch validate every action, live.
               </p>
-              <div className="mt-9 flex flex-wrap items-center justify-center gap-6">
-                <CTA href={DEMO_HREF}>Book a demo</CTA>
+              <div className="mt-9 flex justify-center">
                 <CTA href="/krimos" variant="secondary">
                   Explore KrimOS
                 </CTA>

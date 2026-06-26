@@ -19,12 +19,12 @@ export type Layer = {
 }
 
 export const LAYERS: Layer[] = [
-  { slug: 'kendra', name: 'Kendra', eyebrow: 'When it has to be right', oneLiner: 'The brain — validates every action, learns from every outcome.', tag: 'RUNTIME' },
-  { slug: 'kriya', name: 'Kriya', eyebrow: 'What it can do', oneLiner: '500+ validated, credit-native action primitives.', tag: 'PRIMITIVES' },
-  { slug: 'karta', name: 'Karta', eyebrow: 'Who does the work', oneLiner: 'Intelligent co-workers, composed from primitives.', tag: 'CO-WORKERS' },
-  { slug: 'kupa', name: 'Kupa', eyebrow: 'Where you stay in control', oneLiner: 'The glass cockpit — supervise, configure, monitor and audit every action.', tag: 'COMMAND CENTER' },
-  { slug: 'kula', name: 'Kula', eyebrow: 'For your teams', oneLiner: 'Ask in plain language; the runtime proposes the work and waits for your sign-off.', tag: 'ENTERPRISE INTERFACE' },
-  { slug: 'kira', name: 'Kira', eyebrow: 'For your customers', oneLiner: 'One relationship across every channel — in the Krimkar app.', tag: 'CUSTOMER ADVISOR' },
+  { slug: 'kendra', name: 'Kendra', eyebrow: 'The runtime. It validates every action before it runs, and learns from every outcome.', oneLiner: 'The brain: validates every action, learns from every outcome.', tag: 'RUNTIME' },
+  { slug: 'kriya', name: 'Kriya', eyebrow: 'The vocabulary of lending: 500+ credit-native actions, each with its checks built in.', oneLiner: 'The validated, credit-native actions co-workers are built from.', tag: 'PRIMITIVES' },
+  { slug: 'karta', name: 'Karta', eyebrow: 'The AI co-workers that run the lending lifecycle, held to measured outcomes.', oneLiner: 'The AI co-workers, composed from validated primitives.', tag: 'CO-WORKERS' },
+  { slug: 'kupa', name: 'Kupa', eyebrow: 'The command center where your teams supervise, configure and audit every action.', oneLiner: 'Supervise, configure and audit every action from one place.', tag: 'COMMAND CENTER' },
+  { slug: 'kula', name: 'Kula', eyebrow: 'Your teams ask in plain language, and sign off before anything runs.', oneLiner: 'Ask in plain language; the runtime proposes, you sign off before anything runs.', tag: 'ENTERPRISE INTERFACE' },
+  { slug: 'kira', name: 'Kira & Krimkar', eyebrow: 'The advisor your customers meet: one relationship across every channel.', oneLiner: 'One relationship across every channel, in the Krimkar app.', tag: 'CUSTOMER ADVISOR' },
 ]
 
 export function layerBySlug(slug: LayerSlug): Layer {

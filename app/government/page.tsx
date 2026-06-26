@@ -64,17 +64,17 @@ const CHALLENGES = [
 // why Krim fits — three properties by construction (middle one is the heart)
 const FITS = [
   {
-    title: 'Sovereignty is decisive',
-    body: 'KrimOS runs inside your perimeter, in your jurisdiction. Model weights, orchestration and citizens’ data never leave. The property that rules most AI out is the one Krim is built on.',
+    title: 'It runs inside your perimeter',
+    body: 'KrimOS runs in your jurisdiction, behind your walls. Model weights, orchestration and citizens’ data never leave. For a public body, that sovereignty is the whole basis for using AI at all.',
   },
   {
-    title: 'Validation is a lawful basis',
-    body: 'Before any co-worker acts, the proposed action is checked against the rules that govern it. Nothing executes without a basis recorded, so compliance lives in the runtime itself rather than relying on a department’s vigilance.',
+    title: 'Every action has a lawful basis',
+    body: 'Before any co-worker acts, KrimOS checks the proposed action against the rules that govern it. Nothing executes without a basis recorded, so the law is enforced by the runtime itself.',
     accent: true,
   },
   {
-    title: 'The ledger is accountability',
-    body: 'Every action is sealed to an immutable record: the action, the rule that applied, and the validation result. The answer to “why did this happen?” is always on file.',
+    title: 'Every action answers for itself',
+    body: 'Each action is sealed to an immutable record: what was done, the rule that applied, and the validation result. “Why did this happen?” always has an answer on file.',
   },
 ]
 
@@ -169,19 +169,20 @@ export default function GovernmentPage() {
         {/* ---- 3 · Why Krim fits ---- */}
         <Section hairline>
           <Reveal>
-            <Eyebrow>Why Krim fits</Eyebrow>
+            <Eyebrow>Built for the public sector</Eyebrow>
             <h2 className="mt-4 max-w-[22ch] font-serif text-display-1 text-ink">
-              The properties government demands, built in from the core.
+              Adopt AI without bending a rule.
             </h2>
             <p className="mt-6 max-w-[60ch] font-sans text-body-lg text-ink-2">
-              Krim fits public-sector work because the things government can’t compromise on are the
-              architecture itself, not features bolted on later. Three of them, by construction.
+              Sovereignty, a lawful basis for every action, and a record that answers for it. The
+              things public-sector work can’t compromise on are{' '}
+              <span className="text-ink">how KrimOS is built</span>.
             </p>
           </Reveal>
 
-          <div className="mt-12 grid gap-5 lg:grid-cols-3 lg:items-start">
+          <div className="mt-12 grid items-stretch gap-5 lg:grid-cols-3">
             {FITS.map((f, i) => (
-              <Reveal key={f.title} delay={(i % 3) * 0.08}>
+              <Reveal key={f.title} delay={(i % 3) * 0.08} className="h-full">
                 <GlassCard accent={f.accent} className="flex h-full flex-col p-7 md:p-8">
                   <span
                     aria-hidden
@@ -287,15 +288,13 @@ export default function GovernmentPage() {
           <Reveal>
             <div className="mx-auto max-w-[680px] text-center">
               <h2 className="font-serif text-display-2 text-ink">
-                Let’s talk about your mandate.
+                Public service, finally at the pace of public life.
               </h2>
-              <p className="mx-auto mt-5 max-w-[50ch] font-sans text-body-lg text-ink-2">
-                Every public body has its own rules, systems and constraints. Tell us yours, and
-                we’ll show you the fit.
+              <p className="mx-auto mt-5 max-w-[54ch] font-sans text-body-lg text-ink-2">
+                Citizens answered in minutes, casework cleared in days, and{' '}
+                <span className="text-mint">every action on a record the law can read</span> —
+                inside walls that never let it leave.
               </p>
-              <div className="mt-9 flex justify-center">
-                <CTA href={CTA_HREF}>Start a conversation</CTA>
-              </div>
             </div>
           </Reveal>
         </Section>

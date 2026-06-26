@@ -20,6 +20,8 @@ import SiteHeader from '@/components/SiteHeader'
 import SiteFooter from '@/components/SiteFooter'
 import OrbBackdrop from '@/components/OrbBackdrop'
 import Reveal from '@/components/Reveal'
+import JurisdictionTabs from '@/components/trust/JurisdictionTabs'
+import { JURISDICTIONS } from '@/lib/jurisdictions'
 import { Section, Eyebrow, GlassCard, CTA } from '@/components/ui'
 
 const DEMO = '/contact'
@@ -82,47 +84,23 @@ const LIFECYCLE = [
   },
 ]
 
-// Sectoral frameworks encoded in Krim-Fabric — krim-content.md · trust & deployment.
-const JURISDICTIONS = [
-  {
-    place: 'India',
-    frameworks: ['RBI Digital Lending Guidelines', 'Fair Practices Code', 'KYC Master Direction', 'SARFAESI Act', 'DPDP Act 2023', 'TRAI TCCCPR', 'CIC reporting'],
-  },
-  {
-    place: 'United Kingdom',
-    frameworks: ['FCA Consumer Duty', 'CONC sourcebook', 'Consumer Credit Act 1974', 'FCA Principles', 'UK GDPR / DPA 2018', 'PECR'],
-  },
-  {
-    place: 'United States',
-    frameworks: ['FDCPA', 'Reg F', 'TCPA', 'FCRA', 'ECOA / Reg B', 'TILA / Reg Z', 'SCRA', 'UDAAP'],
-  },
-  {
-    place: 'European Union',
-    frameworks: ['EU AI Act', 'Consumer Credit Directive (CCD2)', 'GDPR', 'PSD2', 'Credit Servicers Directive', 'DORA'],
-  },
-  {
-    place: 'Nigeria',
-    frameworks: ['CBN Prudential Guidelines', 'FCCPC Digital Lending Regulations', 'NDPA 2023', 'Credit Reporting Act 2017', 'CBN Consumer Protection Framework'],
-  },
-  {
-    place: 'Brazil',
-    frameworks: ['LGPD', 'Código de Defesa do Consumidor (CDC)', 'Lei do Superendividamento', 'CMN / BCB resolutions', 'Cadastro Positivo'],
-  },
-]
+// Encoded jurisdictions live in lib/jurisdictions.ts (the five-market set), shared
+// with the Trust page through components/trust/JurisdictionTabs.
 
-// Ranges, against the institution's own baseline — krim-content.md · proof.
+// A plain claim first, then the figure that quantifies it — ranges, against the
+// institution's own baseline (krim-content.md · proof). Illustrative, not promised.
 const IMPACT = [
-  { area: 'Origination', value: '5–10×', note: 'document throughput per analyst · days to hours on onboarding' },
-  { area: 'Servicing', value: '40–70%', note: 'self-serve resolution · 30–50% lower assisted handling time' },
-  { area: 'Collections', value: '1–3 pp', note: 'lower DPD 1–30 roll-rate · 25–40% more right-party contact' },
-  { area: 'Compliance', value: 'Minutes', note: 'audit-ready reporting · 100% of regulated actions pre-validated' },
+  { area: 'Origination', claim: 'More documents cleared per analyst', value: '5–10×' },
+  { area: 'Servicing', claim: 'Routine requests handled without an agent', value: '40–70%' },
+  { area: 'Collections', claim: 'Lower early roll-rate', value: '1–3 pp' },
+  { area: 'Compliance', claim: 'Faster to audit-ready reporting', value: 'Minutes' },
 ]
 
 // Three modes, one architecture — krim-content.md · sovereignty & deployment.
 const DEPLOYMENTS = [
   {
     name: 'Sovereign on-prem',
-    body: 'The full stack inside your own data centre. Model, data and every action stay behind walls you already trust. The default for Tier-1 banks.',
+    body: 'The full stack inside your own data centre. Model, data and every action stay behind walls you already trust.',
   },
   {
     name: 'Hybrid',
@@ -130,7 +108,7 @@ const DEPLOYMENTS = [
   },
   {
     name: 'Managed',
-    body: 'Run for you in your preferred sovereign cloud region, with no foreign API anywhere in the loop.',
+    body: 'Run for you in your preferred sovereign cloud region, kept in-jurisdiction.',
   },
 ]
 
@@ -269,25 +247,9 @@ export default function LendingPage() {
             </p>
           </Reveal>
 
-          <div className="mt-12 grid gap-5 md:grid-cols-3">
-            {JURISDICTIONS.map((j, i) => (
-              <Reveal key={j.place} delay={0.06 * i}>
-                <GlassCard className="flex h-full flex-col p-7">
-                  <h3 className="font-serif text-[1.5rem] leading-none text-ink">{j.place}</h3>
-                  <ul className="mt-6 flex flex-wrap gap-2">
-                    {j.frameworks.map((f) => (
-                      <li
-                        key={f}
-                        className="rounded-lg border border-[rgba(0,255,178,0.22)] bg-[rgba(0,255,178,0.05)] px-3 py-1.5 font-mono text-[12px] tracking-[0.02em] text-ink"
-                      >
-                        {f}
-                      </li>
-                    ))}
-                  </ul>
-                </GlassCard>
-              </Reveal>
-            ))}
-          </div>
+          <Reveal delay={0.1}>
+            <JurisdictionTabs items={JURISDICTIONS} />
+          </Reveal>
         </Section>
 
         {/* ════════════════════ 5 · Impact ════════════════════ */}
@@ -298,9 +260,8 @@ export default function LendingPage() {
               Measured against your own baseline.
             </h2>
             <p className="mt-6 max-w-[60ch] font-sans text-body-lg text-ink-2">
-              Illustrative ranges, not commitments. Each one calibrated to your operation and{' '}
-              <span className="text-ink">measured against your own numbers</span>, never promised in
-              a deck.
+              Illustrative ranges. Your real numbers come from{' '}
+              <span className="text-ink">your own operation</span>.
             </p>
           </Reveal>
 
@@ -311,11 +272,11 @@ export default function LendingPage() {
                   <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-ink-3">
                     {it.area}
                   </p>
-                  <p className="mt-3 font-serif text-[clamp(2.1rem,3.4vw,2.7rem)] leading-none text-mint">
-                    {it.value}
+                  <p className="mt-4 flex-1 font-serif text-[1.3rem] leading-snug text-ink">
+                    {it.claim}
                   </p>
-                  <p className="mt-3 font-sans text-[13.5px] leading-relaxed text-ink-2">
-                    {it.note}
+                  <p className="mt-5 font-serif text-[clamp(1.9rem,3vw,2.4rem)] leading-none text-mint">
+                    {it.value}
                   </p>
                 </div>
               </Reveal>
@@ -324,10 +285,10 @@ export default function LendingPage() {
 
           <Reveal delay={0.1}>
             <GlassCard className="mt-5 flex flex-col gap-3 p-7 md:flex-row md:items-center md:justify-between md:p-8">
-              <p className="max-w-[52ch] font-sans text-body text-ink-2">
-                And it improves with use: a first-quarter baseline,{' '}
-                <span className="text-mint">measurable gains by Q2</span>, and materially better
-                than go-live by year two, all from the runtime rather than fresh engineering.
+              <p className="max-w-[54ch] font-sans text-[clamp(1.2rem,1.9vw,1.45rem)] leading-relaxed text-ink-2">
+                It sharpens the longer it runs. The first quarter sets your baseline,{' '}
+                <span className="text-mint">gains show by Q2</span>, and by year two it is materially
+                ahead of go-live.
               </p>
               <p className="shrink-0 font-mono text-[10px] uppercase tracking-[0.16em] text-ink-3">
                 The learning curve
@@ -346,7 +307,7 @@ export default function LendingPage() {
             <p className="mt-6 max-w-[60ch] font-sans text-body-lg text-ink-2">
               Three deployments, one architecture. Your data and your regulator decide which.
               Whichever you pick, everything stays inside the perimeter you draw, with{' '}
-              <span className="text-ink">no foreign API in the loop</span>.
+              <span className="text-ink">no foreign model in the loop</span>.
             </p>
           </Reveal>
 
@@ -370,14 +331,14 @@ export default function LendingPage() {
           <Reveal>
             <div className="glass mx-auto max-w-[760px] p-10 text-center md:p-14">
               <h2 className="font-serif text-display-3 leading-tight text-ink">
-                See it run a loan, end to end.
+                The loan book that pays for itself.
               </h2>
-              <p className="mx-auto mt-5 max-w-[50ch] font-sans text-body-lg text-ink-2">
-                One conversation, one validated action, one clean trail, application to payoff, on
-                the stack you already run.
+              <p className="mx-auto mt-5 max-w-[54ch] font-sans text-body-lg text-ink-2">
+                Every conversation handled, every action proven, every outcome compounding into the
+                next. <span className="text-mint">More borrowers reached, more loans closed, and a
+                cost line that finally stops growing with the book.</span>
               </p>
-              <div className="mt-9 flex flex-wrap items-center justify-center gap-6">
-                <CTA href={DEMO}>Book a demo</CTA>
+              <div className="mt-9 flex justify-center">
                 <CTA href="/krimos" variant="secondary">
                   Explore KrimOS
                 </CTA>

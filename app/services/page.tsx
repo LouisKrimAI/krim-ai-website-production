@@ -19,12 +19,12 @@ import { Section, Eyebrow, GlassCard, CTA } from '@/components/ui'
 export const metadata: Metadata = {
   title: 'Services',
   description:
-    'From technical deep-dive to production go-live in a quarter: a scoped pilot, proof of value on ring-fenced data measured against your own baseline, then a contracted go-live, with a clear exit at every stage.',
+    'From technical deep-dive to production go-live in a quarter: a scoped pilot, proof of value on ring-fenced data measured against your own baseline, then a contracted go-live, one stage at a time.',
   alternates: { canonical: 'https://krim.ai/services' },
   openGraph: {
     title: 'Services — pilot to go-live',
     description:
-      'From technical deep-dive to production go-live in a quarter: a scoped pilot, proof of value on ring-fenced data measured against your own baseline, then a contracted go-live, with a clear exit at every stage.',
+      'From technical deep-dive to production go-live in a quarter: a scoped pilot, proof of value on ring-fenced data measured against your own baseline, then a contracted go-live, one stage at a time.',
     url: 'https://krim.ai/services',
   },
 }
@@ -65,23 +65,24 @@ const STAGES = [
   },
 ] as const
 
-// What Krim brings — concise, the approach that makes a quarter realistic.
+// What Krim brings — the approach that makes a quarter realistic. Kept to what we
+// can stand behind: no hard exit guarantees, no absolutes on integration.
 const BRINGS = [
   {
-    title: 'Nothing to tear out',
-    body: 'KrimOS reads from your systems and writes back on validated channels. 40+ connectors mean the deep-dive scopes a fit, not a migration.',
+    title: 'Built to fit your stack',
+    body: 'KrimOS reads from the systems you already run and writes back on validated channels. Its 40+ connectors mean the deep-dive scopes how it fits onto your stack.',
   },
   {
     title: 'Proof on your own data',
-    body: 'Ring-fenced and benchmarked against your baseline, so the proof of value is measured in your numbers, not a generic case study.',
+    body: 'The proof of value runs on ring-fenced data and is measured against your own baseline, in your numbers rather than a generic case study.',
   },
   {
-    title: 'A clear exit at every stage',
-    body: 'Each stage ends in a defined deliverable you sign off before the next begins. You are never further in than you chose to be.',
+    title: 'A clear deliverable at each stage',
+    body: 'Each stage ends in something concrete you sign off before the next begins, so you decide what comes next.',
   },
   {
     title: 'Audit and governance from day one',
-    body: 'The validation gate and the immutable ledger are live in the pilot, not bolted on at go-live. The regulator-grade version is the only version.',
+    body: 'The validation gate and the immutable ledger are live from the pilot, not added at go-live.',
   },
 ] as const
 
@@ -127,7 +128,7 @@ export default function ServicesPage() {
             </h2>
             <p className="mt-6 max-w-[60ch] font-sans text-body-lg text-ink-2">
               No big-bang rollout, no leap of faith. Prove the architecture, then the value, then run
-              it in production, and step out at any stage with the work to date in hand.
+              it in production, one stage at a time.
             </p>
           </Reveal>
           <div className="mt-12 grid gap-5 md:grid-cols-3">
@@ -218,11 +219,9 @@ export default function ServicesPage() {
                 Start with the proof.
               </h2>
               <p className="mx-auto mt-5 max-w-[48ch] font-sans text-body text-ink-2">
-                See KrimOS on the stack you already run, and a path from pilot to go-live, on your
-                own data.
+                See KrimOS run on your own data, and a clear path from pilot to go-live.
               </p>
-              <div className="mt-9 flex flex-wrap items-center justify-center gap-6">
-                <CTA href={DEMO_HREF}>Book a demo</CTA>
+              <div className="mt-9 flex justify-center">
                 <CTA href="/trust" variant="secondary">
                   How it deploys
                 </CTA>

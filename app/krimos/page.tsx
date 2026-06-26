@@ -80,8 +80,8 @@ export default function PlatformPage() {
                 KrimOS
               </p>
               <h1 className="mt-6 font-serif text-[clamp(2.5rem,5vw,4.1rem)] leading-[1.05] tracking-[-0.018em] text-ink">
-                <span className="block">One operating system for</span>
-                <span className="block">banking and lending.</span>
+                Run banking and lending end to end,{' '}
+                <span className="text-mint">proven at every step</span>.
               </h1>
             </Reveal>
             <Reveal delay={0.12}>
@@ -105,12 +105,11 @@ export default function PlatformPage() {
         <Section hairline>
           <Reveal>
             <Eyebrow>Inside KrimOS</Eyebrow>
-            <h2 className="mt-4 max-w-[24ch] font-serif text-display-1 text-ink">
-              One stack, from the core to the people who use it.
+            <h2 className="mt-4 max-w-[20ch] font-serif text-display-1 text-ink">
+              The whole stack, top to bottom.
             </h2>
-            <p className="mt-6 max-w-[60ch] font-sans text-body-lg text-ink-2">
-              Each layer does one job; together they are a single operating system. Here is the
-              whole stack, top to bottom.
+            <p className="mt-6 max-w-[54ch] font-sans text-body-lg text-ink-2">
+              Each layer does one job. Together, they are one operating system.
             </p>
           </Reveal>
           <Reveal delay={0.15}>
@@ -124,34 +123,24 @@ export default function PlatformPage() {
             <div className="mt-16 border-t border-soft pt-12">
               <Eyebrow tone="mint">Go deeper, layer by layer</Eyebrow>
               <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                {LAYERS.map((l, i) => {
-                  const label = l.slug === 'kira' ? 'Kira & Krimkar' : l.name
+                {LAYERS.map((l) => {
+                  const label = l.name
                   return (
                     <Link
                       key={l.slug}
                       href={`/krimos/${l.slug}`}
-                      aria-label={`${label} — ${l.tag}: ${l.eyebrow}`}
-                      className="group glass lume relative flex h-full flex-col overflow-hidden rounded-[var(--r-lg)] p-7 outline-none transition-colors focus-visible:border-mint focus-visible:shadow-[0_0_0_2px_rgba(0,255,178,0.55),0_14px_64px_-14px_rgba(0,255,178,0.32)] md:p-8"
+                      aria-label={`${label} — ${l.tag}`}
+                      className="group lume relative flex flex-col overflow-hidden rounded-[var(--r-lg)] border border-white/10 bg-[rgba(10,12,18,0.72)] p-5 outline-none backdrop-blur-xl transition-colors focus-visible:border-mint focus-visible:shadow-[0_0_0_2px_rgba(0,255,178,0.55),0_14px_64px_-14px_rgba(0,255,178,0.32)] md:px-6"
                     >
                       {/* signature: a mint rail that grows from the left edge on hover/focus */}
                       <span
                         aria-hidden
                         className="absolute inset-y-0 left-0 w-[3px] origin-top scale-y-0 bg-mint transition-transform duration-[var(--dur)] ease-[cubic-bezier(0.16,1,0.30,1)] group-hover:scale-y-100 group-focus-visible:scale-y-100 motion-reduce:transition-none"
                       />
-                      <div className="flex items-center justify-between">
-                        <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-mint">{l.tag}</span>
-                        <span className="font-mono text-[12px] tabular-nums text-ink-3">{String(i + 1).padStart(2, '0')}</span>
-                      </div>
-                      <h3 className="mt-7 font-serif text-[clamp(1.5rem,2.4vw,1.85rem)] leading-tight tracking-[-0.01em] text-ink transition-colors duration-fast group-hover:text-mint-bright">
+                      <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-mint">{l.tag}</span>
+                      <h3 className="mt-1.5 font-serif text-[1.5rem] leading-tight tracking-[-0.01em] text-ink transition-colors duration-fast group-hover:text-mint-bright">
                         {label}
                       </h3>
-                      <p className="mt-2.5 flex-1 font-sans text-[15px] leading-relaxed text-ink-2">
-                        {l.eyebrow}.
-                      </p>
-                      <span className="mt-7 inline-flex items-center gap-2 font-mono text-[12px] uppercase tracking-[0.16em] text-ink-3 transition-colors duration-fast group-hover:text-mint">
-                        Open layer
-                        <span aria-hidden className="transition-transform duration-fast group-hover:translate-x-1 motion-reduce:transition-none">→</span>
-                      </span>
                     </Link>
                   )
                 })}
@@ -166,8 +155,8 @@ export default function PlatformPage() {
             <Reveal>
               <div>
                 <Eyebrow>Why it holds together</Eyebrow>
-                <h2 className="mt-4 max-w-[18ch] font-serif text-display-1 text-ink">
-                  Safe to run, and sharper for having run.
+                <h2 className="mt-4 max-w-[20ch] font-serif text-display-1 text-ink">
+                  Validated before it acts. Sharper after.
                 </h2>
                 <p className="mt-7 max-w-[52ch] font-sans text-body-lg text-ink-2">
                   Nothing runs until it has cleared the gate. Everything that runs makes the next
@@ -179,8 +168,8 @@ export default function PlatformPage() {
             <Reveal delay={0.12}>
               <GlassCard accent className="p-8 md:p-10">
                 <p className="font-serif text-[clamp(1.4rem,2.4vw,1.85rem)] leading-snug text-ink">
-                  That is why one operating system beats a drawer of point tools, and why it gets
-                  better the longer it runs.
+                  That is why one operating system beats a stack of disconnected tools, and why it
+                  gets better the longer it runs.
                 </p>
                 <p className="mt-6 font-mono text-[11px] uppercase tracking-[0.18em] text-mint">
                   Krim-Nyāya validates · Krim-Learn compounds
@@ -190,7 +179,7 @@ export default function PlatformPage() {
           </div>
         </Section>
 
-        {/* ---- 4 · Impacts to your business — general, cross-domain (no invented metrics) ---- */}
+        {/* ---- 4 · Impacts to your business — lending-focused; government is the one extension ---- */}
         <Section hairline>
           <Reveal>
             <Eyebrow>Impacts to your business</Eyebrow>
@@ -198,7 +187,7 @@ export default function PlatformPage() {
               What changes when machines can finally act.
             </h2>
             <p className="mt-6 max-w-[60ch] font-sans text-body-lg text-ink-2">
-              The outcomes hold across every regulated operation. Only the use cases change.
+              These outcomes hold across banking and lending.
             </p>
           </Reveal>
           <div className="mt-12 grid gap-5 sm:grid-cols-2">
@@ -230,12 +219,15 @@ export default function PlatformPage() {
             ))}
           </div>
           <Reveal delay={0.1}>
-            <p className="mx-auto mt-10 max-w-[70ch] text-center font-sans text-body text-ink-2">
-              In <span className="text-ink">lending</span>, that is collections and servicing that
-              move faster without adding regulatory risk. In{' '}
-              <span className="text-ink">government</span>, citizen services that clear faster while
-              staying fully accountable.
-            </p>
+            <div className="mx-auto mt-12 max-w-[680px]">
+              <div className="glass lume p-7 text-center">
+                <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-cyan">Beyond lending</p>
+                <p className="mt-3 font-sans text-body text-ink-2">
+                  The same engine runs public-sector work too: citizen services that clear faster, and
+                  stay fully accountable.
+                </p>
+              </div>
+            </div>
           </Reveal>
         </Section>
 
@@ -244,13 +236,14 @@ export default function PlatformPage() {
           <Reveal>
             <div className="glass mx-auto max-w-[760px] p-10 text-center md:p-14">
               <h2 className="font-serif text-display-3 leading-tight text-ink">
-                See the operating system on yours.
+                Lending, transformed.
               </h2>
-              <p className="mx-auto mt-5 max-w-[48ch] font-sans text-body text-ink-2">
-                Nothing to tear out. KrimOS reads from your systems and writes back on validated channels.
+              <p className="mx-auto mt-5 max-w-[54ch] font-sans text-body-lg text-ink-2">
+                The operation that used to fight for every basis point now compounds with every
+                decision. <span className="text-mint">Cheaper to run, faster to serve, and a record
+                a regulator can read on demand.</span>
               </p>
-              <div className="mt-9 flex flex-wrap items-center justify-center gap-6">
-                <CTA href={DEMO_HREF}>Book a demo</CTA>
+              <div className="mt-9 flex justify-center">
                 <CTA href="/lending" variant="secondary">
                   See it in lending
                 </CTA>

@@ -122,3 +122,35 @@ The reviewer's time is expensive — never ship work that an obvious self-review
 A full-bleed image strip with bright detail directly under centred text is a defect — you must catch it yourself. `CinematicBand` now bakes in the fade + centre scrim; if a band still fights its caption, fade harder, move the text to negative space, or drop the caption and let the image be pure atmosphere.
 
 **Consistency of alignment.** Section headlines should follow one deliberate pattern per page — don't mix centred and cramped-left headlines arbitrarily. A 2-column text+card section is fine, but its headline shouldn't read as "randomly shoved left" next to other full-width sections; if it does, centre it or make it full-width.
+
+---
+
+## 13 · Copy craft — name the true thing, then check it (from the copy-craft study)
+
+Added after copy shipped that the user rightly called "dumb / weird / try-hard": cryptic card labels ("When it has to be right"), contorted headlines ("safe to run, and sharper for having run"; "the rules already inside them"), a strained metaphor ("a drawer of point tools"). This section is how we don't do that again.
+
+**Voice.** Krim writes like a serious operator explaining a serious system: confident, concrete, plainspoken, quietly literary. Every line names a real thing Krim owns (runtime, gate, primitive, co-worker, outcome, channel, sign-off, ledger) and could be repeated to a CRO across a table without wincing. Craft is felt in rhythm and restraint, never performed — the proof is in the precision, not the flourish. Study how these brands do it: **Stripe** (name the category in plain nouns, then one clean clause), **Linear** (calm, compressed declaratives), **Vercel** (simple parallel cadence), **Palantir** (gravity through restraint), **Anthropic** (two true claims joined plainly).
+
+**Do:**
+- **Name the thing in the first few words.** A label or card descriptor is a *definition, not a riddle*: lead with what it IS, then one true clause of what it does.
+- **Anchor to a concrete Krim noun.** Abstraction ("holds together", "point tools", "synergy") is where copy goes soft.
+- **Lead with the idea; let numbers corroborate inside a sentence** — never open a headline or label with a count.
+- **State the two real powers plainly** (validated before it runs; sharper from every outcome) — two facts joined by "and", not dressed in grammar games.
+- **Use parallelism only when both halves stay simple and true** ("Validated before it acts. Sharper after."). Never bend grammar to chase a cadence.
+
+**Banned failure modes (we shipped every one of these):**
+- **Cryptic fill-in-the-blank labels** — the When/What/Who/Where (or For-X/For-Y) word game. A nav card must tell you where the link goes; a mood-line there is malpractice.
+- **Grammar-contortion-for-cadence** — twisting syntax for rhythm ("sharper for having run", "rules already inside them"). The reader feels the strain before the meaning.
+- **Forced antithesis / chiasmus** and the "X, not Y" cliché — symmetry that prizes the pose over clarity.
+- **Strained metaphor** — an image the audience doesn't live in ("a drawer of point tools").
+- **Meta-label headline** — describing the section instead of saying something ("Why it holds together", "The named pieces"). That's a drawer label, not a headline.
+- **Number-led hook**, and **pattern-lock** (forcing every card into one rigid template — vary the rhythm; let each item's real character set its sentence).
+
+**The language-and-sense check — run on every line AFTER drafting; this is the gate `content-critic` enforces:**
+1. **Read it aloud.** If you pause, invert, or re-read to parse it, rewrite to the plain version.
+2. **Deletion test.** Cut the line — does the reader lose a *fact*, or just a flourish? If only a flourish, it was decoration.
+3. **First three words** name what the thing IS (not a mood, not a riddle).
+4. **Filing-cabinet test.** Could it sit on a drawer label or tooltip ("What it can do")? Then it's a meta-label — say something instead.
+5. **True + concrete.** It states a real Krim fact with a concrete noun; no invented capability, no abstraction filler.
+6. **Strip the colour** highlight mentally — the sentence still reads clean and complete.
+7. **Boardroom test.** Would a CRO repeat this line to their board without wincing? If it sounds like a word game, rewrite it as a fact.

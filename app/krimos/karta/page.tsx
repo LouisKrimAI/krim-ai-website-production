@@ -4,7 +4,9 @@
  * Standard layer-page shape: hero → what they are → the co-workers by surface
  * (contact centre + back office) → Agent Studio → capabilities → impacts →
  * close. Grounded in the canonical eight (docs/krim-content.md), not the
- * deeper platform list.
+ * deeper platform list. Agent Studio is a real, shipped feature (platform
+ * docs: AGENT-STUDIO-MULTI-TENANCY, 4-Studio architecture): the no-code place
+ * you build a co-worker — persona, voice, video avatar, flow, skills, limits.
  */
 
 import type { Metadata } from 'next'
@@ -20,7 +22,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Karta — the co-workers',
     description:
-      'Karta are the autonomous co-workers of KrimOS, running the lending operation across the contact centre and the back office. Configured in the studio in plain language, without an engineering cycle.',
+      'Karta are the autonomous co-workers of KrimOS, running the lending operation across the contact centre and the back office. Built and tuned in Agent Studio — persona, voice, video avatar, workflow and limits — with no engineering cycle.',
     url: 'https://krim.ai/krimos/karta',
   },
 }
@@ -35,86 +37,164 @@ const breadcrumbLd = {
   ],
 }
 
-// where they run — two surfaces. Each card is a focused co-worker described at
-// the altitude of what it owns end to end, not a checklist of micro-tasks.
-type Op = { op: string; blurb: string }
-const CONTACT_CENTRE: Op[] = [
-  { op: 'Inbound support', blurb: 'Answers the calls, chats and messages customers start. It resolves balances, payments and complaints, or hands off to a person with the full context attached.' },
-  { op: 'Outbound voice', blurb: 'Carries the voice relationship across the whole lifecycle: welcome and onboarding, servicing, reminders, collections and retention.' },
-  { op: 'Reminders & dunning', blurb: 'Keeps accounts current with pre-due nudges and missed-payment notices, on the channel and at the timing each borrower actually responds to.' },
-  { op: 'Onboarding', blurb: 'Takes a new applicant from first touch to a decision, guiding them through application, identity, documents and eligibility the whole way.' },
-  { op: 'Collections', blurb: 'Recovers arrears through every stage of delinquency. It reaches borrowers across channels, negotiates within your authority, and follows each promise through to payment.' },
-  { op: 'Disputes & hardship', blurb: 'Handles the sensitive cases with care: grievances investigated, hardship assessed, and restructuring offered where it genuinely fits.' },
-]
-const BACK_OFFICE: Op[] = [
-  { op: 'Documentation', blurb: 'Produces the paperwork a loan runs on, from agreements and key-fact statements to repayment schedules and statutory notices, all generated and tracked.' },
-  { op: 'Payments & reconciliation', blurb: 'Runs the money end to end: billing, mandates, payment plans and refunds, reconciled across every rail, with failed payments retried automatically.' },
-  { op: 'Risk & decisioning', blurb: 'Segments the book and chooses the next best action, gating on your own risk and fraud engines and never overriding the credit decision.' },
-  { op: 'Cure & recovery', blurb: 'Brings the hard cases home through multi-step cure journeys, settlements, statutory recovery, payoff and write-off.' },
-  { op: 'Monitoring', blurb: 'Watches the whole portfolio for delinquency, roll-rate drift, anomalies and fraud, and raises the flag early.' },
-  { op: 'Audit & reporting', blurb: 'Makes the operation explainable. Every action is audited, traced, and reported to ops, risk, compliance and the board.' },
+// The roster — by operational segment of the bank, each split across the
+// customer-facing contact centre and the operational back office. Grounded in the
+// specialised Karta agents (krim-content.md / capability map), generalised for a
+// global audience (no jurisdiction-specific statute names). Each card is one
+// focused co-worker, named by the work it owns.
+type Agent = { name: string; blurb: string }
+type Segment = { n: string; name: string; desc: string; cc: Agent[]; bo: Agent[] }
+// Three specialist co-workers per surface, per segment — an even 3×3 lattice so
+// every column carries the same count and the cards tile uniformly.
+const ROSTER: Segment[] = [
+  {
+    n: '01',
+    name: 'Origination',
+    desc: 'From first enquiry to funds released.',
+    cc: [
+      { name: 'Application concierge', blurb: 'Walks applicants through applying, by voice or chat, in their language.' },
+      { name: 'Lead follow-up', blurb: 'Re-engages started-but-unfinished applications across every channel.' },
+      { name: 'Decision updates', blurb: 'Keeps the applicant informed through each step, in plain language.' },
+    ],
+    bo: [
+      { name: 'Application processing', blurb: 'Intakes the application, captures the documents, assembles the file.' },
+      { name: 'Identity & onboarding checks', blurb: 'Verifies identity and clears screening before anything proceeds.' },
+      { name: 'Agreements & disbursement', blurb: 'Generates the agreement, captures e-signature, releases the funds.' },
+    ],
+  },
+  {
+    n: '02',
+    name: 'Underwriting & risk',
+    desc: 'The credit call, and the picture behind it.',
+    cc: [
+      { name: 'Information requests', blurb: 'Asks for the documents or details the decision still needs.' },
+      { name: 'Offer & terms', blurb: 'Presents the offer and explains the terms, by voice or chat.' },
+      { name: 'Decline support', blurb: 'Delivers the outcome with reasons, and the route to reconsider.' },
+    ],
+    bo: [
+      { name: 'Borrower profiling', blurb: 'Builds the single borrower picture the decision rests on.' },
+      { name: 'Credit scoring', blurb: 'Scores risk and creditworthiness to inform the underwriting call.' },
+      { name: 'Underwriting assembly', blurb: 'Pulls income and bureau signals into a decision-ready case.' },
+    ],
+  },
+  {
+    n: '03',
+    name: 'Servicing',
+    desc: 'Keeping every account current.',
+    cc: [
+      { name: 'Servicing support', blurb: 'Answers balances, payments and account changes, or hands to a person.' },
+      { name: 'Proactive reminders', blurb: 'Pre-due nudges on the channel and timing each borrower responds to.' },
+      { name: 'Self-service guidance', blurb: 'Walks borrowers through statements, payoffs and account changes.' },
+    ],
+    bo: [
+      { name: 'Account maintenance', blurb: 'Processes changes, plans and account updates, end to end.' },
+      { name: 'Payments & mandates', blurb: 'Runs billing, recurring debits and refunds across every rail.' },
+      { name: 'Reconciliation', blurb: 'Matches payments to accounts and clears the breaks.' },
+    ],
+  },
+  {
+    n: '04',
+    name: 'Collections & recovery',
+    desc: 'From the first missed payment to resolution.',
+    cc: [
+      { name: 'Early-stage collections', blurb: 'Reaches borrowers as they slip and follows each promise to payment.' },
+      { name: 'Late-stage collections', blurb: 'Works deeper arrears with negotiated plans, within authority.' },
+      { name: 'Payment arrangements', blurb: 'Sets up and tracks plans the borrower can actually keep.' },
+    ],
+    bo: [
+      { name: 'Recovery & settlement', blurb: 'Negotiates settlements and works payoff and recovery, end to end.' },
+      { name: 'Legal coordination', blurb: 'Coordinates legal and field recovery, every step inside the rules.' },
+      { name: 'Closure & write-off', blurb: 'Closes the account: final payoff, security release and write-off.' },
+    ],
+  },
+  {
+    n: '05',
+    name: 'Disputes, hardship & retention',
+    desc: 'The sensitive cases, and the ones worth keeping.',
+    cc: [
+      { name: 'Grievances & disputes', blurb: 'Takes in complaints and disputes and keeps the customer informed.' },
+      { name: 'Hardship support', blurb: 'Handles hardship conversations with care, by voice or chat.' },
+      { name: 'Retention & win-back', blurb: 'Renewals and win-back, where a customer is worth keeping.' },
+    ],
+    bo: [
+      { name: 'Dispute resolution', blurb: 'Investigates the case, applies policy, resolves it on the record.' },
+      { name: 'Hardship & restructuring', blurb: 'Models restructures and concessions that genuinely fit.' },
+      { name: 'Escalation handling', blurb: 'Routes complex and high-value cases to the right reviewer.' },
+    ],
+  },
+  {
+    n: '06',
+    name: 'Risk & oversight',
+    desc: 'Watching the whole book, and proving it.',
+    cc: [
+      { name: 'Quality & QA', blurb: 'Reviews conversations for tone, compliance and outcome, and coaches.' },
+      { name: 'Consent & preferences', blurb: 'Captures and honours contact consent on every channel.' },
+      { name: 'Outcome follow-through', blurb: 'Confirms commitments landed and closes the loop with the customer.' },
+    ],
+    bo: [
+      { name: 'Portfolio monitoring', blurb: 'Watches delinquency, roll-rate drift, anomalies and fraud, flags early.' },
+      { name: 'Compliance & audit', blurb: 'Keeps every action traceable and the operation ready for examination.' },
+      { name: 'Reporting', blurb: 'Turns the record into reporting for ops, risk, compliance and the board.' },
+    ],
+  },
 ]
 
-// what every co-worker can do
-const CAPABILITIES: [string, string][] = [
-  ['Take action', 'They complete the task itself: calls answered, documents produced, payments taken and reconciled.'],
-  ['Across channels', 'Voice, SMS, WhatsApp, email and chat, in one thread that remembers.'],
-  ['In the customer’s language', 'They meet people in their own language.'],
-  ['Within the rules', 'Every action clears the validation gate before it fires.'],
-  ['Hand off to a person', 'A warm transfer with full context, the moment it’s needed.'],
-  ['Around the clock', 'Every hour, at any volume, without a queue.'],
+// what every co-worker can do — [title, body, highlighted word]
+const CAPABILITIES: [string, string, string][] = [
+  ['Take action', 'They complete the task itself: calls answered, documents produced, payments taken and reconciled.', 'action'],
+  ['Across channels', 'Voice, SMS, WhatsApp, email and chat, in one thread that remembers.', 'channels'],
+  ['In the customer’s language', 'They meet people in their own language.', 'language'],
+  ['Within the rules', 'Every action clears the validation gate before it fires.', 'rules'],
+  ['Hand off to a person', 'A warm transfer with full context, the moment it’s needed.', 'person'],
+  ['At any scale', 'Millions of interactions a day, around the clock, without a queue.', 'scale'],
 ]
 
-// the outcomes — qualitative, not promised numbers
-const IMPACTS: [string, string][] = [
-  ['Scale without the headcount', 'The book can grow without the cost line growing with it.'],
-  ['Faster, every time', 'Applications, queries and resolutions move at digital speed.'],
-  ['Consistent and compliant', 'The same standard on every contact, and on the record.'],
-  ['Better recovery', 'More right-party contact and more cures, always within the rules.'],
+// the outcomes — qualitative, not promised numbers — [title, body, highlighted word]
+const IMPACTS: [string, string, string][] = [
+  ['Scale without the headcount', 'The book can grow without the cost line growing with it.', 'Scale'],
+  ['Faster, every time', 'Applications, queries and resolutions move at digital speed.', 'Faster'],
+  ['Consistent and compliant', 'The same standard on every contact, and on the record.', 'compliant'],
+  ['Better recovery', 'More right-party contact and more cures, always within the rules.', 'recovery'],
 ]
 
-// what you do in Agent Studio — build and tune a co-worker, no code
+// what you set in Agent Studio — build and tune a co-worker, no code. Grounded
+// in the platform's Agent Studio (persona, voice + video avatar, flow, skills,
+// authority); generalised for a global audience (no vendor names).
 const STUDIO: string[] = [
   'Create a new co-worker: from scratch, or by cloning one and adapting it.',
-  'Program its voice: a custom sound, and how it speaks.',
-  'Set its personality: tone, manner and escalation style.',
-  'Design its workflow: the steps it follows, with branches and checks.',
+  'Give it a persona: tone, manner and escalation style.',
+  'Give it a voice, and a video avatar: how it sounds, and how it shows up.',
+  'Design its conversation flow: the steps it follows, with branches and checks.',
   'Bind its skills and knowledge: the actions it can take and the policies it knows.',
-  'Set its limits: authority, autonomy, and when to hand to a person.',
+  'Set its authority: how far it can act on its own before it hands to a person.',
 ]
 
-// a surface sub-section header (contact centre / back office)
-function SurfaceHeader({
-  accent,
-  kicker,
-  title,
-  blurb,
-}: {
-  accent: 'cyan' | 'mint'
-  kicker: string
-  title: string
-  blurb: string
-}) {
-  const bar = accent === 'cyan' ? 'bg-cyan/70' : 'bg-mint/70'
+// one specialist co-worker — a uniform tile. A full-height accent rail (cyan in the
+// contact centre, mint in the back office) carries the column identity over the busy
+// backdrop better than a dot. h-full + min-h + line-clamp keep every tile identical
+// size: it fills its `auto-rows-fr` row, floored so short blurbs don't shrink it.
+function AgentCard({ name, blurb, accent }: Agent & { accent: 'cyan' | 'mint' }) {
+  const tint = accent === 'cyan' ? 'glass-peak-cyan' : 'glass-peak-mint'
+  const rail = accent === 'cyan' ? 'bg-cyan' : 'bg-mint'
   return (
-    <div className="max-w-[620px]">
-      <span aria-hidden className={`block h-[3px] w-12 rounded-full ${bar}`} />
-      <p className="mt-4 font-mono text-[11px] uppercase tracking-[0.2em] text-ink-3">{kicker}</p>
-      <h3 className="mt-2 font-serif text-[1.7rem] leading-tight text-ink">{title}</h3>
-      <p className="mt-2 font-sans text-body-lg text-ink-2">{blurb}</p>
+    <div className={`glass-peak ${tint} relative flex h-full min-h-[8rem] flex-col justify-center p-6 pl-7`}>
+      <span aria-hidden className={`absolute inset-y-4 left-0 w-[3px] rounded-full ${rail}`} />
+      <p className="font-serif text-[1.2rem] leading-snug text-ink">{name}</p>
+      <p className="mt-2 line-clamp-3 font-sans text-[13px] leading-relaxed text-ink-2">{blurb}</p>
     </div>
   )
 }
 
-// one operation card — a focused co-worker and the capability it owns
-function OpCard({ op, blurb, accent }: Op & { accent: 'cyan' | 'mint' }) {
-  const bar = accent === 'cyan' ? 'bg-cyan/70' : 'bg-mint/70'
+// highlight one key word in a heading (the classy replacement for the accent dots)
+function hl(title: string, word: string) {
+  const i = title.indexOf(word)
+  if (i < 0) return title
   return (
-    <div className="glass lume h-full rounded-lg p-6 md:p-7">
-      <span aria-hidden className={`block h-[3px] w-8 rounded-full ${bar}`} />
-      <p className="mt-4 font-serif text-[1.3rem] leading-tight text-ink">{op}</p>
-      <p className="mt-3 font-sans text-body text-ink-2">{blurb}</p>
-    </div>
+    <>
+      {title.slice(0, i)}
+      <span className="text-mint">{word}</span>
+      {title.slice(i + word.length)}
+    </>
   )
 }
 
@@ -134,9 +214,9 @@ export default function KartaPage() {
             </Reveal>
             <Reveal delay={0.12}>
               <p className="mx-auto mt-7 max-w-[52ch] font-sans text-body-lg text-ink-2">
-                The AI co-workers that do the operation&rsquo;s work across the whole lending
-                lifecycle, in the <span className="text-mint">customer&rsquo;s own language</span>,
-                with you setting how far each one goes.
+                AI co-workers that run the lending operation end to end, from origination to
+                collections, in the <span className="text-mint">customer&rsquo;s own language</span>,
+                and you set how far each one goes.
               </p>
             </Reveal>
           </div>
@@ -159,61 +239,90 @@ export default function KartaPage() {
           </div>
         </Section>
 
-        {/* ---- The co-workers, by surface — contact centre + back office ---- */}
+        {/* ---- The roster — by operational segment, contact centre × back office ---- */}
         <Section hairline>
           <Reveal>
-            <div className="mx-auto max-w-[720px] text-center">
-              <Eyebrow>The co-workers</Eyebrow>
+            <div className="mx-auto max-w-[760px] text-center">
+              <Eyebrow>The roster</Eyebrow>
               <h2 className="mt-4 font-serif text-display-1 text-ink">
                 A specialist for <span className="text-mint">every part</span> of the operation.
               </h2>
               <p className="mx-auto mt-6 font-sans text-body-lg text-ink-2">
-                From a borrower&rsquo;s first touch to final closure, focused co-workers run the whole
-                lending operation across the customer-facing contact centre and the operational back
-                office.
+                Across the whole lending lifecycle, focused co-workers run every part of the operation,
+                split between the customer-facing contact centre and the operational back office.
               </p>
             </div>
           </Reveal>
-          {/* Contact centre — its operations as cards */}
-          <div className="mt-14">
-            <Reveal>
-              <SurfaceHeader
-                accent="cyan"
-                kicker="Contact centre"
-                title="The customer-facing surface."
-                blurb="Inbound and outbound, across voice, SMS, WhatsApp, email and chat, in one conversation that remembers."
-              />
-            </Reveal>
-            <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:auto-rows-fr lg:grid-cols-3">
-              {CONTACT_CENTRE.map((o, i) => (
-                <Reveal key={o.op} delay={(i % 3) * 0.06} className="h-full">
-                  <OpCard {...o} accent="cyan" />
-                </Reveal>
-              ))}
-            </div>
-          </div>
 
-          {/* Back office — its operations as cards */}
-          <div className="mt-16">
-            <Reveal>
-              <SurfaceHeader
-                accent="mint"
-                kicker="Back office"
-                title="The operational engine."
-                blurb="Everything behind every loan: documents, money, risk and the record, all handled and kept straight."
-              />
-            </Reveal>
-            <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:auto-rows-fr lg:grid-cols-3">
-              {BACK_OFFICE.map((o, i) => (
-                <Reveal key={o.op} delay={(i % 3) * 0.06} className="h-full">
-                  <OpCard {...o} accent="mint" />
-                </Reveal>
-              ))}
+          {/* Large surface headers — Contact centre (left, cyan) · Back office (right, mint).
+              They bookend and name the two columns; the accent rails carry the coding down.
+              Desktop only; on mobile each segment carries its own surface labels. */}
+          <Reveal delay={0.06}>
+            <div className="mx-auto mt-14 hidden max-w-[1040px] grid-cols-2 gap-x-8 md:grid">
+              <div>
+                <p className="font-mono text-[11px] uppercase tracking-[0.3em] text-cyan/55">Customer-facing</p>
+                <h3 className="mt-2.5 font-serif text-[clamp(1.7rem,2.8vw,2.3rem)] leading-none text-cyan">
+                  Contact centre
+                </h3>
+              </div>
+              <div className="text-right">
+                <p className="font-mono text-[11px] uppercase tracking-[0.3em] text-mint/55">Operational</p>
+                <h3 className="mt-2.5 font-serif text-[clamp(1.7rem,2.8vw,2.3rem)] leading-none text-mint">
+                  Back office
+                </h3>
+              </div>
             </div>
+          </Reveal>
+
+          {/* Segments — vertical stack, a luminous divider above each, CC left / BO right.
+              Rhythm: 80px between segments → 48px to header → 40px to grid → 24px in-column. */}
+          <div className="mx-auto mt-10 max-w-[1040px] space-y-20">
+            {ROSTER.map((seg) => (
+              <Reveal key={seg.n} delay={0.04}>
+                <div
+                  aria-hidden
+                  className="h-px w-full bg-gradient-to-r from-transparent via-white/15 to-transparent"
+                />
+                <div className="pt-12">
+                  <div className="mx-auto max-w-[640px] text-center">
+                    <h3 className="font-serif text-[clamp(1.6rem,2.8vw,2.1rem)] leading-tight text-ink">
+                      {seg.name}
+                    </h3>
+                    <p className="mt-3 font-sans text-body text-ink-2">{seg.desc}</p>
+                  </div>
+
+                  <div className="relative mt-10 grid grid-cols-1 gap-x-8 gap-y-6 md:grid-cols-2">
+                    {/* an intentional seam down the centre, instead of a raw backdrop bleed */}
+                    <div
+                      aria-hidden
+                      className="absolute inset-y-2 left-1/2 hidden w-px -translate-x-1/2 bg-gradient-to-b from-transparent via-white/10 to-transparent md:block"
+                    />
+                    {/* Contact centre — own grid so the three tiles share equal rows */}
+                    <div className="grid gap-6 md:auto-rows-fr">
+                      <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-cyan md:hidden">
+                        Contact centre
+                      </p>
+                      {seg.cc.map((a) => (
+                        <AgentCard key={a.name} {...a} accent="cyan" />
+                      ))}
+                    </div>
+                    {/* Back office */}
+                    <div className="grid gap-6 md:auto-rows-fr">
+                      <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-mint md:hidden">
+                        Back office
+                      </p>
+                      {seg.bo.map((a) => (
+                        <AgentCard key={a.name} {...a} accent="mint" />
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </Reveal>
+            ))}
           </div>
         </Section>
 
-        {/* ---- Agent Studio — build your own co-worker ---- */}
+        {/* ---- Agent Studio — build and tune your own co-workers, no code ---- */}
         <Section hairline>
           <div className="grid items-center gap-12 md:grid-cols-[0.95fr_1.05fr]">
             <Reveal>
@@ -222,10 +331,10 @@ export default function KartaPage() {
                 <h2 className="mt-4 max-w-[16ch] font-serif text-display-1 text-ink">
                   Build a co-worker, <span className="text-mint">no code</span>.
                 </h2>
-                <p className="mt-6 max-w-[46ch] font-sans text-body-lg text-ink-2">
-                  Your team creates and tunes co-workers in{' '}
-                  <span className="text-mint">Agent Studio</span>, the same place every Karta is
-                  configured. No engineering ticket, no release cycle.
+                <p className="mt-6 max-w-[48ch] font-sans text-body-lg text-ink-2">
+                  Your team builds and tunes every co-worker in{' '}
+                  <span className="text-mint">Agent Studio</span> — its persona, its voice, even a
+                  video avatar, its workflow and its limits. No engineering ticket, no release cycle.
                 </p>
               </div>
             </Reveal>
@@ -233,7 +342,7 @@ export default function KartaPage() {
               <GlassCard className="p-8 md:p-9">
                 <span aria-hidden className="block h-[3px] w-12 rounded-full bg-mint/70" />
                 <p className="mt-5 font-mono text-[11px] uppercase tracking-[0.2em] text-ink-3">
-                  In the studio
+                  In Agent Studio
                 </p>
                 <ul className="mt-6 space-y-5 border-t border-soft pt-6">
                   {STUDIO.map((item) => {
@@ -267,11 +376,10 @@ export default function KartaPage() {
             </div>
           </Reveal>
           <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:auto-rows-fr lg:grid-cols-3">
-            {CAPABILITIES.map(([title, line], i) => (
+            {CAPABILITIES.map(([title, line, hiWord], i) => (
               <Reveal key={title} delay={(i % 3) * 0.06} className="h-full">
-                <div className="glass lume h-full rounded-lg p-7">
-                  <span aria-hidden className="block h-1.5 w-1.5 rounded-full bg-mint" />
-                  <h3 className="mt-5 font-serif text-[1.3rem] leading-tight text-ink">{title}</h3>
+                <div className="glass lume flex h-full flex-col justify-center rounded-lg p-7">
+                  <h3 className="font-serif text-[1.3rem] leading-tight text-ink">{hl(title, hiWord)}</h3>
                   <p className="mt-2.5 font-sans text-body text-ink-2">{line}</p>
                 </div>
               </Reveal>
@@ -290,11 +398,10 @@ export default function KartaPage() {
             </div>
           </Reveal>
           <div className="mt-12 grid gap-5 md:auto-rows-fr md:grid-cols-2">
-            {IMPACTS.map(([title, line], i) => (
+            {IMPACTS.map(([title, line, hiWord], i) => (
               <Reveal key={title} delay={(i % 2) * 0.08} className="h-full">
-                <div className="glass lume h-full rounded-lg p-8">
-                  <span aria-hidden className="block h-1.5 w-1.5 rounded-full bg-mint" />
-                  <h3 className="mt-5 font-serif text-[1.5rem] leading-tight text-ink">{title}</h3>
+                <div className="glass lume flex h-full flex-col justify-center rounded-lg p-8">
+                  <h3 className="font-serif text-[1.5rem] leading-tight text-ink">{hl(title, hiWord)}</h3>
                   <p className="mt-3 font-sans text-body-lg text-ink-2">{line}</p>
                 </div>
               </Reveal>

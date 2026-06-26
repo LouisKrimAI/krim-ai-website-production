@@ -78,20 +78,14 @@ export default function EnterprisePage() {
             <Reveal>
               <Eyebrow>Large Enterprise</Eyebrow>
               <h1 className="mt-5 font-serif text-display-hero text-ink">
-                Regulated operations, at scale.
+                Millions of regulated interactions, every one provable.
               </h1>
             </Reveal>
             <Reveal delay={0.12}>
-              <p className="mx-auto mt-7 max-w-[56ch] font-sans text-body-lg text-ink-2">
-                For enterprises running millions of regulated interactions across systems that never
-                quite talk to each other. One operating system that automates customer and
-                back-office work, <span className="text-ink">safely, everywhere at once</span>.
-              </p>
-            </Reveal>
-            <Reveal delay={0.18}>
-              <p className="mx-auto mt-6 max-w-[60ch] font-sans text-[15px] leading-relaxed text-ink-3">
-                Built for insurers, telecoms, utilities, healthcare payers and large financial groups,
-                wherever compliance meets volume.
+              <p className="mx-auto mt-7 max-w-[54ch] font-sans text-body-lg text-ink-2">
+                One operating system for customer and back-office work, with{' '}
+                <span className="text-mint">every action validated before it executes</span>, across
+                every system you run.
               </p>
             </Reveal>
             <Reveal delay={0.24}>
@@ -187,7 +181,7 @@ export default function EnterprisePage() {
 
         {/* ---- 5 · Impact (+ a one-line deployment nod → /trust) ---- */}
         <Section hairline>
-          <div className="grid items-center gap-12 md:grid-cols-[1fr_1fr]">
+          <div className="grid items-center gap-12 md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
             <Reveal>
               <div>
                 <Eyebrow tone="dim">What changes</Eyebrow>
@@ -199,9 +193,9 @@ export default function EnterprisePage() {
                   consistent by construction, and an operation that grows without the team growing in
                   step.
                 </p>
-                <p className="mt-6 font-sans text-[15px] text-ink-3">
+                <p className="mt-6 font-sans text-body text-ink-2">
                   Sovereign by default: on-prem, hybrid or managed.{' '}
-                  <Link href="/trust" className="text-ink-2 underline-offset-4 transition-colors hover:text-mint hover:underline">
+                  <Link href="/trust" className="text-mint underline-offset-4 transition-colors hover:underline">
                     See how it deploys →
                   </Link>
                 </p>
@@ -223,15 +217,13 @@ export default function EnterprisePage() {
           <Reveal>
             <div className="glass mx-auto max-w-[760px] p-10 text-center md:p-14">
               <h2 className="font-serif text-display-3 leading-tight text-ink">
-                See it run across your estate.
+                One estate, one standard, scaled.
               </h2>
-              <p className="mx-auto mt-5 max-w-[48ch] font-sans text-body text-ink-2">
-                Bring the systems, the regions and the rules, and we&rsquo;ll show you one layer over all
-                of it.
+              <p className="mx-auto mt-5 max-w-[54ch] font-sans text-body-lg text-ink-2">
+                The disconnected systems pull together. The regulated work moves at digital speed.
+                <span className="text-mint"> Every region, every channel, every action held to the
+                same provable bar.</span>
               </p>
-              <div className="mt-9">
-                <CTA href={DEMO}>Book a demo</CTA>
-              </div>
             </div>
           </Reveal>
         </Section>

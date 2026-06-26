@@ -14,7 +14,7 @@ import SiteFooter from '@/components/SiteFooter'
 import OrbBackdrop from '@/components/OrbBackdrop'
 import Reveal from '@/components/Reveal'
 import { Section, Eyebrow, GlassCard, CTA } from '@/components/ui'
-import CinematicBand from '@/components/CinematicBand'
+import ArticleImage from '@/components/ArticleImage'
 
 const SLUG = 'the-credit-gap-is-an-operations-problem'
 const TITLE = 'The credit gap is an operations problem'
@@ -83,8 +83,8 @@ export default function Page() {
         </Section>
 
         {/* ---- Header image ---- */}
-        <CinematicBand
-          src="/images/cinematic/kupa-control-room.jpg"
+        <ArticleImage
+          src="/images/cinematic/credit-gap.webp"
           alt="A darkened operations floor, lit by the work it runs."
           heightClass="h-[clamp(200px,30vw,360px)]"
           objectPosition="50% 60%"
@@ -222,8 +222,7 @@ export default function Page() {
                 validated before they act, so more borrowers can be reached without bending the rules
                 or the budget.
               </p>
-              <div className="mt-9 flex flex-wrap items-center justify-center gap-6">
-                <CTA href="/contact">Book a demo</CTA>
+              <div className="mt-9 flex justify-center">
                 <CTA href="/lending" variant="secondary">
                   See it in lending
                 </CTA>

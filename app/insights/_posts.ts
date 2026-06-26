@@ -14,6 +14,7 @@ export type Post = {
   category: 'Problem' | 'Risk' | 'Markets' | 'Method' | 'Architecture'
   date: string
   readingMinutes: number
+  image: string
 }
 
 export const POSTS: Post[] = [
@@ -24,6 +25,7 @@ export const POSTS: Post[] = [
     category: 'Architecture',
     date: '2026-06-09',
     readingMinutes: 6,
+    image: '/images/cinematic/sovereignty.webp',
   },
   {
     slug: 'audit-after-the-fact-is-a-confession',
@@ -32,6 +34,7 @@ export const POSTS: Post[] = [
     category: 'Method',
     date: '2026-05-12',
     readingMinutes: 7,
+    image: '/images/cinematic/audit.webp',
   },
   {
     slug: 'the-credit-gap-is-an-operations-problem',
@@ -40,6 +43,7 @@ export const POSTS: Post[] = [
     category: 'Markets',
     date: '2026-04-21',
     readingMinutes: 7,
+    image: '/images/cinematic/credit-gap.webp',
   },
   {
     slug: 'the-cost-of-being-wrong',
@@ -48,6 +52,7 @@ export const POSTS: Post[] = [
     category: 'Risk',
     date: '2026-03-03',
     readingMinutes: 7,
+    image: '/images/cinematic/insight-wave.jpg',
   },
   {
     slug: 'the-automation-gap',
@@ -56,5 +61,6 @@ export const POSTS: Post[] = [
     category: 'Problem',
     date: '2026-01-28',
     readingMinutes: 6,
+    image: '/images/cinematic/automation-gap.webp',
   },
 ]

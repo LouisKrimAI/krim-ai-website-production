@@ -56,7 +56,7 @@ const FAQ = [
   },
   {
     q: 'How does Epistemic AI stay compliant in regulated work?',
-    a: 'Validation is pre-execution, not post-audit. Every proposed action passes the Krim-Nyāya gate of 33 validators (pass, amber or fail) before it executes, so non-compliant actions never fire. Violations are made structurally impossible rather than caught afterward.',
+    a: 'Validation is pre-execution, not post-audit. Every proposed action passes the Krim-Nyāya gate of 33 validators (pass, amber or fail) before it executes, so an action the gate rejects never fires. Violations are prevented at the gate rather than caught afterward.',
   },
   {
     q: 'What is Krim-Nyāya?',
@@ -439,8 +439,7 @@ export default function EpistemicAIPage() {
                 Epistemic AI runs as KrimOS, the operating system for banking and financial services,
                 where every action is validated before it fires.
               </p>
-              <div className="mt-9 flex flex-wrap items-center justify-center gap-6">
-                <CTA href={DEMO_HREF}>Book a demo</CTA>
+              <div className="mt-9 flex justify-center">
                 <CTA href="/krimos" variant="secondary">
                   Explore KrimOS
                 </CTA>

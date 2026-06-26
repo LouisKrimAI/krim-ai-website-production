@@ -16,8 +16,8 @@ import { useEffect } from 'react'
 
 // The heavy, fixed full-bleed backdrops worth pre-warming (each tiny WebPs).
 const BACKDROPS = [
-  '/images/research/lab-stage.webp',
-  '/images/krimos/neural-stack-2.webp',
+  '/images/research/research-stage.webp',
+  '/images/krimos/neural-stack-3.webp',
 ]
 
 export default function BackgroundPrefetch() {

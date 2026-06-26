@@ -11,7 +11,7 @@ import SiteFooter from '@/components/SiteFooter'
 import OrbBackdrop from '@/components/OrbBackdrop'
 import Reveal from '@/components/Reveal'
 import { Section, Eyebrow, GlassCard, CTA } from '@/components/ui'
-import CinematicBand from '@/components/CinematicBand'
+import ArticleImage from '@/components/ArticleImage'
 
 const SLUG = 'sovereignty-is-not-optional'
 const TITLE = 'Sovereignty is not optional'
@@ -80,8 +80,8 @@ export default function Page() {
         </Section>
 
         {/* ---- Header image ---- */}
-        <CinematicBand
-          src="/images/cinematic/architecture-lattice.jpg"
+        <ArticleImage
+          src="/images/cinematic/sovereignty.webp"
           alt="A sovereign lattice of interconnected nodes, inside one perimeter."
           heightClass="h-[clamp(200px,30vw,360px)]"
           objectPosition="50% 50%"
@@ -212,8 +212,7 @@ export default function Page() {
                 KrimOS lives where your data lives, so it satisfies the residency rule and learns the
                 whole operation in the same move.
               </p>
-              <div className="mt-9 flex flex-wrap items-center justify-center gap-6">
-                <CTA href="/contact">Book a demo</CTA>
+              <div className="mt-9 flex justify-center">
                 <CTA href="/krimos" variant="secondary">
                   Explore KrimOS
                 </CTA>

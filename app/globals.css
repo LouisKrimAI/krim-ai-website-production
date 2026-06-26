@@ -80,6 +80,11 @@ body {
   text-rendering: optimizeLegibility;
 }
 
+/* House rule: never strand a single word on the last line (orphans). pretty
+   reflows the closing lines of body copy; balance evens out short headings. */
+p { text-wrap: pretty; }
+h1, h2 { text-wrap: balance; }
+
 ::selection { background: rgba(0, 255, 178, 0.22); color: var(--text); }
 
 :focus-visible {
@@ -138,6 +143,83 @@ body {
   background:
     linear-gradient(152deg, rgba(0, 255, 178, 0.075) 0%, rgba(255, 255, 255, 0.014) 60%, rgba(0, 255, 178, 0.03) 100%);
   border-color: rgba(0, 255, 178, 0.24);
+}
+
+/* ---------- glass-peak ----------
+   The most crafted glass on the site: a dark, legible base (so text reads over a
+   busy animated backdrop) layered under a white sheen, a luminous top thread, an
+   inner radial highlight, and a deep lift. Accent variants tint the rim and the
+   hover glow per surface. Reserved for the Karta roster lattice. */
+.glass-peak {
+  position: relative;
+  border-radius: var(--r-lg);
+  /* lit from two corners — a top-left sheen and a faint bottom-right catch —
+     over a dark legible base, so the surface reads as volume, not a flat panel */
+  background:
+    linear-gradient(155deg, rgba(255, 255, 255, 0.14) 0%, rgba(255, 255, 255, 0.03) 46%, rgba(255, 255, 255, 0.07) 100%),
+    radial-gradient(120% 80% at 88% 112%, rgba(255, 255, 255, 0.05), transparent 60%),
+    rgba(9, 10, 14, 0.50);
+  -webkit-backdrop-filter: blur(26px) saturate(150%);
+  backdrop-filter: blur(26px) saturate(150%);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  box-shadow:
+    0 1px 0 0 rgba(255, 255, 255, 0.24) inset,
+    inset 0 0 0 1px rgba(255, 255, 255, 0.04),
+    0 22px 52px -22px rgba(2, 4, 10, 0.78),
+    0 6px 18px -10px rgba(2, 4, 10, 0.5);
+  transition:
+    transform var(--dur) var(--ease-standard),
+    box-shadow var(--dur) var(--ease-standard),
+    border-color var(--dur) var(--ease-standard);
+}
+/* the light thread across the rim */
+.glass-peak::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 1px;
+  border-radius: var(--r-lg) var(--r-lg) 0 0;
+  background: linear-gradient(90deg, transparent 4%, rgba(255, 255, 255, 0.55) 50%, transparent 96%);
+  pointer-events: none;
+}
+/* a soft sheen falling from the top edge */
+.glass-peak::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(130% 96% at 50% -14%, rgba(255, 255, 255, 0.14), transparent 58%);
+  pointer-events: none;
+}
+.glass-peak > * { position: relative; z-index: 1; }
+.glass-peak:hover {
+  transform: translateY(-4px);
+  border-color: rgba(255, 255, 255, 0.2);
+  box-shadow:
+    0 1px 0 0 rgba(255, 255, 255, 0.24) inset,
+    0 32px 66px -22px rgba(2, 4, 10, 0.84),
+    0 10px 30px -12px rgba(2, 4, 10, 0.6);
+}
+.glass-peak-cyan { border-color: rgba(57, 214, 255, 0.30); }
+.glass-peak-cyan:hover {
+  border-color: rgba(57, 214, 255, 0.44);
+  box-shadow:
+    0 1px 0 0 rgba(255, 255, 255, 0.24) inset,
+    0 32px 66px -22px rgba(2, 4, 10, 0.84),
+    0 0 0 1px rgba(57, 214, 255, 0.24),
+    0 16px 50px -16px rgba(57, 214, 255, 0.30);
+}
+.glass-peak-mint { border-color: rgba(0, 255, 178, 0.30); }
+.glass-peak-mint:hover {
+  border-color: rgba(0, 255, 178, 0.44);
+  box-shadow:
+    0 1px 0 0 rgba(255, 255, 255, 0.24) inset,
+    0 32px 66px -22px rgba(2, 4, 10, 0.84),
+    0 0 0 1px rgba(0, 255, 178, 0.24),
+    0 16px 50px -16px rgba(0, 255, 178, 0.30);
+}
+@media (prefers-reduced-motion: reduce) {
+  .glass-peak:hover { transform: none; }
 }
 
 /* ---------- luminous hover ---------- */

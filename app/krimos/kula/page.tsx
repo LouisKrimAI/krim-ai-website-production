@@ -59,7 +59,7 @@ const FLOW = [
   {
     step: 'Learn',
     title: 'Every outcome sharpens the next.',
-    body: 'What the work teaches feeds back through the runtime, so the next plan you ask for starts closer to right.',
+    body: 'What the work teaches feeds back through the runtime, so the next plan starts from what the last one learned.',
   },
 ]
 
@@ -74,6 +74,37 @@ const ROLES = [
   'Head of Credit Ops',
   'Head of Analytics',
   'Contact Centre Lead',
+]
+
+// Two seats, two questions — the same runtime, and how the work changes. Concrete
+// and realist-aspirational; capability framing, never a claimed result.
+const SCENARIOS = [
+  {
+    role: 'Head of Collections',
+    ask: 'Bring down first-payment defaults next quarter, and keep every contact inside the rules.',
+    shift: (
+      <>
+        Kula drafts the plan: the at-risk segments, the outreach, the co-workers to run it, every
+        contact{' '}
+        <span className="text-mint">pre-checked against contact-window and fairness rules</span>. It
+        runs on her sign-off, and she watches it in Kupa. The campaign that used to wait on a build
+        team starts the same afternoon.
+      </>
+    ),
+  },
+  {
+    role: 'Chief Risk Officer',
+    ask: 'Show me where policy exceptions are clustering this month, and what is driving them.',
+    shift: (
+      <>
+        He reads the answer off the same source of truth, the reasoning attached, then asks Kula to
+        tighten the rule, and the change{' '}
+        <span className="text-mint">clears validation before it takes effect</span>. Risk that once
+        surfaced only in a month-end report, he can watch form in real time and tighten while it is
+        still small.
+      </>
+    ),
+  },
 ]
 
 export default function KulaPage() {
@@ -94,14 +125,15 @@ export default function KulaPage() {
               <p className="mx-auto mt-7 max-w-[56ch] font-sans text-body-lg text-ink-2">
                 Ask for an outcome in <span className="text-mint">plain language, by text or
                 voice</span>. Kula reasons in the runtime, builds the plan, and{' '}
-                <span className="text-ink">runs it on your sign-off</span>, tuned to your role rather
-                than a generic chatbot.
+                <span className="text-ink">runs it on your sign-off</span>, tuned to your role.
               </p>
             </Reveal>
           </div>
         </Section>
 
-        {/* ---- 2 · The role-twin ---- */}
+        {/* ---- 2 · The role-twin — one twin per seat, one source of truth.
+               (Merged: the former "Across the institution" section folded its
+               roles list + Kupa pointer in here, so the twin idea is told once.) ---- */}
         <Section hairline>
           <div className="grid items-center gap-12 md:grid-cols-[1fr_1fr]">
             <Reveal>
@@ -112,20 +144,36 @@ export default function KulaPage() {
                 </h2>
                 <p className="mt-7 max-w-[52ch] font-sans text-body-lg text-ink-2">
                   Each user works with a digital twin tuned to their role: the questions they ask,
-                  the work they own, the rules they answer to. Underneath, one source of truth across
-                  the institution: the same numbers, shaped to the seat.
+                  the work they own, the rules they answer to. Underneath sits{' '}
+                  <span className="text-ink">one source of truth</span> across the institution, the
+                  same numbers shaped to each seat.
+                </p>
+                <p className="mt-5 max-w-[52ch] font-sans text-body text-ink-2">
+                  From the Chief Risk Officer to the contact-centre floor, every team reads the same
+                  operation through its own twin, and supervises it in{' '}
+                  <Link
+                    href="/krimos/kupa"
+                    className="text-ink underline-offset-4 transition-colors hover:text-mint hover:underline"
+                  >
+                    Kupa
+                  </Link>
+                  , where the calls that matter come back for sign-off.
                 </p>
               </div>
             </Reveal>
             <Reveal delay={0.12}>
               <GlassCard className="p-8 md:p-10">
-                <p className="font-serif text-[clamp(1.4rem,2.4vw,1.85rem)] leading-snug text-ink">
-                  A risk lead, a collections head and a service manager each meet a different Kula,
-                  drawing on the same truth.
-                </p>
-                <p className="mt-6 font-mono text-[11px] uppercase tracking-[0.18em] text-mint">
+                <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-mint">
                   One twin per role · one source of truth
                 </p>
+                <ul className="mt-6 grid gap-x-8 gap-y-3 sm:grid-cols-2">
+                  {ROLES.map((r) => (
+                    <li key={r} className="flex items-baseline gap-3 font-sans text-body text-ink-2">
+                      <span aria-hidden className="h-1.5 w-1.5 shrink-0 translate-y-1.5 rounded-full bg-mint" />
+                      {r}
+                    </li>
+                  ))}
+                </ul>
               </GlassCard>
             </Reveal>
           </div>
@@ -169,37 +217,32 @@ export default function KulaPage() {
           </Reveal>
         </Section>
 
-        {/* ---- 4 · Every role, one source of truth ---- */}
+        {/* ---- 4 · Two seats — concrete scenarios, how the work actually changes ---- */}
         <Section hairline>
-          <div className="grid items-center gap-12 md:grid-cols-[1fr_1fr]">
-            <Reveal>
-              <div>
-                <Eyebrow>Across the institution</Eyebrow>
-                <h2 className="mt-4 max-w-[20ch] font-serif text-display-1 text-ink">
-                  From the Chief Risk Officer to the contact-centre floor.
-                </h2>
-                <p className="mt-7 max-w-[52ch] font-sans text-body-lg text-ink-2">
-                  The same operation, read by every role through its own twin, and surfaced in{' '}
-                  <Link href="/krimos/kupa" className="text-ink underline-offset-4 transition-colors hover:text-mint hover:underline">
-                    Kupa
-                  </Link>
-                  , the cockpit where teams watch the work, approve the high-stakes calls and stay in
-                  control.
-                </p>
-              </div>
-            </Reveal>
-            <Reveal delay={0.12}>
-              <GlassCard className="p-8 md:p-10">
-                <ul className="grid gap-x-8 gap-y-3 sm:grid-cols-2">
-                  {ROLES.map((r) => (
-                    <li key={r} className="flex items-baseline gap-3 font-sans text-body text-ink-2">
-                      <span aria-hidden className="h-1.5 w-1.5 shrink-0 translate-y-1.5 rounded-full bg-mint" />
-                      {r}
-                    </li>
-                  ))}
-                </ul>
-              </GlassCard>
-            </Reveal>
+          <Reveal>
+            <Eyebrow tone="mint">Two seats, one operation</Eyebrow>
+            <h2 className="mt-4 max-w-[24ch] font-serif text-display-1 text-ink">
+              The work looks different in every seat.
+            </h2>
+            <p className="mt-6 max-w-[60ch] font-sans text-body-lg text-ink-2">
+              A collections lead and a risk officer come to the same Kula for completely different
+              things, and both get an answer they can act on.
+            </p>
+          </Reveal>
+          <div className="mt-12 grid gap-5 md:grid-cols-2">
+            {SCENARIOS.map((s, i) => (
+              <Reveal key={s.role} delay={(i % 2) * 0.08}>
+                <GlassCard className="flex h-full flex-col p-8 md:p-9">
+                  <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-mint">
+                    {s.role}
+                  </p>
+                  <p className="mt-5 font-serif text-[clamp(1.3rem,2.2vw,1.6rem)] leading-snug text-ink">
+                    &ldquo;{s.ask}&rdquo;
+                  </p>
+                  <p className="mt-5 flex-1 font-sans text-body text-ink-2">{s.shift}</p>
+                </GlassCard>
+              </Reveal>
+            ))}
           </div>
         </Section>
 

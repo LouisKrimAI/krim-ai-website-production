@@ -33,49 +33,54 @@ const LINES = [
 
 function useTyped(disabled: boolean) {
   const [shown, setShown] = useState<string[]>(disabled ? LINES : ['', '', '', ''])
-  const [active, setActive] = useState(disabled ? LINES.length : -1)
   const [done, setDone] = useState(disabled)
 
+  // Frame-aligned, time-based reveal: each frame computes the exact slice from
+  // elapsed time, so characters land at an even cadence regardless of frame rate
+  // (no setTimeout jitter). Pace is 2× the previous, deliberate speed.
   useEffect(() => {
     if (disabled) return
+    let raf = 0
     let cancelled = false
-    const timers: ReturnType<typeof setTimeout>[] = []
-    let li = 0
-    let ci = 0
-    const step = () => {
+    const START = 6000 // begin once the ring has formed and the logo has arrived
+    const BEAT = 360 // a beat between lines
+    const rate = (li: number) => (li >= 2 ? 29 : 43) // ms per char — 20% slower than the prior midway setting
+    const starts: number[] = []
+    let acc = START
+    LINES.forEach((line, li) => {
+      starts[li] = acc
+      acc += line.length * rate(li) + BEAT
+    })
+    const endAll = acc
+    const t0 = performance.now()
+    let lastKey = ''
+    const frame = (now: number) => {
       if (cancelled) return
-      if (li >= LINES.length) {
-        setActive(LINES.length)
+      const e = now - t0
+      const next = LINES.map((line, li) => {
+        if (e <= starts[li]) return ''
+        const n = Math.min(line.length, Math.floor((e - starts[li]) / rate(li)))
+        return line.slice(0, n)
+      })
+      const key = next.join('')
+      if (key !== lastKey) {
+        lastKey = key
+        setShown(next)
+      }
+      if (e >= endAll) {
         setDone(true)
         return
       }
-      setActive(li)
-      const line = LINES[li]
-      if (ci < line.length) {
-        ci += 1
-        const slice = line.slice(0, ci)
-        setShown((prev) => {
-          const next = [...prev]
-          next[li] = slice
-          return next
-        })
-        const ch = line[ci - 1]
-        const delay = ch === ' ' ? 20 : li >= 2 ? 32 : 48 // 0.5× speed — slow, deliberate typing
-        timers.push(setTimeout(step, delay))
-      } else {
-        li += 1
-        ci = 0
-        timers.push(setTimeout(step, 400)) // a beat between lines
-      }
+      raf = requestAnimationFrame(frame)
     }
-    timers.push(setTimeout(step, 6000)) // begin once the ring has formed and the logo has arrived
+    raf = requestAnimationFrame(frame)
     return () => {
       cancelled = true
-      timers.forEach(clearTimeout)
+      cancelAnimationFrame(raf)
     }
   }, [disabled])
 
-  return { shown, active, done }
+  return { shown, done }
 }
 
 function TypedLine({ full, shown }: { full: string; shown: string }) {

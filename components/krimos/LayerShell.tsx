@@ -12,7 +12,6 @@ import PlatformBackdrop from '../PlatformBackdrop'
 import { Section, CTA } from '../ui'
 import { layerBySlug, prevNext, type Layer, type LayerSlug } from './layers'
 
-const DEMO_HREF = '/contact'
 
 function NavCard({ layer, dir }: { layer: Layer; dir: 'prev' | 'next' }) {
   return (
@@ -22,7 +21,7 @@ function NavCard({ layer, dir }: { layer: Layer; dir: 'prev' | 'next' }) {
           {dir === 'prev' ? '← Previous' : 'Next →'}
         </p>
         <p className="mt-3 font-serif text-[1.4rem] text-ink transition-colors group-hover:text-mint">{layer.name}</p>
-        <p className={`mt-1.5 font-sans text-[13.5px] leading-relaxed text-ink-2 ${dir === 'next' ? 'ml-auto' : ''} max-w-[34ch]`}>
+        <p className={`mt-1.5 font-sans text-[14.5px] leading-relaxed text-ink-2 ${dir === 'next' ? 'ml-auto' : ''} max-w-[34ch]`}>
           {layer.oneLiner}
         </p>
       </div>
@@ -64,7 +63,7 @@ export default function LayerShell({ slug, children }: { slug: LayerSlug; childr
                 <div className="glass lume h-full p-6 text-right md:p-7">
                   <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-ink-3">Back to →</p>
                   <p className="mt-3 font-serif text-[1.4rem] text-ink transition-colors group-hover:text-mint">The platform</p>
-                  <p className="ml-auto mt-1.5 max-w-[34ch] font-sans text-[13.5px] leading-relaxed text-ink-2">
+                  <p className="ml-auto mt-1.5 max-w-[34ch] font-sans text-[14.5px] leading-relaxed text-ink-2">
                     The whole map: every part, one operating system.
                   </p>
                 </div>
@@ -79,11 +78,10 @@ export default function LayerShell({ slug, children }: { slug: LayerSlug; childr
             <h2 className="font-serif text-display-3 leading-tight text-ink">
               See {layer.name} at work.
             </h2>
-            <p className="mx-auto mt-4 max-w-[46ch] font-sans text-body text-ink-2">
-              Nothing to tear out. KrimOS layers onto the systems you already run.
+            <p className="mx-auto mt-4 max-w-[50ch] font-sans text-body text-ink-2">
+              Run the whole operation on KrimOS, or layer it onto the systems you have.
             </p>
-            <div className="mt-8 flex flex-wrap items-center justify-center gap-6">
-              <CTA href={DEMO_HREF}>Book a demo</CTA>
+            <div className="mt-8 flex justify-center">
               <CTA href="/krimos" variant="secondary">
                 Explore KrimOS
               </CTA>

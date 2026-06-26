@@ -11,7 +11,7 @@ import SiteFooter from '@/components/SiteFooter'
 import OrbBackdrop from '@/components/OrbBackdrop'
 import Reveal from '@/components/Reveal'
 import { Section, Eyebrow, GlassCard, CTA } from '@/components/ui'
-import CinematicBand from '@/components/CinematicBand'
+import ArticleImage from '@/components/ArticleImage'
 
 const SLUG = 'the-automation-gap'
 const TITLE = 'The automation gap'
@@ -80,8 +80,8 @@ export default function Page() {
         </Section>
 
         {/* ---- Header image ---- */}
-        <CinematicBand
-          src="/images/cinematic/kendra-brain.jpg"
+        <ArticleImage
+          src="/images/cinematic/automation-gap.webp"
           alt="A luminous mind held in a lattice of moving data."
           heightClass="h-[clamp(200px,30vw,360px)]"
           objectPosition="50% 38%"
@@ -216,8 +216,7 @@ export default function Page() {
                 KrimOS validates every action before it fires, so the consequential work can finally
                 run without leaving compliance behind.
               </p>
-              <div className="mt-9 flex flex-wrap items-center justify-center gap-6">
-                <CTA href="/contact">Book a demo</CTA>
+              <div className="mt-9 flex justify-center">
                 <CTA href="/krimos" variant="secondary">
                   Explore KrimOS
                 </CTA>

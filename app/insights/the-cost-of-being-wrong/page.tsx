@@ -11,7 +11,7 @@ import SiteFooter from '@/components/SiteFooter'
 import OrbBackdrop from '@/components/OrbBackdrop'
 import Reveal from '@/components/Reveal'
 import { Section, Eyebrow, GlassCard, CTA } from '@/components/ui'
-import CinematicBand from '@/components/CinematicBand'
+import ArticleImage from '@/components/ArticleImage'
 
 const SLUG = 'the-cost-of-being-wrong'
 const TITLE = 'The cost of being wrong'
@@ -80,7 +80,7 @@ export default function Page() {
         </Section>
 
         {/* ---- Header image ---- */}
-        <CinematicBand
+        <ArticleImage
           src="/images/cinematic/insight-wave.jpg"
           alt="A vast wave rising over a digital grid, the weight of one wrong action."
           heightClass="h-[clamp(200px,30vw,360px)]"
@@ -241,8 +241,7 @@ export default function Page() {
                 KrimOS validates every action before it fires, so the violation that would have
                 scaled never happens once.
               </p>
-              <div className="mt-9 flex flex-wrap items-center justify-center gap-6">
-                <CTA href="/contact">Book a demo</CTA>
+              <div className="mt-9 flex justify-center">
                 <CTA href="/lending" variant="secondary">
                   See it in lending
                 </CTA>

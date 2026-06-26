@@ -16,17 +16,18 @@ import SiteFooter from '@/components/SiteFooter'
 import OrbBackdrop from '@/components/OrbBackdrop'
 import Reveal from '@/components/Reveal'
 import JurisdictionTabs from '@/components/trust/JurisdictionTabs'
+import { JURISDICTIONS } from '@/lib/jurisdictions'
 import { Section, Eyebrow, GlassCard, CTA } from '@/components/ui'
 
 export const metadata: Metadata = {
   title: 'Trust',
   description:
-    'KrimOS is sovereign by construction: the full stack runs inside your perimeter, on-prem by default, with end-to-end encryption, granular RBAC, customer-held keys and an immutable, cryptographically sealed audit trail. US, UK, EU, India, Nigeria and Brazil frameworks are encoded in the runtime and validated before every action.',
+    'KrimOS is sovereign by construction: the full stack runs inside your perimeter, on-prem by default, with end-to-end encryption, granular RBAC, customer-held keys and an immutable, cryptographically sealed audit trail. US, UK, India, Nigeria and Brazil frameworks are encoded in the runtime and validated before every action.',
   alternates: { canonical: 'https://krim.ai/trust' },
   openGraph: {
     title: 'Trust — sovereignty, security & deployment',
     description:
-      'KrimOS is sovereign by construction: the full stack runs inside your perimeter, on-prem by default, with end-to-end encryption, granular RBAC, customer-held keys and an immutable, cryptographically sealed audit trail. US, UK, EU, India, Nigeria and Brazil frameworks are encoded in the runtime and validated before every action.',
+      'KrimOS is sovereign by construction: the full stack runs inside your perimeter, on-prem by default, with end-to-end encryption, granular RBAC, customer-held keys and an immutable, cryptographically sealed audit trail. US, UK, India, Nigeria and Brazil frameworks are encoded in the runtime and validated before every action.',
     url: 'https://krim.ai/trust',
   },
 }
@@ -89,19 +90,11 @@ const POSTURE = [
   },
 ]
 
-// ---- encoded jurisdictions (krim-content.md · Krim-Nyāya; Trust footprint) ----
-// Order: USA · UK · EU · India · Nigeria · Brazil — surfaced as tabs.
-const JURISDICTIONS = [
-  { region: 'United States', short: 'USA', frameworks: ['FDCPA', 'Reg F', 'TCPA', 'FCRA', 'ECOA / Reg B', 'TILA / Reg Z', 'SCRA', 'GLBA', 'UDAAP'] },
-  { region: 'United Kingdom', short: 'UK', frameworks: ['FCA Consumer Duty', 'CONC sourcebook', 'Consumer Credit Act 1974', 'FCA Principles', 'DISP (complaints)', 'UK GDPR / DPA 2018', 'PECR', 'MLR 2017'] },
-  { region: 'European Union', short: 'EU', frameworks: ['GDPR', 'EU AI Act', 'Consumer Credit Directive (CCD2)', 'PSD2', 'DORA', 'AMLD / AMLR', 'Credit Servicers Directive', 'ePrivacy Directive'] },
-  { region: 'India', short: 'India', frameworks: ['RBI Digital Lending Guidelines', 'Fair Practices Code', 'KYC Master Direction', 'SARFAESI Act', 'DPDP Act 2023', 'TRAI TCCCPR', 'CIC reporting (CICRA)', 'PMLA / AML', 'RBI recovery-agent norms'] },
-  { region: 'Nigeria', short: 'Nigeria', frameworks: ['CBN Prudential Guidelines', 'BOFIA 2020', 'FCCPC Digital Lending Regulations', 'NDPA 2023 (NDPC)', 'CBN Consumer Protection Framework', 'Credit Reporting Act 2017', 'CBN AML/CFT Regulations'] },
-  { region: 'Brazil', short: 'Brazil', frameworks: ['LGPD (ANPD)', 'Código de Defesa do Consumidor (CDC)', 'Lei do Superendividamento', 'CMN / BCB resolutions', 'Cadastro Positivo', 'SCR credit reporting', 'COAF / Law 9.613'] },
-]
+// Encoded jurisdictions — the five-market set in lib/jurisdictions.ts, shared with
+// the Lending compliance section so the two never drift.
 
 // ---- security & compliance standards — architecture designed around these frameworks ----
-// Mix of international standards and the Indian banking/data frameworks a security team checks for.
+// Mix of international standards and the banking/data frameworks a security team checks for.
 const STANDARDS = [
   { label: 'SOC 2 Type II', kind: 'Information security' },
   { label: 'ISO 27001', kind: 'Information security' },
@@ -111,7 +104,7 @@ const STANDARDS = [
   { label: 'DPDP Act 2023', kind: 'Data protection' },
   { label: 'IT Act 2000', kind: 'Data protection' },
   { label: 'GDPR', kind: 'Data protection' },
-  { label: 'EU AI Act', kind: 'AI governance' },
+  { label: 'NIST AI RMF', kind: 'AI governance' },
 ]
 
 export default function TrustPage() {
@@ -131,15 +124,10 @@ export default function TrustPage() {
               </h1>
             </Reveal>
             <Reveal delay={0.12}>
-              <p className="mx-auto mt-7 max-w-[60ch] font-sans text-body-lg text-ink-2">
+              <p className="mx-auto mt-7 max-w-[52ch] font-sans text-body-lg text-ink-2">
                 KrimOS runs <span className="text-ink">inside your perimeter</span>, on-prem by
-                preference, with no foreign API in the loop. Customer data, model weights, orchestration
-                and telemetry stay behind your wall. <span className="text-mint">Nothing leaves.</span>
-              </p>
-            </Reveal>
-            <Reveal delay={0.2}>
-              <p className="mx-auto mt-6 max-w-[52ch] font-sans text-body text-ink-3">
-                Sovereignty is a commitment, not a deployment option.
+                preference. Data, model weights and orchestration stay behind your wall.{' '}
+                <span className="text-mint">Nothing leaves.</span>
               </p>
             </Reveal>
           </div>
@@ -310,6 +298,12 @@ export default function TrustPage() {
               </Reveal>
             ))}
           </div>
+          <Reveal delay={0.1}>
+            <p className="mt-8 max-w-[60ch] font-sans text-caption text-ink-3">
+              The architecture is built to these frameworks. Formal certification and attestation are
+              in progress, and we&rsquo;ll share status under NDA as part of a security review.
+            </p>
+          </Reveal>
         </Section>
 
         {/* ---- 7 · Close ---- */}
@@ -324,9 +318,6 @@ export default function TrustPage() {
                   Start with an architecture, security and integration review, then see KrimOS run
                   inside the perimeter you already defend.
                 </p>
-                <div className="mt-9">
-                  <CTA href={DEMO_HREF}>Book a demo</CTA>
-                </div>
               </div>
             </GlassCard>
           </Reveal>

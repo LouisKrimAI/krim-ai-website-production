@@ -117,7 +117,7 @@ export default function ProofPanel() {
               outbound · servicing call
             </p>
           </div>
-          <p className="mt-2 font-sans text-[13.5px] leading-relaxed text-ink-3">
+          <p className="mt-2 font-sans text-[14.5px] leading-relaxed text-ink-3">
             Pre-flight clearances: every one must pass before the line connects.
           </p>
 
@@ -173,7 +173,7 @@ export default function ProofPanel() {
             </span>
             <div>
               <p className="font-mono text-[12px] tracking-[0.22em] text-mint">CLEARED TO DIAL</p>
-              <p className="mt-1 font-sans text-[12.5px] leading-snug text-ink-3">
+              <p className="mt-1 font-sans text-[14px] leading-snug text-ink-3">
                 All four clearances passed. Validated and on the record.
               </p>
             </div>
@@ -202,12 +202,12 @@ export default function ProofPanel() {
           </span>
         </div>
 
-        <p className="mt-4 font-sans text-[13px] leading-relaxed text-ink-2">
+        <p className="mt-4 font-sans text-[14.5px] leading-relaxed text-ink-2">
           Settlement terms fall outside the approved range. Not refused outright: held, with its
           reasoning attached, and routed to a person to decide.
         </p>
 
-        <p className="mt-6 border-t border-soft pt-5 font-serif text-[13.5px] italic leading-relaxed text-ink-3">
+        <p className="mt-6 border-t border-soft pt-5 font-serif text-[14.5px] italic leading-relaxed text-ink-3">
           What can&rsquo;t clear the gate doesn&rsquo;t run. The held action is the proof.
         </p>
       </div>

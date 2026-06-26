@@ -88,7 +88,7 @@ export default function PolicyChecks() {
                   <span className="font-serif text-[1.15rem] leading-none text-ink">{c.name}</span>
                   <span className="font-mono text-[10px] uppercase tracking-[0.14em] text-ink-3">{c.gloss}</span>
                 </div>
-                <p className="mt-1.5 font-sans text-[13px] leading-snug text-ink-2">{c.line}</p>
+                <p className="mt-1.5 font-sans text-[14.5px] leading-normal text-ink-2">{c.line}</p>
               </div>
               <span className="shrink-0 font-mono text-[10px] uppercase tracking-[0.16em]" style={{ color }}>
                 {c.state === 'pass' ? 'Cleared' : 'Held'}

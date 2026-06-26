@@ -11,7 +11,7 @@ import SiteFooter from '@/components/SiteFooter'
 import OrbBackdrop from '@/components/OrbBackdrop'
 import Reveal from '@/components/Reveal'
 import { Section, Eyebrow, GlassCard, CTA } from '@/components/ui'
-import CinematicBand from '@/components/CinematicBand'
+import ArticleImage from '@/components/ArticleImage'
 
 const SLUG = 'audit-after-the-fact-is-a-confession'
 const TITLE = 'Audit after the fact is a confession'
@@ -80,8 +80,8 @@ export default function Page() {
         </Section>
 
         {/* ---- Header image ---- */}
-        <CinematicBand
-          src="/images/cinematic/ledger-data.jpg"
+        <ArticleImage
+          src="/images/cinematic/audit.webp"
           alt="A sealed record of light on a dark server floor."
           heightClass="h-[clamp(200px,30vw,360px)]"
           objectPosition="50% 45%"
@@ -212,8 +212,7 @@ export default function Page() {
                 KrimOS proves every action against law, policy, consent and context before it fires,
                 so the record a regulator asks for already exists.
               </p>
-              <div className="mt-9 flex flex-wrap items-center justify-center gap-6">
-                <CTA href="/contact">Book a demo</CTA>
+              <div className="mt-9 flex justify-center">
                 <CTA href="/epistemic-ai" variant="secondary">
                   What is Epistemic AI?
                 </CTA>

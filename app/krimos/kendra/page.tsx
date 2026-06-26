@@ -84,11 +84,9 @@ export default function KendraPage() {
                   Nothing runs until it clears the gate.
                 </h3>
                 <p className="mt-4 font-sans text-body text-ink-2">
-                  Before any action fires, it passes through Krim-Nyāya, 33 validators that ask, in
-                  formal logic, whether this action is allowed to happen at all. Validation is not a
-                  review after the work; it is the gate the work must pass to become real. Most
-                  actions clear. The ones that don’t are flagged and handed to a person, with the
-                  rule that stopped them in plain words.
+                  Before any action fires, it clears Krim-Nyāya: 33 validators that decide, in formal
+                  logic, whether it is allowed at all. The few that don’t pass go straight to a
+                  person, with the rule that stopped them in plain words.
                 </p>
               </div>
             </Reveal>
@@ -100,12 +98,10 @@ export default function KendraPage() {
                   Every recorded outcome makes the next one sharper.
                 </h3>
                 <p className="mt-4 font-sans text-body text-ink-2">
-                  Because every action and its result land on one record, Krim-Learn sees what
-                  actually worked and feeds it back through ten learning loops. The process is
-                  disciplined: a pattern only joins the shared library once it clears an effectiveness
-                  threshold of around 80%, and what is shared is anonymised, aggregated and
-                  opt-out. The system compounds; a baseline in the first quarter is materially beyond
-                  it by year two.
+                  Every action and its result land on one record, so Krim-Learn sees what actually
+                  worked and feeds it back through ten learning loops. Only patterns that prove out
+                  are shared, always anonymised and opt-out. The system compounds: this quarter’s
+                  baseline is well behind where it sits a year on.
                 </p>
               </div>
             </Reveal>

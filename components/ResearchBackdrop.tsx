@@ -10,7 +10,7 @@
  * never remounts and the image never reloads.
  *
  * Speed + load order are the point here. The lab plate is a tiny optimised WebP
- * (~70KB) served as a plain <img> (no image-optimiser round-trip), eager-loaded,
+ * (~94KB) served as a plain <img> (no image-optimiser round-trip), eager-loaded,
  * and warmed ahead of time by BackgroundPrefetch — so by the time you arrive it
  * is usually already cached and paints instantly. The orb is held hidden until
  * that image has ACTUALLY loaded (onLoad, plus an immediate check for the cached
@@ -30,7 +30,7 @@ const RESEARCH_ROUTES = new Set([
   '/epistemic-ai',
 ])
 
-const LAB_SRC = '/images/research/lab-stage.webp'
+const LAB_SRC = '/images/research/research-stage.webp'
 
 export default function ResearchBackdrop() {
   const pathname = usePathname()

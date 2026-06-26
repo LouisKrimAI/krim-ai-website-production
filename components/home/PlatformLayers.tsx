@@ -63,7 +63,7 @@ const LAYERS: Layer[] = [
   {
     key: 'kendra',
     name: 'Kendra',
-    role: 'The brain: the governed runtime where Krim-Nyāya validates every action and Krim-Learn builds the World Lending Model from every outcome.',
+    role: 'The brain: the governed runtime where Krim-Nyāya validates every action and Krim-Learn turns every outcome into the next decision’s edge.',
     tag: 'RUNTIME · NYĀYA · LEARN',
     tone: 'core',
   },
@@ -222,13 +222,13 @@ function LayerRow({
             <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-1">
               <span className="font-serif text-[1.5rem] leading-none text-ink">{layer.name}</span>
               <span
-                className="font-mono text-[10px] uppercase tracking-[0.16em] text-ink-3"
+                className="font-mono text-[11px] uppercase tracking-[0.16em] text-ink-3"
                 style={isCore ? { color: 'rgba(57,214,255,0.75)' } : undefined}
               >
                 {layer.tag}
               </span>
             </div>
-            <p className="mx-auto mt-2.5 max-w-[54ch] font-sans text-[13.5px] leading-relaxed text-ink-2">
+            <p className="mx-auto mt-3 max-w-[52ch] font-sans text-[16.5px] leading-relaxed text-ink-2">
               {layer.role}
             </p>
           </div>
@@ -243,9 +243,9 @@ function Face({ name, role, tag }: { name: string; role: string; tag: string }) 
   // on its own line beneath the name, regardless of name length (no wrap drift).
   return (
     <div className="min-w-0 px-2 text-center">
-      <p className="font-serif text-[1.25rem] leading-none text-ink">{name}</p>
-      <p className="mt-2 font-mono text-[9.5px] uppercase tracking-[0.18em] text-ink-3">{tag}</p>
-      <p className="mx-auto mt-2.5 max-w-[32ch] font-sans text-[12.5px] leading-snug text-ink-2">{role}</p>
+      <p className="font-serif text-[1.3rem] leading-none text-ink">{name}</p>
+      <p className="mt-2 font-mono text-[11px] uppercase tracking-[0.18em] text-ink-3">{tag}</p>
+      <p className="mx-auto mt-2.5 max-w-[34ch] font-sans text-[15.5px] leading-normal text-ink-2">{role}</p>
     </div>
   )
 }
