@@ -309,10 +309,9 @@ export default function PlatformPage() {
               <h2 className="font-serif text-display-3 leading-tight text-ink">
                 Lending, transformed.
               </h2>
-              <p className="mx-auto mt-5 max-w-[54ch] font-sans text-body-lg text-ink-2">
-                The operation that used to fight for every basis point now compounds with every
-                decision. <span className="text-mint">Cheaper to run, faster to serve, and a record
-                a regulator can read on demand.</span>
+              <p className="mx-auto mt-5 max-w-[44ch] font-sans text-body-lg text-ink-2">
+                <span className="text-mint">Cheaper</span> to run, <span className="text-mint">faster</span> to
+                serve, and a record <span className="text-mint">a regulator can read</span> on demand.
               </p>
               <div className="mt-9 flex justify-center">
                 <CTA href="/lending" variant="secondary">
