@@ -81,7 +81,7 @@ export default function SiteFooter() {
           {NAV.map(([title, links]) => (
             <div key={title}>
               <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-ink-3">{title}</p>
-              <ul className="mt-3.5 flex flex-wrap gap-x-5 gap-y-2.5 sm:flex-col sm:gap-y-2.5">
+              <ul className="mt-3.5 flex flex-col gap-y-2.5">
                 {links.map(([label, href]) => (
                   <li key={href}>
                     <Link

@@ -278,7 +278,8 @@ export default function HomePage() {
                 On your stack, or as the stack.
               </h2>
               <p className="mx-auto mt-5 max-w-[48ch] font-sans text-body-lg text-ink-2">
-                40+ connectors into your core, LOS and LMS. Nothing to tear out.
+                <span className="block">40+ connectors into your core, LOS and LMS.</span>
+                <span className="block">Nothing to tear out.</span>
               </p>
             </Reveal>
           </div>

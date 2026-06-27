@@ -87,7 +87,7 @@ export default function ResearchPage() {
             <Reveal delay={0.12}>
               <p className="mx-auto mt-7 max-w-[52ch] font-sans text-body-lg text-ink-2">
                 Krim is a research company first. Everything we ship is that research,{' '}
-                <span className="text-mint">built to run today</span>.
+                <span className="text-mint">in production</span>.
               </p>
             </Reveal>
             <Reveal delay={0.2}>
