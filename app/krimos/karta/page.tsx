@@ -245,7 +245,7 @@ export default function KartaPage() {
             <div className="mx-auto max-w-[760px] text-center">
               <Eyebrow>The roster</Eyebrow>
               <h2 className="mt-4 font-serif text-display-1 text-ink">
-                A specialist for <span className="text-mint">every part</span> of the operation.
+                A <span className="text-mint">specialist</span> for every part of the operation.
               </h2>
               <p className="mx-auto mt-6 font-sans text-body-lg text-ink-2">
                 Across the whole lending lifecycle, focused co-workers run every part of the operation,
