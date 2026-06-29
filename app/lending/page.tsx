@@ -130,7 +130,7 @@ export default function LendingPage() {
             <Reveal>
               <Eyebrow>Lending</Eyebrow>
               <h1 className="mt-5 font-serif text-display-hero text-ink">
-                Run the whole loan lifecycle.
+                Run the <span className="text-grad">whole loan lifecycle</span>.
               </h1>
             </Reveal>
             <Reveal delay={0.12}>

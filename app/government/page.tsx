@@ -122,7 +122,7 @@ export default function GovernmentPage() {
             <Reveal>
               <Eyebrow tone="dim">Government</Eyebrow>
               <h1 className="mt-5 font-serif text-display-hero text-ink">
-                Public service that can answer for every action.
+                Public service that can <span className="text-grad">answer for every action</span>.
               </h1>
             </Reveal>
             <Reveal delay={0.12}>

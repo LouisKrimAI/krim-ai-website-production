@@ -118,7 +118,7 @@ export default function KulaPage() {
             <Reveal>
               <Eyebrow>For your teams</Eyebrow>
               <h1 className="mt-4 font-serif text-display-hero text-ink">
-                Talk to your operation.
+                Talk to <span className="text-grad">your operation</span>.
               </h1>
             </Reveal>
             <Reveal delay={0.12}>

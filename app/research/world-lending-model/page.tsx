@@ -93,7 +93,7 @@ export default function WorldLendingModelPage() {
             <Reveal>
               <Eyebrow tone="cyan">Research · World Lending Model</Eyebrow>
               <h1 className="mt-5 font-serif text-display-hero text-ink">
-                A world model for lending.
+                A <span className="text-grad">world model</span> for lending.
               </h1>
             </Reveal>
             <Reveal delay={0.12}>

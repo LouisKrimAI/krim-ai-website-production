@@ -97,7 +97,7 @@ export default function CompanyPage() {
             <Reveal>
               <Eyebrow>Company</Eyebrow>
               <h1 className="mt-5 font-serif text-display-hero text-ink">
-                We make AI provable enough to run a bank.
+                We make AI <span className="text-grad">provable</span> enough to run a bank.
               </h1>
             </Reveal>
             <Reveal delay={0.12}>

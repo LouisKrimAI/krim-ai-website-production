@@ -209,7 +209,7 @@ export default function KartaPage() {
             <Reveal>
               <Eyebrow>The co-workers</Eyebrow>
               <h1 className="mt-4 font-serif text-display-hero text-ink">
-                A workforce for the <span className="text-mint">whole loan</span>.
+                A workforce for the <span className="text-grad">whole loan</span>.
               </h1>
             </Reveal>
             <Reveal delay={0.12}>
@@ -414,7 +414,7 @@ export default function KartaPage() {
           <div className="mx-auto max-w-[720px] text-center">
             <Reveal>
               <h2 className="font-serif text-display-2 text-ink">
-                A workforce that <span className="text-mint">compounds</span>.
+                A workforce that <span className="text-grad">compounds</span>.
               </h2>
               <p className="mx-auto mt-5 max-w-[50ch] font-sans text-body-lg text-ink-2">
                 Configured by you, governed by the runtime, and sharper with every interaction, so

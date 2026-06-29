@@ -78,7 +78,7 @@ export default function EnterprisePage() {
             <Reveal>
               <Eyebrow>Large Enterprise</Eyebrow>
               <h1 className="mt-5 font-serif text-display-hero text-ink">
-                Millions of regulated interactions, every one provable.
+                Millions of regulated interactions, every one <span className="text-grad">provable</span>.
               </h1>
             </Reveal>
             <Reveal delay={0.12}>
