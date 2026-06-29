@@ -120,7 +120,7 @@ export default function PlatformPage() {
           <Reveal>
             <Eyebrow>Inside KrimOS</Eyebrow>
             <h2 className="mt-4 max-w-[26ch] font-serif text-display-1 text-ink">
-              Built like an operating system, all the way down.
+              One system for your whole operation.
             </h2>
             <p className="mt-6 max-w-[60ch] font-sans text-body-lg text-ink-2">
               Most AI is a model with a thin interface bolted on. KrimOS runs deeper: a runtime under
@@ -307,11 +307,14 @@ export default function PlatformPage() {
           <Reveal>
             <div className="glass mx-auto max-w-[760px] p-10 text-center md:p-14">
               <h2 className="font-serif text-display-3 leading-tight text-ink">
-                Lending, transformed.
+                Lending,{' '}
+                <span className="bg-gradient-to-r from-mint to-cyan bg-clip-text text-transparent">
+                  transformed
+                </span>
+                .
               </h2>
-              <p className="mx-auto mt-5 max-w-[44ch] font-sans text-body-lg text-ink-2">
-                <span className="text-mint">Cheaper</span> to run, <span className="text-mint">faster</span> to
-                serve, and a record <span className="text-mint">a regulator can read</span> on demand.
+              <p className="mx-auto mt-5 max-w-[46ch] font-sans text-body-lg text-ink-2">
+                Cheaper to run, faster to serve, and a record a regulator can read on demand.
               </p>
               <div className="mt-9 flex justify-center">
                 <CTA href="/lending" variant="secondary">
