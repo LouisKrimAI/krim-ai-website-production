@@ -93,6 +93,19 @@ h1, h2 { text-wrap: balance; }
   border-radius: 2px;
 }
 
+/* ---------- text-grad ----------
+   The signature blended highlight: a mint→cyan gradient clipped to the text.
+   Reserved for a key word in prominent headings and closing sections (used
+   sparingly so it stays special). Pair with a serif display heading. */
+
+.text-grad {
+  background-image: linear-gradient(100deg, var(--mint) 10%, var(--cyan) 90%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
 /* ---------- glass ----------
    A visible, crafted object: generous blur + saturation, layered
    translucency, a luminous hairline, a faint inner top highlight, and a

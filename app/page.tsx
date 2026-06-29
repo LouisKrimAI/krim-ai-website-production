@@ -275,7 +275,7 @@ export default function HomePage() {
           <div className="mx-auto max-w-[760px] text-center">
             <Reveal>
               <h2 className="font-serif text-display-2 leading-tight text-ink">
-                On your stack, or as the stack.
+                Works with the systems you already run.
               </h2>
               <p className="mx-auto mt-5 max-w-[48ch] font-sans text-body-lg text-ink-2">
                 <span className="block">40+ connectors into your core, LOS and LMS.</span>
@@ -298,12 +298,12 @@ export default function HomePage() {
         {/* ---- 9 · Close — open, tight, confident (no heavy box) ---- */}
         <Section hairline id="close">
           <Reveal>
-            <div className="mx-auto max-w-[680px] text-center">
-              <span aria-hidden className="mx-auto block h-[3px] w-14 rounded-full bg-mint" />
-              <h2 className="mt-8 font-serif text-display-2 leading-[1.05] text-ink">
-                Watch your operations come alive.
+            <div className="mx-auto max-w-[940px] text-center">
+              <span aria-hidden className="mx-auto block h-[3px] w-16 rounded-full bg-gradient-to-r from-mint to-cyan" />
+              <h2 className="mt-9 font-serif text-display-hero leading-[1.04] text-ink">
+                Watch your operations come <span className="text-grad">alive</span>.
               </h2>
-              <p className="mt-5 font-sans text-body-lg text-ink-2">
+              <p className="mt-7 font-sans text-[clamp(19px,2.4vw,26px)] leading-snug text-ink-2">
                 Powered by sovereign superintelligence.
               </p>
             </div>
