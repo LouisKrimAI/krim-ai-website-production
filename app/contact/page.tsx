@@ -50,12 +50,12 @@ export default function ContactPage() {
             <Reveal>
               <Eyebrow>Contact</Eyebrow>
               <h1 className="mt-5 font-serif text-display-hero text-ink">
-                See it run on your operation.
+                See it run.
               </h1>
             </Reveal>
             <Reveal delay={0.12}>
-              <p className="mx-auto mt-7 max-w-[54ch] font-sans text-body-lg text-ink-2">
-                Book a demo, or tell us the problem. We&rsquo;ll come prepared.
+              <p className="mx-auto mt-7 max-w-[44ch] font-sans text-body-lg text-ink-2">
+                Tell us where you are. We&rsquo;ll <span className="text-mint">come prepared</span>.
               </p>
             </Reveal>
           </div>

@@ -364,7 +364,7 @@ export function DemoForm({ onSuccess }: { onSuccess?: () => void } = {}) {
 
 /**
  * Wraps the heading + form together so the heading can swap on submit. Before
- * submission: "Tell us your requirements." After: "Look forward to exploring
+ * submission: "What are you trying to solve?" After: "Look forward to exploring
  * further." On success it smooth-scrolls the section into view so the new
  * heading + thank-you message land together, not stranded at the bottom of the
  * page where the submit button used to be.
@@ -387,7 +387,7 @@ export function ContactFormSection() {
         <div ref={sectionRef} className="text-center">
           <Eyebrow>Book a demo</Eyebrow>
           <h2 className="mt-4 font-serif text-display-1 text-ink">
-            {submitted ? 'Look forward to exploring further.' : 'Tell us your requirements.'}
+            {submitted ? 'Look forward to exploring further.' : 'What are you trying to solve?'}
           </h2>
         </div>
       </Reveal>
