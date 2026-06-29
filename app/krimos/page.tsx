@@ -308,9 +308,7 @@ export default function PlatformPage() {
             <div className="glass mx-auto max-w-[760px] p-10 text-center md:p-14">
               <h2 className="font-serif text-display-3 leading-tight text-ink">
                 Lending,{' '}
-                <span className="bg-gradient-to-r from-mint to-cyan bg-clip-text text-transparent">
-                  transformed
-                </span>
+                <span className="text-grad">transformed</span>
                 .
               </h2>
               <p className="mx-auto mt-5 max-w-[46ch] font-sans text-body-lg text-ink-2">
