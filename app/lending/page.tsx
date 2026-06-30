@@ -224,15 +224,6 @@ export default function LendingPage() {
               </Reveal>
             ))}
           </div>
-
-          <Reveal delay={0.1}>
-            <p className="mt-9 max-w-[64ch] font-sans text-[14px] leading-relaxed text-ink-3">
-              Today the line is clear: Karta segment risk, suggest the next best action and gate on
-              your own flags. The <span className="text-ink-2">credit decision stays yours</span>.
-              The safe AI underwriter we are building, the World Lending Model, is the direction,
-              and it will clear the same validation gate as every action that runs today.
-            </p>
-          </Reveal>
         </Section>
 
         {/* ════════════════════ 4 · Compliance by jurisdiction ════════════════════ */}
