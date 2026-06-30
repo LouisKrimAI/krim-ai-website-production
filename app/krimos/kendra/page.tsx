@@ -4,7 +4,7 @@
  * no hand-built device graphics (HOUSE-STYLE §0, §7). Server component — no
  * client island. Shape: what it is (hero) → the two powers → the seven
  * modules → the ledger → impact. Facts: docs/krim-content.md (Kendra · the
- * seven runtime modules · Krim-Nyāya · Krim-Learn · Krim-Ledger).
+ * eight runtime modules · Krim-Nyāya · Krim-Learn · Krim-Ledger).
  */
 
 import type { Metadata } from 'next'
@@ -34,6 +34,50 @@ const breadcrumbLd = {
     { '@type': 'ListItem', position: 3, name: 'Kendra', item: 'https://krim.ai/krimos/kendra' },
   ],
 }
+
+// The eight engineering modules of the runtime (docs/krim-content.md · the runtime modules).
+const MODULES = [
+  { name: 'Krim-Core', role: 'orchestration', body: 'Routes each task to the right co-worker and runs the workflow, whether sequential, parallel or hand-off, with retries and graceful fallbacks.' },
+  { name: 'Krim-Karya', role: 'scheduling', body: 'Owns when work runs — recurring tasks, deferred actions, and time-window rules like contact hours and regulatory deadlines, so nothing fires before it is allowed to.' },
+  { name: 'Krim-Fabric', role: 'knowledge', body: 'The regulatory rule set for each jurisdiction, each institution’s own policies, and the shared, anonymised pattern library.' },
+  { name: 'Krim-Govern', role: 'policy', body: 'A seven-level hierarchy of law, regulator guidance and house rules, enforced per tenant and updated as the rules change.' },
+  { name: 'Krim-Nyāya', role: 'validation', body: 'The pre-execution gate — 33 validators that decide whether a proposed action is allowed to happen at all.' },
+  { name: 'Krim-Learn', role: 'learning', body: 'Ten learning loops that read every recorded outcome and feed back what actually worked across the workforce.' },
+  { name: 'Krim-Ledger', role: 'the record', body: 'Every action logged immutably and metered in the same pass — one trail that serves both audit and billing.' },
+  { name: 'Krim-Sense', role: 'telemetry', body: 'The metrics, logs, alerts and dashboards that show what is happening across the whole stack.' },
+]
+
+// The eight modules laid out as a lattice around a single core — the parts that
+// compose into one runtime. 'core' is the centre cell of the 3×3 grid (lg+).
+const LATTICE: Array<(typeof MODULES)[number] | 'core'> = [
+  MODULES[0], MODULES[1], MODULES[2],
+  MODULES[3], 'core', MODULES[4],
+  MODULES[5], MODULES[6], MODULES[7],
+]
+
+// The impact of running on Kendra — the punchy payoff. Claim-safe: validation, the
+// record, the expected learning curve. No "guarantee", no absolutist promise.
+// Facts: docs/krim-content.md · Krim-Nyāya / Krim-Ledger / Krim-Learn.
+const IMPACTS: Array<{ lead: string; grad: string; tail: string; body: string }> = [
+  {
+    lead: 'Work that stayed manual can finally ',
+    grad: 'run',
+    tail: '.',
+    body: 'Every action is validated before it executes, so the consequential work that was too risky to automate becomes work you can hand to AI and account for, action by action.',
+  },
+  {
+    lead: 'An audit answered in ',
+    grad: 'minutes',
+    tail: '.',
+    body: 'Every action and its reasoning seal to one immutable record, so an inspection that once took a compliance team days comes together in minutes.',
+  },
+  {
+    lead: '',
+    grad: 'Sharper',
+    tail: ' the longer it runs.',
+    body: 'Kendra reads its own outcomes and feeds back what worked, so by its second year the operation runs materially sharper than the day it went live.',
+  },
+]
 
 export default function KendraPage() {
   return (
@@ -106,7 +150,7 @@ export default function KendraPage() {
                   Every action and its result land on one record, so Krim-Learn sees what actually
                   worked and feeds it back through ten learning loops. Only patterns that prove out
                   are shared, always anonymised and opt-out. The system compounds: this quarter’s
-                  baseline is well behind where it sits a year on.
+                  baseline sits well behind where it’s expected to by its second year.
                 </p>
               </div>
             </Reveal>
@@ -128,29 +172,65 @@ export default function KendraPage() {
           </Reveal>
         </Section>
 
-        {/* ---- One runtime, many parts — the full component breakdown lives on
-               the architecture page (this layer page tells the runtime's story,
-               not its parts list, so the two pages don't repeat each other) ---- */}
-        <Section>
-          <div className="mx-auto max-w-[720px] text-center">
-            <Reveal>
-              <Eyebrow tone="dim">Inside the runtime</Eyebrow>
-              <h2 className="mt-4 font-serif text-display-1 text-ink">
-                Many engines, one mind.
-              </h2>
-              <p className="mx-auto mt-6 max-w-[58ch] font-sans text-body-lg text-ink-2">
-                Validation, learning, scheduling, policy and the record each do one job, and Kendra
-                composes them into the single runtime your co-workers think in.
-              </p>
-            </Reveal>
-            <Reveal delay={0.12}>
-              <div className="mt-9 flex justify-center">
-                <CTA href="/architecture" variant="secondary">
-                  See the full architecture
-                </CTA>
-              </div>
-            </Reveal>
+        {/* ---- Inside the runtime — the eight modules around one core ---- */}
+        <Section hairline>
+          <Reveal>
+            <Eyebrow tone="dim">Inside the runtime</Eyebrow>
+            <h2 className="mt-4 max-w-[24ch] font-serif text-display-1 text-ink">
+              Many engines, one mind.
+            </h2>
+            <p className="mt-6 max-w-[60ch] font-sans text-body-lg text-ink-2">
+              Validation, learning, scheduling, policy and the record each do one job, and Kendra
+              composes them into the single runtime your co-workers think in.
+            </p>
+          </Reveal>
+
+          <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {LATTICE.map((cell, i) =>
+              cell === 'core' ? (
+                // the centre of the lattice — the parts compose into one runtime
+                <Reveal key="core" delay={0.07}>
+                  <div className="glass glass-cyan relative flex h-full min-h-[210px] flex-col items-center justify-center overflow-hidden rounded-lg p-7 text-center">
+                    <span
+                      aria-hidden
+                      className="pointer-events-none absolute inset-0"
+                      style={{ background: 'radial-gradient(60% 60% at 50% 50%, rgba(57,214,255,0.16) 0%, rgba(57,214,255,0) 70%)' }}
+                    />
+                    <span className="relative font-serif text-[2rem] leading-none text-ink" aria-hidden>
+                      केंद्र
+                    </span>
+                    <p className="relative mt-4 font-serif text-[1.35rem] leading-none text-ink">Kendra</p>
+                    <p className="relative mt-2.5 font-mono text-[10px] uppercase tracking-[0.2em] text-cyan/80">
+                      One runtime
+                    </p>
+                  </div>
+                </Reveal>
+              ) : (
+                <Reveal key={cell.name} delay={(i % 3) * 0.07}>
+                  <div className="glass lume flex h-full min-h-[210px] flex-col p-7">
+                    <span aria-hidden className="block h-[3px] w-12 rounded-full bg-mint/70" />
+                    <div className="mt-6 flex items-baseline gap-2.5">
+                      <h3 className="font-serif text-[1.3rem] leading-none text-ink">{cell.name}</h3>
+                      <span className="font-mono text-[10.5px] uppercase tracking-[0.14em] text-ink-3">
+                        {cell.role}
+                      </span>
+                    </div>
+                    <p className="mt-3 flex-1 font-sans text-[14px] leading-relaxed text-ink-2">
+                      {cell.body}
+                    </p>
+                  </div>
+                </Reveal>
+              )
+            )}
           </div>
+
+          <Reveal delay={0.12}>
+            <div className="mt-10 flex justify-center">
+              <CTA href="/architecture" variant="secondary">
+                See the full architecture
+              </CTA>
+            </div>
+          </Reveal>
         </Section>
 
         {/* ---- The ledger ---- */}
@@ -192,19 +272,38 @@ export default function KendraPage() {
           </div>
         </Section>
 
-        {/* ---- Impact ---- */}
+        {/* ---- Impact — the punchy payoff: what running on Kendra changes ---- */}
         <Section hairline>
           <Reveal>
-            <GlassCard className="mx-auto max-w-[820px] p-10 text-center md:p-14">
-              <h2 className="font-serif text-display-2 text-ink">
-                Validated as it runs, sharper for having run.
+            <div className="mx-auto max-w-[720px] text-center">
+              <Eyebrow>The impact</Eyebrow>
+              <h2 className="mt-4 font-serif text-display-1 text-ink">
+                The part that lets AI <span className="text-grad">act</span> in a bank.
               </h2>
-              <p className="mx-auto mt-5 max-w-[54ch] font-sans text-body-lg text-ink-2">
-                Kendra is the part that earns the trust: every action accountable before it fires,
-                every outcome compounding into the next, all inside your own perimeter.
+              <p className="mx-auto mt-6 max-w-[52ch] font-sans text-body-lg text-ink-2">
+                Validation, the record and learning are why KrimOS can run the operation,
+                inside your own walls, with your people in command.
               </p>
-            </GlassCard>
+            </div>
           </Reveal>
+
+          <div className="mt-14 grid gap-5 md:grid-cols-3">
+            {IMPACTS.map((im, i) => (
+              <Reveal key={im.grad} delay={(i % 3) * 0.08}>
+                <div className="glass lume relative flex h-full flex-col rounded-lg p-8 md:p-9">
+                  <span aria-hidden className="block h-[3px] w-12 rounded-full bg-mint" />
+                  <h3 className="mt-7 font-serif text-[clamp(1.45rem,2.5vw,1.95rem)] leading-[1.16] text-ink">
+                    {im.lead}
+                    <span className="text-grad">{im.grad}</span>
+                    {im.tail}
+                  </h3>
+                  <p className="mt-4 flex-1 font-sans text-body leading-relaxed text-ink-2">
+                    {im.body}
+                  </p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
         </Section>
       </LayerShell>
     </>

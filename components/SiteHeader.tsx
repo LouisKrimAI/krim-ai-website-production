@@ -33,11 +33,12 @@ const DOMAINS = [
   ['MSME', '/msme'],
 ] as const
 
-// Research — the work under the product, with its two anchors
+// Research — the work under the product, with its anchors
 const RESEARCH = [
   ['Overview', 'The work under the product', '/research'],
   ['Epistemic AI', 'The category we define', '/epistemic-ai'],
   ['World Lending Model', 'The model we build toward', '/research/world-lending-model'],
+  ['Safe Agent Harness', 'The harness that makes agents deployable', '/research/safe-agent-harness'],
 ] as const
 
 const FLAT_RIGHT = [

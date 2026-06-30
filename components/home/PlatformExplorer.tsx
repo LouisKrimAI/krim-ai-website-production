@@ -112,10 +112,10 @@ export default function PlatformExplorer() {
               onMouseEnter={() => setActive(l.key)}
               onFocus={() => setActive(l.key)}
               onClick={() => setActive(l.key)}
-              className="group relative flex-1 overflow-hidden rounded-lg border px-4 py-2 text-left transition-[border-color,background-color,box-shadow] duration-300 flex items-center"
+              className="group relative flex-1 overflow-hidden rounded-lg border px-4 py-2 text-left transition-[border-color,background-color,box-shadow] duration-300 flex items-center backdrop-blur-sm"
               style={{
-                borderColor: isActive ? 'rgba(0,255,178,0.34)' : 'rgba(255,255,255,0.07)',
-                backgroundColor: isActive ? 'rgba(0,255,178,0.04)' : 'rgba(255,255,255,0.01)',
+                borderColor: isActive ? 'rgba(0,255,178,0.34)' : 'rgba(255,255,255,0.11)',
+                backgroundColor: isActive ? 'rgba(0,255,178,0.05)' : 'rgba(255,255,255,0.05)',
                 boxShadow: isActive
                   ? '0 0 0 1px rgba(0,255,178,0.10), 0 10px 36px -20px rgba(0,255,178,0.4)'
                   : 'none',

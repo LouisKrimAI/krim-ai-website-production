@@ -71,47 +71,58 @@ const faqLd = {
   ],
 }
 
-// The eight Kendra runtime modules — one crisp line each (docs/krim-content.md · Inside Kendra).
+// The eight Kendra runtime modules. `role`/`body` is the technical job; `impact` is
+// why that part is useful to the institution. Facts: docs/krim-content.md · Inside Kendra.
+// `impact` stays claim-safe — validation, the record and the learning curve framed as
+// benefits, never a "guarantee" or an absolutist promise.
 const MODULES = [
   {
     name: 'Krim-Core',
     role: 'Orchestration',
-    body: 'Routes each request to the right co-worker; runs sequential, parallel and hierarchical workflows; manages context, retries, fallbacks and human-in-the-loop; emits events.',
+    body: 'Routes each request to the right co-worker and drives the workflow to completion, with retries, fallbacks and human-in-the-loop built in.',
+    impact: 'Work lands with the right co-worker and runs to the end, even when a system drops mid-flow.',
   },
   {
     name: 'Krim-Karya',
     role: 'Scheduler',
-    body: 'Owns when work runs: timed and recurring tasks, deferred actions, retry and back-off timing, and time-window rules such as contact hours and regulatory deadlines, so every action fires only when it is permitted.',
+    body: 'Owns when work runs: timed tasks, deadlines and contact-hour windows, so every action fires only when it’s allowed.',
+    impact: 'Nothing fires outside contact hours or ahead of a deadline, with no one watching the clock.',
   },
   {
     name: 'Krim-Fabric',
     role: 'Knowledge base',
-    body: 'The per-jurisdiction regulatory calendar and rule set, the anonymised cross-tenant pattern library, and each tenant’s own policies and product rules.',
+    body: 'Each market’s rules, your own policies and the shared pattern library, in one place every co-worker reads from.',
+    impact: 'Every co-worker reads one current rulebook, so the floor never acts on a stale copy.',
   },
   {
     name: 'Krim-Govern',
     role: 'Policy engine',
-    body: 'A seven-level policy hierarchy encoding law, regulator guidance, internal rules and operational guardrails, enforced per tenant.',
+    body: 'A seven-level policy hierarchy of law, regulator guidance, house rules and guardrails, enforced per tenant.',
+    impact: 'When a rule changes, every co-worker inherits it at once, with no release cycle in between.',
   },
   {
     name: 'Krim-Nyāya',
     role: 'Validator',
-    body: 'The staged pre-execution pipeline of 33 validators across three Navya-Nyāya families that gates every action before it fires.',
+    body: 'A pre-execution pipeline of 33 validators that gates every action before it fires.',
+    impact: 'An action that can’t clear policy is stopped before it fires, and sent to a person with the rule that caught it.',
   },
   {
     name: 'Krim-Learn',
-    role: 'Learning orchestrator',
-    body: 'Coordinates ten learning loops across the workforce: outcome feedback, error and pattern analysis, temporal and semantic learning.',
+    role: 'Learning',
+    body: 'Ten learning loops that turn recorded outcomes into sharper decisions across the workforce.',
+    impact: 'The operation reads its own outcomes, so by its second year it runs materially sharper than the day it went live.',
   },
   {
     name: 'Krim-Ledger',
     role: 'Metered record',
-    body: 'Logs every action immutably and meters it in Krim Work Units, serving the audit trail and usage-based billing from one source.',
+    body: 'Logs every action immutably and meters it in Krim Work Units, serving audit and billing from one source.',
+    impact: 'Every action is provable from one record, so an inspection answer is assembled in minutes.',
   },
   {
     name: 'Krim-Sense',
     role: 'Telemetry',
-    body: 'Metrics, logs, alerts and dashboards across the stack, feeding Kupa and internal monitoring.',
+    body: 'Metrics, logs and alerts across the stack, feeding Kupa and monitoring.',
+    impact: 'A stall, a spike or a drift surfaces while you can still act on it.',
   },
 ]
 
@@ -197,9 +208,9 @@ export default function ArchitecturePage() {
         {/* ---- 2 · The runtime — the eight Kendra modules ---- */}
         <Section hairline>
           <Reveal>
-            <Eyebrow>Inside the runtime</Eyebrow>
+            <Eyebrow>Module by module</Eyebrow>
             <h2 className="mt-4 max-w-[24ch] font-serif text-display-1 text-ink">
-              The machinery that makes the guarantees hold.
+              The machinery, and why each one earns its place.
             </h2>
             <p className="mt-6 max-w-[62ch] font-sans text-body-lg text-ink-2">
               The runtime layer is named <span className="text-ink">Kendra</span>. It is realised as
@@ -210,13 +221,19 @@ export default function ArchitecturePage() {
           <div className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
             {MODULES.map((m, i) => (
               <Reveal key={m.name} delay={(i % 3) * 0.08}>
-                <div className="glass lume h-full p-7">
+                <div className="glass lume flex h-full flex-col p-7">
                   <span aria-hidden className="block h-[3px] w-12 rounded-full bg-mint/70" />
                   <p className="mt-6 font-mono text-[11px] uppercase tracking-[0.18em] text-ink-3">
                     {m.role}
                   </p>
                   <h3 className="mt-2 font-serif text-[1.4rem] leading-tight text-ink">{m.name}</h3>
-                  <p className="mt-3 font-sans text-body text-ink-2">{m.body}</p>
+                  <p className="mb-6 mt-3 font-sans text-body text-ink-2">{m.body}</p>
+                  <div className="mt-auto border-t border-soft pt-5">
+                    <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-mint/80">
+                      Why it matters
+                    </p>
+                    <p className="mt-2 font-sans text-[14px] leading-relaxed text-ink">{m.impact}</p>
+                  </div>
                 </div>
               </Reveal>
             ))}

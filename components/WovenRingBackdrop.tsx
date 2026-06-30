@@ -1,19 +1,22 @@
 'use client'
 
 /**
- * WovenRingBackdrop — the brand's living ground for the homepage and the general
- * interior pages (everything except the KrimOS /krimos cluster and the Research
- * cluster, which keep their own backdrops).
+ * WovenRingBackdrop — brand living ground for the homepage and general interior
+ * pages (everything except /krimos* and Research routes, which keep their own
+ * backdrops). Canvas piece: cloud → swirl vortex → temari sphere → woven ring.
  *
- * A canvas piece: a volume of light that morphs cloud → swirl → sphere → a woven
- * luminous ring, then breathes on a loop, in the brand teal/aqua palette. Ported
- * from the standalone export into a single client component:
- *   - gated by route (renders nothing on /krimos* and the research routes),
- *   - DPR capped and strand/segment counts reduced on small/touch screens,
- *   - paused while the tab is hidden (saves battery), rAF + listeners cleaned up,
- *   - reduced-motion settles to a single still frame,
- *   - held under a scrim + slight transparency so copy stays legible.
- * Fixed at z-0 behind all content. GPU-friendly 2D canvas.
+ * Ported from Woven Ring.html (v2):
+ *   - 56 strands (28 on small screens), T_END = 15 s
+ *   - new swirl: 3D logarithmic spiral vortex
+ *   - new sphere: equal-area loxodrome (temari weave, no latitude gaps)
+ *   - ringScale: final ring fills ~½ way to screen edges
+ *   - sphereGlow: soft pearl glow during the orb phase
+ *
+ * React wrapper unchanged from v1:
+ *   - route-gated (null on /krimos* + Research routes)
+ *   - isFreshArrival() — morph plays only on fresh homepage load
+ *   - RING_OFFSET — in-site navigation skips to the settled ring instantly
+ *   - DPR capped, small-device strand reduction, tab-pause, reduced-motion still frame
  */
 
 import { useEffect, useRef } from 'react'
@@ -24,7 +27,6 @@ const RESEARCH_ROUTES = new Set(['/research', '/research/world-lending-model', '
 
 export default function WovenRingBackdrop() {
   const pathname = usePathname()
-  // KrimOS + Research own their backdrops; everything else gets the woven ring.
   if (!pathname || pathname.startsWith('/krimos') || RESEARCH_ROUTES.has(pathname)) return null
   return <WovenRingCanvas />
 }
@@ -38,23 +40,18 @@ function WovenRingCanvas() {
     const ctx = canvas.getContext('2d', { alpha: false })
     if (!ctx) return
 
-    const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches
-    // Lighter on phones / touch so it holds frame-rate; richer on desktop.
+    const reduceMotion =
+      window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches
     const small =
       Math.min(window.innerWidth, window.innerHeight) < 720 ||
       (window.matchMedia && window.matchMedia('(pointer: coarse)').matches)
 
-    // The full cloud→swirl→sphere→ring morph plays only on a fresh document load
-    // (cold visit or refresh) AND only when the homepage is the page being loaded.
-    // Every other mount — interior pages, or the homepage reached by in-site
-    // navigation — starts on the settled ring. Shared with the hero (lib/arrival)
-    // so the ring build-up and the hero build-up can never desync.
     const playMorph = isFreshArrival() && window.location.pathname === '/'
 
     // ---------- viewport ----------
     let W = 0, H = 0, DPR = 1, U = 1, sized = false
     function resize() {
-      DPR = Math.min(window.devicePixelRatio || 1, 2)
+      DPR = Math.min(window.devicePixelRatio || 1, 2.25)
       W = window.innerWidth; H = window.innerHeight
       if (W === 0 || H === 0) return false
       canvas!.width = Math.round(W * DPR)
@@ -73,19 +70,21 @@ function WovenRingCanvas() {
     // ---------- math ----------
     const TWO_PI = Math.PI * 2
     function lerp(a: number, b: number, m: number) { return a + (b - a) * m }
-    function mix(c1: number[], c2: number[], m: number) { return [lerp(c1[0], c2[0], m), lerp(c1[1], c2[1], m), lerp(c1[2], c2[2], m)] }
+    function mix(c1: number[], c2: number[], m: number) {
+      return [lerp(c1[0], c2[0], m), lerp(c1[1], c2[1], m), lerp(c1[2], c2[2], m)]
+    }
     function rand(a: number, b: number) { return a + Math.random() * (b - a) }
     function gauss() { return (Math.random() + Math.random() + Math.random() - 1.5) / 1.5 }
-    function clamp01(x: number) { return x < 0 ? 0 : (x > 1 ? 1 : x) }
+    function clamp01(x: number) { return x < 0 ? 0 : x > 1 ? 1 : x }
     function smooth(x: number) { x = clamp01(x); return x * x * x * (x * (x * 6 - 15) + 10) }
     function seg(q: number, a: number, b: number) { return smooth((q - a) / (b - a)) }
 
-    // ---------- palette (luminous teal -> aqua, white-hot cores) ----------
+    // ---------- palette ----------
     const emerald = [16, 255, 168], aqua = [74, 206, 255]
 
     // ---------- timeline + density ----------
-    const T_END = 11.0
-    const N = small ? 24 : 38, SEG = small ? 84 : 120
+    const T_END = 15.0
+    const N = small ? 28 : 56, SEG = small ? 84 : 120
 
     // ---------- strands ----------
     const WINDINGS = [2, 3, 3, 4]
@@ -94,10 +93,11 @@ function WovenRingCanvas() {
       const c0 = (i % 2 === 0 ? i / N : 1 - i / N) * 0.82 + 0.09
       const glints: any[] = []
       const gc = 3 + ((Math.random() * 3) | 0)
-      for (let g = 0; g < gc; g++) glints.push({
-        pos: Math.random(), speed: rand(0.045, 0.10) * (Math.random() < 0.5 ? 1 : -1),
-        len: rand(0.10, 0.22), flarePhase: rand(0, TWO_PI), flareRate: rand(0.4, 0.9),
-      })
+      for (let g = 0; g < gc; g++)
+        glints.push({
+          pos: Math.random(), speed: rand(0.045, 0.10) * (Math.random() < 0.5 ? 1 : -1),
+          len: rand(0.10, 0.22), flarePhase: rand(0, TWO_PI), flareRate: rand(0.4, 0.9),
+        })
       const start: any[] = []
       for (let s = 0; s < SEG; s++) {
         const dir = rand(0, TWO_PI), elev = Math.asin(rand(-1, 1))
@@ -123,7 +123,7 @@ function WovenRingCanvas() {
         fS1: rand(0.5, 1.5), fS2: rand(0.5, 1.5), fS3: rand(0.4, 1.2),
         fD1: Math.random() < 0.5 ? 1 : -1, fD2: Math.random() < 0.5 ? 1 : -1, fD3: Math.random() < 0.5 ? 1 : -1,
         fP1: rand(0, TWO_PI), fP2: rand(0, TWO_PI), fP3: rand(0, TWO_PI),
-        spinTurns: rand(2.0, 3.2), sphWind: 5 + ((Math.random() * 4) | 0), latOff: rand(-0.1, 0.1),
+        sphWobAmp: rand(0.01, 0.022), sphWobPhase: rand(0, TWO_PI), sphWeave: 2 + ((Math.random() * 2) | 0),
         start,
       })
     }
@@ -136,12 +136,15 @@ function WovenRingCanvas() {
 
     // ---------- pointer parallax ----------
     const pointer = { x: 0, y: 0, tx: 0, ty: 0 }
-    function onPointer(e: PointerEvent) { pointer.tx = e.clientX / W - 0.5; pointer.ty = e.clientY / H - 0.5 }
+    function onPointer(e: PointerEvent) {
+      pointer.tx = e.clientX / W - 0.5; pointer.ty = e.clientY / H - 0.5
+    }
     window.addEventListener('pointermove', onPointer)
 
     // ---------- starfield ----------
     const stars: any[] = []
-    for (let st = 0; st < (small ? 70 : 110); st++) stars.push({ x: Math.random(), y: Math.random(), sz: rand(0.4, 1.4), tw: rand(0, TWO_PI), tws: rand(0.4, 1.2) })
+    for (let st = 0; st < (small ? 70 : 110); st++)
+      stars.push({ x: Math.random(), y: Math.random(), sz: rand(0.4, 1.4), tw: rand(0, TWO_PI), tws: rand(0.4, 1.2) })
 
     function drawBackground(time: number, cloudGlow: number, ringPhase: number, cx: number, cy: number) {
       ctx!.fillStyle = '#02060a'; ctx!.fillRect(0, 0, W, H)
@@ -170,18 +173,20 @@ function WovenRingCanvas() {
     function computeFrame(time: number) {
       const cx = W / 2, cy = H / 2
       const R = U * 0.30, r = R * 0.082
+      // scale the final ring so its projected top/bottom sit halfway to the screen edges
+      const ct0 = Math.cos(24 * Math.PI / 180)
+      const vr0 = R * ct0
+      const ringScale = (H / 4 + vr0 / 2) / vr0
       const q = clamp01(time / T_END)
       const done = time >= T_END
 
-      const wSwirl = seg(q, 0.05, 0.30)
-      const wSphere = seg(q, 0.24, 0.54)
-      const wRing = done ? 1 : seg(q, 0.48, 0.96)
+      const wSwirl  = seg(q, 0.06, 0.36)   // spiral fully formed ~5.4 s
+      const wSphere = seg(q, 0.38, 0.62)   // brief fold, sphere complete ~9.3 s
+      const wRing   = done ? 1 : seg(q, 0.66, 1.0)  // long gentle unfurl to ring
 
-      const cloudSpin = time * 0.10
-      const swirlSpin = time * 0.55
-      const ballSpin = time * 0.50
-      const globalRot = time * 0.085
-      const breathe = 1 + 0.022 * Math.sin(time * 0.4)
+      const cloudSpin = time * 0.09
+      const globalRot = time * 0.08
+      const breathe   = 1 + 0.022 * Math.sin(time * 0.4)
 
       pointer.x += (pointer.tx - pointer.x) * 0.04
       pointer.y += (pointer.ty - pointer.y) * 0.04
@@ -198,19 +203,23 @@ function WovenRingCanvas() {
           const tt = s / SEG
           const t = tt * TWO_PI
 
+          // ---- RING (woven luminous torus) ----
           const theta = sd.thetaOff + t + globalRot
           const phi = t * sd.W + sd.arm + poloPh
-          const rr = r * (1 + sd.tubeAmp * Math.sin(t * sd.tubeFreq + sd.tubePhase + time * 0.45) + 0.08 * Math.sin(t * 2 + poloPh + time * 0.3))
+          const rr = r * (1 + sd.tubeAmp * Math.sin(t * sd.tubeFreq + sd.tubePhase + time * 0.45)
+                            + 0.08 * Math.sin(t * 2 + poloPh + time * 0.3))
           const RR = R * breathe * (1 + sd.majAmp * Math.sin(theta * 2 - time * 0.45 + sd.majPhase))
           const ringRr = RR + rr * Math.cos(phi)
-          const rX = ringRr * Math.cos(theta) + R * 0.010 * Math.sin(time * 0.6 + t * 3 + sd.tubePhase)
-          const rY = ringRr * Math.sin(theta) + R * 0.010 * Math.cos(time * 0.55 + t * 3 + sd.majPhase)
-          const rZ = rr * Math.sin(phi)
+          let rX = ringRr * Math.cos(theta) + R * 0.010 * Math.sin(time * 0.6 + t * 3 + sd.tubePhase)
+          let rY = ringRr * Math.sin(theta) + R * 0.010 * Math.cos(time * 0.55 + t * 3 + sd.majPhase)
+          let rZ = rr * Math.sin(phi)
+          rX *= ringScale; rY *= ringScale; rZ *= ringScale
 
           let X, Y, Z
           if (done) {
             X = rX; Y = rY; Z = rZ
           } else {
+            // ---- CLOUD (fragmented drifting volume) ----
             const stp = sd.start[s]
             const dphi = stp.drift + time * 0.4 * stp.driftRate
             const bil = 1 + 0.10 * Math.sin(dphi) + 0.05 * Math.sin(time * 0.27 + stp.tw)
@@ -222,29 +231,35 @@ function WovenRingCanvas() {
             const cY = cRad * Math.sin(el) * 1.05
             const cZ = cRad * cel * Math.sin(az)
 
-            const sAng = sd.arm + tt * sd.spinTurns * TWO_PI + swirlSpin
-            const sRad = R * (1.62 - 1.24 * tt)
-            const sX = sRad * Math.cos(sAng)
-            const sZ = sRad * Math.sin(sAng)
-            const sY = R * 0.52 * (0.5 - tt) + R * 0.10 * Math.sin(sAng * 1.5 + time * 0.6)
+            // ---- SWIRL (logarithmic spiral vortex) ----
+            const swSpin  = time * 0.45
+            const swTurns = 3.3
+            const swAng   = sd.arm + tt * swTurns * TWO_PI + swSpin
+            const swRad   = R * (0.18 + 1.18 * Math.pow(tt, 0.82))
+            const sX = swRad * Math.cos(swAng)
+            const sZ = swRad * Math.sin(swAng)
+            const sY = R * 0.50 * (0.42 - tt) + R * 0.10 * Math.sin(swAng + time * 0.5)
 
-            const ballR = R * 0.46
-            const lat = Math.PI * (tt - 0.5 + sd.latOff)
-            const lon = sd.arm + tt * sd.sphWind * TWO_PI + ballSpin
-            const clat = Math.cos(lat)
-            const bX = ballR * clat * Math.cos(lon)
-            const bY = ballR * Math.sin(lat)
-            const bZ = ballR * clat * Math.sin(lon)
+            // ---- SPHERE (equal-area loxodrome — temari weave, closed caps) ----
+            const ballR = R * 0.52
+            const sn    = clamp01((swRad / R - 0.18) / (1.36 - 0.18))
+            const slat  = Math.asin(1.998 * sn - 0.999)
+            const wob   = 1 + sd.sphWobAmp * Math.sin(sd.sphWeave * t + sd.sphWobPhase + time * 0.30)
+            const sclat = Math.cos(slat)
+            const bX = ballR * wob * sclat * Math.cos(swAng)
+            const bZ = ballR * wob * sclat * Math.sin(swAng)
+            const bY = ballR * wob * Math.sin(slat)
 
             X = cX; Y = cY; Z = cZ
-            X += (sX - X) * wSwirl; Y += (sY - Y) * wSwirl; Z += (sZ - Z) * wSwirl
+            X += (sX - X) * wSwirl;  Y += (sY - Y) * wSwirl;  Z += (sZ - Z) * wSwirl
             X += (bX - X) * wSphere; Y += (bY - Y) * wSphere; Z += (bZ - Z) * wSphere
-            X += (rX - X) * wRing; Y += (rY - Y) * wRing; Z += (rZ - Z) * wRing
+            X += (rX - X) * wRing;   Y += (rY - Y) * wRing;   Z += (rZ - Z) * wRing
           }
 
-          const yt = Y * ct - Z * stt
-          const zt = Y * stt + Z * ct
-          const xt = X * cyw - zt * syw
+          // ---- project (tilt + yaw + parallax) ----
+          const yt  = Y * ct - Z * stt
+          const zt  = Y * stt + Z * ct
+          const xt  = X * cyw - zt * syw
           const zt2 = X * syw + zt * cyw
 
           const p = buf[k++]
@@ -270,20 +285,33 @@ function WovenRingCanvas() {
       ctx!.lineTo(last.x, last.y)
     }
 
-    function rgba(c: number[], a: number) { return 'rgba(' + (c[0] | 0) + ',' + (c[1] | 0) + ',' + (c[2] | 0) + ',' + a.toFixed(3) + ')' }
+    function rgba(c: number[], a: number) {
+      return 'rgba(' + (c[0] | 0) + ',' + (c[1] | 0) + ',' + (c[2] | 0) + ',' + a.toFixed(3) + ')'
+    }
 
     function render(time: number) {
       const q = clamp01(time / T_END)
       const done = time >= T_END
 
-      const cloudGlow = done ? 0 : (1 - seg(q, 0.12, 0.40))
-      const grainVis = done ? 0 : (1 - seg(q, 0.20, 0.42))
-      const lineReveal = done ? 1 : seg(q, 0.18, 0.40)
-      const ringPhase = done ? 1 : seg(q, 0.62, 1.0)
+      const cloudGlow  = done ? 0 : (1 - seg(q, 0.20, 0.46))
+      const grainVis   = done ? 0 : (1 - seg(q, 0.44, 0.66))
+      const lineReveal = done ? 1 : seg(q, 0.40, 0.66)
+      const ringPhase  = done ? 1 : seg(q, 0.66, 1.0)
 
       const geom = computeFrame(time)
       const R = geom.R, cx = geom.cx, cy = geom.cy
       drawBackground(time, cloudGlow, ringPhase, cx, cy)
+
+      // soft pearl glow while the orb is present
+      const sphereGlow = done ? 0 : seg(q, 0.46, 0.62) * (1 - seg(q, 0.64, 0.82))
+      if (sphereGlow > 0.002) {
+        ctx!.save(); ctx!.globalCompositeOperation = 'lighter'
+        const sg = ctx!.createRadialGradient(cx, cy, 0, cx, cy, R * 0.56)
+        sg.addColorStop(0, rgba([28, 200, 178], 0.18 * sphereGlow))
+        sg.addColorStop(0.45, rgba([14, 130, 158], 0.085 * sphereGlow))
+        sg.addColorStop(1, 'rgba(0,0,0,0)')
+        ctx!.fillStyle = sg; ctx!.fillRect(0, 0, W, H); ctx!.restore()
+      }
 
       const zN = R * 1.5
       const breath = 0.88 + 0.12 * Math.sin(time * 0.22)
@@ -294,6 +322,7 @@ function WovenRingCanvas() {
         return (0.4 + 0.6 * (0.6 * w1 + 0.4 * w2)) * breath
       }
 
+      // cloud dots
       if (grainVis > 0.002) {
         ctx!.globalCompositeOperation = 'lighter'
         for (let pi = 0; pi < buf.length; pi++) {
@@ -303,9 +332,9 @@ function WovenRingCanvas() {
           const sz = lerp(0.7, 1.7, dep)
           const tw = 0.7 + 0.3 * Math.sin(time * 1.2 + pp.tw * 6.0)
           const br = grainVis * lerp(0.55, 1.1, dep) * tw
-          ctx!.fillStyle = rgba(col, 0.11 * br)
+          ctx!.fillStyle = rgba(col, 0.085 * br)
           ctx!.beginPath(); ctx!.arc(pp.x, pp.y, 4.2 * sz, 0, TWO_PI); ctx!.fill()
-          ctx!.fillStyle = rgba([Math.min(255, col[0] + 90), Math.min(255, col[1] + 50), Math.min(255, col[2] + 50)], 0.5 * br)
+          ctx!.fillStyle = rgba([Math.min(255, col[0] + 90), Math.min(255, col[1] + 50), Math.min(255, col[2] + 50)], 0.38 * br)
           ctx!.beginPath(); ctx!.arc(pp.x, pp.y, 1.0 * sz, 0, TWO_PI); ctx!.fill()
         }
         ctx!.globalCompositeOperation = 'source-over'
@@ -315,10 +344,10 @@ function WovenRingCanvas() {
         const a = Math.sin(tt * TWO_PI * sd.fF1 - time * sd.fS1 * sd.fD1 + sd.fP1)
         const b = Math.sin(tt * TWO_PI * sd.fF2 - time * sd.fS2 * sd.fD2 + sd.fP2)
         const c = Math.sin(tt * TWO_PI * sd.fF3 - time * sd.fS3 * sd.fD3 + sd.fP3)
-        const v = 0.5 + 0.5 * (0.44 * a + 0.34 * b + 0.22 * c)
-        return clamp01(v)
+        return clamp01(0.5 + 0.5 * (0.44 * a + 0.34 * b + 0.22 * c))
       }
 
+      // strands: soft halo + per-segment body with roaming hot cores
       if (lineReveal > 0.002) {
         order.sort((a, b) => a.z - b.z)
         const formed = 0.45 + 0.55 * ringPhase
@@ -364,8 +393,6 @@ function WovenRingCanvas() {
     // ---------- loop (paused while tab hidden) ----------
     let raf = 0
     let startTime: number | null = null
-    // Non-morph mounts begin the clock past T_END so the first frame is already the
-    // settled, breathing ring — no cloud/swirl/sphere build-up.
     const RING_OFFSET = (T_END + 2) * 1000
     function frame(now: number) {
       if (!sized) { if (!resize()) { raf = requestAnimationFrame(frame); return } startTime = null }
@@ -397,7 +424,7 @@ function WovenRingCanvas() {
   return (
     <div aria-hidden className="pointer-events-none fixed inset-0 z-0 overflow-hidden bg-bg">
       <canvas ref={ref} className="absolute inset-0 h-full w-full" style={{ opacity: 0.6 }} />
-      {/* scrim — keeps the nav, hero copy and footer legible over the ring */}
+      {/* scrim — keeps nav, hero copy and footer legible over the ring */}
       <div
         className="absolute inset-0"
         style={{

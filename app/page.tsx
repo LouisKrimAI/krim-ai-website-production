@@ -12,9 +12,10 @@ import SiteFooter from '@/components/SiteFooter'
 import Reveal from '@/components/Reveal'
 import Image from 'next/image'
 import HomeHero from '@/components/home/HomeHero'
-import PowerCards from '@/components/home/PowerCards'
 import PlatformExplorer from '@/components/home/PlatformExplorer'
+import AgentHarness from '@/components/home/AgentHarness'
 import PolicyChecks from '@/components/home/PolicyChecks'
+import TrustPillars from '@/components/home/TrustPillars'
 import IntegrationsMarquee from '@/components/home/IntegrationsMarquee'
 import Recognition from '@/components/home/Recognition'
 import { Section, Eyebrow, GlassCard, CTA } from '@/components/ui'
@@ -66,33 +67,22 @@ const PROBLEMS = [
   },
 ]
 
-const POWERS = [
-  {
-    name: 'Safer & Auditable',
-    tagline: 'Every action validated before it reaches a borrower.',
-    body: 'Compliance breaches de-risked. Every decision leaves a trail regulators can understand.',
-  },
-  {
-    name: 'Faster & Scalable',
-    tagline: 'Co-workers that do the work, not just advise on it.',
-    body: "Agents execute across the full lending lifecycle, without manual handoffs. As your book grows, the operation keeps pace. The headcount doesn't have to.",
-  },
-  {
-    name: 'Evolving & Predictive',
-    tagline: 'Gets sharper with every decision your operation makes.',
-    body: 'A world model that learns from every action and outcome. The longer it runs, the more precisely it performs.',
-  },
-]
+// Impact for users — the lending operation, stage by stage across the lifecycle.
+// Each card leads with the major impact (bright serif) so the win reads at a glance.
+const LIFECYCLE = [
+  { stage: 'Origination', impact: 'Applications move at digital speed.', body: 'Intake, KYC and document work run on validated co-workers, so underwriters see only the judgment cases, and every step is auditable.' },
+  { stage: 'Credit & risk', impact: 'Every action on the record, credit calls included.', body: 'Model-risk and fair-lending exposure stay contained: the credit decision stays yours, and every action around it is provable to a reviewer.' },
+  { stage: 'Servicing', impact: 'Serve every customer, in their language.', body: 'At scale, inside the rules, without adding headcount to keep up with the book.' },
+  { stage: 'Collections', impact: 'Every contact, validated before it fires.', body: 'Right-party contact at scale, each call cleared against FDCPA, Reg F and TCPA rules before it dials, every step on the record.' },
+  { stage: 'Hardship & retention', impact: 'Restructure and retain, inside the rules.', body: 'Hardship, restructure and cross-sell journeys run as validated actions, on the record for your reviewer.' },
+  { stage: 'Compliance & audit', impact: 'Any action, reconstructed in minutes.', body: 'In plain words a reviewer can read, the audit pack assembled on demand instead of pieced together over weeks.' },
+] as const
 
-// Who actually uses KrimOS — the lending roles, and what changes for each.
-// `hl` = the load-bearing phrase, lit in mint so each card reads at a glance.
-const USERS = [
-  { role: 'Origination', impact: 'Underwriters and analysts onboard in hours, not days. Every decision auditable, applications moving at digital speed.', hl: 'in hours, not days' },
-  { role: 'Risk & Credit', impact: 'Every AI decision is provable and on the record, so model risk and fair-lending exposure stay contained.', hl: 'provable and on the record' },
-  { role: 'Servicing', impact: 'Cure and serve at scale: every contact, in the customer’s own language, inside the rules and without adding headcount.', hl: 'inside the rules' },
-  { role: 'Collections', impact: 'Right-party contact at scale and better recovery: collections flow into the operation as validated actions.', hl: 'validated actions' },
-  { role: 'Compliance & Audit', impact: 'Reconstruct any action, any time, in plain words your examiner can read. Inspections close in hours, not weeks.', hl: 'your examiner can read' },
-  { role: 'Operations', impact: 'The manual backlog from origination to collections runs on validated co-workers. The team scales without the headcount.', hl: 'without the headcount' },
+// And the impact one level up — what it adds up to for the institution.
+const INSTITUTION = [
+  { impact: 'Scale without the headcount.', body: 'The manual backlog from origination to collections runs on validated co-workers.' },
+  { impact: 'Audit evidence in minutes, not weeks.', body: 'One immutable record of every action and its reasoning, the evidence pack assembled on demand, not reconstructed after the fact.' },
+  { impact: 'Intelligence that compounds.', body: 'Every outcome sharpens the operation, measurably better through the first year and beyond, learning from a record no one else has.' },
 ] as const
 
 const DEMO_HREF = '/contact'
@@ -191,7 +181,10 @@ export default function HomePage() {
           </div>
         </Section>
 
-        {/* ---- 4 · The challenge ---- */}
+        {/* ---- 4 · Safe Agent Harness ---- */}
+        <AgentHarness />
+
+        {/* ---- 5 · The challenge ---- */}
         <Section hairline id="challenge">
           <Reveal>
             <Eyebrow tone="gold">The challenge</Eyebrow>
@@ -202,7 +195,6 @@ export default function HomePage() {
             {PROBLEMS.map((p, i) => (
               <Reveal key={p.heading} delay={i * 0.1}>
                 <div className="glass lume h-full p-7 md:p-8">
-                  {/* the cyan "blocked" cue — resolves to mint in the powers below */}
                   <span aria-hidden className="block h-[3px] w-12 rounded-full bg-cyan/70" />
                   <h3 className="mt-6 font-serif text-[1.4rem] leading-tight text-ink">{p.heading}</h3>
                   <p className="mt-3 font-sans text-body text-ink-2">{p.body}</p>
@@ -212,30 +204,19 @@ export default function HomePage() {
           </div>
         </Section>
 
-        {/* ---- 5 · Powers that transform ---- */}
-        <Section hairline id="powers">
-          <Reveal>
-            <Eyebrow>What Krim changes</Eyebrow>
-            <h2 className="mt-4 font-serif text-display-1 text-ink">When validation, execution and intelligence run as one.</h2>
-            <p className="mt-4 max-w-[52ch] font-sans text-body-lg text-ink-2">
-              Lending doesn&rsquo;t improve. It transforms.
-            </p>
-          </Reveal>
-          <div className="mt-12">
-            <PowerCards powers={POWERS} />
-          </div>
-        </Section>
+        {/* ---- 5 · Trust pillars — the safety properties every action carries ---- */}
+        <TrustPillars />
 
-        {/* ---- 6 · Intelligence by policy — what Kendra checks ---- */}
+        {/* ---- 6 · The gate in action — one live example of the validation path ---- */}
         <Section hairline id="intelligence">
           <Reveal>
             <Eyebrow>Intelligence by policy</Eyebrow>
             <h2 className="mt-4 max-w-[20ch] font-serif text-display-1 text-ink">
-              Every action is checked before it happens.
+              One action, meeting the gate.
             </h2>
             <p className="mt-6 max-w-[54ch] font-sans text-body-lg text-ink-2">
-              Before a co-worker acts, Kendra runs it through Krim-Nyāya, a gate of 33 validators in
-              three families: grounding, soundness, permission. Here is one action meeting the gate.
+              Not a diagram. Every action a co-worker takes runs this path before it can fire.
+              Watch one reach the gate, clear its validators, and carry its verdict into the record.
             </p>
           </Reveal>
           <div className="mt-12">
@@ -243,31 +224,56 @@ export default function HomePage() {
           </div>
         </Section>
 
-        {/* ---- 7 · Who uses it — lending roles + the impact on each ---- */}
+        {/* ---- 7 · Impact for users — across the lending lifecycle, then the institution ---- */}
         <Section hairline id="who">
           <Reveal>
-            <Eyebrow>Who uses it</Eyebrow>
+            <Eyebrow>Impact for users</Eyebrow>
             <h2 className="mt-4 max-w-[22ch] font-serif text-display-1 text-ink">
-              Built for the teams who run lending.
+              What changes for every team that runs lending.
             </h2>
+            <p className="mt-6 max-w-[56ch] font-sans text-body-lg text-ink-2">
+              From the first application to the final cure, the lending lifecycle runs on validated
+              co-workers, and the upside lands at every step.
+            </p>
           </Reveal>
-          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {USERS.map(({ role, impact, hl }, i) => {
-              const [before, after] = impact.split(hl)
-              return (
-                <Reveal key={role} delay={i * 0.06}>
-                  <div className="glass-quiet lume h-full rounded-lg p-6">
-                    <h3 className="font-serif text-[1.2rem] leading-tight text-ink">{role}</h3>
-                    <p className="mt-2.5 font-sans text-[14px] leading-relaxed text-ink-2">
-                      {before}
-                      <span className="text-mint">{hl}</span>
-                      {after}
+
+          {/* team by team, across the flow */}
+          <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {LIFECYCLE.map(({ stage, impact, body }, i) => (
+              <Reveal key={stage} delay={(i % 3) * 0.06}>
+                <div className="glass-quiet lume flex h-full flex-col rounded-lg p-6">
+                  <span aria-hidden className="block h-[3px] w-10 rounded-full bg-mint/70" />
+                  <p className="mt-5 font-mono text-[10px] uppercase tracking-[0.18em] text-ink-3">{stage}</p>
+                  <h3 className="mt-2 font-serif text-[1.3rem] leading-[1.16] text-ink">{impact}</h3>
+                  <p className="mt-2.5 font-sans text-[14px] leading-relaxed text-ink-2">{body}</p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+
+          {/* one level up — what it adds up to for the institution */}
+          <Reveal delay={0.1}>
+            <GlassCard className="mt-8 p-8 md:p-10">
+              <p className="text-center font-mono text-[11px] uppercase tracking-[0.2em] text-ink-3">
+                And for the institution
+              </p>
+              <div className="mt-8 grid gap-8 md:grid-cols-3 md:gap-0">
+                {INSTITUTION.map(({ impact, body }, i) => (
+                  <div
+                    key={impact}
+                    className={`text-center md:px-8 ${i > 0 ? 'md:border-l md:border-white/[0.08]' : ''}`}
+                  >
+                    <h3 className="font-serif text-[clamp(1.35rem,2.2vw,1.7rem)] leading-[1.16]">
+                      <span className="text-grad">{impact}</span>
+                    </h3>
+                    <p className="mx-auto mt-3 max-w-[34ch] font-sans text-[14px] leading-relaxed text-ink-2">
+                      {body}
                     </p>
                   </div>
-                </Reveal>
-              )
-            })}
-          </div>
+                ))}
+              </div>
+            </GlassCard>
+          </Reveal>
         </Section>
 
         {/* ---- 8 · Trust strip — fits your stack + recognition (merged: was §8 + §9) ---- */}
@@ -300,10 +306,11 @@ export default function HomePage() {
           <Reveal>
             <div className="mx-auto max-w-[940px] text-center">
               <span aria-hidden className="mx-auto block h-[3px] w-16 rounded-full bg-gradient-to-r from-mint to-cyan" />
-              <h2 className="mt-9 font-serif text-display-hero leading-[1.04] text-ink">
-                Watch your operations come <span className="text-grad">alive</span>.
+              <h2 className="mt-9 font-serif text-display-1 leading-[1.06] text-ink">
+                <span className="block">Watch your operations</span>
+                <span className="block">come <span className="text-grad">alive</span>.</span>
               </h2>
-              <p className="mt-7 font-sans text-[clamp(19px,2.4vw,26px)] leading-snug text-ink-2">
+              <p className="mt-6 font-sans text-[clamp(16px,1.9vw,20px)] leading-snug text-ink-2">
                 Powered by sovereign superintelligence.
               </p>
             </div>

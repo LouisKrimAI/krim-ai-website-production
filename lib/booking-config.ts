@@ -62,9 +62,7 @@ export function nextDripStep(currentStage: number): DripStep | null {
 // to /api/download?token=…&doc=<key>, which logs the download then redirects here.
 // Leave `featured` pointing at a real asset; swap in a gated PDF when ready.
 export const RESOURCES: Record<string, { url: string; title: string }> = {
-  // Day-2 deck. Drop the real file at public/resources/krim-deck.pdf (see that
-  // folder's README). Until it's there the link 404s, so add it before going live.
-  'krim-deck': { url: '/resources/krim-deck.pdf', title: 'the Krim deck' },
+  'krim-deck': { url: '/decks/Krim_Intro.pdf', title: 'the Krim deck' },
   // Day-6 deeper read — an existing page, always live.
   'world-lending-model': {
     url: `${siteUrl()}/research/world-lending-model`,

@@ -44,7 +44,7 @@ const breadcrumbLd = {
   ],
 }
 
-// The three strands of the work — each card sends the reader to the depth they want.
+// The four strands of the work — each card sends the reader to the depth they want.
 const STRANDS = [
   {
     n: '01',
@@ -66,6 +66,13 @@ const STRANDS = [
     body: 'Treating pre-execution validation as its own discipline: proving an action against law, policy, consent and context before it can fire, not explaining it after.',
     link: ['In the runtime → Kendra', '/krimos/kendra'] as const,
     tint: 'mint' as const,
+  },
+  {
+    n: '04',
+    title: 'The safe agent harness',
+    body: 'The operational control layer that wraps every AI co-worker: constrained action space, pre-execution gate, human oversight. The architecture that makes autonomous agents safe to deploy in a regulated bank.',
+    link: ['The harness → Safe Agent Harness', '/research/safe-agent-harness'] as const,
+    tint: 'cyan' as const,
   },
 ]
 
@@ -113,7 +120,7 @@ export default function ResearchPage() {
               where it goes deeper.
             </p>
           </Reveal>
-          <div className="mt-12 grid gap-5 md:grid-cols-3">
+          <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {STRANDS.map((s, i) => (
               <Reveal key={s.n} delay={i * 0.08}>
                 <Link href={s.link[1]} className="group block h-full">

@@ -118,11 +118,11 @@ export function confirmationEmail(lead: DemoLead): BuiltEmail {
     : ''
   const subject = 'Your Krim demo — The OS for safe agentic banking'
   const html = wrap(
-    'Pick a time and we’ll come prepared for your demo.',
+    "Pick a time and we'll come prepared for your demo.",
     [
       H('Thanks for reaching out.'),
       P(`Hi ${name} — Pleased to see your interest in exploring a collaboration ${collab}.`),
-      P(`Pick a time for your demo session, where we’ll showcase how KrimOS can transform your operations and outcomes${focus}.`),
+      P(`Pick a time for your demo session, where we'll showcase how KrimOS can transform your operations and outcomes${focus}.`),
       button(cal, 'Pick a time'),
       P('Prefer email? Just reply — it comes straight to me.'),
       signoff(),
@@ -135,7 +135,7 @@ export function confirmationEmail(lead: DemoLead): BuiltEmail {
   const text = [
     `Hi ${name} — Pleased to see your interest in exploring a collaboration ${lead.organisation ? `between Krim and ${lead.organisation}` : 'with Krim'}.`,
     ``,
-    `Pick a time for your demo session, where we’ll showcase how KrimOS can transform your operations and outcomes${focusText}.`,
+    `Pick a time for your demo session, where we'll showcase how KrimOS can transform your operations and outcomes${focusText}.`,
     ``,
     cal,
     ``,
@@ -151,26 +151,28 @@ export function confirmationEmail(lead: DemoLead): BuiltEmail {
 export function valueNudgeEmail(lead: DemoLead): BuiltEmail {
   const name = firstName(lead)
   const cal = calendlyUrl()
-  const deck = RESOURCES[DECK_RESOURCE_KEY]
   const deckLink = downloadUrl(lead.unsubscribe_token, DECK_RESOURCE_KEY)
-  const focus = lead.automate ? `, with <strong>${esc(lead.automate)}</strong> included` : ''
-  const subject = 'The Krim deck — a closer look'
+  const focusSuffix = lead.automate
+    ? ` We've included how that applies to <strong>${esc(lead.automate)}</strong>.`
+    : ''
+  const subject = 'The Krim deck'
   const html = wrap(
-    'A concise overview, while you consider a demo.',
+    'Five arguments. Short and direct.',
     [
-      H('A closer look at Krim.'),
-      P(`Hi ${name} — While you consider a demo, here’s the Krim deck: a concise overview of how KrimOS validates every AI action against policy before it runs${focus}.`),
+      H('Five arguments.'),
+      P(`Hi ${name} — We distilled how we think about safe AI in banking into five arguments. The deck is short and direct.${focusSuffix}`),
       button(deckLink, 'Download the deck'),
-      P(`Whenever it suits, I’d be glad to walk you through it live — <a href="${cal}" style="color:${MINT_DEEP};font-weight:600;">pick a time →</a>`),
+      P(`If you'd like to talk through any of it live, just <a href="${cal}" style="color:${MINT_DEEP};font-weight:600;">pick a time →</a>`),
       signoff(),
     ].join(''),
     lead.unsubscribe_token,
   )
+  const focusText = lead.automate ? ` We've included how that applies to ${lead.automate}.` : ''
   const text = [
-    `Hi ${name} — While you consider a demo, here’s the Krim deck: a concise overview of how KrimOS validates every AI action against policy before it runs${lead.automate ? `, with ${lead.automate} included` : ''}.`,
+    `Hi ${name} — We distilled how we think about safe AI in banking into five arguments. The deck is short and direct.${focusText}`,
     deckLink,
     ``,
-    `Whenever it suits, I’d be glad to walk you through it live — pick a time: ${cal}`,
+    `If you'd like to talk through any of it live, just pick a time: ${cal}`,
     ``,
     SIGNOFF_TEXT,
     `Unsubscribe: ${unsubscribeUrl(lead.unsubscribe_token)}`,
@@ -189,18 +191,18 @@ export function resourceEmail(lead: DemoLead): BuiltEmail {
     'The clearest account of how we make AI safe enough to act.',
     [
       H('The thinking behind Krim.'),
-      P(`Hi ${name} — No rush on the demo. If you’d like the deeper context, this is the clearest account we’ve written of how we make AI safe enough to act inside a regulated bank:`),
+      P(`Hi ${name} — No rush on the demo. If you'd like the deeper context, this is the clearest account we've written of how we make AI safe enough to act inside a regulated bank:`),
       button(link, `Read: ${esc(res?.title || 'the overview')}`),
-      P(`And whenever it suits, I’d be glad to walk you through it live — <a href="${cal}" style="color:${MINT_DEEP};font-weight:600;">pick a time →</a>`),
+      P(`And whenever it suits, I'd be glad to walk you through it live — <a href="${cal}" style="color:${MINT_DEEP};font-weight:600;">pick a time →</a>`),
       signoff(),
     ].join(''),
     lead.unsubscribe_token,
   )
   const text = [
-    `Hi ${name} — No rush on the demo. If you’d like the deeper context, this is the clearest account we’ve written of how we make AI safe enough to act inside a regulated bank:`,
+    `Hi ${name} — No rush on the demo. If you'd like the deeper context, this is the clearest account we've written of how we make AI safe enough to act inside a regulated bank:`,
     link,
     ``,
-    `And whenever it suits, I’d be glad to walk you through it live — pick a time: ${cal}`,
+    `And whenever it suits, I'd be glad to walk you through it live — pick a time: ${cal}`,
     ``,
     SIGNOFF_TEXT,
     `Unsubscribe: ${unsubscribeUrl(lead.unsubscribe_token)}`,
@@ -214,11 +216,11 @@ export function breakupEmail(lead: DemoLead): BuiltEmail {
   const cal = calendlyUrl()
   const subject = 'Should I close your file?'
   const html = wrap(
-    'Last note — I won’t crowd your inbox further.',
+    "Last note — I won't crowd your inbox further.",
     [
       H('Should I close your file?'),
-      P(`Hi ${name} — I’ve reached out a few times regarding a Krim demo, and I don’t want to crowd your inbox.`),
-      P('If the timing isn’t right, that’s no problem at all — I’ll leave it here, and you’re welcome back any time. Should it still be of interest:'),
+      P(`Hi ${name} — I've reached out a few times regarding a Krim demo, and I don't want to crowd your inbox.`),
+      P("If the timing isn't right, that's no problem at all — I'll leave it here, and you're welcome back any time. Should it still be of interest:"),
       button(cal, 'Book a demo'),
       P('Either way, thank you for your interest in Krim.'),
       signoff(),
@@ -226,9 +228,9 @@ export function breakupEmail(lead: DemoLead): BuiltEmail {
     lead.unsubscribe_token,
   )
   const text = [
-    `Hi ${name} — I’ve reached out a few times regarding a Krim demo, and I don’t want to crowd your inbox.`,
+    `Hi ${name} — I've reached out a few times regarding a Krim demo, and I don't want to crowd your inbox.`,
     ``,
-    `If the timing isn’t right, that’s no problem at all — I’ll leave it here, and you’re welcome back any time. Should it still be of interest:`,
+    `If the timing isn't right, that's no problem at all — I'll leave it here, and you're welcome back any time. Should it still be of interest:`,
     cal,
     ``,
     `Either way, thank you for your interest in Krim.`,
