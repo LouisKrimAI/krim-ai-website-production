@@ -23,11 +23,10 @@ import { useEffect, useRef } from 'react'
 import { usePathname } from 'next/navigation'
 import { isFreshArrival } from '@/lib/arrival'
 
-const RESEARCH_ROUTES = new Set(['/research', '/research/world-lending-model', '/epistemic-ai'])
-
 export default function WovenRingBackdrop() {
   const pathname = usePathname()
-  if (!pathname || pathname.startsWith('/krimos') || RESEARCH_ROUTES.has(pathname)) return null
+  const isResearch = !!pathname && (pathname === '/epistemic-ai' || pathname === '/research' || pathname.startsWith('/research/'))
+  if (!pathname || pathname.startsWith('/krimos') || isResearch) return null
   return <WovenRingCanvas />
 }
 

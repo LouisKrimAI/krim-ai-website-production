@@ -27,6 +27,7 @@ import { markBackdropReady } from '@/lib/backdropReady'
 const RESEARCH_ROUTES = new Set([
   '/research',
   '/research/world-lending-model',
+  '/research/safe-agent-harness',
   '/epistemic-ai',
 ])
 

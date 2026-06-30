@@ -14,6 +14,7 @@ import Image from 'next/image'
 import HomeHero from '@/components/home/HomeHero'
 import PlatformExplorer from '@/components/home/PlatformExplorer'
 import AgentHarness from '@/components/home/AgentHarness'
+import LoanMeridian from '@/components/home/LoanMeridian'
 import PolicyChecks from '@/components/home/PolicyChecks'
 import TrustPillars from '@/components/home/TrustPillars'
 import IntegrationsMarquee from '@/components/home/IntegrationsMarquee'
@@ -54,36 +55,18 @@ const orgLd = {
 
 const PROBLEMS = [
   {
-    heading: 'Hallucinations lead to violations.',
-    body: 'In lending, errors carry real consequences. A wrong call, a misquoted term, a non-compliant contact with no rollback is a costly compliance event waiting to be filed.',
+    heading: 'Hallucinations become violations.',
+    body: 'A wrong call with no rollback is a compliance event waiting to be filed.',
   },
   {
-    heading: "AI makes decisions. But you can't explain them.",
-    body: "Every credit action, every automated contact carries the bank's signature. When an examiner asks to see the reasoning, most AI has no audit trail a human can follow.",
+    heading: "Decisions you can't explain.",
+    body: "Every action carries the bank's signature, and most AI leaves no reasoning an examiner can read.",
   },
   {
-    heading: 'Many point-solutions. No unified intelligence.',
-    body: 'Each tool handles a slice: origination here, collections there, servicing somewhere else. No single system builds understanding from the whole. The intelligence your operation should be generating never forms.',
+    heading: 'Point tools, never a whole.',
+    body: 'Each tool sees one slice, so the intelligence your operation should build never forms.',
   },
 ]
-
-// Impact for users — the lending operation, stage by stage across the lifecycle.
-// Each card leads with the major impact (bright serif) so the win reads at a glance.
-const LIFECYCLE = [
-  { stage: 'Origination', impact: 'Applications move at digital speed.', body: 'Intake, KYC and document work run on validated co-workers, so underwriters see only the judgment cases, and every step is auditable.' },
-  { stage: 'Credit & risk', impact: 'Every action on the record, credit calls included.', body: 'Model-risk and fair-lending exposure stay contained: the credit decision stays yours, and every action around it is provable to a reviewer.' },
-  { stage: 'Servicing', impact: 'Serve every customer, in their language.', body: 'At scale, inside the rules, without adding headcount to keep up with the book.' },
-  { stage: 'Collections', impact: 'Every contact, validated before it fires.', body: 'Right-party contact at scale, each call cleared against FDCPA, Reg F and TCPA rules before it dials, every step on the record.' },
-  { stage: 'Hardship & retention', impact: 'Restructure and retain, inside the rules.', body: 'Hardship, restructure and cross-sell journeys run as validated actions, on the record for your reviewer.' },
-  { stage: 'Compliance & audit', impact: 'Any action, reconstructed in minutes.', body: 'In plain words a reviewer can read, the audit pack assembled on demand instead of pieced together over weeks.' },
-] as const
-
-// And the impact one level up — what it adds up to for the institution.
-const INSTITUTION = [
-  { impact: 'Scale without the headcount.', body: 'The manual backlog from origination to collections runs on validated co-workers.' },
-  { impact: 'Audit evidence in minutes, not weeks.', body: 'One immutable record of every action and its reasoning, the evidence pack assembled on demand, not reconstructed after the fact.' },
-  { impact: 'Intelligence that compounds.', body: 'Every outcome sharpens the operation, measurably better through the first year and beyond, learning from a record no one else has.' },
-] as const
 
 const DEMO_HREF = '/contact'
 
@@ -191,13 +174,13 @@ export default function HomePage() {
             <h2 className="mt-4 font-serif text-display-1 text-ink">What&rsquo;s stopping AI from running banking?</h2>
             <p className="mt-3 font-sans text-body-lg italic text-ink-3">AI in banking: the pilot that never lands.</p>
           </Reveal>
-          <div className="mt-12 grid gap-5 md:grid-cols-3">
+          <div className="mt-14 grid gap-x-10 gap-y-12 md:grid-cols-3">
             {PROBLEMS.map((p, i) => (
               <Reveal key={p.heading} delay={i * 0.1}>
-                <div className="glass lume h-full p-7 md:p-8">
-                  <span aria-hidden className="block h-[3px] w-12 rounded-full bg-cyan/70" />
-                  <h3 className="mt-6 font-serif text-[1.4rem] leading-tight text-ink">{p.heading}</h3>
-                  <p className="mt-3 font-sans text-body text-ink-2">{p.body}</p>
+                <div>
+                  <span aria-hidden className="block h-[3px] w-10 rounded-full bg-amber/70" />
+                  <h3 className="mt-6 font-serif text-[clamp(1.5rem,2.1vw,1.95rem)] leading-[1.12] text-ink">{p.heading}</h3>
+                  <p className="mt-4 max-w-[34ch] font-sans text-body-lg text-ink-2">{p.body}</p>
                 </div>
               </Reveal>
             ))}
@@ -224,57 +207,8 @@ export default function HomePage() {
           </div>
         </Section>
 
-        {/* ---- 7 · Impact for users — across the lending lifecycle, then the institution ---- */}
-        <Section hairline id="who">
-          <Reveal>
-            <Eyebrow>Impact for users</Eyebrow>
-            <h2 className="mt-4 max-w-[22ch] font-serif text-display-1 text-ink">
-              What changes for every team that runs lending.
-            </h2>
-            <p className="mt-6 max-w-[56ch] font-sans text-body-lg text-ink-2">
-              From the first application to the final cure, the lending lifecycle runs on validated
-              co-workers, and the upside lands at every step.
-            </p>
-          </Reveal>
-
-          {/* team by team, across the flow */}
-          <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {LIFECYCLE.map(({ stage, impact, body }, i) => (
-              <Reveal key={stage} delay={(i % 3) * 0.06}>
-                <div className="glass-quiet lume flex h-full flex-col rounded-lg p-6">
-                  <span aria-hidden className="block h-[3px] w-10 rounded-full bg-mint/70" />
-                  <p className="mt-5 font-mono text-[10px] uppercase tracking-[0.18em] text-ink-3">{stage}</p>
-                  <h3 className="mt-2 font-serif text-[1.3rem] leading-[1.16] text-ink">{impact}</h3>
-                  <p className="mt-2.5 font-sans text-[14px] leading-relaxed text-ink-2">{body}</p>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-
-          {/* one level up — what it adds up to for the institution */}
-          <Reveal delay={0.1}>
-            <GlassCard className="mt-8 p-8 md:p-10">
-              <p className="text-center font-mono text-[11px] uppercase tracking-[0.2em] text-ink-3">
-                And for the institution
-              </p>
-              <div className="mt-8 grid gap-8 md:grid-cols-3 md:gap-0">
-                {INSTITUTION.map(({ impact, body }, i) => (
-                  <div
-                    key={impact}
-                    className={`text-center md:px-8 ${i > 0 ? 'md:border-l md:border-white/[0.08]' : ''}`}
-                  >
-                    <h3 className="font-serif text-[clamp(1.35rem,2.2vw,1.7rem)] leading-[1.16]">
-                      <span className="text-grad">{impact}</span>
-                    </h3>
-                    <p className="mx-auto mt-3 max-w-[34ch] font-sans text-[14px] leading-relaxed text-ink-2">
-                      {body}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </GlassCard>
-          </Reveal>
-        </Section>
+        {/* ---- 7 · Impact for your business — the Loan Meridian (operational coverage) ---- */}
+        <LoanMeridian />
 
         {/* ---- 8 · Trust strip — fits your stack + recognition (merged: was §8 + §9) ---- */}
         <Section hairline id="integrations">

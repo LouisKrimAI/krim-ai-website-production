@@ -1,78 +1,52 @@
 'use client'
 
-/**
- * AgentHarness — homepage §4: the safe agent harness.
- * Graphic left (floating via mix-blend-mode: screen), tight copy right.
- */
-
-import Image from 'next/image'
 import Reveal from '@/components/Reveal'
-import { Section, Eyebrow, CTA } from '@/components/ui'
-
-const LAYERS = [
-  { n: '01', name: 'Constrained action space', tint: 'mint' as const },
-  { n: '02', name: 'Pre-execution gate', tint: 'mint' as const },
-  { n: '03', name: 'Human always in command', tint: 'cyan' as const },
-]
+import HarnessVideo from '@/components/HarnessVideo'
+import { Section, Eyebrow, GlassCard, CTA } from '@/components/ui'
 
 export default function AgentHarness() {
   return (
     <Section hairline id="harness">
-      <div className="grid items-center gap-10 md:grid-cols-[1fr_1fr]">
+      <div className="grid items-center gap-12 md:grid-cols-[1fr_1.15fr]">
 
-        {/* left — floating graphic */}
-        <Reveal>
-          <div className="relative mx-auto w-full max-w-[480px]">
-            <Image
-              src="/images/harness/harness-layers.png"
-              alt="Three concentric glass shells — the Safe Agent Harness layers."
-              width={800}
-              height={534}
-              sizes="(max-width: 768px) 88vw, 480px"
-              className="w-full"
-              style={{
-                mixBlendMode: 'screen',
-                filter: 'brightness(1.4) contrast(1.15)',
-                maskImage: 'radial-gradient(ellipse 85% 85% at 50% 50%, black 45%, transparent 100%)',
-                WebkitMaskImage: 'radial-gradient(ellipse 85% 85% at 50% 50%, black 45%, transparent 100%)',
-              }}
-              priority={false}
-            />
-          </div>
+        <Reveal delay={0.15}>
+          <HarnessVideo maxWidth="520px" />
         </Reveal>
 
-        {/* right — tight copy */}
-        <Reveal delay={0.12}>
-          <div>
+        <div>
+          <Reveal>
             <Eyebrow>Safe agent harness</Eyebrow>
-            <h2 className="mt-4 max-w-[20ch] font-serif text-display-1 text-ink">
+            <h2 className="mt-4 max-w-[24ch] font-serif text-display-1 text-ink">
               Agents that act. A harness that decides if they should.
             </h2>
-            <p className="mt-5 max-w-[42ch] font-sans text-body-lg text-ink-2">
-              Every action a co-worker proposes must{' '}
-              <span className="text-mint">clear the gate first.</span>{' '}
-              If it fails, it doesn&rsquo;t happen.
+          </Reveal>
+
+          <Reveal delay={0.12}>
+            <p className="mt-7 max-w-[52ch] font-sans text-body-lg text-ink-2">
+              A bare AI agent operates without boundaries: any tool, any sequence, any
+              parameters. In a regulated bank, that is not a capability. It is liability.
+              On KrimOS, every action a Karta co-worker proposes clears three controls
+              before it fires: a constrained action vocabulary, a 33-validator gate checked
+              against your policy, fair-lending rules and consent records, and{' '}
+              <span className="text-mint">a human command surface</span> your risk and
+              compliance teams own.
             </p>
+          </Reveal>
 
-            {/* three layers — compact list */}
-            <ul className="mt-7 space-y-3">
-              {LAYERS.map((l) => (
-                <li key={l.n} className="flex items-center gap-3">
-                  <span className={`font-mono text-[10px] tracking-[0.15em] ${l.tint === 'mint' ? 'text-mint' : 'text-cyan'}`}>
-                    {l.n}
-                  </span>
-                  <span className="font-sans text-[15px] text-ink-2">{l.name}</span>
-                </li>
-              ))}
-            </ul>
-
-            <div className="mt-9">
+          <Reveal delay={0.2}>
+            <GlassCard className="mt-9 inline-block px-8 py-6">
+              <p className="font-serif text-[clamp(1.3rem,2.2vw,1.7rem)] text-ink">
+                <span className="block">Validated before it acts.</span>
+                <span className="block">Provable on demand.</span>
+              </p>
+            </GlassCard>
+            <div className="mt-8">
               <CTA href="/research/safe-agent-harness" variant="secondary">
-                The research behind it
+                Learn more about the Agent Harness
               </CTA>
             </div>
-          </div>
-        </Reveal>
+          </Reveal>
+        </div>
 
       </div>
     </Section>

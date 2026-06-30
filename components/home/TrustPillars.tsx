@@ -21,97 +21,61 @@ const PILLARS = [
   {
     id: 'explainable',
     label: 'Explainable',
-    hint: 'Every decision, in plain words',
+    hint: 'Ask why, get a reason',
     // mint
     rgb: '0,255,178',
     gradOrb: 'radial-gradient(ellipse at 20% 40%, rgba(0,255,178,0.18) 0%, transparent 60%)',
     headline: 'Every decision, in plain words.',
-    body: 'KrimOS doesn\'t record what happened and leave you to reconstruct why. Every action a co-worker takes is tied to the policy it ran against, the validator that cleared it, and the reasoning that produced it — written in language your operations team and your examiner can follow, without a data scientist in the room. When a regulator asks why a borrower was contacted or a credit decision was made, the answer was recorded as it happened.',
+    body: 'The reasoning is recorded as the action happens, readable without a data scientist in the room.',
     points: [
-      {
-        title: 'The reasoning chain, not just the output',
-        detail: 'Every action records the policy it ran against, the validator that cleared it, and the logic that produced the result.',
-      },
-      {
-        title: 'Readable by compliance — not just engineers',
-        detail: 'Written in plain language, so your examiner can follow the decision trail directly without specialist interpretation.',
-      },
-      {
-        title: 'Inspections answered the same day',
-        detail: 'No reconstruction needed. The evidence exists because the validation exists — built as the work ran.',
-      },
+      { title: 'The reasoning, not just the result.', detail: 'The policy it ran, the validator that cleared it, the logic behind it.' },
+      { title: 'Readable by compliance.', detail: 'Plain language your examiner follows directly.' },
+      { title: 'Inspections answered same-day.', detail: 'The evidence exists because the validation did.' },
     ],
   },
   {
     id: 'auditable',
     label: 'Auditable',
-    hint: 'The proof is built as the work runs',
+    hint: 'Proof by construction',
     // cyan
     rgb: '57,214,255',
     gradOrb: 'radial-gradient(ellipse at 80% 25%, rgba(57,214,255,0.18) 0%, transparent 60%)',
-    headline: 'The proof is built as the work runs.',
-    body: 'Krim-Ledger streams every action, decision, prompt, output and validation to a sealed, append-only, cryptographically verifiable trail the moment it happens — not reconstructed after the fact, not exported from logs. Every entry is timestamped, signed and replayable: what happened, under which rule, and what the verdict was. An audit response that once took three days is answered in minutes.',
+    headline: 'The proof builds as the work runs.',
+    body: 'Every action streams to a sealed, append-only trail the moment it happens.',
     points: [
-      {
-        title: 'Sealed before the next action fires',
-        detail: 'Append-only and cryptographically verifiable. Nothing is assembled after the fact — the record is complete by construction.',
-      },
-      {
-        title: 'Replayable: any decision, any moment',
-        detail: 'Action · rule · verdict. Replay any moment in your operation\'s history deterministically, exactly as it ran.',
-      },
-      {
-        title: 'Court-admissible, generated automatically',
-        detail: 'The record is created by the runtime, not assembled for compliance — which means it cannot be missing or incomplete.',
-      },
+      { title: 'Sealed before the next action.', detail: 'Append-only, verifiable, complete by construction.' },
+      { title: 'Replayable, any moment.', detail: 'Action, rule, verdict, exactly as it ran.' },
+      { title: 'Days to minutes.', detail: 'A three-day audit response, answered in minutes.' },
     ],
   },
   {
     id: 'trustworthy',
     label: 'Trustworthy',
-    hint: 'Validated before it acts',
+    hint: 'Cleared before it fires',
     // gold / amber
     rgb: '246,186,57',
     gradOrb: 'radial-gradient(ellipse at 15% 75%, rgba(246,186,57,0.18) 0%, transparent 60%)',
-    headline: 'Validated before it acts — not audited after.',
-    body: 'Before any co-worker takes an action, it clears Krim-Nyāya: 33 validators across grounding, soundness and permission. The few that don\'t pass are surfaced to a person, with the rule that stopped them in plain words. The system never executes an instruction it hasn\'t cleared — not because of guardrails bolted on later, but because the validation gate is the execution path itself.',
+    headline: 'Validated before it acts.',
+    body: 'Every action clears 33 validators before it can fire.',
     points: [
-      {
-        title: '33 validators, pre-execution',
-        detail: 'Grounding, soundness and permission — every action clears all three validator families before it can fire.',
-      },
-      {
-        title: 'No action without clearance',
-        detail: 'The validation gate is the execution path. There is no route around it — not a shortcut, not a fallback mode.',
-      },
-      {
-        title: 'Edge cases surface to a human',
-        detail: 'The few actions that don\'t clear automatically reach a person, with the rule that stopped them explained in plain words.',
-      },
+      { title: '33 validators, pre-execution.', detail: 'Grounding, soundness and permission, on every action.' },
+      { title: 'No route around the gate.', detail: 'The validation path is the execution path.' },
+      { title: 'Edge cases reach a human.', detail: 'What doesn\'t clear comes to a person, with the rule that stopped it.' },
     ],
   },
   {
     id: 'controllable',
     label: 'Controllable',
-    hint: 'Authority stays with you throughout',
+    hint: 'Stop it in one click',
     // violet / indigo
     rgb: '147,112,255',
     gradOrb: 'radial-gradient(ellipse at 75% 70%, rgba(147,112,255,0.18) 0%, transparent 60%)',
-    headline: 'You remain in control of every call.',
-    body: 'Every co-worker operates within defined authority limits — the decisions it makes alone, the ones it surfaces for sign-off, and the ones it never touches. Kupa gives your teams a live view of every active workflow, and any action can be halted, modified or escalated in real time. Rules can be tightened without restarting the runtime. The controls stay with you as the system grows more capable.',
+    headline: 'You remain in control.',
+    body: 'Every co-worker runs inside authority limits you set.',
     points: [
-      {
-        title: 'Defined authority per co-worker',
-        detail: 'Clear limits on what each agent decides alone, what it escalates, and what it never touches — set and adjustable by you.',
-      },
-      {
-        title: 'Live oversight in Kupa',
-        detail: 'Watch every active workflow in real time. Halt, modify or escalate any action from one command centre.',
-      },
-      {
-        title: 'Rule changes without downtime',
-        detail: 'Tighten or adjust policies without restarting the runtime. Every change validates before it takes effect.',
-      },
+      { title: 'Authority per co-worker.', detail: 'What it decides, escalates, or never touches, set by you.' },
+      { title: 'Live oversight in Kupa.', detail: 'Halt, modify or escalate any action in real time.' },
+      { title: 'Rule changes, no downtime.', detail: 'Tighten policy without restarting the runtime.' },
     ],
   },
 ] as const
@@ -129,10 +93,10 @@ export default function TrustPillars() {
         <div className="mx-auto max-w-[640px] text-center">
           <Eyebrow>You stay in command</Eyebrow>
           <h2 className="mt-4 font-serif text-display-1 text-ink">
-            Every action, auditable and traceable.
+            AI you can put your name to.
           </h2>
           <p className="mx-auto mt-6 max-w-[52ch] font-sans text-body-lg text-ink-2">
-            Validation before action. A runtime you can trust.
+            No black boxes. Pause, override or roll back from one screen.
           </p>
         </div>
       </Reveal>
@@ -184,7 +148,7 @@ export default function TrustPillars() {
                   <p
                     className="mt-5 font-serif leading-none tracking-[-0.01em]"
                     style={{
-                      fontSize: 'clamp(1.35rem,2.2vw,1.7rem)',
+                      fontSize: 'clamp(1.5rem,2.4vw,1.95rem)',
                       color: isActive ? `rgb(${pillar.rgb})` : 'rgba(255,255,255,0.68)',
                       transition: 'color 0.4s ease',
                     }}
@@ -277,32 +241,18 @@ export default function TrustPillars() {
                   </p>
                 </div>
 
-                {/* right — proof points */}
-                <div className="flex flex-col justify-center gap-3">
+                {/* right — punchy proof points, borderless */}
+                <div className="flex flex-col justify-center gap-6">
                   {p.points.map((pt) => (
-                    <div
-                      key={pt.title}
-                      className="rounded-[14px] p-4 md:p-5"
-                      style={{
-                        background: `rgba(${p.rgb},0.07)`,
-                        border: `1px solid rgba(${p.rgb},0.18)`,
-                      }}
-                    >
-                      {/* left accent bar */}
-                      <div className="flex gap-3">
-                        <span
-                          aria-hidden
-                          className="mt-[5px] block h-[calc(100%-5px)] w-[2px] shrink-0 rounded-full opacity-60"
-                          style={{ background: `rgb(${p.rgb})` }}
-                        />
-                        <div>
-                          <p className="font-serif text-[1.0rem] leading-[1.3] text-ink">
-                            {pt.title}
-                          </p>
-                          <p className="mt-1.5 font-sans text-[12.5px] leading-relaxed text-ink-3">
-                            {pt.detail}
-                          </p>
-                        </div>
+                    <div key={pt.title} className="flex gap-3.5">
+                      <span
+                        aria-hidden
+                        className="mt-[7px] block h-3 w-[2px] shrink-0 rounded-full"
+                        style={{ background: `rgb(${p.rgb})` }}
+                      />
+                      <div>
+                        <p className="font-serif text-[1.1rem] leading-snug text-ink">{pt.title}</p>
+                        <p className="mt-1 font-sans text-[13px] leading-relaxed text-ink-3">{pt.detail}</p>
                       </div>
                     </div>
                   ))}
