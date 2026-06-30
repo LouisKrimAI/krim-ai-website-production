@@ -178,23 +178,37 @@ export default function SafeAgentHarnessPage() {
           </div>
         </Section>
 
-        {/* ── 1b · Architecture index ── */}
+        {/* ── 1b · Architecture index — three glass cards ── */}
         <Section>
           <Reveal>
-            <div className="border-t border-white/[0.07] pt-8">
-              <p className="mb-6 font-mono text-[10px] uppercase tracking-[0.22em] text-ink-3">The three controls</p>
-              <div className="divide-y divide-white/[0.05]">
-                {SNAPSHOT.map((s) => (
-                  <div key={s.n} className="grid items-baseline gap-4 py-5 md:grid-cols-[40px_200px_1fr] md:gap-8">
-                    <p className="font-mono text-[11px] text-ink-3">{s.n}</p>
-                    <div>
-                      <p className="font-serif text-[1.05rem] text-ink">{s.name}</p>
-                      <p className={`mt-0.5 font-mono text-[9px] uppercase tracking-[0.18em] ${s.tint === 'mint' ? 'text-mint/55' : 'text-cyan/55'}`}>{s.label}</p>
+            <p className="mb-7 font-mono text-[10px] uppercase tracking-[0.22em] text-ink-3">The three controls</p>
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
+              {SNAPSHOT.map((s) => {
+                const rgb = s.tint === 'mint' ? '0,255,178' : '57,214,255'
+                return (
+                  <div
+                    key={s.n}
+                    className="overflow-hidden rounded-[18px] p-px"
+                    style={{
+                      background: `linear-gradient(145deg, rgba(${rgb},0.40) 0%, rgba(${rgb},0.08) 50%, rgba(255,255,255,0.04) 100%)`,
+                    }}
+                  >
+                    <div
+                      className="h-full rounded-[17px] p-7"
+                      style={{
+                        background: `radial-gradient(ellipse at 20% 0%, rgba(${rgb},0.09) 0%, transparent 60%), rgba(10,11,15,0.88)`,
+                        backdropFilter: 'blur(20px)',
+                        WebkitBackdropFilter: 'blur(20px)',
+                      }}
+                    >
+                      <p className={`font-mono text-[10px] uppercase tracking-[0.22em] ${s.tint === 'mint' ? 'text-mint/55' : 'text-cyan/55'}`}>{s.n}</p>
+                      <p className="mt-5 font-serif text-[1.35rem] leading-tight text-ink">{s.name}</p>
+                      <p className={`mt-1.5 font-mono text-[9px] uppercase tracking-[0.18em] ${s.tint === 'mint' ? 'text-mint/50' : 'text-cyan/50'}`}>{s.label}</p>
+                      <p className="mt-5 border-t border-white/[0.06] pt-5 font-sans text-[13px] leading-relaxed text-ink-2">{s.fact}</p>
                     </div>
-                    <p className="font-sans text-[14px] leading-relaxed text-ink-2">{s.fact}</p>
                   </div>
-                ))}
-              </div>
+                )
+              })}
             </div>
           </Reveal>
         </Section>
@@ -245,13 +259,13 @@ export default function SafeAgentHarnessPage() {
         {/* ── Pull quote transition ── */}
         <Section>
           <Reveal>
-            <figure className="mx-auto max-w-[22ch] text-center">
+            <figure className="mx-auto max-w-[46ch] text-center">
               <span aria-hidden className="mx-auto mb-8 block h-[2px] w-10 rounded-full bg-gold/50" />
               <p
                 className="font-serif leading-[1.2] text-ink"
                 style={{ fontSize: 'clamp(1.5rem,2.8vw,2.2rem)' }}
               >
-                An agent without a harness is a compliance exam already in progress.
+                An agent without a harness is a liability.
               </p>
             </figure>
           </Reveal>
@@ -287,6 +301,7 @@ export default function SafeAgentHarnessPage() {
                   alt="An AI agent sends action proposals through a luminous validation gate panel — compliant actions pass, non-compliant are blocked."
                   width={2048}
                   height={2048}
+                  priority
                   sizes="(max-width: 768px) 88vw, 460px"
                   className="relative w-full"
                   style={{
@@ -321,14 +336,21 @@ export default function SafeAgentHarnessPage() {
               )
 
               const contentEl = (
-                <div className="py-2">
+                <div
+                  className="rounded-xl border border-white/[0.07] p-7 md:p-9"
+                  style={{
+                    background: `radial-gradient(ellipse at 10% 0%, rgba(${rgb},0.07) 0%, transparent 55%), rgba(10,11,15,0.78)`,
+                    backdropFilter: 'blur(18px)',
+                    WebkitBackdropFilter: 'blur(18px)',
+                  }}
+                >
                   {/* Identity */}
                   <div className="flex items-baseline gap-3">
-                    <p className={`font-serif text-[1.1rem] leading-tight text-ink`}>{l.name}</p>
+                    <p className="font-serif text-[1.1rem] leading-tight text-ink">{l.name}</p>
                     <p className={`font-mono text-[10px] uppercase tracking-[0.18em] ${l.tint === 'mint' ? 'text-mint/60' : 'text-cyan/60'}`}>{l.label}</p>
                   </div>
 
-                  {/* Verdict — the large serif scan hook */}
+                  {/* Verdict */}
                   <p
                     className={`mt-5 border-l-[3px] pl-6 font-serif leading-[1.15] text-ink ${l.tint === 'mint' ? 'border-mint/35' : 'border-cyan/35'}`}
                     style={{ fontSize: 'clamp(1.35rem,2.2vw,1.85rem)' }}
@@ -437,23 +459,23 @@ export default function SafeAgentHarnessPage() {
             </h2>
             <p className="mt-6 max-w-[56ch] font-sans text-body-lg text-ink-2">
               No single rule names one by name. But SR 11-7, ECOA, FCA Consumer Duty,
-              FDCPA, and RBI FREE-AI collectively demand{' '}
-              <span className="text-ink">ex-ante control</span>,{' '}
-              <span className="text-ink">per-decision explainability</span>, and{' '}
-              <span className="text-mint">human oversight</span>.{' '}
-              <Link
-                href="/insights/audit-after-the-fact-is-a-confession"
-                className="text-mint/70 underline underline-offset-2 transition-colors hover:text-mint"
-              >
-                Pre-execution validation is the discipline that answers this
-              </Link>
-              {' '}— audit after the fact only confesses to the harm.
+              FDCPA, and RBI FREE-AI collectively demand ex-ante control, per-decision
+              explainability, and human oversight. Pre-execution validation is the
+              discipline that answers all three. Audit after the fact only confesses to
+              the harm.
             </p>
           </Reveal>
 
           {/* Ledger table */}
           <Reveal delay={0.1}>
-            <div className="mt-12 overflow-hidden rounded-xl border border-white/[0.08]">
+            <div
+              className="mt-12 overflow-hidden rounded-xl border border-white/[0.08]"
+              style={{
+                background: 'rgba(10,11,15,0.80)',
+                backdropFilter: 'blur(20px)',
+                WebkitBackdropFilter: 'blur(20px)',
+              }}
+            >
               <div className="hidden grid-cols-[180px_60px_1fr] gap-x-8 border-b border-white/[0.06] px-7 py-4 md:grid">
                 <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-ink-3">Regulation</p>
                 <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-ink-3">Jur.</p>

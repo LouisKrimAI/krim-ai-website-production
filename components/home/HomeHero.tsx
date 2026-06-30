@@ -101,8 +101,8 @@ export default function HomeHero() {
               {...f(12, 1.3)}
             >
               <CTA href={DEMO_HREF}>Book a demo</CTA>
-              <CTA href="#platform" variant="secondary">
-                See how it works
+              <CTA href="/krimos" variant="secondary">
+                Explore KrimOS
               </CTA>
             </motion.div>
 
