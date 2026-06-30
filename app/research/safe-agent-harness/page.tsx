@@ -48,9 +48,9 @@ type Tint = 'mint' | 'cyan'
 // ── Data ─────────────────────────────────────────────────────────────────────
 
 const SNAPSHOT = [
-  { n: '01', name: 'Constrained action space', label: 'Kriya',       tint: 'mint' as Tint, stat: '500+',    statLabel: 'validated primitives'    },
-  { n: '02', name: 'Pre-execution gate',        label: 'Krim-Nyāya', tint: 'mint' as Tint, stat: '33',      statLabel: 'pre-execution validators' },
-  { n: '03', name: 'Human in command',          label: 'Kupa',       tint: 'cyan' as Tint, stat: 'Always', statLabel: 'in command'              },
+  { n: '01', name: 'Constrained vocabulary', label: 'Kriya',       tint: 'mint' as Tint, fact: '500+ credit-native primitives across 20+ domains'            },
+  { n: '02', name: 'Pre-execution gate',     label: 'Krim-Nyāya', tint: 'mint' as Tint, fact: '33 validators clear every action before it fires'            },
+  { n: '03', name: 'Human command surface',  label: 'Kupa',        tint: 'cyan' as Tint, fact: 'One screen to view, pause, or override any in-flight action' },
 ]
 
 const LAYERS = [
@@ -100,7 +100,7 @@ const FAILURES = [
   {
     title: 'Emergent strategy harm',
     consequence: 'Fair-lending finding',
-    body: 'A collections agent optimises for fastest cure rate. Over six months it under-contacts borrowers in minority neighbourhoods. Every individual action is compliant; the population-level pattern is not. The per-action gate catches individual violations. Emergent harm lives at the population level. That is what Kupa\'s live workforce view is for.',
+    body: 'A collections agent optimises for fastest cure rate. Over six months it under-contacts borrowers in minority neighbourhoods. Every individual action is compliant; the population-level pattern is not. That is what Kupa\'s workforce view catches.',
   },
 ]
 
@@ -133,10 +133,16 @@ const REGS = [
 ]
 
 const ARTICLES = [
-  { slug: 'the-cost-of-being-wrong',              title: 'The cost of being wrong',              category: 'Risk',         tint: 'gold' as const },
-  { slug: 'the-automation-gap',                   title: 'The automation gap',                   category: 'Problem',      tint: 'gold' as const },
-  { slug: 'audit-after-the-fact-is-a-confession', title: 'Audit after the fact is a confession', category: 'Method',       tint: 'mint' as const },
-  { slug: 'sovereignty-is-not-optional',          title: 'Sovereignty is not optional',          category: 'Architecture', tint: 'cyan' as const },
+  {
+    slug: 'the-cost-of-being-wrong',
+    title: 'The cost of being wrong',
+    sub: 'Why statutory exposure at portfolio scale compounds rather than caps.',
+  },
+  {
+    slug: 'audit-after-the-fact-is-a-confession',
+    title: 'Audit after the fact is a confession',
+    sub: 'A record written after the harm is evidence for the regulator, not for you.',
+  },
 ]
 
 // ── Page ──────────────────────────────────────────────────────────────────────
@@ -172,24 +178,23 @@ export default function SafeAgentHarnessPage() {
           </div>
         </Section>
 
-        {/* ── 1b · Stat strip — raw oversized numbers, no glass box ── */}
+        {/* ── 1b · Architecture index ── */}
         <Section>
           <Reveal>
-            <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-ink-3">The harness, at a glance</p>
-            <div className="mt-8 grid grid-cols-1 gap-10 border-t border-white/[0.07] pt-10 md:grid-cols-3">
-              {SNAPSHOT.map((s) => (
-                <div key={s.n} className="md:border-l md:border-white/[0.06] md:pl-10 first:border-none first:pl-0">
-                  <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-ink-3">{s.n}</p>
-                  <p
-                    className={`mt-3 font-mono font-light leading-[0.88] ${s.tint === 'mint' ? 'text-mint' : 'text-cyan'}`}
-                    style={{ fontSize: 'clamp(3.8rem,7.5vw,6.5rem)' }}
-                  >
-                    {s.stat}
-                  </p>
-                  <p className="mt-3 font-sans text-[15px] leading-snug text-ink">{s.name}</p>
-                  <p className="mt-1 font-mono text-[10px] uppercase tracking-[0.14em] text-ink-3">{s.statLabel} · {s.label}</p>
-                </div>
-              ))}
+            <div className="border-t border-white/[0.07] pt-8">
+              <p className="mb-6 font-mono text-[10px] uppercase tracking-[0.22em] text-ink-3">The three controls</p>
+              <div className="divide-y divide-white/[0.05]">
+                {SNAPSHOT.map((s) => (
+                  <div key={s.n} className="grid items-baseline gap-4 py-5 md:grid-cols-[40px_200px_1fr] md:gap-8">
+                    <p className="font-mono text-[11px] text-ink-3">{s.n}</p>
+                    <div>
+                      <p className="font-serif text-[1.05rem] text-ink">{s.name}</p>
+                      <p className={`mt-0.5 font-mono text-[9px] uppercase tracking-[0.18em] ${s.tint === 'mint' ? 'text-mint/55' : 'text-cyan/55'}`}>{s.label}</p>
+                    </div>
+                    <p className="font-sans text-[14px] leading-relaxed text-ink-2">{s.fact}</p>
+                  </div>
+                ))}
+              </div>
             </div>
           </Reveal>
         </Section>
@@ -202,18 +207,11 @@ export default function SafeAgentHarnessPage() {
               A bare agent in a regulated bank is a liability before it is a feature.
             </h2>
             <p className="mt-7 max-w-[58ch] font-sans text-body-lg text-ink-2">
-              A raw model with a toolkit can message a borrower outside{' '}
-              <span className="text-ink">FDCPA</span> hours, disclose a balance to the
-              wrong party, or decline an applicant with no legible reason. None of this
-              needs intent — it only needs the wrong action to be{' '}
-              <span className="text-mint">structurally possible</span>.{' '}
-              <Link
-                href="/insights/the-cost-of-being-wrong"
-                className="text-mint/70 underline underline-offset-2 transition-colors hover:text-mint"
-              >
-                Statutory exposure scales with volume
-              </Link>{' '}
-              and compounds rather than caps.
+              A raw model with a toolkit can message a borrower outside FDCPA hours,
+              disclose a balance to the wrong party, or decline an applicant with no
+              legible reason. None of this needs intent. It only needs the wrong action
+              to be structurally possible. Statutory exposure scales with volume and
+              compounds rather than caps.
             </p>
           </Reveal>
 
@@ -253,15 +251,7 @@ export default function SafeAgentHarnessPage() {
                 className="font-serif leading-[1.2] text-ink"
                 style={{ fontSize: 'clamp(1.5rem,2.8vw,2.2rem)' }}
               >
-                The pattern repeats wherever the{' '}
-                <Link
-                  href="/insights/the-automation-gap"
-                  className="text-mint/80 underline-offset-2 transition-colors hover:text-mint"
-                >
-                  compliance ceiling
-                </Link>{' '}
-                meets{' '}
-                <span className="text-mint">unconstrained automation</span>.
+                An agent without a harness is a compliance exam already in progress.
               </p>
             </figure>
           </Reveal>
@@ -278,18 +268,10 @@ export default function SafeAgentHarnessPage() {
                   Three controls. Remove one and the architecture fails.
                 </h2>
                 <p className="mt-6 max-w-[50ch] font-sans text-body-lg text-ink-2">
-                  A constrained action vocabulary, a pre-execution gate, and a human command
-                  surface that{' '}
-                  <span className="text-ink">compose</span>:{' '}
-                  <span className="text-mint">remove any one and the others break.</span>{' '}
-                  The harness runs inside the institution's own perimeter — which is what lets
-                  a regulated bank{' '}
-                  <Link
-                    href="/insights/sovereignty-is-not-optional"
-                    className="text-mint/70 underline underline-offset-2 transition-colors hover:text-mint"
-                  >
-                    run it at all
-                  </Link>.
+                  Three controls that only work as one. A constrained vocabulary limits
+                  what the agent can propose. The validation gate clears it before it
+                  fires. The command surface keeps authority with your risk team.
+                  Remove any one and the others break.
                 </p>
               </div>
             </Reveal>
@@ -402,7 +384,7 @@ export default function SafeAgentHarnessPage() {
                 <span className="text-mint">The harness controls whether it can act.</span>
               </h2>
               <p className="mt-8 max-w-[32ch] font-serif italic text-[1.15rem] leading-relaxed text-mint/80">
-                "Less likely" is not "impossible." A harness is what closes that gap.
+                Better is not the same as safe.
               </p>
             </div>
           </Reveal>
@@ -410,26 +392,22 @@ export default function SafeAgentHarnessPage() {
 
         {/* ── 4b · The distinction — explanatory ── */}
         <Section hairline>
-          <div className="grid items-center gap-12 md:grid-cols-[1.1fr_0.9fr]">
+          <Reveal>
+            <Eyebrow>The distinction</Eyebrow>
+            <h2 className="mt-4 max-w-[24ch] font-serif text-display-1 text-ink">
+              What a better model does not fix.
+            </h2>
+          </Reveal>
+          <div className="mt-12 grid items-center gap-12 md:grid-cols-[1.1fr_0.9fr]">
             <Reveal>
               <div>
                 <p className="max-w-[50ch] font-sans text-body-lg text-ink-2">
-                  Constitutional AI, RLHF, and instruction-following make a model{' '}
-                  <span className="text-ink">less likely</span> to propose a harmful action.
-                  But "less likely" is not{' '}
-                  <span className="text-mint">"structurally impossible."</span>{' '}
-                  A harness operates at a different layer. It does not depend on the model
-                  making the right choice; it enforces that{' '}
-                  <span className="text-ink">no non-compliant action can execute</span>{' '}
-                  on the Krim action path. That is also
-                  why a record written before the action, rather than{' '}
-                  <Link
-                    href="/insights/audit-after-the-fact-is-a-confession"
-                    className="text-mint/70 underline underline-offset-2 transition-colors hover:text-mint"
-                  >
-                    reconstructed after it
-                  </Link>
-                  , is the one a regulator can trust.
+                  Constitutional AI, RLHF, and instruction-following make a model less
+                  likely to propose a harmful action. A harness operates at a different
+                  layer entirely. It does not depend on the model making the right choice;
+                  it enforces that no non-compliant action can execute on the Krim action
+                  path. That is also why a record written before the action, rather than
+                  reconstructed after it, is the one a regulator can trust.
                 </p>
                 <GlassCard accent className="mt-8 p-7">
                   <p className="font-serif text-[clamp(1.1rem,1.8vw,1.35rem)] leading-snug text-ink">
@@ -505,26 +483,17 @@ export default function SafeAgentHarnessPage() {
           </Reveal>
         </Section>
 
-        {/* ── 6 · From the research ── */}
+        {/* ── 6 · Further reading ── */}
         <Section hairline>
           <Reveal>
-            <Eyebrow>From the research</Eyebrow>
-            <h2 className="mt-4 font-serif text-display-3 text-ink">Why the harness. In long form.</h2>
+            <Eyebrow>Further reading</Eyebrow>
           </Reveal>
-          <div className="mt-10 grid gap-4 sm:grid-cols-2">
+          <div className="mt-8 divide-y divide-white/[0.06]">
             {ARTICLES.map((a, i) => (
               <Reveal key={a.slug} delay={i * 0.07}>
-                <Link href={`/insights/${a.slug}`} className="group block h-full">
-                  <div className="glass lume h-full rounded-xl p-7 transition-all duration-fast group-hover:-translate-y-0.5">
-                    <p className={`font-mono text-[10px] uppercase tracking-[0.18em] ${
-                      a.tint === 'mint' ? 'text-mint' : a.tint === 'cyan' ? 'text-cyan' : 'text-gold'
-                    }`}>{a.category}</p>
-                    <h3 className="mt-3 font-serif text-[1.15rem] leading-tight text-ink">{a.title}</h3>
-                    <p className="mt-5 flex items-center gap-1.5 font-mono text-[11px] uppercase tracking-[0.14em] text-ink-3 transition-colors duration-fast group-hover:text-mint">
-                      Read
-                      <span aria-hidden className="transition-transform duration-fast group-hover:translate-x-1">→</span>
-                    </p>
-                  </div>
+                <Link href={`/insights/${a.slug}`} className="group block py-6 transition-colors hover:opacity-80">
+                  <h3 className="font-serif text-[1.2rem] leading-snug text-ink">{a.title}</h3>
+                  <p className="mt-2 font-sans text-[13px] leading-relaxed text-ink-3">{a.sub}</p>
                 </Link>
               </Reveal>
             ))}
@@ -534,21 +503,12 @@ export default function SafeAgentHarnessPage() {
         {/* ── 7 · Close ── */}
         <Section hairline>
           <Reveal>
-            <div className="glass mx-auto max-w-[720px] p-10 text-center md:p-14">
-              <span aria-hidden className="mx-auto block h-[2px] w-12 rounded-full bg-gradient-to-r from-mint to-cyan" />
-              <h2 className="mt-8 font-serif text-display-3 leading-tight text-ink">
+            <div className="glass mx-auto max-w-[680px] p-10 text-center md:p-12">
+              <span aria-hidden className="mx-auto block h-[2px] w-10 rounded-full bg-gradient-to-r from-mint to-cyan" />
+              <h2 className="mt-7 font-serif text-display-3 leading-tight text-ink">
                 See the harness run on your data.
               </h2>
-              <p className="mt-3 font-serif text-[1.05rem] italic text-mint/90">
-                A 30-day proof-of-value on your collections book.
-              </p>
-              <p className="mx-auto mt-4 max-w-[44ch] font-sans text-body text-ink-2">
-                What the gate blocks, why it blocks it, and what the audit trail looks like
-                under examiner scrutiny. And the foundation it lays for the{' '}
-                <span className="text-mint">World Lending Model</span> — a lending intelligence
-                that sharpens as the operation runs, and the precondition for a safe AI underwriter.
-              </p>
-              <div className="mt-9 flex flex-wrap justify-center gap-5">
+              <div className="mt-8 flex flex-wrap justify-center gap-5">
                 <CTA href={DEMO_HREF}>Book a demo</CTA>
                 <CTA href="/research/world-lending-model" variant="secondary">
                   See the World Lending Model
