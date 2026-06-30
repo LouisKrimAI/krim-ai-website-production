@@ -111,7 +111,7 @@ export default function TrustPillars() {
                 key={pillar.id}
                 type="button"
                 onClick={() => setActive(i as Idx)}
-                className="group relative overflow-hidden rounded-[20px] p-px text-left outline-none focus-visible:ring-2 focus-visible:ring-white/20"
+                className="group relative h-full w-full overflow-hidden rounded-[20px] p-px text-left outline-none focus-visible:ring-2 focus-visible:ring-white/20"
                 style={{
                   background: isActive
                     ? `linear-gradient(145deg, rgba(${pillar.rgb},0.65) 0%, rgba(${pillar.rgb},0.18) 55%, rgba(255,255,255,0.07) 100%)`

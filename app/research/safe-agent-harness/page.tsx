@@ -1,13 +1,12 @@
 /**
  * /research/safe-agent-harness
  *
- * Redesigned for scannability and depth:
- * — snapshot strip (3-col "at a glance" below hero)
- * — gold consequence tags on failure cards
- * — 4-zone control cards: identity → verdict → proof bullets → insight
- * — inline article links woven into copy
- * — "what this means" scan line on each regulatory card
- * — "From the research" door strip before close
+ * Editorial research report layout:
+ * — raw oversized stat strip (no glass box)
+ * — consequence-led failure descent (gold label first, staggered)
+ * — vertical control journey (giant outlined numerals, alternating)
+ * — full-viewport distinction moment (one sentence, silence)
+ * — regulatory ledger table (not card grid)
  */
 
 import type { Metadata } from 'next'
@@ -22,12 +21,12 @@ import { Section, Eyebrow, GlassCard, CTA } from '@/components/ui'
 export const metadata: Metadata = {
   title: 'Safe Agent Harness · Krim Research',
   description:
-    'A safe agent harness is the operational control layer that wraps an autonomous AI agent with three integrated controls: a constrained action vocabulary, a pre-execution validation gate, and a human command surface. The architecture the combined regulatory regime most cleanly rewards for deploying AI in a regulated bank.',
+    'A safe agent harness is the operational control layer that wraps an autonomous AI agent with three integrated controls: a constrained action vocabulary, a pre-execution validation gate, and a human command surface. This is the architecture the combined regulatory regime most cleanly rewards for deploying AI in a regulated bank.',
   alternates: { canonical: 'https://krim.ai/research/safe-agent-harness' },
   openGraph: {
     title: 'Safe Agent Harness · Krim Research',
     description:
-      'The operational control layer that wraps AI agents — constraining what they can do, gating what they propose, and keeping a human in command. The precondition for deploying AI inside a regulated bank.',
+      'The operational control layer that wraps AI agents — constraining what they can do, gating what they propose, and keeping a human in command.',
     url: 'https://krim.ai/research/safe-agent-harness',
   },
 }
@@ -49,9 +48,9 @@ type Tint = 'mint' | 'cyan'
 // ── Data ─────────────────────────────────────────────────────────────────────
 
 const SNAPSHOT = [
-  { n: '01', name: 'Constrained action space', label: 'Kriya',      tint: 'mint' as Tint, stat: '500+',    statLabel: 'validated primitives'    },
+  { n: '01', name: 'Constrained action space', label: 'Kriya',       tint: 'mint' as Tint, stat: '500+',    statLabel: 'validated primitives'    },
   { n: '02', name: 'Pre-execution gate',        label: 'Krim-Nyāya', tint: 'mint' as Tint, stat: '33',      statLabel: 'pre-execution validators' },
-  { n: '03', name: 'Human in command',          label: 'Kupa',       tint: 'cyan' as Tint, stat: '1-click', statLabel: 'agent pause'              },
+  { n: '03', name: 'Human in command',          label: 'Kupa',       tint: 'cyan' as Tint, stat: 'Always', statLabel: 'in command'              },
 ]
 
 const LAYERS = [
@@ -60,7 +59,7 @@ const LAYERS = [
     verdict: 'If it is not in the vocabulary, it cannot fire.',
     points: [
       '500+ credit-native primitives across 20+ domains.',
-      'Each primitive is the smallest validatable unit: bureau pulls, Reg-B notices, FDCPA-safe collections calls.',
+      'Each primitive is the smallest validatable unit: bureau pulls, Reg-B adverse-action notices, collections calls checked against FDCPA.',
       'No path exists for an action outside the vocabulary.',
     ],
     insight: 'The vocabulary is the boundary, and the boundary is what makes the capability provable.',
@@ -69,11 +68,11 @@ const LAYERS = [
     n: '02', name: 'Pre-execution gate', label: 'Krim-Nyāya', tint: 'mint' as Tint,
     verdict: 'Every action clears the gate before it executes, or it does not execute.',
     points: [
-      '33 validators gate every action before it fires: policy compliance, consent, regulatory context, and data quality.',
+      '33 validators clear every action before it fires: policy compliance, consent, regulatory context, and data quality. Fast-path checks run inline; signals requiring external verification are pre-fetched before the action is enqueued.',
       'A violated rule blocks outright — not retried, not warned through.',
       'Uncertainty escalates to a human with the rule and reason in plain language.',
     ],
-    insight: 'Built on Navya-Nyāya predicate logic: the wrong choice cannot execute, whatever the model proposes.',
+    insight: 'Built on Navya-Nyāya predicate logic. Whatever the model proposes, no non-compliant action can execute on the Krim action path. The gate handles individual legality — Kupa\'s workforce view handles the population-level picture.',
   },
   {
     n: '03', name: 'Human always in command', label: 'Kupa', tint: 'cyan' as Tint,
@@ -119,7 +118,7 @@ const REGS = [
   {
     reg: 'FDCPA / TCPA', region: 'US',
     meaning: 'Contact rules must be checked before the call, not after.',
-    point: 'Contact hours, consent status, and DNC compliance must be confirmed before the call is placed. Pre-execution is the architecture that enforces this by design at scale, not as an after-the-fact check.',
+    point: 'Contact hours, consent status, and DNC compliance must be confirmed before the call is placed. Pre-execution is the architecture best aligned with this requirement — the check happens before the call, not as an after-the-fact audit.',
   },
   {
     reg: 'FCA Consumer Duty', region: 'UK',
@@ -149,7 +148,7 @@ export default function SafeAgentHarnessPage() {
       <SiteHeader />
       <main className="relative z-10">
 
-        {/* ---- 1 · Hero ---- */}
+        {/* ── 1 · Hero ── */}
         <Section className="!pt-24">
           <div className="mx-auto max-w-[820px] text-center">
             <Reveal>
@@ -160,102 +159,123 @@ export default function SafeAgentHarnessPage() {
             </Reveal>
             <Reveal delay={0.12}>
               <p className="mx-auto mt-7 max-w-[48ch] font-sans text-body-lg text-ink-2">
-                The control layer that wraps every AI agent: constraining what it can do,
-                validating every action before it fires, keeping{' '}
-                <span className="text-mint">a human in command</span>.
+                Constrains what agents can do, gates every action before it fires, and keeps{' '}
+                <span className="text-mint">your risk team in command</span>.
               </p>
             </Reveal>
             <Reveal delay={0.2}>
               <div className="mt-10 flex flex-wrap items-center justify-center gap-5">
                 <CTA href={DEMO_HREF}>Book a demo</CTA>
-                <CTA href="/krimos/kendra" variant="secondary">See it in the runtime</CTA>
+                <CTA href="/krimos/kendra" variant="secondary">See it inside Kendra</CTA>
               </div>
             </Reveal>
           </div>
         </Section>
 
-        {/* ---- 1b · Snapshot strip — "at a glance" ---- */}
+        {/* ── 1b · Stat strip — raw oversized numbers, no glass box ── */}
         <Section>
           <Reveal>
-            <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-ink-3">The harness, at a glance</p>
-            <div className="mt-5 overflow-hidden rounded-xl" style={{ border: '1px solid rgba(255,255,255,0.07)', background: 'rgba(255,255,255,0.03)' }}>
-              <div className="grid divide-y divide-white/[0.06] md:grid-cols-3 md:divide-x md:divide-y-0">
-                {SNAPSHOT.map((s) => (
-                  <div key={s.n} className="p-7 md:p-9">
-                    <p className={`font-mono text-[10px] uppercase tracking-[0.22em] ${s.tint === 'mint' ? 'text-mint' : 'text-cyan'}`}>{s.n}</p>
-                    <h3 className="mt-3 font-serif text-[1.05rem] leading-tight text-ink">{s.name}</h3>
-                    <p className={`mt-1 font-mono text-[10px] uppercase tracking-[0.14em] ${s.tint === 'mint' ? 'text-mint/60' : 'text-cyan/60'}`}>{s.label}</p>
-                    <p className={`mt-6 font-mono text-[clamp(1.8rem,3.5vw,2.4rem)] font-medium leading-none ${s.tint === 'mint' ? 'text-mint' : 'text-cyan'}`}>{s.stat}</p>
-                    <p className="mt-1.5 font-mono text-[10px] uppercase tracking-[0.14em] text-ink-3">{s.statLabel}</p>
-                  </div>
-                ))}
-              </div>
+            <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-ink-3">The harness, at a glance</p>
+            <div className="mt-8 grid grid-cols-1 gap-10 border-t border-white/[0.07] pt-10 md:grid-cols-3">
+              {SNAPSHOT.map((s) => (
+                <div key={s.n} className="md:border-l md:border-white/[0.06] md:pl-10 first:border-none first:pl-0">
+                  <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-ink-3">{s.n}</p>
+                  <p
+                    className={`mt-3 font-mono font-light leading-[0.88] ${s.tint === 'mint' ? 'text-mint' : 'text-cyan'}`}
+                    style={{ fontSize: 'clamp(3.8rem,7.5vw,6.5rem)' }}
+                  >
+                    {s.stat}
+                  </p>
+                  <p className="mt-3 font-sans text-[15px] leading-snug text-ink">{s.name}</p>
+                  <p className="mt-1 font-mono text-[10px] uppercase tracking-[0.14em] text-ink-3">{s.statLabel} · {s.label}</p>
+                </div>
+              ))}
             </div>
           </Reveal>
         </Section>
 
-        {/* ---- 2 · The bare-agent problem ---- */}
+        {/* ── 2 · The problem — full-width consequence-led descent ── */}
         <Section hairline>
-          <div className="grid items-start gap-12 md:grid-cols-[1fr_1fr]">
-            <Reveal>
-              <div>
-                <Eyebrow>The problem</Eyebrow>
-                <h2 className="mt-4 max-w-[22ch] font-serif text-display-1 text-ink">
-                  A bare agent in a regulated bank is a liability before it is a feature.
-                </h2>
-                <p className="mt-7 font-sans text-body-lg text-ink-2">
-                  A raw model with a toolkit can message a borrower outside{' '}
-                  <span className="text-ink">FDCPA</span> hours, disclose a balance to the
-                  wrong party, or decline an applicant with no legible reason. None of this
-                  needs intent — it only needs the wrong action to be{' '}
-                  <span className="text-mint">structurally possible</span>.{' '}
-                  <Link
-                    href="/insights/the-cost-of-being-wrong"
-                    className="text-mint/70 underline underline-offset-2 transition-colors hover:text-mint"
-                  >
-                    Statutory exposure scales with volume
-                  </Link>{' '}
-                  and compounds rather than caps.
-                </p>
-                <p className="mt-5 font-sans text-body text-ink-2">
-                  The three failures below are not edge cases. They are what capable AI does
-                  when it ships without operational controls. The pattern repeats wherever the{' '}
-                  <Link
-                    href="/insights/the-automation-gap"
-                    className="text-mint/70 underline underline-offset-2 transition-colors hover:text-mint"
-                  >
-                    compliance ceiling
-                  </Link>{' '}
-                  meets unconstrained automation.
-                </p>
-              </div>
-            </Reveal>
+          <Reveal>
+            <Eyebrow>The problem</Eyebrow>
+            <h2 className="mt-4 max-w-[22ch] font-serif text-display-1 text-ink">
+              A bare agent in a regulated bank is a liability before it is a feature.
+            </h2>
+            <p className="mt-7 max-w-[58ch] font-sans text-body-lg text-ink-2">
+              A raw model with a toolkit can message a borrower outside{' '}
+              <span className="text-ink">FDCPA</span> hours, disclose a balance to the
+              wrong party, or decline an applicant with no legible reason. None of this
+              needs intent — it only needs the wrong action to be{' '}
+              <span className="text-mint">structurally possible</span>.{' '}
+              <Link
+                href="/insights/the-cost-of-being-wrong"
+                className="text-mint/70 underline underline-offset-2 transition-colors hover:text-mint"
+              >
+                Statutory exposure scales with volume
+              </Link>{' '}
+              and compounds rather than caps.
+            </p>
+          </Reveal>
 
-            {/* Failure cards — consequence tag as scan hook */}
-            <Reveal delay={0.1}>
-              <div className="flex flex-col gap-4">
-                {FAILURES.map((f) => (
-                  <div key={f.title} className="glass lume rounded-xl p-6">
-                    <h3 className="font-serif text-[1.15rem] leading-tight text-ink">{f.title}</h3>
-                    <p className="mt-2.5 font-sans text-[14px] leading-relaxed text-ink-2">{f.body}</p>
-                    <div className="mt-4 border-t border-gold/15 pt-4">
-                      <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-gold">{f.consequence}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </Reveal>
+          {/* Failure bands — consequence FIRST, staggered descent */}
+          <div className="mt-14 space-y-4">
+            {FAILURES.map((f, i) => (
+              <Reveal key={f.title} delay={i * 0.1}>
+                <div
+                  className="rounded-xl border border-white/[0.07] p-7 md:p-9"
+                  style={{
+                    background: 'rgba(10,11,15,0.6)',
+                    backdropFilter: 'blur(12px)',
+                    marginLeft: `${i * 4}%`,
+                  }}
+                >
+                  {/* Consequence label — the first thing you read */}
+                  <p className="flex items-center gap-3 font-mono text-[12px] font-medium uppercase tracking-[0.2em] text-gold">
+                    <span aria-hidden className="block h-3 w-[2px] shrink-0 rounded-full bg-gold" />
+                    {f.consequence}
+                  </p>
+                  {/* Title */}
+                  <h3 className="mt-4 font-serif text-[1.35rem] leading-tight text-ink">{f.title}</h3>
+                  {/* Body */}
+                  <p className="mt-3 max-w-[70ch] font-sans text-[15px] leading-relaxed text-ink-2">{f.body}</p>
+                </div>
+              </Reveal>
+            ))}
           </div>
         </Section>
 
-        {/* ---- 3 · Three controls — 4-zone scan cards ---- */}
+        {/* ── Pull quote transition ── */}
+        <Section>
+          <Reveal>
+            <figure className="mx-auto max-w-[22ch] text-center">
+              <span aria-hidden className="mx-auto mb-8 block h-[2px] w-10 rounded-full bg-gold/50" />
+              <p
+                className="font-serif leading-[1.2] text-ink"
+                style={{ fontSize: 'clamp(1.5rem,2.8vw,2.2rem)' }}
+              >
+                The pattern repeats wherever the{' '}
+                <Link
+                  href="/insights/the-automation-gap"
+                  className="text-mint/80 underline-offset-2 transition-colors hover:text-mint"
+                >
+                  compliance ceiling
+                </Link>{' '}
+                meets{' '}
+                <span className="text-mint">unconstrained automation</span>.
+              </p>
+            </figure>
+          </Reveal>
+        </Section>
+
+        {/* ── 3 · Control by design — vertical numbered journey ── */}
         <Section hairline>
-          <div className="grid items-center gap-12 md:grid-cols-[1.05fr_0.95fr]">
+          {/* Section intro + gate image */}
+          <div className="grid items-center gap-12 md:grid-cols-[1.1fr_0.9fr]">
             <Reveal>
               <div>
                 <Eyebrow>Control by design</Eyebrow>
                 <h2 className="mt-4 max-w-[22ch] font-serif text-display-1 text-ink">
-                  Controls that compose: each necessary, none enough alone.
+                  Three controls. Remove one and the architecture fails.
                 </h2>
                 <p className="mt-6 max-w-[50ch] font-sans text-body-lg text-ink-2">
                   A constrained action vocabulary, a pre-execution gate, and a human command
@@ -297,81 +317,111 @@ export default function SafeAgentHarnessPage() {
             </Reveal>
           </div>
 
-          {/* 4-zone control cards */}
-          <div className="mt-16 grid gap-6 md:grid-cols-3">
-            {LAYERS.map((l, i) => (
-              <Reveal key={l.n} delay={i * 0.08}>
-                <div className="glass lume relative flex h-full flex-col overflow-hidden rounded-xl p-7 md:p-8">
-                  {/* colour rail */}
+          {/* Vertical journey — three numbered bands */}
+          <div className="mt-20">
+            {LAYERS.map((l, i) => {
+              const isFlipped = i === 1
+              const rgb = l.tint === 'mint' ? '0,255,178' : '57,214,255'
+
+              const numberEl = (
+                <div className="flex items-start justify-center md:justify-start">
                   <span
                     aria-hidden
-                    className={`pointer-events-none absolute inset-y-0 left-0 w-[3px] ${
-                      l.tint === 'mint' ? 'bg-mint/70' : 'bg-cyan/70'
-                    }`}
-                  />
-                  <div className="flex flex-1 flex-col pl-4">
-
-                    {/* Zone A — Identity */}
-                    <p className={`font-mono text-[10px] uppercase tracking-[0.22em] ${l.tint === 'mint' ? 'text-mint' : 'text-cyan'}`}>{l.n}</p>
-                    <h3 className="mt-3 font-serif text-[1.25rem] leading-tight text-ink">{l.name}</h3>
-                    <p className={`mt-1 font-mono text-[10px] uppercase tracking-[0.14em] ${l.tint === 'mint' ? 'text-mint/60' : 'text-cyan/60'}`}>{l.label}</p>
-
-                    {/* Zone B — Verdict (the scan hook) */}
-                    <p className={`mt-5 font-sans text-[15px] font-medium leading-snug ${l.tint === 'mint' ? 'text-mint' : 'text-cyan'}`}>
-                      {l.verdict}
-                    </p>
-
-                    {/* Zone C — Proof bullets */}
-                    <div className={`mt-4 flex-1 rounded-lg border px-4 py-3.5 ${
-                      l.tint === 'mint' ? 'border-mint/15 bg-mint/[0.04]' : 'border-cyan/15 bg-cyan/[0.04]'
-                    }`}>
-                      <ul className="space-y-2.5">
-                        {l.points.map((pt, pi) => (
-                          <li key={pi} className="flex items-start gap-2.5">
-                            <span
-                              aria-hidden
-                              className={`mt-[5px] block h-1 w-1 shrink-0 rounded-full ${l.tint === 'mint' ? 'bg-mint/70' : 'bg-cyan/70'}`}
-                            />
-                            <span className="font-mono text-[12px] leading-relaxed text-ink-2">{pt}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-
-                    {/* Zone D — Insight */}
-                    <p className={`mt-5 border-t pt-5 font-serif text-[0.95rem] italic leading-snug ${
-                      l.tint === 'mint' ? 'border-mint/15 text-mint/80' : 'border-cyan/15 text-cyan/80'
-                    }`}>
-                      {l.insight}
-                    </p>
-
-                  </div>
+                    className="select-none font-mono font-light leading-[0.85] text-transparent pointer-events-none"
+                    style={{
+                      fontSize: 'clamp(5rem,11vw,9rem)',
+                      WebkitTextStroke: `1.5px rgba(${rgb},0.38)`,
+                    }}
+                  >
+                    {l.n}
+                  </span>
                 </div>
-              </Reveal>
-            ))}
+              )
+
+              const contentEl = (
+                <div className="py-2">
+                  {/* Identity */}
+                  <div className="flex items-baseline gap-3">
+                    <p className={`font-serif text-[1.1rem] leading-tight text-ink`}>{l.name}</p>
+                    <p className={`font-mono text-[10px] uppercase tracking-[0.18em] ${l.tint === 'mint' ? 'text-mint/60' : 'text-cyan/60'}`}>{l.label}</p>
+                  </div>
+
+                  {/* Verdict — the large serif scan hook */}
+                  <p
+                    className={`mt-5 border-l-[3px] pl-6 font-serif leading-[1.15] text-ink ${l.tint === 'mint' ? 'border-mint/35' : 'border-cyan/35'}`}
+                    style={{ fontSize: 'clamp(1.35rem,2.2vw,1.85rem)' }}
+                  >
+                    {l.verdict}
+                  </p>
+
+                  {/* Proof bullets */}
+                  <ul className="mt-7 space-y-4">
+                    {l.points.map((pt, pi) => (
+                      <li key={pi} className="flex items-start gap-3.5">
+                        <span
+                          aria-hidden
+                          className={`mt-[7px] block h-[10px] w-[2px] shrink-0 rounded-full ${l.tint === 'mint' ? 'bg-mint/55' : 'bg-cyan/55'}`}
+                        />
+                        <span className="font-sans text-[15px] leading-relaxed text-ink-2">{pt}</span>
+                      </li>
+                    ))}
+                  </ul>
+
+                  {/* Insight */}
+                  <p className={`mt-7 font-serif text-[1rem] italic leading-relaxed ${l.tint === 'mint' ? 'text-mint/65' : 'text-cyan/65'}`}>
+                    {l.insight}
+                  </p>
+                </div>
+              )
+
+              return (
+                <Reveal key={l.n} delay={0}>
+                  <div
+                    className={`grid items-start gap-8 border-t border-white/[0.06] py-14 md:gap-12 md:py-16 ${
+                      isFlipped ? 'md:grid-cols-[1fr_0.32fr]' : 'md:grid-cols-[0.32fr_1fr]'
+                    }`}
+                  >
+                    {isFlipped ? <>{contentEl}{numberEl}</> : <>{numberEl}{contentEl}</>}
+                  </div>
+                </Reveal>
+              )
+            })}
           </div>
         </Section>
 
-        {/* ---- 4 · Model safety vs. harness safety ---- */}
+        {/* ── 4 · The distinction — full-viewport silence ── */}
+        <Section hairline>
+          <Reveal>
+            <div className="flex min-h-[78vh] flex-col items-center justify-center text-center">
+              <Eyebrow>The layer below the model</Eyebrow>
+              <h2
+                className="mt-8 font-serif text-ink"
+                style={{ fontSize: 'clamp(2.2rem,5.5vw,4.2rem)', lineHeight: 1.06, maxWidth: '16ch' }}
+              >
+                The model decides.{' '}
+                <span className="text-mint">The harness controls whether it can act.</span>
+              </h2>
+              <p className="mt-8 max-w-[32ch] font-serif italic text-[1.15rem] leading-relaxed text-mint/80">
+                "Less likely" is not "impossible." A harness is what closes that gap.
+              </p>
+            </div>
+          </Reveal>
+        </Section>
+
+        {/* ── 4b · The distinction — explanatory ── */}
         <Section hairline>
           <div className="grid items-center gap-12 md:grid-cols-[1.1fr_0.9fr]">
             <Reveal>
               <div>
-                <Eyebrow>Architecture, not model quality</Eyebrow>
-                <h2 className="mt-4 max-w-[22ch] font-serif text-display-1 text-ink">
-                  The model decides. The harness controls whether it can act.
-                </h2>
-                <p className="mt-3 font-serif text-[1.05rem] italic text-mint/90">
-                  "Less likely" is not "impossible." A harness is what closes that gap.
-                </p>
-                <p className="mt-6 max-w-[50ch] font-sans text-body-lg text-ink-2">
+                <p className="max-w-[50ch] font-sans text-body-lg text-ink-2">
                   Constitutional AI, RLHF, and instruction-following make a model{' '}
                   <span className="text-ink">less likely</span> to propose a harmful action.
                   But "less likely" is not{' '}
                   <span className="text-mint">"structurally impossible."</span>{' '}
                   A harness operates at a different layer. It does not depend on the model
-                  making the right choice; it enforces that the{' '}
-                  <span className="text-ink">wrong choice cannot execute</span>. That is also
+                  making the right choice; it enforces that{' '}
+                  <span className="text-ink">no non-compliant action can execute</span>{' '}
+                  on the Krim action path. That is also
                   why a record written before the action, rather than{' '}
                   <Link
                     href="/insights/audit-after-the-fact-is-a-confession"
@@ -381,19 +431,17 @@ export default function SafeAgentHarnessPage() {
                   </Link>
                   , is the one a regulator can trust.
                 </p>
-                <Reveal delay={0.1}>
-                  <GlassCard accent className="mt-8 p-7">
-                    <p className="font-serif text-[clamp(1.1rem,1.8vw,1.35rem)] leading-snug text-ink">
-                      The harness does not make the agent smarter. It{' '}
-                      <span className="text-mint">controls what the agent can act on</span>.
-                      Those are different problems, solved at different layers. Conflating
-                      them is how AI deployments fail their risk committee.
-                    </p>
-                    <p className="mt-5 font-mono text-[11px] uppercase tracking-[0.18em] text-mint">
-                      Architecture, not model quality
-                    </p>
-                  </GlassCard>
-                </Reveal>
+                <GlassCard accent className="mt-8 p-7">
+                  <p className="font-serif text-[clamp(1.1rem,1.8vw,1.35rem)] leading-snug text-ink">
+                    The harness does not make the agent smarter. It{' '}
+                    <span className="text-mint">controls what the agent can act on</span>.
+                    Those are different problems, solved at different layers. Conflating
+                    them is how AI deployments fail their risk committee.
+                  </p>
+                  <p className="mt-5 font-mono text-[11px] uppercase tracking-[0.18em] text-mint">
+                    The layer below the model
+                  </p>
+                </GlassCard>
               </div>
             </Reveal>
             <Reveal delay={0.15}>
@@ -402,7 +450,7 @@ export default function SafeAgentHarnessPage() {
           </div>
         </Section>
 
-        {/* ---- 5 · Regulatory alignment ---- */}
+        {/* ── 5 · Regulatory alignment — ledger table ── */}
         <Section hairline>
           <Reveal>
             <Eyebrow>Regulatory alignment</Eyebrow>
@@ -424,27 +472,44 @@ export default function SafeAgentHarnessPage() {
               {' '}— audit after the fact only confesses to the harm.
             </p>
           </Reveal>
-          <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {REGS.map((r) => (
-              <Reveal key={r.reg}>
-                <div className="glass-quiet lume h-full rounded-lg p-6">
-                  <div className="flex items-start justify-between gap-3">
-                    <h3 className="font-mono text-[11px] uppercase tracking-[0.16em] text-mint">{r.reg}</h3>
-                    <span className="shrink-0 rounded border border-white/10 px-2 py-0.5 font-mono text-[10px] text-ink-3">{r.region}</span>
-                  </div>
-                  <p className="mt-3 font-sans text-[14px] font-medium leading-snug text-ink">{r.meaning}</p>
-                  <p className="mt-2.5 font-sans text-[13px] leading-relaxed text-ink-2">{r.point}</p>
-                </div>
-              </Reveal>
-            ))}
-          </div>
+
+          {/* Ledger table */}
+          <Reveal delay={0.1}>
+            <div className="mt-12 overflow-hidden rounded-xl border border-white/[0.08]">
+              <div className="hidden grid-cols-[180px_60px_1fr] gap-x-8 border-b border-white/[0.06] px-7 py-4 md:grid">
+                <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-ink-3">Regulation</p>
+                <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-ink-3">Jur.</p>
+                <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-ink-3">What it demands · What the harness provides</p>
+              </div>
+              <div className="divide-y divide-white/[0.06]">
+                {REGS.map((r) => (
+                  <Reveal key={r.reg}>
+                    <div className="group grid grid-cols-1 gap-3 px-7 py-7 transition-colors hover:bg-white/[0.018] md:grid-cols-[180px_60px_1fr] md:gap-x-8 md:items-start">
+                      {/* Regulation */}
+                      <div>
+                        <p className="font-mono text-[13px] font-medium uppercase tracking-[0.12em] text-mint">{r.reg}</p>
+                        <span className="mt-1.5 inline-block rounded border border-white/10 px-2 py-0.5 font-mono text-[10px] text-ink-3">{r.region}</span>
+                      </div>
+                      {/* Jurisdiction spacer on mobile — hidden, handled above */}
+                      <div className="hidden md:block" />
+                      {/* Verdict + detail */}
+                      <div>
+                        <p className="font-serif text-[1.1rem] leading-snug text-ink">{r.meaning}</p>
+                        <p className="mt-2 font-sans text-[13px] leading-relaxed text-ink-2">{r.point}</p>
+                      </div>
+                    </div>
+                  </Reveal>
+                ))}
+              </div>
+            </div>
+          </Reveal>
         </Section>
 
-        {/* ---- 6 · From the research ---- */}
+        {/* ── 6 · From the research ── */}
         <Section hairline>
           <Reveal>
             <Eyebrow>From the research</Eyebrow>
-            <h2 className="mt-4 font-serif text-display-3 text-ink">The thinking behind the harness.</h2>
+            <h2 className="mt-4 font-serif text-display-3 text-ink">Why the harness. In long form.</h2>
           </Reveal>
           <div className="mt-10 grid gap-4 sm:grid-cols-2">
             {ARTICLES.map((a, i) => (
@@ -454,9 +519,7 @@ export default function SafeAgentHarnessPage() {
                     <p className={`font-mono text-[10px] uppercase tracking-[0.18em] ${
                       a.tint === 'mint' ? 'text-mint' : a.tint === 'cyan' ? 'text-cyan' : 'text-gold'
                     }`}>{a.category}</p>
-                    <h3 className="mt-3 font-serif text-[1.15rem] leading-tight text-ink">
-                      {a.title}
-                    </h3>
+                    <h3 className="mt-3 font-serif text-[1.15rem] leading-tight text-ink">{a.title}</h3>
                     <p className="mt-5 flex items-center gap-1.5 font-mono text-[11px] uppercase tracking-[0.14em] text-ink-3 transition-colors duration-fast group-hover:text-mint">
                       Read
                       <span aria-hidden className="transition-transform duration-fast group-hover:translate-x-1">→</span>
@@ -468,7 +531,7 @@ export default function SafeAgentHarnessPage() {
           </div>
         </Section>
 
-        {/* ---- 7 · Close ---- */}
+        {/* ── 7 · Close ── */}
         <Section hairline>
           <Reveal>
             <div className="glass mx-auto max-w-[720px] p-10 text-center md:p-14">
@@ -481,8 +544,9 @@ export default function SafeAgentHarnessPage() {
               </p>
               <p className="mx-auto mt-4 max-w-[44ch] font-sans text-body text-ink-2">
                 What the gate blocks, why it blocks it, and what the audit trail looks like
-                under examiner scrutiny. And the foundation it lays for an intelligence
-                that sharpens with every validated action.
+                under examiner scrutiny. And the foundation it lays for the{' '}
+                <span className="text-mint">World Lending Model</span> — a lending intelligence
+                that sharpens as the operation runs, and the precondition for a safe AI underwriter.
               </p>
               <div className="mt-9 flex flex-wrap justify-center gap-5">
                 <CTA href={DEMO_HREF}>Book a demo</CTA>
