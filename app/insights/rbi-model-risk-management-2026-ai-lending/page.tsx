@@ -147,8 +147,8 @@ function RBICrosswalk() {
     },
     {
       num: '07',
-      rbi: 'Every AI decision must be traceable, reproducible, and retained for ten years.',
-      answer: 'Deterministic logs as a by-product of every action. Ten-year retention built in.',
+      rbi: 'Every AI decision must be traceable, reproducible, and auditable.',
+      answer: 'Deterministic, reproducible logs as a by-product of every action. Automatically retained.',
     },
   ]
 
