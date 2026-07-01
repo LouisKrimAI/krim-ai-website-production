@@ -17,12 +17,22 @@ export default function Analytics() {
   return (
     <>
       {plausible ? (
-        <Script
-          defer
-          data-domain={plausible}
-          src="https://plausible.io/js/script.js"
-          strategy="afterInteractive"
-        />
+        <>
+          {/* Extended Plausible script — includes outbound-links, file-downloads,
+              form-submissions. Custom URL is tied to the Krim Plausible site;
+              rotate here if the site is re-registered. */}
+          <Script
+            async
+            data-domain={plausible}
+            src="https://plausible.io/js/pa-PSXmeR1239Y3AAsgVTBZy.js"
+            strategy="afterInteractive"
+          />
+          {/* Init the plausible() function so custom events can fire (harmless
+              even if we never call it). */}
+          <Script id="plausible-init" strategy="afterInteractive">
+            {`window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible('_init',i)},plausible.init()`}
+          </Script>
+        </>
       ) : null}
 
       {ga ? (
