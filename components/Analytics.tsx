@@ -27,10 +27,11 @@ export default function Analytics() {
             src="https://plausible.io/js/pa-PSXmeR1239Y3AAsgVTBZy.js"
             strategy="afterInteractive"
           />
-          {/* Init the plausible() function so custom events can fire (harmless
-              even if we never call it). */}
+          {/* Init snippet — copied verbatim from the Plausible dashboard for the
+              Krim site. Enables the plausible() function for custom events and
+              is what Plausible's "Verify Script installation" check matches on. */}
           <Script id="plausible-init" strategy="afterInteractive">
-            {`window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible('_init',i)},plausible.init()`}
+            {`window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};plausible.init()`}
           </Script>
         </>
       ) : null}
