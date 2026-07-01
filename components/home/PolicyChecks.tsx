@@ -60,7 +60,7 @@ export default function PolicyChecks() {
     >
       {/* the proposed action — cyan = proposed / thinking */}
       <div className="flex items-center gap-3">
-        <span className="font-mono text-[10px] uppercase tracking-[0.2em]" style={{ color: 'var(--cyan)' }}>
+        <span className="font-mono text-[11px] uppercase tracking-[0.2em]" style={{ color: 'var(--cyan)' }}>
           Proposed action
         </span>
         <span aria-hidden className="h-px flex-1 bg-white/10" />
@@ -69,9 +69,9 @@ export default function PolicyChecks() {
         Call this borrower, 14 days past due, about a payment plan.
       </p>
 
-      {/* the gate: three checks */}
-      <p className="mt-8 font-mono text-[10px] uppercase tracking-[0.2em] text-ink-3">
-        Krim-Nyāya · three checks
+      {/* the gate: one check from each of the three Navya-Nyāya families */}
+      <p className="mt-8 font-mono text-[11px] uppercase tracking-[0.2em] text-ink-3">
+        Krim-Nyāya · 33 validators, three families
       </p>
       <ul className="mt-4 border-y border-white/10">
         {CHECKS.map((c) => {
@@ -85,12 +85,12 @@ export default function PolicyChecks() {
               <StatusIcon state={c.state} />
               <div className="min-w-0 flex-1">
                 <div className="flex items-baseline gap-2.5">
-                  <span className="font-serif text-[1.15rem] leading-none text-ink">{c.name}</span>
-                  <span className="font-mono text-[10px] uppercase tracking-[0.14em] text-ink-3">{c.gloss}</span>
+                  <span className="font-serif text-[1.2rem] leading-none text-ink">{c.name}</span>
+                  <span className="font-mono text-[11px] uppercase tracking-[0.14em] text-ink-3">{c.gloss}</span>
                 </div>
-                <p className="mt-1.5 font-sans text-[14.5px] leading-normal text-ink-2">{c.line}</p>
+                <p className="mt-2 font-sans text-[15px] leading-normal text-ink-2">{c.line}</p>
               </div>
-              <span className="shrink-0 font-mono text-[10px] uppercase tracking-[0.16em]" style={{ color }}>
+              <span className="shrink-0 font-mono text-[11px] uppercase tracking-[0.16em]" style={{ color }}>
                 {c.state === 'pass' ? 'Cleared' : 'Held'}
               </span>
             </motion.li>

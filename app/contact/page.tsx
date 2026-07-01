@@ -86,10 +86,6 @@ export default function ContactPage() {
             <Reveal>
               <div className="text-center">
                 <Eyebrow>Or pick a time</Eyebrow>
-                <h2 className="mt-4 font-serif text-display-2 text-ink">Prefer to just talk?</h2>
-                <p className="mx-auto mt-5 max-w-[44ch] font-sans text-body text-ink-2">
-                  Grab a slot directly, no form needed.
-                </p>
               </div>
             </Reveal>
             <Reveal delay={0.12}>

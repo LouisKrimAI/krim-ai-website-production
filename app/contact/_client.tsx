@@ -431,9 +431,6 @@ export function CalendlyScheduler() {
       <p className="font-mono text-[11px] uppercase tracking-[0.22em] text-mint">
         30-minute slot
       </p>
-      <p className="mx-auto mt-4 max-w-[34ch] font-serif text-[clamp(1.35rem,2.2vw,1.7rem)] leading-snug text-ink">
-        Pick a time that works, and we&rsquo;ll meet you there.
-      </p>
       <a
         href={CALENDLY_BASE}
         target="_blank"

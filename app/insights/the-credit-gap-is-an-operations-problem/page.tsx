@@ -15,6 +15,8 @@ import OrbBackdrop from '@/components/OrbBackdrop'
 import Reveal from '@/components/Reveal'
 import { Section, Eyebrow, GlassCard, CTA } from '@/components/ui'
 import ArticleImage from '@/components/ArticleImage'
+import ArticlePanel from '@/components/ArticlePanel'
+import BackToInsights from '@/components/BackToInsights'
 
 const SLUG = 'the-credit-gap-is-an-operations-problem'
 const TITLE = 'The credit gap is an operations problem'
@@ -93,7 +95,7 @@ export default function Page() {
 
         {/* ---- Body ---- */}
         <Section className="!pt-0">
-          <div className="mx-auto max-w-[680px]">
+          <ArticlePanel>
             <Reveal>
               <p className="font-sans text-body-lg text-ink-2">
                 The size of the unmet demand is not in dispute. The IFC puts the MSME finance gap in
@@ -178,6 +180,9 @@ export default function Page() {
                     Sovereignty is not optional <span aria-hidden className="text-ink-3 transition-transform group-hover:translate-x-0.5">→</span>
                   </Link>
                 </div>
+                <div className="mt-8">
+                  <BackToInsights />
+                </div>
               </div>
             </Reveal>
 
@@ -207,7 +212,7 @@ export default function Page() {
                 </li>
               </ul>
             </div>
-          </div>
+          </ArticlePanel>
         </Section>
 
         {/* ---- Close CTA ---- */}

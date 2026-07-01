@@ -19,6 +19,15 @@ export type Post = {
 
 export const POSTS: Post[] = [
   {
+    slug: 'rbi-model-risk-management-2026-ai-lending',
+    title: 'RBI Has Set the Bar for AI Lending. Almost No One Can Clear It.',
+    dek: "RBI's 2026 Model Risk Management draft quietly rewrites the rules for AI in lending. Behind the headline-grabbing kill switch, it asks for something much harder.",
+    category: 'Risk',
+    date: '2026-06-30',
+    readingMinutes: 6,
+    image: '/images/harness/harness-gate.webp',
+  },
+  {
     slug: 'sovereignty-is-not-optional',
     title: 'Sovereignty is not optional',
     dek: 'Regulated AI has to run inside the institution’s own perimeter. Shipping customer data to a third-party model is a non-starter on the rules and on the risk — and it is the same reason the system can ever learn the whole operation.',

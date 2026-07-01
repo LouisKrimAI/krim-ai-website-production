@@ -20,12 +20,12 @@ import Recognition from '@/components/home/Recognition'
 export const metadata: Metadata = {
   title: 'Company',
   description:
-    'Krim is a technology research, product and services company. We made proof the runtime and keep the system inside your perimeter, so machines can finally act in regulated work, and the system compounds.',
+    'Krim builds KrimOS, the operating system for banking and lending. Every AI action validated before it executes, inside your perimeter, on a single auditable record.',
   alternates: { canonical: 'https://krim.ai/company' },
   openGraph: {
     title: 'Company — Krim',
     description:
-      'Krim is a technology research, product and services company. We made proof the runtime and keep the system inside your perimeter, so machines can finally act in regulated work, and the system compounds.',
+      'Krim builds KrimOS, the operating system for banking and lending. Every AI action validated before it executes, inside your perimeter, on a single auditable record.',
     url: 'https://krim.ai/company',
   },
 }
@@ -102,9 +102,9 @@ export default function CompanyPage() {
             </Reveal>
             <Reveal delay={0.12}>
               <p className="mx-auto mt-7 max-w-[56ch] font-sans text-body-lg text-ink-2">
-                Krim is a technology research, product and services company. We make one thing:{' '}
-                <span className="text-ink">KrimOS</span>, the operating system for banking and
-                lending.
+                Krim is a safe superintelligence research, product and services company. Krim&rsquo;s
+                first product is <span className="text-ink">KrimOS</span> — agent-native OS for
+                autonomous lending.
               </p>
             </Reveal>
           </div>
@@ -181,7 +181,7 @@ export default function CompanyPage() {
             <Reveal>
               <div className="text-center">
                 <Eyebrow>Team</Eyebrow>
-                <h2 className="mt-4 font-serif text-display-1 text-ink">The people behind the proof.</h2>
+                <h2 className="mt-4 font-serif text-display-1 text-ink">Meet the team.</h2>
                 <p className="mx-auto mt-6 max-w-[54ch] font-sans text-body-lg text-ink-2">
                   Deep experience deploying AI in India&rsquo;s largest BFIs.
                 </p>

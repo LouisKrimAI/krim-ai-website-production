@@ -1,12 +1,13 @@
 /**
  * /research/safe-agent-harness
  *
- * Editorial research report layout:
- * — raw oversized stat strip (no glass box)
- * — consequence-led failure descent (gold label first, staggered)
- * — vertical control journey (giant outlined numerals, alternating)
- * — full-viewport distinction moment (one sentence, silence)
- * — regulatory ledger table (not card grid)
+ * Reads as an ease-in explainer, top to bottom:
+ * — hero: the promise
+ * — what is an agent harness? plain definition + the three things it does
+ * — the problem: why a bare agent is a liability (consequence-led descent)
+ * — how it works: the three controls in depth (Kriya · Krim-Nyāya · Kupa)
+ * — the distinction: why a better model is not enough
+ * — regulatory ledger table, further reading, close
  */
 
 import type { Metadata } from 'next'
@@ -17,11 +18,14 @@ import SiteFooter from '@/components/SiteFooter'
 import Reveal from '@/components/Reveal'
 import HarnessVideo from '@/components/HarnessVideo'
 import { Section, Eyebrow, GlassCard, CTA } from '@/components/ui'
+import { IMAGE_MANIFEST } from '@/lib/image-manifest'
+
+const GATE = IMAGE_MANIFEST['/images/harness/harness-gate.webp']
 
 export const metadata: Metadata = {
   title: 'Safe Agent Harness · Krim Research',
   description:
-    'A safe agent harness is the operational control layer that wraps an autonomous AI agent with three integrated controls: a constrained action vocabulary, a pre-execution validation gate, and a human command surface. This is the architecture the combined regulatory regime most cleanly rewards for deploying AI in a regulated bank.',
+    'A safe agent harness is the control layer around an autonomous AI agent: a constrained action vocabulary, a pre-execution validation gate, and a human command surface, so every action is checked before it can fire.',
   alternates: { canonical: 'https://krim.ai/research/safe-agent-harness' },
   openGraph: {
     title: 'Safe Agent Harness · Krim Research',
@@ -47,10 +51,22 @@ type Tint = 'mint' | 'cyan'
 
 // ── Data ─────────────────────────────────────────────────────────────────────
 
-const SNAPSHOT = [
-  { n: '01', name: 'Constrained vocabulary', label: 'Kriya',       tint: 'mint' as Tint, fact: '500+ credit-native primitives across 20+ domains'            },
-  { n: '02', name: 'Pre-execution gate',     label: 'Krim-Nyāya', tint: 'mint' as Tint, fact: '33 validators clear every action before it fires'            },
-  { n: '03', name: 'Human command surface',  label: 'Kupa',        tint: 'cyan' as Tint, fact: 'One screen to view, pause, or override any in-flight action' },
+const HARNESS_PARTS = [
+  {
+    k: 'Constrain', tint: 'mint' as Tint,
+    title: 'It limits what the agent can do.',
+    body: 'The agent can only take actions you have approved in advance. Anything outside that set is not possible.',
+  },
+  {
+    k: 'Check', tint: 'mint' as Tint,
+    title: 'It checks every action first.',
+    body: 'Each action is tested against your policy and the law before it happens. If it breaks a rule, it is stopped before it can fire.',
+  },
+  {
+    k: 'Command', tint: 'cyan' as Tint,
+    title: 'It keeps a person in command.',
+    body: 'Your team watches every action live and can pause or overrule any agent in one click.',
+  },
 ]
 
 const LAYERS = [
@@ -62,17 +78,17 @@ const LAYERS = [
       'Each primitive is the smallest validatable unit: bureau pulls, Reg-B adverse-action notices, collections calls checked against FDCPA.',
       'No path exists for an action outside the vocabulary.',
     ],
-    insight: 'The vocabulary is the boundary, and the boundary is what makes the capability provable.',
+    insight: 'The vocabulary is the boundary, and that boundary is what makes each action provable before it runs.',
   },
   {
     n: '02', name: 'Pre-execution gate', label: 'Krim-Nyāya', tint: 'mint' as Tint,
     verdict: 'Every action clears the gate before it executes, or it does not execute.',
     points: [
-      '33 validators clear every action before it fires: policy compliance, consent, regulatory context, and data quality. Fast-path checks run inline; signals requiring external verification are pre-fetched before the action is enqueued.',
-      'A violated rule blocks outright — not retried, not warned through.',
+      '33 validators clear every action before it fires: policy compliance, consent, regulatory context, and data quality.',
+      'A violated rule blocks outright, with no retry and no warn-through.',
       'Uncertainty escalates to a human with the rule and reason in plain language.',
     ],
-    insight: 'Built on Navya-Nyāya predicate logic. Whatever the model proposes, no non-compliant action can execute on the Krim action path. The gate handles individual legality — Kupa\'s workforce view handles the population-level picture.',
+    insight: 'Built on Navya-Nyāya predicate logic. Whatever the model proposes, an action that fails the gate does not execute on the Krim action path.',
   },
   {
     n: '03', name: 'Human always in command', label: 'Kupa', tint: 'cyan' as Tint,
@@ -95,7 +111,7 @@ const FAILURES = [
   {
     title: 'Consent violations',
     consequence: 'Class-action exposure',
-    body: 'An agent calls a borrower at 11 PM. The FDCPA contact-hours rule lived in the rulebook but never in the action path. One case: $500 to $1,500. At portfolio scale, it is a class action.',
+    body: 'An agent calls a borrower at 11 PM. The FDCPA contact-hours rule lived in the rulebook but never in the action path. One late-night call is a statutory violation; at portfolio scale it is a class action.',
   },
   {
     title: 'Emergent strategy harm',
@@ -117,7 +133,7 @@ const REGS = [
   },
   {
     reg: 'FDCPA / TCPA', region: 'US',
-    meaning: 'Contact rules must be checked before the call, not after.',
+    meaning: 'Contact rules must clear before the call is placed.',
     point: 'Contact hours, consent status, and DNC compliance must be confirmed before the call is placed. Pre-execution is the architecture best aligned with this requirement — the check happens before the call, not as an after-the-fact audit.',
   },
   {
@@ -178,34 +194,54 @@ export default function SafeAgentHarnessPage() {
           </div>
         </Section>
 
-        {/* ── 1b · Architecture index — three glass cards ── */}
-        <Section>
-          <Reveal>
-            <p className="mb-7 font-mono text-[10px] uppercase tracking-[0.22em] text-ink-3">The three controls</p>
-            <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
-              {SNAPSHOT.map((s) => {
-                const rgb = s.tint === 'mint' ? '0,255,178' : '57,214,255'
+        {/* ── 2 · What is an agent harness? — the ease-in definition ── */}
+        <Section hairline>
+          <div className="mx-auto max-w-[760px] text-center">
+            <Reveal>
+              <Eyebrow>Start here</Eyebrow>
+              <h2 className="mt-4 font-serif text-display-1 text-ink">
+                First, what is an agent harness?
+              </h2>
+            </Reveal>
+            <Reveal delay={0.1}>
+              <p className="mx-auto mt-7 max-w-[60ch] font-sans text-body-lg text-ink-2">
+                An AI agent does not just answer questions. It takes actions on its own.
+                It pulls a credit file, messages a borrower, places a call, records a
+                decision. That autonomy is what makes it useful, and what makes it risky
+                to put inside a regulated bank.
+              </p>
+            </Reveal>
+            <Reveal delay={0.16}>
+              <p className="mx-auto mt-6 max-w-[60ch] font-sans text-body-lg text-ink-2">
+                An agent harness is the{' '}
+                <span className="text-mint">control layer around that agent</span>. The
+                model supplies the intelligence. The harness decides what that
+                intelligence is allowed to do.
+              </p>
+            </Reveal>
+          </div>
+
+          {/* The three things every harness does — the concept, before the components */}
+          <Reveal delay={0.22}>
+            <div className="mx-auto mt-16 grid max-w-[980px] gap-4 md:grid-cols-3">
+              {HARNESS_PARTS.map((h) => {
+                const rgb = h.tint === 'mint' ? '0,255,178' : '57,214,255'
                 return (
                   <div
-                    key={s.n}
-                    className="overflow-hidden rounded-[18px] p-px"
+                    key={h.k}
+                    className="rounded-2xl border border-white/[0.07] p-7 md:p-8"
                     style={{
-                      background: `linear-gradient(145deg, rgba(${rgb},0.40) 0%, rgba(${rgb},0.08) 50%, rgba(255,255,255,0.04) 100%)`,
+                      background: `radial-gradient(ellipse at 15% 0%, rgba(${rgb},0.06) 0%, transparent 60%), rgba(10,11,15,0.55)`,
+                      backdropFilter: 'blur(16px)',
+                      WebkitBackdropFilter: 'blur(16px)',
                     }}
                   >
-                    <div
-                      className="h-full rounded-[17px] p-7"
-                      style={{
-                        background: `radial-gradient(ellipse at 20% 0%, rgba(${rgb},0.09) 0%, transparent 60%), rgba(10,11,15,0.88)`,
-                        backdropFilter: 'blur(20px)',
-                        WebkitBackdropFilter: 'blur(20px)',
-                      }}
-                    >
-                      <p className={`font-mono text-[10px] uppercase tracking-[0.22em] ${s.tint === 'mint' ? 'text-mint/55' : 'text-cyan/55'}`}>{s.n}</p>
-                      <p className="mt-5 font-serif text-[1.35rem] leading-tight text-ink">{s.name}</p>
-                      <p className={`mt-1.5 font-mono text-[9px] uppercase tracking-[0.18em] ${s.tint === 'mint' ? 'text-mint/50' : 'text-cyan/50'}`}>{s.label}</p>
-                      <p className="mt-5 border-t border-white/[0.06] pt-5 font-sans text-[13px] leading-relaxed text-ink-2">{s.fact}</p>
+                    <div className="flex items-center gap-3">
+                      <span aria-hidden className="block h-3 w-[2px] shrink-0 rounded-full" style={{ background: `rgb(${rgb})` }} />
+                      <p className={`font-mono text-[11px] uppercase tracking-[0.2em] ${h.tint === 'mint' ? 'text-mint/70' : 'text-cyan/70'}`}>{h.k}</p>
                     </div>
+                    <p className="mt-5 font-serif text-[1.3rem] leading-tight text-ink">{h.title}</p>
+                    <p className="mt-3 font-sans text-[14px] leading-relaxed text-ink-2">{h.body}</p>
                   </div>
                 )
               })}
@@ -213,7 +249,7 @@ export default function SafeAgentHarnessPage() {
           </Reveal>
         </Section>
 
-        {/* ── 2 · The problem — full-width consequence-led descent ── */}
+        {/* ── 3 · The problem — full-width consequence-led descent ── */}
         <Section hairline>
           <Reveal>
             <Eyebrow>The problem</Eyebrow>
@@ -256,36 +292,20 @@ export default function SafeAgentHarnessPage() {
           </div>
         </Section>
 
-        {/* ── Pull quote transition ── */}
-        <Section>
-          <Reveal>
-            <figure className="mx-auto max-w-[46ch] text-center">
-              <span aria-hidden className="mx-auto mb-8 block h-[2px] w-10 rounded-full bg-gold/50" />
-              <p
-                className="font-serif leading-[1.2] text-ink"
-                style={{ fontSize: 'clamp(1.5rem,2.8vw,2.2rem)' }}
-              >
-                An agent without a harness is a liability.
-              </p>
-            </figure>
-          </Reveal>
-        </Section>
-
-        {/* ── 3 · Control by design — vertical numbered journey ── */}
+        {/* ── 4 · How it works — vertical numbered journey ── */}
         <Section hairline>
           {/* Section intro + gate image */}
           <div className="grid items-center gap-12 md:grid-cols-[1.1fr_0.9fr]">
             <Reveal>
               <div>
-                <Eyebrow>Control by design</Eyebrow>
+                <Eyebrow>How it works</Eyebrow>
                 <h2 className="mt-4 max-w-[22ch] font-serif text-display-1 text-ink">
-                  Three controls. Remove one and the architecture fails.
+                  The three controls, up close.
                 </h2>
                 <p className="mt-6 max-w-[50ch] font-sans text-body-lg text-ink-2">
-                  Three controls that only work as one. A constrained vocabulary limits
-                  what the agent can propose. The validation gate clears it before it
-                  fires. The command surface keeps authority with your risk team.
-                  Remove any one and the others break.
+                  Each control is a working part of KrimOS. Kriya sets what an agent can
+                  do, Krim-Nyāya clears every action before it fires, and Kupa keeps your
+                  team in command. Remove any one and the other two stop working.
                 </p>
               </div>
             </Reveal>
@@ -297,10 +317,12 @@ export default function SafeAgentHarnessPage() {
                   style={{ background: 'radial-gradient(50% 50% at 50% 50%, rgba(57,214,255,0.10) 0%, rgba(0,255,178,0.04) 42%, transparent 72%)' }}
                 />
                 <Image
-                  src="/images/harness/harness-gate.png"
-                  alt="An AI agent sends action proposals through a luminous validation gate panel — compliant actions pass, non-compliant are blocked."
-                  width={2048}
-                  height={2048}
+                  src="/images/harness/harness-gate.webp"
+                  alt="An AI agent sends action proposals through a luminous validation gate panel: compliant actions pass, non-compliant are blocked."
+                  width={GATE.w}
+                  height={GATE.h}
+                  placeholder="blur"
+                  blurDataURL={GATE.blur}
                   priority
                   sizes="(max-width: 768px) 88vw, 460px"
                   className="relative w-full"
@@ -393,11 +415,11 @@ export default function SafeAgentHarnessPage() {
           </div>
         </Section>
 
-        {/* ── 4 · The distinction — full-viewport silence ── */}
+        {/* ── 5 · The distinction — why a better model is not enough ── */}
         <Section hairline>
           <Reveal>
-            <div className="flex min-h-[78vh] flex-col items-center justify-center text-center">
-              <Eyebrow>The layer below the model</Eyebrow>
+            <div className="flex min-h-[60vh] flex-col items-center justify-center text-center">
+              <Eyebrow>The distinction</Eyebrow>
               <h2
                 className="mt-8 font-serif text-ink"
                 style={{ fontSize: 'clamp(2.2rem,5.5vw,4.2rem)', lineHeight: 1.06, maxWidth: '16ch' }}
@@ -405,38 +427,27 @@ export default function SafeAgentHarnessPage() {
                 The model decides.{' '}
                 <span className="text-mint">The harness controls whether it can act.</span>
               </h2>
-              <p className="mt-8 max-w-[32ch] font-serif italic text-[1.15rem] leading-relaxed text-mint/80">
-                Better is not the same as safe.
+              <p className="mx-auto mt-8 max-w-[46ch] font-sans text-body-lg leading-relaxed text-ink-2">
+                A better model is less likely to propose a bad action. A harness stops a bad
+                action from executing at all. Different problems, solved at different layers.
               </p>
             </div>
           </Reveal>
-        </Section>
 
-        {/* ── 4b · The distinction — explanatory ── */}
-        <Section hairline>
-          <Reveal>
-            <Eyebrow>The distinction</Eyebrow>
-            <h2 className="mt-4 max-w-[24ch] font-serif text-display-1 text-ink">
-              What a better model does not fix.
-            </h2>
-          </Reveal>
-          <div className="mt-12 grid items-center gap-12 md:grid-cols-[1.1fr_0.9fr]">
+          <div className="mt-4 grid items-center gap-12 md:grid-cols-[1.1fr_0.9fr]">
             <Reveal>
               <div>
                 <p className="max-w-[50ch] font-sans text-body-lg text-ink-2">
-                  Constitutional AI, RLHF, and instruction-following make a model less
-                  likely to propose a harmful action. A harness operates at a different
-                  layer entirely. It does not depend on the model making the right choice;
-                  it enforces that no non-compliant action can execute on the Krim action
-                  path. That is also why a record written before the action, rather than
-                  reconstructed after it, is the one a regulator can trust.
+                  Constitutional AI, RLHF, and instruction-following all work on the
+                  model&rsquo;s judgment. A harness works below it. It does not depend on the
+                  model choosing well, and because the record is written before the action
+                  rather than reconstructed after it, it is the record a regulator can trust.
                 </p>
                 <GlassCard accent className="mt-8 p-7">
                   <p className="font-serif text-[clamp(1.1rem,1.8vw,1.35rem)] leading-snug text-ink">
                     The harness does not make the agent smarter. It{' '}
                     <span className="text-mint">controls what the agent can act on</span>.
-                    Those are different problems, solved at different layers. Conflating
-                    them is how AI deployments fail their risk committee.
+                    Conflating those two is how AI deployments fail their risk committee.
                   </p>
                   <p className="mt-5 font-mono text-[11px] uppercase tracking-[0.18em] text-mint">
                     The layer below the model
@@ -450,7 +461,7 @@ export default function SafeAgentHarnessPage() {
           </div>
         </Section>
 
-        {/* ── 5 · Regulatory alignment — ledger table ── */}
+        {/* ── 6 · Regulatory alignment — ledger table ── */}
         <Section hairline>
           <Reveal>
             <Eyebrow>Regulatory alignment</Eyebrow>
@@ -466,46 +477,76 @@ export default function SafeAgentHarnessPage() {
             </p>
           </Reveal>
 
-          {/* Ledger table */}
+          {/* Statement cards — each regulation reduced to the argument it makes
+              (big serif pull-quote), sourced by a mono kicker with its region chip.
+              Reader can scan all five arguments in seconds; drop into the proof
+              line beneath any that matter. */}
           <Reveal delay={0.1}>
-            <div
-              className="mt-12 overflow-hidden rounded-xl border border-white/[0.08]"
-              style={{
-                background: 'rgba(10,11,15,0.80)',
-                backdropFilter: 'blur(20px)',
-                WebkitBackdropFilter: 'blur(20px)',
-              }}
-            >
-              <div className="hidden grid-cols-[180px_60px_1fr] gap-x-8 border-b border-white/[0.06] px-7 py-4 md:grid">
-                <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-ink-3">Regulation</p>
-                <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-ink-3">Jur.</p>
-                <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-ink-3">What it demands · What the harness provides</p>
-              </div>
-              <div className="divide-y divide-white/[0.06]">
-                {REGS.map((r) => (
-                  <Reveal key={r.reg}>
-                    <div className="group grid grid-cols-1 gap-3 px-7 py-7 transition-colors hover:bg-white/[0.018] md:grid-cols-[180px_60px_1fr] md:gap-x-8 md:items-start">
-                      {/* Regulation */}
-                      <div>
-                        <p className="font-mono text-[13px] font-medium uppercase tracking-[0.12em] text-mint">{r.reg}</p>
-                        <span className="mt-1.5 inline-block rounded border border-white/10 px-2 py-0.5 font-mono text-[10px] text-ink-3">{r.region}</span>
+            <ol className="mt-14 flex flex-col gap-5">
+              {REGS.map((r, i) => {
+                // Region → colour: US=cyan, UK=mint, IN=gold. Ties the card to a
+                // jurisdictional identity without shouting.
+                const rgb =
+                  r.region === 'UK' ? '0,255,178' :
+                  r.region === 'IN' ? '200,161,74' :
+                  '57,214,255'
+                return (
+                  <Reveal key={r.reg} delay={i * 0.05}>
+                    <li
+                      className="relative overflow-hidden rounded-2xl border p-8 md:p-10"
+                      style={{
+                        borderColor: `rgba(${rgb},0.16)`,
+                        background: `radial-gradient(120% 100% at 0% 0%, rgba(${rgb},0.06) 0%, transparent 45%), linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.012)), rgba(10,11,15,0.55)`,
+                        backdropFilter: 'blur(20px) saturate(130%)',
+                        WebkitBackdropFilter: 'blur(20px) saturate(130%)',
+                        boxShadow: `inset 0 1px 0 0 rgba(255,255,255,0.06), 0 20px 50px -30px rgba(0,0,0,0.55)`,
+                      }}
+                    >
+                      {/* left accent bar — a coloured spine that anchors each card to
+                          its jurisdiction */}
+                      <span
+                        aria-hidden
+                        className="pointer-events-none absolute inset-y-6 left-0 w-[3px] rounded-r-full"
+                        style={{ background: `linear-gradient(180deg, rgba(${rgb},0.85), rgba(${rgb},0.15))` }}
+                      />
+
+                      {/* kicker — regulation name + region chip, compact and small so
+                          the pull-quote below owns the visual weight */}
+                      <div className="flex flex-wrap items-center gap-3">
+                        <p
+                          className="font-mono text-[12px] font-medium uppercase tracking-[0.16em]"
+                          style={{ color: `rgb(${rgb})` }}
+                        >
+                          {r.reg}
+                        </p>
+                        <span
+                          className="rounded-full border px-2.5 py-[3px] font-mono text-[10px] tracking-[0.14em] text-ink-3"
+                          style={{ borderColor: `rgba(${rgb},0.28)` }}
+                        >
+                          {r.region}
+                        </span>
                       </div>
-                      {/* Jurisdiction spacer on mobile — hidden, handled above */}
-                      <div className="hidden md:block" />
-                      {/* Verdict + detail */}
-                      <div>
-                        <p className="font-serif text-[1.1rem] leading-snug text-ink">{r.meaning}</p>
-                        <p className="mt-2 font-sans text-[13px] leading-relaxed text-ink-2">{r.point}</p>
-                      </div>
-                    </div>
+
+                      {/* the argument — big, quotable, first thing you read */}
+                      <p className="mt-5 max-w-[46ch] font-serif leading-[1.14] tracking-[-0.01em] text-ink"
+                         style={{ fontSize: 'clamp(1.4rem,2.2vw,1.85rem)' }}>
+                        {r.meaning}
+                      </p>
+
+                      {/* the proof — one line, second-order, for when a reader wants
+                          more than the headline */}
+                      <p className="mt-5 max-w-[68ch] font-sans text-[14.5px] leading-relaxed text-ink-2">
+                        {r.point}
+                      </p>
+                    </li>
                   </Reveal>
-                ))}
-              </div>
-            </div>
+                )
+              })}
+            </ol>
           </Reveal>
         </Section>
 
-        {/* ── 6 · Further reading ── */}
+        {/* ── 7 · Further reading ── */}
         <Section hairline>
           <Reveal>
             <Eyebrow>Further reading</Eyebrow>
@@ -522,7 +563,7 @@ export default function SafeAgentHarnessPage() {
           </div>
         </Section>
 
-        {/* ── 7 · Close ── */}
+        {/* ── 8 · Close ── */}
         <Section hairline>
           <Reveal>
             <div className="glass mx-auto max-w-[680px] p-10 text-center md:p-12">

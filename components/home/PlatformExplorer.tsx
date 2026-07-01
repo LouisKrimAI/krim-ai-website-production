@@ -18,7 +18,7 @@ const LAYERS: Layer[] = [
     key: 'kendra',
     name: 'Kendra',
     tag: 'The runtime',
-    summary: 'The governed runtime a risk committee can say yes to.',
+    summary: 'The engine every co-worker runs on.',
     points: [
       'Every action gated before it fires, against your rules.',
       'One immutable record: what ran, why, under which rule.',
@@ -30,7 +30,7 @@ const LAYERS: Layer[] = [
     key: 'kriya',
     name: 'Kriya',
     tag: 'The actions',
-    summary: 'Change a rule once, not across a hundred scripts.',
+    summary: 'The building blocks every workflow is made of.',
     points: [
       '500+ validated, credit-native actions, ready to use.',
       'Rules travel with the action: change once, live everywhere.',
@@ -42,7 +42,7 @@ const LAYERS: Layer[] = [
     key: 'karta',
     name: 'Karta',
     tag: 'The co-workers',
-    summary: 'The book can grow without the cost line growing with it.',
+    summary: 'Handle more volume without adding headcount.',
     points: [
       'AI co-workers across the full lending lifecycle.',
       'Voice, SMS, email and WhatsApp: in the customer’s own language.',
@@ -54,7 +54,7 @@ const LAYERS: Layer[] = [
     key: 'kupa',
     name: 'Kupa',
     tag: 'The command center',
-    summary: 'See the whole operation live, and step in when it matters.',
+    summary: 'One screen for the whole operation.',
     points: [
       'Live dashboards and analytics: every queue, call and SLA.',
       'Real-time escalation; one-click pause, reroute or rollback.',
@@ -66,7 +66,7 @@ const LAYERS: Layer[] = [
     key: 'kula',
     name: 'Kula',
     tag: 'The digital twin',
-    summary: 'Your operation in plain language: ask, and it does the work.',
+    summary: 'Anyone on your team can operate the platform.',
     points: [
       'Ask in plain language, by text or voice.',
       'It builds the workflow and runs it, on your sign-off.',
@@ -78,7 +78,7 @@ const LAYERS: Layer[] = [
     key: 'kira',
     name: 'Kira & Krimkar',
     tag: 'The customer advisor',
-    summary: 'The advisor your customers meet, and the app it lives in.',
+    summary: 'The AI your customers talk to.',
     points: [
       'One thread from application to payoff, every channel.',
       'Speaks their language; acts only within consent.',
@@ -112,13 +112,17 @@ export default function PlatformExplorer() {
               onMouseEnter={() => setActive(l.key)}
               onFocus={() => setActive(l.key)}
               onClick={() => setActive(l.key)}
-              className="group relative flex-1 overflow-hidden rounded-lg border px-4 py-2 text-left transition-[border-color,background-color,box-shadow] duration-300 flex items-center backdrop-blur-sm"
+              className="group relative flex flex-1 items-center overflow-hidden rounded-lg border px-4 py-2 text-left transition-[border-color,box-shadow] duration-300"
               style={{
                 borderColor: isActive ? 'rgba(0,255,178,0.34)' : 'rgba(255,255,255,0.11)',
-                backgroundColor: isActive ? 'rgba(0,255,178,0.05)' : 'rgba(255,255,255,0.05)',
+                background: isActive
+                  ? 'linear-gradient(152deg, rgba(0,255,178,0.08) 0%, rgba(0,255,178,0.02) 60%, rgba(255,255,255,0.02) 100%)'
+                  : 'linear-gradient(152deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.014) 46%, rgba(255,255,255,0.024) 100%)',
+                backdropFilter: 'blur(22px) saturate(135%)',
+                WebkitBackdropFilter: 'blur(22px) saturate(135%)',
                 boxShadow: isActive
-                  ? '0 0 0 1px rgba(0,255,178,0.10), 0 10px 36px -20px rgba(0,255,178,0.4)'
-                  : 'none',
+                  ? '0 1px 0 0 rgba(255,255,255,0.05) inset, 0 1px 1px 0 rgba(0,255,178,0.16) inset, 0 10px 36px -20px rgba(0,255,178,0.4), 0 10px 30px -18px rgba(2,4,10,0.6)'
+                  : '0 1px 0 0 rgba(255,255,255,0.05) inset, 0 1px 1px 0 rgba(255,255,255,0.12) inset, 0 10px 30px -18px rgba(2,4,10,0.55)',
               }}
             >
               {/* active mint rail */}

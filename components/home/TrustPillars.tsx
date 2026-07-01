@@ -91,9 +91,9 @@ export default function TrustPillars() {
       {/* ---- section header ---- */}
       <Reveal>
         <div className="mx-auto max-w-[640px] text-center">
-          <Eyebrow>You stay in command</Eyebrow>
+          <Eyebrow>The answer</Eyebrow>
           <h2 className="mt-4 font-serif text-display-1 text-ink">
-            AI you can put your name to.
+            The AI that runs banking.
           </h2>
           <p className="mx-auto mt-6 max-w-[52ch] font-sans text-body-lg text-ink-2">
             No black boxes. Pause, override or roll back from one screen.
@@ -110,8 +110,12 @@ export default function TrustPillars() {
               <button
                 key={pillar.id}
                 type="button"
+                role="tab"
+                aria-selected={isActive}
+                onMouseEnter={() => setActive(i as Idx)}
+                onFocus={() => setActive(i as Idx)}
                 onClick={() => setActive(i as Idx)}
-                className="group relative h-full w-full overflow-hidden rounded-[20px] p-px text-left outline-none focus-visible:ring-2 focus-visible:ring-white/20"
+                className="group relative h-full w-full overflow-hidden rounded-[20px] p-px text-left outline-none focus-visible:!outline-none focus-visible:ring-2 focus-visible:ring-white/25"
                 style={{
                   background: isActive
                     ? `linear-gradient(145deg, rgba(${pillar.rgb},0.65) 0%, rgba(${pillar.rgb},0.18) 55%, rgba(255,255,255,0.07) 100%)`
@@ -157,7 +161,7 @@ export default function TrustPillars() {
                   </p>
 
                   {/* one-liner */}
-                  <p className="mt-3 font-sans text-[12px] leading-relaxed text-ink-3">
+                  <p className="mt-3 font-sans text-[13px] leading-relaxed text-ink-3">
                     {pillar.hint}
                   </p>
 
@@ -223,12 +227,12 @@ export default function TrustPillars() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -10 }}
                 transition={{ duration: 0.42, ease: OUT }}
-                className="relative grid gap-8 p-8 md:p-10 lg:grid-cols-[1.15fr_0.85fr] lg:gap-14 lg:p-12"
+                className="relative grid content-start gap-8 p-8 md:p-10 lg:min-h-[316px] lg:grid-cols-[1.15fr_0.85fr] lg:gap-14 lg:p-12"
               >
                 {/* left — headline + body */}
-                <div className="flex flex-col justify-center">
+                <div className="flex flex-col">
                   <p
-                    className="font-mono text-[10px] uppercase tracking-[0.24em]"
+                    className="font-mono text-[11px] uppercase tracking-[0.24em]"
                     style={{ color: `rgba(${p.rgb},0.65)` }}
                   >
                     {p.label}
@@ -242,7 +246,7 @@ export default function TrustPillars() {
                 </div>
 
                 {/* right — punchy proof points, borderless */}
-                <div className="flex flex-col justify-center gap-6">
+                <div className="flex flex-col gap-6">
                   {p.points.map((pt) => (
                     <div key={pt.title} className="flex gap-3.5">
                       <span

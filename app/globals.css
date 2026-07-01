@@ -278,6 +278,144 @@ h1, h2 { text-wrap: balance; }
 .orbit-tag { animation: orbit-ccw 90s linear infinite; }
 @media (prefers-reduced-motion: reduce) { .orbit, .orbit-tag { animation: none; } }
 
+/* ---------- lifecycle console — stage swap + operation-cell entrance + node pulse ---------- */
+
+@keyframes panelIn { from { opacity: 0; } to { opacity: 1; } }
+
+@keyframes cellIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulseRing {
+  from { transform: scale(1);   opacity: 0.55; }
+  to   { transform: scale(1.7); opacity: 0; }
+}
+
+/* lifecycle console — glass operation chips (a second, luminous pane on the console glass).
+   Colour comes from an inline `--rgb` triple per stage. No per-chip blur (the console
+   already blurs the scene; a second blur muddies it) — glass reads from the top lip,
+   the translucent fill, and the stage-colour left edge. */
+.op-chip {
+  position: relative;
+  border-radius: 10px;
+  padding: 9px 12px 9px 15px;
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  background: linear-gradient(180deg, rgba(255,255,255,0.055), rgba(255,255,255,0.018)), rgba(255,255,255,0.012);
+  box-shadow:
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.10),
+    inset 0 -12px 20px -18px rgba(var(--rgb), 0.35),
+    0 1px 2px 0 rgba(0, 0, 0, 0.25);
+  transition: background 150ms cubic-bezier(0.16,1,0.3,1), border-color 150ms cubic-bezier(0.16,1,0.3,1), box-shadow 150ms cubic-bezier(0.16,1,0.3,1);
+}
+.op-chip:hover {
+  border-color: rgba(var(--rgb), 0.32);
+  background: linear-gradient(180deg, rgba(255,255,255,0.085), rgba(255,255,255,0.03)), rgba(255,255,255,0.02);
+  box-shadow:
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.16),
+    inset 0 -12px 20px -18px rgba(var(--rgb), 0.4),
+    0 0 0 1px rgba(var(--rgb), 0.10),
+    0 2px 10px -4px rgba(var(--rgb), 0.25);
+}
+.op-chip__edge {
+  position: absolute; left: 0; top: 8px; bottom: 8px; width: 2px; border-radius: 2px;
+  background: linear-gradient(180deg, rgba(var(--rgb), 0.9), rgba(var(--rgb), 0.45));
+  box-shadow: 0 0 8px 0 rgba(var(--rgb), 0.5);
+  transition: box-shadow 150ms cubic-bezier(0.16,1,0.3,1);
+}
+.op-chip:hover .op-chip__edge { box-shadow: 0 0 12px 0 rgba(var(--rgb), 0.75); }
+
+/* the meridian current — one slow luminous pass left→right along the line.
+   Transform-only (GPU): the band is 22% wide, travelling 65.5% of the track =
+   65.5/22 ≈ 298% of its own width. Base left is set inline on the element. */
+@keyframes meridian-flow {
+  0%   { transform: translateX(0);    opacity: 0; }
+  12%  { opacity: 0.7; }
+  88%  { opacity: 0.7; }
+  100% { transform: translateX(298%); opacity: 0; }
+}
+.meridian-flow { animation: meridian-flow 9s ease-in-out infinite; will-change: transform, opacity; }
+@media (prefers-reduced-motion: reduce) { .meridian-flow { animation: none; display: none; } }
+
+/* ---------- meridian waypoints — glass lozenges standing on the current ----------
+   Each stage is a translucent glass tile: a very quiet card at rest, brightening on
+   hover with a specular sheen sweep, and lit-from-within when active. The rail runs
+   across the tile's top edge (the keel), so the tiles read as anchored to the axis
+   rather than floating. Colour is passed in as --rgb (three comma-separated ints). */
+.wp {
+  position: relative;
+  border-radius: 14px;
+  transition: transform 0.35s cubic-bezier(0.16,1,0.3,1),
+              border-color 0.3s ease,
+              background 0.4s ease,
+              box-shadow 0.4s ease;
+  background:
+    linear-gradient(160deg, rgba(255,255,255,0.045) 0%, rgba(255,255,255,0.012) 55%, rgba(255,255,255,0.028) 100%);
+  border: 1px solid rgba(255,255,255,0.06);
+  backdrop-filter: blur(14px) saturate(130%);
+  -webkit-backdrop-filter: blur(14px) saturate(130%);
+  box-shadow:
+    inset 0 1px 0 0 rgba(255,255,255,0.055),
+    0 8px 24px -18px rgba(2,4,10,0.55);
+  overflow: hidden;
+  isolation: isolate;
+}
+.wp::before {
+  /* the sheen — a soft diagonal band held off-canvas until hover */
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background: linear-gradient(115deg, transparent 30%, rgba(255,255,255,0.28) 50%, transparent 70%);
+  transform: translateX(-120%);
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  mix-blend-mode: screen;
+}
+.wp::after {
+  /* the coloured floor — a soft interior colour pool the active state lights up */
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background:
+    radial-gradient(120% 100% at 50% 100%, rgba(var(--rgb, 57,214,255),0.14) 0%, transparent 62%),
+    radial-gradient(80% 60% at 50% 0%, rgba(var(--rgb, 57,214,255),0.08) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.45s ease;
+}
+.wp:hover, .wp:focus-visible {
+  border-color: rgba(var(--rgb, 255,255,255), 0.28);
+  box-shadow:
+    inset 0 1px 0 0 rgba(255,255,255,0.07),
+    inset 0 -30px 60px -60px rgba(var(--rgb, 57,214,255), 0.35),
+    0 12px 32px -18px rgba(var(--rgb, 57,214,255), 0.35);
+}
+.wp:hover::before, .wp:focus-visible::before {
+  opacity: 1;
+  animation: wpShine 1.1s cubic-bezier(0.16,1,0.3,1) forwards;
+}
+.wp[data-active="true"] {
+  border-color: rgba(var(--rgb, 57,214,255), 0.42);
+  background:
+    linear-gradient(160deg, rgba(255,255,255,0.075) 0%, rgba(255,255,255,0.018) 55%, rgba(255,255,255,0.05) 100%);
+  box-shadow:
+    inset 0 1px 0 0 rgba(255,255,255,0.09),
+    inset 0 -34px 70px -60px rgba(var(--rgb, 57,214,255), 0.5),
+    0 14px 40px -18px rgba(var(--rgb, 57,214,255), 0.45);
+}
+.wp[data-active="true"]::after { opacity: 1; }
+@keyframes wpShine {
+  0%   { transform: translateX(-120%); }
+  100% { transform: translateX(140%); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .wp, .wp::before, .wp::after { transition: none; }
+  .wp:hover::before, .wp:focus-visible::before { animation: none; }
+}
+
 /* ---------- flywheel ring ---------- */
 
 @keyframes ring-turn { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }

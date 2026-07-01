@@ -56,13 +56,13 @@ export default function BlogPage() {
             <Reveal>
               <Eyebrow>Insights</Eyebrow>
               <h1 className="mt-5 font-serif text-display-hero text-ink">
-                Before the action, the argument.
+                Perspectives on AI in banking and lending.
               </h1>
             </Reveal>
             <Reveal delay={0.12}>
               <p className="mx-auto mt-7 max-w-[48ch] font-sans text-body-lg text-ink-2">
-                Notes on building <span className="text-mint">validated</span>,{' '}
-                <span className="text-ink">sovereign</span> AI for banking and lending.
+                Notes on building it <span className="text-mint">validated</span>,{' '}
+                <span className="text-ink">sovereign</span>, and provable.
               </p>
             </Reveal>
           </div>
@@ -88,8 +88,9 @@ export default function BlogPage() {
                       src={p.image}
                       alt=""
                       fill
-                      sizes="(max-width: 768px) 100vw, 50vw"
+                      sizes="(max-width: 768px) calc(100vw - 40px), (max-width: 1200px) calc(50vw - 40px), 600px"
                       quality={70}
+                      priority={i === 0}
                       placeholder={CINEMATIC[p.image]?.blur ? 'blur' : 'empty'}
                       blurDataURL={CINEMATIC[p.image]?.blur}
                       className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"

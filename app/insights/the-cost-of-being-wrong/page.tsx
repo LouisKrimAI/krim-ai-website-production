@@ -12,6 +12,8 @@ import OrbBackdrop from '@/components/OrbBackdrop'
 import Reveal from '@/components/Reveal'
 import { Section, Eyebrow, GlassCard, CTA } from '@/components/ui'
 import ArticleImage from '@/components/ArticleImage'
+import ArticlePanel from '@/components/ArticlePanel'
+import BackToInsights from '@/components/BackToInsights'
 
 const SLUG = 'the-cost-of-being-wrong'
 const TITLE = 'The cost of being wrong'
@@ -90,7 +92,7 @@ export default function Page() {
 
         {/* ---- Body ---- */}
         <Section className="!pt-0">
-          <div className="mx-auto max-w-[680px]">
+          <ArticlePanel>
             <Reveal>
               <p className="font-sans text-body-lg text-ink-2">
                 Most software bugs are recoverable. You roll back, you patch, you apologise. A
@@ -188,6 +190,9 @@ export default function Page() {
                     The automation gap <span aria-hidden className="text-ink-3 transition-transform group-hover:translate-x-0.5">→</span>
                   </Link>
                 </div>
+                <div className="mt-8">
+                  <BackToInsights />
+                </div>
               </div>
             </Reveal>
 
@@ -227,7 +232,7 @@ export default function Page() {
                 </li>
               </ul>
             </div>
-          </div>
+          </ArticlePanel>
         </Section>
 
         {/* ---- Close CTA ---- */}

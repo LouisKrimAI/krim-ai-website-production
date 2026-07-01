@@ -63,7 +63,7 @@ const PROBLEMS = [
     body: "Every action carries the bank's signature, and most AI leaves no reasoning an examiner can read.",
   },
   {
-    heading: 'Point tools, never a whole.',
+    heading: 'Point tools,\nnever a whole.',
     body: 'Each tool sees one slice, so the intelligence your operation should build never forms.',
   },
 ]
@@ -179,7 +179,7 @@ export default function HomePage() {
               <Reveal key={p.heading} delay={i * 0.1}>
                 <div>
                   <span aria-hidden className="block h-[3px] w-10 rounded-full bg-amber/70" />
-                  <h3 className="mt-6 font-serif text-[clamp(1.5rem,2.1vw,1.95rem)] leading-[1.12] text-ink">{p.heading}</h3>
+                  <h3 className="mt-6 whitespace-pre-line font-serif text-[clamp(1.5rem,2.1vw,1.95rem)] leading-[1.12] text-ink">{p.heading}</h3>
                   <p className="mt-4 max-w-[34ch] font-sans text-body-lg text-ink-2">{p.body}</p>
                 </div>
               </Reveal>

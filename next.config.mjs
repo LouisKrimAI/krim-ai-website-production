@@ -5,6 +5,13 @@ const nextConfig = {
   // Requires a runtime that runs the Next image optimizer in production (e.g. Vercel/Node).
   images: {
     formats: ['image/avif', 'image/webp'],
+    // Optimised article art is immutable (addressed by path) — cache the generated
+    // variants for a year instead of the default 60s so prod first-hit cost is paid once.
+    minimumCacheTTL: 31536000,
+    // Cap the candidate ladder so a DPR-3 phone lands on a ~2x variant, not a 4K
+    // monster, while wide desktops still get a crisp full-bleed band.
+    deviceSizes: [400, 640, 828, 1080, 1200, 1600, 1920, 2560],
+    imageSizes: [200, 400, 640],
   },
   // KrimOS moved from /platform → /krimos (it is "KrimOS", never "the platform").
   // Permanently redirect the old paths so existing links never 404.

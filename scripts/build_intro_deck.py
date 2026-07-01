@@ -1,9 +1,8 @@
 """
-Krim_Intro.pdf — V6
-5-page executive deck. Dark canvas, mint accent.
-MoE-synthesised copy + layout.
+Krim_Intro.pdf -- V7
+5-page executive deck. Rebuilt: proper type scale, distinct layout per page.
+MoE design synthesis: full canvas, no dead space, one mint use per page.
 """
-
 import os
 from reportlab.lib.colors import HexColor, Color
 from reportlab.pdfgen.canvas import Canvas
@@ -11,7 +10,6 @@ from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
 
 W, H = 1280, 720
-M = 80
 
 _TTFS = {
     'SR':  '/System/Library/Fonts/Supplemental/Times New Roman.ttf',
@@ -24,46 +22,54 @@ for name, path in _TTFS.items():
         pdfmetrics.registerFont(TTFont(name, path))
 
 SR = 'SR'; SRI = 'SRI'; SA = 'SA'; SAB = 'SAB'
+BG     = HexColor('#09090C')
+INK    = HexColor('#F6F6F4')
+INK2   = HexColor('#B7BBC4')
+INK3   = HexColor('#7A7E87')
+MINT   = HexColor('#00FFB2')
+DARK   = HexColor('#04130D')
+MIDGRN = HexColor('#0D3D28')
 
-BG   = HexColor('#09090C')
-INK  = HexColor('#F6F6F4')
-INK2 = HexColor('#B7BBC4')
-INK3 = HexColor('#7A7E87')
-MINT = HexColor('#00FFB2')
+DIMLINE   = Color(1, 1, 1, alpha=0.12)
+MINTGHOST = Color(0, 1, 0.698, alpha=0.055)
 
 
-# ── primitives ─────────────────────────────────────────────────────────────────
+# ── primitives ────────────────────────────────────────────────────────────────
 
 def bg(c):
     c.setFillColor(BG)
     c.rect(0, 0, W, H, fill=1, stroke=0)
 
-def eyebrow(c, text, x, y):
-    c.setFillColor(MINT)
-    c.setFont(SAB, 9)
-    c.drawString(x, y, text.upper())
-
-def folio(c, n):
+def page_label(c, text, x=80, y=697):
     c.setFillColor(INK3)
-    c.setFont(SA, 10)
-    c.drawString(M, 28, 'Krim  ·  Confidential')
-    c.drawRightString(W - M, 28, f'{n} / 5')
+    c.setFont(SAB, 9)
+    c.drawString(x, y, text)
 
-def h_rule(c, x, y, w, alpha=0.09):
-    c.setStrokeColor(Color(1, 1, 1, alpha=alpha))
-    c.setLineWidth(0.75)
-    c.line(x, y, x + w, y)
+def hr(c, x1, y, x2, color=None, lw=0.8):
+    c.setStrokeColor(color or DIMLINE)
+    c.setLineWidth(lw)
+    c.line(x1, y, x2, y)
 
-def v_rule(c, x, y1, y2, alpha=0.09):
-    c.setStrokeColor(Color(1, 1, 1, alpha=alpha))
-    c.setLineWidth(0.75)
+def vr(c, x, y1, y2, color=None, lw=0.8):
+    c.setStrokeColor(color or DIMLINE)
+    c.setLineWidth(lw)
     c.line(x, y1, x, y2)
 
-def wrap(c, text, x, y, font, size, max_w, leading=None):
-    """Word-wrap and draw. Returns y below the last baseline."""
+def t(c, x, y, text, font, size, color, align='left'):
+    c.setFont(font, size)
+    c.setFillColor(color)
+    if align == 'right':
+        c.drawRightString(x, y, text)
+    elif align == 'center':
+        c.drawCentredString(x, y, text)
+    else:
+        c.drawString(x, y, text)
+
+def wrap(c, text, x, y, font, size, max_w, color, leading=None):
     if leading is None:
         leading = size * 1.5
     c.setFont(font, size)
+    c.setFillColor(color)
     words = text.split()
     line = ''
     cy = y
@@ -82,390 +88,337 @@ def wrap(c, text, x, y, font, size, max_w, leading=None):
     return cy
 
 
-# ── Page 1 — Cover ─────────────────────────────────────────────────────────────
+# ===========================================================================
+# P1 -- COVER
+# Mint spine left / ghost "K" lower-right / wordmark upper / tagline center
+# ===========================================================================
 
 def p1_cover(c):
     bg(c)
 
-    # Full-width mint rule at very top
-    c.setFillColor(MINT)
-    c.rect(0, H - 2, W, 2, fill=1, stroke=0)
+    # Ghost "K" -- 280pt dim mint fills lower-right, drawn first (behind all)
+    c.setFont(SR, 280)
+    c.setFillColor(Color(0, 1, 0.698, alpha=0.058))
+    c.drawString(600, -28, 'K')
 
-    # Wordmark
-    c.setFillColor(INK)
-    c.setFont(SR, 80)
-    c.drawString(M, 308, 'Krim')
+    # Mint spine (4pt, full height)
+    c.setFillColor(MINT)
+    c.rect(76, 0, 4, H, fill=1, stroke=0)
+
+    # Concentric arcs -- subtle radar texture, right side
+    k = 0.5523
+    for r in [150, 250, 360, 470]:
+        c.setStrokeColor(Color(1, 1, 1, alpha=0.09))
+        c.setLineWidth(0.8)
+        c.bezier(1280, 360 + r,  1280 - r*k, 360 + r,  1280 - r, 360 + r*k,  1280 - r, 360)
+        c.bezier(1280 - r, 360,  1280 - r, 360 - r*k,  1280 - r*k, 360 - r,  1280, 360 - r)
+
+    LX = 108
+
+    # Wordmark -- 140pt, upper area; ghost K sits below creating visual balance
+    t(c, LX, 488, 'Krim', SR, 140, INK)
+
+    # Three descriptor lines below wordmark
+    descs = [
+        'Every AI action validated before it runs.',
+        'An autonomous workforce across the full credit lifecycle.',
+        'A record that learns and stays inside your walls.',
+    ]
+    for i, d in enumerate(descs):
+        t(c, LX, 360 - i * 27, d, SA, 13, INK2)
+
+    # Thin mint accent rule
+    hr(c, LX, 285, LX + 200, MINT, 1.0)
 
     # Tagline
-    c.setFillColor(INK2)
-    c.setFont(SR, 22)
-    c.drawString(M, 250, 'The OS for safe agentic banking')
-
-    # 1pt mint hairline left of descriptor
-    c.setFillColor(MINT)
-    c.rect(M, 176, 1, 60, fill=1, stroke=0)
-
-    # Descriptor — three beats
-    c.setFillColor(INK2)
-    c.setFont(SA, 11)
-    wrap(c,
-         'Every AI action validated before it runs. '
-         'An autonomous workforce across the full credit lifecycle. '
-         'An institutional record that compounds.',
-         M + 12, 224, SA, 11, 860, leading=18)
+    t(c, LX, 262, 'The operating system for regulated banking.', SR, 20, INK)
 
     # Footer
-    h_rule(c, M, 52, W - 2 * M, alpha=0.1)
-    c.setFillColor(INK3)
-    c.setFont(SA, 9)
-    c.drawString(M, 36, 'Confidential · 2026')
-    c.drawRightString(W - M, 36, 'krim.ai')
+    t(c, LX, 28, 'Confidential  2026', SA, 9, INK3)
+    t(c, W - 80, 28, 'krim.ai', SA, 9, INK3, align='right')
 
     c.showPage()
 
 
-# ── Page 2 — Four Problems ─────────────────────────────────────────────────────
+# ===========================================================================
+# P2 -- PROBLEMS
+# Full-bleed 2x2 grid / no section headline / content centred in each cell
+# ===========================================================================
 
 _PROBLEMS = [
-    ('01',
-     "Lending operations weren't built to scale",
-     "The same workflows that processed a thousand loans now handle ten thousand "
-     "with more headcount, not more leverage. There is no force multiplier because "
-     "the operation itself has never changed shape."),
-    ('02',
-     "In credit, a hallucination is a compliance event",
-     "General-purpose AI produces confident output without guaranteed accuracy. "
-     "A misquoted rate, an incorrect balance, a fabricated disclosure: each is a liability. "
-     "The regulator's test is not whether the output was plausible. It is whether it was defensible."),
-    ('03',
-     "The decision was made. The reasoning is gone.",
-     "Regulators require that adverse decisions be explained with specificity. "
-     "Any AI that cannot show its reasoning, step by step, "
-     "is effectively unusable in regulated credit."),
-    ('04',
-     "Every team runs on different data. The operation learns nothing.",
-     "Origination, servicing, collections, and compliance each operate in separate systems. "
-     "Decisions made in one function are invisible to the next. "
-     "The institution accumulates data. It does not accumulate intelligence."),
+    ('01', "Volume scaled.\nThe operation didn't.",
+     "The same workflows that processed a thousand loans now process ten thousand"
+     "--with more headcount carrying the difference. The operation grew bigger. It did not grow smarter."),
+    ('02', "In credit, a confident error\nis a regulatory event.",
+     "A misquoted rate. An incorrect balance. A fabricated disclosure. "
+     "General-purpose AI produces plausible output. Regulators require defensible output. "
+     "That gap is the liability."),
+    ('03', "The decision exists.\nThe reasoning doesn't.",
+     "Adverse action requires specific explanation, traceable step by step. "
+     "AI that cannot show its work is compliance-ineligible."),
+    ('04', "The institution accumulates data.\nIt accumulates nothing else.",
+     "Origination, servicing, collections, and compliance each run on separate systems. "
+     "A decision made in one function is invisible to the next. "
+     "The institution grows. Its intelligence does not."),
 ]
 
 def p2_problems(c):
     bg(c)
 
-    TOP = H - M  # 640
+    page_label(c, 'THE PROBLEM', 40, 697)
 
-    eyebrow(c, 'The Problem', M, TOP - 4)
-    c.setFillColor(INK)
-    c.setFont(SR, 26)
-    c.drawString(M, TOP - 44, 'Four reasons banking AI stalls at the pilot stage')
-    h_rule(c, M, TOP - 68, W - 2 * M)
+    CROSS_X, CROSS_Y = 640, 360
+    vr(c, CROSS_X, 38, 678)
+    hr(c, 38, CROSS_Y, 1242)
 
-    GTOP = TOP - 80
-    GBOT = 52
-    ROW_H = (GTOP - GBOT) / 2
-    COL_W = (W - 2 * M) / 2
-    DIVX  = M + COL_W
-    MIDY  = GBOT + ROW_H
-
-    v_rule(c, DIVX, GBOT, GTOP)
-    h_rule(c, M, MIDY, W - 2 * M)
-
-    cells = [
-        (M,    MIDY, 0),   # top-left
-        (DIVX, MIDY, 1),   # top-right
-        (M,    GBOT, 2),   # bottom-left
-        (DIVX, GBOT, 3),   # bottom-right
+    PAD = 28
+    # (cell_left, cell_right, cell_bot, cell_top, idx)
+    CELLS = [
+        (38,  632,  360, 678, 0),
+        (648, 1242, 360, 678, 1),
+        (38,  632,  38,  355, 2),
+        (648, 1242, 38,  355, 3),
     ]
 
-    PAD = 26
-    CW  = COL_W - PAD * 2 - 6
+    for cl, cr, cbot, ctop, idx in CELLS:
+        num, headline, body = _PROBLEMS[idx]
+        cx  = cl + PAD
+        cw  = cr - cl - PAD * 2
 
-    for cx, cy, idx in cells:
-        num, title, body = _PROBLEMS[idx]
+        # Ghost ordinal -- large, drawn first so content is on top
+        c.setFont(SR, 96)
+        c.setFillColor(MINTGHOST)
+        c.drawRightString(cr - PAD, ctop - 118, num)
 
-        # Ghost ordinal — large, dim mint
-        c.setFillColor(Color(0, 1, 0.698, alpha=0.14))
-        c.setFont(SR, 36)
-        c.drawString(cx + PAD, cy + ROW_H - 46, num)
+        # Vertically centre content block in the cell
+        # Block height: label + gap + headline 2 lines + gap + body 2-3 lines
+        BLOCK_H = 148  # estimated
+        cell_h  = ctop - cbot
+        start_y = ctop - (cell_h - BLOCK_H) // 2
 
-        # Headline
-        c.setFillColor(INK)
-        hy = cy + ROW_H - 78
-        hy = wrap(c, title, cx + PAD, hy, SR, 15, CW, leading=21)
+        # Mint number label
+        t(c, cx, start_y, num, SAB, 10, MINT)
+
+        # Headline (pre-split)
+        hl_lines = headline.split('\n')
+        hy = start_y - 24
+        for i, hl in enumerate(hl_lines):
+            t(c, cx, hy - i * 28, hl, SR, 22, INK)
 
         # Body
-        c.setFillColor(INK2)
-        wrap(c, body, cx + PAD, hy - 4, SA, 10.5, CW, leading=15.5)
+        body_y = hy - len(hl_lines) * 28 - 16
+        wrap(c, body, cx, body_y, SA, 12, cw, INK2, leading=18)
 
-    folio(c, 2)
     c.showPage()
 
 
-# ── Page 3 — Solution ──────────────────────────────────────────────────────────
+# ===========================================================================
+# P3 -- SOLUTION
+# Three horizontal tiers: VALIDATE (top) / ACT (mid) / COMPOUND (bottom)
+# ===========================================================================
 
 def p3_solution(c):
     bg(c)
 
-    TOP   = H - M
-    BANDY = 490   # header / columns divide
+    V_BOT = 550   # VALIDATE band: y=550-720 (170pt)
+    C_TOP = 210   # COMPOUND band: y=0-210 (210pt); ACT: y=210-547 (337pt)
 
-    # Header
-    eyebrow(c, 'The Solution', M, TOP - 4)
-    c.setFillColor(INK)
-    c.setFont(SR, 30)
-    c.drawString(M, TOP - 46, 'One operating system.')
-    c.drawString(M, TOP - 82, 'Every part of the credit lifecycle.')
-    c.setFillColor(INK2)
-    c.setFont(SA, 11)
-    c.drawString(M, TOP - 118,
-                 'Not a workflow tool. Not a chatbot layer. The OS the operation runs on.')
+    # Slightly lighter fill for ACT band
+    c.setFillColor(Color(0.055, 0.055, 0.07, alpha=1.0))
+    c.rect(0, C_TOP, W, V_BOT - C_TOP, fill=1, stroke=0)
 
-    # Mint boundary rule
-    c.setStrokeColor(Color(0, 1, 0.698, alpha=0.28))
-    c.setLineWidth(0.75)
-    c.line(M, BANDY, W - M, BANDY)
+    hr(c, 0, V_BOT, W, DIMLINE, 1.0)
+    hr(c, 0, C_TOP, W, DIMLINE, 1.0)
 
-    GAP    = 22
-    CW     = (W - 2 * M - 2 * GAP) / 3
-    CTOP   = BANDY - 18
-    CBOT   = 52
+    ML, MR = 80, 1200
 
-    CX = [M, M + CW + GAP, M + 2 * (CW + GAP)]
+    # VALIDATE
+    t(c, ML, 695, 'VALIDATE', SAB, 10, MINT)
+    t(c, ML, 669, 'Every output checked before it acts.', SRI, 18, INK)
+    t(c, ML, 644, '33-point pipeline    Regulatory    Policy    Operational', SA, 11, INK3)
 
-    v_rule(c, CX[1] - GAP / 2, CBOT, CTOP)
-    v_rule(c, CX[2] - GAP / 2, CBOT, CTOP)
+    # ACT -- label + descriptor sit just above the boxes
+    t(c, ML, 445, 'ACT', SAB, 11, INK)
+    t(c, ML, 421, 'Five autonomous co-workers. Origination to compliance.', SRI, 17, INK)
 
-    _COLS = [
-        {
-            'label': 'VALIDATE', 'sub': 'Krim-Nyāya',
-            'hl': 'Every action validated before it executes.',
-            'body': ("A 33-point pipeline runs before every action fires. "
-                     "Regulatory, policy, and operational checks in sequence. "
-                     "Rejected actions go to an exception queue with the blocking rule attached."),
-            'items': None,
-        },
-        {
-            'label': 'ACT', 'sub': 'Karta Co-Workers',
-            'hl': 'Autonomous co-workers across the full lifecycle.',
-            'body': None,
-            'items': [
-                'Origination — KYC, document processing, qualification',
-                'Credit analysis — policy checks, structured analysis',
-                'Portfolio monitoring — early-warning, account surveillance',
-                'Collections — governed outbound, payment negotiation',
-                'Compliance — reporting, audit pack generation',
-            ],
-        },
-        {
-            'label': 'COMPOUND', 'sub': 'Kira + Krimkar',
-            'hl': 'An institutional record that compounds.',
-            'body': ("Every action logged to an immutable record. "
-                     "Audit trails complete by construction. "
-                     "Intelligence stays inside the institution's perimeter "
-                     "and grows with every decision."),
-            'items': None,
-        },
+    # Flow diagram -- 5 workflow boxes, taller and better centred in ACT band
+    BOX_W, BOX_H, BOX_GAP = 200, 130, 16
+    N = 5
+    TOTAL_W = N * BOX_W + (N - 1) * BOX_GAP
+    BOX_X0  = ML + ((MR - ML) - TOTAL_W) // 2
+    BOX_YB  = 240
+    BOX_YT  = BOX_YB + BOX_H
+
+    WORKFLOWS = [
+        ('Origination',          'KYC  docs  qualification'),
+        ('Credit Analysis',      'Policy  pricing  risk'),
+        ('Portfolio\nMonitoring','Early-warning signals'),
+        ('Collections',          'Governed outreach'),
+        ('Compliance',           'Audit  reporting'),
     ]
 
-    for i, col in enumerate(_COLS):
-        cx = CX[i]
-        cw = CW - 6
-        cy = CTOP
+    for i, (label, sub) in enumerate(WORKFLOWS):
+        bx = BOX_X0 + i * (BOX_W + BOX_GAP)
 
-        eyebrow(c, col['label'], cx, cy)
-        cy -= 20
+        c.setFillColor(Color(0, 0, 0, alpha=0.25))
+        c.setStrokeColor(Color(1, 1, 1, alpha=0.15))
+        c.setLineWidth(0.8)
+        c.rect(bx, BOX_YB, BOX_W, BOX_H, stroke=1, fill=1)
 
+        # Mint top accent
+        c.setStrokeColor(Color(0, 1, 0.698, alpha=0.55))
+        c.setLineWidth(1.5)
+        c.line(bx, BOX_YT, bx + BOX_W, BOX_YT)
+
+        # Label (centred, may be multi-line)
+        llines = label.split('\n')
+        ly = BOX_YT - 22
+        for li, ll in enumerate(llines):
+            c.setFont(SAB, 11)
+            c.setFillColor(INK)
+            lw = c.stringWidth(ll, SAB, 11)
+            c.drawString(bx + (BOX_W - lw) / 2, ly - li * 14, ll)
+
+        # Sub-label (centred)
+        c.setFont(SA, 9.5)
         c.setFillColor(INK3)
-        c.setFont(SRI, 11)
-        c.drawString(cx, cy, col['sub'])
-        cy -= 28
+        sw = c.stringWidth(sub, SA, 9.5)
+        c.drawString(bx + (BOX_W - sw) / 2, BOX_YB + 14, sub)
 
-        c.setFillColor(INK)
-        cy = wrap(c, col['hl'], cx, cy, SR, 14, cw, leading=20)
-        cy -= 10
+        # Connector to next box
+        if i < N - 1:
+            ay = BOX_YB + BOX_H // 2
+            c.setStrokeColor(Color(1, 1, 1, alpha=0.20))
+            c.setLineWidth(0.8)
+            c.line(bx + BOX_W, ay, bx + BOX_W + BOX_GAP, ay)
 
-        if col['body']:
-            c.setFillColor(INK2)
-            wrap(c, col['body'], cx, cy, SA, 10.5, cw, leading=16)
-        else:
-            for item in col['items']:
-                c.setFillColor(MINT)
-                c.setFont(SAB, 9)
-                c.drawString(cx, cy, '—')
-                c.setFillColor(INK2)
-                cy = wrap(c, item, cx + 14, cy, SA, 10, cw - 14, leading=15)
-                cy -= 4
+    # COMPOUND
+    t(c, ML, 195, 'COMPOUND', SAB, 10, INK3)
+    t(c, ML, 171, 'Every decision recorded. Intelligence stays inside your walls.', SRI, 17, INK)
+    t(c, ML, 147, 'Immutable audit trail    Sovereign by construction    Compounds with every cycle', SA, 11, INK3)
 
-    folio(c, 3)
     c.showPage()
 
 
-# ── Page 4 — Why Krim ──────────────────────────────────────────────────────────
+# ===========================================================================
+# P4 -- WHY KRIM
+# Four full-width rows / mint top rule per row (signature element)
+# Completely distinct from the 2x2 grid on P2
+# ===========================================================================
 
 _DIFFS = [
-    ('01 — VALIDATION',
-     'Pre-execution, not post-hoc',
-     ("KrimOS validates before the action fires. Policy, regulatory, and operational "
-      "constraints are encoded in the validation layer. "
-      "A compliance violation is not reduced. It is made structurally impossible.")),
-    ('02 — COVERAGE',
-     'End-to-end, from origination to collections',
-     ("One runtime, one audit trail, one governance model across the full credit lifecycle. "
-      "Not separate tools for each function with separate compliance reviews for each vendor.")),
-    ('03 — SOVEREIGNTY',
-     'Sovereign by construction',
-     ("Customer data, model weights, and telemetry remain inside the institution's infrastructure. "
-      "There is no mode that requires data to leave. "
-      "Sovereignty is a structural guarantee, not a contractual one.")),
-    ('04 — INTELLIGENCE',
-     'The institutional record compounds',
-     ("Every decision feeds back into the institution's intelligence. "
-      "The system learns from the institution's own outcomes under its own governance. "
-      "It cannot be replicated externally.")),
+    ('01', 'VALIDATION',
+     'The check runs before the action.',
+     'Every Karta workflow runs through the 33-point validation engine before any output reaches '
+     'a borrower, a regulator, or a system of record. The risk is contained before it exists.'),
+    ('02', 'COVERAGE',
+     'One runtime, one audit trail, one governance model.',
+     'Origination to collections -- the same system, the same record. No handoff between tools. '
+     'No gap between what happened and what was logged.'),
+    ('03', 'SOVEREIGNTY',
+     'Customer data never leaves.',
+     "Model weights, transaction data, and telemetry stay inside the institution's infrastructure. "
+     "A structural guarantee, not a contractual one."),
+    ('04', 'INTELLIGENCE',
+     'The record compounds inside your walls.',
+     "Every decision feeds back under the institution's own governance. "
+     "That learning cannot be extracted, replicated, or acquired by a competitor."),
 ]
 
 def p4_why(c):
     bg(c)
 
-    # Signature: mint vertical bar, left edge
-    c.setFillColor(MINT)
-    c.rect(0, 0, 3, H, fill=1, stroke=0)
+    page_label(c, 'WHY KRIM', 80, 697)
 
-    TOP = H - M
+    ML, MR = 80, 1200
+    CW = MR - ML
 
-    eyebrow(c, 'Why Krim', M, TOP - 4)
-    c.setFillColor(INK)
-    c.setFont(SR, 26)
-    c.drawString(M, TOP - 44, "Four things that don't exist elsewhere in this category")
-    h_rule(c, M, TOP - 66, W - 2 * M)
+    # Four rows anchored by full-width mint rules
+    ROW_TOPS = [668, 508, 348, 188]
 
-    GTOP  = TOP - 78
-    GBOT  = 52
-    ROW_H = (GTOP - GBOT) / 2
-    COL_W = (W - 2 * M) / 2
-    DIVX  = M + COL_W
-    MIDY  = GBOT + ROW_H
+    for i, (num, label, headline, body) in enumerate(_DIFFS):
+        rt = ROW_TOPS[i]
 
-    v_rule(c, DIVX, GBOT, GTOP)
-    h_rule(c, M, MIDY, W - 2 * M)
+        # Mint top rule -- signature element of this page
+        hr(c, ML, rt, MR, MINT, 1.5)
 
-    cells = [
-        (M,    MIDY, 0),
-        (DIVX, MIDY, 1),
-        (M,    GBOT, 2),
-        (DIVX, GBOT, 3),
-    ]
+        t(c, ML,      rt - 18, num,   SAB, 9, INK3)
+        t(c, ML + 24, rt - 18, label, SAB, 9, MINT)
+        t(c, ML,      rt - 45, headline, SR, 22, INK)
+        wrap(c, body, ML, rt - 80, SA, 12, CW, INK2, leading=18)
 
-    PAD = 26
-    CW  = COL_W - PAD * 2 - 6
-
-    for cx, cy, idx in cells:
-        tag, title, body = _DIFFS[idx]
-
-        c.setFillColor(MINT)
-        c.setFont(SAB, 8)
-        c.drawString(cx + PAD, cy + ROW_H - 24, tag)
-
-        c.setFillColor(INK)
-        hy = cy + ROW_H - 50
-        hy = wrap(c, title, cx + PAD, hy, SR, 16, CW, leading=22)
-
-        c.setFillColor(INK2)
-        wrap(c, body, cx + PAD, hy - 6, SA, 10.5, CW, leading=16)
-
-    folio(c, 4)
     c.showPage()
 
 
-# ── Page 5 — Outcomes ──────────────────────────────────────────────────────────
+# ===========================================================================
+# P5 -- OUTCOMES + CTA
+# Three columns / full-bleed solid MINT bar at bottom
+# ===========================================================================
 
 _OUTCOMES = [
-    ("More volume. The same team.",
-     ("The structured work in origination, analysis, and compliance runs autonomously. "
-      "Analysts work from complete, validated files. "
-      "The operation scales with the book without a proportional headcount response.")),
-    ("Risk visible when it is still actionable.",
-     ("Continuous portfolio monitoring means early-warning patterns surface as patterns, "
-      "not as losses. Collections works from live risk signals, "
-      "not a queue worked in arrival order.")),
-    ("An edge that compounds and cannot be bought.",
-     ("Every validated action enriches the institutional record. The system improves with use. "
-      "This record is built from the institution's own decisions under its own governance. "
-      "Competitors cannot replicate it.")),
+    ('01', 'Decisions your\nregulators can follow.',
+     'Every output is documented, explainable, and audit-ready before it leaves the system. '
+     'Adverse decisions can be explained, step by step.',
+     '33-point pre-execution validation'),
+    ('02', 'More volume.\nThe same headcount.',
+     'Routine tasks across origination, servicing, and collections run without human initiation. '
+     'Capacity scales with the portfolio, not with hiring.',
+     'Five Karta co-workers, end-to-end'),
+    ('03', 'An edge that\ncannot be bought.',
+     'The intelligence built on your portfolio and outcomes lives inside your infrastructure. '
+     'A competitor cannot acquire it. It compounds with every loan.',
+     'Sovereign, self-hosted memory'),
 ]
 
 def p5_outcomes(c):
     bg(c)
 
-    CTA_H = 96
+    CTA_H = 128
 
-    # CTA strip — the only filled surface in the deck
-    c.setFillColor(Color(0, 1, 0.698, alpha=0.07))
-    c.rect(0, 0, W, CTA_H, fill=1, stroke=0)
-    c.setStrokeColor(Color(0, 1, 0.698, alpha=0.22))
-    c.setLineWidth(0.75)
-    c.line(0, CTA_H, W, CTA_H)
-
-    # CTA — left
-    c.setFillColor(INK)
-    c.setFont(SR, 17)
-    c.drawString(M, CTA_H - 30, 'See KrimOS working in your workflow.')
-    c.setFillColor(INK2)
-    c.setFont(SA, 11)
-    c.drawString(M, CTA_H - 50, 'Book a demo at krim.ai/contact')
-
-    # CTA — right
+    # Solid MINT bar -- the only mint-as-fill in the entire deck
     c.setFillColor(MINT)
-    c.setFont(SAB, 10)
-    c.drawRightString(W - M, CTA_H - 28, 'BOOK A DEMO')
-    c.setFillColor(INK3)
-    c.setFont(SA, 10)
-    c.drawRightString(W - M, CTA_H - 48, 'krim.ai/contact')
+    c.rect(0, 0, W, CTA_H, fill=1, stroke=0)
 
-    TOP = H - M
-    eyebrow(c, 'What This Delivers', M, TOP - 4)
-    c.setFillColor(INK)
-    c.setFont(SR, 26)
-    c.drawString(M, TOP - 44, 'Three outcomes a CRO or CLO can take to the board')
+    # CTA copy -- dark on mint
+    t(c, 80,      90, 'Ready to see it working in your environment?', SR, 22, DARK)
+    t(c, 80,      57, 'Every demo runs against a live scenario -- bring the use case you want answered.', SA, 12, MIDGRN)
+    t(c, W - 80,  74, 'krim.ai/contact', SAB, 15, DARK, align='right')
 
-    CTOP = TOP - 74
-    CBOT = CTA_H + 14
-    GAP  = 24
-    CW   = (W - 2 * M - 2 * GAP) / 3
+    page_label(c, 'OUTCOMES', 80, 697)
 
-    for i, (title, body) in enumerate(_OUTCOMES):
-        cx = M + i * (CW + GAP)
+    COL_GAP = 44
+    COL_W   = (W - 160 - 2 * COL_GAP) // 3
+    COL_XS  = [80, 80 + COL_W + COL_GAP, 80 + 2 * (COL_W + COL_GAP)]
 
-        if i > 0:
-            v_rule(c, cx - GAP / 2, CBOT, CTOP)
+    for div_x in [COL_XS[1] - COL_GAP // 2, COL_XS[2] - COL_GAP // 2]:
+        vr(c, div_x, CTA_H + 22, H - 28)
 
-        c.setFillColor(MINT)
-        c.setFont(SAB, 9)
-        c.drawString(cx, CTOP, f'0{i + 1}')
+    for i, (num, headline, body, detail) in enumerate(_OUTCOMES):
+        ox = COL_XS[i]
 
-        c.setFillColor(INK)
-        ty = CTOP - 20
-        ty = wrap(c, title, cx, ty, SR, 15, CW, leading=21)
+        t(c, ox, 662, num, SAB, 10, INK3)
 
-        # Short mint rule beneath title
-        c.setStrokeColor(MINT)
-        c.setLineWidth(1.5)
-        c.line(cx, ty - 2, cx + 40, ty - 2)
+        hl_lines = headline.split('\n')
+        hy = 638
+        for li, hl in enumerate(hl_lines):
+            t(c, ox, hy - li * 32, hl, SR, 28, INK)
 
-        c.setFillColor(INK2)
-        wrap(c, body, cx, ty - 18, SA, 10.5, CW, leading=16)
+        body_y = hy - len(hl_lines) * 32 - 18
+        wrap(c, body, ox, body_y, SA, 12, COL_W, INK2, leading=18)
 
-    folio(c, 5)
+        hr(c, ox, CTA_H + 50, ox + COL_W, Color(1, 1, 1, alpha=0.09), 0.8)
+        t(c, ox, CTA_H + 36, detail, SA, 10.5, INK3)
+
     c.showPage()
 
 
-# ── Build ──────────────────────────────────────────────────────────────────────
+# ── Build ─────────────────────────────────────────────────────────────────────
 
 if __name__ == '__main__':
-    out = 'public/decks/Krim_Intro.pdf'
+    out = '/Users/louis/Documents/krim-website-clean/public/decks/Krim_Intro.pdf'
     os.makedirs(os.path.dirname(out), exist_ok=True)
     c = Canvas(out, pagesize=(W, H))
-    c.setTitle('Krim')
+    c.setTitle('Krim -- The Operating System for Regulated Banking')
     c.setAuthor('Krim')
     p1_cover(c)
     p2_problems(c)
