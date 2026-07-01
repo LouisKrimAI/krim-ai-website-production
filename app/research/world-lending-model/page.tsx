@@ -1,9 +1,10 @@
 /**
- * /research/world-lending-model — the World Lending Model.
+ * /research/world-lending-model — Kovida, the world lending model.
  *
- * Krim's flagship research direction: a complete, safe world model of lending,
- * with an agent harness, spanning the entire stack — origination, a validated
- * AI underwriter, servicing, collections. Presented confidently as the company's
+ * Kovida is Krim's flagship research direction: a complete, safe world model of
+ * lending, with an agent harness, spanning the entire stack — origination, a
+ * validated AI underwriter, servicing, collections. Presented confidently as the
+ * company's
  * direction and an active area of research (see docs/krim-content.md → "Direction
  * — the full lending stack", which supersedes the old "never underwriting" line).
  *
@@ -28,14 +29,14 @@ import LifecycleExplorer from '@/components/research/LifecycleExplorer'
 import { Section, Eyebrow, GlassCard, CTA } from '@/components/ui'
 
 export const metadata: Metadata = {
-  title: 'World Lending Model',
+  title: 'Kovida — the world lending model',
   description:
-    'The World Lending Model is Krim’s research direction: a learned, safe model of how lending actually behaves, across borrowers, products, markets, rules and the whole lifecycle. AI agents simulate an action against it and clear it through the compliance gate before they act, from origination to a validated AI underwriter to collections. Every recorded outcome makes the model sharper, inside the institution’s own walls.',
+    'Kovida is Krim’s world lending model: a learned, safe model of how lending actually behaves, across borrowers, products, markets, rules and the whole lifecycle. AI agents simulate an action against Kovida and clear it through the compliance gate before they act, from origination to a validated AI underwriter to collections. Every recorded outcome makes the model sharper, inside the institution’s own walls.',
   alternates: { canonical: 'https://krim.ai/research/world-lending-model' },
   openGraph: {
-    title: 'World Lending Model · Krim Research',
+    title: 'Kovida — the world lending model · Krim Research',
     description:
-      'A learned, safe model of how lending actually behaves, that AI agents simulate against and clear through the compliance gate before they act, from origination to a validated AI underwriter to collections. Every recorded outcome makes the model sharper, inside the institution’s own walls.',
+      'Kovida is a learned, safe world model of lending, that AI agents simulate against and clear through the compliance gate before they act, from origination to a validated AI underwriter to collections. Every recorded outcome makes the model sharper, inside the institution’s own walls.',
     url: 'https://krim.ai/research/world-lending-model',
   },
 }
@@ -46,7 +47,7 @@ const breadcrumbLd = {
   itemListElement: [
     { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://krim.ai' },
     { '@type': 'ListItem', position: 2, name: 'Research', item: 'https://krim.ai/research' },
-    { '@type': 'ListItem', position: 3, name: 'World Lending Model', item: 'https://krim.ai/research/world-lending-model' },
+    { '@type': 'ListItem', position: 3, name: 'Kovida — the world lending model', item: 'https://krim.ai/research/world-lending-model' },
   ],
 }
 
@@ -91,17 +92,17 @@ export default function WorldLendingModelPage() {
         <Section className="!pt-24">
           <div className="mx-auto max-w-[900px] text-center">
             <Reveal>
-              <Eyebrow tone="cyan">Research · World Lending Model</Eyebrow>
+              <Eyebrow tone="cyan">Research · Kovida</Eyebrow>
               <h1 className="mt-5 font-serif text-display-hero text-ink">
-                A <span className="text-grad">world model</span> for lending.
+                <span className="text-grad">Kovida</span>, a world model for lending.
               </h1>
             </Reveal>
             <Reveal delay={0.12}>
               <p className="mx-auto mt-7 max-w-[54ch] font-sans text-body-lg text-ink-2">
-                A learned model of how lending actually behaves, so every agent from origination to
-                collections plans against the same picture.{' '}
+                Kovida is a learned model of how lending actually behaves, so every agent from
+                origination to collections plans against the same picture.{' '}
                 <span className="text-mint">
-                  No action fires until the model has simulated it and the compliance gate has
+                  No action fires until Kovida has simulated it and the compliance gate has
                   cleared it.
                 </span>
               </p>
@@ -144,8 +145,8 @@ export default function WorldLendingModelPage() {
                   The architecture and the rulebook agree
                 </p>
                 <p className="mt-5 font-serif text-[clamp(1.35rem,2.4vw,1.8rem)] leading-snug text-ink">
-                  “Check an action against its consequences before you take it” is the world model’s
-                  safety property. It is also, in essence, what a regulator asks of a credit decision.
+                  “Check an action against its consequences before you take it” is Kovida’s safety
+                  property. It is also, in essence, what a regulator asks of a credit decision.
                 </p>
                 <p className="mt-5 font-sans text-body text-ink-2">
                   It is the same control in both worlds, which is why a world model is the right way
@@ -164,8 +165,8 @@ export default function WorldLendingModelPage() {
               Many models of the world, learned as one.
             </h2>
             <p className="mt-6 max-w-[62ch] font-sans text-body-lg text-ink-2">
-              The world of lending is too large for one function to capture. The World Lending Model
-              builds it from parts, each learned from real outcomes, each sharpening the others.
+              The world of lending is too large for one function to capture. Kovida builds it from
+              parts, each learned from real outcomes, each sharpening the others.
             </p>
           </Reveal>
           <div className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-3">

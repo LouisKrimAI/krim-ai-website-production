@@ -116,7 +116,7 @@ export default function HomePage() {
           <div className="grid items-center gap-12 md:grid-cols-[1.15fr_1fr]">
             <div>
               <Reveal>
-                <Eyebrow>The world model</Eyebrow>
+                <Eyebrow>Kovida — the world lending model</Eyebrow>
                 <h2 className="mt-4 max-w-[24ch] font-serif text-display-1 text-ink">
                   One model for your whole lending operation.
                 </h2>
@@ -124,7 +124,8 @@ export default function HomePage() {
               <Reveal delay={0.12}>
                 <p className="mt-7 max-w-[52ch] font-sans text-body-lg text-ink-2">
                   One runtime runs the whole lifecycle and records every action with its reasoning on
-                  one ledger, so KrimOS builds a connected model of how lending actually behaves, and{' '}
+                  one ledger, so <span className="text-ink">Kovida</span> builds a connected model of
+                  how lending actually behaves, and{' '}
                   <span className="text-mint">sharpens with every outcome</span>. Validation lets it
                   act; the record, kept inside your walls, lets it learn.
                 </p>
@@ -137,7 +138,7 @@ export default function HomePage() {
                 </GlassCard>
                 <div className="mt-8">
                   <CTA href="/research/world-lending-model" variant="secondary">
-                    Explore the World Lending Model
+                    Explore Kovida
                   </CTA>
                 </div>
               </Reveal>

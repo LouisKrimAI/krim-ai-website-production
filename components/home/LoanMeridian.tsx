@@ -100,7 +100,7 @@ const OVERSIGHT = [
 const INSTITUTION = [
   { impact: 'Scale without the headcount.', hi: 'Scale', tag: 'Acquisition to closure.' },
   { impact: 'Audit evidence in minutes.', hi: 'minutes', tag: 'Assembled on demand.' },
-  { impact: 'Sharper with every loan.', hi: 'Sharper', tag: 'The world lending model.' },
+  { impact: 'Sharper with every loan.', hi: 'Sharper', tag: 'Kovida learns.' },
 ] as const
 
 // A small node sitting on the current — repeated at each band's eyebrow.

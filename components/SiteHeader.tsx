@@ -37,7 +37,7 @@ const DOMAINS = [
 const RESEARCH = [
   ['Overview', 'The work under the product', '/research'],
   ['Epistemic AI', 'The category we define', '/epistemic-ai'],
-  ['World Lending Model', 'The model we build toward', '/research/world-lending-model'],
+  ['Kovida', 'The world lending model', '/research/world-lending-model'],
   ['Safe Agent Harness', 'The harness that makes agents deployable', '/research/safe-agent-harness'],
 ] as const
 

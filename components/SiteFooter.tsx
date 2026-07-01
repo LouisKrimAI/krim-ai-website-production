@@ -36,7 +36,7 @@ const NAV: Array<[string, Array<[string, string]>]> = [
     'Resources',
     [
       ['Epistemic AI', '/epistemic-ai'],
-      ['World Lending Model', '/research/world-lending-model'],
+      ['Kovida', '/research/world-lending-model'],
       ['Safe Agent Harness', '/research/safe-agent-harness'],
       ['Research', '/research'],
       ['Architecture', '/architecture'],

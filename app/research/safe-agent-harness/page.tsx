@@ -574,7 +574,7 @@ export default function SafeAgentHarnessPage() {
               <div className="mt-8 flex flex-wrap justify-center gap-5">
                 <CTA href={DEMO_HREF}>Book a demo</CTA>
                 <CTA href="/research/world-lending-model" variant="secondary">
-                  See the World Lending Model
+                  See Kovida — the world lending model
                 </CTA>
               </div>
             </div>

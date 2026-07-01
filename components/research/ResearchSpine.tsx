@@ -26,10 +26,10 @@ const STRANDS = [
   {
     n: '02',
     title: 'A model of the operation',
-    body: 'Learning how a whole lending operation behaves, from the validated outcomes the system records: a world model that agents can reason and plan against before they act.',
+    body: 'Kovida is a learned model of how a whole lending operation behaves, built from the validated outcomes the system records: a world model that agents reason and plan against before they act.',
     href: '/research/world-lending-model',
     label: 'The direction',
-    sub: 'World Lending Model',
+    sub: 'Kovida — the world lending model',
     tint: 'cyan' as const,
   },
   {

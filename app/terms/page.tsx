@@ -29,7 +29,7 @@ You should not rely on the Site as the sole basis for any decision, or as a subs
   },
   {
     heading: 'Forward-looking statements and research direction',
-    body: `The Site describes KrimOS and related work, including the World Lending Model and our research toward an AI underwriter. Some of what we describe reflects current plans, capabilities under development, and the direction of our research, rather than features that are generally available today.
+    body: `The Site describes KrimOS and related work, including Kovida (Krim’s world lending model) and our research toward an AI underwriter. Some of what we describe reflects current plans, capabilities under development, and the direction of our research, rather than features that are generally available today.
 
 These descriptions may change, and we do not guarantee that any particular feature will be offered, or will perform exactly as described, in any specific deployment. Forward-looking statements involve assumptions, risks, and uncertainties, and actual products and outcomes may differ. We are not obliged to update them. Any deployment is defined by the applicable written agreement.`,
   },

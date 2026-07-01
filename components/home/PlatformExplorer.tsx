@@ -22,7 +22,7 @@ const LAYERS: Layer[] = [
     points: [
       'Every action gated before it fires, against your rules.',
       'One immutable record: what ran, why, under which rule.',
-      'Every outcome captured, feeding the work of the World Lending Model.',
+      'Every outcome captured, feeding Kovida — the world lending model.',
     ],
     href: '/krimos/kendra',
   },
