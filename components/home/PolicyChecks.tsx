@@ -40,7 +40,7 @@ const EASE = [0.16, 1, 0.3, 1] as const
 export default function PolicyChecks() {
   const reduce = useReducedMotion()
 
-  // y-only reveal (no opacity fade) — matches Reveal/PowerCards so glass never "solidifies" on scroll.
+  // y-only reveal (no opacity fade) so the glass never "solidifies" on scroll.
   const container = {
     hidden: {},
     show: { transition: { staggerChildren: reduce ? 0 : 0.14, delayChildren: reduce ? 0 : 0.1 } },
