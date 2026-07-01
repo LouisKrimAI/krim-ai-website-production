@@ -114,82 +114,79 @@ function ReadinessGap() {
 }
 
 function RBICrosswalk() {
-  const rows = [
+  const items = [
     {
-      req: 'Accountability for all models, incl. third-party',
-      demand: 'Outcomes are yours regardless of source',
-      answer: 'One inventoried gate governing every agent action, in-house or bought',
+      num: '01',
+      rbi: 'You own the outcomes of every model you run, including the ones you bought.',
+      answer: 'One gate. Every action. Regardless of source.',
     },
     {
-      req: 'Independent validation despite vendor assurance',
-      demand: "You must validate the vendor's model; opacity limits usage",
-      answer: 'Validation logic you own and run, independent of the provider',
+      num: '02',
+      rbi: "A vendor's certification doesn't discharge your duty. You validate it yourself.",
+      answer: 'Validation logic you own, running inside your perimeter.',
     },
     {
-      req: 'Explainability thresholds, higher for material decisions',
-      demand: 'Material decisions must be explainable',
-      answer: 'Formal-logic gate: every decision decomposes into readable reasons',
+      num: '03',
+      rbi: 'Material decisions must be explainable, even when the model is not.',
+      answer: 'Krim-Nyāya renders formal reasons, not probability scores. Every decision, decomposed.',
     },
     {
-      req: 'Control boundaries to bound hallucination',
-      demand: 'System-level limits on generative behaviour',
-      answer: 'Pre-execution checks intercept disallowed actions before they run',
+      num: '04',
+      rbi: 'System-level controls must constrain what a model can do.',
+      answer: 'Actions blocked before they execute. Not logged after.',
     },
     {
-      req: 'Autonomy/reliance raises the risk tier',
-      demand: 'More autonomy = higher scrutiny',
-      answer: 'Per-agent oversight and limits at the action layer',
+      num: '05',
+      rbi: 'More model autonomy means a higher risk tier and stricter scrutiny.',
+      answer: 'Per-agent limits at the action layer. Higher autonomy triggers stricter checks.',
     },
     {
-      req: 'Human-in-command, override, kill switch',
-      demand: 'Real-time human control',
-      answer: 'A gate a human can inspect, override, or freeze',
+      num: '06',
+      rbi: 'A human must be able to inspect, override, or stop the system at any point.',
+      answer: 'The gate is always human-accessible: inspect, override, freeze.',
     },
     {
-      req: 'Traceability, reproducibility, auditability',
-      demand: 'Auditable AI records',
-      answer: 'Deterministic, reproducible decision logs as a by-product',
+      num: '07',
+      rbi: 'Every AI decision must be traceable, reproducible, and retained for ten years.',
+      answer: 'Deterministic logs as a by-product of every action. Ten-year retention built in.',
     },
   ]
 
   return (
-    <div className="my-12 overflow-x-auto">
-      <p className="mb-4 font-mono text-[10px] uppercase tracking-[0.18em] text-ink-3">
-        The draft as a specification — and how a pre-execution control layer answers it
+    <div className="my-12">
+      <p className="mb-5 font-mono text-[10px] uppercase tracking-[0.18em] text-ink-3">
+        The RBI draft as a specification — and how KrimOS answers it
       </p>
-      <table className="w-full min-w-[600px] border-collapse text-left text-[13px]">
-        <thead>
-          <tr className="border-b border-[rgba(255,255,255,0.08)]">
-            <th className="pb-3 pr-6 font-mono text-[10px] uppercase tracking-[0.14em] text-ink-3">
-              RBI draft requirement
-            </th>
-            <th className="pb-3 pr-6 font-mono text-[10px] uppercase tracking-[0.14em] text-ink-3">
-              What it demands in practice
-            </th>
-            <th className="pb-3 font-mono text-[10px] uppercase tracking-[0.14em] text-mint opacity-70">
-              The control-layer answer
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          {rows.map((row, i) => (
-            <tr
-              key={i}
-              className="border-b border-[rgba(255,255,255,0.05)] transition-colors hover:bg-[rgba(255,255,255,0.02)]"
-            >
-              <td className="py-4 pr-6 font-sans leading-relaxed text-ink">
-                {row.req}
-              </td>
-              <td className="py-4 pr-6 font-sans leading-relaxed text-ink-2">
-                {row.demand}
-              </td>
-              <td className="py-4 font-sans leading-relaxed text-ink-2">
-                <span className="text-mint opacity-80">{row.answer}</span>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+      <div className="overflow-hidden rounded-[6px] border border-[rgba(255,255,255,0.08)]">
+        {/* Column headers — desktop only */}
+        <div className="hidden md:grid md:grid-cols-2 border-b border-[rgba(255,255,255,0.08)]">
+          <div className="bg-[rgba(255,255,255,0.02)] px-6 py-3">
+            <span className="font-mono text-[10px] uppercase tracking-[0.14em] text-ink-3">
+              RBI requires
+            </span>
+          </div>
+          <div className="border-l border-[rgba(255,255,255,0.08)] bg-[rgba(0,255,178,0.03)] px-6 py-3">
+            <span className="font-mono text-[10px] uppercase tracking-[0.14em] text-mint opacity-60">
+              KrimOS delivers
+            </span>
+          </div>
+        </div>
+        {/* Rows */}
+        {items.map((item, i) => (
+          <div
+            key={item.num}
+            className={`grid grid-cols-1 md:grid-cols-2${i > 0 ? ' border-t border-[rgba(255,255,255,0.06)]' : ''}`}
+          >
+            <div className="flex gap-4 bg-[rgba(255,255,255,0.01)] px-6 py-5">
+              <span className="mt-0.5 shrink-0 font-mono text-[11px] text-ink-3">{item.num}</span>
+              <p className="font-sans text-[13.5px] leading-relaxed text-ink-2">{item.rbi}</p>
+            </div>
+            <div className="border-t border-[rgba(255,255,255,0.06)] bg-[rgba(0,255,178,0.03)] px-6 py-5 md:border-t-0 md:border-l md:border-l-[rgba(255,255,255,0.08)]">
+              <p className="font-sans text-[13.5px] font-medium leading-relaxed text-mint">{item.answer}</p>
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   )
 }
@@ -535,20 +532,40 @@ export default function Page() {
               </p>
 
               <h2 className="mt-12 font-serif text-[1.5rem] leading-tight text-ink">
-                Where Krim comes in — and where it doesn't
+                What Krim built for this
               </h2>
               <p className="mt-5 font-sans text-body-lg text-ink-2">
-                We should be plain about our interest: this is the layer we build. KrimOS is an
-                agent-native operating system for regulated lending whose core is the primitive the
-                draft keeps reaching for: a deterministic validation layer that checks an AI agent's
-                intended action before it executes, against formal, inspectable rules, and produces a
-                reproducible record of why the action was allowed or refused.
+                We should be transparent: this is the layer we build. But the more important point
+                is when, and why. Krim is a safe superintelligence research company. The founding
+                thesis was that AI operating in regulated institutions needs a fundamentally different
+                architecture: not better models, but a different operating system, one where the
+                intelligence and the rules governing it are built as a single system, not connected
+                afterwards.
               </p>
               <p className="mt-5 font-sans text-body text-ink-2">
-                That's also our answer to the hardest demand in the draft. We don't pretend a large
-                model is transparent. We put an explainable gate in front of it, grounded in formal
-                logic, where every decision breaks down into reasons a human, an auditor, or a board
-                committee can read. The model stays a black box. The decision doesn't.
+                <span className="text-ink">KrimOS</span> is that operating system.{' '}
+                <span className="text-ink">Kendra</span> is the runtime inside it, eight modules
+                that run everything a KrimOS agent does. At Kendra's core is{' '}
+                <span className="text-ink">Krim-Nyāya</span>: a pre-execution validation pipeline
+                that runs every action an agent proposes through 33 validators before it fires.
+                Those validators are derived from Navya-Nyāya, the formal-logic tradition of
+                Mithila, two thousand years of precise reasoning about what follows from what,
+                applied as a machine-executable grammar for what an agent is and isn't permitted to
+                do. Each validator returns pass, amber, or fail. Nothing executes on an amber or
+                a fail. The record is deterministic: the same inputs produce the same output,
+                every time.
+              </p>
+              <p className="mt-5 font-sans text-body text-ink-2">
+                That is the explainability answer this draft is reaching for. Not a post-hoc summary
+                of what a model probably weighted. A formal record of exactly which rules an action
+                was checked against, and what each returned. An auditor can read it. A board risk
+                committee can read it. An RBI examiner can read it.
+              </p>
+              <p className="mt-5 font-sans text-body text-ink-2">
+                Own the risk. Explain the decision. Control before the act. These three demands
+                describe the architecture we built before this draft existed, because we believed
+                they would eventually be required. The RBI draft is a regulator arriving at the
+                same conclusion.
               </p>
             </Reveal>
 
@@ -562,18 +579,25 @@ export default function Page() {
 
             <Reveal>
               <p className="font-sans text-body text-ink-2">
-                The narrower, harder-to-argue claim is this: these demands cannot be met by
-                paperwork. They need a control layer most lenders don't have, and the draft was not
-                written with any vendor in mind. Whoever builds it,{' '}
+                These demands cannot be met by paperwork. They need a control layer most lenders
+                don't have, and the draft was not written with any vendor in mind. Whoever builds
+                it,{' '}
                 <span className="text-ink">
                   "validatable, explainable, overridable, on the record"
                 </span>{' '}
-                is now the specification.
+                is the specification. KrimOS was built to it.
               </p>
 
               <RBICrosswalk />
 
-              <h2 className="mt-4 font-serif text-[1.5rem] leading-tight text-ink">
+              <p className="mt-8 font-sans text-body text-ink-2">
+                See exactly how KrimOS addresses each row in that table:{' '}
+                <Link href="/krimos" className="text-mint underline-offset-4 transition-colors hover:underline">
+                  Explore KrimOS →
+                </Link>
+              </p>
+
+              <h2 className="mt-12 font-serif text-[1.5rem] leading-tight text-ink">
                 The window is open — briefly
               </h2>
               <p className="mt-5 font-sans text-body-lg text-ink-2">
