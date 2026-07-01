@@ -18,10 +18,19 @@ export default function UpdateBanner() {
       } catch {}
     }
 
-    // Check immediately on mount, then every 3 minutes
+    // Check on mount and every 3 minutes
     check()
     const id = setInterval(check, 3 * 60 * 1000)
-    return () => clearInterval(id)
+
+    // bfcache: Chrome can restore a frozen page without re-mounting React.
+    // The pageshow event fires on every restore; e.persisted=true means bfcache.
+    const onPageShow = (e: PageTransitionEvent) => { if (e.persisted) check() }
+    window.addEventListener('pageshow', onPageShow)
+
+    return () => {
+      clearInterval(id)
+      window.removeEventListener('pageshow', onPageShow)
+    }
   }, [])
 
   if (!show) return null
