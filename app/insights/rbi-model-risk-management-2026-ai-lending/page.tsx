@@ -513,8 +513,8 @@ export default function Page() {
                 has never audited. That isn't a gap. It's a chasm. And it won't be closed with a
                 policy PDF. An entity can write a framework in a quarter; it cannot, in a quarter,
                 conjure the thing the framework assumes: a real control layer that validates AI
-                decisions before they execute, explains them after, logs them for a decade, and lets
-                a human override them in real time. That has to be built or bought.
+                decisions before they execute, explains them after, keeps an auditable record of every
+                action, and lets a human override them in real time. That has to be built or bought.
               </p>
 
               <h2 className="mt-12 font-serif text-[1.5rem] leading-tight text-ink">
