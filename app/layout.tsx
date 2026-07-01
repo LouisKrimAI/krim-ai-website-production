@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Newsreader, Inter, IBM_Plex_Mono, Montserrat } from 'next/font/google'
 import './globals.css'
 import Analytics from '@/components/Analytics'
+import UpdateBanner from '@/components/UpdateBanner'
 import ArrivalBoot from '@/components/ArrivalBoot'
 import BackdropGate from '@/components/BackdropGate'
 import BackgroundPrefetch from '@/components/BackgroundPrefetch'
@@ -88,6 +89,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <WovenRingBackdrop />
         {children}
         <Analytics />
+        <UpdateBanner />
         <ArrivalBoot />
         <BackdropGate />
         <BackgroundPrefetch />
