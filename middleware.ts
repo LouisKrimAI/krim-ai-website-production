@@ -10,6 +10,17 @@
  *    a session even when ignoring must-revalidate. Middleware runs at the edge
  *    before framework headers and takes precedence. Static assets (_next/static)
  *    keep their own immutable headers — excluded from the matcher below.
+ *
+ * 3. Apex → www redirect, with a carve-out for the service-worker kill switch.
+ *    A pre-Next deployment of krim.ai registered a service worker in visitors'
+ *    browsers that still serves the old site from Cache Storage on the apex
+ *    origin. The worker is only evicted when its update check fetches a
+ *    replacement script from the SAME path on the SAME origin — a redirect
+ *    there counts as a failed check and keeps the zombie alive indefinitely.
+ *    So /service-worker.js and /sw.js must return 200 on the apex (the
+ *    self-destroying workers in public/), while every other apex request
+ *    redirects to www. Requires the Vercel dashboard redirect for krim.ai to
+ *    be DISABLED so these requests reach the app at all.
  */
 
 import { NextResponse, type NextRequest } from 'next/server'
@@ -30,8 +41,26 @@ function safeEqual(a: string, b: string): boolean {
   return diff === 0
 }
 
+const KILL_SWITCH_PATHS = ['/service-worker.js', '/sw.js']
+
 export function middleware(req: NextRequest) {
   const { pathname } = req.nextUrl
+  const host = req.headers.get('host') ?? ''
+
+  // ── Apex domain: serve the SW kill switch, redirect everything else ────────
+  if (host === 'krim.ai') {
+    if (KILL_SWITCH_PATHS.includes(pathname)) {
+      const res = NextResponse.next()
+      // update checks must always see the current script, never a cached one
+      res.headers.set('Cache-Control', 'no-store')
+      return res
+    }
+    const url = req.nextUrl.clone()
+    url.protocol = 'https'
+    url.host = 'www.krim.ai'
+    url.port = ''
+    return NextResponse.redirect(url, 308)
+  }
 
   // ── Admin auth ──────────────────────────────────────────────────────────────
   if (pathname.startsWith('/admin') || pathname.startsWith('/api/admin')) {

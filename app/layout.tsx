@@ -82,6 +82,17 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           }}
         />
 
+        {/* Evict any service worker left behind by earlier deployments — a
+            leftover worker serves visitors a stale copy of the whole site from
+            Cache Storage, ignoring every HTTP header. Runs after load, silent
+            on the 99% of browsers that have none. */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html:
+              "if('serviceWorker' in navigator){addEventListener('load',function(){navigator.serviceWorker.getRegistrations().then(function(rs){rs.forEach(function(r){r.unregister()})}).catch(function(){})})}",
+          }}
+        />
+
         {/* shared, persistent backdrops, each gated by route (see components):
             the research cluster keeps the lab render; everything except /krimos*
             and the research routes gets the woven ring */}
