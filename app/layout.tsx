@@ -28,7 +28,7 @@ const mono = IBM_Plex_Mono({
 // NOTE: the wordmark is an SVG (KrimLogoAnimated) — no logo webfont is loaded.
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://krim.ai'),
+  metadataBase: new URL('https://www.krim.ai'),
   title: {
     // Every tab carries the same brand line. Home reads "Krim — Safe
     // Superintelligence"; every other page reads "{Page} — Krim · Safe
@@ -51,7 +51,7 @@ export const metadata: Metadata = {
   openGraph: {
     siteName: 'Krim',
     type: 'website',
-    url: 'https://krim.ai',
+    url: 'https://www.krim.ai',
   },
   twitter: { card: 'summary_large_image', site: '@TheKrimAI' },
   verification: {

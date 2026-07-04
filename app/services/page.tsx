@@ -20,12 +20,12 @@ export const metadata: Metadata = {
   title: 'Services',
   description:
     'From technical deep-dive to production go-live in a quarter: a scoped pilot, proof of value on ring-fenced data measured against your own baseline, then a contracted go-live, one stage at a time.',
-  alternates: { canonical: 'https://krim.ai/services' },
+  alternates: { canonical: 'https://www.krim.ai/services' },
   openGraph: {
     title: 'Services — pilot to go-live',
     description:
       'From technical deep-dive to production go-live in a quarter: a scoped pilot, proof of value on ring-fenced data measured against your own baseline, then a contracted go-live, one stage at a time.',
-    url: 'https://krim.ai/services',
+    url: 'https://www.krim.ai/services',
   },
 }
 
@@ -35,8 +35,8 @@ const breadcrumbLd = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
   itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://krim.ai' },
-    { '@type': 'ListItem', position: 2, name: 'Services', item: 'https://krim.ai/services' },
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.krim.ai' },
+    { '@type': 'ListItem', position: 2, name: 'Services', item: 'https://www.krim.ai/services' },
   ],
 }
 

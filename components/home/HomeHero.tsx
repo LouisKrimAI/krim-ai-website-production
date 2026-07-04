@@ -85,19 +85,22 @@ export default function HomeHero() {
         <div className="mx-auto w-full max-w-site px-6 md:px-10">
           <div className="mx-auto flex max-w-[860px] flex-col items-center text-center">
 
-            {/* headline — two lines, first line gradient, second plain ink */}
+            {/* headline — two lines, first line gradient, second plain ink.
+                .hero-failsafe (globals.css) force-reveals these via CSS after the
+                choreography window, so a failed JS chunk or JS-off never leaves
+                the homepage without its headline and CTAs. */}
             <h1 className="font-serif text-[clamp(2.5rem,5.2vw,4.25rem)] leading-[1.06] tracking-[-0.02em] text-ink">
-              <motion.span className="block text-grad" {...f(8.2, 1.7)}>
+              <motion.span className="hero-failsafe block text-grad" {...f(8.2, 1.7)}>
                 Safe Superintelligence
               </motion.span>
-              <motion.span className="block" {...f(10, 1.7)}>
+              <motion.span className="hero-failsafe block" {...f(10, 1.7)}>
                 for Autonomous Lending
               </motion.span>
             </h1>
 
             {/* CTAs — appear once the headline has settled */}
             <motion.div
-              className="mt-12 flex flex-wrap items-center justify-center gap-6"
+              className="hero-failsafe mt-12 flex flex-wrap items-center justify-center gap-6"
               {...f(12, 1.3)}
             >
               <CTA href={DEMO_HREF}>Book a demo</CTA>

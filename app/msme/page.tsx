@@ -24,12 +24,12 @@ export const metadata: Metadata = {
   title: 'MSME',
   description:
     'Regulation-grade AI workers, now for everyday operations. Medium-sized enterprises automate customer service and back-office work with automation they can actually trust: fully managed, affordable and fast to deploy.',
-  alternates: { canonical: 'https://krim.ai/msme' },
+  alternates: { canonical: 'https://www.krim.ai/msme' },
   openGraph: {
     title: 'MSME — Krim',
     description:
       'Regulation-grade AI workers, now for everyday operations. Medium-sized enterprises automate customer service and back-office work with automation they can actually trust: fully managed, affordable and fast to deploy.',
-    url: 'https://krim.ai/msme',
+    url: 'https://www.krim.ai/msme',
   },
 }
 
@@ -37,8 +37,8 @@ const breadcrumbLd = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
   itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://krim.ai' },
-    { '@type': 'ListItem', position: 2, name: 'MSME', item: 'https://krim.ai/msme' },
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.krim.ai' },
+    { '@type': 'ListItem', position: 2, name: 'MSME', item: 'https://www.krim.ai/msme' },
   ],
 }
 

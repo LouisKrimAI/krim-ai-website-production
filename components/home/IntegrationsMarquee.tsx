@@ -21,6 +21,7 @@
 
 import fs from 'node:fs'
 import path from 'node:path'
+import { imageSize } from 'image-size'
 
 type Brand = { slug: string; alt: string }
 type RowDef = {
@@ -167,13 +168,26 @@ const CATALOGUE: RowDef[] = [
   },
 ]
 
-type Logo = { src: string; alt: string }
+type Logo = { src: string; alt: string; w: number; h: number }
 type Row = { label: string; dir: 'l' | 'r'; duration: number; logos: Logo[] }
 
-/** First existing asset for a slug (svg → png → webp), or null if none present. */
-function resolveSrc(slug: string): string | null {
+/**
+ * First existing asset for a slug (svg → png → webp) WITH its intrinsic
+ * dimensions, or null if none present. Dimensions are read once at build time
+ * so every <img> can carry width/height — the browser then knows each mark's
+ * aspect ratio before a single byte loads, and the w-max track can never
+ * resize mid-loop.
+ */
+function resolveLogo(slug: string, alt: string): Logo | null {
   for (const ext of ['svg', 'png', 'webp']) {
-    if (fs.existsSync(path.join(DIR, `${slug}.${ext}`))) return `${BASE}/${slug}.${ext}`
+    const file = path.join(DIR, `${slug}.${ext}`)
+    if (!fs.existsSync(file)) continue
+    try {
+      const { width, height } = imageSize(fs.readFileSync(file))
+      if (width && height) return { src: `${BASE}/${slug}.${ext}`, alt, w: width, h: height }
+    } catch {}
+    // unreadable dimensions: fall back to a square hint rather than dropping the mark
+    return { src: `${BASE}/${slug}.${ext}`, alt, w: 88, h: 88 }
   }
   return null
 }
@@ -184,8 +198,8 @@ const ROWS: Row[] = CATALOGUE.map((row) => ({
   dir: row.dir,
   duration: row.duration,
   logos: row.brands
-    .map((b) => ({ src: resolveSrc(b.slug), alt: b.alt }))
-    .filter((l): l is Logo => l.src !== null),
+    .map((b) => resolveLogo(b.slug, b.alt))
+    .filter((l): l is Logo => l !== null),
 })).filter((row) => row.logos.length > 0)
 
 /** Soft fade at both ends of every row so logos dissolve at the edges. */
@@ -197,8 +211,11 @@ function LogoItem({ logo }: { logo: Logo }) {
     <img
       src={logo.src}
       alt={logo.alt}
-      // eager + sync-ish: every logo must have its real width immediately, or a
-      // late-loading mark resizes the w-max track mid-loop and the -50% wrap jumps.
+      // Intrinsic dimensions (read at build) give the browser each mark's aspect
+      // ratio before load, so the w-max track holds its exact width from first
+      // paint — the -50% seam can never jump, even before images arrive.
+      width={logo.w}
+      height={logo.h}
       loading="eager"
       decoding="async"
       draggable={false}

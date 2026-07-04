@@ -20,12 +20,12 @@ export const metadata: Metadata = {
   title: 'Architecture',
   description:
     'How KrimOS is built: a complete operating system for lending you can run end to end, or layer onto the systems you keep. Eight Kendra runtime modules (Core, Karya, Fabric, Govern, Nyāya, Learn, Ledger, Sense), a shared substrate of memory tiers, durable orchestration and a 15-entity domain model, a 40+ connector integration fabric, and one architecture that runs sovereign in every market.',
-  alternates: { canonical: 'https://krim.ai/architecture' },
+  alternates: { canonical: 'https://www.krim.ai/architecture' },
   openGraph: {
     title: 'Architecture — KrimOS',
     description:
       'How KrimOS is built: a complete operating system for lending you can run end to end, or layer onto the systems you keep. Eight Kendra runtime modules (Core, Karya, Fabric, Govern, Nyāya, Learn, Ledger, Sense), a shared substrate of memory tiers, durable orchestration and a 15-entity domain model, a 40+ connector integration fabric, and one architecture that runs sovereign in every market.',
-    url: 'https://krim.ai/architecture',
+    url: 'https://www.krim.ai/architecture',
   },
 }
 
@@ -35,8 +35,8 @@ const breadcrumbLd = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
   itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://krim.ai' },
-    { '@type': 'ListItem', position: 2, name: 'Architecture', item: 'https://krim.ai/architecture' },
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.krim.ai' },
+    { '@type': 'ListItem', position: 2, name: 'Architecture', item: 'https://www.krim.ai/architecture' },
   ],
 }
 

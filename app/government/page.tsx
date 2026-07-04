@@ -20,12 +20,12 @@ export const metadata: Metadata = {
   title: 'Government',
   description:
     'KrimOS fits public-sector work: AI co-workers that automate citizen-facing and back-office operations inside your own jurisdiction, every action resting on a lawful basis, every action kept on an immutable record.',
-  alternates: { canonical: 'https://krim.ai/government' },
+  alternates: { canonical: 'https://www.krim.ai/government' },
   openGraph: {
     title: 'Government — Krim',
     description:
       'KrimOS fits public-sector work: AI co-workers that automate citizen-facing and back-office operations inside your own jurisdiction, every action resting on a lawful basis, every action kept on an immutable record.',
-    url: 'https://krim.ai/government',
+    url: 'https://www.krim.ai/government',
   },
 }
 
@@ -33,8 +33,8 @@ const breadcrumbLd = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
   itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://krim.ai' },
-    { '@type': 'ListItem', position: 2, name: 'Government', item: 'https://krim.ai/government' },
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.krim.ai' },
+    { '@type': 'ListItem', position: 2, name: 'Government', item: 'https://www.krim.ai/government' },
   ],
 }
 

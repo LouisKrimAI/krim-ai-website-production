@@ -23,12 +23,12 @@ export const metadata: Metadata = {
   title: 'Trust',
   description:
     'KrimOS is sovereign by construction: the full stack runs inside your perimeter, on-prem by default, with end-to-end encryption, granular RBAC, customer-held keys and an immutable, cryptographically sealed audit trail. US, UK, India, Nigeria and Brazil frameworks are encoded in the runtime and validated before every action.',
-  alternates: { canonical: 'https://krim.ai/trust' },
+  alternates: { canonical: 'https://www.krim.ai/trust' },
   openGraph: {
     title: 'Trust — sovereignty, security & deployment',
     description:
       'KrimOS is sovereign by construction: the full stack runs inside your perimeter, on-prem by default, with end-to-end encryption, granular RBAC, customer-held keys and an immutable, cryptographically sealed audit trail. US, UK, India, Nigeria and Brazil frameworks are encoded in the runtime and validated before every action.',
-    url: 'https://krim.ai/trust',
+    url: 'https://www.krim.ai/trust',
   },
 }
 
@@ -38,8 +38,8 @@ const breadcrumbLd = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
   itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://krim.ai' },
-    { '@type': 'ListItem', position: 2, name: 'Trust', item: 'https://krim.ai/trust' },
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.krim.ai' },
+    { '@type': 'ListItem', position: 2, name: 'Trust', item: 'https://www.krim.ai/trust' },
   ],
 }
 

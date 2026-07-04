@@ -30,12 +30,12 @@ export const metadata: Metadata = {
   title: 'Lending',
   description:
     'KrimOS runs the whole loan lifecycle: every customer conversation and every back-office task on one system that validates each action before it executes, and learns the operation as it runs. Built against RBI, FCA and US lending law by construction.',
-  alternates: { canonical: 'https://krim.ai/lending' },
+  alternates: { canonical: 'https://www.krim.ai/lending' },
   openGraph: {
     title: 'Lending — Krim',
     description:
       'KrimOS runs the whole loan lifecycle: every customer conversation and every back-office task on one system that validates each action before it executes, and learns the operation as it runs. Built against RBI, FCA and US lending law by construction.',
-    url: 'https://krim.ai/lending',
+    url: 'https://www.krim.ai/lending',
   },
 }
 
@@ -43,8 +43,8 @@ const breadcrumbLd = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
   itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://krim.ai' },
-    { '@type': 'ListItem', position: 2, name: 'Lending', item: 'https://krim.ai/lending' },
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.krim.ai' },
+    { '@type': 'ListItem', position: 2, name: 'Lending', item: 'https://www.krim.ai/lending' },
   ],
 }
 

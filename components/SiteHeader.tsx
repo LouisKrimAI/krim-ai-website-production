@@ -39,6 +39,7 @@ const RESEARCH = [
   ['Epistemic AI', 'The category we define', '/epistemic-ai'],
   ['Kovida', 'The world lending model', '/research/world-lending-model'],
   ['Safe Agent Harness', 'The harness that makes agents deployable', '/research/safe-agent-harness'],
+  ['Insights', 'Perspectives on AI in banking', '/insights'],
 ] as const
 
 const FLAT_RIGHT = [

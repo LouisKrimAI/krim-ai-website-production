@@ -28,12 +28,12 @@ export const metadata: Metadata = {
   title: 'Safe Agent Harness',
   description:
     'A safe agent harness is the control layer around an autonomous AI agent: a constrained action vocabulary, a pre-execution validation gate, and a human command surface, so every action is checked before it can fire.',
-  alternates: { canonical: 'https://krim.ai/research/safe-agent-harness' },
+  alternates: { canonical: 'https://www.krim.ai/research/safe-agent-harness' },
   openGraph: {
     title: 'Safe Agent Harness · Krim Research',
     description:
       'The operational control layer that wraps AI agents — constraining what they can do, gating what they propose, and keeping a human in command.',
-    url: 'https://krim.ai/research/safe-agent-harness',
+    url: 'https://www.krim.ai/research/safe-agent-harness',
   },
 }
 
@@ -41,9 +41,9 @@ const breadcrumbLd = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
   itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://krim.ai' },
-    { '@type': 'ListItem', position: 2, name: 'Research', item: 'https://krim.ai/research' },
-    { '@type': 'ListItem', position: 3, name: 'Safe Agent Harness', item: 'https://krim.ai/research/safe-agent-harness' },
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.krim.ai' },
+    { '@type': 'ListItem', position: 2, name: 'Research', item: 'https://www.krim.ai/research' },
+    { '@type': 'ListItem', position: 3, name: 'Safe Agent Harness', item: 'https://www.krim.ai/research/safe-agent-harness' },
   ],
 }
 

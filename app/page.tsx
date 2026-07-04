@@ -22,11 +22,11 @@ import Recognition from '@/components/home/Recognition'
 import { Section, Eyebrow, GlassCard, CTA } from '@/components/ui'
 
 export const metadata: Metadata = {
-  alternates: { canonical: 'https://krim.ai' },
+  alternates: { canonical: 'https://www.krim.ai' },
   openGraph: {
     description:
       'KrimOS is the operating system for banking and financial services: a world model for lending with AI co-workers that run the whole lifecycle, every action validated before it acts, inside your own walls.',
-    url: 'https://krim.ai',
+    url: 'https://www.krim.ai',
     siteName: 'Krim',
     type: 'website',
   },
@@ -36,11 +36,13 @@ const orgLd = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
   name: 'Krim',
-  url: 'https://krim.ai',
-  logo: 'https://krim.ai/brand-logo',
+  url: 'https://www.krim.ai',
+  logo: 'https://www.krim.ai/brand-logo',
+  // Formal descriptor per docs/POSITIONING.md §11; areaServed = the five
+  // encoded markets (lib/jurisdictions.ts is the single source).
   description:
-    'Krim is a technology research, product and services company. Its product, KrimOS, is the operating system for banking and lending, where every action is validated before it executes.',
-  areaServed: ['US', 'GB', 'IN'],
+    'Krim is a technology research, product and services company. Its product, KrimOS, is the operating system for banking and financial services, where every action is validated before it executes.',
+  areaServed: ['US', 'GB', 'IN', 'NG', 'BR'],
   email: 'sales@krim.ai',
   contactPoint: {
     '@type': 'ContactPoint',

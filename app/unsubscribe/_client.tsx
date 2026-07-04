@@ -41,6 +41,23 @@ export function UnsubscribeConfirm({ token }: { token: string }) {
     )
   }
 
+  // No token: the link arrived incomplete (truncated by a mail client). Explain
+  // instead of showing a permanently disabled button under "click below".
+  if (!token) {
+    return (
+      <div className="mt-9">
+        <p className="mx-auto max-w-[48ch] font-sans text-body-lg text-ink-2">
+          This unsubscribe link is incomplete. Open the link from your email again — or just
+          write to{' '}
+          <a href="mailto:sales@krim.ai" className="underline underline-offset-4 hover:text-mint">
+            sales@krim.ai
+          </a>{' '}
+          and we&rsquo;ll take you off the list ourselves.
+        </p>
+      </div>
+    )
+  }
+
   return (
     <div className="mt-9">
       <p className="mx-auto max-w-[48ch] font-sans text-body-lg text-ink-2">

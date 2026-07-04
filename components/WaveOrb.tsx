@@ -249,13 +249,22 @@ export default function WaveOrb({
     }
 
     let raf = 0
-    const t0 = performance.now()
     // first frame synchronously — content before rAF ever fires
     draw(reduce ? 1600 : 0)
     if (!reduce) {
+      // 30fps cap: a slow shimmer gains nothing from 60, and each draw rebuilds
+      // ~9k SVG path segments + re-rasterizes two Gaussian blurs. Accumulated
+      // animation time (dt clamped) also means a backgrounded tab resumes where
+      // it left off instead of time-jumping.
+      let last = performance.now()
+      let animT = 0
       const loop = (now: number) => {
-        draw(now - t0)
         raf = requestAnimationFrame(loop)
+        const dt = now - last
+        if (dt < 30) return
+        last = now
+        animT += Math.min(dt, 100)
+        draw(animT)
       }
       raf = requestAnimationFrame(loop)
     }

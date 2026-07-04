@@ -21,12 +21,12 @@ export const metadata: Metadata = {
   title: 'KrimOS',
   description:
     'KrimOS is one operating system for banking & financial services: the runtime that validates and learns (Kendra), a vocabulary of validated actions (Kriya), the co-workers built from it (Karta), the command center your teams run them from (Kupa), and two ways in, Kula for your teams and Kira for your customers.',
-  alternates: { canonical: 'https://krim.ai/krimos' },
+  alternates: { canonical: 'https://www.krim.ai/krimos' },
   openGraph: {
     title: 'KrimOS — the operating system for banking and lending',
     description:
       'KrimOS is one operating system for banking & financial services: the runtime that validates and learns (Kendra), a vocabulary of validated actions (Kriya), the co-workers built from it (Karta), the command center your teams run them from (Kupa), and two ways in, Kula for your teams and Kira for your customers.',
-    url: 'https://krim.ai/krimos',
+    url: 'https://www.krim.ai/krimos',
   },
 }
 
@@ -36,8 +36,8 @@ const breadcrumbLd = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
   itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://krim.ai' },
-    { '@type': 'ListItem', position: 2, name: 'KrimOS', item: 'https://krim.ai/krimos' },
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.krim.ai' },
+    { '@type': 'ListItem', position: 2, name: 'KrimOS', item: 'https://www.krim.ai/krimos' },
   ],
 }
 
@@ -48,7 +48,7 @@ const softwareLd = {
   applicationCategory: 'BusinessApplication',
   applicationSubCategory: 'Operating system for banking & financial services',
   operatingSystem: 'Sovereign on-prem, Hybrid, Managed SaaS',
-  publisher: { '@type': 'Organization', name: 'Krim', url: 'https://krim.ai' },
+  publisher: { '@type': 'Organization', name: 'Krim', url: 'https://www.krim.ai' },
   description:
     'KrimOS is the operating system for banking & financial services: AI co-workers whose every action is validated before it executes, and that learn from everything they do, inside the institution’s own perimeter.',
   featureList: [
@@ -62,7 +62,7 @@ const softwareLd = {
     '40+ connectors; nothing to tear out, nothing to migrate',
     'No-code studios: Agent Studio, Strategy Studio, Kriya Studio, Campaign Builder, Social Studio',
   ],
-  offers: { '@type': 'Offer', availability: 'https://schema.org/InStock', url: 'https://krim.ai/krimos' },
+  offers: { '@type': 'Offer', availability: 'https://schema.org/InStock', url: 'https://www.krim.ai/krimos' },
 }
 
 // The no-code studios your team builds and runs KrimOS from. Grounded in the

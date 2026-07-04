@@ -20,7 +20,7 @@ export const sender = {
 export const TAGLINE = 'The agent-native OS for banking.'
 
 export function siteUrl(): string {
-  return (process.env.SITE_URL || 'https://krim.ai').replace(/\/$/, '')
+  return (process.env.SITE_URL || 'https://www.krim.ai').replace(/\/$/, '')
 }
 
 export function calendlyUrl(): string {

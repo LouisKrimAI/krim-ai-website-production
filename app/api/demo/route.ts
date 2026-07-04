@@ -16,10 +16,13 @@ import { getResend, emailFrom } from '@/lib/resend'
 import { salesNotificationEmail } from '@/lib/emails'
 import { sendDripEmail } from '@/lib/booking-mailer'
 import { salesInbox } from '@/lib/booking-config'
+import { rateLimit, clientIp } from '@/lib/rate-limit'
 
 export const runtime = 'nodejs'
 
 const DEDUPE_WINDOW_DAYS = 30
+const RATE_LIMIT = 5 // submissions per IP…
+const RATE_WINDOW_MS = 10 * 60 * 1000 // …per 10 minutes
 
 function clean(v: unknown, max = 2000): string {
   return typeof v === 'string' ? v.trim().slice(0, max) : ''
@@ -30,6 +33,15 @@ function isEmail(v: string): boolean {
 }
 
 export async function POST(req: Request) {
+  // Burst protection: honeypot + dedupe blunt casual abuse, but nothing else
+  // stops a script flooding Supabase inserts and Resend sends.
+  if (!rateLimit(`demo:${clientIp(req)}`, RATE_LIMIT, RATE_WINDOW_MS)) {
+    return NextResponse.json(
+      { error: 'Too many requests — please try again in a few minutes.' },
+      { status: 429 }
+    )
+  }
+
   let body: Record<string, unknown>
   try {
     body = await req.json()
@@ -97,7 +109,8 @@ export async function POST(req: Request) {
 
   if (existing) {
     await supabase.from('demo_leads').update(fields).eq('id', existing.id)
-    return NextResponse.json({ ok: true, deduped: true })
+    // no new confirmation email on a re-submit — the client softens its copy
+    return NextResponse.json({ ok: true, deduped: true, emailSent: false })
   }
 
   const { data: lead, error } = await supabase
@@ -132,5 +145,7 @@ export async function POST(req: Request) {
       .eq('id', lead.id)
   }
 
-  return NextResponse.json({ ok: true })
+  // emailSent lets the client promise "check your inbox" only when the
+  // confirmation actually went out (Resend may be unconfigured or failing).
+  return NextResponse.json({ ok: true, emailSent: !!confirmId })
 }

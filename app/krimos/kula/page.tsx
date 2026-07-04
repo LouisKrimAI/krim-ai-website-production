@@ -19,12 +19,12 @@ export const metadata: Metadata = {
   title: 'Kula — for your teams',
   description:
     'Kula is how your teams reach KrimOS in plain language: each user meets a digital twin tuned to their role. Kula is the way in; the thinking happens in the runtime behind it, and it never bypasses human sign-off.',
-  alternates: { canonical: 'https://krim.ai/krimos/kula' },
+  alternates: { canonical: 'https://www.krim.ai/krimos/kula' },
   openGraph: {
     title: 'Kula — for your teams',
     description:
       'Kula is how your teams reach KrimOS in plain language: each user meets a digital twin tuned to their role. Kula is the way in; the thinking happens in the runtime behind it, and it never bypasses human sign-off.',
-    url: 'https://krim.ai/krimos/kula',
+    url: 'https://www.krim.ai/krimos/kula',
   },
 }
 
@@ -32,9 +32,9 @@ const breadcrumbLd = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
   itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://krim.ai' },
-    { '@type': 'ListItem', position: 2, name: 'KrimOS', item: 'https://krim.ai/krimos' },
-    { '@type': 'ListItem', position: 3, name: 'Kula', item: 'https://krim.ai/krimos/kula' },
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.krim.ai' },
+    { '@type': 'ListItem', position: 2, name: 'KrimOS', item: 'https://www.krim.ai/krimos' },
+    { '@type': 'ListItem', position: 3, name: 'Kula', item: 'https://www.krim.ai/krimos/kula' },
   ],
 }
 

@@ -15,12 +15,12 @@ export const metadata: Metadata = {
   title: 'Kupa — the command center',
   description:
     'Kupa is the command center of KrimOS: one pane of glass where your teams see every action, set the rules, step in when it matters, and prove what happened, so nothing runs out of view.',
-  alternates: { canonical: 'https://krim.ai/krimos/kupa' },
+  alternates: { canonical: 'https://www.krim.ai/krimos/kupa' },
   openGraph: {
     title: 'Kupa — the command center',
     description:
       'Kupa is the command center of KrimOS: one pane of glass where your teams see every action, set the rules, step in when it matters, and prove what happened, so nothing runs out of view.',
-    url: 'https://krim.ai/krimos/kupa',
+    url: 'https://www.krim.ai/krimos/kupa',
   },
 }
 
@@ -28,9 +28,9 @@ const breadcrumbLd = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
   itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://krim.ai' },
-    { '@type': 'ListItem', position: 2, name: 'KrimOS', item: 'https://krim.ai/krimos' },
-    { '@type': 'ListItem', position: 3, name: 'Kupa', item: 'https://krim.ai/krimos/kupa' },
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.krim.ai' },
+    { '@type': 'ListItem', position: 2, name: 'KrimOS', item: 'https://www.krim.ai/krimos' },
+    { '@type': 'ListItem', position: 3, name: 'Kupa', item: 'https://www.krim.ai/krimos/kupa' },
   ],
 }
 

@@ -16,12 +16,12 @@ export const metadata: Metadata = {
   title: 'Kendra — the runtime',
   description:
     'Kendra is the runtime of KrimOS, the brain the co-workers think in. Krim-Nyāya validates every action before it executes; Krim-Learn turns every recorded outcome into intelligence. The runtime your regulator can read.',
-  alternates: { canonical: 'https://krim.ai/krimos/kendra' },
+  alternates: { canonical: 'https://www.krim.ai/krimos/kendra' },
   openGraph: {
     title: 'Kendra — the runtime',
     description:
       'Kendra is the runtime of KrimOS, the brain the co-workers think in. Krim-Nyāya validates every action before it executes; Krim-Learn turns every recorded outcome into intelligence. The runtime your regulator can read.',
-    url: 'https://krim.ai/krimos/kendra',
+    url: 'https://www.krim.ai/krimos/kendra',
   },
 }
 
@@ -29,9 +29,9 @@ const breadcrumbLd = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
   itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://krim.ai' },
-    { '@type': 'ListItem', position: 2, name: 'KrimOS', item: 'https://krim.ai/krimos' },
-    { '@type': 'ListItem', position: 3, name: 'Kendra', item: 'https://krim.ai/krimos/kendra' },
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.krim.ai' },
+    { '@type': 'ListItem', position: 2, name: 'KrimOS', item: 'https://www.krim.ai/krimos' },
+    { '@type': 'ListItem', position: 3, name: 'Kendra', item: 'https://www.krim.ai/krimos/kendra' },
   ],
 }
 

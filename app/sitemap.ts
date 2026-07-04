@@ -7,7 +7,7 @@ import { POSTS } from './insights/_posts'
  * single source of truth (app/insights/_posts.ts) so new writing is never orphaned.
  */
 
-const BASE = 'https://krim.ai'
+const BASE = 'https://www.krim.ai'
 
 type Change = MetadataRoute.Sitemap[number]['changeFrequency']
 

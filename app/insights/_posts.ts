@@ -21,7 +21,7 @@ export const POSTS: Post[] = [
   {
     slug: 'rbi-model-risk-management-2026-ai-lending',
     title: 'RBI Has Set the Bar for AI Lending. Almost No One Can Clear It.',
-    dek: "RBI's 2026 Model Risk Management draft quietly rewrites the rules for AI in lending. Behind the headline-grabbing kill switch, it asks for something much harder.",
+    dek: "RBI's 2026 Model Risk Management draft quietly rewrites the rules for AI in lending. Behind the headline-grabbing kill switch, it asks for something much harder: validate every model, explain every decision, and keep a human in control.",
     category: 'Risk',
     date: '2026-06-30',
     readingMinutes: 6,
@@ -30,7 +30,7 @@ export const POSTS: Post[] = [
   {
     slug: 'sovereignty-is-not-optional',
     title: 'Sovereignty is not optional',
-    dek: 'Regulated AI has to run inside the institution’s own perimeter. Shipping customer data to a third-party model is a non-starter on the rules and on the risk — and it is the same reason the system can ever learn the whole operation.',
+    dek: 'Regulated AI has to run inside the institution’s own perimeter. Shipping customer data to a third-party model is a non-starter on the rules and on the risk, and it is the same reason the system can ever learn the whole operation.',
     category: 'Architecture',
     date: '2026-06-09',
     readingMinutes: 6,
@@ -48,7 +48,7 @@ export const POSTS: Post[] = [
   {
     slug: 'the-credit-gap-is-an-operations-problem',
     title: 'The credit gap is an operations problem',
-    dek: 'Billions stay underserved not only because risk is hard to price, but because the cost and risk of operating lending at scale — compliant communications, servicing, collections — is prohibitive. Make safe operations cheap and the reachable market grows.',
+    dek: 'Billions stay underserved not only because risk is hard to price, but because the cost and risk of operating lending at scale (compliant communications, servicing, collections) is prohibitive. Make safe operations cheap and the reachable market grows.',
     category: 'Markets',
     date: '2026-04-21',
     readingMinutes: 7,
@@ -57,7 +57,7 @@ export const POSTS: Post[] = [
   {
     slug: 'the-cost-of-being-wrong',
     title: 'The cost of being wrong',
-    dek: 'One non-compliant action can’t be unmade — and per-violation statutory exposure scales without limit across millions of automated touches. Post-hoc audit explains the harm after it is done. Pre-execution validation prevents it.',
+    dek: 'One non-compliant action can’t be unmade, and per-violation statutory exposure scales without limit across millions of automated touches. Post-hoc audit explains the harm after it is done. Pre-execution validation prevents it.',
     category: 'Risk',
     date: '2026-03-03',
     readingMinutes: 7,
@@ -66,7 +66,7 @@ export const POSTS: Post[] = [
   {
     slug: 'the-automation-gap',
     title: 'The automation gap',
-    dek: 'AI is everywhere except where an action carries legal or financial consequence. Pilots stall at the compliance ceiling — you can’t ship what you can’t prove. The way through is to validate before acting.',
+    dek: 'AI is everywhere except where an action carries legal or financial consequence. Pilots stall at the compliance ceiling. You can’t ship what you can’t prove. The way through is to validate before acting.',
     category: 'Problem',
     date: '2026-01-28',
     readingMinutes: 6,

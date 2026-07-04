@@ -32,12 +32,12 @@ export const metadata: Metadata = {
   title: 'Kovida — the world lending model',
   description:
     'Kovida is Krim’s world lending model: a learned, safe model of how lending actually behaves, across borrowers, products, markets, rules and the whole lifecycle. AI agents simulate an action against Kovida and clear it through the compliance gate before they act, from origination to a validated AI underwriter to collections. Every recorded outcome makes the model sharper, inside the institution’s own walls.',
-  alternates: { canonical: 'https://krim.ai/research/world-lending-model' },
+  alternates: { canonical: 'https://www.krim.ai/research/world-lending-model' },
   openGraph: {
     title: 'Kovida — the world lending model · Krim Research',
     description:
       'Kovida is a learned, safe world model of lending, that AI agents simulate against and clear through the compliance gate before they act, from origination to a validated AI underwriter to collections. Every recorded outcome makes the model sharper, inside the institution’s own walls.',
-    url: 'https://krim.ai/research/world-lending-model',
+    url: 'https://www.krim.ai/research/world-lending-model',
   },
 }
 
@@ -45,9 +45,9 @@ const breadcrumbLd = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
   itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://krim.ai' },
-    { '@type': 'ListItem', position: 2, name: 'Research', item: 'https://krim.ai/research' },
-    { '@type': 'ListItem', position: 3, name: 'Kovida — the world lending model', item: 'https://krim.ai/research/world-lending-model' },
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.krim.ai' },
+    { '@type': 'ListItem', position: 2, name: 'Research', item: 'https://www.krim.ai/research' },
+    { '@type': 'ListItem', position: 3, name: 'Kovida — the world lending model', item: 'https://www.krim.ai/research/world-lending-model' },
   ],
 }
 

@@ -396,11 +396,20 @@ function WovenRingCanvas() {
     // ---------- loop (paused while tab hidden) ----------
     let raf = 0
     let startTime: number | null = null
+    let skipBeat = false
     const RING_OFFSET = (T_END + 2) * 1000
     function frame(now: number) {
       if (!sized) { if (!resize()) { raf = requestAnimationFrame(frame); return } startTime = null }
       if (startTime === null) startTime = playMorph ? now : now - RING_OFFSET
-      render((now - startTime) / 1000)
+      const t = (now - startTime) / 1000
+      // Once the ring has settled it only breathes — render at 30fps instead of
+      // 60 (skip alternate frames). Imperceptible for slow motion, halves the
+      // permanent CPU/GPU cost on every page that carries the ring.
+      if (t >= T_END) {
+        skipBeat = !skipBeat
+        if (skipBeat) { raf = requestAnimationFrame(frame); return }
+      }
+      render(t)
       raf = requestAnimationFrame(frame)
     }
     function onVisibility() {

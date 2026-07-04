@@ -14,12 +14,12 @@ export const metadata: Metadata = {
   title: 'Research',
   description:
     'Research at Krim is the work under the product: making human judgment machine-checkable, learning a model of how a whole lending operation behaves, and treating pre-execution validation as a discipline — proving an action before it acts rather than auditing it after.',
-  alternates: { canonical: 'https://krim.ai/research' },
+  alternates: { canonical: 'https://www.krim.ai/research' },
   openGraph: {
     title: 'Research — the work under the product',
     description:
       'Making human judgment machine-checkable, learning a model of how lending behaves, treating pre-execution validation as its own discipline. Research at Krim is the work under the product.',
-    url: 'https://krim.ai/research',
+    url: 'https://www.krim.ai/research',
   },
 }
 
@@ -29,8 +29,8 @@ const breadcrumbLd = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
   itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://krim.ai' },
-    { '@type': 'ListItem', position: 2, name: 'Research', item: 'https://krim.ai/research' },
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.krim.ai' },
+    { '@type': 'ListItem', position: 2, name: 'Research', item: 'https://www.krim.ai/research' },
   ],
 }
 

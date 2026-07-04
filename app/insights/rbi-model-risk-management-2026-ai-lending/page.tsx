@@ -1,68 +1,31 @@
 /**
- * /insights/rbi-model-risk-management-2026-ai-lending — article.
+ * /insights/rbi-model-risk-management-2026-ai-lending — article body + bespoke
+ * inline visuals; the scaffold (hero, JSON-LD, panel, keep-reading, sources,
+ * CTA) is ArticleShell, driven by app/insights/_posts.ts.
  * Category: Risk. Published during the RBI MRMF consultation window (closes 24 July 2026).
  * All facts trace to the RBI Press Release 2026-2027/528 and RBI FREE-AI report.
- * Author is the organization "Krim" — no individual byline.
  */
 
-import type { Metadata } from 'next'
 import Link from 'next/link'
-import SiteHeader from '@/components/SiteHeader'
-import SiteFooter from '@/components/SiteFooter'
-import OrbBackdrop from '@/components/OrbBackdrop'
 import Reveal from '@/components/Reveal'
-import { Section, Eyebrow, GlassCard, CTA } from '@/components/ui'
+import { GlassCard } from '@/components/ui'
 import Image from 'next/image'
-import ArticlePanel from '@/components/ArticlePanel'
-import BackToInsights from '@/components/BackToInsights'
+import ArticleShell, { articleMetadata, postBySlug } from '@/components/ArticleShell'
 import { IMAGE_MANIFEST } from '@/lib/image-manifest'
 
 const GATE = IMAGE_MANIFEST['/images/harness/harness-gate.webp']
 
-const SLUG = 'rbi-model-risk-management-2026-ai-lending'
-const TITLE = 'RBI Has Set the Bar for AI Lending. Almost No One Can Clear It.'
-const DEK =
-  "RBI's 2026 Model Risk Management draft quietly rewrites the rules for AI in lending. Behind the headline-grabbing kill switch, it asks for something much harder: validate every model, explain every decision, and keep a human in control."
-const CATEGORY = 'Risk'
-const DATE_ISO = '2026-06-30'
-const DATE_LONG = '30 June 2026'
-const READING = 6
+const POST = postBySlug('rbi-model-risk-management-2026-ai-lending')
 
 const RBI_URL =
   'https://www.rbi.org.in/scripts/BS_PressReleaseDisplay.aspx?prid=63006'
 
-export const metadata: Metadata = {
+// Head title is the SEO-tuned short form; og:title stays the real headline.
+export const metadata = articleMetadata(POST, {
   title: 'RBI Model Risk Draft 2026: The Bar for AI Lending',
-  description: DEK,
-  alternates: { canonical: `https://krim.ai/insights/${SLUG}` },
-  openGraph: {
-    title: TITLE,
-    description: DEK,
-    url: `https://krim.ai/insights/${SLUG}`,
-    type: 'article',
-  },
-}
+})
 
-const breadcrumbLd = {
-  '@context': 'https://schema.org',
-  '@type': 'BreadcrumbList',
-  itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://krim.ai' },
-    { '@type': 'ListItem', position: 2, name: 'Insights', item: 'https://krim.ai/insights' },
-    { '@type': 'ListItem', position: 3, name: TITLE, item: `https://krim.ai/insights/${SLUG}` },
-  ],
-}
-
-const articleLd = {
-  '@context': 'https://schema.org',
-  '@type': 'BlogPosting',
-  headline: TITLE,
-  description: DEK,
-  datePublished: DATE_ISO,
-  dateModified: DATE_ISO,
-  author: { '@type': 'Organization', name: 'Krim' },
-  publisher: { '@type': 'Organization', name: 'Krim' },
-  mainEntityOfPage: `https://krim.ai/insights/${SLUG}`,
+const LD_EXTRAS = {
   about: {
     '@type': 'Thing',
     name: 'RBI Guidance on Regulatory Principles for Model Risk Management 2026',
@@ -284,36 +247,18 @@ function Timeline() {
 
 export default function Page() {
   return (
-    <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleLd) }} />
-      <SiteHeader />
-      <OrbBackdrop />
-      <main className="relative z-10">
-
-        {/* ---- Hero ---- */}
-        <Section className="!pt-24">
-          <div className="mx-auto max-w-[760px] text-center">
-            <Reveal>
-              <Eyebrow>{CATEGORY}</Eyebrow>
-              <h1 className="mt-5 font-serif text-display-2 leading-tight text-ink md:text-display-3">
-                RBI has set the bar for AI lending.
-                <br />
-                Almost no one can clear it.
-              </h1>
-            </Reveal>
-            <Reveal delay={0.12}>
-              <p className="mx-auto mt-7 max-w-[60ch] font-sans text-body-lg text-ink-2">{DEK}</p>
-            </Reveal>
-            <Reveal delay={0.2}>
-              <p className="mt-8 font-mono text-[12px] uppercase tracking-[0.16em] text-ink-3">
-                By Krim · {DATE_LONG} · {READING} min read
-              </p>
-            </Reveal>
-          </div>
-        </Section>
-
-        {/* ---- Header image — same clean masked render as the harness page (no card, no baked background/sparkle) ---- */}
+    <ArticleShell
+      post={POST}
+      headline={
+        <>
+          RBI has set the bar for AI lending.
+          <br />
+          Almost no one can clear it.
+        </>
+      }
+      ldExtras={LD_EXTRAS}
+      image={
+        /* bespoke header — same clean masked render as the harness page (no card, no baked background/sparkle) */
         <div className="mx-auto my-2 w-full max-w-[440px] px-6">
           <div className="relative mx-auto w-full max-w-[400px]">
             <div
@@ -339,11 +284,22 @@ export default function Page() {
             />
           </div>
         </div>
-
-        {/* ---- Body ---- */}
-        <Section className="!pt-0">
-          <ArticlePanel>
-            <Reveal>
+      }
+      related={['audit-after-the-fact-is-a-confession', 'the-cost-of-being-wrong']}
+      sources={[
+        { label: 'RBI Press Release 2026-2027/528 — Draft Guidance on Regulatory Principles for Model Risk Management (24 June 2026)', href: RBI_URL },
+        { label: 'RBI FREE-AI Committee Report (August 2025)', href: 'https://www.rbi.org.in/scripts/PublicationReportDetails.aspx?UrlPage=&ID=1380' },
+        { label: 'Federal Reserve: SR 11-7 (model risk management, 2011)', href: 'https://www.federalreserve.gov/boarddocs/srletters/2011/sr1107.htm' },
+        { label: 'EU AI Act: Annex III (high-risk AI: creditworthiness)', href: 'https://artificialintelligenceact.eu/annex/3/' },
+      ]}
+      cta={{
+        heading: 'Krim is building the control layer this draft describes.',
+        body: 'Validated before it acts. Explainable by construction. On the record before the regulator asks.',
+        href: '/krimos',
+        label: 'See how KrimOS works',
+      }}
+    >
+      <Reveal>
               <p className="font-sans text-body-lg text-ink-2">
                 India's banking and credit sector has been putting AI to work inside lending
                 operations for the better part of five years. Scoring models, document-processing
@@ -628,106 +584,6 @@ export default function Page() {
               </p>
             </Reveal>
 
-            {/* Keep reading */}
-            <Reveal>
-              <div className="mt-14 border-t border-soft pt-8">
-                <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-ink-3">Keep reading</p>
-                <div className="mt-4 grid gap-3">
-                  <Link
-                    href="/insights/audit-after-the-fact-is-a-confession"
-                    className="group font-serif text-[1.2rem] text-ink transition-colors hover:text-mint"
-                  >
-                    Audit after the fact is a confession{' '}
-                    <span aria-hidden className="text-ink-3 transition-transform group-hover:translate-x-0.5">
-                      →
-                    </span>
-                  </Link>
-                  <Link
-                    href="/insights/the-cost-of-being-wrong"
-                    className="group font-serif text-[1.2rem] text-ink transition-colors hover:text-mint"
-                  >
-                    The cost of being wrong{' '}
-                    <span aria-hidden className="text-ink-3 transition-transform group-hover:translate-x-0.5">
-                      →
-                    </span>
-                  </Link>
-                </div>
-                <div className="mt-8">
-                  <BackToInsights />
-                </div>
-              </div>
-            </Reveal>
-
-            {/* Sources */}
-            <div className="mt-12 border-t border-soft pt-8">
-              <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-ink-3">Sources</p>
-              <ul className="mt-4 space-y-2 font-mono text-[12px] leading-relaxed text-ink-3">
-                <li>
-                  <a
-                    href={RBI_URL}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="underline decoration-soft underline-offset-4 transition-colors hover:text-mint"
-                  >
-                    RBI Press Release 2026-2027/528 — Draft Guidance on Regulatory Principles for Model Risk Management (24 June 2026)
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="https://www.rbi.org.in/scripts/PublicationReportDetails.aspx?UrlPage=&ID=1380"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="underline decoration-soft underline-offset-4 transition-colors hover:text-mint"
-                  >
-                    RBI FREE-AI Committee Report (August 2025)
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="https://www.federalreserve.gov/boarddocs/srletters/2011/sr1107.htm"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="underline decoration-soft underline-offset-4 transition-colors hover:text-mint"
-                  >
-                    Federal Reserve: SR 11-7 (model risk management, 2011)
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="https://artificialintelligenceact.eu/annex/3/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="underline decoration-soft underline-offset-4 transition-colors hover:text-mint"
-                  >
-                    EU AI Act: Annex III (high-risk AI: creditworthiness)
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </ArticlePanel>
-        </Section>
-
-        {/* ---- Close CTA ---- */}
-        <Section hairline>
-          <Reveal>
-            <div className="glass mx-auto max-w-[760px] p-10 text-center md:p-14">
-              <h2 className="font-serif text-display-3 leading-tight text-ink">
-                Krim is building the control layer this draft describes.
-              </h2>
-              <p className="mx-auto mt-5 max-w-[50ch] font-sans text-body text-ink-2">
-                Validated before it acts. Explainable by construction. On the record before the
-                regulator asks.
-              </p>
-              <div className="mt-9 flex justify-center">
-                <CTA href="/krimos" variant="secondary">
-                  See how KrimOS works
-                </CTA>
-              </div>
-            </div>
-          </Reveal>
-        </Section>
-      </main>
-      <SiteFooter />
-    </>
+    </ArticleShell>
   )
 }

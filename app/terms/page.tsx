@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   title: 'Terms of Use',
   description:
     'The terms that govern your use of the Krim website at krim.ai. Use of the KrimOS product is governed by a separate written agreement.',
-  alternates: { canonical: 'https://krim.ai/terms' },
+  alternates: { canonical: 'https://www.krim.ai/terms' },
 }
 
 const EFFECTIVE = 'Last updated: 25 June 2026'

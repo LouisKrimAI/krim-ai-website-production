@@ -21,12 +21,12 @@ export const metadata: Metadata = {
   title: 'Company',
   description:
     'Krim builds KrimOS, the operating system for banking and lending. Every AI action validated before it executes, inside your perimeter, on a single auditable record.',
-  alternates: { canonical: 'https://krim.ai/company' },
+  alternates: { canonical: 'https://www.krim.ai/company' },
   openGraph: {
     title: 'Company — Krim',
     description:
       'Krim builds KrimOS, the operating system for banking and lending. Every AI action validated before it executes, inside your perimeter, on a single auditable record.',
-    url: 'https://krim.ai/company',
+    url: 'https://www.krim.ai/company',
   },
 }
 
@@ -36,8 +36,8 @@ const breadcrumbLd = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
   itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://krim.ai' },
-    { '@type': 'ListItem', position: 2, name: 'Company', item: 'https://krim.ai/company' },
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.krim.ai' },
+    { '@type': 'ListItem', position: 2, name: 'Company', item: 'https://www.krim.ai/company' },
   ],
 }
 

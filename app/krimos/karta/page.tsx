@@ -18,12 +18,12 @@ export const metadata: Metadata = {
   title: 'Karta — the co-workers',
   description:
     'Karta are the autonomous co-workers of KrimOS. They run the lending operation across the contact centre and the back office, in the customer’s own language, with every action cleared by the validation gate before it fires.',
-  alternates: { canonical: 'https://krim.ai/krimos/karta' },
+  alternates: { canonical: 'https://www.krim.ai/krimos/karta' },
   openGraph: {
     title: 'Karta — the co-workers',
     description:
       'Karta are the autonomous co-workers of KrimOS, running the lending operation across the contact centre and the back office. Built and tuned in Agent Studio — persona, voice, video avatar, workflow and limits — with no engineering cycle.',
-    url: 'https://krim.ai/krimos/karta',
+    url: 'https://www.krim.ai/krimos/karta',
   },
 }
 
@@ -31,9 +31,9 @@ const breadcrumbLd = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
   itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://krim.ai' },
-    { '@type': 'ListItem', position: 2, name: 'KrimOS', item: 'https://krim.ai/krimos' },
-    { '@type': 'ListItem', position: 3, name: 'Karta', item: 'https://krim.ai/krimos/karta' },
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.krim.ai' },
+    { '@type': 'ListItem', position: 2, name: 'KrimOS', item: 'https://www.krim.ai/krimos' },
+    { '@type': 'ListItem', position: 3, name: 'Karta', item: 'https://www.krim.ai/krimos/karta' },
   ],
 }
 

@@ -19,12 +19,12 @@ export const metadata: Metadata = {
   title: 'Book a demo',
   description:
     'See KrimOS run on your operation. Book a demo or grab a call directly. Tell us what you are trying to solve and we will come prepared. Routed to sales@krim.ai.',
-  alternates: { canonical: 'https://krim.ai/contact' },
+  alternates: { canonical: 'https://www.krim.ai/contact' },
   openGraph: {
     title: 'Book a demo — Krim',
     description:
       'See KrimOS run on your operation. Book a demo or grab a call directly. Tell us what you are trying to solve and we will come prepared. Routed to sales@krim.ai.',
-    url: 'https://krim.ai/contact',
+    url: 'https://www.krim.ai/contact',
   },
 }
 
@@ -32,8 +32,8 @@ const breadcrumbLd = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
   itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://krim.ai' },
-    { '@type': 'ListItem', position: 2, name: 'Book a demo', item: 'https://krim.ai/contact' },
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.krim.ai' },
+    { '@type': 'ListItem', position: 2, name: 'Book a demo', item: 'https://www.krim.ai/contact' },
   ],
 }
 

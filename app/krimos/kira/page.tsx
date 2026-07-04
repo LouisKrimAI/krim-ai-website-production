@@ -17,12 +17,12 @@ export const metadata: Metadata = {
   title: 'Kira — the customer advisor',
   description:
     'Kira is the AI customer advisor your customers meet in the Krimkar app and across every channel: WhatsApp, voice, chat, SMS and email. One conversation that remembers, in the customer’s own language, always within the rules.',
-  alternates: { canonical: 'https://krim.ai/krimos/kira' },
+  alternates: { canonical: 'https://www.krim.ai/krimos/kira' },
   openGraph: {
     title: 'Kira — the customer advisor',
     description:
       'Kira is the AI customer advisor your customers meet in the Krimkar app and across every channel: WhatsApp, voice, chat, SMS and email. One conversation that remembers, in the customer’s own language, always within the rules.',
-    url: 'https://krim.ai/krimos/kira',
+    url: 'https://www.krim.ai/krimos/kira',
   },
 }
 
@@ -30,9 +30,9 @@ const breadcrumbLd = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
   itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://krim.ai' },
-    { '@type': 'ListItem', position: 2, name: 'KrimOS', item: 'https://krim.ai/krimos' },
-    { '@type': 'ListItem', position: 3, name: 'Kira & Krimkar', item: 'https://krim.ai/krimos/kira' },
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.krim.ai' },
+    { '@type': 'ListItem', position: 2, name: 'KrimOS', item: 'https://www.krim.ai/krimos' },
+    { '@type': 'ListItem', position: 3, name: 'Kira & Krimkar', item: 'https://www.krim.ai/krimos/kira' },
   ],
 }
 

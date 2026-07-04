@@ -15,4 +15,4 @@ Allow: /
 User-agent: Google-Extended
 Allow: /
 
-Sitemap: https://krim.ai/sitemap.xml
+Sitemap: https://www.krim.ai/sitemap.xml

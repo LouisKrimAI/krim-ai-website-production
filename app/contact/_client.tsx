@@ -181,6 +181,9 @@ export function DemoForm({ onSuccess }: { onSuccess?: () => void } = {}) {
   const [fields, setFields] = useState(EMPTY)
   const [honeypot, setHoneypot] = useState('')
   const [status, setStatus] = useState<Status>('idle')
+  // true only when the API confirms the confirmation email actually went out —
+  // "check your inbox" must never be a promise we didn't keep
+  const [emailSent, setEmailSent] = useState(false)
   const [errors, setErrors] = useState<Partial<Record<FieldKey, string>>>({})
   const successRef = useRef<HTMLDivElement | null>(null)
 
@@ -236,6 +239,8 @@ export function DemoForm({ onSuccess }: { onSuccess?: () => void } = {}) {
         body: JSON.stringify({ ...fields, _gotcha: honeypot }),
       })
       if (res.ok) {
+        const data = await res.json().catch(() => ({}))
+        setEmailSent(!!data.emailSent)
         setStatus('success')
         setFields(EMPTY)
       } else {
@@ -255,8 +260,17 @@ export function DemoForm({ onSuccess }: { onSuccess?: () => void } = {}) {
         className="py-6 text-center outline-none"
       >
         <p className="font-serif text-[1.5rem] leading-snug text-ink">
-          Thank you. Check your inbox for a link to pick a time. We&rsquo;ll also reply within one
-          business day, from <span className="text-mint">sales@krim.ai</span>.
+          {emailSent ? (
+            <>
+              Thank you. Check your inbox for a link to pick a time. We&rsquo;ll also reply within
+              one business day, from <span className="text-mint">sales@krim.ai</span>.
+            </>
+          ) : (
+            <>
+              Thank you — we&rsquo;ve got your request. We&rsquo;ll reply within one business day,
+              from <span className="text-mint">sales@krim.ai</span>.
+            </>
+          )}
         </p>
       </div>
     )
