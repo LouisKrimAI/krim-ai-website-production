@@ -41,7 +41,7 @@ const orgLd = {
   // Formal descriptor per docs/POSITIONING.md §11; areaServed = the five
   // encoded markets (lib/jurisdictions.ts is the single source).
   description:
-    'Krim is a technology research, product and services company. Its product, KrimOS, is the operating system for banking and financial services, where every action is validated before it executes.',
+    'Krim is a technology research, product and services company. Its product, KrimOS, is the operating system for banking and financial services, lending first, where every action is validated before it executes.',
   areaServed: ['US', 'GB', 'IN', 'NG', 'BR'],
   email: 'sales@krim.ai',
   contactPoint: {
