@@ -31,14 +31,20 @@ export default function BackdropGate() {
   useIso(() => {
     const el = document.documentElement
     const cluster = clusterFor(pathname || '')
+    // If this same cluster was already revealed (the pre-paint script's 4.5s
+    // fallback fires before hydration on slow devices), never re-hide content —
+    // stripping data-bg-ready here made visible text vanish for exactly the
+    // users the fallback exists to protect.
+    const alreadyRevealed =
+      !!cluster && el.getAttribute('data-cluster') === cluster && el.hasAttribute('data-bg-ready')
     if (cluster) el.setAttribute('data-cluster', cluster)
     else el.removeAttribute('data-cluster')
-    el.removeAttribute('data-bg-ready')
+    if (!alreadyRevealed) el.removeAttribute('data-bg-ready')
     if (!cluster) return
 
     let done = false
     const reveal = () => { if (!done) { done = true; el.setAttribute('data-bg-ready', '') } }
-    if (isBackdropReady(cluster)) { reveal(); return }
+    if (alreadyRevealed || isBackdropReady(cluster)) { reveal(); return }
     const unsub = subscribeBackdropReady(cluster, reveal)
     const t = window.setTimeout(reveal, 4000) // safety net — never strand the text
     return () => { unsub(); window.clearTimeout(t) }

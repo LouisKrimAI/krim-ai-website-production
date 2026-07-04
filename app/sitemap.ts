@@ -27,19 +27,23 @@ const ROUTES: { path: string; priority: number; changeFrequency: Change }[] = [
   { path: '/epistemic-ai', priority: 0.9, changeFrequency: 'monthly' },
   { path: '/research', priority: 0.8, changeFrequency: 'monthly' },
   { path: '/research/world-lending-model', priority: 0.9, changeFrequency: 'monthly' },
+  { path: '/research/safe-agent-harness', priority: 0.8, changeFrequency: 'monthly' },
   { path: '/architecture', priority: 0.7, changeFrequency: 'monthly' },
   { path: '/trust', priority: 0.7, changeFrequency: 'monthly' },
   { path: '/company', priority: 0.7, changeFrequency: 'monthly' },
   { path: '/services', priority: 0.7, changeFrequency: 'monthly' },
   { path: '/insights', priority: 0.7, changeFrequency: 'weekly' },
   { path: '/contact', priority: 0.6, changeFrequency: 'yearly' },
+  { path: '/terms', priority: 0.3, changeFrequency: 'yearly' },
+  { path: '/privacy', priority: 0.3, changeFrequency: 'yearly' },
 ]
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const now = new Date()
+  // Static routes carry no lastModified: stamping build time on every entry
+  // claimed sitewide freshness on each deploy, which erodes the signal.
+  // Posts keep their real publication dates below.
   const staticEntries = ROUTES.map((r) => ({
     url: `${BASE}${r.path}`,
-    lastModified: now,
     changeFrequency: r.changeFrequency,
     priority: r.priority,
   }))

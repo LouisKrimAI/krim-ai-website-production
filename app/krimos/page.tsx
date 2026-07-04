@@ -2,9 +2,8 @@
  * /krimos — the hub / map. Rebuilt to docs/HOUSE-STYLE.md as the reference
  * exemplar. Its own structure (claim → the doorways in → why it holds → the
  * studios → impacts → close), the homepage's design DNA, marketing-grade copy.
- * The Layershq render
- * (public/images/krimos/layers.png) is the hero visual; hand-built SVG "devices"
- * are gone — real image or clean glass+type only (HOUSE-STYLE §7).
+ * Real imagery or clean glass+type only (HOUSE-STYLE §7) — the backdrop is the
+ * shared PlatformBackdrop; hand-built SVG "devices" are gone.
  * Facts: docs/krim-content.md.
  */
 

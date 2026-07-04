@@ -79,25 +79,6 @@ export function GlassCard({
   )
 }
 
-// ---------------------------------------------------------------- Stat
-
-export function Stat({
-  value,
-  label,
-  className = '',
-}: {
-  value: string
-  label: string
-  className?: string
-}) {
-  return (
-    <div className={className}>
-      <p className="font-serif text-[clamp(2rem,3.5vw,2.9rem)] leading-none text-ink">{value}</p>
-      <p className="mt-2 font-mono text-caption uppercase tracking-[0.14em] text-ink-3">{label}</p>
-    </div>
-  )
-}
-
 // ---------------------------------------------------------------- CTA
 
 export function CTA({

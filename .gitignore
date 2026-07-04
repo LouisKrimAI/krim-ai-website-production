@@ -18,3 +18,10 @@ KRIMOS_CAPABILITIES_OVERVIEW.md
 Gemini_Generated_Image_*.png
 /Logos for recognition/
 /Logos for website integrations/
+
+# local working files — never part of the site
+/DRAFTGUIDANCE*.pdf
+/Marketing examples/
+/docs/pitch/
+/.deckenv/
+/public/images/pitch/

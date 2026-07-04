@@ -23,7 +23,9 @@ import { IMAGE_MANIFEST } from '@/lib/image-manifest'
 const GATE = IMAGE_MANIFEST['/images/harness/harness-gate.webp']
 
 export const metadata: Metadata = {
-  title: 'Safe Agent Harness · Krim Research',
+  // Plain title — the layout template appends "— Krim · Safe Superintelligence";
+  // the old "· Krim Research" suffix double-branded the tab.
+  title: 'Safe Agent Harness',
   description:
     'A safe agent harness is the control layer around an autonomous AI agent: a constrained action vocabulary, a pre-execution validation gate, and a human command surface, so every action is checked before it can fire.',
   alternates: { canonical: 'https://krim.ai/research/safe-agent-harness' },
@@ -323,7 +325,6 @@ export default function SafeAgentHarnessPage() {
                   height={GATE.h}
                   placeholder="blur"
                   blurDataURL={GATE.blur}
-                  priority
                   sizes="(max-width: 768px) 88vw, 460px"
                   className="relative w-full"
                   style={{

@@ -24,12 +24,11 @@ import { motion, useReducedMotion } from 'framer-motion'
 import WaveOrb from './WaveOrb'
 import { markBackdropReady } from '@/lib/backdropReady'
 
-const RESEARCH_ROUTES = new Set([
-  '/research',
-  '/research/world-lending-model',
-  '/research/safe-agent-harness',
-  '/epistemic-ai',
-])
+// Prefix-derived (mirrors BackdropGate.clusterFor) — a hardcoded route list here
+// meant a future /research/<new> page would get a hidden <main> but no backdrop.
+function isResearchRoute(p: string): boolean {
+  return p === '/research' || p.startsWith('/research/') || p === '/epistemic-ai'
+}
 
 const LAB_SRC = '/images/research/research-stage.webp'
 
@@ -37,7 +36,7 @@ export default function ResearchBackdrop() {
   const pathname = usePathname()
   const reduce = useReducedMotion()
   const [bgLoaded, setBgLoaded] = useState(false)
-  const active = !!pathname && RESEARCH_ROUTES.has(pathname)
+  const active = !!pathname && isResearchRoute(pathname)
 
   // Safety net only: if onLoad never fires (very slow or failed fetch) reveal the
   // orb anyway after a generous wait, so it can't get permanently stranded. The
@@ -69,6 +68,8 @@ export default function ResearchBackdrop() {
         src={LAB_SRC}
         alt=""
         decoding="async"
+        // this image gates the whole cluster's content reveal — it IS the priority
+        fetchPriority="high"
         ref={(el) => {
           // cached/prefetched image: onLoad may not fire, so reveal immediately
           if (el && el.complete && el.naturalWidth > 0) setBgLoaded(true)

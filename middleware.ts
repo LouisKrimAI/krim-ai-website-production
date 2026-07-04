@@ -29,7 +29,10 @@ export const config = {
   matcher: [
     '/admin/:path*',
     '/api/admin/:path*',
-    '/((?!_next/static|_next/image|favicon\\.ico|api/).*)',
+    // Excludes static assets (their Cache-Control comes from vercel.json) so
+    // every image/logo request doesn't invoke the edge function. The SW
+    // kill-switch files at the root (/service-worker.js, /sw.js) still match.
+    '/((?!_next/static|_next/image|favicon\\.ico|api/|images/|brand/|videos/|decks/|resources/).*)',
   ],
 }
 

@@ -2,7 +2,7 @@
 
 /**
  * JurisdictionTabs — the regulation set per market, behind a tab.
- * USA · UK · EU · India · Nigeria · Brazil (the encoded-and-enforced markets). Each tab reveals that jurisdiction's
+ * USA · UK · India · Nigeria · Brazil (the encoded-and-enforced markets). Each tab reveals that jurisdiction's
  * encoded frameworks as mint-dotted chips. Calm pill tabs (mint = active), one
  * panel that cross-fades; the tab row wraps on narrow screens. Reduced motion
  * settles instantly.

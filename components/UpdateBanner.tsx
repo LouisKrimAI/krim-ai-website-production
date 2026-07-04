@@ -10,6 +10,9 @@ export default function UpdateBanner() {
     if (!buildId) return
 
     const check = async () => {
+      // don't wake the radio for background tabs — the visibilitychange
+      // listener below re-checks the moment the tab is foregrounded
+      if (document.hidden) return
       try {
         const res = await fetch(`/_next/static/${buildId}/_buildManifest.js`, {
           cache: 'no-store',
@@ -21,6 +24,8 @@ export default function UpdateBanner() {
     // Check on mount and every 3 minutes
     check()
     const id = setInterval(check, 3 * 60 * 1000)
+    const onVisible = () => { if (!document.hidden) check() }
+    document.addEventListener('visibilitychange', onVisible)
 
     // bfcache: Chrome can restore a frozen page without re-mounting React.
     // The pageshow event fires on every restore; e.persisted=true means bfcache.
@@ -30,6 +35,7 @@ export default function UpdateBanner() {
     return () => {
       clearInterval(id)
       window.removeEventListener('pageshow', onPageShow)
+      document.removeEventListener('visibilitychange', onVisible)
     }
   }, [])
 

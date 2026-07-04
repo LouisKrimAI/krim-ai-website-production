@@ -36,7 +36,9 @@ function WovenRingCanvas() {
   useEffect(() => {
     const canvas = ref.current
     if (!canvas) return
-    const ctx = canvas.getContext('2d', { alpha: false })
+    // desynchronized: decorative backdrop needs no input-pipeline sync — lets the
+    // compositor present frames without blocking on the main thread.
+    const ctx = canvas.getContext('2d', { alpha: false, desynchronized: true })
     if (!ctx) return
 
     const reduceMotion =
@@ -50,7 +52,9 @@ function WovenRingCanvas() {
     // ---------- viewport ----------
     let W = 0, H = 0, DPR = 1, U = 1, sized = false
     function resize() {
-      DPR = Math.min(window.devicePixelRatio || 1, 2.25)
+      // Cap at 2 (matches PlatformBackdrop) — this glow-soft image gains nothing
+      // above 2x, and 2.25 cost ~21% extra fill-rate on DPR-3 phones.
+      DPR = Math.min(window.devicePixelRatio || 1, 2)
       W = window.innerWidth; H = window.innerHeight
       if (W === 0 || H === 0) return false
       canvas!.width = Math.round(W * DPR)

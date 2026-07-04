@@ -132,6 +132,9 @@ export default function BlogPage() {
               <p className="mx-auto mt-5 max-w-[46ch] font-sans text-body text-ink-2">
                 See validated, sovereign AI run a lending operation, end to end.
               </p>
+              <div className="mt-9 flex justify-center">
+                <CTA href={DEMO_HREF}>Book a demo</CTA>
+              </div>
             </div>
           </Reveal>
         </Section>

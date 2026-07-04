@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { Newsreader, Inter, IBM_Plex_Mono, Montserrat } from 'next/font/google'
+import { Newsreader, Inter, IBM_Plex_Mono } from 'next/font/google'
 import './globals.css'
 import Analytics from '@/components/Analytics'
 import UpdateBanner from '@/components/UpdateBanner'
@@ -25,12 +25,7 @@ const mono = IBM_Plex_Mono({
   weight: ['400', '500'],
   variable: '--font-mono',
 })
-// the Krim wordmark's original typeface — used only inside the logo
-const logo = Montserrat({
-  subsets: ['latin'],
-  weight: ['700'],
-  variable: '--font-logo',
-})
+// NOTE: the wordmark is an SVG (KrimLogoAnimated) — no logo webfont is loaded.
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://krim.ai'),
@@ -69,7 +64,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" suppressHydrationWarning className={`${display.variable} ${body.variable} ${mono.variable} ${logo.variable}`}>
+    <html lang="en" suppressHydrationWarning className={`${display.variable} ${body.variable} ${mono.variable}`}>
       <body>
         {/* Pre-paint: tag the cluster so its page <main> starts hidden (globals.css)
             until the backdrop has rendered — no flash. Hard fallback reveals the
