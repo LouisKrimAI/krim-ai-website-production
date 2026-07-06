@@ -68,6 +68,8 @@ export const RESOURCES: Record<string, { url: string; title: string }> = {
   'krimos-roles': { url: '/collateral/krimos-roles-and-use-cases.pdf', title: 'KrimOS roles and use cases' },
   'krimos-a4-overview': { url: '/collateral/krimos-overview.pdf', title: 'the KrimOS overview (A4)' },
   'krimos-rbi-alignment': { url: '/collateral/krimos-rbi-alignment.pdf', title: 'KrimOS and the RBI draft' },
+  // Legacy alias — links already sent in earlier drip emails must keep working.
+  'krim-deck': { url: '/collateral/krimos-product-overview.pdf', title: 'the KrimOS product overview' },
   // Deeper read — an existing page, always live.
   'world-lending-model': {
     url: `${siteUrl()}/research/world-lending-model`,
