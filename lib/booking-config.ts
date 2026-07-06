@@ -17,7 +17,7 @@ export const sender = {
 }
 
 // One-line tagline in every email footer.
-export const TAGLINE = 'The agent-native OS for banking.'
+export const TAGLINE = 'The intelligence runtime for lending.'
 
 export function siteUrl(): string {
   return (process.env.SITE_URL || 'https://www.krim.ai').replace(/\/$/, '')
@@ -62,15 +62,26 @@ export function nextDripStep(currentStage: number): DripStep | null {
 // to /api/download?token=…&doc=<key>, which logs the download then redirects here.
 // Leave `featured` pointing at a real asset; swap in a gated PDF when ready.
 export const RESOURCES: Record<string, { url: string; title: string }> = {
-  'krim-deck': { url: '/decks/Krim_Intro.pdf', title: 'the Krim deck' },
-  // Day-6 deeper read — an existing page, always live.
+  'krimos-brief': { url: '/collateral/krimos-capabilities-brief.pdf', title: 'the two-page KrimOS brief' },
+  'krimos-overview-8pp': { url: '/collateral/krimos-product-overview.pdf', title: 'the KrimOS product overview' },
+  'krimos-introduction': { url: '/collateral/krimos-introduction.pdf', title: 'the KrimOS introduction' },
+  'krimos-roles': { url: '/collateral/krimos-roles-and-use-cases.pdf', title: 'KrimOS roles and use cases' },
+  'krimos-a4-overview': { url: '/collateral/krimos-overview.pdf', title: 'the KrimOS overview (A4)' },
+  'krimos-rbi-alignment': { url: '/collateral/krimos-rbi-alignment.pdf', title: 'KrimOS and the RBI draft' },
+  // Legacy alias — links already sent in earlier drip emails must keep working.
+  'krim-deck': { url: '/collateral/krimos-product-overview.pdf', title: 'the KrimOS product overview' },
+  // Deeper read — an existing page, always live.
   'world-lending-model': {
     url: `${siteUrl()}/research/world-lending-model`,
     title: 'The World Lending Model',
   },
 }
 
-/** Resource sent in the +2d email (the deck/whitepaper PDF). */
-export const DECK_RESOURCE_KEY = 'krim-deck'
-/** Resource sent in the +6d email. */
-export const FEATURED_RESOURCE_KEY = 'world-lending-model'
+/** Resource linked in the immediate confirmation email (60-second read). */
+export const BRIEF_RESOURCE_KEY = 'krimos-brief'
+/** Resource sent in the +2d email (the flagship 8-page overview). */
+export const DECK_RESOURCE_KEY = 'krimos-overview-8pp'
+/** Resource sent in the +6d email (the RBI alignment 2-pager). */
+export const FEATURED_RESOURCE_KEY = 'krimos-rbi-alignment'
+/** Deeper-read PS link in the +6d email. */
+export const RESEARCH_RESOURCE_KEY = 'world-lending-model'

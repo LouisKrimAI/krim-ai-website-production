@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>KrimOS — Capabilities Brief</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400;1,700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+@page { size: A4; margin: 0; }
+body {
+  font-family: 'Inter', sans-serif;
+  background: #555;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+.page {
+  width: 210mm;
+  height: 297mm;
+  position: relative;
+  overflow: hidden;
+  page-break-after: always;
+  display: flex;
+  flex-direction: column;
+}
+
+/* COVER */
+.cover { background: #0B1220; color: #fff; }
+
+.cover-bg {
+  position: absolute;
+  top: 0; right: 0;
+  width: 65%; height: 100%;
+  object-fit: cover;
+  object-position: center left;
+  opacity: 0.13;
+  filter: grayscale(1);
+  z-index: 0;
+}
+
+.cover-fade {
+  position: absolute;
+  top: 0; left: 0;
+  width: 58%; height: 100%;
+  background: linear-gradient(to right, #0B1220 62%, transparent);
+  z-index: 1;
+}
+
+.cover-body {
+  position: relative; z-index: 2;
+  display: flex; flex-direction: column;
+  height: 100%; padding: 48px;
+}
+
+/* CONTENT */
+.content { background: #F4F6FA; color: #1A2035; }
+.content-body {
+  display: flex; flex-direction: column;
+  height: 100%; padding: 48px;
+}
+
+/* SHARED */
+.logo-w { height: 29px; width: auto; display: block; }
+.logo-b { height: 26px; width: auto; display: block; }
+
+.eyebrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9.5px;
+  font-weight: 500;
+  letter-spacing: 0.20em;
+  text-transform: uppercase;
+}
+
+.mint-rule { display: block; width: 56px; height: 1px; background: #00FFB2; }
+
+/* COVER TYPE */
+.c-label { color: #00FFB2; margin-top: 16px; }
+
+.c-headline {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: 92px;
+  line-height: 1.00;
+  color: #fff;
+  letter-spacing: -0.025em;
+  margin-top: 30px;
+  max-width: 480px;
+}
+
+.c-position {
+  font-family: 'Playfair Display', serif;
+  font-weight: 400;
+  font-style: italic;
+  font-size: 24px;
+  line-height: 1.40;
+  color: rgba(255,255,255,0.58);
+  margin-top: 18px;
+  max-width: 420px;
+}
+
+.c-sub {
+  font-size: 15px;
+  font-weight: 300;
+  line-height: 1.65;
+  color: rgba(255,255,255,0.70);
+  margin-top: 40px;
+  max-width: 420px;
+}
+
+.c-pos2 {
+  font-size: 12.5px;
+  font-weight: 400;
+  line-height: 1.55;
+  color: rgba(255,255,255,0.50);
+  margin-top: 12px;
+  max-width: 420px;
+}
+
+.bullets { list-style: none; display: flex; flex-direction: column; gap: 18px; max-width: 420px; margin-top: 44px; }
+.bullets li {
+  font-size: 14px;
+  line-height: 1.58;
+  color: rgba(255,255,255,0.78);
+  padding-left: 20px;
+  position: relative;
+}
+.bullets li::before {
+  content: '';
+  position: absolute; left: 0; top: 7px;
+  width: 6px; height: 6px;
+  border-radius: 50%; background: #00FFB2;
+}
+
+.c-lead {
+  font-size: 14.5px;
+  font-weight: 400;
+  line-height: 1.65;
+  color: rgba(255,255,255,0.66);
+  max-width: 420px;
+  margin-top: 52px;
+}
+
+/* Glass treatment */
+.glass-card {
+  /* pre-composited over #0B1220 for print robustness (was rgba white 0.07→0.025) */
+  background: linear-gradient(150deg, #1C2330, #111826);
+  border: 1px solid rgba(255,255,255,0.085);
+  border-top-color: rgba(255,255,255,0.22);
+  border-radius: 10px;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.14), inset 0 1px 0 rgba(255,255,255,0.07);
+}
+
+.cap-chips { display: flex; align-items: stretch; gap: 12px; margin-top: 52px; }
+.chip { flex: 1; padding: 17px 18px 18px; }
+.chip-role {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 8px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #00FFB2;
+  margin-bottom: 6px;
+}
+.chip-name {
+  font-size: 14px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.90);
+}
+
+.foot-rule-d { width: 100%; height: 1px; background: rgba(255,255,255,0.09); margin-bottom: 13px; }
+.foot-rule-l { width: 100%; height: 1px; background: rgba(26,32,53,0.09); margin-bottom: 13px; }
+
+.foot {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 8.5px;
+  letter-spacing: 0.05em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.foot-d { color: rgba(255,255,255,0.38); }
+.foot-l { color: rgba(26,32,53,0.38); }
+
+/* CONTENT ELEMENTS */
+.pg-head { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 28px; }
+.sec-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.17em;
+  text-transform: uppercase;
+  color: rgba(26,32,53,0.38);
+  margin-bottom: 7px;
+}
+.pg-title {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: 25px;
+  line-height: 1.18;
+  color: #1A2035;
+  margin-bottom: 6px;
+}
+.pg-intro {
+  font-size: 12.5px;
+  line-height: 1.62;
+  color: rgba(26,32,53,0.52);
+  max-width: 520px;
+  margin-bottom: 26px;
+}
+
+/* THREE COLS */
+.three-cols { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin-bottom: 28px; }
+.cap-card {
+  padding: 25px 18px;
+  background: #fff;
+  border: 1px solid rgba(26,32,53,0.07);
+  border-radius: 2px;
+}
+.cap-card.hl { box-shadow: inset 0 3px 0 #006B48; }
+.cap-title {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: 16px;
+  color: #1A2035;
+  margin-bottom: 2px;
+}
+.cap-via {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 8.5px;
+  color: #006B48;
+  letter-spacing: 0.08em;
+  margin-bottom: 9px;
+}
+.cap-body { font-size: 11.5px; line-height: 1.62; color: rgba(26,32,53,0.63); }
+
+/* LIFECYCLE */
+.lc-row { display: flex; gap: 3px; margin-bottom: 26px; }
+.lc-stage {
+  flex: 1;
+  padding: 11px 5px 12px;
+  background: #fff;
+  border: 1px solid rgba(26,32,53,0.07);
+  text-align: center;
+}
+.lc-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 8px;
+  color: #006B48;
+  letter-spacing: 0.06em;
+  margin-bottom: 4px;
+}
+.lc-name { font-size: 10px; font-weight: 600; color: #1A2035; }
+
+/* TABLE */
+.tbl { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
+.tbl thead th {
+  padding: 8px 11px;
+  background: #1A2035;
+  color: #fff;
+  font-size: 8.5px;
+  font-weight: 600;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  text-align: left;
+}
+.tbl tbody td {
+  padding: 12px 11px;
+  border-bottom: 1px solid rgba(26,32,53,0.055);
+  font-size: 11.5px;
+  color: rgba(26,32,53,0.72);
+  vertical-align: top;
+  line-height: 1.50;
+}
+.tbl tbody tr:nth-child(even) td { background: #F0F2F6; }
+.process-name { font-weight: 600; color: #1A2035; font-size: 11px; }
+.outcome { color: #005239; font-weight: 500; }
+.tbl tbody tr td.outcome { background: #EAF0F3; }
+
+/* INDIA NOTE */
+.india-note {
+  border-left: 3px solid #00FFB2;
+  padding: 16px 18px 17px;
+  background: #EBF1F4;
+  border-radius: 0 2px 2px 0;
+  margin-bottom: 16px;
+}
+.india-note p { font-size: 11.5px; line-height: 1.60; color: rgba(26,32,53,0.70); }
+.india-note strong { color: #1A2035; font-weight: 600; }
+
+/* CTA LINE */
+.cta-line {
+  font-size: 13.5px;
+  line-height: 1.55;
+  color: rgba(26,32,53,0.75);
+  margin-bottom: 16px;
+}
+.cta-line strong { color: #1A2035; font-weight: 600; }
+.cta-mail {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  font-weight: 500;
+  color: #006B48;
+  letter-spacing: 0.02em;
+}
+
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════════════════════
+     PAGE 1 · DARK COVER
+     ══════════════════════════════════════════════════════════ -->
+<div class="page cover">
+  <img class="cover-bg" src="../../public/images/New%20Images/Layershq.png" alt="">
+  <div class="cover-fade"></div>
+
+  <div class="cover-body">
+
+    <img class="logo-w" src="../../public/brand/logo/KRIM-horizontal-white.svg" alt="Krim">
+
+    <div class="mint-rule" style="margin-top: 56px;"></div>
+    <div class="eyebrow c-label" style="margin-top: 13px;">Capabilities Brief</div>
+
+    <h1 class="c-headline">KrimOS.</h1>
+
+    <p class="c-position">The intelligence runtime<br>for lending.</p>
+
+    <p class="c-sub">
+      Validated before it acts.<br>Smarter after it acts.
+    </p>
+
+    <ul class="bullets">
+      <li>Every decision clears Krim-Nyāya, a pre-execution validation gate, before the system acts on it</li>
+      <li>Karta autonomous co-workers handle the full credit lifecycle, from origination through collections to closure</li>
+      <li>Kovida — the world lending model — gets sharper with every loan your institution processes</li>
+    </ul>
+
+    <p class="c-lead">
+      You are told to adopt AI, and you answer for every outcome it produces. KrimOS is how you do both.
+    </p>
+
+    <div class="cap-chips">
+      <div class="chip glass-card">
+        <div class="chip-role">Kriya</div>
+        <div class="chip-name">Runs every workflow</div>
+      </div>
+      <div class="chip glass-card">
+        <div class="chip-role">Krim-Nyāya</div>
+        <div class="chip-name">Validates every decision</div>
+      </div>
+      <div class="chip glass-card">
+        <div class="chip-role">Kovida</div>
+        <div class="chip-name">Learns from every loan</div>
+      </div>
+    </div>
+
+    <div style="flex: 1;"></div>
+
+    <div class="foot-rule-d"></div>
+    <div class="foot foot-d">
+      <span>Patna · Bangalore · New York</span>
+      <span>sales@krim.ai</span>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════════
+     PAGE 2 · LIGHT CONTENT
+     ══════════════════════════════════════════════════════════ -->
+<div class="page content">
+  <div class="content-body">
+
+    <div class="pg-head">
+      <img class="logo-b" src="../../public/brand/logo/KRIM-horizontal-black.svg" alt="Krim">
+      <span class="eyebrow" style="color: rgba(26,32,53,0.28); margin-top: 4px;">How KrimOS works</span>
+    </div>
+
+    <div class="sec-label">It runs. It validates. It learns.</div>
+    <h2 class="pg-title">Everything the lending stack needs, in one system.</h2>
+    <p class="pg-intro">One system across every credit workflow, from first application to final closure.</p>
+
+    <!-- Three columns -->
+    <div class="three-cols">
+      <div class="cap-card">
+        <div class="cap-title">Runs</div>
+        <div class="cap-via">via Kriya</div>
+        <p class="cap-body">500+ compliance-encoded actions built for credit: place a collections call within permitted hours, pull a bureau report, generate a sanction letter.</p>
+      </div>
+      <div class="cap-card hl">
+        <div class="cap-title">Validates</div>
+        <div class="cap-via">via Krim-Nyāya</div>
+        <p class="cap-body">A logic gate that checks every agent decision before it acts, returning a pass, amber or fail verdict with a traceable reason.</p>
+      </div>
+      <div class="cap-card">
+        <div class="cap-title">Learns</div>
+        <div class="cap-via">via Kovida</div>
+        <p class="cap-body">The world lending model. It learns your book, and sharpens with every transaction your institution processes.</p>
+      </div>
+    </div>
+
+    <!-- Lifecycle strip -->
+    <div class="sec-label">The credit lifecycle: KrimOS runs across all of it</div>
+    <div class="lc-row">
+      <div class="lc-stage"><div class="lc-num">01</div><div class="lc-name">Origination</div></div>
+      <div class="lc-stage"><div class="lc-num">02</div><div class="lc-name">Underwriting</div></div>
+      <div class="lc-stage"><div class="lc-num">03</div><div class="lc-name">Disbursement</div></div>
+      <div class="lc-stage"><div class="lc-num">04</div><div class="lc-name">Servicing</div></div>
+      <div class="lc-stage"><div class="lc-num">05</div><div class="lc-name">Collections</div></div>
+      <div class="lc-stage"><div class="lc-num">06</div><div class="lc-name">Closure</div></div>
+    </div>
+
+    <!-- What changes table -->
+    <div class="sec-label">What changes</div>
+    <table class="tbl">
+      <thead>
+        <tr>
+          <th style="width:24%;">Process</th>
+          <th>Manual today</th>
+          <th>With KrimOS</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="process-name">Customer onboarding</span></td>
+          <td>Field visit, branch paperwork, 2–3 day turnaround</td>
+          <td class="outcome">Digital-first, same-day decisioning</td>
+        </tr>
+        <tr>
+          <td><span class="process-name">Credit underwriting</span></td>
+          <td>Analyst review, bureau pull, manual sign-off</td>
+          <td class="outcome">Validated in minutes, with a full decision trace</td>
+        </tr>
+        <tr>
+          <td><span class="process-name">Collections outreach</span></td>
+          <td>Volume dialler, blunt scripts, low contact rates</td>
+          <td class="outcome">AI-guided, dynamically prioritised, outcome-tracked</td>
+        </tr>
+        <tr>
+          <td><span class="process-name">Compliance reporting</span></td>
+          <td>Monthly manual pack, prone to delay and error</td>
+          <td class="outcome">Auto-generated, regulator-ready, always current</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- India note -->
+    <div class="india-note">
+      <p><strong>Built for India's regulatory environment.</strong> Krim-Nyāya produces a time-stamped, inspection-ready decision trail for every action. Krim's AI co-workers operate within your existing governance framework and connect to core banking systems, bureau APIs, and collection platforms.</p>
+      <p style="margin-top: 9px;"><strong>The founding team built Saarthi.ai (2017–2025):</strong> 250M+ voice-AI calls across 50+ banks and NBFCs, 48M users, 0 compliance violations.</p>
+    </div>
+
+    <p class="cta-line" style="margin-top: 12px;"><strong>Book a working session.</strong> We'll map your stack and pick the first workflow. <span class="cta-mail">sales@krim.ai</span></p>
+
+    <div style="flex: 1;"></div>
+
+    <div class="foot-rule-l"></div>
+    <div class="foot foot-l">
+      <span>Patna · Bangalore · New York</span>
+      <span>Confidential — for discussion only</span>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>

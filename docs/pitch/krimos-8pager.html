@@ -1,0 +1,913 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>KrimOS — Product Overview</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400;1,700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+@page { size: 154.2mm 215.9mm; margin: 0; }
+html, body {
+  font-family: 'Inter', sans-serif;
+  background: #555;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+.page {
+  width: 154.2mm;
+  height: 215.9mm;
+  position: relative;
+  overflow: hidden;
+  page-break-after: always;
+  display: flex;
+  flex-direction: column;
+}
+.page:last-child { page-break-after: auto; }
+
+/* ------- palettes ------- */
+.dark  { background: #1A1E47; color: #F2F3F9; }
+.light { background: #FAFAFA; color: #1A1E47; }
+
+.inner {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 42px 48px 34px;
+}
+
+/* ------- logos ------- */
+.logo { display: block; height: 46px; width: auto; margin-bottom: 26px; align-self: flex-start; }
+
+/* ------- eyebrows / labels ------- */
+.eyebrow {
+  font-size: 8.5px;
+  font-weight: 700;
+  letter-spacing: 0.30em;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+.eb-green { color: #00FF87; }
+.eb-gold  { color: #C8973B; }
+
+.seclabel {
+  font-size: 8.5px;
+  font-weight: 700;
+  letter-spacing: 0.30em;
+  text-transform: uppercase;
+  color: #00FF87;
+}
+
+/* ------- headlines ------- */
+.h1 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: 34px;
+  line-height: 1.14;
+  letter-spacing: -0.005em;
+}
+.h1-l { color: #1A1E47; }
+.h1-d { color: #FFFFFF; }
+
+.sub {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.42;
+  margin-top: 10px;
+}
+.sub-l { color: #363C60; }
+.sub-d { color: #C6CBE2; }
+
+/* ------- rules ------- */
+.rule-l { width: 100%; height: 1px; background: #EAE9E4; }
+.rule-d { width: 100%; height: 1px; background: #2E3563; }
+
+/* ------- footer ------- */
+.foot {
+  font-size: 7.5px;
+  font-weight: 600;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  margin-top: 10px;
+}
+.foot-l { color: #A8A69C; }
+.foot-d { color: #5A6083; }
+
+/* ------- verdict lines ------- */
+.verdict {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-weight: 700;
+  font-size: 23px;
+  line-height: 1.25;
+}
+
+/* ================= P1 COVER ================= */
+.cover-art {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  overflow: hidden;
+}
+.cover-art img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.60) saturate(0.85);
+}
+.cover-art::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(21, 24, 62, 0.45);
+}
+.cover-inner { padding: 56px 62px 44px; }
+.cover-logo { height: 74px; margin-bottom: 54px; }
+.cover-eyebrow {
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 0.34em;
+  text-transform: uppercase;
+  color: #00FF87;
+  margin-bottom: 22px;
+}
+.cover-title {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: 82px;
+  line-height: 1;
+  color: #FFFFFF;
+  letter-spacing: -0.005em;
+  margin-bottom: 22px;
+}
+.cover-title .os { color: #00FF87; }
+.cover-sub {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 20.5px;
+  line-height: 1.42;
+  color: #EDEFF8;
+  max-width: 430px;
+}
+.cover-sub2 {
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: #C6CBE2;
+  margin-top: 14px;
+}
+.cover-line {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-weight: 700;
+  font-size: 26px;
+  line-height: 1.3;
+  color: #00FF87;
+  max-width: 340px;
+  margin-bottom: 10px;
+}
+.cover-posline {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 1.4;
+  color: #C6CBE2;
+  margin-bottom: 64px;
+}
+.cover-foot {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+.cover-cities {
+  font-size: 8.5px;
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: #EDEFF8;
+}
+.cover-url {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: 17px;
+  color: #00FF87;
+}
+
+/* ================= P2 PROBLEMS ================= */
+.prob-row {
+  display: grid;
+  grid-template-columns: 68px 1fr;
+  padding: 20px 0 22px;
+}
+.prob-num {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-weight: 700;
+  font-size: 25px;
+  color: #C8973B;
+  line-height: 1;
+  padding-top: 2px;
+}
+.prob-h {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: 18.5px;
+  color: #1A1E47;
+  margin-bottom: 9px;
+}
+.prob-b {
+  font-size: 10.8px;
+  line-height: 1.6;
+  color: #40466B;
+  font-weight: 400;
+  max-width: 440px;
+}
+.closer {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-weight: 700;
+  font-size: 23.5px;
+  line-height: 1.3;
+  color: #1A1E47;
+}
+.closer .g { color: #00794A; }
+
+/* ================= P3 PRODUCT ================= */
+.p3-title {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: 55px;
+  line-height: 1;
+  color: #fff;
+  margin-bottom: 10px;
+}
+.p3-title .os { color: #00FF87; }
+.p3-sub {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 18px;
+  color: #E8EAF5;
+  margin-bottom: 22px;
+}
+.does-row {
+  display: grid;
+  grid-template-columns: 92px 1fr;
+  align-items: start;
+  padding: 12px 0;
+  border-bottom: 1px solid #2E3563;
+}
+.does-word {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-weight: 700;
+  font-size: 21px;
+  color: #fff;
+  line-height: 1.1;
+}
+.does-body {
+  font-size: 10.3px;
+  line-height: 1.62;
+  color: #E4E5E9;
+  font-weight: 400;
+}
+.dim-d { color: #8A94A9; }
+.layer-card {
+  background: #202557;
+  border: 1px solid #2B3266;
+  border-radius: 6px;
+  display: grid;
+  grid-template-columns: 84px 128px 1fr;
+  align-items: center;
+  padding: 13px 20px;
+  margin-bottom: 8px;
+}
+.layer-card.hot {
+  border: 1.5px solid #00FF87;
+  background: #242B60;
+}
+.layer-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 7.5px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  color: #00FF87;
+  text-transform: uppercase;
+}
+.layer-name {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: 18px;
+  color: #fff;
+}
+.layer-desc {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 10.3px;
+  color: #8A94A9;
+}
+.layer-desc.w { color: #E4E5E9; font-weight: 700; }
+.p3-caption {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 10.3px;
+  line-height: 1.55;
+  color: #8A94A9;
+  margin-top: 8px;
+  max-width: 460px;
+}
+.verdict-caps {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: #00FF87;
+  text-align: right;
+}
+
+/* ================= P4 ARCHITECTURE ================= */
+.arch-row {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  padding: 10px 0 11px;
+  border-top: 1px solid #EAE9E4;
+}
+.arch-glyph {
+  font-size: 20px;
+  color: #1A1E47;
+  line-height: 1.3;
+  font-family: 'Playfair Display', 'Kohinoor Devanagari', 'Devanagari MT', serif;
+}
+.arch-name-row { display: flex; align-items: baseline; gap: 13px; margin-bottom: 6px; }
+.arch-name {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-weight: 700;
+  font-size: 19px;
+  color: #1A1E47;
+}
+.arch-role {
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #C8973B;
+}
+.arch-body {
+  font-size: 10.2px;
+  line-height: 1.55;
+  color: #40466B;
+  max-width: 430px;
+}
+.mono-prims {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9.3px;
+  color: #40466B;
+}
+.verdict-gold { color: #C8973B; text-align: right; }
+
+/* ================= P5 KENDRA ================= */
+.p5-lede {
+  font-size: 10.8px;
+  line-height: 1.62;
+  color: #8A94A9;
+  max-width: 440px;
+  margin-bottom: 22px;
+}
+.p5-lede .em {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-weight: 700;
+  font-size: 11.5px;
+  color: #FFFFFF;
+}
+.sys-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 30px;
+}
+.sys-card { padding: 18px 0 16px; }
+.sys-name {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: 16.5px;
+  color: #fff;
+  margin-bottom: 5px;
+}
+.sys-name .gold { color: #C8973B; }
+.sys-role {
+  font-size: 7.8px;
+  font-weight: 700;
+  letter-spacing: 0.20em;
+  text-transform: uppercase;
+  color: #00FF87;
+  margin-bottom: 9px;
+}
+.sys-role.gold { color: #C8973B; }
+.sys-role .dev { font-size: 10px; letter-spacing: 0; text-transform: none; font-weight: 400;
+  font-family: 'Inter', 'Kohinoor Devanagari', 'Devanagari MT', sans-serif; }
+.sys-body {
+  font-size: 9.8px;
+  line-height: 1.58;
+  color: #9AA0B8;
+}
+.sys-card.hot {
+  background: #242B60;
+  border-radius: 6px;
+  padding: 16px 16px 14px;
+  margin: 2px -16px 0 0;
+}
+.p5-verdict { color: #fff; font-size: 26px; }
+.p5-verdict .g { color: #00FF87; }
+
+/* ================= P6 LIFECYCLE ================= */
+.badge {
+  display: inline-block;
+  background: #00794A;
+  color: #FFFFFF;
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  padding: 6px 14px 5px;
+  border-radius: 2px;
+  align-self: flex-start;
+}
+.life-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 34px;
+}
+.life-cell { border-top: 1px solid #EAE9E4; padding: 18px 0 26px; }
+.life-h {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-weight: 700;
+  font-size: 17px;
+  color: #C8973B;
+  margin-bottom: 7px;
+}
+.life-b {
+  font-size: 10.2px;
+  line-height: 1.6;
+  color: #40466B;
+}
+.p6-verdict { color: #1A1E47; }
+.p6-verdict .g { color: #00794A; }
+
+/* ================= P7 WHAT CHANGES ================= */
+.chg-row {
+  display: grid;
+  grid-template-columns: 112px 1fr;
+  padding: 12px 0 13px;
+  border-top: 1px solid #2E3563;
+}
+.chg-label {
+  font-size: 7.8px;
+  font-weight: 700;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: #7C86A2;
+  padding-top: 6px;
+}
+.chg-h {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-weight: 700;
+  font-size: 18.5px;
+  color: #00FF87;
+  margin-bottom: 7px;
+}
+.chg-b {
+  font-size: 10.2px;
+  line-height: 1.6;
+  color: #E4E5E9;
+  max-width: 400px;
+}
+.p7-verdict { color: #fff; }
+.p7-verdict .g { color: #00FF87; }
+
+/* ================= P8 PATH ================= */
+.p8-art {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  overflow: hidden;
+}
+.p8-art img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.path-row {
+  display: grid;
+  grid-template-columns: 128px 1fr;
+  padding: 18px 0 20px;
+  border-top: 1px solid #2E3563;
+}
+.path-time {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-weight: 700;
+  font-size: 26px;
+  line-height: 1.15;
+  color: #00FF87;
+  padding-right: 14px;
+}
+.path-label {
+  font-size: 8.2px;
+  font-weight: 700;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: #FFFFFF;
+  margin-bottom: 8px;
+  padding-top: 5px;
+}
+.path-b {
+  font-size: 10.2px;
+  line-height: 1.6;
+  color: #E4E5E9;
+  max-width: 390px;
+}
+.p8-verdict { font-size: 24px; color: #fff; margin-bottom: 10px; }
+.p8-verdict .g { color: #00FF87; }
+.p8-foot { display: flex; justify-content: space-between; align-items: flex-end; }
+.p8-mail {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: 19px;
+  color: #FFFFFF;
+}
+.p8-right { text-align: right; }
+.p8-url {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-weight: 700;
+  font-size: 14px;
+  color: #00FF87;
+  margin-bottom: 6px;
+}
+.p8-cities {
+  font-size: 7.8px;
+  font-weight: 700;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: #EDEFF8;
+}
+</style>
+</head>
+<body>
+
+<!-- ============ PAGE 1 · COVER ============ -->
+<div class="page dark">
+  <div class="cover-art"><img src="../../public/images/New%20Images/Layershq.png" alt=""></div>
+  <div class="inner cover-inner">
+    <img class="logo cover-logo" src="../../public/brand/logo/KRIM-stacked-mint.svg" alt="Krim">
+    <div class="cover-eyebrow">Product Overview &nbsp;·&nbsp; 2026</div>
+    <div class="cover-title">Krim<span class="os">OS.</span></div>
+    <div class="cover-sub">Agent-Native OS for Safe Automation <span style="white-space:nowrap">of Lending Operations</span></div>
+    <div class="cover-sub2">Powered by Sovereign Superintelligence</div>
+    <div style="flex:1"></div>
+    <div class="cover-line">Delivering an agentic future. Safely.</div>
+    <div class="cover-foot">
+      <div class="cover-cities">Patna &nbsp;·&nbsp; Bangalore &nbsp;·&nbsp; New York</div>
+      <div class="cover-url">krim.ai</div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ PAGE 2 · PROBLEMS ============ -->
+<div class="page light">
+  <div class="inner">
+    <img class="logo" src="../../public/brand/logo/KRIM-stacked-black.svg" alt="Krim">
+    <div class="eyebrow eb-gold">The Problem</div>
+    <div class="h1 h1-l">The problems no single AI stack solves.</div>
+    <div class="sub sub-l" style="max-width:420px;">General-purpose agent stacks solve one. Vertical SaaS solves another. Krim is built for all three.</div>
+    <div style="height:30px"></div>
+    <div class="rule-l"></div>
+    <div class="prob-row">
+      <div class="prob-num">01</div>
+      <div>
+        <div class="prob-h">Fragmented operations.</div>
+        <div class="prob-b">Customer-facing and back-office workforces run on separate systems with separate KPIs. Tickets, spreadsheets, and human glue are the integration layer. Sixty years of operating-model evolution have not solved it.</div>
+      </div>
+    </div>
+    <div class="rule-l"></div>
+    <div class="prob-row">
+      <div class="prob-num">02</div>
+      <div>
+        <div class="prob-h">AI without judgement.</div>
+        <div class="prob-b">General-purpose AI hallucinates. In regulated work, every action carries audit consequence. Post-hoc review cannot recover what pre-execution validation prevents.</div>
+      </div>
+    </div>
+    <div class="rule-l"></div>
+    <div class="prob-row">
+      <div class="prob-num">03</div>
+      <div>
+        <div class="prob-h">Cloud AI is not sovereign.</div>
+        <div class="prob-b">Customer data cannot leave premises in regulated jurisdictions. DPDP, GDPR, sectoral mandates converge on the same constraint. Foreign cloud AI is structurally disqualified.</div>
+      </div>
+    </div>
+    <div style="flex:1"></div>
+    <div class="rule-l"></div>
+    <div style="height:22px"></div>
+    <div class="closer">More applications cannot fix this.<br><span class="g">KrimOS does.</span></div>
+    <div class="foot foot-l">KrimOS Overview</div>
+  </div>
+</div>
+
+<!-- ============ PAGE 3 · THE PRODUCT ============ -->
+<div class="page dark">
+  <div class="inner">
+    <img class="logo" src="../../public/brand/logo/KRIM-stacked-mint.svg" alt="Krim">
+    <div class="eyebrow eb-green">The Product</div>
+    <div class="p3-title">Krim<span class="os">OS.</span></div>
+    <div class="p3-sub">Sovereign superintelligence for regulated operations.</div>
+    <div class="seclabel" style="margin-bottom:8px;">What It Does</div>
+    <div class="rule-d"></div>
+    <div class="does-row">
+      <div class="does-word">Runs.</div>
+      <div class="does-body">Multi-modal, multi-lingual AI co-workers across customer-facing and back-office workflows. <span class="dim-d">Twelve Indian languages. Voice, chat, document, structured data.</span></div>
+    </div>
+    <div class="does-row">
+      <div class="does-word">Checks.</div>
+      <div class="does-body">Thirty-three pre-execution validators fire before any action reaches the real world. <span class="dim-d">The architectural feature general-purpose models cannot retrofit.</span></div>
+    </div>
+    <div class="does-row">
+      <div class="does-word">Explains.</div>
+      <div class="does-body">Every prompt, every validator outcome, every action streams to a regulator-ready audit trail. <span class="dim-d">Reproducible. Exportable. Explainable in plain language.</span></div>
+    </div>
+    <div style="height:20px"></div>
+    <div class="seclabel" style="margin-bottom:11px;">Where It Sits</div>
+    <div class="layer-card">
+      <div class="layer-tag">Layer 5</div>
+      <div class="layer-name">Applications</div>
+      <div class="layer-desc">Core banking · LOS · CRM · customer channels</div>
+    </div>
+    <div class="layer-card hot">
+      <div class="layer-tag">Layer 4.5</div>
+      <div class="layer-name">Kendra</div>
+      <div class="layer-desc w">The KrimOS runtime</div>
+    </div>
+    <div class="layer-card">
+      <div class="layer-tag">Layer 4</div>
+      <div class="layer-name">AI Models</div>
+      <div class="layer-desc">Any frontier LLM, open or proprietary</div>
+    </div>
+    <div class="p3-caption">KrimOS spans six layers: Kūpa, Kula, Karta, Kendra, Kriya, and beneath them Kovida — the world lending model. Kendra is where the runtime executes; the others compose around it.</div>
+    <div style="flex:1"></div>
+    <div class="verdict-caps">The compliant path to AI adoption.</div>
+    <div style="height:20px"></div>
+    <div class="foot foot-d">KrimOS Overview</div>
+  </div>
+</div>
+
+<!-- ============ PAGE 4 · ARCHITECTURE ============ -->
+<div class="page light">
+  <div class="inner" style="padding-top:38px;">
+    <img class="logo" src="../../public/brand/logo/KRIM-stacked-black.svg" alt="Krim" style="margin-bottom:20px;">
+    <div class="eyebrow eb-gold">Architecture</div>
+    <div class="h1 h1-l" style="font-size:39px;">Six layers. One runtime.</div>
+    <div class="sub sub-l" style="max-width:430px; margin-bottom:14px;">Each layer does one job, composable and addressable through clean contracts.</div>
+    <div class="arch-row">
+      <div class="arch-glyph">कूप</div>
+      <div>
+        <div class="arch-name-row"><span class="arch-name">Kūpa</span><span class="arch-role">Audit Surface</span></div>
+        <div class="arch-body">Every decision on one pane. The view operators, auditors, and regulators share.</div>
+      </div>
+    </div>
+    <div class="arch-row">
+      <div class="arch-glyph">कुल</div>
+      <div>
+        <div class="arch-name-row"><span class="arch-name">Kula</span><span class="arch-role">Digital Twins</span></div>
+        <div class="arch-body">A twin per role. Operators describe campaigns and workflows in plain language; the twin proposes governed strategies and instructs Karta to execute.</div>
+      </div>
+    </div>
+    <div class="arch-row">
+      <div class="arch-glyph">कर्ता</div>
+      <div>
+        <div class="arch-name-row"><span class="arch-name">Karta</span><span class="arch-role">AI Co-Workers</span></div>
+        <div class="arch-body">Multi-modal agents in two latency classes: sub-200ms voice, 1–30s back-office. End-to-end across customer channels and back-office workflows.</div>
+      </div>
+    </div>
+    <div class="arch-row">
+      <div class="arch-glyph">केन्द्र</div>
+      <div>
+        <div class="arch-name-row"><span class="arch-name">Kendra</span><span class="arch-role">Intelligence Runtime</span></div>
+        <div class="arch-body">Where the thirty-three validators live. Routes models, manages context, persists memory. Pauses when a warrant fails.</div>
+      </div>
+    </div>
+    <div class="arch-row">
+      <div class="arch-glyph">क्रिया</div>
+      <div>
+        <div class="arch-name-row"><span class="arch-name">Kriya</span><span class="arch-role">Atomic Primitives</span></div>
+        <div class="arch-body">Five hundred-plus compliance-encoded actions. Each versioned, scoped, contract-bound. <span class="mono-prims">fetch_credit_bureau, validate_kyc, draft_offer…</span></div>
+      </div>
+    </div>
+    <div class="arch-row">
+      <div class="arch-glyph">कोविद</div>
+      <div>
+        <div class="arch-name-row"><span class="arch-name">Kovida</span><span class="arch-role">World Lending Model</span></div>
+        <div class="arch-body">The model foundation. It learns from every transaction the runtime validates, understanding lending, and your book, more precisely the longer it runs.</div>
+      </div>
+    </div>
+    <div style="flex:1"></div>
+    <div class="rule-l"></div>
+    <div style="height:18px"></div>
+    <div class="verdict verdict-gold">Composable from layer zero.</div>
+    <div class="foot foot-l">KrimOS Overview</div>
+  </div>
+</div>
+
+<!-- ============ PAGE 5 · KENDRA ============ -->
+<div class="page dark">
+  <div class="inner">
+    <img class="logo" src="../../public/brand/logo/KRIM-stacked-mint.svg" alt="Krim">
+    <div class="eyebrow eb-green">The Runtime</div>
+    <div class="p3-title" style="font-size:52px;">Kendra<span class="os">.</span></div>
+    <div class="p3-sub" style="margin-bottom:18px;">The intelligence runtime.</div>
+    <div class="p5-lede">The runtime is itself composed. <span class="em">Six sub-systems.</span> Every action a Karta proposes passes through all of them before it reaches the real world.</div>
+    <div class="rule-d"></div>
+    <div class="sys-grid">
+      <div class="sys-card">
+        <div class="sys-name">Krim-Orchestra</div>
+        <div class="sys-role">Orchestration</div>
+        <div class="sys-body">Routes every request to the right model: frontier, fine-tuned, on-prem. Composes multi-step workflows with deterministic replay.</div>
+      </div>
+      <div class="sys-card">
+        <div class="sys-name">Krim-Fabric</div>
+        <div class="sys-role">Context &amp; Memory</div>
+        <div class="sys-body">One unified context layer across structured records, documents, and conversation history. Memory persists, scoped by tenancy.</div>
+      </div>
+      <div class="sys-card">
+        <div class="sys-name">Krim-Govern</div>
+        <div class="sys-role">Policy Engine</div>
+        <div class="sys-body">Country, sectoral, and institution rules encoded once. The rules library Krim-Nyāya enforces: versioned, scoped, regulator-readable.</div>
+      </div>
+      <div class="sys-card hot">
+        <div class="sys-name">Krim-<span class="gold">Nyāya</span></div>
+        <div class="sys-role gold"><span class="dev">न्याय</span> &nbsp;·&nbsp; Pre-Execution Validation</div>
+        <div class="sys-body">Thirty-three validators from Navya-Nyāya, the 14th-century formal logic of Mithila. Pramāṇa · Doṣa · Yogyatā. Each fires before every action.</div>
+      </div>
+      <div class="sys-card">
+        <div class="sys-name">Krim-Learn</div>
+        <div class="sys-role">Continuous Learning</div>
+        <div class="sys-body">Outcomes feed back into the runtime within guardrails. The system improves, never outside its compliance envelope.</div>
+      </div>
+      <div class="sys-card">
+        <div class="sys-name">Krim-Sense</div>
+        <div class="sys-role">Observability</div>
+        <div class="sys-body">Every prompt, every validator outcome, every action streamed to an immutable audit trail. Reproducible. Exportable.</div>
+      </div>
+    </div>
+    <div style="flex:1"></div>
+    <div class="rule-d"></div>
+    <div style="height:22px"></div>
+    <div class="verdict p5-verdict">Pre-execution. <span class="g">Not post-audit.</span></div>
+    <div class="foot foot-d">KrimOS Overview</div>
+  </div>
+</div>
+
+<!-- ============ PAGE 6 · WHERE IT OPERATES ============ -->
+<div class="page light">
+  <div class="inner">
+    <img class="logo" src="../../public/brand/logo/KRIM-stacked-black.svg" alt="Krim">
+    <div class="eyebrow eb-gold">Where It Operates</div>
+    <div class="h1 h1-l">Built for lending.<br>All of it.</div>
+    <div class="sub sub-l" style="max-width:430px;">From the first marketing touch to the last reconciliation entry. One workforce across the lifecycle.</div>
+    <div style="height:40px"></div>
+    <div class="badge">In Production</div>
+    <div style="height:26px"></div>
+    <div class="life-grid">
+      <div class="life-cell">
+        <div class="life-h">Origination</div>
+        <div class="life-b">KYC, document parsing, bureau pulls, LOS orchestration.</div>
+      </div>
+      <div class="life-cell">
+        <div class="life-h">Collections</div>
+        <div class="life-b">Governed digital journeys per segment, channel, DPD band, and risk envelope.</div>
+      </div>
+      <div class="life-cell">
+        <div class="life-h">Decisioning</div>
+        <div class="life-b">Credit decisions within your policy. Sanction, decline, refer, each with a recorded reason.</div>
+      </div>
+      <div class="life-cell">
+        <div class="life-h">Recovery</div>
+        <div class="life-b">Late-stage resolution: settlements, hardship arrangements, payment plans the borrower can keep.</div>
+      </div>
+      <div class="life-cell">
+        <div class="life-h">Servicing</div>
+        <div class="life-b">Voice, WhatsApp, IVR, chat. Statements, EMIs, prepayments, autopay.</div>
+      </div>
+      <div class="life-cell">
+        <div class="life-h">Back-office</div>
+        <div class="life-b">Reconciliation, exceptions, MIS, audit packs.</div>
+      </div>
+    </div>
+    <div style="flex:1"></div>
+    <div class="rule-l"></div>
+    <div style="height:22px"></div>
+    <div class="verdict p6-verdict">One runtime. <span class="g">The whole lending lifecycle.</span></div>
+    <div class="foot foot-l">KrimOS Overview</div>
+  </div>
+</div>
+
+<!-- ============ PAGE 7 · WHAT CHANGES ============ -->
+<div class="page dark">
+  <div class="inner">
+    <img class="logo" src="../../public/brand/logo/KRIM-stacked-mint.svg" alt="Krim">
+    <div class="eyebrow eb-green">What Changes</div>
+    <div class="h1 h1-d" style="font-size:45px;">For the institution that adopts it.</div>
+    <div class="sub sub-d" style="max-width:440px;">One workforce across the wall. Compliance encoded in the runtime. Sovereignty as an architectural commitment.</div>
+    <div style="height:16px"></div>
+    <div class="chg-row">
+      <div class="chg-label">Origination</div>
+      <div>
+        <div class="chg-h">Onboarding compresses to hours.</div>
+        <div class="chg-b">KYC, bureau, document parsing collapse manual handoffs. <span class="dim-d">Underwriter time concentrates on cases that need judgement.</span></div>
+      </div>
+    </div>
+    <div class="chg-row">
+      <div class="chg-label">Servicing</div>
+      <div>
+        <div class="chg-h">Routine work goes self-serve.</div>
+        <div class="chg-b">Statements, EMIs, autopay, prepayments across voice, WhatsApp, IVR, chat. <span class="dim-d">Human capacity redeploys to disputes, hardship, sensitive segments.</span></div>
+      </div>
+    </div>
+    <div class="chg-row">
+      <div class="chg-label">Collections</div>
+      <div>
+        <div class="chg-h">Strategy build time falls to hours.</div>
+        <div class="chg-b">Heads describe journeys in plain language; the twin proposes governed strategies; Karta executes within fixed compliance limits. <span class="dim-d">Iteration moves from quarterly to weekly.</span></div>
+      </div>
+    </div>
+    <div class="chg-row" style="border-bottom:1px solid #2E3563; padding-bottom:20px;">
+      <div class="chg-label">Back-Office</div>
+      <div>
+        <div class="chg-h">Audit-ready, on demand.</div>
+        <div class="chg-b">MIS, regulatory submissions, audit packs generated from the structured action trail every Karta produces. <span class="dim-d">Days become minutes; the evidence chain is complete by construction.</span></div>
+      </div>
+    </div>
+    <div style="flex:1"></div>
+    <div class="verdict p7-verdict">Validated before it acts. <span class="g">Smarter after it acts.</span></div>
+    <div class="foot foot-d">KrimOS Overview</div>
+  </div>
+</div>
+
+<!-- ============ PAGE 8 · PATH ============ -->
+<div class="page dark">
+  <div class="p8-art"><img src="../../public/images/pitch/8pager-p8-img1.png" alt=""></div>
+  <div class="inner">
+    <img class="logo" src="../../public/brand/logo/KRIM-stacked-mint.svg" alt="Krim">
+    <div class="eyebrow eb-green">Next Steps</div>
+    <div class="h1 h1-d" style="font-size:50px; max-width:420px;">A path to production.</div>
+    <div class="sub sub-d" style="max-width:440px; font-size:16px;">Each stage earned before the next. <span style="white-space:nowrap">You set the pace.</span></div>
+    <div style="height:20px"></div>
+    <div class="path-row">
+      <div class="path-time">See.</div>
+      <div>
+        <div class="path-label">A working session</div>
+        <div class="path-b">Bring one lending workflow. We walk it through the gate live: verdicts, reasons, and the audit trail it leaves.</div>
+      </div>
+    </div>
+    <div class="path-row">
+      <div class="path-time">Shape.</div>
+      <div>
+        <div class="path-label">A proof on your terms</div>
+        <div class="path-b">Designed with your risk and compliance teams: which workflow, what data, what counts as success.</div>
+      </div>
+    </div>
+    <div class="path-row" style="border-bottom:1px solid #2E3563; padding-bottom:20px;">
+      <div class="path-time">Scale.</div>
+      <div>
+        <div class="path-label">Across the lifecycle</div>
+        <div class="path-b">One workflow earns its place in production. The runtime extends as the evidence builds.</div>
+      </div>
+    </div>
+    <div style="flex:1; min-height:20px"></div>
+    <div class="rule-d"></div>
+    <div style="height:16px"></div>
+    <div style="font-family:'Playfair Display',serif; font-style:italic; font-size:16px; line-height:1.55; color:#C6CBE2; max-width:440px; margin-bottom:20px;">One sovereign intelligence across the whole of lending, sharper with every loan it touches. An agentic future, delivered safely.</div>
+    <div style="display:flex; align-items:baseline; gap:16px; margin-bottom:14px;">
+      <div style="font-family:'Playfair Display',serif; font-weight:700; font-size:24px; color:#00FF87;">Book a working session.</div>
+      <div style="font-family:'JetBrains Mono',monospace; font-size:13px; font-weight:700; color:#FFFFFF;">sales@krim.ai</div>
+    </div>
+    <div class="verdict p8-verdict">The AI your regulator <span class="g">can read.</span></div>
+    <div class="p8-foot">
+      <div class="p8-mail"></div>
+      <div class="p8-right">
+        <div class="p8-url">krim.ai</div>
+        <div class="p8-cities">Patna &nbsp;·&nbsp; Bangalore &nbsp;·&nbsp; New York</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

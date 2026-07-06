@@ -1,0 +1,1033 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>KrimOS — Senior Roles</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400;1,700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+@page { size: A4; margin: 0; }
+body {
+  font-family: 'Inter', sans-serif;
+  background: #555;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+.page {
+  width: 210mm;
+  height: 297mm;
+  position: relative;
+  overflow: hidden;
+  page-break-after: always;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── SHARED ── */
+.logo-w { height: 29px; width: auto; display: block; }
+.logo-b { height: 26px; width: auto; display: block; }
+.eyebrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9.5px;
+  font-weight: 500;
+  letter-spacing: 0.20em;
+  text-transform: uppercase;
+}
+.mint-rule { display: block; width: 56px; height: 1px; background: #00FFB2; }
+.foot {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 8.5px;
+  letter-spacing: 0.05em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.foot-d { color: rgba(255,255,255,0.40); }
+.foot-l { color: rgba(26,32,53,0.40); }
+.foot-rule-d { width: 100%; height: 1px; background: rgba(255,255,255,0.09); margin-bottom: 12px; }
+.foot-rule-l { width: 100%; height: 1px; background: rgba(26,32,53,0.09); margin-bottom: 12px; }
+.sec-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 8.5px;
+  letter-spacing: 0.17em;
+  text-transform: uppercase;
+  color: rgba(26,32,53,0.40);
+  margin-bottom: 6px;
+}
+
+/* ── DARK FULL PAGE ── */
+.dark-full {
+  background: #0B1220;
+  color: #fff;
+}
+.dark-inner {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 48px;
+}
+
+/* ── LIGHT FULL PAGE ── */
+.light-full {
+  background: #F4F6FA;
+  color: #1A2035;
+}
+.light-inner {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 48px;
+}
+
+/* ── COVER ── */
+.cover-bg {
+  position: absolute;
+  top: 0; right: 0;
+  width: 65%; height: 100%;
+  object-fit: cover;
+  object-position: center left;
+  opacity: 0.12;
+  filter: grayscale(1);
+  z-index: 0;
+}
+.cover-fade {
+  position: absolute;
+  top: 0; left: 0;
+  width: 60%; height: 100%;
+  background: linear-gradient(to right, #0B1220 62%, transparent);
+  z-index: 1;
+}
+.cover-inner {
+  position: relative; z-index: 2;
+  display: flex; flex-direction: column;
+  height: 100%; padding: 48px;
+}
+
+.cover-headline {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: 72px;
+  line-height: 1.01;
+  color: #fff;
+  letter-spacing: -0.025em;
+  margin-top: 22px;
+  max-width: 440px;
+}
+.cover-sub {
+  font-family: 'Playfair Display', serif;
+  font-weight: 400;
+  font-style: italic;
+  font-size: 20px;
+  line-height: 1.40;
+  color: rgba(255,255,255,0.58);
+  margin-top: 14px;
+  max-width: 380px;
+}
+.cover-role-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  max-width: 470px;
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+.cover-role-grid span {
+  font-size: 13.5px;
+  font-weight: 300;
+  color: rgba(255,255,255,0.68);
+  padding: 14px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+  letter-spacing: -0.01em;
+}
+.cover-role-grid span:nth-child(odd) { padding-right: 18px; }
+.cover-role-grid span:nth-child(even) { padding-left: 18px; border-left: 1px solid rgba(255,255,255,0.06); }
+
+/* ── KARTA TABLE PAGE ── */
+.karta-intro {
+  font-size: 14px;
+  line-height: 1.62;
+  color: rgba(26,32,53,0.52);
+  max-width: 560px;
+  margin-bottom: 24px;
+}
+.pg-title-l {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 1.18;
+  color: #1A2035;
+  margin-bottom: 6px;
+}
+.karta-tbl {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 18px;
+}
+.karta-tbl thead th {
+  padding: 10px 12px;
+  background: #1A2035;
+  color: #fff;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  text-align: left;
+}
+.karta-tbl tbody td {
+  padding: 11px 12px;
+  border-bottom: 1px solid rgba(26,32,53,0.055);
+  font-size: 12.5px;
+  color: rgba(26,32,53,0.70);
+  vertical-align: top;
+  line-height: 1.50;
+}
+.karta-tbl tbody tr:nth-child(even) td { background: #F0F2F6; }
+.kw-name {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10.5px;
+  font-weight: 500;
+  color: #006B48;
+  letter-spacing: 0.04em;
+}
+.kw-disc { font-weight: 600; color: #1A2035; font-size: 12px; }
+.mode-chip {
+  display: inline-block;
+  padding: 2px 7px;
+  border-radius: 2px;
+  font-size: 9.5px;
+  font-family: 'JetBrains Mono', monospace;
+  letter-spacing: 0.04em;
+}
+.mode-auto { background: #E0EBEC; color: #006B48; }
+.mode-adv { background: #E7E9EE; color: rgba(26,32,53,0.55); }
+.mode-none {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: rgba(26,32,53,0.28);
+}
+
+.karta-note {
+  padding: 16px 18px;
+  border-left: 3px solid #00FFB2;
+  background: #EAF0F3;
+  font-size: 12.5px;
+  line-height: 1.60;
+  color: rgba(26,32,53,0.65);
+}
+.karta-note strong { color: #1A2035; font-weight: 600; }
+
+/* ── SPLIT ROLE PAGES ── */
+.split-page {
+  display: flex;
+  height: 100%;
+}
+
+.split-left {
+  width: 42%;
+  background: #0B1220;
+  padding: 40px 34px 40px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.split-right {
+  flex: 1;
+  background: #FFFFFF;
+  padding: 40px 34px 40px;
+  display: flex;
+  flex-direction: column;
+}
+
+.role-eyebrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9.5px;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #00FFB2;
+  margin-bottom: 14px;
+}
+
+.role-title {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 1.10;
+  color: #fff;
+  margin-bottom: 8px;
+}
+
+.role-org {
+  font-family: 'Playfair Display', serif;
+  font-weight: 400;
+  font-style: italic;
+  font-size: 16px;
+  color: rgba(255,255,255,0.45);
+  margin-bottom: 26px;
+}
+
+.role-pressure {
+  font-size: 14.5px;
+  line-height: 1.72;
+  color: rgba(255,255,255,0.65);
+  margin-bottom: 26px;
+}
+
+.role-pressure em { font-style: normal; color: rgba(255,255,255,0.90); font-weight: 500; }
+
+.karta-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-top: auto;
+}
+
+.tag {
+  padding: 5px 11px;
+  border: 1px solid rgba(0,255,178,0.20);
+  border-radius: 2px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9.5px;
+  color: rgba(0,255,178,0.70);
+  letter-spacing: 0.06em;
+}
+
+.right-section {
+  margin-bottom: 38px;
+}
+
+.right-section-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.17em;
+  text-transform: uppercase;
+  color: rgba(26,32,53,0.42);
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(26,32,53,0.08);
+}
+
+.delivers-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.delivers-list li {
+  font-size: 15px;
+  line-height: 1.62;
+  color: rgba(26,32,53,0.72);
+  padding-left: 20px;
+  position: relative;
+}
+.delivers-list li::before {
+  content: '';
+  position: absolute; left: 0; top: 8px;
+  width: 6px; height: 6px;
+  border-radius: 50%; background: #006B48;
+}
+.delivers-list li strong { color: #1A2035; font-weight: 600; }
+
+.outcomes-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 17px;
+}
+.outcomes-list li {
+  font-size: 15px;
+  line-height: 1.60;
+  color: rgba(26,32,53,0.68);
+  padding-left: 20px;
+  position: relative;
+}
+.outcomes-list li::before {
+  content: '✓';
+  position: absolute; left: 0; top: 1px;
+  font-size: 11px;
+  color: #005239;
+  font-weight: 700;
+}
+
+.baseline-note {
+  margin-top: 22px;
+  padding: 13px 16px;
+  border-left: 3px solid #00FFB2;
+  background: #F5F9F8;
+  font-size: 12.5px;
+  line-height: 1.60;
+  color: rgba(26,32,53,0.65);
+}
+
+.shift-box {
+  padding: 22px 26px;
+  background: #F4F6FA;
+  border-left: 3px solid #00FFB2;
+  border-radius: 2px;
+}
+.shift-box div {
+  font-size: 13.5px;
+  color: rgba(26,32,53,0.58);
+  line-height: 1.65;
+}
+.shift-box strong {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: 14px;
+  color: #1A2035;
+}
+
+/* ── CLOSE PAGE ── */
+.close-bg {
+  position: absolute;
+  top: 0; right: 0;
+  width: 60%; height: 100%;
+  object-fit: cover;
+  opacity: 0.07;
+  filter: grayscale(1);
+  z-index: 0;
+}
+.close-fade {
+  position: absolute;
+  top: 0; left: 0;
+  width: 55%; height: 100%;
+  background: linear-gradient(to right, #0B1220 65%, transparent);
+  z-index: 1;
+}
+.close-statement {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: 46px;
+  line-height: 1.08;
+  color: #fff;
+  letter-spacing: -0.02em;
+  max-width: 560px;
+  margin-bottom: 16px;
+}
+.close-sub {
+  font-size: 15px;
+  font-weight: 300;
+  line-height: 1.60;
+  color: rgba(255,255,255,0.52);
+  max-width: 440px;
+  margin-bottom: 40px;
+}
+.close-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 40px;
+}
+.close-card {
+  padding: 20px 18px;
+  border: 1px solid rgba(255,255,255,0.10);
+  border-radius: 2px;
+}
+.close-card-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 8.5px;
+  letter-spacing: 0.15em;
+  color: rgba(255,255,255,0.38);
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.close-card-title {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: 16px;
+  color: #fff;
+  margin-bottom: 8px;
+}
+.close-card-body {
+  font-size: 11.5px;
+  line-height: 1.58;
+  color: rgba(255,255,255,0.48);
+}
+.close-cta {
+  padding: 22px 26px;
+  border: 1px solid rgba(0,255,178,0.20);
+  background: #0B1B26;
+  border-radius: 2px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.close-cta-text {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: 18px;
+  color: #fff;
+}
+.close-cta-email {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px;
+  color: #00FFB2;
+  letter-spacing: 0.03em;
+}
+
+</style>
+</head>
+<body>
+
+
+<!-- ═══════════════════════════════════════════════════
+     PAGE 1  ·  COVER
+     ═══════════════════════════════════════════════════ -->
+<div class="page dark-full">
+  <img class="cover-bg" src="../../public/images/cinematic/architecture-lattice.jpg" alt="">
+  <div class="cover-fade"></div>
+  <div class="cover-inner">
+
+    <img class="logo-w" src="../../public/brand/logo/KRIM-horizontal-white.svg" alt="Krim">
+
+    <div class="mint-rule" style="margin-top: 72px;"></div>
+    <div class="eyebrow" style="color: #00FFB2; margin-top: 13px;">Senior Roles</div>
+
+    <h1 class="cover-headline">Who runs it.<br>What changes.</h1>
+
+    <p class="cover-sub">KrimOS runs the work of lending and checks every action before it happens. Here is what that changes for every senior role across the institution.</p>
+
+    <div style="flex: 1;"></div>
+
+    <div style="font-family: 'JetBrains Mono', monospace; font-size: 8.5px; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.40); margin-bottom: 14px;">The roles inside</div>
+    <div class="cover-role-grid">
+      <span>Chief Lending Officer</span>
+      <span>Chief Risk Officer</span>
+      <span>Head of Collections</span>
+      <span>Head of Servicing</span>
+      <span>Head of Compliance</span>
+      <span>Head of Credit Operations</span>
+    </div>
+
+    <div style="flex: 1;"></div>
+
+    <div class="foot-rule-d"></div>
+    <div class="foot foot-d">
+      <span>Patna · Bangalore · New York</span>
+      <span>sales@krim.ai</span>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════
+     PAGE 2  ·  KARTA CO-WORKERS
+     ═══════════════════════════════════════════════════ -->
+<div class="page light-full">
+  <div class="light-inner">
+
+    <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 24px;">
+      <img class="logo-b" src="../../public/brand/logo/KRIM-horizontal-black.svg" alt="Krim">
+      <span class="eyebrow" style="color: rgba(26,32,53,0.38); margin-top: 4px;">Meet the workforce</span>
+    </div>
+
+    <div class="sec-label">Karta — autonomous co-workers for credit</div>
+    <h2 class="pg-title-l">Each specialist handles one discipline. Together they run the lifecycle.</h2>
+    <p class="karta-intro">Karta co-workers are domain specialists built for credit. Each handles one discipline, and every action they take clears Krim-Nyāya, the pre-execution validation gate, regardless of operating mode. The mode only sets how much human sign-off sits on top.</p>
+
+    <table class="karta-tbl">
+      <thead>
+        <tr>
+          <th style="width: 14%;">Co-worker</th>
+          <th style="width: 18%;">Discipline</th>
+          <th>What they handle</th>
+          <th style="width: 20%;">Operating mode</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="kw-name">Vox-Out</span></td>
+          <td><span class="kw-disc">Customer outreach</span></td>
+          <td>Outbound collections calls, payment reminders, campaign execution across voice and digital channels</td>
+          <td><span class="mode-none">&mdash;</span></td>
+        </tr>
+        <tr>
+          <td><span class="kw-name">Vox-In</span></td>
+          <td><span class="kw-disc">Inbound service</span></td>
+          <td>Customer queries, hardship applications, statement requests, account change management</td>
+          <td><span class="mode-none">&mdash;</span></td>
+        </tr>
+        <tr>
+          <td><span class="kw-name">Doc</span></td>
+          <td><span class="kw-disc">Document intelligence</span></td>
+          <td>Application documents, KYC packets, legal agreements: extracted, classified, and verified automatically</td>
+          <td><span class="mode-none">&mdash;</span></td>
+        </tr>
+        <tr>
+          <td><span class="kw-name">Risk</span></td>
+          <td><span class="kw-disc">Credit risk</span></td>
+          <td>Risk scoring, early-warning signals, bureau analysis, portfolio stress indicators</td>
+          <td><span class="mode-chip mode-adv">Advisory</span></td>
+        </tr>
+        <tr>
+          <td><span class="kw-name">Decide</span></td>
+          <td><span class="kw-disc">Credit decisioning</span></td>
+          <td>Sanction, decline, refer: every decision validated through Krim-Nyāya before it reaches the borrower, executed within your credit policy</td>
+          <td><span class="mode-chip mode-adv">Human-approved</span></td>
+        </tr>
+        <tr>
+          <td><span class="kw-name">Cure</span></td>
+          <td><span class="kw-disc">Collections resolution</span></td>
+          <td>Payment plans, settlement offers, and escalation routing, matched to each borrower's risk profile and history</td>
+          <td><span class="mode-none">&mdash;</span></td>
+        </tr>
+        <tr>
+          <td><span class="kw-name">Audit</span></td>
+          <td><span class="kw-disc">Compliance &amp; audit</span></td>
+          <td>Decision trail generation, regulatory documentation, exception flagging, policy adherence monitoring</td>
+          <td><span class="mode-none">&mdash;</span></td>
+        </tr>
+        <tr>
+          <td><span class="kw-name">Report</span></td>
+          <td><span class="kw-disc">Portfolio analytics</span></td>
+          <td>Management reports, portfolio summaries, and regulatory filings, generated from live data</td>
+          <td><span class="mode-none">&mdash;</span></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="karta-note">
+      <strong>Human-in-the-loop by design.</strong> Unmarked co-workers run autonomous-capable: they act within policy and log everything. Each operates within configurable autonomy settings, from fully supervised (human approves every decision) to fully autonomous. You set the mode per workflow, and loosen it as confidence grows.
+    </div>
+
+    <div style="flex: 1;"></div>
+
+    <div class="foot-rule-l"></div>
+    <div class="foot foot-l">
+      <span>KrimOS — Senior Roles</span>
+      <span>krim.ai</span>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════
+     PAGE 3  ·  CHIEF LENDING OFFICER
+     ═══════════════════════════════════════════════════ -->
+<div class="page" style="background: #0B1220;">
+  <div class="split-page">
+
+    <div class="split-left">
+      <img class="logo-w" src="../../public/brand/logo/KRIM-horizontal-white.svg" alt="Krim" style="height: 24px; margin-bottom: 28px;">
+
+      <div class="role-eyebrow">Chief Lending Officer</div>
+      <h2 class="role-title">Grow the book.<br>Satisfy the regulator.<br>Reduce the cost base.</h2>
+      <p class="role-org">These three rarely move in the same direction.</p>
+
+      <p class="role-pressure">
+        The board wants growth. The regulator wants prudence. Operations wants efficiency. You are accountable to all three, with systems that were not built to serve any of them simultaneously.
+        <br><br>
+        <em>The core challenge is visibility.</em> You are managing a portfolio whose data arrives in arrears, through systems that don't talk to each other, with AI tools that act on individual tasks but don't see the whole picture.
+      </p>
+    </div>
+
+    <div class="split-right">
+      <div style="display: flex; justify-content: flex-end; margin-bottom: 24px;">
+        <span class="eyebrow" style="color: rgba(26,32,53,0.38);">CLO</span>
+      </div>
+
+      <div class="right-section">
+        <div class="right-section-label">What KrimOS delivers</div>
+        <ul class="delivers-list">
+          <li><strong>Real-time portfolio visibility.</strong> A live view of your book: origination pipeline, performing portfolio, early-warning signals, always current.</li>
+          <li><strong>Origination volume without headcount growth.</strong> Applications processed, documents verified, and decisions made automatically at scale, with each decision documented.</li>
+          <li><strong>A decisioning process that satisfies risk and compliance simultaneously.</strong> Krim-Nyāya ensures every credit decision has an auditable reason before it acts: a trail built for board and regulator alike.</li>
+        </ul>
+      </div>
+
+      <div class="right-section">
+        <div class="right-section-label">What changes</div>
+        <ul class="outcomes-list">
+          <li>Applications move faster on the same analyst bench. Volume stops driving headcount.</li>
+          <li>Every underwriting decision documented end to end: audit-ready from day one.</li>
+          <li>Portfolio intelligence updates continuously as Kovida — the world lending model — learns your book.</li>
+        </ul>
+        <p class="baseline-note">Outcomes are measured against your own baseline during the proof of value; that measurement is the exit criterion.</p>
+      </div>
+
+      <div class="shift-box">
+        <div>
+          <strong>The shift:</strong> From managing the portfolio in arrears to running a credit operation where the intelligence is always current and every decision is documented before it acts.
+        </div>
+      </div>
+
+      <div style="flex: 1;"></div>
+
+      <div class="foot-rule-l"></div>
+      <div class="foot foot-l">
+        <span>KrimOS — Senior Roles</span>
+        <span>krim.ai</span>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════
+     PAGE 4  ·  CHIEF RISK OFFICER
+     ═══════════════════════════════════════════════════ -->
+<div class="page" style="background: #0B1220;">
+  <div class="split-page">
+
+    <div class="split-left">
+      <img class="logo-w" src="../../public/brand/logo/KRIM-horizontal-white.svg" alt="Krim" style="height: 24px; margin-bottom: 28px;">
+
+      <div class="role-eyebrow">Chief Risk Officer</div>
+      <h2 class="role-title">AI is making decisions your name is on.</h2>
+      <p class="role-org">And the reasoning is a black box.</p>
+
+      <p class="role-pressure">
+        The AI systems your institution has adopted are fast, sometimes confidently wrong, and unable to explain themselves. <em>In a regulated lending environment that is not acceptable:</em> when a regulator asks why a decision was made, &lsquo;the model said so&rsquo; is not an answer. When a loan goes wrong, that question lands on you.
+      </p>
+    </div>
+
+    <div class="split-right">
+      <div style="display: flex; justify-content: flex-end; margin-bottom: 24px;">
+        <span class="eyebrow" style="color: rgba(26,32,53,0.38);">CRO</span>
+      </div>
+
+      <div class="right-section">
+        <div class="right-section-label">What KrimOS delivers</div>
+        <ul class="delivers-list">
+          <li><strong>Every AI decision has a verdict and a reason before it acts.</strong> Krim-Nyāya gates every agent action: pass, amber, or fail, with a traceable logic chain that exists before anything executes.</li>
+          <li><strong>Risk signals surfaced before they become arrears.</strong> Kovida monitors behavioural patterns across the performing book. Deteriorating accounts are flagged before the payment is missed, while there is still time to act.</li>
+          <li><strong>A model that improves with your own portfolio data.</strong> Kovida learns from every transaction your institution processes, making risk calls sharper over time for your specific book.</li>
+        </ul>
+      </div>
+
+      <div class="right-section">
+        <div class="right-section-label">What changes</div>
+        <ul class="outcomes-list">
+          <li>Any regulator request for a decision trail is answered from the record, because the record was written before the decision acted.</li>
+          <li>Early-warning signals live across the performing book. Deterioration surfaces before the roll.</li>
+          <li>Risk calls sharpen with every repayment cycle as Kovida tunes to your borrower base.</li>
+        </ul>
+      </div>
+
+      <div class="shift-box">
+        <div>
+          <strong>The shift:</strong> From AI that acts without explanation to AI that validates before it acts, with a complete, time-stamped audit trail built for inspection. You stay accountable. We make it defensible.
+        </div>
+      </div>
+
+      <div style="flex: 1;"></div>
+
+      <div class="foot-rule-l"></div>
+      <div class="foot foot-l">
+        <span>KrimOS — Senior Roles</span>
+        <span>krim.ai</span>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════
+     PAGE 5  ·  HEAD OF COLLECTIONS
+     ═══════════════════════════════════════════════════ -->
+<div class="page" style="background: #0B1220;">
+  <div class="split-page">
+
+    <div class="split-left">
+      <img class="logo-w" src="../../public/brand/logo/KRIM-horizontal-white.svg" alt="Krim" style="height: 24px; margin-bottom: 28px;">
+
+      <div class="role-eyebrow">Head of Collections</div>
+      <h2 class="role-title">Volume is rising.<br>Contact rates are falling.</h2>
+      <p class="role-org">Strategy is reactive because the data arrives too late.</p>
+
+      <p class="role-pressure">
+        Your team is working harder on a portfolio that keeps growing. <em>But the tools haven't kept up.</em> Dialler lists built on lagging data. Scripts that don't adapt to the borrower. Strategies that chase arrears after they have already formed.
+        <br><br>
+        The accounts that matter most are buried in a queue ordered by account age, blind to recovery probability.
+      </p>
+    </div>
+
+    <div class="split-right">
+      <div style="display: flex; justify-content: flex-end; margin-bottom: 24px;">
+        <span class="eyebrow" style="color: rgba(26,32,53,0.38);">Collections</span>
+      </div>
+
+      <div class="right-section">
+        <div class="right-section-label">What KrimOS delivers</div>
+        <ul class="delivers-list">
+          <li><strong>Dynamic prioritisation built on recovery probability.</strong> The outreach co-worker surfaces the contacts most likely to resolve, updated continuously as Kovida refines its read of each borrower's behaviour.</li>
+          <li><strong>Outreach that adapts to the borrower.</strong> Contact strategy, channel, timing, and resolution options are matched to each account's profile and history.</li>
+          <li><strong>Resolution offers presented at the moment the borrower is most receptive.</strong> The system monitors payment-intent signals and triggers the right offer before the account deteriorates further: payment plan, settlement, or hardship.</li>
+        </ul>
+      </div>
+
+      <div class="right-section">
+        <div class="right-section-label">What changes</div>
+        <ul class="outcomes-list">
+          <li>Routine outreach runs on its own. Collector capacity concentrates on complex cases and relationship-sensitive accounts.</li>
+          <li>Outreach reaches the right borrower at the right time, through the channel they actually answer.</li>
+          <li>Resolution happens earlier, while more options are still open. Escalation becomes the exception path.</li>
+        </ul>
+      </div>
+
+      <div class="shift-box">
+        <div>
+          <strong>The shift:</strong> From reactive, volume-driven collections to a model where the system surfaces the right account, at the right time, with the right approach, while your team focuses where human judgement creates the most value.
+        </div>
+      </div>
+
+      <div style="flex: 1;"></div>
+
+      <div class="foot-rule-l"></div>
+      <div class="foot foot-l">
+        <span>KrimOS — Senior Roles</span>
+        <span>krim.ai</span>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════
+     PAGE 6  ·  HEAD OF SERVICING
+     ═══════════════════════════════════════════════════ -->
+<div class="page" style="background: #0B1220;">
+  <div class="split-page">
+
+    <div class="split-left">
+      <img class="logo-w" src="../../public/brand/logo/KRIM-horizontal-white.svg" alt="Krim" style="height: 24px; margin-bottom: 28px;">
+
+      <div class="role-eyebrow">Head of Servicing</div>
+      <h2 class="role-title">Borrowers expect digital-first.</h2>
+      <p class="role-org">Your servicing model was built for branches.</p>
+
+      <p class="role-pressure">
+        The gap between what borrowers expect and what your servicing infrastructure can deliver is widening. <em>CSAT scores track it. Call centre volumes confirm it.</em> Every routine query that reaches the branch is a process failure: an EMI balance, a statement, a prepayment request.
+        <br><br>
+        And reconciliation sits underneath it all: payment matching done manually, exceptions buried in spreadsheets, errors discovered weeks after they occur.
+      </p>
+    </div>
+
+    <div class="split-right">
+      <div style="display: flex; justify-content: flex-end; margin-bottom: 24px;">
+        <span class="eyebrow" style="color: rgba(26,32,53,0.38);">Servicing</span>
+      </div>
+
+      <div class="right-section">
+        <div class="right-section-label">What KrimOS delivers</div>
+        <ul class="delivers-list">
+          <li><strong>Digital-first self-serve for the full servicing range.</strong> EMI queries, statements, hardship applications, and prepayment requests, handled digitally, without branch intervention, in the borrower's preferred language and channel.</li>
+          <li><strong>Automated reconciliation: exceptions surface the moment they occur.</strong> Payment matching runs automatically, and anything outside tolerance is flagged the day it happens, while the cost of correction is still low.</li>
+          <li><strong>Hardship flagged before accounts deteriorate.</strong> Kovida identifies borrowers showing early servicing stress, prompting proactive outreach before a missed payment becomes an arrear.</li>
+        </ul>
+      </div>
+
+      <div class="right-section">
+        <div class="right-section-label">What changes</div>
+        <ul class="outcomes-list">
+          <li>Digital channels absorb the routine query load. Branch and call-centre time goes to the moments that need a person.</li>
+          <li>Reconciliation exceptions surface in real time: a cleaner book and cleaner reporting.</li>
+          <li>The servicing team moves from answering queries to managing relationships.</li>
+        </ul>
+      </div>
+
+      <div class="shift-box">
+        <div>
+          <strong>The shift:</strong> From a servicing model built around branch capacity to one where digital channels handle routine volume, and your team focuses on the servicing moments that require human judgement and relationship management.
+        </div>
+      </div>
+
+      <div style="flex: 1;"></div>
+
+      <div class="foot-rule-l"></div>
+      <div class="foot foot-l">
+        <span>KrimOS — Senior Roles</span>
+        <span>krim.ai</span>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════
+     PAGE 7  ·  HEAD OF COMPLIANCE
+     ═══════════════════════════════════════════════════ -->
+<div class="page" style="background: #0B1220;">
+  <div class="split-page">
+
+    <div class="split-left">
+      <img class="logo-w" src="../../public/brand/logo/KRIM-horizontal-white.svg" alt="Krim" style="height: 24px; margin-bottom: 28px;">
+
+      <div class="role-eyebrow">Head of Compliance</div>
+      <h2 class="role-title">The regulator will ask.<br>The answer needs to exist<br>before the question.</h2>
+      <p class="role-org">Documentation built after the fact does not satisfy audit.</p>
+
+      <p class="role-pressure">
+        AI systems are being deployed faster than governance frameworks can document them. <em>The regulatory environment is tightening</em>, and when the inspection arrives, a decision trail assembled in retrospect is worth very little.
+        <br><br>
+        Most AI systems in lending were not built to produce a complete, real-time audit record. Krim-Nyāya was.
+      </p>
+    </div>
+
+    <div class="split-right">
+      <div style="display: flex; justify-content: flex-end; margin-bottom: 24px;">
+        <span class="eyebrow" style="color: rgba(26,32,53,0.38);">Compliance</span>
+      </div>
+
+      <div class="right-section">
+        <div class="right-section-label">What KrimOS delivers</div>
+        <ul class="delivers-list">
+          <li><strong>A complete, time-stamped decision record, generated before the decision acts.</strong> Krim-Nyāya logs the verdict and reasoning for every credit action at the moment of execution.</li>
+          <li><strong>Regulatory reporting generated from live data.</strong> Filings compile automatically and stay current on any day the regulator asks.</li>
+          <li><strong>Explainability built into the architecture.</strong> Every AI decision in KrimOS is constructed to be explainable, meeting emerging regulatory guidance at the foundation layer.</li>
+        </ul>
+      </div>
+
+      <div class="right-section">
+        <div class="right-section-label">What changes</div>
+        <ul class="outcomes-list">
+          <li>A complete audit trail sits ready for any inspection, written at the point each decision was made.</li>
+          <li>Regulatory reporting becomes retrieval: the documentation already exists when the request lands.</li>
+          <li>Compliance posture aligns with emerging RBI expectations on AI governance at the architecture level.</li>
+        </ul>
+      </div>
+
+      <div class="shift-box">
+        <div>
+          <strong>The shift:</strong> From a compliance posture that documents after the fact to one where every credit decision arrives with its audit trail already written, and the regulator can see exactly what happened, when, and why.
+        </div>
+      </div>
+
+      <div style="flex: 1;"></div>
+
+      <div class="foot-rule-l"></div>
+      <div class="foot foot-l">
+        <span>KrimOS — Senior Roles</span>
+        <span>krim.ai</span>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════
+     PAGE 8  ·  HEAD OF CREDIT OPERATIONS
+     ═══════════════════════════════════════════════════ -->
+<div class="page" style="background: #0B1220;">
+  <div class="split-page">
+
+    <div class="split-left">
+      <img class="logo-w" src="../../public/brand/logo/KRIM-horizontal-white.svg" alt="Krim" style="height: 24px; margin-bottom: 28px;">
+
+      <div class="role-eyebrow">Head of Credit Operations</div>
+      <h2 class="role-title">The book is growing.<br>The engine was built<br>for a smaller one.</h2>
+      <p class="role-org">Volume compounds. Manual processes don't scale with it.</p>
+
+      <p class="role-pressure">
+        Integration debt, manual exception handling, and coordination overhead grow with the portfolio. <em>Adding headcount to keep pace is the only lever available</em>, and it is an expensive one that leaves quality inconsistent.
+        <br><br>
+        Every document that requires manual review, every bureau pull tracked in a spreadsheet, every reconciliation done at month-end is friction the operation absorbs. At scale, that friction becomes the ceiling.
+      </p>
+    </div>
+
+    <div class="split-right">
+      <div style="display: flex; justify-content: flex-end; margin-bottom: 24px;">
+        <span class="eyebrow" style="color: rgba(26,32,53,0.38);">Credit Ops</span>
+      </div>
+
+      <div class="right-section">
+        <div class="right-section-label">What KrimOS delivers</div>
+        <ul class="delivers-list">
+          <li><strong>Document processing, bureau pull, reconciliation, and reporting run automatically.</strong> The full volume of routine operational tasks moves through KrimOS: consistent, logged, and cleared without a manual queue.</li>
+          <li><strong>Connects to what you have.</strong> KrimOS integrates with existing core banking systems, bureau APIs, and collection platforms, with no parallel operation period. No rip. No replace.</li>
+          <li><strong>Exceptions surface the moment they occur.</strong> When something falls outside policy, KrimOS flags it immediately. Your team's attention goes to the decisions that genuinely need it.</li>
+        </ul>
+      </div>
+
+      <div class="right-section">
+        <div class="right-section-label">What changes</div>
+        <ul class="outcomes-list">
+          <li>Document processing, bureau pulls, and reconciliation clear without a queue. Team capacity shifts to exceptions and process improvement.</li>
+          <li>Core banking, bureau, and collection platform integrations run live. Manual bridge processes retire.</li>
+          <li>The system absorbs volume as the book grows. Operations capacity stops being the ceiling on portfolio growth.</li>
+        </ul>
+      </div>
+
+      <div class="shift-box">
+        <div>
+          <strong>The shift:</strong> From an operation that adds people to absorb volume growth to one where the system handles the routine and your team focuses on the exceptions that genuinely require human judgement.
+        </div>
+      </div>
+
+      <div style="flex: 1;"></div>
+
+      <div class="foot-rule-l"></div>
+      <div class="foot foot-l">
+        <span>KrimOS — Senior Roles</span>
+        <span>krim.ai</span>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════
+     PAGE 9  ·  CLOSE
+     ═══════════════════════════════════════════════════ -->
+<div class="page dark-full">
+  <img class="close-bg" src="../../public/images/New%20Images/Layershq.png" alt="">
+  <div class="close-fade"></div>
+  <div class="dark-inner">
+
+    <img class="logo-w" src="../../public/brand/logo/KRIM-horizontal-white.svg" alt="Krim" style="margin-bottom: 40px;">
+
+    <h2 class="close-statement">Validated before it acts.<br>Smarter after it acts.</h2>
+    <p class="close-sub">KrimOS is the intelligence runtime the lending institution runs on: from origination to closure, every decision documented, every action validated, every transaction making the next call more accurate.</p>
+
+    <div class="close-cards">
+      <div class="close-card">
+        <div class="close-card-label">Kriya</div>
+        <div class="close-card-title">Runs every workflow</div>
+        <p class="close-card-body">Kriya, the credit-native action library, runs document extraction, decisioning, outreach, collections, reconciliation, and reporting end to end, application to closure.</p>
+      </div>
+      <div class="close-card">
+        <div class="close-card-label">Krim-Nyāya</div>
+        <div class="close-card-title">Validates every decision</div>
+        <p class="close-card-body">Every agent decision receives a pass, amber, or fail verdict with a traceable reason before it acts. Accountability precedes execution.</p>
+      </div>
+      <div class="close-card">
+        <div class="close-card-label">Kovida</div>
+        <div class="close-card-title">Learns from every loan</div>
+        <p class="close-card-body">The world lending model compounds with every loan your institution processes, making risk calls more precise and credit decisions more accurate over time.</p>
+      </div>
+    </div>
+
+    <div style="flex: 1;"></div>
+
+    <div style="font-family: 'Playfair Display', serif; font-style: italic; font-size: 30px; color: rgba(255,255,255,0.55); text-align: center; letter-spacing: 0.01em;">Safe Sovereign Superintelligence</div>
+
+    <div style="flex: 1;"></div>
+
+    <div class="close-cta">
+      <div>
+        <div class="close-cta-text">Book a working session.</div>
+        <div style="font-size: 11.5px; color: rgba(255,255,255,0.38); margin-top: 4px;">Bring one workflow. See it gated. We'll map your lending stack together.</div>
+      </div>
+      <div class="close-cta-email">sales@krim.ai</div>
+    </div>
+
+    <div class="foot-rule-d" style="margin-top: 24px;"></div>
+    <div class="foot foot-d">
+      <span>Patna · Bangalore · New York</span>
+      <span>Confidential — for discussion only</span>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>
