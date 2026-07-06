@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Krim — Introduction to KrimOS</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  @page {
+    size: A4;
+    margin: 0;
+  }
+
+  body {
+    background: #0c0e13;
+    font-family: 'Inter', system-ui, sans-serif;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+    color: #e8eaf0;
+  }
+
+  /* ── Page shell ─────────────────────────────── */
+  .page {
+    width: 210mm;
+    height: 297mm;
+    position: relative;
+    overflow: hidden;
+    background: #0c0e13;
+    padding: 13mm 14mm 10mm;
+    page-break-after: always;
+    display: flex;
+    flex-direction: column;
+  }
+  .page:last-child { page-break-after: auto; }
+
+  /* ── Orb glow ────────────────────────────────── */
+  .orb {
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+  }
+  .orb-1 {
+    width: 320px; height: 320px;
+    top: -80px; right: -60px;
+    background: radial-gradient(circle, rgba(0,255,178,0.09) 0%, transparent 70%);
+  }
+  .orb-2 {
+    width: 240px; height: 240px;
+    bottom: 20px; left: -40px;
+    background: radial-gradient(circle, rgba(57,214,255,0.06) 0%, transparent 70%);
+  }
+  .orb-3 {
+    width: 200px; height: 200px;
+    top: 40%; right: 10%;
+    background: radial-gradient(circle, rgba(245,200,66,0.04) 0%, transparent 70%);
+  }
+
+  /* ── Header ──────────────────────────────────── */
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10mm;
+    flex-shrink: 0;
+  }
+  .logo-lockup {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .logo-mark svg {
+    width: 28px;
+    height: 28px;
+  }
+  .logo-name {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 15px;
+    letter-spacing: 0.12em;
+    color: #e8eaf0;
+  }
+  .header-right {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 8px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: rgba(232,234,240,0.35);
+  }
+
+  /* ── Divider ─────────────────────────────────── */
+  .divider {
+    height: 1px;
+    background: linear-gradient(90deg, rgba(0,255,178,0.3) 0%, rgba(255,255,255,0.06) 100%);
+    margin-bottom: 9mm;
+    flex-shrink: 0;
+  }
+
+  /* ── Hero ────────────────────────────────────── */
+  .hero {
+    margin-bottom: 8mm;
+    flex-shrink: 0;
+  }
+  .eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 8.5px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #00FFB2;
+    margin-bottom: 4mm;
+  }
+  .hero-headline {
+    font-family: 'Playfair Display', serif;
+    font-size: 30px;
+    font-weight: 500;
+    line-height: 1.2;
+    color: #f0f2f8;
+    margin-bottom: 4mm;
+    max-width: 155mm;
+  }
+  .hero-sub {
+    font-family: 'Inter', sans-serif;
+    font-size: 11.5px;
+    line-height: 1.65;
+    color: rgba(232,234,240,0.65);
+    max-width: 140mm;
+  }
+
+  /* ── Three pillars ───────────────────────────── */
+  .pillars {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 4mm;
+    margin-bottom: 7mm;
+    flex-shrink: 0;
+  }
+  .pillar {
+    background: rgba(255,255,255,0.035);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 5px;
+    padding: 5mm;
+    position: relative;
+    overflow: hidden;
+  }
+  .pillar::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, rgba(0,255,178,0.4) 0%, transparent 80%);
+  }
+  .pillar-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 8px;
+    letter-spacing: 0.1em;
+    color: rgba(0,255,178,0.5);
+    margin-bottom: 2.5mm;
+  }
+  .pillar-title {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 10.5px;
+    color: #e8eaf0;
+    margin-bottom: 2mm;
+    line-height: 1.3;
+  }
+  .pillar-body {
+    font-family: 'Inter', sans-serif;
+    font-size: 9.5px;
+    line-height: 1.6;
+    color: rgba(232,234,240,0.55);
+  }
+
+  /* ── RBI callout ─────────────────────────────── */
+  .rbi-callout {
+    background: rgba(0,255,178,0.05);
+    border: 1px solid rgba(0,255,178,0.18);
+    border-radius: 5px;
+    padding: 5mm 6mm;
+    display: flex;
+    gap: 5mm;
+    align-items: flex-start;
+    flex-shrink: 0;
+  }
+  .rbi-badge {
+    flex-shrink: 0;
+    background: rgba(0,255,178,0.12);
+    border: 1px solid rgba(0,255,178,0.25);
+    border-radius: 3px;
+    padding: 2mm 3mm;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 7.5px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #00FFB2;
+    white-space: nowrap;
+    margin-top: 0.5mm;
+  }
+  .rbi-text {
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    line-height: 1.65;
+    color: rgba(232,234,240,0.75);
+  }
+  .rbi-text strong {
+    color: #e8eaf0;
+    font-weight: 500;
+  }
+
+  /* ── Page 1 footer ───────────────────────────── */
+  .p1-footer {
+    margin-top: auto;
+    padding-top: 5mm;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-shrink: 0;
+  }
+  .p1-footer-left {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 8px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(232,234,240,0.25);
+  }
+  .p1-footer-right {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 8px;
+    color: rgba(232,234,240,0.25);
+  }
+
+  /* ── PAGE 2 ─────────────────────────────────── */
+
+  /* Architecture section */
+  .section-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 8px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(232,234,240,0.35);
+    margin-bottom: 4mm;
+  }
+  .section-headline {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 500;
+    color: #f0f2f8;
+    margin-bottom: 5mm;
+  }
+
+  /* Architecture flow */
+  .arch-flow {
+    display: flex;
+    align-items: stretch;
+    gap: 0;
+    margin-bottom: 8mm;
+    flex-shrink: 0;
+  }
+  .arch-node {
+    flex: 1;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 4px;
+    padding: 4mm;
+    position: relative;
+  }
+  .arch-node.accent {
+    background: rgba(0,255,178,0.04);
+    border-color: rgba(0,255,178,0.2);
+  }
+  .arch-node-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 7.5px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(0,255,178,0.6);
+    margin-bottom: 1.5mm;
+  }
+  .arch-node-name {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 11px;
+    color: #e8eaf0;
+    margin-bottom: 1.5mm;
+  }
+  .arch-node-desc {
+    font-family: 'Inter', sans-serif;
+    font-size: 8.5px;
+    line-height: 1.55;
+    color: rgba(232,234,240,0.5);
+  }
+  .arch-arrow {
+    display: flex;
+    align-items: center;
+    padding: 0 2mm;
+    color: rgba(0,255,178,0.3);
+    font-size: 14px;
+    flex-shrink: 0;
+  }
+
+  /* Two-column layout for credentials + CTA */
+  .bottom-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5mm;
+    flex: 1;
+    min-height: 0;
+  }
+
+  /* Credentials */
+  .credentials {
+    display: flex;
+    flex-direction: column;
+    gap: 4mm;
+  }
+  .founder-card {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 5px;
+    padding: 4.5mm;
+  }
+  .founder-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 13px;
+    color: #e8eaf0;
+    margin-bottom: 1mm;
+  }
+  .founder-role {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 7.5px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #00FFB2;
+    margin-bottom: 2.5mm;
+  }
+  .founder-bio {
+    font-family: 'Inter', sans-serif;
+    font-size: 9px;
+    line-height: 1.6;
+    color: rgba(232,234,240,0.55);
+  }
+  .advisors-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 7.5px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(232,234,240,0.3);
+    margin-bottom: 2.5mm;
+  }
+  .advisor-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5mm;
+  }
+  .advisor-row {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5mm;
+  }
+  .advisor-name {
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 9.5px;
+    color: #e8eaf0;
+  }
+  .advisor-note {
+    font-family: 'Inter', sans-serif;
+    font-size: 8.5px;
+    color: rgba(232,234,240,0.4);
+  }
+
+  /* CTA */
+  .cta-panel {
+    background: rgba(0,255,178,0.04);
+    border: 1px solid rgba(0,255,178,0.15);
+    border-radius: 5px;
+    padding: 6mm;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .cta-headline {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    font-weight: 500;
+    line-height: 1.3;
+    color: #f0f2f8;
+    margin-bottom: 4mm;
+  }
+  .cta-body {
+    font-family: 'Inter', sans-serif;
+    font-size: 9.5px;
+    line-height: 1.65;
+    color: rgba(232,234,240,0.6);
+    margin-bottom: 5mm;
+    flex: 1;
+  }
+  .cta-contacts {
+    display: flex;
+    flex-direction: column;
+    gap: 2mm;
+  }
+  .cta-contact-row {
+    display: flex;
+    align-items: center;
+    gap: 2.5mm;
+  }
+  .cta-contact-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 7.5px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(0,255,178,0.5);
+    width: 10mm;
+    flex-shrink: 0;
+  }
+  .cta-contact-value {
+    font-family: 'Inter', sans-serif;
+    font-size: 9.5px;
+    color: #e8eaf0;
+  }
+  .cta-divider {
+    height: 1px;
+    background: rgba(0,255,178,0.1);
+    margin: 4mm 0;
+  }
+
+  /* P2 footer */
+  .p2-footer {
+    margin-top: 5mm;
+    padding-top: 4mm;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-shrink: 0;
+  }
+  .p2-footer-tagline {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 8px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(232,234,240,0.25);
+  }
+  .p2-footer-right {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 8px;
+    color: rgba(232,234,240,0.2);
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════════
+     PAGE 1 — The case
+═══════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+
+  <!-- Header -->
+  <div class="header">
+    <div class="logo-lockup">
+      <div class="logo-mark">
+        <svg width="28" height="28" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+          <line x1="100" y1="100" x2="140" y2="169.3" stroke="#00FFB2" stroke-width="10" stroke-linecap="round"/>
+          <line x1="160" y1="203.9" x2="200" y2="273.2" stroke="#00FFB2" stroke-width="10" stroke-linecap="round"/>
+          <line x1="300" y1="100" x2="260" y2="169.3" stroke="#00FFB2" stroke-width="10" stroke-linecap="round"/>
+          <line x1="240" y1="203.9" x2="200" y2="273.2" stroke="#00FFB2" stroke-width="10" stroke-linecap="round"/>
+          <line x1="100" y1="100" x2="180" y2="100" stroke="#00FFB2" stroke-width="10" stroke-linecap="round"/>
+          <line x1="220" y1="100" x2="300" y2="100" stroke="#00FFB2" stroke-width="10" stroke-linecap="round"/>
+          <circle cx="200" cy="157.7" r="20" fill="#00FFB2"/>
+        </svg>
+      </div>
+      <span class="logo-name">KRIM</span>
+    </div>
+    <div class="header-right">Confidential · For discussion purposes only</div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- Hero -->
+  <div class="hero">
+    <div class="eyebrow">Introducing KrimOS</div>
+    <h1 class="hero-headline">The operating system<br>for regulated AI.</h1>
+    <p class="hero-sub">
+      AI in banking fails for one reason: intelligence and governance built separately, connected afterwards.
+      KrimOS builds them as a single system — every agent action validated before it executes, every decision
+      on a single auditable record, everything running inside your perimeter.
+    </p>
+  </div>
+
+  <!-- Three pillars -->
+  <div class="pillars">
+    <div class="pillar">
+      <div class="pillar-num">01</div>
+      <div class="pillar-title">Validated before it acts</div>
+      <div class="pillar-body">Every agent action passes through 33 pre-execution validators. Pass, amber, or fail. Nothing executes on an amber or a fail.</div>
+    </div>
+    <div class="pillar">
+      <div class="pillar-num">02</div>
+      <div class="pillar-title">Auditable by construction</div>
+      <div class="pillar-body">Deterministic, reproducible decision records. The same inputs produce the same output, every time. Readable by an examiner or a board.</div>
+    </div>
+    <div class="pillar">
+      <div class="pillar-num">03</div>
+      <div class="pillar-title">Never leaves your walls</div>
+      <div class="pillar-body">Deployed inside your infrastructure. Your data stays yours. The intelligence compounds inside the perimeter where it already lives.</div>
+    </div>
+  </div>
+
+  <!-- RBI callout -->
+  <div class="rbi-callout">
+    <div class="rbi-badge">RBI MRMF<br>2026</div>
+    <div class="rbi-text">
+      RBI's draft model risk framework (consultation closes <strong>24 July 2026</strong>) mandates independent validation of every model, explainability for every material decision, and genuine human control over every AI agent. It applies to every commercial bank, NBFC, co-operative, and credit information company in India. <strong>KrimOS was built to these principles before the draft existed.</strong>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="p1-footer">
+    <div class="p1-footer-left">krim.ai · Safe Superintelligence</div>
+    <div class="p1-footer-right">1 / 2</div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════
+     PAGE 2 — The proof
+═══════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="orb orb-3"></div>
+
+  <!-- Header -->
+  <div class="header">
+    <div class="logo-lockup">
+      <div class="logo-mark">
+        <svg width="28" height="28" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+          <line x1="100" y1="100" x2="140" y2="169.3" stroke="#00FFB2" stroke-width="10" stroke-linecap="round"/>
+          <line x1="160" y1="203.9" x2="200" y2="273.2" stroke="#00FFB2" stroke-width="10" stroke-linecap="round"/>
+          <line x1="300" y1="100" x2="260" y2="169.3" stroke="#00FFB2" stroke-width="10" stroke-linecap="round"/>
+          <line x1="240" y1="203.9" x2="200" y2="273.2" stroke="#00FFB2" stroke-width="10" stroke-linecap="round"/>
+          <line x1="100" y1="100" x2="180" y2="100" stroke="#00FFB2" stroke-width="10" stroke-linecap="round"/>
+          <line x1="220" y1="100" x2="300" y2="100" stroke="#00FFB2" stroke-width="10" stroke-linecap="round"/>
+          <circle cx="200" cy="157.7" r="20" fill="#00FFB2"/>
+        </svg>
+      </div>
+      <span class="logo-name">KRIM</span>
+    </div>
+    <div class="header-right">Confidential · For discussion purposes only</div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- Architecture -->
+  <div style="margin-bottom: 6mm; flex-shrink: 0;">
+    <div class="section-label">How it works</div>
+    <div class="arch-flow">
+      <div class="arch-node">
+        <div class="arch-node-label">OS</div>
+        <div class="arch-node-name">KrimOS</div>
+        <div class="arch-node-desc">Agent-native operating system. Intelligence and governance as a single architecture.</div>
+      </div>
+      <div class="arch-arrow">→</div>
+      <div class="arch-node">
+        <div class="arch-node-label">Runtime</div>
+        <div class="arch-node-name">Kendra</div>
+        <div class="arch-node-desc">8 modules that run everything a KrimOS agent does. Core, Govern, Nyāya, Ledger, Learn and more.</div>
+      </div>
+      <div class="arch-arrow">→</div>
+      <div class="arch-node accent">
+        <div class="arch-node-label">Validator</div>
+        <div class="arch-node-name">Krim-Nyāya</div>
+        <div class="arch-node-desc">33 pre-execution validators derived from Navya-Nyāya formal logic. Pass / amber / fail before every action.</div>
+      </div>
+      <div class="arch-arrow">→</div>
+      <div class="arch-node">
+        <div class="arch-node-label">Record</div>
+        <div class="arch-node-name">Krim-Ledger</div>
+        <div class="arch-node-desc">Immutable, deterministic audit trail. Every validation, every decision, automatically retained.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom grid: credentials + CTA -->
+  <div class="bottom-grid">
+
+    <!-- Credentials -->
+    <div class="credentials">
+      <div>
+        <div class="section-label" style="margin-bottom: 3mm;">Founder</div>
+        <div class="founder-card">
+          <div class="founder-name">Vishwa Nath Jha</div>
+          <div class="founder-role">Founder & CEO</div>
+          <div class="founder-bio">16 years as an AI researcher, educator and entrepreneur. Previously founder of Saarthi.ai (2017–2025), India's largest voice AI platform for banks and financial institutions.</div>
+        </div>
+      </div>
+      <div>
+        <div class="advisors-label">Advisory Board</div>
+        <div class="advisor-list">
+          <div class="advisor-row">
+            <div class="advisor-name">Deepak Maheshwari</div>
+            <div class="advisor-note">Fmr CFO, SBI Cards</div>
+          </div>
+          <div class="advisor-row">
+            <div class="advisor-name">R. Shyam Shyamsunder</div>
+            <div class="advisor-note">Fmr MD Investments, Temasek</div>
+          </div>
+          <div class="advisor-row">
+            <div class="advisor-name">Sanjay Thakur</div>
+            <div class="advisor-note">EVP, Kotak Mahindra Bank</div>
+          </div>
+          <div class="advisor-row">
+            <div class="advisor-name">Rudra Mishra</div>
+            <div class="advisor-note">Fmr DGM, ICICI Bank</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="cta-panel">
+      <div>
+        <div class="cta-headline">Let's run this on your operation.</div>
+        <div class="cta-body">
+          We work with lending institutions to deploy KrimOS against a real workflow — collections, credit decisioning, servicing — so you can see the validation layer working on your own data, inside your own infrastructure. No data leaves your walls.
+        </div>
+      </div>
+      <div>
+        <div class="cta-divider"></div>
+        <div class="cta-contacts">
+          <div class="cta-contact-row">
+            <div class="cta-contact-label">Email</div>
+            <div class="cta-contact-value">sales@krim.ai</div>
+          </div>
+          <div class="cta-contact-row">
+            <div class="cta-contact-label">Phone</div>
+            <div class="cta-contact-value">+1 510 345 5686</div>
+          </div>
+          <div class="cta-contact-row">
+            <div class="cta-contact-label">Web</div>
+            <div class="cta-contact-value">krim.ai</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Footer -->
+  <div class="p2-footer">
+    <div class="p2-footer-tagline">Krim · Safe Superintelligence</div>
+    <div class="p2-footer-right">2 / 2</div>
+  </div>
+
+</div>
+</body>
+</html>

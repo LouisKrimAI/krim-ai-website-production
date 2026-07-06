@@ -22,6 +22,6 @@ Gemini_Generated_Image_*.png
 # local working files — never part of the site
 /DRAFTGUIDANCE*.pdf
 /Marketing examples/
-/docs/pitch/
+/docs/pitch/pdf/
+/docs/pitch/*.pdf
 /.deckenv/
-/public/images/pitch/

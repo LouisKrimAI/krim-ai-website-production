@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>KrimOS — RBI Alignment</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400;1,700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+@page { size: A4; margin: 0; }
+body {
+  font-family: 'Inter', sans-serif;
+  background: #555;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+.page {
+  width: 210mm;
+  height: 297mm;
+  position: relative;
+  overflow: hidden;
+  page-break-after: always;
+  display: flex;
+  flex-direction: column;
+}
+
+/* PAGE TREATMENTS */
+.dark { background: #0B1220; color: #fff; }
+.dark-body {
+  display: flex; flex-direction: column;
+  height: 100%; padding: 48px;
+}
+.content { background: #F4F6FA; color: #1A2035; }
+.content-body {
+  display: flex; flex-direction: column;
+  height: 100%; padding: 48px;
+}
+
+/* SHARED */
+.logo-w { height: 29px; width: auto; display: block; }
+.logo-b { height: 26px; width: auto; display: block; }
+
+.eyebrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9.5px;
+  font-weight: 500;
+  letter-spacing: 0.20em;
+  text-transform: uppercase;
+}
+
+.mint-rule { display: block; width: 56px; height: 1px; background: #00FFB2; }
+
+.foot-rule-d { width: 100%; height: 1px; background: rgba(255,255,255,0.09); margin-bottom: 13px; }
+.foot-rule-l { width: 100%; height: 1px; background: rgba(26,32,53,0.09); margin-bottom: 13px; }
+
+.foot {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 8.5px;
+  letter-spacing: 0.05em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.foot-d { color: rgba(255,255,255,0.38); }
+.foot-l { color: rgba(26,32,53,0.38); }
+
+/* Glass treatment (pre-composited over #0B1220 for print robustness) */
+.glass-card {
+  background: linear-gradient(150deg, #1C2330, #111826);
+  border: 1px solid rgba(255,255,255,0.085);
+  border-top-color: rgba(255,255,255,0.22);
+  border-radius: 10px;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.14), inset 0 1px 0 rgba(255,255,255,0.07);
+}
+
+/* PAGE 1 · DARK */
+.d-head { display: flex; justify-content: space-between; align-items: flex-start; }
+.d-head .eyebrow { color: rgba(255,255,255,0.28); margin-top: 4px; }
+
+.d-label { color: #00FFB2; margin-top: 13px; }
+
+.d-headline {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: 58px;
+  line-height: 1.04;
+  color: #fff;
+  letter-spacing: -0.02em;
+  margin-top: 28px;
+  max-width: 580px;
+}
+
+.d-intro {
+  font-size: 15.5px;
+  font-weight: 300;
+  line-height: 1.68;
+  color: rgba(255,255,255,0.70);
+  margin-top: 28px;
+  max-width: 550px;
+}
+.d-intro strong { font-weight: 500; color: rgba(255,255,255,0.92); }
+
+/* Pull quote */
+.quote-card {
+  border-left: 3px solid #00FFB2;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  padding: 42px 44px 38px;
+  margin-top: 48px;
+}
+.quote-text {
+  font-family: 'Playfair Display', serif;
+  font-weight: 400;
+  font-style: italic;
+  font-size: 28px;
+  line-height: 1.50;
+  color: rgba(255,255,255,0.94);
+}
+.quote-cite {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 0.10em;
+  color: #00FFB2;
+  margin-top: 20px;
+}
+
+/* Mechanism blocks */
+.mech { margin-top: 46px; max-width: 570px; }
+.mech + .mech { margin-top: 30px; }
+.mech-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 8.5px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #00FFB2;
+  margin-bottom: 7px;
+}
+.mech p {
+  font-size: 14.5px;
+  font-weight: 300;
+  line-height: 1.65;
+  color: rgba(255,255,255,0.72);
+}
+.mech p strong { font-weight: 500; color: rgba(255,255,255,0.92); }
+
+/* PAGE 2 · LIGHT */
+.pg-head { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 34px; }
+.sec-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.17em;
+  text-transform: uppercase;
+  color: rgba(26,32,53,0.38);
+  margin-bottom: 7px;
+}
+.pg-title {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: 25px;
+  line-height: 1.18;
+  color: #1A2035;
+  margin-bottom: 6px;
+}
+.pg-intro {
+  font-size: 12.5px;
+  line-height: 1.62;
+  color: rgba(26,32,53,0.52);
+  max-width: 540px;
+  margin-bottom: 30px;
+}
+
+/* TABLE */
+.tbl { width: 100%; border-collapse: collapse; margin-bottom: 26px; }
+.tbl thead th {
+  padding: 8px 11px;
+  background: #1A2035;
+  color: #fff;
+  font-size: 8.5px;
+  font-weight: 600;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  text-align: left;
+}
+.tbl tbody td {
+  padding: 16px 12px;
+  border-bottom: 1px solid rgba(26,32,53,0.055);
+  font-size: 12px;
+  color: rgba(26,32,53,0.72);
+  vertical-align: top;
+  line-height: 1.55;
+}
+.tbl tbody tr:nth-child(even) td { background: #F0F2F6; }
+.para-ref {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10.5px;
+  font-weight: 500;
+  color: #006B48;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+.req { color: rgba(26,32,53,0.72); }
+.req strong { font-weight: 600; color: #1A2035; }
+.outcome { color: #005239; font-weight: 500; }
+.tbl tbody tr td.outcome { background: #EAF0F3; }
+
+/* NOTE */
+.draft-note {
+  border-left: 3px solid #00FFB2;
+  padding: 18px 20px 19px;
+  background: #EBF1F4;
+  border-radius: 0 2px 2px 0;
+  margin-bottom: 22px;
+}
+.draft-note p { font-size: 11.5px; line-height: 1.60; color: rgba(26,32,53,0.70); }
+.draft-note strong { color: #1A2035; font-weight: 600; }
+
+/* CTA LINE */
+.cta-line {
+  font-size: 13.5px;
+  line-height: 1.55;
+  color: rgba(26,32,53,0.75);
+  margin-bottom: 16px;
+}
+.cta-line strong { color: #1A2035; font-weight: 600; }
+.cta-mail {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  font-weight: 500;
+  color: #006B48;
+  letter-spacing: 0.02em;
+}
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════════════════════
+     PAGE 1 · DARK
+     ══════════════════════════════════════════════════════════ -->
+<div class="page dark">
+  <div class="dark-body">
+
+    <div class="d-head">
+      <img class="logo-w" src="../../public/brand/logo/KRIM-horizontal-white.svg" alt="Krim">
+      <span class="eyebrow">RBI draft Model Risk guidance</span>
+    </div>
+
+    <div class="mint-rule" style="margin-top: 56px;"></div>
+    <div class="eyebrow d-label">Regulatory alignment</div>
+
+    <h1 class="d-headline">The regulator<br>described this.</h1>
+
+    <p class="d-intro">
+      On 24 June 2026 the Reserve Bank of India published its draft
+      <strong>Model Risk Management guidance</strong>. One clause describes,
+      almost word for word, the mechanism KrimOS is built around.
+    </p>
+
+    <div class="quote-card glass-card">
+      <p class="quote-text">&ldquo;&hellip;mechanisms to verify and corroborate model outputs prior to their use&hellip;&rdquo;</p>
+      <div class="quote-cite">Para 54(1)(ii) &nbsp;&middot;&nbsp; RBI draft Model Risk Management guidance &nbsp;&middot;&nbsp; 24 June 2026</div>
+    </div>
+
+    <div class="mech">
+      <div class="mech-label">The mechanism</div>
+      <p>A pre-execution validation gate is exactly that mechanism: it verifies
+      every output <strong>before the system acts on it</strong>. That is how KrimOS
+      is built: every decision an agent proposes passes through Krim-Ny&#257;ya before
+      the system acts on it.</p>
+    </div>
+
+    <div class="mech">
+      <div class="mech-label">The verdict</div>
+      <p>Krim-Ny&#257;ya returns a <strong>pass, amber or fail verdict</strong> on every
+      decision, with the reason recorded before any action executes. A decision that
+      fails validation never reaches a customer, a core system or a ledger.</p>
+    </div>
+
+    <div class="mech">
+      <div class="mech-label">The trail</div>
+      <p>Every gated decision leaves a time-stamped record of what was proposed, what
+      was checked and why the verdict landed as it did. The trail is
+      <strong>built for inspection</strong> from the first transaction onwards.</p>
+    </div>
+
+    <div style="flex: 1;"></div>
+
+    <div class="foot-rule-d"></div>
+    <div class="foot foot-d">
+      <span>KrimOS — RBI Alignment</span>
+      <span>krim.ai</span>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════════
+     PAGE 2 · LIGHT
+     ══════════════════════════════════════════════════════════ -->
+<div class="page content">
+  <div class="content-body">
+
+    <div class="pg-head">
+      <img class="logo-b" src="../../public/brand/logo/KRIM-horizontal-black.svg" alt="Krim">
+      <span class="eyebrow" style="color: rgba(26,32,53,0.28); margin-top: 4px;">Clause coverage</span>
+    </div>
+
+    <div class="sec-label">Clause by clause</div>
+    <h2 class="pg-title">What the draft requires, and where KrimOS answers.</h2>
+    <p class="pg-intro">Eight requirements from the draft, read against the architecture. Each requirement maps to a mechanism that is already part of how the system works.</p>
+
+    <table class="tbl">
+      <thead>
+        <tr>
+          <th style="width: 13%;">The draft says</th>
+          <th style="width: 43%;">What it requires</th>
+          <th>Where KrimOS answers</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="para-ref">&para; 54(1)(ii)</span></td>
+          <td class="req"><strong>Verify and corroborate model outputs</strong> prior to their use.</td>
+          <td class="outcome">Krim-Ny&#257;ya, the pre-execution validation gate. Every decision is checked before the system acts on it.</td>
+        </tr>
+        <tr>
+          <td><span class="para-ref">&para; 60(ii)</span></td>
+          <td class="req"><strong>Override and kill-switch</strong> on model-driven actions.</td>
+          <td class="outcome">The gate is prospective, so a failing action is blocked before it commits. Operators can step in and halt any co-worker from the command centre.</td>
+        </tr>
+        <tr>
+          <td><span class="para-ref">&para; 54(2)</span></td>
+          <td class="req"><strong>Hallucination control</strong> in generative outputs.</td>
+          <td class="outcome">Customer answers grounded in the record.</td>
+        </tr>
+        <tr>
+          <td><span class="para-ref">&para; 54(6)</span></td>
+          <td class="req"><strong>Manage output variability</strong> through confidence measures.</td>
+          <td class="outcome">Calibrated validator tiers score every decision.</td>
+        </tr>
+        <tr>
+          <td><span class="para-ref">&para; 60(i)</span></td>
+          <td class="req"><strong>Human-in-command</strong> oversight of model operations (HITL).</td>
+          <td class="outcome">Krim-Govern enforces the policy; Kupa, the command centre, gives your teams the controls to see, set and step in.</td>
+        </tr>
+        <tr>
+          <td><span class="para-ref">&para; 57 / 23</span></td>
+          <td class="req"><strong>Traceability</strong> of model decisions, with 10-year retention.</td>
+          <td class="outcome">Krim-Ledger, an immutable record of every gated action.</td>
+        </tr>
+        <tr>
+          <td><span class="para-ref">&para; 48</span></td>
+          <td class="req"><strong>Audit rights and exit</strong> from vendor models.</td>
+          <td class="outcome">Sovereign local deployment. The system runs in your infrastructure, in your jurisdiction.</td>
+        </tr>
+        <tr>
+          <td><span class="para-ref">&para; 8 / 29</span></td>
+          <td class="req">The regulated entity <strong>remains accountable</strong>; validation must be independent.</td>
+          <td class="outcome">Krim generates the validation evidence. Accountability stays with your institution, and the record gives you the means to exercise it.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="draft-note">
+      <p><strong>Based on RBI's draft Model Risk Management guidance dated 24 June 2026.</strong> Alignment view for discussion; the draft may change before it is finalised.</p>
+    </div>
+
+    <p class="cta-line"><strong>Book a working session.</strong> We'll walk the draft clause by clause against your model inventory. <span class="cta-mail">sales@krim.ai</span></p>
+
+    <div style="flex: 1;"></div>
+
+    <div class="foot-rule-l"></div>
+    <div class="foot foot-l">
+      <span>Patna · Bangalore · New York</span>
+      <span>Confidential — for discussion only</span>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>

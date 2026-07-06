@@ -19,6 +19,8 @@ import {
   RESOURCES,
   FEATURED_RESOURCE_KEY,
   DECK_RESOURCE_KEY,
+  BRIEF_RESOURCE_KEY,
+  RESEARCH_RESOURCE_KEY,
   TAGLINE,
 } from './booking-config'
 
@@ -116,7 +118,8 @@ export function confirmationEmail(lead: DemoLead): BuiltEmail {
   const focus = lead.automate
     ? `, with particular focus on your requirements in <strong>${esc(lead.automate)}</strong>`
     : ''
-  const subject = 'Your Krim demo — The OS for safe agentic banking'
+  const briefLink = downloadUrl(lead.unsubscribe_token, BRIEF_RESOURCE_KEY)
+  const subject = 'Your Krim demo — the intelligence runtime for lending'
   const html = wrap(
     "Pick a time and we'll come prepared for your demo.",
     [
@@ -124,6 +127,7 @@ export function confirmationEmail(lead: DemoLead): BuiltEmail {
       P(`Hi ${name} — Pleased to see your interest in exploring a collaboration ${collab}.`),
       P(`Pick a time for your demo session, where we'll showcase how KrimOS can transform your operations and outcomes${focus}.`),
       button(cal, 'Pick a time'),
+      P(`While you pick a time: <a href="${briefLink}" style="color:${MINT_DEEP};font-weight:600;">the two-page KrimOS brief</a> covers what it is in sixty seconds.`),
       P('Prefer email? Just reply — it comes straight to me.'),
       signoff(),
     ].join(''),
@@ -138,6 +142,8 @@ export function confirmationEmail(lead: DemoLead): BuiltEmail {
     `Pick a time for your demo session, where we'll showcase how KrimOS can transform your operations and outcomes${focusText}.`,
     ``,
     cal,
+    ``,
+    `While you pick a time, the two-page KrimOS brief covers what it is in sixty seconds: ${briefLink}`,
     ``,
     `Prefer email? Just reply — it comes straight to me.`,
     ``,
@@ -155,13 +161,13 @@ export function valueNudgeEmail(lead: DemoLead): BuiltEmail {
   const focusSuffix = lead.automate
     ? ` We've included how that applies to <strong>${esc(lead.automate)}</strong>.`
     : ''
-  const subject = 'The Krim deck'
+  const subject = 'The KrimOS overview — one idea per page'
   const html = wrap(
-    'Five arguments. Short and direct.',
+    'The whole KrimOS story in eight pages. Four minutes.',
     [
-      H('Five arguments.'),
-      P(`Hi ${name} — We distilled how we think about safe AI in banking into five arguments. The deck is short and direct.${focusSuffix}`),
-      button(deckLink, 'Download the deck'),
+      H('One idea per page.'),
+      P(`Hi ${name} — We put the whole KrimOS story into eight pages, one idea per page: what it is, the validation gate, and what changes for a lending operation. Four minutes, start to finish.${focusSuffix}`),
+      button(deckLink, 'Read the overview'),
       P(`If you'd like to talk through any of it live, just <a href="${cal}" style="color:${MINT_DEEP};font-weight:600;">pick a time →</a>`),
       signoff(),
     ].join(''),
@@ -169,7 +175,7 @@ export function valueNudgeEmail(lead: DemoLead): BuiltEmail {
   )
   const focusText = lead.automate ? ` We've included how that applies to ${lead.automate}.` : ''
   const text = [
-    `Hi ${name} — We distilled how we think about safe AI in banking into five arguments. The deck is short and direct.${focusText}`,
+    `Hi ${name} — We put the whole KrimOS story into eight pages, one idea per page: what it is, the validation gate, and what changes for a lending operation. Four minutes, start to finish.${focusText}`,
     deckLink,
     ``,
     `If you'd like to talk through any of it live, just pick a time: ${cal}`,
@@ -186,23 +192,27 @@ export function resourceEmail(lead: DemoLead): BuiltEmail {
   const cal = calendlyUrl()
   const res = RESOURCES[FEATURED_RESOURCE_KEY]
   const link = downloadUrl(lead.unsubscribe_token, FEATURED_RESOURCE_KEY)
-  const subject = 'The thinking behind Krim'
+  const researchLink = downloadUrl(lead.unsubscribe_token, RESEARCH_RESOURCE_KEY)
+  const subject = "RBI's draft, in the regulator's own words"
   const html = wrap(
-    'The clearest account of how we make AI safe enough to act.',
+    'The draft asks for model outputs verified prior to use. Two pages on where KrimOS stands.',
     [
-      H('The thinking behind Krim.'),
-      P(`Hi ${name} — No rush on the demo. If you'd like the deeper context, this is the clearest account we've written of how we make AI safe enough to act inside a regulated bank:`),
-      button(link, `Read: ${esc(res?.title || 'the overview')}`),
+      H('The regulator described this.'),
+      P(`Hi ${name} — RBI's draft Model Risk guidance asks institutions to verify model outputs prior to their use. That is pre-execution validation, in the regulator's own words. We mapped the draft clause by clause against KrimOS, in two pages:`),
+      button(link, `Read: ${esc(res?.title || 'the RBI alignment brief')}`),
       P(`And whenever it suits, I'd be glad to walk you through it live — <a href="${cal}" style="color:${MINT_DEEP};font-weight:600;">pick a time →</a>`),
+      P(`PS — for the deeper thinking behind the system: <a href="${researchLink}" style="color:${MINT_DEEP};font-weight:600;">The World Lending Model</a>.`),
       signoff(),
     ].join(''),
     lead.unsubscribe_token,
   )
   const text = [
-    `Hi ${name} — No rush on the demo. If you'd like the deeper context, this is the clearest account we've written of how we make AI safe enough to act inside a regulated bank:`,
+    `Hi ${name} — RBI's draft Model Risk guidance asks institutions to verify model outputs prior to their use. That is pre-execution validation, in the regulator's own words. We mapped the draft clause by clause against KrimOS, in two pages:`,
     link,
     ``,
     `And whenever it suits, I'd be glad to walk you through it live — pick a time: ${cal}`,
+    ``,
+    `PS — for the deeper thinking behind the system: ${researchLink}`,
     ``,
     SIGNOFF_TEXT,
     `Unsubscribe: ${unsubscribeUrl(lead.unsubscribe_token)}`,
