@@ -3,8 +3,7 @@
  * "Keep reading" rows on each article. Display order = newest first.
  *
  * Each post has its own page at app/insights/<slug>/page.tsx. Categories are short
- * labels (Problem / Risk / Markets / Method / Architecture). Dates are ISO,
- * spread across Jan–Jun 2026 (today is 2026-06-16), newest first.
+ * labels (Problem / Risk / Markets / Method / Architecture). Dates are ISO, newest first.
  */
 
 export type Post = {
@@ -18,6 +17,16 @@ export type Post = {
 }
 
 export const POSTS: Post[] = [
+  {
+    slug: 'the-world-model-moment',
+    title: 'The World-Model Moment',
+    dek: "AI's frontier is moving from predicting the next word to predicting the next state of a world. Orca, from Beijing, is the newest arrival. It sharpens the question Krim was built around: a lending operation is a world too. Where is its record?",
+    category: 'Architecture',
+    date: '2026-07-06',
+    readingMinutes: 7,
+    // placeholder hero — swap for the Gemini render when it lands
+    image: '/images/cinematic/architecture-lattice.jpg',
+  },
   {
     slug: 'rbi-model-risk-management-2026-ai-lending',
     title: 'RBI Has Set the Bar for AI Lending. Almost No One Can Clear It.',

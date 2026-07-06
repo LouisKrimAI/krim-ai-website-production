@@ -23,6 +23,7 @@
 - [Large Enterprise](https://www.krim.ai/enterprise) and [MSME](https://www.krim.ai/msme).
 
 ## Writing
+- [The World-Model Moment](https://www.krim.ai/insights/the-world-model-moment): AI's frontier is moving from predicting the next word to predicting the next state of a world. A lending operation is a world too — where is its record?
 - [RBI Has Set the Bar for AI Lending. Almost No One Can Clear It.](https://www.krim.ai/insights/rbi-model-risk-management-2026-ai-lending): RBI's 2026 Model Risk Management draft quietly rewrites the rules for AI in lending.
 - [The automation gap](https://www.krim.ai/insights/the-automation-gap): why the most consequential work still runs by hand.
 - [The cost of being wrong](https://www.krim.ai/insights/the-cost-of-being-wrong): what a non-compliant action costs a lender.
