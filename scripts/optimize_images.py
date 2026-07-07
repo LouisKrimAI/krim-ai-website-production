@@ -39,6 +39,7 @@ MANIFEST = [
      "src_from": "/images/harness/harness-gate.png", "max_w": 1000, "quality": 82},
 
     # Already-optimised cinematic art — record metadata only.
+    {"web": "/images/cinematic/world-model.webp"},
     {"web": "/images/cinematic/sovereignty.webp"},
     {"web": "/images/cinematic/audit.webp"},
     {"web": "/images/cinematic/credit-gap.webp"},

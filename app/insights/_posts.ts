@@ -24,8 +24,7 @@ export const POSTS: Post[] = [
     category: 'Architecture',
     date: '2026-07-06',
     readingMinutes: 7,
-    // placeholder hero — swap for the Gemini render when it lands
-    image: '/images/cinematic/architecture-lattice.jpg',
+    image: '/images/cinematic/world-model.webp',
   },
   {
     slug: 'rbi-model-risk-management-2026-ai-lending',
