@@ -3,11 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <title>KrimOS — RBI Alignment</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400;1,700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400;1,700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 @page { size: A4; margin: 0; }
-body {
+html, body {
   font-family: 'Inter', sans-serif;
   background: #555;
   -webkit-print-color-adjust: exact;
@@ -22,212 +22,227 @@ body {
   display: flex;
   flex-direction: column;
 }
+.page:last-child { page-break-after: auto; }
 
-/* PAGE TREATMENTS */
-.dark { background: #0B1220; color: #fff; }
-.dark-body {
-  display: flex; flex-direction: column;
-  height: 100%; padding: 48px;
-}
-.content { background: #F4F6FA; color: #1A2035; }
-.content-body {
-  display: flex; flex-direction: column;
-  height: 100%; padding: 48px;
-}
+/* ------- palettes ------- */
+.dark  { background: #1A1E47; color: #F2F3F9; }
+.light { background: #FAFAFA; color: #1A1E47; }
 
-/* SHARED */
-.logo-w { height: 29px; width: auto; display: block; }
-.logo-b { height: 26px; width: auto; display: block; }
-
-.eyebrow {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 9.5px;
-  font-weight: 500;
-  letter-spacing: 0.20em;
-  text-transform: uppercase;
+.inner {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 54px 64px 44px;
 }
 
-.mint-rule { display: block; width: 56px; height: 1px; background: #00FFB2; }
+/* ------- logos ------- */
+.logo { display: block; height: 60px; width: auto; align-self: flex-start; }
 
-.foot-rule-d { width: 100%; height: 1px; background: rgba(255,255,255,0.09); margin-bottom: 13px; }
-.foot-rule-l { width: 100%; height: 1px; background: rgba(26,32,53,0.09); margin-bottom: 13px; }
-
-.foot {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 8.5px;
-  letter-spacing: 0.05em;
+/* ------- head row / labels ------- */
+.pg-head {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
+  margin-bottom: 18px;
 }
-.foot-d { color: rgba(255,255,255,0.38); }
-.foot-l { color: rgba(26,32,53,0.38); }
-
-/* Glass treatment (pre-composited over #0B1220 for print robustness) */
-.glass-card {
-  background: linear-gradient(150deg, #1C2330, #111826);
-  border: 1px solid rgba(255,255,255,0.085);
-  border-top-color: rgba(255,255,255,0.22);
-  border-radius: 10px;
-  box-shadow: 0 6px 16px rgba(0,0,0,0.14), inset 0 1px 0 rgba(255,255,255,0.07);
+.doclabel {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  padding-top: 6px;
 }
+.doclabel-d { color: #5A6083; }
+.doclabel-l { color: #A8A69C; }
 
-/* PAGE 1 · DARK */
-.d-head { display: flex; justify-content: space-between; align-items: flex-start; }
-.d-head .eyebrow { color: rgba(255,255,255,0.28); margin-top: 4px; }
+.eyebrow {
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.30em;
+  text-transform: uppercase;
+  margin-bottom: 18px;
+}
+.eb-green { color: #00FF87; }
+.eb-gold  { color: #C8973B; }
 
-.d-label { color: #00FFB2; margin-top: 13px; }
-
-.d-headline {
+/* ------- headlines ------- */
+.h1 {
   font-family: 'Playfair Display', serif;
   font-weight: 700;
-  font-size: 58px;
-  line-height: 1.04;
-  color: #fff;
-  letter-spacing: -0.02em;
-  margin-top: 28px;
-  max-width: 580px;
+  letter-spacing: -0.005em;
+  line-height: 1.1;
+}
+.h1-d { color: #FFFFFF; font-size: 56px; }
+.h1-l { color: #1A1E47; font-size: 35px; line-height: 1.14; }
+
+.sub {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 17.5px;
+  line-height: 1.42;
+  margin-top: 10px;
+  color: #363C60;
 }
 
+/* ------- rules ------- */
+.rule-l { width: 100%; height: 1px; background: #EAE9E4; }
+.rule-d { width: 100%; height: 1px; background: #2E3563; }
+
+/* ------- footers ------- */
+.foot {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  margin-top: 13px;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+.foot-d { color: #5A6083; }
+.foot-l { color: #A8A69C; }
+
+/* ================= P1 · DARK ================= */
+.p1-art {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  overflow: hidden;
+}
+.p1-art img {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 60%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 60% 30%;
+  opacity: 0.19;
+}
+.p1-art::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, #1A1E47 0%, #1A1E47 40%, rgba(26, 30, 71, 0) 78%);
+}
 .d-intro {
-  font-size: 15.5px;
-  font-weight: 300;
-  line-height: 1.68;
-  color: rgba(255,255,255,0.70);
-  margin-top: 28px;
-  max-width: 550px;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.65;
+  color: #C6CBE2;
+  margin-top: 24px;
+  max-width: 620px;
 }
-.d-intro strong { font-weight: 500; color: rgba(255,255,255,0.92); }
+.d-intro strong { font-weight: 600; color: #FFFFFF; }
 
-/* Pull quote */
+/* featured pull-quote panel */
 .quote-card {
-  border-left: 3px solid #00FFB2;
-  border-top-left-radius: 0;
-  border-bottom-left-radius: 0;
-  padding: 42px 44px 38px;
-  margin-top: 48px;
+  background: #242B60;
+  border: 1.5px solid #00FF87;
+  border-radius: 6px;
+  padding: 38px 42px 34px;
+  margin-top: 34px;
 }
 .quote-text {
   font-family: 'Playfair Display', serif;
   font-weight: 400;
   font-style: italic;
-  font-size: 28px;
-  line-height: 1.50;
-  color: rgba(255,255,255,0.94);
+  font-size: 29px;
+  line-height: 1.5;
+  color: #F2F3F9;
 }
 .quote-cite {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 9px;
-  font-weight: 500;
+  font-size: 10.5px;
+  font-weight: 700;
   letter-spacing: 0.10em;
-  color: #00FFB2;
+  color: #00FF87;
   margin-top: 20px;
 }
 
-/* Mechanism blocks */
-.mech { margin-top: 46px; max-width: 570px; }
-.mech + .mech { margin-top: 30px; }
+/* mechanism blocks */
+.mechs { margin-top: 34px; }
+.mech { border-top: 1px solid #2E3563; padding: 17px 0 19px; max-width: 660px; }
 .mech-label {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 8.5px;
-  font-weight: 500;
-  letter-spacing: 0.18em;
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.30em;
   text-transform: uppercase;
-  color: #00FFB2;
-  margin-bottom: 7px;
+  color: #00FF87;
+  margin-bottom: 9px;
 }
 .mech p {
-  font-size: 14.5px;
-  font-weight: 300;
-  line-height: 1.65;
-  color: rgba(255,255,255,0.72);
-}
-.mech p strong { font-weight: 500; color: rgba(255,255,255,0.92); }
-
-/* PAGE 2 · LIGHT */
-.pg-head { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 34px; }
-.sec-label {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 9px;
-  letter-spacing: 0.17em;
-  text-transform: uppercase;
-  color: rgba(26,32,53,0.38);
-  margin-bottom: 7px;
-}
-.pg-title {
-  font-family: 'Playfair Display', serif;
-  font-weight: 700;
-  font-size: 25px;
-  line-height: 1.18;
-  color: #1A2035;
-  margin-bottom: 6px;
-}
-.pg-intro {
-  font-size: 12.5px;
+  font-size: 13px;
+  font-weight: 400;
   line-height: 1.62;
-  color: rgba(26,32,53,0.52);
-  max-width: 540px;
-  margin-bottom: 30px;
+  color: #E4E5E9;
 }
+.mech p strong { font-weight: 600; color: #FFFFFF; }
 
-/* TABLE */
-.tbl { width: 100%; border-collapse: collapse; margin-bottom: 26px; }
+/* ================= P2 · LIGHT ================= */
+.pg-intro-sub { max-width: 600px; }
+
+/* clause table */
+.tbl { width: 100%; border-collapse: collapse; margin-top: 18px; margin-bottom: 18px; }
 .tbl thead th {
-  padding: 8px 11px;
-  background: #1A2035;
-  color: #fff;
-  font-size: 8.5px;
-  font-weight: 600;
-  letter-spacing: 0.10em;
+  padding: 10px 16px 9px 14px;
+  background: #1A1E47;
+  color: #FFFFFF;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
   text-align: left;
-}
-.tbl tbody td {
-  padding: 16px 12px;
-  border-bottom: 1px solid rgba(26,32,53,0.055);
-  font-size: 12px;
-  color: rgba(26,32,53,0.72);
-  vertical-align: top;
-  line-height: 1.55;
-}
-.tbl tbody tr:nth-child(even) td { background: #F0F2F6; }
-.para-ref {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 10.5px;
-  font-weight: 500;
-  color: #006B48;
-  letter-spacing: 0.02em;
   white-space: nowrap;
 }
-.req { color: rgba(26,32,53,0.72); }
-.req strong { font-weight: 600; color: #1A2035; }
-.outcome { color: #005239; font-weight: 500; }
-.tbl tbody tr td.outcome { background: #EAF0F3; }
-
-/* NOTE */
-.draft-note {
-  border-left: 3px solid #00FFB2;
-  padding: 18px 20px 19px;
-  background: #EBF1F4;
-  border-radius: 0 2px 2px 0;
-  margin-bottom: 22px;
+.tbl tbody td {
+  padding: 11px 16px 12px 14px;
+  border-bottom: 1px solid #EAE9E4;
+  font-size: 11.5px;
+  color: #40466B;
+  vertical-align: top;
+  line-height: 1.52;
 }
-.draft-note p { font-size: 11.5px; line-height: 1.60; color: rgba(26,32,53,0.70); }
-.draft-note strong { color: #1A2035; font-weight: 600; }
+.para-ref {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-weight: 700;
+  font-size: 15px;
+  color: #C8973B;
+  white-space: nowrap;
+}
+.req { color: #40466B; }
+.req strong { font-weight: 600; color: #1A1E47; }
+.outcome { color: #00794A; font-weight: 500; }
 
-/* CTA LINE */
+/* note */
+.draft-note { max-width: 660px; margin-bottom: 6px; }
+.draft-note p { font-size: 11.5px; line-height: 1.6; color: #40466B; }
+.draft-note strong { color: #1A1E47; font-weight: 600; }
+
+/* CTA line */
 .cta-line {
-  font-size: 13.5px;
+  font-size: 12.5px;
   line-height: 1.55;
-  color: rgba(26,32,53,0.75);
-  margin-bottom: 16px;
+  color: #40466B;
+  margin-top: 12px;
 }
-.cta-line strong { color: #1A2035; font-weight: 600; }
+.cta-line strong {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-weight: 700;
+  font-size: 20px;
+  color: #1A1E47;
+  margin-right: 6px;
+}
 .cta-mail {
   font-family: 'JetBrains Mono', monospace;
   font-size: 12px;
-  font-weight: 500;
-  color: #006B48;
+  font-weight: 700;
+  color: #00794A;
   letter-spacing: 0.02em;
 }
 </style>
@@ -238,17 +253,17 @@ body {
      PAGE 1 · DARK
      ══════════════════════════════════════════════════════════ -->
 <div class="page dark">
-  <div class="dark-body">
+  <div class="p1-art"><img src="../../public/images/krimos/accent-gold.png" alt=""></div>
+  <div class="inner">
 
-    <div class="d-head">
-      <img class="logo-w" src="../../public/brand/logo/KRIM-horizontal-white.svg" alt="Krim">
-      <span class="eyebrow">RBI draft Model Risk guidance</span>
+    <div class="pg-head">
+      <img class="logo" src="../../public/brand/logo/KRIM-stacked-mint.svg" alt="Krim">
+      <span class="doclabel doclabel-d">RBI draft Model Risk guidance</span>
     </div>
 
-    <div class="mint-rule" style="margin-top: 56px;"></div>
-    <div class="eyebrow d-label">Regulatory alignment</div>
+    <div class="eyebrow eb-green">Regulatory alignment</div>
 
-    <h1 class="d-headline">The regulator<br>described this.</h1>
+    <h1 class="h1 h1-d">The regulator<br>described this.</h1>
 
     <p class="d-intro">
       On 24 June 2026 the Reserve Bank of India published its draft
@@ -256,36 +271,39 @@ body {
       almost word for word, the mechanism KrimOS is built around.
     </p>
 
-    <div class="quote-card glass-card">
+    <div class="quote-card">
       <p class="quote-text">&ldquo;&hellip;mechanisms to verify and corroborate model outputs prior to their use&hellip;&rdquo;</p>
       <div class="quote-cite">Para 54(1)(ii) &nbsp;&middot;&nbsp; RBI draft Model Risk Management guidance &nbsp;&middot;&nbsp; 24 June 2026</div>
     </div>
 
-    <div class="mech">
-      <div class="mech-label">The mechanism</div>
-      <p>A pre-execution validation gate is exactly that mechanism: it verifies
-      every output <strong>before the system acts on it</strong>. That is how KrimOS
-      is built: every decision an agent proposes passes through Krim-Ny&#257;ya before
-      the system acts on it.</p>
-    </div>
+    <div class="mechs">
+      <div class="mech">
+        <div class="mech-label">The mechanism</div>
+        <p>A pre-execution validation gate is exactly that mechanism: it verifies
+        every output <strong>before the system acts on it</strong>. That is how KrimOS
+        is built: every decision an agent proposes passes through Krim-Ny&#257;ya before
+        the system acts on it.</p>
+      </div>
 
-    <div class="mech">
-      <div class="mech-label">The verdict</div>
-      <p>Krim-Ny&#257;ya returns a <strong>pass, amber or fail verdict</strong> on every
-      decision, with the reason recorded before any action executes. A decision that
-      fails validation never reaches a customer, a core system or a ledger.</p>
-    </div>
+      <div class="mech">
+        <div class="mech-label">The verdict</div>
+        <p>Krim-Ny&#257;ya returns a <strong>pass, amber or fail verdict</strong> on every
+        decision, with the reason recorded before any action executes. A decision that
+        fails validation never reaches a customer, a core system or a ledger.</p>
+      </div>
 
-    <div class="mech">
-      <div class="mech-label">The trail</div>
-      <p>Every gated decision leaves a time-stamped record of what was proposed, what
-      was checked and why the verdict landed as it did. The trail is
-      <strong>built for inspection</strong> from the first transaction onwards.</p>
+      <div class="mech">
+        <div class="mech-label">The trail</div>
+        <p>Every gated decision leaves a time-stamped record of what was proposed, what
+        was checked and why the verdict landed as it did. The trail is
+        <strong>built for inspection</strong> from the first transaction onwards.</p>
+      </div>
     </div>
 
     <div style="flex: 1;"></div>
 
-    <div class="foot-rule-d"></div>
+    <div class="rule-d"></div>
+    <div style="font-size:9px; font-weight:700; letter-spacing:0.28em; text-transform:uppercase; color:#5A6083; margin-bottom:14px;">Sovereign superintelligence for safe autonomous operations</div>
     <div class="foot foot-d">
       <span>KrimOS — RBI Alignment</span>
       <span>krim.ai</span>
@@ -298,23 +316,23 @@ body {
 <!-- ══════════════════════════════════════════════════════════
      PAGE 2 · LIGHT
      ══════════════════════════════════════════════════════════ -->
-<div class="page content">
-  <div class="content-body">
+<div class="page light">
+  <div class="inner">
 
     <div class="pg-head">
-      <img class="logo-b" src="../../public/brand/logo/KRIM-horizontal-black.svg" alt="Krim">
-      <span class="eyebrow" style="color: rgba(26,32,53,0.28); margin-top: 4px;">Clause coverage</span>
+      <img class="logo" src="../../public/brand/logo/KRIM-stacked-black.svg" alt="Krim">
+      <span class="doclabel doclabel-l">Clause coverage</span>
     </div>
 
-    <div class="sec-label">Clause by clause</div>
-    <h2 class="pg-title">What the draft requires, and where KrimOS answers.</h2>
-    <p class="pg-intro">Eight requirements from the draft, read against the architecture. Each requirement maps to a mechanism that is already part of how the system works.</p>
+    <div class="eyebrow eb-gold">Clause by clause</div>
+    <h2 class="h1 h1-l" style="max-width:660px;">What the draft requires, and where KrimOS answers.</h2>
+    <p class="sub pg-intro-sub">Eight requirements from the draft, read against the architecture. Each requirement maps to a mechanism that is already part of how the system works.</p>
 
     <table class="tbl">
       <thead>
         <tr>
-          <th style="width: 13%;">The draft says</th>
-          <th style="width: 43%;">What it requires</th>
+          <th style="width: 17%;">The draft says</th>
+          <th style="width: 38%;">What it requires</th>
           <th>Where KrimOS answers</th>
         </tr>
       </thead>
@@ -370,7 +388,7 @@ body {
 
     <div style="flex: 1;"></div>
 
-    <div class="foot-rule-l"></div>
+    <div class="rule-l"></div>
     <div class="foot foot-l">
       <span>Patna · Bangalore · New York</span>
       <span>Confidential — for discussion only</span>

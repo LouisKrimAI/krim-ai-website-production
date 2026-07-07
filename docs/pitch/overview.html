@@ -3,11 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <title>KrimOS — Overview</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400;1,700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lora:ital,wght@0,400;0,600;1,400;1,600&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 @page { size: A4; margin: 0; }
-body {
+html, body {
   font-family: 'Inter', sans-serif;
   background: #555;
   -webkit-print-color-adjust: exact;
@@ -22,455 +22,439 @@ body {
   display: flex;
   flex-direction: column;
 }
+.page:last-child { page-break-after: auto; }
 
-/* DARK PAGES */
-.dark { background: #0B1220; color: #fff; }
-.dark-inner { display: flex; flex-direction: column; height: 100%; padding: 48px; }
+/* ------- palettes ------- */
+.dark  { background: #1A1E47; color: #F2F3F9; }
+.light { background: #FAFAFA; color: #1A1E47; }
 
-/* LIGHT PAGES */
-.light { background: #F4F6FA; color: #1A2035; }
-.light-inner { display: flex; flex-direction: column; height: 100%; padding: 48px; }
+.inner {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 54px 64px 44px;
+}
 
-/* SHARED */
-.logo-w { height: 29px; width: auto; display: block; }
-.logo-b { height: 26px; width: auto; display: block; }
+/* ------- logos ------- */
+.logo { display: block; height: 58px; width: auto; margin-bottom: 28px; align-self: flex-start; }
 
+/* ------- eyebrows / labels ------- */
 .eyebrow {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 9.5px;
-  font-weight: 500;
-  letter-spacing: 0.20em;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.30em;
   text-transform: uppercase;
+  margin-bottom: 16px;
 }
-.eyebrow-mint { color: #00FFB2; }
-.eyebrow-dim { color: rgba(26,32,53,0.38); }
+.eb-green { color: #00FF87; }
+.eb-gold  { color: #C8973B; }
 
-.mint-rule { display: block; width: 56px; height: 1px; background: #00FFB2; }
-
-.pg-head-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  margin-bottom: 36px;
-}
-
-.sec-label {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 9px;
-  letter-spacing: 0.17em;
+.seclabel {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.30em;
   text-transform: uppercase;
-  color: rgba(26,32,53,0.38);
-  margin-bottom: 8px;
-}
-.sec-label-d {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 9px;
-  letter-spacing: 0.17em;
-  text-transform: uppercase;
-  color: rgba(255,255,255,0.38);
-  margin-bottom: 8px;
+  color: #00FF87;
 }
 
-.pg-title-d {
+/* ------- headlines ------- */
+.h1 {
   font-family: 'Playfair Display', serif;
   font-weight: 700;
-  font-size: 46px;
-  line-height: 1.10;
-  letter-spacing: -0.01em;
-  color: #fff;
-  margin-bottom: 12px;
+  font-size: 44px;
+  line-height: 1.12;
+  letter-spacing: -0.005em;
 }
-.pg-title-l {
-  font-family: 'Playfair Display', serif;
-  font-weight: 700;
-  font-size: 46px;
-  line-height: 1.10;
-  letter-spacing: -0.01em;
-  color: #1A2035;
-  margin-bottom: 12px;
+.h1-l { color: #1A1E47; }
+.h1-d { color: #FFFFFF; }
+
+.sub {
+  font-family: 'Lora', serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 19px;
+  line-height: 1.45;
+  margin-top: 12px;
 }
-.pg-intro-d {
-  font-size: 15px;
-  line-height: 1.62;
-  color: rgba(255,255,255,0.55);
-  max-width: 600px;
-  margin-bottom: 28px;
+.sub-l { color: #363C60; }
+.sub-d { color: #C6CBE2; }
+
+/* ------- rules ------- */
+.rule-l { width: 100%; height: 1px; background: #EAE9E4; }
+.rule-d { width: 100%; height: 1px; background: #2E3563; }
+
+/* ------- solid panels ------- */
+.panel {
+  background: #202557;
+  border: 1px solid #2B3266;
+  border-radius: 6px;
 }
-.pg-intro-l {
-  font-size: 15px;
-  line-height: 1.62;
-  color: rgba(26,32,53,0.55);
-  max-width: 600px;
-  margin-bottom: 28px;
+.panel.hot {
+  border: 1.5px solid #00FF87;
+  background: #242B60;
 }
 
-/* Glass treatment for dark-page cards */
-.glass-card {
-  /* pre-composited over #0B1220 for print robustness (was rgba white 0.07→0.025) */
-  background: linear-gradient(150deg, #1C2330, #111826);
-  border: 1px solid rgba(255,255,255,0.085);
-  border-top-color: rgba(255,255,255,0.22);
-  border-radius: 10px;
-  box-shadow: 0 6px 16px rgba(0,0,0,0.14), inset 0 1px 0 rgba(255,255,255,0.07);
-}
-
-.foot-rule-d { width: 100%; height: 1px; background: rgba(255,255,255,0.09); margin-bottom: 13px; }
-.foot-rule-l { width: 100%; height: 1px; background: rgba(26,32,53,0.09); margin-bottom: 13px; }
+/* ------- footer ------- */
 .foot {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 8.5px;
-  letter-spacing: 0.05em;
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  margin-top: 12px;
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: baseline;
 }
-.foot-d { color: rgba(255,255,255,0.38); }
-.foot-l { color: rgba(26,32,53,0.38); }
+.foot-l { color: #A8A69C; }
+.foot-d { color: #5A6083; }
 
-
-/* ── P1: COVER ── */
-.cover-bg {
+/* ================= P1 COVER ================= */
+.cover-art {
   position: absolute;
-  top: 0; right: 0;
-  width: 65%; height: 100%;
-  object-fit: cover;
-  object-position: center left;
-  opacity: 0.13;
-  filter: grayscale(1);
-  z-index: 0;
-}
-.cover-fade {
-  position: absolute;
-  top: 0; left: 0;
-  width: 58%; height: 100%;
-  background: linear-gradient(to right, #0B1220 62%, transparent);
+  inset: 0;
   z-index: 1;
+  overflow: hidden;
 }
-.cover-inner {
-  position: relative; z-index: 2;
-  display: flex; flex-direction: column;
-  height: 100%; padding: 48px;
+.cover-art img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 62% 50%;
+  filter: brightness(0.55) saturate(0.9);
 }
-
+.cover-art::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(21, 24, 62, 0.58);
+}
+.cover-inner { padding: 66px 78px 56px; }
+.cover-logo { height: 90px; margin-bottom: 56px; }
+.cover-eyebrow {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.34em;
+  text-transform: uppercase;
+  color: #00FF87;
+  margin-bottom: 26px;
+}
 .c-headline {
   font-family: 'Playfair Display', serif;
   font-weight: 700;
-  font-size: 76px;
-  line-height: 1.00;
-  color: #fff;
-  letter-spacing: -0.025em;
-  margin-top: 22px;
-  max-width: 440px;
-}
-.c-pos {
-  font-family: 'Playfair Display', serif;
-  font-weight: 400;
-  font-style: italic;
-  font-size: 22px;
-  line-height: 1.40;
-  color: rgba(255,255,255,0.58);
-  margin-top: 12px;
-  max-width: 400px;
+  font-size: 74px;
+  line-height: 1.02;
+  color: #FFFFFF;
+  letter-spacing: -0.005em;
+  margin-bottom: 26px;
 }
 .c-desc {
-  font-size: 13.5px;
-  font-weight: 300;
-  line-height: 1.65;
-  color: rgba(255,255,255,0.65);
-  margin-top: 28px;
-  max-width: 400px;
+  font-family: 'Lora', serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16.5px;
+  line-height: 1.5;
+  color: #C6CBE2;
+  margin-top: 24px;
+  max-width: 480px;
 }
-.c-points { list-style: none; display: flex; flex-direction: column; gap: 10px; max-width: 400px; margin-top: 32px; }
-.c-points li {
-  font-size: 12.5px;
-  line-height: 1.58;
-  color: rgba(255,255,255,0.75);
-  padding-left: 20px;
-  position: relative;
-}
-.c-points li::before {
-  content: '';
-  position: absolute; left: 0; top: 7px;
-  width: 5px; height: 5px;
-  border-radius: 50%; background: #00FFB2;
-}
-.c-label-cover { color: #00FFB2; margin-top: 16px; }
-
-.cap-chips { display: flex; gap: 12px; margin-top: 52px; max-width: 460px; }
-.chip { flex: 1; padding: 17px 18px 18px; }
+.cap-chips { display: flex; gap: 12px; }
+.chip { flex: 1; padding: 16px 18px 15px; }
 .chip-role {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 8px;
-  font-weight: 500;
+  font-size: 9px;
+  font-weight: 700;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: #00FFB2;
-  margin-bottom: 6px;
+  color: #00FF87;
+  margin-bottom: 7px;
 }
 .chip-name {
-  font-size: 14px;
-  font-weight: 500;
-  color: rgba(255,255,255,0.90);
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.25;
+  color: #FFFFFF;
+}
+.cover-foot {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-top: 36px;
+}
+.cover-cities {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: #EDEFF8;
+}
+.cover-mail {
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 700;
+  font-size: 13px;
+  color: #00FF87;
 }
 
-
-/* ── P2: CHALLENGE (dark) ── */
+/* ================= P2 CHALLENGE ================= */
 .challenge-cards {
   display: flex;
   flex-direction: column;
-  gap: 22px;
-  margin-bottom: 40px;
+  gap: 14px;
+  margin-top: 14px;
 }
 .ch-card {
   display: flex;
-  gap: 24px;
-  padding: 30px 32px;
+  gap: 26px;
+  padding: 24px 30px;
 }
 .ch-n {
   font-family: 'Playfair Display', serif;
   font-weight: 700;
-  font-size: 40px;
-  color: rgba(255,255,255,0.12);
+  font-size: 32px;
+  color: #C8973B;
   line-height: 1;
-  min-width: 44px;
-  margin-top: 2px;
+  min-width: 46px;
+  padding-top: 3px;
 }
 .ch-title {
   font-family: 'Playfair Display', serif;
   font-weight: 700;
-  font-size: 17px;
-  color: #fff;
-  margin-bottom: 6px;
+  font-size: 19.5px;
+  color: #FFFFFF;
+  margin-bottom: 8px;
 }
 .ch-body {
-  font-size: 13px;
-  line-height: 1.62;
-  color: rgba(255,255,255,0.60);
-  max-width: 620px;
+  font-size: 12.5px;
+  line-height: 1.6;
+  color: #C6CBE2;
+  max-width: 600px;
 }
-.ch-body em { font-style: normal; color: #fff; font-weight: 500; }
+.ch-body em { font-style: normal; color: #F2F3F9; font-weight: 600; }
 
 .challenge-close {
-  padding: 30px 32px;
+  padding: 26px 32px;
 }
 .challenge-close p {
-  font-family: 'Playfair Display', serif;
-  font-weight: 700;
-  font-size: 19px;
-  line-height: 1.45;
-  color: #fff;
+  font-family: 'Lora', serif;
+  font-style: italic;
+  font-weight: 600;
+  font-size: 26px;
+  line-height: 1.3;
+  color: #FFFFFF;
 }
-.challenge-close p span { color: #00FFB2; }
+.challenge-close p span { color: #00FF87; }
 
-
-/* ── P3: ARCHITECTURE ── */
+/* ================= P3 ARCHITECTURE ================= */
 .arch-stack {
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  margin-bottom: 20px;
+  gap: 10px;
+  margin-top: 14px;
 }
 .arch-layer {
-  display: flex;
+  display: grid;
+  grid-template-columns: 148px 188px 1fr;
+  column-gap: 20px;
   align-items: center;
-  justify-content: space-between;
-  padding: 14px 22px;
-  position: relative;
+  padding: 15px 24px;
 }
-.arch-layer.featured {
-  border-color: #00FFB2;
-  background: linear-gradient(150deg, #0A2A2F, #0B1924);
+.layer-tag {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: #00FF87;
+  line-height: 1.6;
 }
-.arch-layer.gold-layer {
-  border-color: rgba(200,169,110,0.45);
-  background: linear-gradient(150deg, #1E2128, #111722);
-}
-.layer-left { display: flex; flex-direction: column; gap: 3px; }
-.layer-name {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 10px;
-  font-weight: 500;
-  letter-spacing: 0.14em;
-  color: rgba(255,255,255,0.42);
-}
-.layer-name.mint { color: #00FFB2; }
-.layer-name.gold { color: #C8A96E; }
+.layer-tag.gold { color: #C8973B; }
 .layer-title {
   font-family: 'Playfair Display', serif;
   font-weight: 700;
-  font-size: 19px;
-  color: #fff;
+  font-size: 20px;
+  line-height: 1.15;
+  color: #FFFFFF;
 }
 .layer-desc {
   font-size: 12px;
-  color: rgba(255,255,255,0.55);
   line-height: 1.5;
-  max-width: 420px;
-  margin-top: 3px;
+  color: #8A94A9;
 }
-.layer-right {
-  font-size: 11px;
-  color: rgba(255,255,255,0.30);
-  text-align: right;
-  white-space: nowrap;
-  font-family: 'JetBrains Mono', monospace;
-  letter-spacing: 0.05em;
+.arch-layer.hot .layer-desc { color: #E4E5E9; }
+.layer-meta {
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  line-height: 1.7;
+  color: #5A6083;
+  margin-top: 5px;
 }
-.layer-right.mint { color: rgba(0,255,178,0.55); }
+.arch-layer.gold-layer .layer-meta { color: #C8973B; }
 
 .arch-note {
-  padding: 14px 18px;
-  border: 1px solid rgba(255,255,255,0.10);
-  border-radius: 10px;
   font-size: 12px;
-  line-height: 1.58;
-  color: rgba(255,255,255,0.50);
-  max-width: 640px;
+  line-height: 1.62;
+  color: #8A94A9;
+  margin-top: 18px;
+  max-width: 560px;
 }
-.arch-note strong { color: rgba(255,255,255,0.85); font-weight: 500; }
+.arch-note strong { color: #E4E5E9; font-weight: 700; }
 
-
-/* ── P4: LIFECYCLE + IMPACT ── */
-.lc-table { width: 100%; border-collapse: collapse; margin-bottom: 28px; }
-.lc-table thead th {
-  padding: 9px 12px;
-  background: #1A2035;
-  color: #fff;
-  font-size: 9px;
-  font-weight: 600;
-  letter-spacing: 0.10em;
+/* ================= P4 LIFECYCLE + IMPACT ================= */
+.sec-head {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.30em;
   text-transform: uppercase;
+  color: #C8973B;
+  margin-bottom: 12px;
+}
+.lc-table { width: 100%; border-collapse: collapse; }
+.lc-table thead th {
+  padding: 0 12px 9px 0;
+  font-size: 8.5px;
+  font-weight: 700;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: #C8973B;
   text-align: left;
+  border-bottom: 1px solid #EAE9E4;
 }
-.lc-table thead th:first-child { width: 20%; }
+.lc-table thead th:first-child { width: 17%; }
 .lc-table tbody td {
-  padding: 9px 12px;
-  border-bottom: 1px solid rgba(26,32,53,0.055);
+  padding: 11px 12px 12px 0;
+  border-bottom: 1px solid #EAE9E4;
   font-size: 11.5px;
-  color: rgba(26,32,53,0.70);
+  color: #40466B;
   vertical-align: top;
-  line-height: 1.50;
+  line-height: 1.5;
 }
-.lc-table tbody tr:nth-child(even) td { background: #F0F2F6; }
-.stage-name-cell { font-weight: 600; color: #1A2035; font-size: 11px; }
-.stage-krim { color: #005239; }
+.stage-name-cell {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: 14px;
+  color: #C8973B;
+}
+.stage-krim { color: #00794A; }
 
 .impact-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 14px;
-  margin-bottom: 18px;
 }
 .impact-card {
-  padding: 24px 28px;
-  background: #fff;
-  border: 1px solid rgba(26,32,53,0.08);
-  border-radius: 10px;
-  border-left: 3px solid #006B48;
-  box-shadow: 0 4px 12px rgba(26,32,53,0.03);
+  padding: 19px 24px 18px;
+  background: #FFFFFF;
+  border: 1px solid #EAE9E4;
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(26, 30, 71, 0.05);
 }
 .impact-label {
-  font-family: 'JetBrains Mono', monospace;
   font-size: 8.5px;
-  letter-spacing: 0.12em;
-  color: #006B48;
+  font-weight: 700;
+  letter-spacing: 0.24em;
   text-transform: uppercase;
-  margin-bottom: 6px;
+  color: #00794A;
+  margin-bottom: 8px;
 }
 .impact-claim {
   font-family: 'Playfair Display', serif;
   font-weight: 700;
-  font-size: 16px;
-  color: #1A2035;
+  font-size: 16.5px;
+  color: #1A1E47;
   line-height: 1.25;
-  min-height: 40px;
-  margin-bottom: 5px;
+  margin-bottom: 7px;
 }
 .impact-detail {
   font-size: 11.5px;
-  color: rgba(26,32,53,0.55);
+  color: #40466B;
   line-height: 1.55;
 }
 
-
-/* ── P5: PATH ── */
-.path-steps {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  margin-bottom: 24px;
+/* ================= P5 PATH ================= */
+.path-rows { margin-top: 10px; }
+.path-row {
+  display: grid;
+  grid-template-columns: 165px 1fr;
+  padding: 19px 0 21px;
+  border-top: 1px solid #2E3563;
 }
-.path-step {
-  display: flex;
-  gap: 20px;
-  padding: 20px 24px;
-}
-.path-step.active {
-  border-color: rgba(0,255,178,0.45);
-  background: linear-gradient(150deg, #0A272D, #0B1924);
-}
-.step-num {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 11px;
-  font-weight: 500;
-  color: #00FFB2;
-  white-space: nowrap;
-  min-width: 70px;
-  padding-top: 3px;
-}
-.step-body { flex: 1; }
-.step-title {
+.path-row.last { border-bottom: 1px solid #2E3563; }
+.path-time {
   font-family: 'Playfair Display', serif;
   font-weight: 700;
-  font-size: 17px;
-  color: #fff;
-  margin-bottom: 6px;
+  font-size: 32px;
+  line-height: 1.1;
+  color: #00FF87;
+  padding-right: 16px;
 }
-.step-detail {
+.path-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: #FFFFFF;
+  margin-bottom: 8px;
+  padding-top: 7px;
+}
+.path-b {
   font-size: 12.5px;
-  line-height: 1.58;
-  color: rgba(255,255,255,0.55);
+  line-height: 1.6;
+  color: #C6CBE2;
+  max-width: 520px;
 }
-.step-detail em { font-style: normal; color: rgba(255,255,255,0.80); }
+.path-b em { font-style: normal; color: #F2F3F9; font-weight: 500; }
 
-.path-reg {
-  padding: 14px 18px;
-  border-left: 3px solid #00FFB2;
-  background: #0B1B26;
-  margin-bottom: 24px;
-  border-radius: 0 10px 10px 0;
+.notes-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 12px;
+  margin-top: 20px;
 }
-.path-reg p { font-size: 12px; line-height: 1.60; color: rgba(255,255,255,0.55); }
-.path-reg strong { color: rgba(255,255,255,0.85); font-weight: 500; }
+.note-panel { padding: 17px 22px 16px; }
+.note-panel p { font-size: 11.5px; line-height: 1.58; color: #C6CBE2; }
+.note-panel strong { color: #F2F3F9; font-weight: 600; }
 
-.cta-block {
-  padding: 26px 30px;
+.cta-row {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-end;
+  gap: 24px;
 }
 .cta-text {
   font-family: 'Playfair Display', serif;
   font-weight: 700;
-  font-size: 20px;
-  color: #fff;
-  line-height: 1.25;
+  font-size: 27px;
+  color: #00FF87;
+  line-height: 1.2;
 }
-.cta-contact {
-  text-align: right;
+.cta-sub {
+  font-family: 'Lora', serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 1.5;
+  color: #C6CBE2;
+  margin-top: 9px;
+  max-width: 430px;
 }
+.cta-contact { text-align: right; }
 .cta-contact .email {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 13px;
-  color: #00FFB2;
+  font-size: 14px;
+  font-weight: 700;
+  color: #FFFFFF;
   letter-spacing: 0.03em;
 }
-.cta-contact .sub {
-  font-size: 11px;
-  color: rgba(255,255,255,0.38);
-  margin-top: 3px;
+.cta-contact .sub-url {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9.5px;
+  color: #8A94A9;
+  letter-spacing: 0.06em;
+  margin-top: 6px;
 }
-
 </style>
 </head>
 <body>
@@ -480,52 +464,41 @@ body {
      PAGE 1  ·  COVER
      ══════════════════════════════════════════════════ -->
 <div class="page dark">
-  <img class="cover-bg" src="../../public/images/krimos/neural-stack.jpg" alt="">
-  <div class="cover-fade"></div>
-  <div class="cover-inner">
+  <div class="cover-art"><img src="../../public/images/krimos/layers-clear.png" alt=""></div>
+  <div class="inner cover-inner">
 
-    <img class="logo-w" src="../../public/brand/logo/KRIM-horizontal-white.svg" alt="Krim">
+    <img class="logo cover-logo" src="../../public/brand/logo/KRIM-stacked-mint.svg" alt="Krim">
 
-    <div class="mint-rule" style="margin-top: 40px;"></div>
-    <div class="eyebrow c-label-cover" style="margin-top: 13px;">KrimOS Overview</div>
+    <div class="cover-eyebrow">KrimOS Overview</div>
 
-    <h1 class="c-headline">The intelligence<br>runtime for<br>lending.</h1>
+    <h1 class="c-headline" style="font-size:66px;">The compliant path<br>to <em style="font-family:'Lora',serif; font-style:italic; font-weight:600; color:#00FF87;">AI adoption</em>.</h1>
 
-    <p class="c-pos">Validated before it acts.<br>Smarter after it acts.</p>
-
-    <p class="c-desc">
-      KrimOS runs, validates, and learns across the whole credit operation, for institutions that need to move faster and prove it, without rebuilding their stack.
+    <p class="c-desc" style="margin-top:20px; max-width:560px; font-size:17px;">
+      KrimOS, the agent-native lending stack that lets a regulated lender run autonomous customer and enterprise operations, end to end, and discharge its RBI model-risk obligations by architecture.
     </p>
 
 
-    <ul class="c-points">
-      <li>Full-lifecycle coverage: origination through closure in one system</li>
-      <li>Krim-Nyāya validation gate: every agent decision validated before it acts</li>
-      <li>Kovida — the world lending model — learns from every transaction it processes</li>
-      <li>Deployable on-premise, in a sovereign cloud, or as managed infrastructure</li>
-    </ul>
+    <div style="flex: 1;"></div>
 
     <div class="cap-chips">
-      <div class="chip glass-card">
+      <div class="chip panel">
         <div class="chip-role">Kriya</div>
         <div class="chip-name">Runs every workflow</div>
       </div>
-      <div class="chip glass-card">
+      <div class="chip panel">
         <div class="chip-role">Krim-Nyāya</div>
         <div class="chip-name">Validates every decision</div>
       </div>
-      <div class="chip glass-card">
+      <div class="chip panel">
         <div class="chip-role">Kovida</div>
         <div class="chip-name">Learns from every loan</div>
       </div>
     </div>
 
-    <div style="flex: 1;"></div>
-
-    <div class="foot-rule-d"></div>
-    <div class="foot foot-d">
-      <span>Patna · Bangalore · New York</span>
-      <span>sales@krim.ai</span>
+    <div style="font-size:10px; font-weight:700; letter-spacing:0.28em; text-transform:uppercase; color:#5A6083; margin:30px 0 16px;">Sovereign superintelligence for safe autonomous operations</div>
+    <div class="cover-foot">
+      <span class="cover-cities">Patna · Bangalore · New York</span>
+      <span class="cover-mail">sales@krim.ai</span>
     </div>
 
   </div>
@@ -536,33 +509,33 @@ body {
      PAGE 2  ·  THE CHALLENGE
      ══════════════════════════════════════════════════ -->
 <div class="page dark">
-  <div class="dark-inner">
+  <div class="inner">
 
-    <div class="pg-head-row">
-      <img class="logo-w" src="../../public/brand/logo/KRIM-horizontal-white.svg" alt="Krim">
-      <span class="eyebrow eyebrow-mint" style="margin-top: 4px;">The challenge</span>
-    </div>
+    <img class="logo" src="../../public/brand/logo/KRIM-stacked-mint.svg" alt="Krim">
+    <div class="eyebrow eb-green">The challenge</div>
 
-    <div class="sec-label-d">The gap is structural</div>
-    <h2 class="pg-title-d">Why AI stalls in lending.</h2>
-    <p class="pg-intro-d" style="margin-bottom: 36px;">You are told to adopt AI, and you answer for every outcome it produces. Most tools make that tension worse.</p>
+    <h2 class="h1 h1-d">Why AI stalls in lending.</h2>
+    <p class="sub sub-d" style="max-width: 540px;">You are told to adopt AI, and you answer for every outcome it produces. Most tools make that tension worse.</p>
+
+    <div style="height: 26px;"></div>
+    <div class="seclabel">The gap is structural</div>
 
     <div class="challenge-cards">
-      <div class="ch-card glass-card">
+      <div class="ch-card panel">
         <div class="ch-n">1</div>
         <div>
           <div class="ch-title">Fragmented operations</div>
           <p class="ch-body">Credit runs end to end. <em>AI tools don&rsquo;t.</em> Each team buys a point solution: a document tool here, a scoring model there. The lifecycle breaks at every handoff, and no one sees the whole picture.</p>
         </div>
       </div>
-      <div class="ch-card glass-card">
+      <div class="ch-card panel">
         <div class="ch-n">2</div>
         <div>
           <div class="ch-title">AI that acts without accountability</div>
           <p class="ch-body">Most AI systems are fast, sometimes confidently wrong, and unable to show their reasoning: generative AI hallucinates, and nothing in its architecture catches it. In a regulated lending environment, that is not acceptable. <em>&ldquo;The model said so&rdquo; won&rsquo;t survive an inspection.</em></p>
         </div>
       </div>
-      <div class="ch-card glass-card">
+      <div class="ch-card panel">
         <div class="ch-n">3</div>
         <div>
           <div class="ch-title">Cloud AI with no sovereignty</div>
@@ -571,13 +544,14 @@ body {
       </div>
     </div>
 
-    <div class="challenge-close glass-card">
+    <div style="flex: 1;"></div>
+
+    <div class="challenge-close panel hot">
       <p><span>KrimOS</span> was built to solve all three at once.</p>
     </div>
 
-    <div style="flex: 1;"></div>
-
-    <div class="foot-rule-d"></div>
+    <div style="height: 18px;"></div>
+    <div class="rule-d"></div>
     <div class="foot foot-d">
       <span>KrimOS — Overview</span>
       <span>krim.ai</span>
@@ -591,62 +565,62 @@ body {
      PAGE 3  ·  ARCHITECTURE
      ══════════════════════════════════════════════════ -->
 <div class="page dark">
-  <div class="dark-inner">
+  <div class="inner">
 
-    <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 32px;">
-      <img class="logo-w" src="../../public/brand/logo/KRIM-horizontal-white.svg" alt="Krim">
-      <span class="eyebrow eyebrow-mint" style="margin-top: 4px;">Architecture</span>
-    </div>
+    <img class="logo" src="../../public/brand/logo/KRIM-stacked-mint.svg" alt="Krim">
+    <div class="eyebrow eb-green">Architecture</div>
 
-    <div class="sec-label-d">From model foundation to customer surface</div>
-    <h2 class="pg-title-d" style="margin-bottom: 10px;">Built to run credit<br>end to end.</h2>
-    <p class="pg-intro-d" style="margin-bottom: 24px;">Together, five layers form a complete intelligence stack for the whole credit operation.</p>
+    <h2 class="h1 h1-d">Built to run credit<br>end to end.</h2>
+    <p class="sub sub-d" style="max-width: 540px;">Together, five layers form a complete intelligence stack for the whole credit operation.</p>
+
+    <div style="height: 24px;"></div>
+    <div class="seclabel">From model foundation to customer surface</div>
 
     <div class="arch-stack">
 
-      <div class="arch-layer glass-card">
-        <div class="layer-left">
-          <div class="layer-name">SURFACES</div>
-          <div class="layer-title">Krimkar, Kupa &amp; Kula</div>
+      <div class="arch-layer panel">
+        <div class="layer-tag">SURFACES</div>
+        <div class="layer-title">Krimkar, Kupa &amp; Kula</div>
+        <div>
           <div class="layer-desc">Customer-facing channels (Krimkar), the command interface (Kupa), and Kula, the copilot your staff query in plain English.</div>
+          <div class="layer-meta">API · web · mobile · voice</div>
         </div>
-        <div class="layer-right">API · web · mobile · voice</div>
       </div>
 
-      <div class="arch-layer glass-card">
-        <div class="layer-left">
-          <div class="layer-name">AUTONOMOUS CO-WORKERS</div>
-          <div class="layer-title">Karta</div>
+      <div class="arch-layer panel">
+        <div class="layer-tag">AUTONOMOUS CO-WORKERS</div>
+        <div class="layer-title">Karta</div>
+        <div>
           <div class="layer-desc">Eight specialist agents across document, risk, decisioning, collections, servicing, audit, and voice.</div>
+          <div class="layer-meta">Document · Risk · Decisioning<br>Collections · Servicing · Audit · Voice</div>
         </div>
-        <div class="layer-right">Document · Risk · Decisioning<br>Collections · Servicing · Audit · Voice</div>
       </div>
 
-      <div class="arch-layer glass-card featured">
-        <div class="layer-left">
-          <div class="layer-name mint">INTELLIGENCE RUNTIME &amp; VALIDATION</div>
-          <div class="layer-title">Kendra &amp; Krim-Nyāya</div>
+      <div class="arch-layer panel hot">
+        <div class="layer-tag">INTELLIGENCE RUNTIME &amp; VALIDATION</div>
+        <div class="layer-title">Kendra &amp; Krim-Nyāya</div>
+        <div>
           <div class="layer-desc">The orchestration engine and validation gate. Every decision passes through Krim-Nyāya, returning a pass, amber or fail verdict and the reason, before execution.</div>
+          <div class="layer-meta">pass · amber · fail<br>with traceable reason</div>
         </div>
-        <div class="layer-right mint">pass · amber · fail<br>with traceable reason</div>
       </div>
 
-      <div class="arch-layer glass-card">
-        <div class="layer-left">
-          <div class="layer-name">INTELLIGENCE PRIMITIVES</div>
-          <div class="layer-title">Kriya</div>
+      <div class="arch-layer panel">
+        <div class="layer-tag">INTELLIGENCE PRIMITIVES</div>
+        <div class="layer-title">Kriya</div>
+        <div>
           <div class="layer-desc">500+ compliance-encoded, credit-native actions: the vocabulary every workflow is composed from.</div>
+          <div class="layer-meta">Docs · Scoring · Workflow<br>Entities · Compliance</div>
         </div>
-        <div class="layer-right">Docs · Scoring · Workflow<br>Entities · Compliance</div>
       </div>
 
-      <div class="arch-layer glass-card gold-layer">
-        <div class="layer-left">
-          <div class="layer-name gold">WORLD LENDING MODEL</div>
-          <div class="layer-title">Kovida</div>
+      <div class="arch-layer panel gold-layer">
+        <div class="layer-tag gold">WORLD LENDING MODEL</div>
+        <div class="layer-title">Kovida</div>
+        <div>
           <div class="layer-desc">The model foundation. It learns continuously from your lending data, understanding your portfolio more precisely the longer it runs.</div>
+          <div class="layer-meta">learns · adapts · improves</div>
         </div>
-        <div class="layer-right" style="color: rgba(200,169,110,0.55);">learns · adapts · improves</div>
       </div>
 
     </div>
@@ -657,7 +631,7 @@ body {
 
     <div style="flex: 1;"></div>
 
-    <div class="foot-rule-d"></div>
+    <div class="rule-d"></div>
     <div class="foot foot-d">
       <span>KrimOS — Overview</span>
       <span>krim.ai</span>
@@ -671,15 +645,15 @@ body {
      PAGE 4  ·  LIFECYCLE + IMPACT
      ══════════════════════════════════════════════════ -->
 <div class="page light">
-  <div class="light-inner">
+  <div class="inner">
 
-    <div class="pg-head-row">
-      <img class="logo-b" src="../../public/brand/logo/KRIM-horizontal-black.svg" alt="Krim">
-      <span class="eyebrow eyebrow-dim" style="margin-top: 4px;">Where it lands</span>
-    </div>
+    <img class="logo" src="../../public/brand/logo/KRIM-stacked-black.svg" alt="Krim">
+    <div class="eyebrow eb-gold">Where it lands</div>
 
-    <div class="sec-label">The credit lifecycle: how KrimOS runs it</div>
-    <h2 class="pg-title-l" style="margin-bottom: 24px;">Across every stage.<br>Every role. Every channel.</h2>
+    <h2 class="h1 h1-l">Across every stage.<br>Every role. Every channel.</h2>
+
+    <div style="height: 30px;"></div>
+    <div class="sec-head">The credit lifecycle: how KrimOS runs it</div>
 
     <table class="lc-table">
       <thead>
@@ -723,7 +697,8 @@ body {
       </tbody>
     </table>
 
-    <div class="sec-label">What improves, and how</div>
+    <div style="height: 26px;"></div>
+    <div class="sec-head">What improves, and how</div>
     <div class="impact-grid">
       <div class="impact-card">
         <div class="impact-label">Decision speed</div>
@@ -749,7 +724,7 @@ body {
 
     <div style="flex: 1;"></div>
 
-    <div class="foot-rule-l"></div>
+    <div class="rule-l"></div>
     <div class="foot foot-l">
       <span>KrimOS — Overview</span>
       <span>krim.ai</span>
@@ -763,63 +738,66 @@ body {
      PAGE 5  ·  PATH TO PRODUCTION
      ══════════════════════════════════════════════════ -->
 <div class="page dark">
-  <div class="dark-inner">
+  <div class="inner">
 
-    <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 32px;">
-      <img class="logo-w" src="../../public/brand/logo/KRIM-horizontal-white.svg" alt="Krim">
-      <span class="eyebrow eyebrow-mint" style="margin-top: 4px;">Path to production</span>
-    </div>
+    <img class="logo" src="../../public/brand/logo/KRIM-stacked-mint.svg" alt="Krim">
+    <div class="eyebrow eb-green">Path to production</div>
 
-    <div class="sec-label-d">How we get from here to live</div>
-    <h2 class="pg-title-d" style="margin-bottom: 10px;">A path to production.<br>No rip. No replace.</h2>
-    <p class="pg-intro-d" style="margin-bottom: 24px;">The gap between capability and compliant deployment is the whole game. KrimOS fits alongside your existing core banking and lending infrastructure. Each stage earned before the next. You set the pace.</p>
+    <h2 class="h1 h1-d">A path to production.<br>No rip. No replace.</h2>
+    <p class="sub sub-d" style="font-size: 16.5px; max-width: 560px;">The gap between capability and compliant deployment is the whole game. KrimOS fits alongside your existing core banking and lending infrastructure. Each stage earned before the next. You set the pace.</p>
 
-    <div class="path-steps">
-      <div class="path-step glass-card active">
-        <div class="step-num">See.</div>
-        <div class="step-body">
-          <div class="step-title">A working session</div>
-          <p class="step-detail">Bring one real lending workflow. We walk it through the pre-execution gate live: <em>every verdict, every reason</em>, and the audit trail each decision leaves behind.</p>
+    <div style="height: 24px;"></div>
+    <div class="seclabel" style="margin-bottom: 12px;">How we get from here to live</div>
+
+    <div class="path-rows">
+      <div class="path-row">
+        <div class="path-time">See.</div>
+        <div>
+          <div class="path-label">A working session</div>
+          <p class="path-b">Bring one real lending workflow. We walk it through the pre-execution gate live: <em>every verdict, every reason</em>, and the audit trail each decision leaves behind.</p>
         </div>
       </div>
-      <div class="path-step glass-card">
-        <div class="step-num">Shape.</div>
-        <div class="step-body">
-          <div class="step-title">A proof on your terms</div>
-          <p class="step-detail">Designed with your risk and compliance teams: which workflow, what data, and what counts as success. It runs in your environment on ring-fenced data, <em>with Krim-Nyāya active at every decision point</em>.</p>
+      <div class="path-row">
+        <div class="path-time">Shape.</div>
+        <div>
+          <div class="path-label">A proof on your terms</div>
+          <p class="path-b">Designed with your risk and compliance teams: which workflow, what data, and what counts as success. It runs in your environment on ring-fenced data, <em>with Krim-Nyāya active at every decision point</em>.</p>
         </div>
       </div>
-      <div class="path-step glass-card">
-        <div class="step-num">Scale.</div>
-        <div class="step-body">
-          <div class="step-title">Across the lifecycle</div>
-          <p class="step-detail">One workflow earns its place in production, and the runtime extends as the evidence builds. Kovida learns from your portfolio data: <em>every validated decision sharpens its model</em> for your specific lending context.</p>
+      <div class="path-row last">
+        <div class="path-time">Scale.</div>
+        <div>
+          <div class="path-label">Across the lifecycle</div>
+          <p class="path-b">One workflow earns its place in production, and the runtime extends as the evidence builds. Kovida learns from your portfolio data: <em>every validated decision sharpens its model</em> for your specific lending context.</p>
         </div>
       </div>
     </div>
 
-    <div class="path-reg" style="margin-bottom: 10px;">
-      <p><strong>How success is judged.</strong> Outcomes are measured against your own baseline during the proof of value; that measurement is the exit criterion.</p>
-    </div>
-
-    <div class="path-reg">
-      <p><strong>Regulatory posture.</strong> KrimOS produces a full, time-stamped audit trail for every decision that runs through it: the kind of documentation the RBI expects under its emerging AI governance framework. Deployment can be fully on-premise or within India's sovereign cloud infrastructure.</p>
-    </div>
-
-    <div class="cta-block glass-card">
-      <div>
-        <div class="cta-text">Book a working session.</div>
-        <div style="font-size: 12px; color: rgba(255,255,255,0.38); margin-top: 4px;">Bring one real lending workflow. We will run it through the validation gate in front of you: every verdict, every reason.</div>
+    <div class="notes-grid">
+      <div class="note-panel panel">
+        <p><strong>How success is judged.</strong> Outcomes are measured against your own baseline during the proof of value; that measurement is the exit criterion.</p>
       </div>
-      <div class="cta-contact">
-        <div class="email">sales@krim.ai</div>
-        <div class="sub">krim.ai</div>
+      <div class="note-panel panel">
+        <p><strong>Regulatory posture.</strong> KrimOS produces a full, time-stamped audit trail for every decision that runs through it: the kind of documentation the RBI expects under its emerging AI governance framework. Deployment can be fully on-premise or within India's sovereign cloud infrastructure.</p>
       </div>
     </div>
 
     <div style="flex: 1;"></div>
 
-    <div class="foot-rule-d"></div>
+    <div class="rule-d"></div>
+    <div style="height: 18px;"></div>
+
+    <div class="cta-row">
+      <div>
+        <div class="cta-text">Book a working session.</div>
+        <div class="cta-sub">Bring one real lending workflow. We will run it through the validation gate in front of you: every verdict, every reason.</div>
+      </div>
+      <div class="cta-contact">
+        <div class="email">sales@krim.ai</div>
+        <div class="sub-url">krim.ai</div>
+      </div>
+    </div>
+
     <div class="foot foot-d">
       <span>Patna · Bangalore · New York</span>
       <span>Confidential — for discussion only</span>
