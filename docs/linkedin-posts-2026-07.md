@@ -117,27 +117,27 @@ https://www.krim.ai/insights/the-credit-gap-is-an-operations-problem
 
 ---
 
-## Post 8 — The World-Model Moment (PERSONAL profile — FINAL, panel-inverted, gate-cleared)
+## Post 8 — The World-Model Moment (PERSONAL profile — DEFINITIVE, amnesia frame, gate SHIP)
 
-The bureau can tell you how your declined applicants performed on someone else's loan. Nobody can tell you how they would have performed on yours. Reject inference is the polite name for guessing.
+A bank's lending operation makes thousands of consequential decisions a day. It remembers almost none of how it made them.
 
-Shadow mode has the same ceiling. It tells you what your new model would have decided. It still can't tell you what the borrower would have done.
+The transaction survives: the loan booked, the payment posted, the account closed. The reasoning does not. The alternatives that were weighed, the price that was almost offered instead, the road not taken — none of it is written anywhere, and by the end of the day it is gone. Multiply that by every desk, every day, for decades.
 
-Every credit model on earth carries the same blind spot: it learned from the people who were approved. The declined take the answer with them.
+An institution that cannot remember how it behaves cannot learn how it behaves.
 
-Now look at where AI research is heading. Last week the Beijing Academy of Artificial Intelligence released Orca, a "world foundation model." It watched 125,000 hours of video and learned how a world changes state, so a system can try an action in imagination before taking it in reality. A rehearsal space, learned from footage.
+Here is why that suddenly matters. Last week the Beijing Academy of Artificial Intelligence released Orca, a "world foundation model." From 125,000 hours of video, it learned how the physical world changes state, well enough that a system can try an action in imagination before taking it in reality. The physical world was learnable because humanity had recorded it: billions of hours of footage, produced as a by-product of living.
 
-A lending operation has no footage. Its systems record the transaction and throw away the reasoning, the alternatives, the why.
+A lending operation produces no footage. Its equivalent would be a complete record of its own behaviour: every action, the choice set it came from, the reasoning, the outcome. Core systems log the transaction, not the thinking.
 
-So the tape has to be made. The only way to make it is to run the operation itself. And the only way a regulated lender will ever let an AI system run its operation is if every action is validated before it executes.
+Lenders do rehearse pieces of this today, with shadow mode and champion/challenger tests. Real tools, narrow scope: one model at a time, one slice of the lifecycle. The operation as a whole has never been rehearsable, because it has never been remembered.
 
-The safety gate isn't the tax on the intelligence. It's the admission ticket.
+This is the problem we built KrimOS around. It runs the lending lifecycle on one ledger and writes the memory as it works: every action validated before it executes, then recorded with its reasoning and the alternatives it was chosen over. The institution stops forgetting.
 
-That is Kovida — the world lending model: the rehearsal lending has never had, being built on the one record that makes it learnable.
+And on that record we are building Kovida — the world lending model. A learned model of the whole operation, from pricing to servicing to collections to the shape of the portfolio, so that a pricing change, a hardship policy, a collections sequence can be rehearsed in imagination before it touches a customer.
 
-We don't claim to know what the applicant you declined would have done. We claim the only architecture that could ever responsibly find out.
+The model is the dividend. The memory comes first.
 
-https://www.krim.ai/insights/the-world-model-moment
+I wrote about the research moment, and about the worlds that have no footage: https://www.krim.ai/insights/the-world-model-moment
 
 ## Post 9 — The World-Model Moment (KRIM COMPANY page — FINAL, gate-cleared)
 
