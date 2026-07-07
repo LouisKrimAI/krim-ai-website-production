@@ -114,3 +114,41 @@ A borrower can be creditworthy and still go unserved, because the cost of runnin
 Make safe operations cheap, and the frontier of who gets served moves.
 
 https://www.krim.ai/insights/the-credit-gap-is-an-operations-problem
+
+---
+
+## Post 8 — The World-Model Moment (PERSONAL profile, gate-cleared final)
+
+Every lending decision ever made was an experiment on a real person.
+
+A bank approves you, prices you, restructures you, calls you — and then finds out what happens. There has never been a rehearsal.
+
+Last week, the Beijing Academy of Artificial Intelligence released Orca, a "world foundation model." The idea: learn how a world changes state, so a system can try an action in imagination before taking it in reality.
+
+Read that sentence again from inside a bank.
+
+The most expensive question in lending is one no lender can answer: what would the applicant we declined have done? Every credit model on earth carries the same blind spot: it learned from the people who were approved. The declined take the answer with them.
+
+So why doesn't a world model of lending exist? Because world models learn from footage. Orca watched 125,000 hours of it. A lending operation has none: its systems record the transaction and throw away the reasoning, the alternatives, the why.
+
+Here is the part I find genuinely beautiful. The only way to create that footage is to run the operation itself. And the only way a regulated lender will ever let an AI system run its operation is if every action is validated before it executes.
+
+The safety gate isn't the tax on the intelligence. It's the admission ticket.
+
+That is Kovida — the world lending model: the rehearsal space lending has never had, being built on the one record that makes it learnable.
+
+We don't claim to know what the applicant you declined would have done. We claim the only architecture that could ever responsibly find out.
+
+https://www.krim.ai/insights/the-world-model-moment
+
+## Post 9 — The World-Model Moment (KRIM COMPANY page, gate-cleared final)
+
+There has never been a rehearsal space for lending. Every approval, every price, every collections call is tried for the first time on a real customer.
+
+AI research is now converging on world models — systems that learn how a world changes state, so actions can be tested in imagination before they happen in reality. Orca, released last week by the Beijing Academy of Artificial Intelligence, learned its world from 125,000 hours of footage.
+
+A lending operation has no footage. Its systems record transactions and discard the reasoning and the alternatives: the exact material a world model would learn from.
+
+Creating that record takes a runtime that runs the whole lending lifecycle — that runtime is KrimOS. And earning the right to run it takes validation before every action. The safety architecture is what makes the intelligence possible.
+
+Kovida — the world lending model, built on the record KrimOS writes as it works. The research: https://www.krim.ai/insights/the-world-model-moment
