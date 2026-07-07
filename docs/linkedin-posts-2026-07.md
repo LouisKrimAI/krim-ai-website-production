@@ -117,38 +117,36 @@ https://www.krim.ai/insights/the-credit-gap-is-an-operations-problem
 
 ---
 
-## Post 8 — The World-Model Moment (PERSONAL profile, gate-cleared final)
+## Post 8 — The World-Model Moment (PERSONAL profile — FINAL, panel-inverted, gate-cleared)
 
-Every lending decision ever made was an experiment on a real person.
+The bureau can tell you how your declined applicants performed on someone else's loan. Nobody can tell you how they would have performed on yours. Reject inference is the polite name for guessing.
 
-A bank approves you, prices you, restructures you, calls you — and then finds out what happens. There has never been a rehearsal.
+Shadow mode has the same ceiling. It tells you what your new model would have decided. It still can't tell you what the borrower would have done.
 
-Last week, the Beijing Academy of Artificial Intelligence released Orca, a "world foundation model." The idea: learn how a world changes state, so a system can try an action in imagination before taking it in reality.
+Every credit model on earth carries the same blind spot: it learned from the people who were approved. The declined take the answer with them.
 
-Read that sentence again from inside a bank.
+Now look at where AI research is heading. Last week the Beijing Academy of Artificial Intelligence released Orca, a "world foundation model." It watched 125,000 hours of video and learned how a world changes state, so a system can try an action in imagination before taking it in reality. A rehearsal space, learned from footage.
 
-The most expensive question in lending is one no lender can answer: what would the applicant we declined have done? Every credit model on earth carries the same blind spot: it learned from the people who were approved. The declined take the answer with them.
+A lending operation has no footage. Its systems record the transaction and throw away the reasoning, the alternatives, the why.
 
-So why doesn't a world model of lending exist? Because world models learn from footage. Orca watched 125,000 hours of it. A lending operation has none: its systems record the transaction and throw away the reasoning, the alternatives, the why.
-
-Here is the part I find genuinely beautiful. The only way to create that footage is to run the operation itself. And the only way a regulated lender will ever let an AI system run its operation is if every action is validated before it executes.
+So the tape has to be made. The only way to make it is to run the operation itself. And the only way a regulated lender will ever let an AI system run its operation is if every action is validated before it executes.
 
 The safety gate isn't the tax on the intelligence. It's the admission ticket.
 
-That is Kovida — the world lending model: the rehearsal space lending has never had, being built on the one record that makes it learnable.
+That is Kovida — the world lending model: the rehearsal lending has never had, being built on the one record that makes it learnable.
 
 We don't claim to know what the applicant you declined would have done. We claim the only architecture that could ever responsibly find out.
 
 https://www.krim.ai/insights/the-world-model-moment
 
-## Post 9 — The World-Model Moment (KRIM COMPANY page, gate-cleared final)
+## Post 9 — The World-Model Moment (KRIM COMPANY page — FINAL, gate-cleared)
 
-There has never been a rehearsal space for lending. Every approval, every price, every collections call is tried for the first time on a real customer.
+World models learn from millions of hours of footage. Lending has only ever logged the choice it made. No frame of the alternatives it weighed, the reasoning, or what the borrower did next.
 
-AI research is now converging on world models — systems that learn how a world changes state, so actions can be tested in imagination before they happen in reality. Orca, released last week by the Beijing Academy of Artificial Intelligence, learned its world from 125,000 hours of footage.
+Orca, released last week by the Beijing Academy of Artificial Intelligence, watched 125,000 hours of video and learned how a world changes state — so actions can be tested in imagination before they happen in reality.
 
-A lending operation has no footage. Its systems record transactions and discard the reasoning and the alternatives: the exact material a world model would learn from.
+A lending operation keeps no such record. Its systems log the transaction and discard the reasoning and the alternatives: the exact material a world model would learn from.
 
-Creating that record takes a runtime that runs the whole lending lifecycle — that runtime is KrimOS. And earning the right to run it takes validation before every action. The safety architecture is what makes the intelligence possible.
+Creating that record takes a runtime that runs the whole lending lifecycle — that runtime is KrimOS. Earning the right to run it takes validation before every action. The safety architecture is what makes the intelligence possible.
 
-Kovida — the world lending model, built on the record KrimOS writes as it works. The research: https://www.krim.ai/insights/the-world-model-moment
+Kovida — the world lending model, being built on the record KrimOS writes as it works. The research: https://www.krim.ai/insights/the-world-model-moment
