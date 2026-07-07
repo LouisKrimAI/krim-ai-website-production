@@ -117,27 +117,25 @@ https://www.krim.ai/insights/the-credit-gap-is-an-operations-problem
 
 ---
 
-## Post 8 — The World-Model Moment (PERSONAL profile — DEFINITIVE, amnesia frame, gate SHIP)
+## Post 8 — The World-Model Moment (PERSONAL profile — FINAL TRIMMED, gate SHIP)
 
-A bank's lending operation makes thousands of consequential decisions a day. It remembers almost none of how it made them.
+AI just learned to imagine.
 
-The transaction survives: the loan booked, the payment posted, the account closed. The reasoning does not. The alternatives that were weighed, the price that was almost offered instead, the road not taken — none of it is written anywhere, and by the end of the day it is gone. Multiply that by every desk, every day, for decades.
+Last week the Beijing Academy of Artificial Intelligence released Orca: a world model that watched 125,000 hours of footage and learned to try actions in imagination before taking them in reality.
 
-An institution that cannot remember how it behaves cannot learn how it behaves.
+The physical world came first because it had footage.
 
-Here is why that suddenly matters. Last week the Beijing Academy of Artificial Intelligence released Orca, a "world foundation model." From 125,000 hours of video, it learned how the physical world changes state, well enough that a system can try an action in imagination before taking it in reality. The physical world was learnable because humanity had recorded it: billions of hours of footage, produced as a by-product of living.
+The next worlds AI will learn are institutions.
 
-A lending operation produces no footage. Its equivalent would be a complete record of its own behaviour: every action, the choice set it came from, the reasoning, the outcome. Core systems log the transaction, not the thinking.
+A lending operation is a world: states, actions, consequences. But it keeps no footage. It logs every transaction and forgets every reason, every alternative, every road not taken.
 
-Lenders do rehearse pieces of this today, with shadow mode and champion/challenger tests. Real tools, narrow scope: one model at a time, one slice of the lifecycle. The operation as a whole has never been rehearsable, because it has never been remembered.
+So we're writing the footage. KrimOS runs lending on one ledger: every action validated before it executes, remembered with its reasoning.
 
-This is the problem we built KrimOS around. It runs the lending lifecycle on one ledger and writes the memory as it works: every action validated before it executes, then recorded with its reasoning and the alternatives it was chosen over. The institution stops forgetting.
+And on that record we're building Kovida — the world lending model. A bank that can rehearse.
 
-And on that record we are building Kovida — the world lending model. A learned model of the whole operation, from pricing to servicing to collections to the shape of the portfolio, so that a pricing change, a hardship policy, a collections sequence can be rehearsed in imagination before it touches a customer.
+Whoever writes the memory builds the mind.
 
-The model is the dividend. The memory comes first.
-
-I wrote about the research moment, and about the worlds that have no footage: https://www.krim.ai/insights/the-world-model-moment
+https://www.krim.ai/insights/the-world-model-moment
 
 ## Post 9 — The World-Model Moment (KRIM COMPANY page — FINAL, gate-cleared)
 
