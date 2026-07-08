@@ -46,3 +46,60 @@ match `flywheel-clear.png`. Save as `harness-clear.png` in `public/images/krimos
   mint as the cycle compounds. The aesthetic anchor; match it.
 - `public/images/krimos/layers-clear.png` — the stacked KrimOS layers cutout.
 - `public/images/krimos/control-room.png` — the Kupa command surface.
+
+---
+
+# Article hero images — Gemini prompt kit (2026-07)
+
+Every /insights hero shares one visual language (set by the world-model sphere,
+`public/images/cinematic/world-model.webp`). Paste the **STYLE BLOCK** first, then one
+**SCENE**. Generate 2–3 variants, pick the calmest. Output **portrait, 2:3**, PNG, highest
+quality. After: drop the PNG in the repo, tell Claude the filename + article, and it gets
+optimised → webp + LQIP blur + wired into `lib/image-manifest.ts` and `_posts.ts`.
+
+## STYLE BLOCK (paste before every scene)
+
+> Cinematic, contemplative dark render on a near-black background (#09090C) with subtle film grain.
+> Quiet-luxury, observatory-at-night mood — precise, still, never busy. Palette strictly: mint green
+> (#00FFB2) for anything proven / validated / resolved, cyan (#39D6FF) for anything thinking /
+> proposed / in motion, and a rare touch of soft gold (#C8A14A) only for a single point of tension.
+> Materials: dark glass, fine woven light-lattices, thin luminous filaments, soft volumetric glow,
+> shallow depth of field. Photoreal lighting, high detail. NO text, NO logos, NO glowing brains, NO
+> robots or humanoid figures, NO human faces, NO stock photography, NO circuit-board clichés, NO
+> flags, NO literal dashboards. Abstract and architectural, not illustrative. Portrait, 2:3.
+
+## SCENE 1 — What Epistemic AI Means (flagship)
+> A single luminous action, rendered as a bright cyan filament of light, travels toward a translucent
+> vertical gate of dark glass etched with a fine geometric lattice. As the filament passes through it
+> is tested and resolves into calm mint-green light on the far side; a few filaments are quietly held
+> back at the threshold, dimming. Three faint concentric ring-structures frame the gate, suggesting
+> three stages of scrutiny. The scene reads as a threshold of reasoning: the moment a thought is
+> checked before it is allowed to become an act.
+
+## SCENE 2 — Explain the Decision, Not the Model (Tue)
+> On the left, an opaque sphere of pure black glass, deliberately unreadable, faint cyan light swirling
+> unseen inside. From it, one clear beam emerges and lands on a thin, brightly legible mint-green
+> ledger-line etched in the air on the right — a single decision made readable. The contrast is the
+> subject: the source stays dark and sealed, the outcome is clean, lit and inspectable.
+
+## SCENE 3 — Collections Is a Sequence Problem (Wed)
+> A network of faint branching paths made of thin light-filaments, curving through dark space like a
+> decision tree seen from the side. Most branches are dim cyan; one continuous path is lit bright mint
+> green, threading through several soft glowing nodes in sequence toward a single warm resolved point
+> of light at the end. Many possible routes, one that reaches the good outcome. Quiet, elegant.
+
+## SCENE 4 — Your Compliance Team Is Right to Say No (Thu)
+> A single bright action, a cyan sphere of light, held suspended just before a narrow luminous
+> threshold, caught in the instant of decision. A soft gold rim-light marks the point of tension.
+> Behind it, faint mint-green lattice lines suggest the rules it is being weighed against. A held
+> breath: stillness, restraint, the deliberate pause before something is allowed to proceed.
+
+## SCENE 5 — The EU AI Act's High-Risk Clock (Fri)
+> A wide, slow arc of faint luminous markers curving across dark space like the face of an abstract
+> clock or a horizon of graduated light; most markers dim cyan, the leading ones brightening toward a
+> single approaching mint-green line — a threshold being reached. An approaching moment, measured and
+> inevitable, without any literal clock, calendar or flag. Cool, architectural, calm.
+
+## Fallback
+Any file in `public/images/cinematic/` is a safe placeholder; the article ships either way and the
+hero swaps in later with zero code churn.
