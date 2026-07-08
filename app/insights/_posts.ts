@@ -18,6 +18,16 @@ export type Post = {
 
 export const POSTS: Post[] = [
   {
+    slug: 'what-epistemic-ai-means',
+    title: 'What Epistemic AI Means',
+    dek: 'Generative AI is trained to be plausible. Agentic AI is trained to act. Neither is trained to know whether an action is allowed. Epistemic AI is the missing third — and it is what regulated work has been asking for all along.',
+    category: 'Architecture',
+    date: '2026-07-07',
+    readingMinutes: 7,
+    // placeholder hero — a bespoke Gemini render can replace this later
+    image: '/images/cinematic/architecture-lattice.jpg',
+  },
+  {
     slug: 'the-world-model-moment',
     title: 'The World-Model Moment',
     dek: "AI's frontier is moving from predicting the next word to predicting the next state of a world. Orca, from Beijing, is the newest arrival. It sharpens the question Krim was built around: a lending operation is a world too. Where is its record?",
