@@ -23,6 +23,10 @@
 - [Large Enterprise](https://www.krim.ai/enterprise) and [MSME](https://www.krim.ai/msme).
 
 ## Writing
+- [The EU AI Act's High-Risk Clock](https://www.krim.ai/insights/the-eu-ai-act-high-risk-clock): credit scoring is high-risk under the EU AI Act; Articles 10, 12 and 14 read as engineering requirements.
+- [Your Compliance Team Is Right to Say No](https://www.krim.ai/insights/your-compliance-team-is-right): the question that kills AI pilots is the right question — how do we know the action was allowed?
+- [Collections Is a Sequence Problem](https://www.krim.ai/insights/collections-is-a-sequence-problem): cure comes from a sequence of contacts; the unit of liability is the individual touch.
+- [Explain the Decision, Not the Model](https://www.krim.ai/insights/explain-the-decision-not-the-model): regulators never asked you to open the black box; they asked you to explain the decision.
 - [What Epistemic AI Means](https://www.krim.ai/insights/what-epistemic-ai-means): generative AI is trained to be plausible, agentic AI to act; epistemic AI is the missing third — validated before it fires, its reasoning legible end to end.
 - [The World-Model Moment](https://www.krim.ai/insights/the-world-model-moment): AI's frontier is moving from predicting the next word to predicting the next state of a world. A lending operation is a world too — where is its record?
 - [RBI Has Set the Bar for AI Lending. Almost No One Can Clear It.](https://www.krim.ai/insights/rbi-model-risk-management-2026-ai-lending): RBI's 2026 Model Risk Management draft quietly rewrites the rules for AI in lending.

@@ -18,14 +18,49 @@ export type Post = {
 
 export const POSTS: Post[] = [
   {
+    slug: 'the-eu-ai-act-high-risk-clock',
+    title: "The EU AI Act's High-Risk Clock",
+    dek: 'Credit scoring sits in the EU AI Act\u2019s high-risk tier. The obligations \u2014 data governance, logging, human oversight \u2014 are set to apply from 2 August 2026, though a pending proposal could defer that. Either way, what they ask for takes longer to build than to legislate.',
+    category: 'Risk',
+    date: '2026-07-11',
+    readingMinutes: 6,
+    image: '/images/cinematic/regulatory-clock.webp',
+  },
+  {
+    slug: 'your-compliance-team-is-right',
+    title: 'Your Compliance Team Is Right to Say No',
+    dek: 'Every stalled AI pilot has the same last meeting. The engineers demo something remarkable, and compliance asks one question nobody can answer. They are not the obstacle. They are the only people asking the right question.',
+    category: 'Problem',
+    date: '2026-07-10',
+    readingMinutes: 4,
+    image: '/images/cinematic/held-action.webp',
+  },
+  {
+    slug: 'collections-is-a-sequence-problem',
+    title: 'Collections Is a Sequence Problem',
+    dek: 'Nobody cures a delinquent account with a single perfect message. Cure comes from a sequence \u2014 which contact, when, on which channel, or whether to restructure \u2014 and every step is bounded by law. This is where safe automation pays first.',
+    category: 'Method',
+    date: '2026-07-09',
+    readingMinutes: 6,
+    image: '/images/cinematic/collections-sequence.webp',
+  },
+  {
+    slug: 'explain-the-decision-not-the-model',
+    title: 'Explain the Decision, Not the Model',
+    dek: 'Interpretability research tries to open the black box. Regulators never asked you to. They asked you to explain the decision \u2014 which customer, which rule, which basis \u2014 and that is a problem you can actually solve.',
+    category: 'Method',
+    date: '2026-07-08',
+    readingMinutes: 6,
+    image: '/images/cinematic/explain-the-decision.webp',
+  },
+  {
     slug: 'what-epistemic-ai-means',
     title: 'What Epistemic AI Means',
     dek: 'Generative AI is trained to be plausible. Agentic AI is trained to act. Neither is trained to know whether an action is allowed. Epistemic AI is the missing third — and it is what regulated work has been asking for all along.',
     category: 'Architecture',
     date: '2026-07-07',
     readingMinutes: 7,
-    // placeholder hero — a bespoke Gemini render can replace this later
-    image: '/images/cinematic/architecture-lattice.jpg',
+    image: '/images/cinematic/epistemic-ai.webp',
   },
   {
     slug: 'the-world-model-moment',
