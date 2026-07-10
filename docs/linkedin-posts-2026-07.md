@@ -148,3 +148,54 @@ A lending operation keeps no such record. Its systems log the transaction and di
 Creating that record takes a runtime that runs the whole lending lifecycle — that runtime is KrimOS. Earning the right to run it takes validation before every action. The safety architecture is what makes the intelligence possible.
 
 Kovida — the world lending model, being built on the record KrimOS writes as it works. The research: https://www.krim.ai/insights/the-world-model-moment
+
+---
+
+## Post 10 — Your Compliance Team Is Right to Say No (PERSONAL — gate SHIP)
+Image: Gemini_Generated_Image_z8vu4wz8vu4wz8vu.png (the held action)
+
+Every AI pilot that dies in a bank dies in the same meeting.
+
+The demo is genuinely good. The model drafts the hardship letter better than the team does. Then someone from the second line, who has been quiet, asks a question that sounds almost rude in its simplicity: before this letter goes out, how do we know it was allowed to?
+
+The room offers three answers. None of them are answers.
+
+The model is 99% accurate. But accuracy is not permission. A model can be right about the borrower's situation and still send a communication it had no consent to send.
+
+We'll add a dashboard. But a dashboard reports what already left the building. A collections call cannot be recalled.
+
+We'll add a human reviewer. That's a plan for the first hundred actions. It's a confession that you cannot do the hundred-thousandth.
+
+Gartner expects more than 40% of agentic AI projects to be cancelled by the end of 2027, citing costs, unclear value and inadequate risk controls. Ask a banking technologist why their pilot died and you'll hear that last one, wearing different clothes.
+
+We keep telling this story with compliance as the villain. It is exactly backwards. She is the only person in the room asking the question the future has to answer: evidence, produced before the action, that the action was permitted.
+
+The people who kept saying no were never the problem. They were the specification.
+
+https://www.krim.ai/insights/your-compliance-team-is-right
+
+## Post 11 — Your Compliance Team Is Right to Say No (KRIM COMPANY — gate SHIP)
+
+Most AI pilots in banking don't fail on capability. They fail in a meeting.
+
+The demo works. Then someone from the second line asks how anyone will know the action was permitted, before it goes out. Accuracy doesn't answer that. A dashboard reports what already left the building. A human reviewer is a plan for the first hundred actions.
+
+Gartner expects more than 40% of agentic AI projects to be cancelled by the end of 2027, citing costs, unclear value and inadequate risk controls.
+
+The question compliance keeps asking is the correct one: evidence, produced before the action, that the action was permitted. Nothing in a conventional AI stack produces it.
+
+KrimOS does. Every action checked against law, policy, consent and context before it fires, with the reasoning on the record.
+
+https://www.krim.ai/insights/your-compliance-team-is-right
+
+## X single (gate SHIP)
+
+Every AI pilot that dies in a bank dies in the same meeting.
+
+The demo works. Then compliance asks: before this goes out, how do we know it was allowed to?
+
+Accuracy is not permission.
+
+They were never the problem. They were the specification.
+
+https://www.krim.ai/insights/your-compliance-team-is-right

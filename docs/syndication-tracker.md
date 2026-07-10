@@ -5,6 +5,7 @@ Off-site rule: **site is the canonical original**; Medium via *Import* (sets can
 
 | # | Article (site slug) | Site | LinkedIn (personal) | LinkedIn (Krim) | Medium | Substack | X |
 |---|---|---|---|---|---|---|---|
+| 0 | your-compliance-team-is-right | ✅ | 📝 ready | 📝 ready | 📝 ready | 📝 ready | 📝 ready |
 | 1 | the-world-model-moment | ✅ | ✅ | ⚙️ | ⚙️ | ⚙️ | ✅ personal · ⚙️ Krim |
 | 2 | rbi-model-risk-management-2026-ai-lending | ✅ | 📝 (hold: post day response submitted) | — | — | — | — |
 | 3 | the-automation-gap | ✅ | 📝 | — | — | — | — |
