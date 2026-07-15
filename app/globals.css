@@ -475,6 +475,11 @@ html[data-cluster="research"][data-bg-ready] main {
    reveal. */
 @keyframes krim-hero-failsafe { to { opacity: 1; transform: none; filter: none; } }
 .hero-failsafe { animation: krim-hero-failsafe 0.9s cubic-bezier(0.16, 1, 0.3, 1) 9.6s forwards; }
+/* Hydration disarms the failsafe (HomeHero sets data-hero-js on mount).
+   Without this, the animation runs at 9.6s over the already-revealed text —
+   compositor layers promote, then drop at fill-forwards completion, and the
+   whole hero re-rasterizes at once: a visible "refresh" after settle. */
+[data-hero-js] .hero-failsafe { animation: none; }
 @media (prefers-reduced-motion: reduce) {
   .hero-failsafe { animation-duration: 0s; animation-delay: 0s; }
 }

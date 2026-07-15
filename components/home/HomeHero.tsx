@@ -52,6 +52,14 @@ export default function HomeHero() {
     () => typeof window !== 'undefined' && window.scrollY > window.innerHeight * 0.5
   )
 
+  // Disarm the CSS failsafe as soon as we hydrate: it exists only for the
+  // JS-never-ran case. If left armed it fires at 9.6s on every element —
+  // forcing compositor layers up and (at ~10.5s, fill-forwards) back down,
+  // which re-rasterizes all the hero text at once: a visible "refresh"
+  // moment right after the choreography settles.
+  const [jsLive, setJsLive] = useState(false)
+  useEffect(() => { setJsLive(true) }, [])
+
   useEffect(() => {
     if (logoReady) return
     const t = setTimeout(() => setLogoReady(true), 4100)
@@ -110,8 +118,14 @@ export default function HomeHero() {
         </motion.div>
       </div>
 
-      {/* hero — Woven Ring is the backdrop */}
-      <section className="relative z-10 flex min-h-[92vh] items-center">
+      {/* hero — Woven Ring is the backdrop. data-hero-js disarms the CSS
+          failsafe (globals.css) once hydration is alive — framer owns the
+          reveal from here, and the failsafe animation must never run on top
+          of it (it causes a visible re-raster after settle). */}
+      <section
+        className="relative z-10 flex min-h-[92vh] items-center"
+        data-hero-js={jsLive || undefined}
+      >
         <div className="mx-auto w-full max-w-site px-6 md:px-10">
           <div className="mx-auto flex max-w-[860px] flex-col items-center text-center">
 
