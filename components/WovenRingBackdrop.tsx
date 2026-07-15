@@ -5,9 +5,10 @@
  * pages (everything except /krimos* and Research routes, which keep their own
  * backdrops). Canvas piece: cloud → grand spiral → temari orb → woven ring.
  *
- * Ported from "Woven Ring (4).html" (v4). What changed from v2:
- *   - T_END = 7.5 s (was 15): the whole morph runs twice as fast; T_EARLY = 7.0
- *     paces the pre-ring phases and the spare 0.5 s all goes to the final bloom
+ * Ported from "Woven Ring (5).html" (v5 — identical to v4 except the timeline:
+ * the same choreography stretched ~13% slower). What changed from v2:
+ *   - T_END = 8.5 s (was 15): the morph runs much faster; T_EARLY = 7.9
+ *     paces the pre-ring phases and the spare 0.6 s all goes to the final bloom
  *   - swirl: one grand, wide spiral galaxy (2.2 turns, R×1.67 reach) replacing
  *     the tighter log-spiral vortex; the spiral draws itself from centre
  *     outward, each dot carried AROUND the vortex as it is drawn in
@@ -98,8 +99,8 @@ function WovenRingCanvas() {
     const emerald = [16, 255, 168], aqua = [74, 206, 255]
 
     // ---------- timeline + density ----------
-    const T_END = 7.5    // morph completes here, then the ring loops
-    const T_EARLY = 7.0  // pre-ring phases keep their pace; the extra 0.5 s all goes to the final bloom
+    const T_END = 8.5    // morph completes here, then the ring loops
+    const T_EARLY = 7.9  // pre-ring phases stretched proportionally; the final expansion keeps its extra share
     const N = small ? 42 : 84, SEG = small ? 84 : 120
 
     // ---------- strands ----------
@@ -361,7 +362,7 @@ function WovenRingCanvas() {
       drawBackground(time, cloudGlow, ringPhase, cx, cy)
 
       // luminous core: swells into a pure orb of light as the weave completes,
-      // then eases out into the ring (zenith ≈ 3.6–3.8 s — the logo's beat)
+      // then eases out into the ring (zenith ≈ 4.1–4.3 s — the logo's beat)
       const sphereGlow = done ? 0 : 0.45 * seg(qE, 0.40, 0.52) * (1 - seg(qE, 0.54, 0.74))
       const spherePeak = done ? 0 : seg(qE, 0.42, 0.54) * (1 - seg(qE, 0.54, 0.72))
       if (sphereGlow > 0.002) {
