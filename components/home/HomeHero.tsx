@@ -33,6 +33,9 @@ import { CTA } from '../ui'
 import { isFreshArrival } from '@/lib/arrival'
 
 const OUT_SOFT = [0.16, 1, 0.3, 1] as const
+// easeOutCubic — no front-loaded jump; paired with long durations + a blur-in,
+// the text condenses softly out of the backdrop instead of switching on
+const EASE_BLOOM = [0.33, 1, 0.68, 1] as const
 const DEMO_HREF = '/contact'
 
 export default function HomeHero() {
@@ -64,23 +67,29 @@ export default function HomeHero() {
 
   const logoVisible = logoReady && !scrolledPast
 
-  // fade-up helper: instant when disabled; drift scales DOWN with element
-  // size so the cascade never reads uniform (h1 12px, subline 10, CTAs 8)
-  const f = (delay: number, duration = 0.9, y = 10) => ({
-    initial: disabled ? { opacity: 1, y: 0 } : { opacity: 0, y },
-    animate: { opacity: 1, y: 0 },
+  // soft-materialize helper: a long gentle fade + rise + blur-in, so each
+  // element condenses out of the backdrop's mist instead of switching on.
+  // Drift scales DOWN with element size (subline 10, CTAs 8); disabled
+  // (settled / reduced-motion) renders instantly crisp.
+  const f = (delay: number, duration = 1.4, y = 10) => ({
+    initial: disabled
+      ? { opacity: 1, y: 0, filter: 'blur(0px)' }
+      : { opacity: 0, y, filter: 'blur(6px)' },
+    animate: { opacity: 1, y: 0, filter: 'blur(0px)' },
     transition: disabled
       ? { duration: 0 }
-      : { duration, delay, ease: OUT_SOFT },
+      : { duration, delay, ease: EASE_BLOOM },
   })
-  // headline lines add a micro-scale (0.99→1) for weight — GPU-only, and the
-  // disabled branch carries scale:1 so settled/reduced-motion renders crisp
-  const fH = (delay: number, duration = 0.8) => ({
-    initial: disabled ? { opacity: 1, y: 0, scale: 1 } : { opacity: 0, y: 12, scale: 0.99 },
-    animate: { opacity: 1, y: 0, scale: 1 },
+  // headline lines: slightly deeper blur + a micro-scale (0.995→1) so the big
+  // serif blooms into focus with real weight — GPU/paint only, no layout
+  const fH = (delay: number, duration = 1.5) => ({
+    initial: disabled
+      ? { opacity: 1, y: 0, scale: 1, filter: 'blur(0px)' }
+      : { opacity: 0, y: 10, scale: 0.995, filter: 'blur(8px)' },
+    animate: { opacity: 1, y: 0, scale: 1, filter: 'blur(0px)' },
     transition: disabled
       ? { duration: 0 }
-      : { duration, delay, ease: OUT_SOFT },
+      : { duration, delay, ease: EASE_BLOOM },
   })
 
   return (
@@ -149,7 +158,7 @@ export default function HomeHero() {
                 grey → white) and the tick carries the only accent. Dark
                 under-halo keeps it legible over the moving threads.
                 Copy is user-locked. */}
-            <motion.div className="hero-failsafe mt-10 flex flex-col items-center" {...f(7.1, 0.9, 10)}>
+            <motion.div className="hero-failsafe mt-10 flex flex-col items-center" {...f(7.1, 1.5, 10)}>
               <span
                 aria-hidden
                 className="block h-px w-12 bg-gradient-to-r from-transparent via-mint to-transparent shadow-[0_0_12px_0_rgba(0,255,178,0.45)]"
@@ -166,7 +175,7 @@ export default function HomeHero() {
             {/* CTAs — one action unit (tight gap binds primary + ghost) */}
             <motion.div
               className="hero-failsafe mt-10 flex flex-wrap items-center justify-center gap-4"
-              {...f(7.7, 1.0, 8)}
+              {...f(7.7, 1.4, 8)}
             >
               <CTA href={DEMO_HREF}>Book a demo</CTA>
               <CTA href="/krimos" variant="secondary">
