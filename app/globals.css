@@ -468,11 +468,11 @@ html[data-cluster="research"][data-bg-ready] main {
    The hero h1/subline/CTAs are SSR'd at opacity 0 (framer-motion inlines the
    initial state) and revealed by the arrival choreography. If hydration never
    happens — failed chunk, JS off — this reveals them anyway. Delay sits just
-   past the choreography's window (CTAs settle at ~13.9s), so with working JS
+   past the choreography's window (CTAs settle at ~8.1s), so with working JS
    the elements are already at opacity 1 and this is a no-op. Reduced motion:
    immediate, matching framer's instant reveal. */
 @keyframes krim-hero-failsafe { to { opacity: 1; transform: none; } }
-.hero-failsafe { animation: krim-hero-failsafe 0.9s cubic-bezier(0.16, 1, 0.3, 1) 14.4s forwards; }
+.hero-failsafe { animation: krim-hero-failsafe 0.9s cubic-bezier(0.16, 1, 0.3, 1) 8.7s forwards; }
 @media (prefers-reduced-motion: reduce) {
   .hero-failsafe { animation-duration: 0s; animation-delay: 0s; }
 }
