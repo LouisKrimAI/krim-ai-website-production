@@ -88,20 +88,32 @@ export default function HomeHero() {
             {/* headline — two lines, first line gradient, second plain ink.
                 .hero-failsafe (globals.css) force-reveals these via CSS after the
                 choreography window, so a failed JS chunk or JS-off never leaves
-                the homepage without its headline and CTAs. */}
-            <h1 className="font-serif text-[clamp(2.5rem,5.2vw,4.25rem)] leading-[1.06] tracking-[-0.02em] text-ink">
+                the homepage without its headline and CTAs.
+                Size cap is 3.95rem (was 4.25): "Sovereign Superintelligence" is
+                five characters longer than the old first line, and this is the
+                largest size at which it holds as one line inside the ring. */}
+            <h1 className="font-serif text-[clamp(2.5rem,5vw,3.95rem)] leading-[1.06] tracking-[-0.02em] text-ink">
               <motion.span className="hero-failsafe block text-grad" {...f(8.2, 1.7)}>
-                Safe Superintelligence
+                Sovereign Superintelligence
               </motion.span>
               <motion.span className="hero-failsafe block" {...f(10, 1.7)}>
-                for Autonomous Lending
+                for Safe Automation
               </motion.span>
             </h1>
 
-            {/* CTAs — appear once the headline has settled */}
+            {/* subline — the lending ground under the brand claim (user copy) */}
+            <motion.p
+              className="hero-failsafe mx-auto mt-7 max-w-[52ch] font-sans text-body-lg text-ink-2"
+              {...f(12.2, 1.4)}
+            >
+              <span className="block">Agentic lending operations,</span>
+              <span className="block text-mint">under your control.</span>
+            </motion.p>
+
+            {/* CTAs — appear once the subline has settled */}
             <motion.div
-              className="hero-failsafe mt-12 flex flex-wrap items-center justify-center gap-6"
-              {...f(12, 1.3)}
+              className="hero-failsafe mt-10 flex flex-wrap items-center justify-center gap-6"
+              {...f(14, 1.3)}
             >
               <CTA href={DEMO_HREF}>Book a demo</CTA>
               <CTA href="/krimos" variant="secondary">
