@@ -4,6 +4,11 @@ const nextConfig = {
   // Serve modern formats from the image optimizer (smaller payloads → better LCP).
   // Requires a runtime that runs the Next image optimizer in production (e.g. Vercel/Node).
   images: {
+    // Dev only: skip the on-demand optimizer (sharp re-encodes every image per
+    // request — the main cause of slow image loads on localhost). Every site
+    // image is already a pre-shrunk webp via scripts/optimize_images.py, so
+    // serving the raw file in dev is instant. Production is unaffected.
+    unoptimized: process.env.NODE_ENV === 'development',
     formats: ['image/avif', 'image/webp'],
     // Optimised article art is immutable (addressed by path) — cache the generated
     // variants for a year instead of the default 60s so prod first-hit cost is paid once.

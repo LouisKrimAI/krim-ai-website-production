@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     // Superintelligence"; every other page reads "{Page} — Krim · Safe
     // Superintelligence". The keyword-rich banking positioning lives in the
     // description / OG titles, where it does the SEO work.
-    default: 'Krim — Safe Superintelligence',
+    default: 'Krim - AI your regulator can read',
     template: '%s — Krim · Safe Superintelligence',
   },
   description:

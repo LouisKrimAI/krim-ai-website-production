@@ -147,6 +147,7 @@ export default function ArticleShell({
             heightClass={image.heightClass ?? 'h-[clamp(200px,30vw,360px)]'}
             objectPosition={image.objectPosition}
             tint={image.tint}
+            priority
           />
         ) : (
           image

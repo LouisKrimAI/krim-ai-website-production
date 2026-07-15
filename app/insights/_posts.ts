@@ -18,6 +18,24 @@ export type Post = {
 
 export const POSTS: Post[] = [
   {
+    slug: 'the-model-that-learns-the-whole-operation',
+    title: 'The Model That Learns the Whole Operation',
+    dek: 'Your lending stack is a pile of models that each see one slice. Origination forgets the loan the moment it funds; collections starts cold. Locally smart, globally blind — so the intelligence your operation should build never forms. A world model is the architecture where it does.',
+    category: 'Architecture',
+    date: '2026-07-13',
+    readingMinutes: 6,
+    image: '/images/cinematic/architecture-lattice.webp',
+  },
+  {
+    slug: 'the-agent-isnt-the-hard-part',
+    title: "The Agent Isn't the Hard Part",
+    dek: 'Every AI agent demo wows the room, then dies in the risk committee. The reason is never the model. It is that no one can prove what the agent will do before it acts. The harness is the control layer that changes that answer, and it is what makes an agent hireable.',
+    category: 'Method',
+    date: '2026-07-12',
+    readingMinutes: 5,
+    image: '/images/harness/harness-command.webp',
+  },
+  {
     slug: 'the-eu-ai-act-high-risk-clock',
     title: "The EU AI Act's High-Risk Clock",
     dek: 'Credit scoring sits in the EU AI Act\u2019s high-risk tier. The obligations \u2014 data governance, logging, human oversight \u2014 are set to apply from 2 August 2026, though a pending proposal could defer that. Either way, what they ask for takes longer to build than to legislate.',
@@ -114,7 +132,7 @@ export const POSTS: Post[] = [
     category: 'Risk',
     date: '2026-03-03',
     readingMinutes: 7,
-    image: '/images/cinematic/insight-wave.jpg',
+    image: '/images/cinematic/insight-wave.webp',
   },
   {
     slug: 'the-automation-gap',

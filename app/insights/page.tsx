@@ -90,7 +90,7 @@ export default function BlogPage() {
                       fill
                       sizes="(max-width: 768px) calc(100vw - 40px), (max-width: 1200px) calc(50vw - 40px), 600px"
                       quality={70}
-                      priority={i === 0}
+                      priority={i < 2}
                       placeholder={CINEMATIC[p.image]?.blur ? 'blur' : 'empty'}
                       blurDataURL={CINEMATIC[p.image]?.blur}
                       className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"

@@ -197,7 +197,7 @@ export default function ArchitecturePage() {
 
         {/* ---- Cinematic band: the runtime under the whole operation ---- */}
         <CinematicBand
-          src="/images/cinematic/architecture-lattice.jpg"
+          src="/images/cinematic/architecture-lattice.webp"
           alt="An endless teal lattice of interconnected nodes, the runtime under a whole lending operation."
           objectPosition="50% 50%"
           tint="cyan"

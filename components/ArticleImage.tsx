@@ -19,6 +19,8 @@ type Props = {
   src: string
   alt: string
   tint?: 'cyan' | 'mint'
+  /** set for the article header image — it's the LCP element, so it must not lazy-load */
+  priority?: boolean
   // accepted for drop-in compatibility with CinematicBand; not used here
   heightClass?: string
   objectPosition?: string
@@ -26,7 +28,7 @@ type Props = {
   caption?: string
 }
 
-export default function ArticleImage({ src, alt, tint = 'cyan' }: Props) {
+export default function ArticleImage({ src, alt, tint = 'cyan', priority = false }: Props) {
   const meta = CINEMATIC[src]
   const w = meta?.w ?? 1137
   const h = meta?.h ?? 1600
@@ -41,6 +43,7 @@ export default function ArticleImage({ src, alt, tint = 'cyan' }: Props) {
           height={h}
           sizes="(max-width: 480px) 100vw, 440px"
           quality={72}
+          priority={priority}
           placeholder={meta?.blur ? 'blur' : 'empty'}
           blurDataURL={meta?.blur}
           className="h-auto w-full"

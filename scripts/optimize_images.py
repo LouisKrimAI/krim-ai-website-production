@@ -38,7 +38,15 @@ MANIFEST = [
     {"web": "/images/harness/harness-gate.webp",
      "src_from": "/images/harness/harness-gate.png", "max_w": 1000, "quality": 82},
 
-    # Already-optimised cinematic art — record metadata only.
+    # JPG heroes → webp (smaller at the same quality; the .jpg stays as the
+    # committed source, the .webp is what the site references).
+    {"web": "/images/cinematic/insight-wave.webp",
+     "src_from": "/images/cinematic/insight-wave.jpg", "max_w": 1000, "quality": 80},
+    {"web": "/images/cinematic/architecture-lattice.webp",
+     "src_from": "/images/cinematic/architecture-lattice.jpg", "max_w": 1200, "quality": 80},
+
+    # Already-optimised art — record metadata (dimensions + LQIP) only.
+    {"web": "/images/harness/harness-command.webp"},
     {"web": "/images/cinematic/epistemic-ai.webp"},
     {"web": "/images/cinematic/explain-the-decision.webp"},
     {"web": "/images/cinematic/collections-sequence.webp"},
@@ -49,8 +57,6 @@ MANIFEST = [
     {"web": "/images/cinematic/audit.webp"},
     {"web": "/images/cinematic/credit-gap.webp"},
     {"web": "/images/cinematic/automation-gap.webp"},
-    {"web": "/images/cinematic/insight-wave.jpg"},
-    {"web": "/images/cinematic/architecture-lattice.jpg"},
 ]
 
 
