@@ -143,24 +143,20 @@ export default function HomeHero() {
             </h1>
 
             {/* subline — hangs from the glowing mint tick (user-liked, kept).
-                Both lines are luminous brand colour, mapped to the colour
-                grammar: cyan = thinking / in motion ("agentic operations"),
-                mint = validated / held ("under your control") — each line
-                wears the colour that means what it says. Neon-soft glows match
-                the ring's threads; the dark under-halo keeps AA over them.
+                Subtle and stylish: an editorial whisper in the headline's own
+                serif, set in italic — a dedication engraved under the monument.
+                No colour, no glow; the resolve is pure luminance (quiet warm
+                grey → white) and the tick carries the only accent. Dark
+                under-halo keeps it legible over the moving threads.
                 Copy is user-locked. */}
             <motion.div className="hero-failsafe mt-10 flex flex-col items-center" {...f(6.5, 0.9, 10)}>
               <span
                 aria-hidden
                 className="block h-px w-12 bg-gradient-to-r from-transparent via-mint to-transparent shadow-[0_0_12px_0_rgba(0,255,178,0.45)]"
               />
-              <p className="mx-auto mt-6 max-w-[42ch] font-sans font-medium text-[clamp(1.25rem,2.4vw,1.625rem)] leading-[1.5] tracking-[0.01em]">
-                <span className="block text-cyan [text-shadow:0_0_26px_rgba(57,214,255,0.42),0_1px_18px_rgba(2,6,10,0.9)]">
-                  Agentic lending operations,
-                </span>
-                <span className="block text-mint [text-shadow:0_0_26px_rgba(0,255,178,0.42),0_1px_18px_rgba(2,6,10,0.9)]">
-                  under your control.
-                </span>
+              <p className="mx-auto mt-6 max-w-[42ch] font-serif italic text-[clamp(1.2rem,2.2vw,1.5rem)] leading-[1.55] [text-shadow:0_1px_18px_rgba(2,6,10,0.9)]">
+                <span className="block text-ink-2">Agentic lending operations,</span>
+                <span className="block text-ink">under your control.</span>
               </p>
             </motion.div>
 
