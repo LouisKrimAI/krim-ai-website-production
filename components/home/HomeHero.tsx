@@ -1,13 +1,18 @@
 'use client'
 
 /**
- * HomeHero — the first-load choreography.
+ * HomeHero — the first-load choreography, tuned to the v4 Woven Ring
+ * (T_END = 7.5 s): cloud → grand spiral → temari orb → ring.
  *
- * Sequence (once, GPU-only): the Woven Ring forms behind the hero, then the
- * logo fades in (~2.5 s), then each text section fades in slowly, section by
- * section. No centered logo — the brand is held by the top-left mark, pinned
- * at the exact SiteHeader position (max-w-site / px-6 md:px-10), handing off
- * seamlessly as SiteHeader fades in on scroll.
+ * Beats: the logo fades in at 3.6 s, on the orb's glow zenith (~3.6–3.8 s) —
+ * the mark arriving as the "mind" is at its brightest. Headline line 1 starts
+ * at 4.6 s as the unfurl establishes itself (bloom begins ~3.4 s); line 2 at
+ * 7.0 s lands as the ring itself resolves (7.5 s) — the line and the ring
+ * settle together. The subline follows at 9.4 s and the CTAs at 11.6 s, each
+ * after a genuine ~0.8 s rest — never a stacked cascade. No centered logo —
+ * the brand is held by the top-left mark, pinned at the exact SiteHeader
+ * position (max-w-site / px-6 md:px-10), handing off as SiteHeader fades in
+ * on scroll.
  *
  * The living background is the global Woven Ring backdrop (WovenRingBackdrop);
  * the delays below are tuned to its morph. Reduced motion / in-site navigation:
@@ -29,8 +34,8 @@ export default function HomeHero() {
   const [settled] = useState(() => typeof window !== 'undefined' && !isFreshArrival())
   const disabled = !!reduce || settled
 
-  // Logo: delayed on fresh arrival so it appears after the ring starts forming.
-  // Non-fresh arrivals and reduced-motion: appears immediately.
+  // Logo: delayed on fresh arrival so it appears at the temari orb's glow
+  // zenith (~3.6–3.8 s). Non-fresh arrivals and reduced-motion: immediately.
   const [logoReady, setLogoReady] = useState(
     () => typeof window !== 'undefined' && !isFreshArrival()
   )
@@ -40,7 +45,7 @@ export default function HomeHero() {
 
   useEffect(() => {
     if (logoReady) return
-    const t = setTimeout(() => setLogoReady(true), 5000)
+    const t = setTimeout(() => setLogoReady(true), 3600)
     return () => clearTimeout(t)
   }, [logoReady])
 
@@ -93,10 +98,10 @@ export default function HomeHero() {
                 five characters longer than the old first line, and this is the
                 largest size at which it holds as one line inside the ring. */}
             <h1 className="font-serif text-[clamp(2.5rem,5vw,3.95rem)] leading-[1.06] tracking-[-0.02em] text-ink">
-              <motion.span className="hero-failsafe block text-grad" {...f(8.2, 1.7)}>
+              <motion.span className="hero-failsafe block text-grad" {...f(4.6, 1.6)}>
                 Sovereign Superintelligence
               </motion.span>
-              <motion.span className="hero-failsafe block" {...f(10, 1.7)}>
+              <motion.span className="hero-failsafe block" {...f(7.0, 1.6)}>
                 for Safe Automation
               </motion.span>
             </h1>
@@ -104,7 +109,7 @@ export default function HomeHero() {
             {/* subline — the lending ground under the brand claim (user copy) */}
             <motion.p
               className="hero-failsafe mx-auto mt-7 max-w-[52ch] font-sans text-body-lg text-ink-2"
-              {...f(12.2, 1.4)}
+              {...f(9.4, 1.4)}
             >
               <span className="block">Agentic lending operations,</span>
               <span className="block text-mint">under your control.</span>
@@ -113,7 +118,7 @@ export default function HomeHero() {
             {/* CTAs — appear once the subline has settled */}
             <motion.div
               className="hero-failsafe mt-10 flex flex-wrap items-center justify-center gap-6"
-              {...f(14, 1.3)}
+              {...f(11.6, 1.3)}
             >
               <CTA href={DEMO_HREF}>Book a demo</CTA>
               <CTA href="/krimos" variant="secondary">

@@ -3,20 +3,30 @@
 /**
  * WovenRingBackdrop — brand living ground for the homepage and general interior
  * pages (everything except /krimos* and Research routes, which keep their own
- * backdrops). Canvas piece: cloud → swirl vortex → temari sphere → woven ring.
+ * backdrops). Canvas piece: cloud → grand spiral → temari orb → woven ring.
  *
- * Ported from Woven Ring.html (v2):
- *   - 56 strands (28 on small screens), T_END = 15 s
- *   - new swirl: 3D logarithmic spiral vortex
- *   - new sphere: equal-area loxodrome (temari weave, no latitude gaps)
- *   - ringScale: final ring fills ~½ way to screen edges
- *   - sphereGlow: soft pearl glow during the orb phase
+ * Ported from "Woven Ring (4).html" (v4). What changed from v2:
+ *   - T_END = 7.5 s (was 15): the whole morph runs twice as fast; T_EARLY = 7.0
+ *     paces the pre-ring phases and the spare 0.5 s all goes to the final bloom
+ *   - swirl: one grand, wide spiral galaxy (2.2 turns, R×1.67 reach) replacing
+ *     the tighter log-spiral vortex; the spiral draws itself from centre
+ *     outward, each dot carried AROUND the vortex as it is drawn in
+ *   - sphere: two mirror-chirality thread families (sd.sphDir) weave a temari
+ *     lattice with even diamond crossings; the orb precesses slowly
+ *   - every transition is staggered per-point (tt-offset seg windows), so
+ *     arrival and departure are one unbroken current — no rests, no seams
+ *   - a slow roll passes through the figure as it unfurls (zero at both ends)
+ *   - spherePeak warms the threads at the orb's zenith (~3.6 s) — the beat the
+ *     hero logo appears on
+ *   - dropped fields the v4 render never reads: glints, hueFreq/hueAmp,
+ *     spinTurns, and all v2 sphere fields (sphWob*, sphWeave, sphP/Q, …)
  *
- * React wrapper unchanged from v1:
+ * React wrapper unchanged:
  *   - route-gated (null on /krimos* + Research routes)
  *   - isFreshArrival() — morph plays only on fresh homepage load
  *   - RING_OFFSET — in-site navigation skips to the settled ring instantly
- *   - DPR capped, small-device strand reduction, tab-pause, reduced-motion still frame
+ *   - DPR capped at 2, small-device strand reduction, tab-pause, 30 fps once
+ *     settled, reduced-motion still frame
  */
 
 import { useEffect, useRef } from 'react'
@@ -66,6 +76,8 @@ function WovenRingCanvas() {
       return true
     }
     window.addEventListener('resize', resize)
+    // re-measure on tab return too (v4 source) — a hidden tab can miss resizes
+    document.addEventListener('visibilitychange', resize)
     resize()
     let retry: ReturnType<typeof setTimeout> | null = null
     ;(function ensureSized() { if (!sized) { resize(); retry = setTimeout(ensureSized, 100) } })()
@@ -82,25 +94,20 @@ function WovenRingCanvas() {
     function smooth(x: number) { x = clamp01(x); return x * x * x * (x * (x * 6 - 15) + 10) }
     function seg(q: number, a: number, b: number) { return smooth((q - a) / (b - a)) }
 
-    // ---------- palette ----------
+    // ---------- palette (luminous teal → aqua, white-hot cores) ----------
     const emerald = [16, 255, 168], aqua = [74, 206, 255]
 
     // ---------- timeline + density ----------
-    const T_END = 15.0
-    const N = small ? 28 : 56, SEG = small ? 84 : 120
+    const T_END = 7.5    // morph completes here, then the ring loops
+    const T_EARLY = 7.0  // pre-ring phases keep their pace; the extra 0.5 s all goes to the final bloom
+    const N = small ? 42 : 84, SEG = small ? 84 : 120
 
     // ---------- strands ----------
     const WINDINGS = [2, 3, 3, 4]
     const strands: any[] = []
     for (let i = 0; i < N; i++) {
       const c0 = (i % 2 === 0 ? i / N : 1 - i / N) * 0.82 + 0.09
-      const glints: any[] = []
-      const gc = 3 + ((Math.random() * 3) | 0)
-      for (let g = 0; g < gc; g++)
-        glints.push({
-          pos: Math.random(), speed: rand(0.045, 0.10) * (Math.random() < 0.5 ? 1 : -1),
-          len: rand(0.10, 0.22), flarePhase: rand(0, TWO_PI), flareRate: rand(0.4, 0.9),
-        })
+      // cloud start position per point (fragmented volumetric cloud)
       const start: any[] = []
       for (let s = 0; s < SEG; s++) {
         const dir = rand(0, TWO_PI), elev = Math.asin(rand(-1, 1))
@@ -111,22 +118,24 @@ function WovenRingCanvas() {
           drift: rand(0, TWO_PI), driftRate: rand(0.5, 1.3), tw: rand(0, TWO_PI),
         })
       }
+      // temari weave: two interlacing mirror-chirality families (fam → sphDir)
+      const fam = i % 2
       strands.push({
         W: WINDINGS[(Math.random() * WINDINGS.length) | 0],
         arm: i * TWO_PI / N,
-        thetaOff: (i * 2.399963) % TWO_PI,
+        thetaOff: (i * 2.399963) % TWO_PI, // golden-angle toroidal start → seams + coverage spread
         poloDrift: rand(0, TWO_PI), poloRate: rand(0.09, 0.19) * (Math.random() < 0.5 ? 1 : -1),
         tubeFreq: 2 + ((Math.random() * 3) | 0), tubePhase: rand(0, TWO_PI), tubeAmp: rand(0.08, 0.17),
         majAmp: rand(0.012, 0.03), majPhase: rand(0, TWO_PI),
         c0, color: mix(emerald, aqua, c0),
-        hueFreq: 1 + ((Math.random() * 3) | 0), huePhase: rand(0, TWO_PI), hueAmp: rand(0.26, 0.46),
-        glints,
+        huePhase: rand(0, TWO_PI),
         lumPhase: rand(0, TWO_PI), lumRate: rand(0.7, 1.4), lumPhase2: rand(0, TWO_PI),
+        // chaotic luminosity field: bright lengths drifting both ways, no order
         fF1: 2 + ((Math.random() * 4) | 0), fF2: 1 + ((Math.random() * 3) | 0), fF3: 3 + ((Math.random() * 5) | 0),
         fS1: rand(0.5, 1.5), fS2: rand(0.5, 1.5), fS3: rand(0.4, 1.2),
         fD1: Math.random() < 0.5 ? 1 : -1, fD2: Math.random() < 0.5 ? 1 : -1, fD3: Math.random() < 0.5 ? 1 : -1,
         fP1: rand(0, TWO_PI), fP2: rand(0, TWO_PI), fP3: rand(0, TWO_PI),
-        sphWobAmp: rand(0.01, 0.022), sphWobPhase: rand(0, TWO_PI), sphWeave: 2 + ((Math.random() * 2) | 0),
+        sphDir: fam ? -1 : 1, // mirrored winding → regular diamond crossings
         start,
       })
     }
@@ -173,28 +182,36 @@ function WovenRingCanvas() {
       }
     }
 
+    // ---------- geometry / morph ----------
     function computeFrame(time: number) {
       const cx = W / 2, cy = H / 2
       const R = U * 0.30, r = R * 0.082
-      // scale the final ring so its projected top/bottom sit halfway to the screen edges
+      // final-ring enlargement: pull the projected top & bottom halfway to the screen edges
       const ct0 = Math.cos(24 * Math.PI / 180)
       const vr0 = R * ct0
       const ringScale = (H / 4 + vr0 / 2) / vr0
       const q = clamp01(time / T_END)
+      const qE = clamp01(time / T_EARLY) // clock for the pre-ring phases
       const done = time >= T_END
 
-      const wSwirl  = seg(q, 0.06, 0.36)   // spiral fully formed ~5.4 s
-      const wSphere = seg(q, 0.38, 0.62)   // brief fold, sphere complete ~9.3 s
-      const wRing   = done ? 1 : seg(q, 0.66, 1.0)  // long gentle unfurl to ring
+      // one continuous breath: spiral gathers → folds into a complete orb → the orb
+      // opens into the ring. Windows overlap so each phase is already arriving as the
+      // last departs — no rests, no seams. (Per-point windows are computed below.)
+      const wRing = done ? 1 : smooth(seg(q, 0.448, 1.0)) // global unfurl (for the roll)
 
       const cloudSpin = time * 0.09
+      // a slow, graceful roll passes through the figure as it unfurls — zero at
+      // both ends, a passing wave of motion, never a pose
+      const roll = 0.11 * Math.sin(Math.PI * wRing)
+      const rollC = Math.cos(roll), rollS = Math.sin(roll)
       const globalRot = time * 0.08
-      const breathe   = 1 + 0.022 * Math.sin(time * 0.4)
+      const breathe = 1 + 0.022 * Math.sin(time * 0.4)
 
       pointer.x += (pointer.tx - pointer.x) * 0.04
       pointer.y += (pointer.ty - pointer.y) * 0.04
       const px = pointer.x, py = pointer.y
-      const tlt = (24 * Math.PI / 180) + py * 0.16, ct = Math.cos(tlt), stt = Math.sin(tlt)
+      const tlt = (24 * Math.PI / 180) + py * 0.16 + 0.045 * Math.sin(time * 0.21)
+      const ct = Math.cos(tlt), stt = Math.sin(tlt)
       const yaw = px * 0.18, cyw = Math.cos(yaw), syw = Math.sin(yaw)
 
       let k = 0
@@ -234,40 +251,74 @@ function WovenRingCanvas() {
             const cY = cRad * Math.sin(el) * 1.05
             const cZ = cRad * cel * Math.sin(az)
 
-            // ---- SWIRL (logarithmic spiral vortex) ----
-            const swSpin  = time * 0.45
-            const swTurns = 3.3
-            const swAng   = sd.arm + tt * swTurns * TWO_PI + swSpin
-            const swRad   = R * (0.18 + 1.18 * Math.pow(tt, 0.82))
+            // ---- SWIRL: a grand, wide spiral galaxy — serene, simple, luminous ----
+            const swSpin = time * 0.32                            // slow, stately rotation
+            const swTurns = 2.2                                   // one graceful sweep
+            const swAng = sd.arm + tt * swTurns * TWO_PI + swSpin // parallel arms, never crossing
+            const swRad = R * (0.12 + 1.55 * Math.pow(tt, 0.85))  // LARGE: commands the whole stage
             const sX = swRad * Math.cos(swAng)
             const sZ = swRad * Math.sin(swAng)
-            const sY = R * 0.50 * (0.42 - tt) + R * 0.10 * Math.sin(swAng + time * 0.5)
+            const sY = R * 0.36 * (0.45 - tt)                     // pure, still bowl
 
-            // ---- SPHERE (equal-area loxodrome — temari weave, closed caps) ----
-            const ballR = R * 0.52
-            const sn    = clamp01((swRad / R - 0.18) / (1.36 - 0.18))
-            const slat  = Math.asin(1.998 * sn - 0.999)
-            const wob   = 1 + sd.sphWobAmp * Math.sin(sd.sphWeave * t + sd.sphWobPhase + time * 0.30)
+            // ---- SPHERE: two mirrored thread families weave a complete lattice,
+            //      pole to pole; the whole orb precesses slowly, like attention
+            //      turning; the faintest breath keeps it alive. ----
+            const ballR = R * 0.52 * (1 + 0.005 * Math.sin(time * 0.35 + (2 * tt - 1) * 2.0))
+            const le = 2 * tt - 1
+            const slat = 1.5697 * le * (1.06 - 0.06 * le * le)    // near-uniform latitude, soft crowns
+            const bAng = sd.arm + sd.sphDir * tt * 3.8 * TWO_PI + swSpin * 0.7
             const sclat = Math.cos(slat)
-            const bX = ballR * wob * sclat * Math.cos(swAng)
-            const bZ = ballR * wob * sclat * Math.sin(swAng)
-            const bY = ballR * wob * Math.sin(slat)
+            const bX0 = ballR * sclat * Math.cos(bAng)
+            const bZ0 = ballR * sclat * Math.sin(bAng)
+            const bY0 = ballR * Math.sin(slat)
+            // slow precession of the axis — the orb contemplates, never static
+            const prc = 0.15 * Math.sin(time * 0.26)
+            const pc = Math.cos(prc), ps = Math.sin(prc)
+            const bX = bX0, bY = bY0 * pc - bZ0 * ps, bZ = bY0 * ps + bZ0 * pc
 
             X = cX; Y = cY; Z = cZ
-            X += (sX - X) * wSwirl;  Y += (sY - Y) * wSwirl;  Z += (sZ - Z) * wSwirl
-            X += (bX - X) * wSphere; Y += (bY - Y) * wSphere; Z += (bZ - Z) * wSphere
-            X += (rX - X) * wRing;   Y += (rY - Y) * wRing;   Z += (rZ - Z) * wRing
+            // the spiral draws itself from centre outward; each dot is carried AROUND
+            // the vortex as it is drawn in → curved whirlpool paths, never straight lines
+            const wSw = seg(qE, 0.07 + 0.16 * tt, 0.32 + 0.16 * tt)
+            const curl = wSw * 1.5
+            const cc2 = Math.cos(curl), sc2 = Math.sin(curl)
+            const Xr = X * cc2 - Z * sc2; Z = X * sc2 + Z * cc2; X = Xr
+            X += (sX - X) * wSw; Y += (sY - Y) * wSw; Z += (sZ - Z) * wSw
+
+            // THE COLLAPSE: the spiral pours into the orb from its heart outward —
+            // each point starts its descent the instant it finishes arriving
+            const wSp = seg(qE, 0.33 + 0.15 * tt, 0.60 + 0.08 * tt)
+            if (wSp > 0.0001) {
+              const cl = 0.7 * Math.sin(Math.PI * wSp) // controlled, stately descent
+              const cc3 = Math.cos(cl), sc3 = Math.sin(cl)
+              const Xr2 = X * cc3 - Z * sc3; Z = X * sc3 + Z * cc3; X = Xr2
+              X += (bX - X) * wSp; Y += (bY - Y) * wSp; Z += (bZ - Z) * wSp
+            }
+
+            // THE UNRAVELLING: one shared radial bloom — the whole orb expands
+            // outward from its centre as one, the ring completing equally all around
+            const wRg = smooth(seg(q, 0.448, 1.0))
+            if (wRg > 0.0001) {
+              const ul2 = -0.16 * Math.sin(Math.PI * wRg) // a whisper of counter-rotation
+              const cc4 = Math.cos(ul2), sc4 = Math.sin(ul2)
+              const Xr3 = X * cc4 - Z * sc4; Z = X * sc4 + Z * cc4; X = Xr3
+              X += (rX - X) * wRg; Y += (rY - Y) * wRg; Z += (rZ - Z) * wRg
+              // mid-flight bloom: the path arcs gently outward and lifts
+              let bloom = Math.sin(Math.PI * wRg); bloom *= bloom
+              const bs = 1 + 0.04 * bloom
+              X *= bs; Z *= bs; Y = Y * bs - R * 0.04 * bloom
+            }
           }
 
-          // ---- project (tilt + yaw + parallax) ----
-          const yt  = Y * ct - Z * stt
-          const zt  = Y * stt + Z * ct
-          const xt  = X * cyw - zt * syw
+          // ---- project (tilt + yaw + roll + parallax) ----
+          const yt = Y * ct - Z * stt
+          const zt = Y * stt + Z * ct
+          const xt = X * cyw - zt * syw
           const zt2 = X * syw + zt * cyw
 
           const p = buf[k++]
-          p.x = cx + xt + px * 16
-          p.y = cy + yt + py * 16
+          p.x = cx + xt * rollC - yt * rollS + px * 16
+          p.y = cy + xt * rollS + yt * rollC + py * 16
           p.z = zt2
           p.ang = theta; p.t = tt; p.si = i; p.tw = sd.start[s].tw
           zsum += zt2
@@ -294,24 +345,31 @@ function WovenRingCanvas() {
 
     function render(time: number) {
       const q = clamp01(time / T_END)
+      const qE = clamp01(time / T_EARLY)
       const done = time >= T_END
 
-      const cloudGlow  = done ? 0 : (1 - seg(q, 0.20, 0.46))
-      const grainVis   = done ? 0 : (1 - seg(q, 0.44, 0.66))
-      const lineReveal = done ? 1 : seg(q, 0.40, 0.66)
-      const ringPhase  = done ? 1 : seg(q, 0.66, 1.0)
+      const cloudGlow = done ? 0 : (1 - seg(qE, 0.18, 0.44))
+      // dots breathe in from darkness, then dissolve into the collapse
+      const grainVis = done ? 0 : seg(qE, 0.0, 0.05) * (1 - seg(qE, 0.36, 0.60))
+      // threads ignite through the collapse → one continuous handoff
+      const lineReveal = done ? 1 : seg(qE, 0.32, 0.60)
+      // luminance & sharpening grow across the whole unfurl → no pop
+      const ringPhase = done ? 1 : seg(q, 0.50, 1.0)
 
       const geom = computeFrame(time)
       const R = geom.R, cx = geom.cx, cy = geom.cy
       drawBackground(time, cloudGlow, ringPhase, cx, cy)
 
-      // soft pearl glow while the orb is present
-      const sphereGlow = done ? 0 : seg(q, 0.46, 0.62) * (1 - seg(q, 0.64, 0.82))
+      // luminous core: swells into a pure orb of light as the weave completes,
+      // then eases out into the ring (zenith ≈ 3.6–3.8 s — the logo's beat)
+      const sphereGlow = done ? 0 : 0.45 * seg(qE, 0.40, 0.52) * (1 - seg(qE, 0.54, 0.74))
+      const spherePeak = done ? 0 : seg(qE, 0.42, 0.54) * (1 - seg(qE, 0.54, 0.72))
       if (sphereGlow > 0.002) {
         ctx!.save(); ctx!.globalCompositeOperation = 'lighter'
-        const sg = ctx!.createRadialGradient(cx, cy, 0, cx, cy, R * 0.56)
-        sg.addColorStop(0, rgba([28, 200, 178], 0.18 * sphereGlow))
-        sg.addColorStop(0.45, rgba([14, 130, 158], 0.085 * sphereGlow))
+        const sg = ctx!.createRadialGradient(cx, cy, 0, cx, cy, R * 0.68)
+        sg.addColorStop(0, rgba([120, 245, 220], 0.15 * sphereGlow))
+        sg.addColorStop(0.32, rgba([28, 200, 178], 0.10 * sphereGlow))
+        sg.addColorStop(0.7, rgba([14, 130, 158], 0.05 * sphereGlow))
         sg.addColorStop(1, 'rgba(0,0,0,0)')
         ctx!.fillStyle = sg; ctx!.fillRect(0, 0, W, H); ctx!.restore()
       }
@@ -359,13 +417,15 @@ function WovenRingCanvas() {
           const i = order[oi].i, sd = strands[i], base = i * SEG
           const dep = clamp01(0.5 + order[oi].z / zN)
           const hm = clamp01(sd.c0 + 0.18 * Math.sin(time * 0.3 + sd.huePhase))
-          const col = mix(emerald, aqua, hm)
+          let col = mix(emerald, aqua, hm)
+          // a gentle brightening at the orb's zenith — threads stay resolvable
+          if (spherePeak > 0.001) col = mix(col, [205, 255, 244], 0.12 * spherePeak)
           const hot = [Math.min(255, col[0] + 155), Math.min(255, col[1] + 80), Math.min(255, col[2] + 55)]
           const ul = lum(sd)
 
           ctx!.globalCompositeOperation = 'lighter'
           strandPath(base, SEG)
-          ctx!.strokeStyle = rgba(col, 0.042 * lerp(0.7, 1.1, dep) * lerp(ul, 0.9, ringPhase) * lineReveal)
+          ctx!.strokeStyle = rgba(col, 0.042 * lerp(0.7, 1.1, dep) * lerp(ul, 0.9, ringPhase) * lineReveal * (1 - 0.45 * spherePeak))
           ctx!.lineWidth = lerp(7, 13, dep) * formed; ctx!.stroke()
 
           for (let s = 0; s < SEG - 1; s++) {
@@ -377,7 +437,7 @@ function WovenRingCanvas() {
             const dseg = clamp01(0.5 + (a2.z + b2.z) * 0.5 / zN)
             const dfac = lerp(0.75, 1.18, dseg)
 
-            ctx!.strokeStyle = rgba(col, 0.17 * br * dfac)
+            ctx!.strokeStyle = rgba(col, 0.17 * br * dfac * (1 - 0.35 * spherePeak))
             ctx!.lineWidth = lerp(1.7, 3.4, dseg) * formed
             ctx!.beginPath(); ctx!.moveTo(a2.x, a2.y); ctx!.lineTo(b2.x, b2.y); ctx!.stroke()
 
@@ -430,6 +490,7 @@ function WovenRingCanvas() {
       window.removeEventListener('resize', resize)
       window.removeEventListener('pointermove', onPointer)
       document.removeEventListener('visibilitychange', onVisibility)
+      document.removeEventListener('visibilitychange', resize)
     }
   }, [])
 
