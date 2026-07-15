@@ -114,10 +114,13 @@ export default function HomeHero() {
                 as the ring dimming behind the glyphs, never a grey drop-shadow.
                 .hero-failsafe (globals.css) force-reveals everything via CSS
                 after the choreography window (JS-off / failed chunk). */}
-            {/* NOTE: the canvas-halo text-shadow lives on the WHITE spans only —
-                on gradient-clipped text a text-shadow shows through the
-                transparent fill and muddies the gradient, so the middle word
-                uses filter:drop-shadow instead (follows the rendered glyphs). */}
+            {/* The middle word is deliberately DIMENSIONAL: on gradient-clipped
+                text a text-shadow shows through the transparent fill, carving
+                the glyphs into a metallic, embossed relief (user-loved effect —
+                keep it). The stacked 1-4px dark layers are the extrusion, the
+                wide layers the ambient seat, and a faint mint drop-shadow aura
+                keeps the carved word alive against the dark hollow. The white
+                lines take the plain canvas-halo. */}
             <h1 className="font-serif text-[clamp(2.15rem,6.2vw,5.25rem)] leading-[1.03] tracking-[-0.025em] text-ink">
               <motion.span
                 className="hero-failsafe block [text-shadow:0_2px_40px_rgba(2,6,10,0.55),0_1px_3px_rgba(2,6,10,0.6)]"
@@ -126,7 +129,7 @@ export default function HomeHero() {
                 Sovereign
               </motion.span>
               <motion.span
-                className="hero-failsafe block text-grad [filter:drop-shadow(0_2px_20px_rgba(2,6,10,0.6))]"
+                className="hero-failsafe block text-grad [text-shadow:0_2px_40px_rgba(2,6,10,0.55),0_1px_3px_rgba(2,6,10,0.6)] [filter:drop-shadow(0_6px_28px_rgba(0,255,178,0.16))]"
                 {...fH(5.45)}
               >
                 Superintelligence
@@ -139,18 +142,25 @@ export default function HomeHero() {
               </motion.span>
             </h1>
 
-            {/* subline — hangs from a glowing mint tick (mint appears once, as
-                a woven thread, not as link-coloured text); the payoff line
-                resolves to white via luminance + weight. Dark halo lifts the
-                sans off the moving threads. Copy is user-locked. */}
+            {/* subline — hangs from the glowing mint tick (user-liked, kept).
+                Both lines are luminous brand colour, mapped to the colour
+                grammar: cyan = thinking / in motion ("agentic operations"),
+                mint = validated / held ("under your control") — each line
+                wears the colour that means what it says. Neon-soft glows match
+                the ring's threads; the dark under-halo keeps AA over them.
+                Copy is user-locked. */}
             <motion.div className="hero-failsafe mt-10 flex flex-col items-center" {...f(6.5, 0.9, 10)}>
               <span
                 aria-hidden
                 className="block h-px w-12 bg-gradient-to-r from-transparent via-mint to-transparent shadow-[0_0_12px_0_rgba(0,255,178,0.45)]"
               />
-              <p className="mx-auto mt-6 max-w-[42ch] font-sans text-[clamp(1.125rem,2.1vw,1.375rem)] leading-[1.55] [text-shadow:0_1px_22px_rgba(4,6,12,0.9)]">
-                <span className="block font-normal text-ink-2">Agentic lending operations,</span>
-                <span className="block font-medium text-ink">under your control.</span>
+              <p className="mx-auto mt-6 max-w-[42ch] font-sans font-medium text-[clamp(1.25rem,2.4vw,1.625rem)] leading-[1.5] tracking-[0.01em]">
+                <span className="block text-cyan [text-shadow:0_0_26px_rgba(57,214,255,0.42),0_1px_18px_rgba(2,6,10,0.9)]">
+                  Agentic lending operations,
+                </span>
+                <span className="block text-mint [text-shadow:0_0_26px_rgba(0,255,178,0.42),0_1px_18px_rgba(2,6,10,0.9)]">
+                  under your control.
+                </span>
               </p>
             </motion.div>
 
