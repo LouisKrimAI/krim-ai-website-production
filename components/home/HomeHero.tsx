@@ -16,11 +16,11 @@
  *
  * Beats (fast one-by-one cascade, riding the DARKENING center after the orb
  * zenith so contrast climbs through every reveal): logo 4.1 s on the zenith
- * (top-left, off the hot core) → h1 lines 5.0 / 5.45 / 5.9 s → subline 6.5 s
- * → CTAs 7.1 s. Full stack home at 8.1 s, ~0.4 s before the ring resolves at
- * 8.5 s — the text arrives, then the ring closes the frame. No centered
- * logo — the brand is held by the top-left mark, pinned at the exact
- * SiteHeader position, handing off as SiteHeader fades in on scroll.
+ * (top-left, off the hot core) → h1 lines 5.6 / 6.05 / 6.5 s → subline 7.1 s
+ * → CTAs 7.7 s. Full stack home at 8.7 s, settling just as the ring resolves
+ * (8.5 s) — the text arrives and the ring closes the frame together. No
+ * centered logo — the brand is held by the top-left mark, pinned at the
+ * exact SiteHeader position, handing off as SiteHeader fades in on scroll.
  *
  * Reduced motion / in-site navigation: everything is immediately visible.
  */
@@ -124,19 +124,19 @@ export default function HomeHero() {
             <h1 className="font-serif text-[clamp(2.15rem,6.2vw,5.25rem)] leading-[1.03] tracking-[-0.025em] text-ink">
               <motion.span
                 className="hero-failsafe block [text-shadow:0_2px_40px_rgba(2,6,10,0.55),0_1px_3px_rgba(2,6,10,0.6)]"
-                {...fH(5.0)}
+                {...fH(5.6)}
               >
                 Sovereign
               </motion.span>
               <motion.span
                 className="hero-failsafe block text-grad [text-shadow:0_2px_40px_rgba(2,6,10,0.55),0_1px_3px_rgba(2,6,10,0.6)] [filter:drop-shadow(0_6px_28px_rgba(0,255,178,0.16))]"
-                {...fH(5.45)}
+                {...fH(6.05)}
               >
                 Superintelligence
               </motion.span>
               <motion.span
                 className="hero-failsafe block [text-shadow:0_2px_40px_rgba(2,6,10,0.55),0_1px_3px_rgba(2,6,10,0.6)]"
-                {...fH(5.9)}
+                {...fH(6.5)}
               >
                 for Safe Automation
               </motion.span>
@@ -149,21 +149,24 @@ export default function HomeHero() {
                 grey → white) and the tick carries the only accent. Dark
                 under-halo keeps it legible over the moving threads.
                 Copy is user-locked. */}
-            <motion.div className="hero-failsafe mt-10 flex flex-col items-center" {...f(6.5, 0.9, 10)}>
+            <motion.div className="hero-failsafe mt-10 flex flex-col items-center" {...f(7.1, 0.9, 10)}>
               <span
                 aria-hidden
                 className="block h-px w-12 bg-gradient-to-r from-transparent via-mint to-transparent shadow-[0_0_12px_0_rgba(0,255,178,0.45)]"
               />
-              <p className="mx-auto mt-6 max-w-[42ch] font-serif italic text-[clamp(1.2rem,2.2vw,1.5rem)] leading-[1.55] [text-shadow:0_1px_18px_rgba(2,6,10,0.9)]">
-                <span className="block text-ink-2">Agentic lending operations,</span>
-                <span className="block text-ink">under your control.</span>
+              {/* line 1 bright white (grey reads muddy on screens — user), line 2
+                  resolves to mint: the control line wears the control colour,
+                  jewel-quiet in italic serif, no glow */}
+              <p className="mx-auto mt-6 max-w-[42ch] font-serif italic text-[clamp(1.3rem,2.4vw,1.7rem)] leading-[1.55] [text-shadow:0_1px_18px_rgba(2,6,10,0.9)]">
+                <span className="block text-ink">Agentic lending operations,</span>
+                <span className="block text-mint">under your control.</span>
               </p>
             </motion.div>
 
             {/* CTAs — one action unit (tight gap binds primary + ghost) */}
             <motion.div
               className="hero-failsafe mt-10 flex flex-wrap items-center justify-center gap-4"
-              {...f(7.1, 1.0, 8)}
+              {...f(7.7, 1.0, 8)}
             >
               <CTA href={DEMO_HREF}>Book a demo</CTA>
               <CTA href="/krimos" variant="secondary">
