@@ -1,7 +1,7 @@
 /**
  * /company — who Krim is: the thesis, the name, the markets.
  * STANDALONE pattern (like app/page.tsx + app/krimos/page.tsx):
- * SiteHeader + OrbBackdrop + <main className="relative z-10"> + SiteFooter,
+ * SiteHeader + <main className="relative z-10"> + SiteFooter,
  * metadata + BreadcrumbList JSON-LD. NOT LayerShell.
  * Content-first, calm, premium. Includes a team section (founder + founding team;
  * advisors to follow) — real, named people; keep provenance accurate.
@@ -12,7 +12,6 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import SiteHeader from '@/components/SiteHeader'
 import SiteFooter from '@/components/SiteFooter'
-import OrbBackdrop from '@/components/OrbBackdrop'
 import Reveal from '@/components/Reveal'
 import { Section, Eyebrow, GlassCard, CTA } from '@/components/ui'
 import Recognition from '@/components/home/Recognition'
@@ -89,10 +88,9 @@ export default function CompanyPage() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }} />
       <SiteHeader />
-      <OrbBackdrop />
       <main className="relative z-10">
         {/* ---- 1 · Hero ---- */}
-        <Section className="!pt-24">
+        <Section className="!pt-24 !pb-24 min-h-[85vh] flex items-center [&>div]:w-full">
           <div className="mx-auto max-w-[860px] text-center">
             <Reveal>
               <Eyebrow>Company</Eyebrow>

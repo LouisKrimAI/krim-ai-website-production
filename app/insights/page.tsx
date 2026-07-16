@@ -1,5 +1,5 @@
 /**
- * /insights — the writing index. STANDALONE pattern (SiteHeader + OrbBackdrop +
+ * /insights — the writing index. STANDALONE pattern (SiteHeader +
  * main + SiteFooter), like app/research/page.tsx — NOT LayerShell.
  *
  * Renders POSTS (app/insights/_posts.ts, newest-first) as a responsive grid of
@@ -11,7 +11,6 @@ import Link from 'next/link'
 import Image from 'next/image'
 import SiteHeader from '@/components/SiteHeader'
 import SiteFooter from '@/components/SiteFooter'
-import OrbBackdrop from '@/components/OrbBackdrop'
 import Reveal from '@/components/Reveal'
 import { Section, Eyebrow, CTA } from '@/components/ui'
 import { POSTS } from './_posts'
@@ -48,10 +47,9 @@ export default function BlogPage() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }} />
       <SiteHeader />
-      <OrbBackdrop />
       <main className="relative z-10">
         {/* ---- 1 · Hero: the writing ---- */}
-        <Section className="!pt-24">
+        <Section className="!pt-24 !pb-24 min-h-[85vh] flex items-center [&>div]:w-full">
           <div className="mx-auto max-w-[820px] text-center">
             <Reveal>
               <Eyebrow>Insights</Eyebrow>

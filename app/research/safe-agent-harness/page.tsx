@@ -177,7 +177,7 @@ export default function SafeAgentHarnessPage() {
           <div className="mx-auto max-w-[820px] text-center">
             <Reveal>
               <Eyebrow>Research — Safe Agent Harness</Eyebrow>
-              <h1 className="mt-5 font-serif text-display-hero leading-[1.04] text-ink">
+              <h1 className="mt-5 font-serif text-display-hero text-ink">
                 The harness that makes AI agents provable to deploy.
               </h1>
             </Reveal>

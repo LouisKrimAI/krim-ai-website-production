@@ -1,6 +1,6 @@
 /**
  * /trust — sovereignty, security & deployment. Standalone page (not LayerShell):
- * SiteHeader + OrbBackdrop + SiteFooter, homepage design DNA.
+ * SiteHeader + SiteFooter, homepage design DNA.
  * Shape: answer-first hero (sovereign by construction) → deployment (on-prem
  * hero / hybrid / managed) → security posture → encoded jurisdictions → the
  * audit experience (Krim-Ledger replay) → frameworks & certifications (HONEST,
@@ -13,7 +13,6 @@
 import type { Metadata } from 'next'
 import SiteHeader from '@/components/SiteHeader'
 import SiteFooter from '@/components/SiteFooter'
-import OrbBackdrop from '@/components/OrbBackdrop'
 import Reveal from '@/components/Reveal'
 import JurisdictionTabs from '@/components/trust/JurisdictionTabs'
 import { JURISDICTIONS } from '@/lib/jurisdictions'
@@ -112,16 +111,15 @@ export default function TrustPage() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }} />
       <SiteHeader />
-      <OrbBackdrop />
       <main className="relative z-10">
         {/* ---- 1 · Hero — answer-first: sovereign by construction ---- */}
-        <Section className="!pt-24">
+        <Section className="!pt-24 !pb-24 min-h-[85vh] flex items-center [&>div]:w-full">
           <div className="mx-auto max-w-[860px] text-center">
             <Reveal>
               <Eyebrow>Inside your walls</Eyebrow>
-              <h1 className="mt-5 font-serif text-[clamp(2.2rem,5.4vw,4.6rem)] leading-[1.05] tracking-[-0.018em] text-ink">
-                <span className="block md:whitespace-nowrap"><span className="text-grad">Sovereign</span> by construction.</span>
-                <span className="block md:whitespace-nowrap">Auditable by default.</span>
+              <h1 className="mt-5 font-serif text-display-hero text-ink">
+                <span className="block"><span className="text-grad">Sovereign</span> by construction.</span>
+                <span className="block">Auditable by default.</span>
               </h1>
             </Reveal>
             <Reveal delay={0.12}>

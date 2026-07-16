@@ -1,7 +1,7 @@
 /**
  * /lending — the flagship domain page. Facts: docs/krim-content.md.
  *
- * Standalone shell (NOT a LayerShell): SiteHeader · OrbBackdrop · main · SiteFooter,
+ * Standalone shell (NOT a LayerShell): SiteHeader · main · SiteFooter,
  * to the HOUSE-STYLE bar (docs/HOUSE-STYLE.md). Server component — all substance in
  * the rendered HTML, no hand-built devices. Calm glass + type only: shared Reveal,
  * `glass lume` cards with the 3px accent bar, GlassCard callouts, tasteful inline
@@ -18,7 +18,6 @@
 import type { Metadata } from 'next'
 import SiteHeader from '@/components/SiteHeader'
 import SiteFooter from '@/components/SiteFooter'
-import OrbBackdrop from '@/components/OrbBackdrop'
 import Reveal from '@/components/Reveal'
 import JurisdictionTabs from '@/components/trust/JurisdictionTabs'
 import { JURISDICTIONS } from '@/lib/jurisdictions'
@@ -122,10 +121,9 @@ export default function LendingPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }}
       />
       <SiteHeader />
-      <OrbBackdrop />
       <main className="relative z-10">
         {/* ════════════════════ 1 · Hero ════════════════════ */}
-        <Section className="!pt-24">
+        <Section className="!pt-24 !pb-24 min-h-[85vh] flex items-center [&>div]:w-full">
           <div className="mx-auto max-w-[860px] text-center">
             <Reveal>
               <Eyebrow>Lending</Eyebrow>

@@ -11,7 +11,6 @@
 import type { Metadata } from 'next'
 import SiteHeader from '@/components/SiteHeader'
 import SiteFooter from '@/components/SiteFooter'
-import OrbBackdrop from '@/components/OrbBackdrop'
 import Reveal from '@/components/Reveal'
 import CinematicBand from '@/components/CinematicBand'
 import { Section, Eyebrow, GlassCard, CTA } from '@/components/ui'
@@ -167,10 +166,9 @@ export default function ArchitecturePage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }} />
       <SiteHeader />
-      <OrbBackdrop />
       <main className="relative z-10">
         {/* ---- 1 · Hero: answer-first — the whole stack, or a layer on yours ---- */}
-        <Section className="!pt-24">
+        <Section className="!pt-24 !pb-24 min-h-[85vh] flex items-center [&>div]:w-full">
           <div className="mx-auto max-w-[820px] text-center">
             <Reveal>
               <Eyebrow>Architecture</Eyebrow>

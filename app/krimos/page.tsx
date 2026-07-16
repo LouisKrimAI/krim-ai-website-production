@@ -89,10 +89,8 @@ export default function PlatformPage() {
         <Section className="!pt-24">
           <div className="mx-auto max-w-[1000px] text-center">
             <Reveal>
-              <p className="font-mono text-[clamp(15px,1.7vw,18px)] uppercase tracking-[0.34em] text-mint">
-                KrimOS
-              </p>
-              <h1 className="mt-6 font-serif text-[clamp(2.5rem,5vw,4.1rem)] leading-[1.05] tracking-[-0.018em] text-ink">
+              <Eyebrow>KrimOS</Eyebrow>
+              <h1 className="mt-5 font-serif text-display-hero text-ink">
                 Run banking and lending end to end,{' '}
                 <span className="text-grad">proven at every step</span>.
               </h1>

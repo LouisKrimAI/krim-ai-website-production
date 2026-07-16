@@ -1,6 +1,6 @@
 /**
  * /services — engagement: pilot to go-live. STANDALONE page (not LayerShell),
- * built on the homepage/krimos design DNA: SiteHeader + OrbBackdrop + Reveal,
+ * built on the homepage/krimos design DNA: SiteHeader + Reveal,
  * calm glass + type, no devices, no hero image.
  * Shape: hero (pilot → go-live in a quarter) → the path (three stages as glass
  * cards, each with what happens + a clear exit) → what Krim brings → expansion
@@ -12,7 +12,6 @@
 import type { Metadata } from 'next'
 import SiteHeader from '@/components/SiteHeader'
 import SiteFooter from '@/components/SiteFooter'
-import OrbBackdrop from '@/components/OrbBackdrop'
 import Reveal from '@/components/Reveal'
 import { Section, Eyebrow, GlassCard, CTA } from '@/components/ui'
 
@@ -91,10 +90,9 @@ export default function ServicesPage() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }} />
       <SiteHeader />
-      <OrbBackdrop />
       <main className="relative z-10">
         {/* ---- 1 · Hero — the promise: proof on your own data, in a quarter ---- */}
-        <Section className="!pt-24">
+        <Section className="!pt-24 !pb-24 min-h-[85vh] flex items-center [&>div]:w-full">
           <div className="mx-auto max-w-[860px] text-center">
             <Reveal>
               <Eyebrow>From pilot to scale</Eyebrow>
