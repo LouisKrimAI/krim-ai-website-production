@@ -63,7 +63,7 @@ export default function KiraPage() {
             <Reveal>
               <Eyebrow>For your customers</Eyebrow>
               <h1 className="mt-4 font-serif text-display-hero text-ink">
-                <span className="text-grad">One relationship</span>, the whole way through.
+                <span className="text-grad-carved">One relationship</span>, the whole way through.
               </h1>
             </Reveal>
             <Reveal delay={0.12}>

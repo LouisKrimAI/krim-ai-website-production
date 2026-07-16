@@ -173,7 +173,7 @@ export default function ArchitecturePage() {
             <Reveal>
               <Eyebrow>Architecture</Eyebrow>
               <h1 className="mt-5 font-serif text-display-hero text-ink">
-                One runtime, under every action.
+                <span className="text-grad-carved">One runtime</span>, under every action.
               </h1>
             </Reveal>
             <Reveal delay={0.12}>

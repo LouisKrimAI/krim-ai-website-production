@@ -93,7 +93,7 @@ export default function KendraPage() {
             <Reveal>
               <Eyebrow>The runtime</Eyebrow>
               <h1 className="mt-4 font-serif text-display-hero text-ink">
-                <span className="block">The <span className="text-grad">brain</span> your</span>
+                <span className="block">The <span className="text-grad-carved">brain</span> your</span>
                 <span className="block">co-workers think in.</span>
               </h1>
             </Reveal>

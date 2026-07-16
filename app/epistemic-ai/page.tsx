@@ -172,7 +172,7 @@ export default function EpistemicAIPage() {
             <Reveal>
               <Eyebrow>Epistemic AI</Eyebrow>
               <h1 className="mt-5 font-serif text-display-hero text-ink">
-                The AI your regulator can read.
+                The AI your regulator can <span className="text-grad-carved">read</span>.
               </h1>
             </Reveal>
             <Reveal delay={0.12}>

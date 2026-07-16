@@ -152,7 +152,7 @@ export default function HomeHero() {
                 Sovereign
               </motion.span>
               <motion.span
-                className="hero-failsafe block text-grad [text-shadow:0_2px_40px_rgba(2,6,10,0.55),0_1px_3px_rgba(2,6,10,0.6)] [filter:drop-shadow(0_6px_28px_rgba(0,255,178,0.16))]"
+                className="hero-failsafe block text-grad-carved"
                 {...fH(6.05)}
               >
                 Superintelligence

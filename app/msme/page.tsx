@@ -111,7 +111,7 @@ export default function MsmePage() {
             <Reveal>
               <Eyebrow>MSME</Eyebrow>
               <h1 className="mt-5 font-serif text-display-hero text-ink">
-                Regulation-grade AI, your scale.
+                <span className="text-grad-carved">Regulation-grade</span> AI, your scale.
               </h1>
             </Reveal>
             <Reveal delay={0.12}>

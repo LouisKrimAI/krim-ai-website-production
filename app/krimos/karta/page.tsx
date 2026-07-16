@@ -209,7 +209,7 @@ export default function KartaPage() {
             <Reveal>
               <Eyebrow>The co-workers</Eyebrow>
               <h1 className="mt-4 font-serif text-display-hero text-ink">
-                A workforce for the <span className="text-grad">whole loan</span>.
+                A workforce for the <span className="text-grad-carved">whole loan</span>.
               </h1>
             </Reveal>
             <Reveal delay={0.12}>

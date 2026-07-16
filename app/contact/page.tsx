@@ -48,7 +48,7 @@ export default function ContactPage() {
             <Reveal>
               <Eyebrow>Contact</Eyebrow>
               <h1 className="mt-5 font-serif text-display-hero text-ink">
-                See it run.
+                See it <span className="text-grad-carved">run</span>.
               </h1>
             </Reveal>
             <Reveal delay={0.12}>

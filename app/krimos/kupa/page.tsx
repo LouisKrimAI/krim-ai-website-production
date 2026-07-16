@@ -53,7 +53,7 @@ export default function KupaPage() {
             <Reveal>
               <Eyebrow>Command center</Eyebrow>
               <h1 className="mt-4 font-serif text-display-hero text-ink">
-                Where your teams stay <span className="text-grad">in control</span>.
+                Where your teams stay <span className="text-grad-carved">in control</span>.
               </h1>
             </Reveal>
             <Reveal delay={0.12}>

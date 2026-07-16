@@ -94,7 +94,7 @@ export default function WorldLendingModelPage() {
             <Reveal>
               <Eyebrow tone="cyan">Research · Kovida</Eyebrow>
               <h1 className="mt-5 font-serif text-display-hero text-ink">
-                <span className="text-grad">Kovida</span>, a world model for lending.
+                <span className="text-grad-carved">Kovida</span>, a world model for lending.
               </h1>
             </Reveal>
             <Reveal delay={0.12}>

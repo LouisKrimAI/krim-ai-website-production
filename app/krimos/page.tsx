@@ -92,7 +92,7 @@ export default function PlatformPage() {
               <Eyebrow>KrimOS</Eyebrow>
               <h1 className="mt-5 font-serif text-display-hero text-ink">
                 Run banking and lending end to end,{' '}
-                <span className="text-grad">proven at every step</span>.
+                <span className="text-grad-carved">proven at every step</span>.
               </h1>
             </Reveal>
             <Reveal delay={0.12}>

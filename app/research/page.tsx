@@ -47,7 +47,7 @@ export default function ResearchPage() {
             <Reveal>
               <Eyebrow>Research at Krim</Eyebrow>
               <h1 className="mt-5 font-serif text-display-hero text-ink">
-                The work under the product.
+                The <span className="text-grad-carved">work</span> under the product.
               </h1>
             </Reveal>
             <Reveal delay={0.12}>

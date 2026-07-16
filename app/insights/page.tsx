@@ -54,7 +54,7 @@ export default function BlogPage() {
             <Reveal>
               <Eyebrow>Insights</Eyebrow>
               <h1 className="mt-5 font-serif text-display-hero text-ink">
-                Perspectives on AI in banking and lending.
+                <span className="text-grad-carved">Perspectives</span> on AI in banking and lending.
               </h1>
             </Reveal>
             <Reveal delay={0.12}>

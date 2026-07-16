@@ -178,7 +178,7 @@ export default function SafeAgentHarnessPage() {
             <Reveal>
               <Eyebrow>Research — Safe Agent Harness</Eyebrow>
               <h1 className="mt-5 font-serif text-display-hero text-ink">
-                The harness that makes AI agents provable to deploy.
+                The harness that makes AI agents <span className="text-grad-carved">provable</span> to deploy.
               </h1>
             </Reveal>
             <Reveal delay={0.12}>

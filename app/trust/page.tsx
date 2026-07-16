@@ -118,7 +118,7 @@ export default function TrustPage() {
             <Reveal>
               <Eyebrow>Inside your walls</Eyebrow>
               <h1 className="mt-5 font-serif text-display-hero text-ink">
-                <span className="block"><span className="text-grad">Sovereign</span> by construction.</span>
+                <span className="block"><span className="text-grad-carved">Sovereign</span> by construction.</span>
                 <span className="block">Auditable by default.</span>
               </h1>
             </Reveal>

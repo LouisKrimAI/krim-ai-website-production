@@ -75,7 +75,7 @@ export default function KriyaPage() {
             <Reveal>
               <Eyebrow>The vocabulary</Eyebrow>
               <h1 className="mt-4 font-serif text-display-hero text-ink">
-                The actions of lending, with the <span className="text-grad">rules built in</span>.
+                The actions of lending, with the <span className="text-grad-carved">rules built in</span>.
               </h1>
             </Reveal>
             <Reveal delay={0.12}>
