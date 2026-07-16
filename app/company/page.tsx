@@ -298,6 +298,14 @@ export default function CompanyPage() {
               </div>
             </GlassCard>
           </Reveal>
+
+          {/* legal footprint — deliberately quiet fine print: the registered
+              entity and office, closing the page like a letterhead's last line */}
+          <Reveal delay={0.14}>
+            <address className="mt-12 text-center font-mono text-[11px] not-italic tracking-[0.08em] text-ink-3">
+              Krim AI Inc. · 169 Madison Ave STE 15775, New York, NY 10016
+            </address>
+          </Reveal>
         </Section>
       </main>
       <SiteFooter />
