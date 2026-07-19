@@ -25,7 +25,9 @@
  * React wrapper unchanged:
  *   - route-gated (null on /krimos* + Research routes)
  *   - isFreshArrival() — morph plays only on fresh homepage load
- *   - RING_OFFSET — in-site navigation skips to the settled ring instantly
+ *   - non-fresh arrivals start with elapsed past T_END — in-site navigation
+ *     lands on the settled ring instantly, and tab-returns resume (never
+ *     replay) via the persisted elapsed clock
  *   - DPR capped at 2, small-device strand reduction, tab-pause, 30 fps once
  *     settled, reduced-motion still frame
  */
@@ -458,11 +460,17 @@ function WovenRingCanvas() {
     let raf = 0
     let startTime: number | null = null
     let skipBeat = false
-    const RING_OFFSET = (T_END + 2) * 1000
+    // `elapsed` survives tab-hides: rAF timestamps pause while hidden, so on
+    // resume we rebase startTime to where the clock actually was — the morph
+    // continues (or stays settled) instead of replaying the whole arrival
+    // every time the visitor returns to the tab. Non-fresh arrivals start
+    // already settled (past T_END).
+    let elapsed = playMorph ? 0 : T_END + 2
     function frame(now: number) {
       if (!sized) { if (!resize()) { raf = requestAnimationFrame(frame); return } startTime = null }
-      if (startTime === null) startTime = playMorph ? now : now - RING_OFFSET
+      if (startTime === null) startTime = now - elapsed * 1000
       const t = (now - startTime) / 1000
+      elapsed = t
       // Once the ring has settled it only breathes — render at 30fps instead of
       // 60 (skip alternate frames). Imperceptible for slow motion, halves the
       // permanent CPU/GPU cost on every page that carries the ring.
