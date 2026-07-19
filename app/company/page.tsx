@@ -94,15 +94,20 @@ export default function CompanyPage() {
           <div className="mx-auto max-w-[860px] text-center">
             <Reveal>
               <Eyebrow>Company</Eyebrow>
+              {/* the Krim anchor line, set as the three-line monument (the
+                  homepage's proven hero architecture): the carved word over
+                  the dark hollow, white lines above and below */}
               <h1 className="mt-5 font-serif text-display-hero text-ink">
-                We make AI <span className="text-grad-carved">provable</span> enough to run a bank.
+                <span className="block">Sovereign</span>
+                <span className="block text-grad-carved">Superintelligence</span>
+                <span className="block">for Safe Autonomy</span>
               </h1>
             </Reveal>
             <Reveal delay={0.12}>
               <p className="mx-auto mt-7 max-w-[56ch] font-sans text-body-lg text-ink-2">
-                Krim is a safe superintelligence research, product and services company. Krim&rsquo;s
-                first product is <span className="text-ink">KrimOS</span> — agent-native OS for
-                autonomous lending.
+                We make AI <span className="text-mint">provable</span> enough to run a bank.
+                Krim&rsquo;s first product is <span className="text-ink">KrimOS</span> — the
+                operating system for autonomous lending.
               </p>
             </Reveal>
           </div>
