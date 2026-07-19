@@ -166,7 +166,7 @@ export default function HomeHero() {
                 aria-hidden
                 className="block h-px w-12 bg-gradient-to-r from-transparent via-mint to-transparent shadow-[0_0_12px_0_rgba(0,255,178,0.45)]"
               />
-              <p className="mt-6 font-serif text-[clamp(1.5rem,2.6vw,1.95rem)] leading-none tracking-[0.01em] text-ink [text-shadow:0_1px_18px_rgba(2,6,10,0.9)]">
+              <p className="mt-6 font-serif text-[clamp(1.7rem,3vw,2.3rem)] leading-none tracking-[0.01em] text-grad-carved-green">
                 KrimOS
               </p>
               <p className="mx-auto mt-3 max-w-[46ch] font-serif italic text-[clamp(1.15rem,2.1vw,1.5rem)] leading-[1.5] text-ink-2 [text-shadow:0_1px_18px_rgba(2,6,10,0.9)]">

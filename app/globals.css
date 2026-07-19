@@ -122,6 +122,19 @@ h1, h2 { text-wrap: balance; }
   filter: drop-shadow(0 6px 28px rgba(0, 255, 178, 0.16));
 }
 
+/* the green-leaning variant — same carve, gradient weighted toward mint
+   (cyan pushed past the visible end), with a warmer mint aura. For the
+   product signature (KrimOS). */
+.text-grad-carved-green {
+  background-image: linear-gradient(100deg, var(--mint) 0%, #2ee9c4 65%, var(--cyan) 135%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  text-shadow: 0 2px 40px rgba(2, 6, 10, 0.55), 0 1px 3px rgba(2, 6, 10, 0.6);
+  filter: drop-shadow(0 6px 26px rgba(0, 255, 178, 0.22));
+}
+
 /* ---------- glass ----------
    A visible, crafted object: generous blur + saturation, layered
    translucency, a luminous hairline, a faint inner top highlight, and a
@@ -507,18 +520,17 @@ html[data-cluster="research"][data-bg-ready] main {
   pointer-events: none;
 }
 
-/* ---------- §2 lifecycle ring ----------
-   One clockwise glint running the loop — the current, alive. GPU rotate only;
-   reduced motion removes it (the ring reads perfectly still). */
-.lifecycle-glint {
-  background: conic-gradient(transparent 0deg, rgba(255, 255, 255, 0.7) 12deg, transparent 24deg);
-  mix-blend-mode: screen;
-  animation: lifecycle-spin 14s linear infinite;
-  will-change: transform;
+/* ---------- §2 lending horizon ----------
+   One comet running the horizon west→east — the loan's life at first light,
+   dissolving into the dawn bloom at Closure. Compositor-only; reduced motion
+   hides it (the lit arc reads complete on its own). */
+.horizon-glint { animation: horizon-run 11s linear infinite; }
+@keyframes horizon-run {
+  from { stroke-dashoffset: 909; }
+  to { stroke-dashoffset: 0; }
 }
-@keyframes lifecycle-spin { to { transform: rotate(360deg); } }
 @media (prefers-reduced-motion: reduce) {
-  .lifecycle-glint { animation: none; display: none; }
+  .horizon-glint { animation: none; opacity: 0; }
 }
 
 /* ---------- homepage hero failsafe ----------

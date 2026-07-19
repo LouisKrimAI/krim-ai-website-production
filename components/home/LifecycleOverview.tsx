@@ -41,96 +41,89 @@ export default function LifecycleOverview() {
         </div>
       </Reveal>
 
-      {/* ---- THE RING (desktop) — the hero's woven ring, revealed as the
-              lifecycle. Eight stages ride a luminous cyan→mint loop that
-              closes on itself (a lending lifecycle literally cycles: closure →
-              win-back → new loan). Same bed·bloom·core grammar as §9's rail —
-              curled shut — so §2 is "the loop at a glance" and §9 is "the loop
-              unrolled and opened". Labels stay horizontal (never rotated);
-              geometry puts the longest name at 3 o'clock, where the gutter is
-              widest. The brighter mint arc (Closure→Acquisition) names the
-              compounding return. One clockwise glint runs the loop. ---- */}
+      {/* ---- THE LENDING HORIZON (desktop) — the lifecycle as a dawn scene,
+              not a diagram. Eight glass steles stand along the limb of a
+              world (a shallow arc of a circle whose centre sits far below);
+              the current runs cyan (first enquiry, west) → mint (validated,
+              east) and crests into a dawn bloom at Closure, from which a
+              faint dashed return sweeps back overhead — the cycle, told as
+              first light. One comet runs the horizon and dissolves into the
+              dawn. The vantage + directional light are what lift this out of
+              "diagram": a scene has a camera and a sun. Also quietly seeds
+              §4's world model — the curved limb reads as the edge of a
+              world, one section before Kovida names it. ---- */}
       <Reveal delay={0.12}>
         <div
-          className="relative mx-auto mt-10 hidden h-[580px] max-w-[900px] lg:block"
-          aria-label="The eight lifecycle stages, one continuous loop"
+          className="relative mx-auto mt-10 hidden aspect-[2/1] w-full max-w-[1040px] lg:block"
+          aria-label="The eight lifecycle stages, one continuous current from first enquiry to final payoff"
         >
-          <div aria-hidden className="absolute left-1/2 top-[290px] h-[380px] w-[380px] -translate-x-1/2 -translate-y-1/2">
-            {/* center well — the hero's dark hollow, restated */}
-            <div
-              className="absolute inset-0 rounded-full"
-              style={{ background: 'radial-gradient(50% 50% at 50% 50%, rgba(57,214,255,0.08), rgba(0,255,178,0.03) 45%, transparent 70%)' }}
-            />
-            {/* ring layers — bed · bloom · core */}
-            {[
-              { t: 1, o: 0.18, blur: 0 },
-              { t: 2, o: 0.4, blur: 6 },
-              { t: 1.5, o: 0.9, blur: 0 },
-            ].map((l, li) => (
-              <div
-                key={li}
-                className="absolute inset-0 rounded-full"
-                style={{
-                  background: 'conic-gradient(#39D6FF 0deg, #00FFB2 315deg, #39D6FF 360deg)',
-                  WebkitMask: `radial-gradient(farthest-side, transparent calc(100% - ${l.t}px), #000 calc(100% - ${l.t}px))`,
-                  mask: `radial-gradient(farthest-side, transparent calc(100% - ${l.t}px), #000 calc(100% - ${l.t}px))`,
-                  opacity: l.o,
-                  filter: l.blur ? `blur(${l.blur}px)` : undefined,
-                }}
-              />
-            ))}
-            {/* the compounding return — Closure back to Acquisition, brighter mint */}
-            <div
-              className="absolute inset-0 rounded-full"
-              style={{
-                background: 'conic-gradient(transparent 0deg 315deg, rgba(0,255,178,0.6) 315deg 360deg)',
-                WebkitMask: 'radial-gradient(farthest-side, transparent calc(100% - 2px), #000 calc(100% - 2px))',
-                mask: 'radial-gradient(farthest-side, transparent calc(100% - 2px), #000 calc(100% - 2px))',
-              }}
-            />
-            {/* one clockwise glint — the current running the loop (CSS, GPU-only) */}
-            <div
-              className="lifecycle-glint absolute inset-0 rounded-full"
-              style={{
-                WebkitMask: 'radial-gradient(farthest-side, transparent calc(100% - 2.5px), #000 calc(100% - 2.5px))',
-                mask: 'radial-gradient(farthest-side, transparent calc(100% - 2.5px), #000 calc(100% - 2.5px))',
-              }}
-            />
-          </div>
+          {/* layer 1 — the current, the dawn, the return (SVG scene) */}
+          <svg aria-hidden viewBox="0 0 1040 520" preserveAspectRatio="xMidYMid meet" className="absolute inset-0 h-full w-full">
+            <defs>
+              <linearGradient id="lc-current" x1="0" y1="0" x2="1040" y2="0" gradientUnits="userSpaceOnUse">
+                <stop offset="0" stopColor="#39D6FF" />
+                <stop offset="1" stopColor="#00FFB2" />
+              </linearGradient>
+              <radialGradient id="lc-dawn">
+                <stop offset="0" stopColor="#00FFB2" stopOpacity="0.85" />
+                <stop offset="0.4" stopColor="#00FFB2" stopOpacity="0.28" />
+                <stop offset="1" stopColor="#00FFB2" stopOpacity="0" />
+              </radialGradient>
+              <filter id="lc-soft">
+                <feGaussianBlur stdDeviation="6" />
+              </filter>
+            </defs>
 
-          {/* center medallion — a glass hub carrying the compounding cue,
-              like the movement window of a fine watch */}
-          <div
-            className="absolute left-1/2 top-[290px] flex h-[132px] w-[132px] -translate-x-1/2 -translate-y-1/2 flex-col items-center justify-center rounded-full"
-            style={{
-              background: 'radial-gradient(120% 120% at 50% 40%, rgba(255,255,255,0.05), rgba(9,10,14,0.55) 70%)',
-              border: '1px solid rgba(255,255,255,0.10)',
-              backdropFilter: 'blur(14px) saturate(120%)',
-              WebkitBackdropFilter: 'blur(14px) saturate(120%)',
-              boxShadow:
-                'inset 0 1px 0 0 rgba(255,255,255,0.10), inset 0 0 24px -8px rgba(0,255,178,0.25), 0 20px 50px -24px rgba(2,4,10,0.7)',
-            }}
-          >
-            <span aria-hidden className="text-[15px] leading-none text-mint/80">↺</span>
-            <span className="mt-1.5 font-mono text-[8.5px] uppercase tracking-[0.24em] text-mint/70">and again</span>
-          </div>
+            {/* dawn bloom at Closure — the sunrise the whole current runs toward */}
+            <circle cx="949" cy="230" r="150" fill="url(#lc-dawn)" style={{ mixBlendMode: 'screen' }} />
+            <circle cx="949" cy="230" r="26" fill="url(#lc-dawn)" style={{ mixBlendMode: 'screen' }} />
 
-          {/* the stages — glass chips strung just outside the loop, each
-              docked to the jewel-node where the current meets its stage */}
-          {STAGES.map((st, i) => {
-            const a = ((-90 + i * 45) * Math.PI) / 180
-            const x = Math.cos(a) * 190
-            const y = 290 + Math.sin(a) * 190
-            const cos = Math.cos(a)
-            const side = cos > 0.3 ? 'right' : cos < -0.3 ? 'left' : i === 0 ? 'top' : 'bottom'
-            const chipTransform =
-              side === 'right' ? 'translate(20px, -50%)'
-              : side === 'left' ? 'translate(calc(-100% - 20px), -50%)'
-              : side === 'top' ? 'translate(-50%, calc(-100% - 18px))'
-              : 'translate(-50%, 18px)'
+            {/* the return — a faint dashed sweep back over the sky: and again */}
+            <path
+              d="M949 230 C 820 24, 220 24, 91 230"
+              stroke="url(#lc-current)"
+              strokeWidth="1"
+              strokeDasharray="2 9"
+              opacity="0.22"
+              fill="none"
+            />
+
+            {/* the current — bed · glow · core (the §9 rail grammar, on a horizon) */}
+            <path d="M91 230 A1072 1072 0 0 1 949 230" stroke="url(#lc-current)" strokeWidth="1" opacity="0.18" fill="none" />
+            <path d="M91 230 A1072 1072 0 0 1 949 230" stroke="url(#lc-current)" strokeWidth="3" opacity="0.4" filter="url(#lc-soft)" fill="none" />
+            <path d="M91 230 A1072 1072 0 0 1 949 230" stroke="url(#lc-current)" strokeWidth="1.25" opacity="0.9" fill="none" />
+
+            {/* the comet — one slow glint running the loan west→east */}
+            <path
+              className="horizon-glint"
+              d="M91 230 A1072 1072 0 0 1 949 230"
+              stroke="#EAFFFA"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeDasharray="24 900"
+              opacity="0.85"
+              fill="none"
+              style={{ mixBlendMode: 'screen', filter: 'blur(0.5px)' }}
+            />
+          </svg>
+
+          {/* layer 2 — the steles: jewel on the horizon, hairline stem, glass chip */}
+          {[
+            { x: 91, y: 230 }, { x: 209, y: 186 }, { x: 332, y: 156 }, { x: 457, y: 142 },
+            { x: 583, y: 142 }, { x: 708, y: 156 }, { x: 831, y: 186 }, { x: 949, y: 230 },
+          ].map((p, i) => {
+            const st = STAGES[i]
+            // stele heights — a skyline rhythm along the horizon, tuned so no
+            // neighbouring chips collide. Underwriting stands tallest: the one
+            // stage where the decision stays with a human.
+            const lift = [46, 58, 110, 46, 58, 46, 58, 46][i]
             return (
-              <div key={st.n} className="absolute" style={{ left: `calc(50% + ${x}px)`, top: `${y}px` }}>
-                {/* jewel — the bead where the loop meets the stage */}
+              <div
+                key={st.n}
+                className="absolute"
+                style={{ left: `${(p.x / 1040) * 100}%`, top: `${(p.y / 520) * 100}%` }}
+              >
+                {/* jewel — where the stele meets the current */}
                 <span className="absolute grid h-[14px] w-[14px] -translate-x-1/2 -translate-y-1/2 place-items-center">
                   <span aria-hidden className="absolute h-[14px] w-[14px] rounded-full" style={{ border: `1px solid rgba(${st.rgb},0.35)` }} />
                   <span
@@ -142,10 +135,16 @@ export default function LifecycleOverview() {
                     }}
                   />
                 </span>
-                {/* glass chip — the stage name, easily seen on frosted glass */}
+                {/* stem — a hairline of the stage's light, rising from the horizon */}
+                <span
+                  aria-hidden
+                  className="absolute left-0 w-px -translate-x-1/2"
+                  style={{ top: `-${lift}px`, height: `${lift}px`, background: `linear-gradient(to top, rgba(${st.rgb},0.5), rgba(${st.rgb},0))` }}
+                />
+                {/* glass chip — the stage, standing above its stem */}
                 <div
                   className="lc-chip absolute flex flex-col items-center gap-0.5 whitespace-nowrap px-3.5 py-2 text-center"
-                  style={{ transform: chipTransform, ['--rgb' as string]: st.rgb } as React.CSSProperties}
+                  style={{ transform: `translate(-50%, calc(-100% - ${lift}px))`, ['--rgb' as string]: st.rgb } as React.CSSProperties}
                 >
                   <span aria-hidden className="font-mono text-[9px] leading-none tracking-[0.24em]" style={{ color: `rgba(${st.rgb},0.72)` }}>
                     {st.n}
@@ -155,30 +154,62 @@ export default function LifecycleOverview() {
               </div>
             )
           })}
+
+          {/* layer 3 — the compounding tag, seated by the dawn */}
+          <div className="absolute left-[88%] top-[82%] flex items-center gap-2">
+            <span aria-hidden className="text-[13px] leading-none text-mint/80">↺</span>
+            <span className="font-mono text-[9px] uppercase tracking-[0.24em] text-mint/70">the cycle compounds</span>
+          </div>
         </div>
       </Reveal>
 
-      {/* ---- mobile — the display case: one glass panel holding the whole
-              map (a single blur, not eight), the loop cue as its base ---- */}
+      {/* ---- mobile — the vertical dawn: the horizon turned 90°. The current
+              runs down the left (cyan → mint), the stages branch right as
+              glass chips, and the line resolves into the dawn bloom at its
+              base. A picture, not a control (§9's mobile rail is the tabs). ---- */}
       <Reveal delay={0.12}>
-        <div className="mx-auto mt-10 max-w-[440px] lg:hidden">
-          <div className="glass rounded-[16px] p-5">
-            <div className="grid grid-cols-2 gap-x-6 gap-y-4">
-              {STAGES.map((st) => (
-                <div key={st.n} className="flex items-center gap-3">
-                  <span aria-hidden className="h-[7px] w-[7px] shrink-0 rounded-full" style={{ background: `rgba(${st.rgb},0.9)`, boxShadow: `0 0 8px rgba(${st.rgb},0.5)` }} />
-                  <div className="flex flex-col">
-                    <span aria-hidden className="font-mono text-[8px] leading-none tracking-[0.24em]" style={{ color: `rgba(${st.rgb},0.7)` }}>
-                      {st.n}
-                    </span>
-                    <span className="mt-0.5 font-serif text-[1rem] leading-tight text-ink">{st.area}</span>
-                  </div>
+        <div className="relative mx-auto mt-10 max-w-[440px] pl-1 lg:hidden">
+          {/* the current — bed · glow · core, vertical */}
+          <div aria-hidden className="absolute bottom-16 left-[18px] top-1 w-px opacity-[0.18]" style={{ background: 'linear-gradient(180deg, #39D6FF, #00FFB2)' }} />
+          <div aria-hidden className="absolute bottom-16 left-[18px] top-1 w-[3px] -translate-x-[1px] opacity-40 blur-[5px]" style={{ background: 'linear-gradient(180deg, #39D6FF, #00FFB2)' }} />
+          <div aria-hidden className="absolute bottom-16 left-[18px] top-1 w-px opacity-90" style={{ background: 'linear-gradient(180deg, #39D6FF, #00FFB2)' }} />
+          <div className="flex flex-col gap-2.5">
+            {STAGES.map((st) => (
+              <div key={st.n} className="relative flex items-center pl-10">
+                {/* jewel on the line */}
+                <span aria-hidden className="absolute left-[18px] grid h-[14px] w-[14px] -translate-x-1/2 place-items-center">
+                  <span className="absolute h-[14px] w-[14px] rounded-full" style={{ border: `1px solid rgba(${st.rgb},0.35)` }} />
+                  <span
+                    className="block h-[7px] w-[7px] rounded-full"
+                    style={{
+                      background: `radial-gradient(circle at 50% 35%, rgba(255,255,255,0.6), rgba(255,255,255,0) 42%), rgba(${st.rgb},0.9)`,
+                      boxShadow: `0 0 8px rgba(${st.rgb},0.5)`,
+                    }}
+                  />
+                </span>
+                {/* glass chip branching right */}
+                <div
+                  className="lc-chip relative flex items-baseline gap-2.5 px-3.5 py-2"
+                  style={{ ['--rgb' as string]: st.rgb } as React.CSSProperties}
+                >
+                  <span aria-hidden className="font-mono text-[8px] leading-none tracking-[0.24em]" style={{ color: `rgba(${st.rgb},0.72)` }}>
+                    {st.n}
+                  </span>
+                  <span className="font-serif text-[1rem] leading-tight text-ink">{st.area}</span>
                 </div>
-              ))}
-            </div>
-            <div className="mt-5 flex items-center justify-center gap-2 border-t border-white/[0.06] pt-4">
-              <span aria-hidden className="text-mint/80">↺</span>
-              <span className="font-mono text-[9px] uppercase tracking-[0.24em] text-mint/70">and again</span>
+              </div>
+            ))}
+          </div>
+          {/* the dawn at the line's base + the compounding tag */}
+          <div className="relative mt-2 h-14 pl-10">
+            <span
+              aria-hidden
+              className="absolute left-[18px] top-1 h-[72px] w-[72px] -translate-x-1/2 -translate-y-1/3 rounded-full"
+              style={{ background: 'radial-gradient(closest-side, rgba(0,255,178,0.5), rgba(0,255,178,0.14) 45%, transparent 75%)', mixBlendMode: 'screen' }}
+            />
+            <div className="flex items-center gap-2 pt-3">
+              <span aria-hidden className="text-[12px] leading-none text-mint/80">↺</span>
+              <span className="font-mono text-[9px] uppercase tracking-[0.24em] text-mint/70">the cycle compounds</span>
             </div>
           </div>
         </div>
