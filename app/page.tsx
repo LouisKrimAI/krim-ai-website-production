@@ -163,7 +163,7 @@ export default function HomePage() {
         <Section hairline id="platform">
           <div className="mx-auto max-w-[760px] text-center">
             <Reveal>
-              <Eyebrow>Meet KrimOS</Eyebrow>
+              <Eyebrow>Inside KrimOS</Eyebrow>
               <h2 className="mt-4 font-serif text-display-1 text-ink">
                 The operating system for lending.
               </h2>
@@ -257,19 +257,31 @@ export default function HomePage() {
           </Reveal>
         </Section>
 
-        {/* ---- 11 · Close — open, tight, confident (no heavy box) ---- */}
+        {/* ---- 11 · How you start + Close. The start line is deliberately
+                one breath — three steps, no cards, no section of its own
+                weight. The close is the reinstated original: the page opens
+                on Sovereign Superintelligence and closes powered by it. ---- */}
         <Section hairline id="close">
           <Reveal>
-            <div className="mx-auto max-w-[940px] text-center">
-              <span aria-hidden className="mx-auto block h-[3px] w-16 rounded-full bg-gradient-to-r from-mint to-cyan" />
-              <h2 className="mt-9 font-serif text-display-1 leading-[1.06] text-ink">
-                <span className="block">Live in a quarter.</span>
-                <span className="block"><span className="text-grad">Sharper</span> every quarter after.</span>
-              </h2>
-              <p className="mt-6 font-sans text-body-lg text-ink-2">
-                Proven on your data, inside your own walls.
+            <div className="mx-auto max-w-[760px] text-center">
+              <Eyebrow>How you start</Eyebrow>
+              <p className="mt-6 font-serif text-[clamp(1.1rem,1.9vw,1.4rem)] leading-relaxed text-ink">
+                Two-week deep-dive <span aria-hidden className="mx-2 text-mint">→</span>
+                30-day proof on your data <span aria-hidden className="mx-2 text-mint">→</span>
+                live in a quarter.
               </p>
-              <div className="mt-9 flex justify-center">
+            </div>
+          </Reveal>
+          <Reveal delay={0.1}>
+            <div className="mx-auto mt-20 max-w-[940px] text-center">
+              <span aria-hidden className="mx-auto block h-[3px] w-16 rounded-full bg-gradient-to-r from-mint to-cyan" />
+              <h2 className="mt-9 font-serif text-display-hero leading-[1.04] text-ink">
+                Watch your operations come <span className="text-grad">alive</span>.
+              </h2>
+              <p className="mt-7 font-sans text-[clamp(19px,2.4vw,26px)] leading-snug text-ink-2">
+                Powered by sovereign superintelligence.
+              </p>
+              <div className="mt-10 flex justify-center">
                 <CTA href={DEMO_HREF}>Book a demo</CTA>
               </div>
             </div>
