@@ -33,7 +33,7 @@ export const POSTS: Post[] = [
     category: 'Method',
     date: '2026-07-12',
     readingMinutes: 5,
-    image: '/images/harness/harness-command.webp',
+    image: '/images/harness/harness-agent.webp',
   },
   {
     slug: 'the-eu-ai-act-high-risk-clock',

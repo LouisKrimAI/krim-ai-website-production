@@ -37,6 +37,10 @@ MANIFEST = [
     # Heavy PNG heroes → pre-shrunk compact webp (3.4MB → ~100KB).
     {"web": "/images/harness/harness-gate.webp",
      "src_from": "/images/harness/harness-gate.png", "max_w": 1000, "quality": 82},
+    # "The Agent Isn't the Hard Part" hero — the agent figure (2.6MB screenshot
+    # source → compact landscape webp; card crops 16:10, article shows whole).
+    {"web": "/images/harness/harness-agent.webp",
+     "src_from": "/images/harness/harness-agent.png", "max_w": 1400, "quality": 80},
 
     # JPG heroes → webp (smaller at the same quality; the .jpg stays as the
     # committed source, the .webp is what the site references).

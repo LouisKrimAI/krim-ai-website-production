@@ -28,9 +28,9 @@ export default function Page() {
       post={POST}
       headline={<>The agent isn&rsquo;t the hard part.</>}
       image={{
-        alt: 'A command room where every in-flight AI action is watched and can be paused: the human still holds the controls.',
-        objectPosition: '50% 45%',
-        tint: 'mint',
+        alt: 'A humanoid AI agent in white armour standing ready in a dark facility — the agent itself, capable and waiting, before the harness makes it deployable.',
+        objectPosition: '50% 40%',
+        tint: 'cyan',
       }}
       related={['the-automation-gap', 'what-epistemic-ai-means']}
       sources={[
