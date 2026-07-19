@@ -480,6 +480,20 @@ html[data-cluster="research"][data-bg-ready] main {
   html[data-cluster] main { transition: none !important; transition-delay: 0s !important; }
 }
 
+/* ---------- §2 lifecycle ring ----------
+   One clockwise glint running the loop — the current, alive. GPU rotate only;
+   reduced motion removes it (the ring reads perfectly still). */
+.lifecycle-glint {
+  background: conic-gradient(transparent 0deg, rgba(255, 255, 255, 0.7) 12deg, transparent 24deg);
+  mix-blend-mode: screen;
+  animation: lifecycle-spin 14s linear infinite;
+  will-change: transform;
+}
+@keyframes lifecycle-spin { to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) {
+  .lifecycle-glint { animation: none; display: none; }
+}
+
 /* ---------- homepage hero failsafe ----------
    The hero h1/subline/CTAs are SSR'd at opacity 0 (framer-motion inlines the
    initial state) and revealed by the arrival choreography. If hydration never

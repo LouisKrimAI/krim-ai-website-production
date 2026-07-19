@@ -137,59 +137,34 @@ export default function HomeHero() {
                 as the ring dimming behind the glyphs, never a grey drop-shadow.
                 .hero-failsafe (globals.css) force-reveals everything via CSS
                 after the choreography window (JS-off / failed chunk). */}
-            {/* The middle word is deliberately DIMENSIONAL: on gradient-clipped
-                text a text-shadow shows through the transparent fill, carving
-                the glyphs into a metallic, embossed relief (user-loved effect —
-                keep it). The stacked 1-4px dark layers are the extrusion, the
-                wide layers the ambient seat, and a faint mint drop-shadow aura
-                keeps the carved word alive against the dark hollow. The white
-                lines take the plain canvas-halo. */}
-            <h1 className="font-serif text-[clamp(2.15rem,6.2vw,5.25rem)] leading-[1.03] tracking-[-0.025em] text-ink">
-              <motion.span
-                className="hero-failsafe block [text-shadow:0_2px_40px_rgba(2,6,10,0.55),0_1px_3px_rgba(2,6,10,0.6)]"
-                {...fH(5.6)}
-              >
-                Sovereign
-              </motion.span>
-              <motion.span
-                className="hero-failsafe block text-grad-carved"
-                {...fH(6.05)}
-              >
-                Superintelligence
-              </motion.span>
-              <motion.span
-                className="hero-failsafe block [text-shadow:0_2px_40px_rgba(2,6,10,0.55),0_1px_3px_rgba(2,6,10,0.6)]"
-                {...fH(6.5)}
-              >
-                for Safe Automation
+            {/* The product leads: KrimOS as a monumental carved wordmark — the
+                dimensional mint→cyan treatment (the site's signature highlight)
+                at brand scale, centered in the ring's hollow. One word, so the
+                type goes far larger than any sentence-headline could. */}
+            <h1 className="font-serif text-[clamp(3.8rem,11vw,8.5rem)] leading-[1.02] tracking-[-0.02em]">
+              <motion.span className="hero-failsafe block text-grad-carved" {...fH(5.6, 1.6)}>
+                KrimOS
               </motion.span>
             </h1>
 
-            {/* subline — hangs from the glowing mint tick (user-liked, kept).
-                Subtle and stylish: an editorial whisper in the headline's own
-                serif, set in italic — a dedication engraved under the monument.
-                No colour, no glow; the resolve is pure luminance (quiet warm
-                grey → white) and the tick carries the only accent. Dark
-                under-halo keeps it legible over the moving threads.
-                Copy is user-locked. */}
-            <motion.div className="hero-failsafe mt-10 flex flex-col items-center" {...f(7.1, 1.5, 10)}>
+            {/* the cursive line — the claim beneath the wordmark, hanging from
+                the glowing mint tick: an engraved italic dedication in the
+                headline's own serif. Dark under-halo keeps it legible over the
+                moving threads. Copy is user-locked. */}
+            <motion.div className="hero-failsafe mt-8 flex flex-col items-center" {...f(6.8, 1.5, 10)}>
               <span
                 aria-hidden
                 className="block h-px w-12 bg-gradient-to-r from-transparent via-mint to-transparent shadow-[0_0_12px_0_rgba(0,255,178,0.45)]"
               />
-              {/* line 1 bright white (grey reads muddy on screens — user), line 2
-                  resolves to mint: the control line wears the control colour,
-                  jewel-quiet in italic serif, no glow */}
-              <p className="mx-auto mt-6 max-w-[42ch] font-serif italic text-[clamp(1.3rem,2.4vw,1.7rem)] leading-[1.55] [text-shadow:0_1px_18px_rgba(2,6,10,0.9)]">
-                <span className="block text-ink">Agentic lending operations,</span>
-                <span className="block text-mint">under your control.</span>
+              <p className="mx-auto mt-6 max-w-[46ch] font-serif italic text-[clamp(1.35rem,2.6vw,1.85rem)] leading-[1.5] text-ink [text-shadow:0_1px_18px_rgba(2,6,10,0.9)]">
+                All-in-one agent solutions for lending services
               </p>
             </motion.div>
 
             {/* CTAs — one action unit (tight gap binds primary + ghost) */}
             <motion.div
               className="hero-failsafe mt-10 flex flex-wrap items-center justify-center gap-4"
-              {...f(7.7, 1.4, 8)}
+              {...f(7.6, 1.4, 8)}
             >
               <CTA href={DEMO_HREF}>Book a demo</CTA>
               <CTA href="/krimos" variant="secondary">

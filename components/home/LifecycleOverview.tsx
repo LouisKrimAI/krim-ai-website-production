@@ -14,8 +14,6 @@ import Reveal from '@/components/Reveal'
 import { Section, Eyebrow } from '@/components/ui'
 import { STAGES } from './LoanMeridian'
 
-// The current: cyan (in-flow) warming to mint (validated) across the lifecycle.
-const CURRENT = 'linear-gradient(90deg, rgba(57,214,255,0.9) 0%, rgba(0,255,178,0.95) 100%)'
 
 // What it adds up to — the three institutional outcomes (rendered here, above
 // the fold, where the claim earns the scroll; the deep section proves it).
@@ -43,52 +41,123 @@ export default function LifecycleOverview() {
         </div>
       </Reveal>
 
-      {/* ---- the current, at a glance (desktop) ---- */}
+      {/* ---- THE RING (desktop) — the hero's woven ring, revealed as the
+              lifecycle. Eight stages ride a luminous cyan→mint loop that
+              closes on itself (a lending lifecycle literally cycles: closure →
+              win-back → new loan). Same bed·bloom·core grammar as §9's rail —
+              curled shut — so §2 is "the loop at a glance" and §9 is "the loop
+              unrolled and opened". Labels stay horizontal (never rotated);
+              geometry puts the longest name at 3 o'clock, where the gutter is
+              widest. The brighter mint arc (Closure→Acquisition) names the
+              compounding return. One clockwise glint runs the loop. ---- */}
       <Reveal delay={0.12}>
-        <div className="mt-14 hidden lg:block" aria-label="The eight lifecycle stages">
-          <div className="relative">
-            {/* the current — bed · bloom · core (same grammar as the deep instrument) */}
-            <div aria-hidden className="absolute left-[6.25%] right-[6.25%] top-[7px] h-px -translate-y-px opacity-[0.18]" style={{ background: 'linear-gradient(90deg, rgba(57,214,255,0.5), rgba(0,255,178,0.5))' }} />
-            <div aria-hidden className="absolute left-[6.25%] right-[6.25%] top-[7px] h-[2px] -translate-y-px opacity-40 blur-[6px]" style={{ background: CURRENT }} />
-            <div aria-hidden className="absolute left-[6.25%] right-[6.25%] top-[7px] h-px -translate-y-px opacity-90" style={{ background: CURRENT }} />
-            {/* no shimmer here — the overview is deliberately still; §9's instrument
-                owns the "live current" tell, and the signature isn't spent twice */}
-            <div className="relative grid grid-cols-8 gap-x-3 pt-[2px]">
-              {STAGES.map((st) => (
-                <div key={st.n} className="flex flex-col items-center text-center">
-                  <span className="relative grid h-[14px] w-full place-items-center">
-                    <span aria-hidden className="absolute h-[14px] w-[14px] rounded-full" style={{ border: `1px solid rgba(${st.rgb},0.3)` }} />
-                    <span
-                      aria-hidden
-                      className="block h-[7px] w-[7px] rounded-full"
-                      style={{
-                        background: `radial-gradient(circle at 50% 35%, rgba(255,255,255,0.6), rgba(255,255,255,0) 42%), rgba(${st.rgb},0.9)`,
-                        boxShadow: `0 0 10px rgba(${st.rgb},0.5)`,
-                      }}
-                    />
-                  </span>
-                  <span aria-hidden className="mt-4 font-mono text-[9px] leading-none tracking-[0.24em]" style={{ color: `rgba(${st.rgb},0.6)` }}>
+        <div
+          className="relative mx-auto mt-10 hidden h-[520px] max-w-[860px] lg:block"
+          aria-label="The eight lifecycle stages, one continuous loop"
+        >
+          <div aria-hidden className="absolute left-1/2 top-[260px] h-[380px] w-[380px] -translate-x-1/2 -translate-y-1/2">
+            {/* center well — the hero's dark hollow, restated */}
+            <div
+              className="absolute inset-0 rounded-full"
+              style={{ background: 'radial-gradient(50% 50% at 50% 50%, rgba(57,214,255,0.08), rgba(0,255,178,0.03) 45%, transparent 70%)' }}
+            />
+            {/* ring layers — bed · bloom · core */}
+            {[
+              { t: 1, o: 0.18, blur: 0 },
+              { t: 2, o: 0.4, blur: 6 },
+              { t: 1.5, o: 0.9, blur: 0 },
+            ].map((l, li) => (
+              <div
+                key={li}
+                className="absolute inset-0 rounded-full"
+                style={{
+                  background: 'conic-gradient(#39D6FF 0deg, #00FFB2 315deg, #39D6FF 360deg)',
+                  WebkitMask: `radial-gradient(farthest-side, transparent calc(100% - ${l.t}px), #000 calc(100% - ${l.t}px))`,
+                  mask: `radial-gradient(farthest-side, transparent calc(100% - ${l.t}px), #000 calc(100% - ${l.t}px))`,
+                  opacity: l.o,
+                  filter: l.blur ? `blur(${l.blur}px)` : undefined,
+                }}
+              />
+            ))}
+            {/* the compounding return — Closure back to Acquisition, brighter mint */}
+            <div
+              className="absolute inset-0 rounded-full"
+              style={{
+                background: 'conic-gradient(transparent 0deg 315deg, rgba(0,255,178,0.6) 315deg 360deg)',
+                WebkitMask: 'radial-gradient(farthest-side, transparent calc(100% - 2px), #000 calc(100% - 2px))',
+                mask: 'radial-gradient(farthest-side, transparent calc(100% - 2px), #000 calc(100% - 2px))',
+              }}
+            />
+            {/* one clockwise glint — the current running the loop (CSS, GPU-only) */}
+            <div
+              className="lifecycle-glint absolute inset-0 rounded-full"
+              style={{
+                WebkitMask: 'radial-gradient(farthest-side, transparent calc(100% - 2.5px), #000 calc(100% - 2.5px))',
+                mask: 'radial-gradient(farthest-side, transparent calc(100% - 2.5px), #000 calc(100% - 2.5px))',
+              }}
+            />
+          </div>
+          {/* names the cycle, seated by the return arc */}
+          <p
+            aria-hidden
+            className="absolute left-1/2 top-[38px] -translate-x-[150px] font-mono text-[9px] uppercase tracking-[0.24em] text-mint/70"
+          >
+            and again
+          </p>
+
+          {/* nodes + labels on the ring */}
+          {STAGES.map((st, i) => {
+            const a = ((-90 + i * 45) * Math.PI) / 180
+            const x = Math.cos(a) * 190
+            const y = 260 + Math.sin(a) * 190
+            const cos = Math.cos(a)
+            const side = cos > 0.3 ? 'right' : cos < -0.3 ? 'left' : i === 0 ? 'top' : 'bottom'
+            const labelTransform =
+              side === 'right' ? 'translate(16px, -50%)'
+              : side === 'left' ? 'translate(calc(-100% - 16px), -50%)'
+              : side === 'top' ? 'translate(-50%, calc(-100% - 16px))'
+              : 'translate(-50%, 16px)'
+            const align = side === 'right' ? 'text-left' : side === 'left' ? 'text-right' : 'text-center'
+            return (
+              <div key={st.n} className="absolute" style={{ left: `calc(50% + ${x}px)`, top: `${y}px` }}>
+                {/* jewel — same setting as the deep instrument's nodes */}
+                <span className="absolute grid h-[14px] w-[14px] -translate-x-1/2 -translate-y-1/2 place-items-center">
+                  <span aria-hidden className="absolute h-[14px] w-[14px] rounded-full" style={{ border: `1px solid rgba(${st.rgb},0.35)` }} />
+                  <span
+                    aria-hidden
+                    className="block h-[7px] w-[7px] rounded-full"
+                    style={{
+                      background: `radial-gradient(circle at 50% 35%, rgba(255,255,255,0.6), rgba(255,255,255,0) 42%), rgba(${st.rgb},0.9)`,
+                      boxShadow: `0 0 10px rgba(${st.rgb},0.55)`,
+                    }}
+                  />
+                </span>
+                <div className={`absolute whitespace-nowrap ${align}`} style={{ transform: labelTransform }}>
+                  <span aria-hidden className="block font-mono text-[9px] leading-none tracking-[0.24em]" style={{ color: `rgba(${st.rgb},0.6)` }}>
                     {st.n}
                   </span>
-                  <span className="mt-1.5 font-serif text-[1.02rem] leading-tight text-ink-2">
-                    {st.area}
-                  </span>
+                  <span className="mt-1 block font-serif text-[1.02rem] leading-tight text-ink-2">{st.area}</span>
                 </div>
-              ))}
-            </div>
-          </div>
+              </div>
+            )
+          })}
         </div>
       </Reveal>
 
-      {/* ---- mobile — compact two-column map ---- */}
+      {/* ---- mobile — compact two-column map + the loop cue ---- */}
       <Reveal delay={0.12}>
-        <div className="mx-auto mt-10 grid max-w-[440px] grid-cols-2 gap-x-8 gap-y-3.5 lg:hidden">
-          {STAGES.map((st) => (
-            <div key={st.n} className="flex items-center gap-3">
-              <span aria-hidden className="h-[7px] w-[7px] shrink-0 rounded-full" style={{ background: `rgba(${st.rgb},0.9)`, boxShadow: `0 0 8px rgba(${st.rgb},0.5)` }} />
-              <span className="font-serif text-[1.02rem] leading-tight text-ink-2">{st.area}</span>
-            </div>
-          ))}
+        <div className="lg:hidden">
+          <div className="mx-auto mt-10 grid max-w-[440px] grid-cols-2 gap-x-8 gap-y-3.5">
+            {STAGES.map((st) => (
+              <div key={st.n} className="flex items-center gap-3">
+                <span aria-hidden className="h-[7px] w-[7px] shrink-0 rounded-full" style={{ background: `rgba(${st.rgb},0.9)`, boxShadow: `0 0 8px rgba(${st.rgb},0.5)` }} />
+                <span className="font-serif text-[1.02rem] leading-tight text-ink-2">{st.area}</span>
+              </div>
+            ))}
+          </div>
+          <p className="mt-5 text-center font-mono text-[10px] uppercase tracking-[0.24em] text-mint/70">
+            ↺ and again
+          </p>
         </div>
       </Reveal>
 
