@@ -23,11 +23,11 @@ export default function AgentHarness() {
 
           <Reveal delay={0.12}>
             <p className="mt-7 max-w-[52ch] font-sans text-body-lg text-ink-2">
-              A bare AI agent operates without boundaries: any tool, any sequence, any
-              parameters. In a regulated bank, that is not a capability. It is liability.
-              On KrimOS, every action a Karta co-worker proposes clears three controls
-              before it fires: a constrained action vocabulary, a 33-validator gate checked
-              against your policy, fair-lending rules and consent records, and{' '}
+              A bare AI agent will use any tool, in any order, with any parameters — in a
+              regulated bank, that is a liability. On KrimOS, every action a Karta
+              co-worker proposes clears three controls first: a constrained
+              action vocabulary; a 33-validator gate that checks your policy, fair-lending
+              rules and consent records; and{' '}
               <span className="text-mint">a human command surface</span> your risk and
               compliance teams own.
             </p>
@@ -35,14 +35,14 @@ export default function AgentHarness() {
 
           <Reveal delay={0.2}>
             <GlassCard className="mt-9 inline-block px-8 py-6">
-              <p className="font-serif text-[clamp(1.3rem,2.2vw,1.7rem)] text-ink">
+              <p className="font-serif text-display-2 text-ink">
                 <span className="block">Validated before it acts.</span>
                 <span className="block">Provable on demand.</span>
               </p>
             </GlassCard>
             <div className="mt-8">
               <CTA href="/research/safe-agent-harness" variant="secondary">
-                Learn more about the Agent Harness
+                Explore the agent harness
               </CTA>
             </div>
           </Reveal>

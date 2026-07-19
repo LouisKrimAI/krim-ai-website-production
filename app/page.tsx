@@ -14,6 +14,7 @@ import Image from 'next/image'
 import HomeHero from '@/components/home/HomeHero'
 import PlatformExplorer from '@/components/home/PlatformExplorer'
 import AgentHarness from '@/components/home/AgentHarness'
+import LifecycleOverview from '@/components/home/LifecycleOverview'
 import LoanMeridian from '@/components/home/LoanMeridian'
 import PolicyChecks from '@/components/home/PolicyChecks'
 import TrustPillars from '@/components/home/TrustPillars'
@@ -25,7 +26,7 @@ export const metadata: Metadata = {
   alternates: { canonical: 'https://www.krim.ai' },
   openGraph: {
     description:
-      'KrimOS is the operating system for banking and financial services: a world model for lending with AI co-workers that run the whole lifecycle, every action validated before it acts, inside your own walls.',
+      'KrimOS is the operating system for lending: a world model with AI co-workers that run the whole lifecycle, every action validated before it executes, inside your own walls.',
     url: 'https://www.krim.ai',
     siteName: 'Krim',
     type: 'website',
@@ -41,7 +42,7 @@ const orgLd = {
   // Formal descriptor per docs/POSITIONING.md §11; areaServed = the five
   // encoded markets (lib/jurisdictions.ts is the single source).
   description:
-    'Krim is a technology research, product and services company. Its product, KrimOS, is the operating system for banking and financial services, lending first, where every action is validated before it executes.',
+    'Krim is a technology research, product and services company. Its product, KrimOS, is the operating system for lending, where every action is validated before it executes.',
   legalName: 'Krim AI Inc.',
   address: {
     '@type': 'PostalAddress',
@@ -74,7 +75,7 @@ const PROBLEMS = [
     body: "Every action carries the bank's signature, and most AI leaves no reasoning an examiner can read.",
   },
   {
-    heading: 'Point tools,\nnever a whole.',
+    heading: 'A stack that\nnever learns.',
     body: 'Each tool sees one slice, so the intelligence your operation should build never forms.',
   },
 ]
@@ -93,36 +94,14 @@ export default function HomePage() {
         {/* everything below sits above the fixed orb (z-0) */}
         <div className="relative z-10">
 
-        {/* ---- 2 · The platform ---- */}
-        <Section hairline id="platform">
-          <div className="mx-auto max-w-[760px] text-center">
-            <Reveal>
-              <Eyebrow>Meet KrimOS</Eyebrow>
-              <h2 className="mt-4 font-serif text-display-1 text-ink">
-                Agent-native OS for lending operations.
-              </h2>
-              <p className="mx-auto mt-6 max-w-[56ch] font-sans text-body-lg text-ink-2">
-                AI co-workers run the whole operation, origination to collections, with{' '}
-                <span className="text-mint">every action validated before it executes</span> and
-                every outcome learned from — inside your own walls.
-              </p>
-            </Reveal>
-          </div>
-          <Reveal delay={0.15}>
-            <div className="mt-14">
-              <PlatformExplorer />
-            </div>
-          </Reveal>
-          <Reveal delay={0.2}>
-            <div className="mt-12 text-center">
-              <CTA href="/krimos" variant="secondary">
-                Explore KrimOS
-              </CTA>
-            </div>
-          </Reveal>
-        </Section>
+        {/* ---- 2 · The lending lifecycle at a glance — scope first, five seconds,
+                no detail. The full instrument lives at §9 (#who). ---- */}
+        <LifecycleOverview />
 
-        {/* ---- 3 · The flywheel ---- */}
+        {/* ---- 3 · Safe Agent Harness — who does the work, and why it's safe to let them ---- */}
+        <AgentHarness />
+
+        {/* ---- 4 · Kovida — the world lending model (the flywheel) ---- */}
         <Section hairline id="flywheel">
           <div className="grid items-center gap-12 md:grid-cols-[1.15fr_1fr]">
             <div>
@@ -142,11 +121,15 @@ export default function HomePage() {
                 </p>
               </Reveal>
               <Reveal delay={0.2}>
-                <GlassCard className="mt-9 inline-block px-8 py-6">
-                  <p className="font-serif text-[clamp(1.3rem,2.2vw,1.7rem)] text-ink">
-                    Fragmented flows transformed into a unified intelligence.
+                {/* open-air pull-quote (mint bar, no card) — §3 next door already
+                    plays the inline-GlassCard move; consecutive viewports shouldn't
+                    repeat the same device */}
+                <div className="mt-9 max-w-[34ch]">
+                  <span aria-hidden className="block h-[3px] w-16 rounded-full bg-gradient-to-r from-cyan to-mint" />
+                  <p className="mt-5 font-serif text-display-2 text-ink">
+                    Fragmented flows become one intelligence that compounds.
                   </p>
-                </GlassCard>
+                </div>
                 <div className="mt-8">
                   <CTA href="/research/world-lending-model" variant="secondary">
                     Explore Kovida
@@ -176,10 +159,36 @@ export default function HomePage() {
           </div>
         </Section>
 
-        {/* ---- 4 · Safe Agent Harness ---- */}
-        <AgentHarness />
+        {/* ---- 5 · Meet KrimOS — the synthesis: the three powers, shipped as one OS ---- */}
+        <Section hairline id="platform">
+          <div className="mx-auto max-w-[760px] text-center">
+            <Reveal>
+              <Eyebrow>Meet KrimOS</Eyebrow>
+              <h2 className="mt-4 font-serif text-display-1 text-ink">
+                The operating system for lending.
+              </h2>
+              <p className="mx-auto mt-6 max-w-[56ch] font-sans text-body-lg text-ink-2">
+                AI co-workers run the whole operation, origination to collections,{' '}
+                <span className="text-mint">every action on one record with its reasoning</span> —
+                inside your own walls.
+              </p>
+            </Reveal>
+          </div>
+          <Reveal delay={0.15}>
+            <div className="mt-14">
+              <PlatformExplorer />
+            </div>
+          </Reveal>
+          <Reveal delay={0.2}>
+            <div className="mt-12 text-center">
+              <CTA href="/krimos" variant="secondary">
+                Explore KrimOS
+              </CTA>
+            </div>
+          </Reveal>
+        </Section>
 
-        {/* ---- 5 · The challenge ---- */}
+        {/* ---- 6 · The challenge ---- */}
         <Section hairline id="challenge">
           <Reveal>
             <Eyebrow tone="gold">The challenge</Eyebrow>
@@ -191,7 +200,7 @@ export default function HomePage() {
               <Reveal key={p.heading} delay={i * 0.1}>
                 <div>
                   <span aria-hidden className="block h-[3px] w-10 rounded-full bg-amber/70" />
-                  <h3 className="mt-6 whitespace-pre-line font-serif text-[clamp(1.5rem,2.1vw,1.95rem)] leading-[1.12] text-ink">{p.heading}</h3>
+                  <h3 className="mt-6 whitespace-pre-line font-serif text-display-2 text-ink">{p.heading}</h3>
                   <p className="mt-4 max-w-[34ch] font-sans text-body-lg text-ink-2">{p.body}</p>
                 </div>
               </Reveal>
@@ -199,10 +208,10 @@ export default function HomePage() {
           </div>
         </Section>
 
-        {/* ---- 5 · Trust pillars — the safety properties every action carries ---- */}
+        {/* ---- 7 · Trust pillars — the answer to the challenge ---- */}
         <TrustPillars />
 
-        {/* ---- 6 · The gate in action — one live example of the validation path ---- */}
+        {/* ---- 8 · The gate in action — one live example of the validation path ---- */}
         <Section hairline id="intelligence">
           <Reveal>
             <Eyebrow>Intelligence by policy</Eyebrow>
@@ -210,8 +219,8 @@ export default function HomePage() {
               One action, meeting the gate.
             </h2>
             <p className="mt-6 max-w-[54ch] font-sans text-body-lg text-ink-2">
-              Not a diagram. Every action a co-worker takes runs this path before it can fire.
-              Watch one reach the gate, clear its validators, and carry its verdict into the record.
+              This is the path every action runs. Watch one reach the gate, clear its
+              validators, and carry its verdict into the record.
             </p>
           </Reveal>
           <div className="mt-12">
@@ -219,10 +228,11 @@ export default function HomePage() {
           </div>
         </Section>
 
-        {/* ---- 7 · Impact for your business — the Loan Meridian (operational coverage) ---- */}
+        {/* ---- 9 · Inside the lifecycle — the deep instrument, for readers who
+                have scrolled through the argument and want the proof of depth ---- */}
         <LoanMeridian />
 
-        {/* ---- 8 · Trust strip — fits your stack + recognition (merged: was §8 + §9) ---- */}
+        {/* ---- 10 · Trust strip — fits your stack + recognition ---- */}
         <Section hairline id="integrations">
           <div className="mx-auto max-w-[760px] text-center">
             <Reveal>
@@ -247,18 +257,21 @@ export default function HomePage() {
           </Reveal>
         </Section>
 
-        {/* ---- 9 · Close — open, tight, confident (no heavy box) ---- */}
+        {/* ---- 11 · Close — open, tight, confident (no heavy box) ---- */}
         <Section hairline id="close">
           <Reveal>
             <div className="mx-auto max-w-[940px] text-center">
               <span aria-hidden className="mx-auto block h-[3px] w-16 rounded-full bg-gradient-to-r from-mint to-cyan" />
               <h2 className="mt-9 font-serif text-display-1 leading-[1.06] text-ink">
-                <span className="block">Watch your operations</span>
-                <span className="block">come <span className="text-grad">alive</span>.</span>
+                <span className="block">Live in a quarter.</span>
+                <span className="block"><span className="text-grad">Sharper</span> every quarter after.</span>
               </h2>
-              <p className="mt-6 font-sans text-[clamp(16px,1.9vw,20px)] leading-snug text-ink-2">
-                Powered by sovereign superintelligence.
+              <p className="mt-6 font-sans text-body-lg text-ink-2">
+                Proven on your data, inside your own walls.
               </p>
+              <div className="mt-9 flex justify-center">
+                <CTA href={DEMO_HREF}>Book a demo</CTA>
+              </div>
             </div>
           </Reveal>
         </Section>

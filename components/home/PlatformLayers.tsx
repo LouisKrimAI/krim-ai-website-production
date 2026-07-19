@@ -5,8 +5,8 @@
  *
  * KrimOS as an elegant vertical stack of centred glass strata. Top → bottom:
  *
- *   Kula · Kira   — the two interface faces people talk to (NOT minds)
- *   Kupa          — the command center your teams run operations from
+ *   Kupa & Kula · Kira & Krimkar — the two human surfaces (NOT minds):
+ *                   the enterprise seat and the customer seat
  *   Karta         — the co-workers (operating layer)
  *   Kriya         — the validated vocabulary (operating layer)
  *   Kendra        — the brain: a luminous cyan foundation the stack rests on
@@ -38,7 +38,7 @@ type Layer = {
 const LAYERS: Layer[] = [
   {
     key: 'faces',
-    name: 'Kula & Kupa',
+    name: 'Kupa & Kula',
     role: 'Run your operation in plain language. Supervise, configure and audit it from one command center.',
     tag: 'YOUR TEAMS',
     name2: 'Kira & Krimkar',

@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { Fragment, useState } from 'react'
 import Link from 'next/link'
 import { motion, AnimatePresence, useReducedMotion } from 'framer-motion'
 
@@ -20,9 +20,9 @@ const LAYERS: Layer[] = [
     tag: 'The runtime',
     summary: 'The engine every co-worker runs on.',
     points: [
-      'Every action gated before it fires, against your rules.',
+      'Deny by default: nothing runs that your rules haven’t cleared.',
       'One immutable record: what ran, why, under which rule.',
-      'Every outcome captured, feeding Kovida — the world lending model.',
+      'Every outcome captured, feeding Kovida, the world model.',
     ],
     href: '/krimos/kendra',
   },
@@ -34,7 +34,7 @@ const LAYERS: Layer[] = [
     points: [
       '500+ validated, credit-native actions, ready to use.',
       'Rules travel with the action: change once, live everywhere.',
-      'The layer that gets you past Compliance and Legal.',
+      'The layer Compliance and Legal sign off on.',
     ],
     href: '/krimos/kriya',
   },
@@ -46,38 +46,26 @@ const LAYERS: Layer[] = [
     points: [
       'AI co-workers across the full lending lifecycle.',
       'Voice, SMS, email and WhatsApp: in the customer’s own language.',
-      'They act, not just advise. Credit decisions stay yours.',
+      'They finish the work themselves. Credit decisions stay yours.',
     ],
     href: '/krimos/karta',
   },
   {
     key: 'kupa',
-    name: 'Kupa',
-    tag: 'The command center',
-    summary: 'One screen for the whole operation.',
+    name: 'Kupa & Kula',
+    tag: 'For your teams',
+    summary: 'Direct the operation in plain language, and hold every control.',
     points: [
+      'Ask in plain language: Kula builds the plan, you sign off.',
       'Live dashboards and analytics: every queue, call and SLA.',
-      'Real-time escalation; one-click pause, reroute or rollback.',
-      'Every action supervised, reversible and on the record.',
+      'One-click pause or rollback; everything on the record.',
     ],
     href: '/krimos/kupa',
   },
   {
-    key: 'kula',
-    name: 'Kula',
-    tag: 'The digital twin',
-    summary: 'Anyone on your team can operate the platform.',
-    points: [
-      'Ask in plain language, by text or voice.',
-      'It builds the workflow and runs it, on your sign-off.',
-      'Tuned to your role: each seat meets a different Kula.',
-    ],
-    href: '/krimos/kula',
-  },
-  {
     key: 'kira',
     name: 'Kira & Krimkar',
-    tag: 'The customer advisor',
+    tag: 'For your customers',
     summary: 'The AI your customers talk to.',
     points: [
       'One thread from application to payoff, every channel.',
@@ -88,6 +76,12 @@ const LAYERS: Layer[] = [
   },
 ]
 
+// The stack reads the way the system is used: the engine, then the ways in.
+const GROUPS = [
+  { label: 'The core', keys: ['kendra', 'kriya', 'karta'] },
+  { label: 'The ways in', keys: ['kupa', 'kira'] },
+] as const
+
 const EASE = [0.16, 1, 0.3, 1] as const
 
 export default function PlatformExplorer() {
@@ -97,57 +91,80 @@ export default function PlatformExplorer() {
 
   return (
     <div className="mx-auto w-full max-w-[1040px]">
+      {/* SSR discovery floor: the detail panel mounts only the active layer, so
+          every layer's substance is server-rendered here for crawlers/readers. */}
+      <ul className="sr-only">
+        {LAYERS.map((l) => (
+          <li key={l.key}>
+            {l.name} ({l.tag}): {l.summary} {l.points.join(' ')}
+          </li>
+        ))}
+      </ul>
       {/* ---- left: selectable layer stack — responsive layout ---- */}
       <div className="grid gap-5 lg:grid-cols-[300px_1fr] lg:gap-7">
         <div className="flex flex-col gap-1.5 lg:h-[420px]" role="tablist" aria-label="The KrimOS platform layers">
-        {LAYERS.map((l) => {
-          const isActive = l.key === active
-          return (
-            <button
-              key={l.key}
-              type="button"
-              role="tab"
-              aria-selected={isActive}
-              aria-controls="krim-layer-detail"
-              onMouseEnter={() => setActive(l.key)}
-              onFocus={() => setActive(l.key)}
-              onClick={() => setActive(l.key)}
-              className="group relative flex flex-1 items-center overflow-hidden rounded-lg border px-4 py-2 text-left transition-[border-color,box-shadow] duration-300"
-              style={{
-                borderColor: isActive ? 'rgba(0,255,178,0.34)' : 'rgba(255,255,255,0.11)',
-                background: isActive
-                  ? 'linear-gradient(152deg, rgba(0,255,178,0.08) 0%, rgba(0,255,178,0.02) 60%, rgba(255,255,255,0.02) 100%)'
-                  : 'linear-gradient(152deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.014) 46%, rgba(255,255,255,0.024) 100%)',
-                backdropFilter: 'blur(22px) saturate(135%)',
-                WebkitBackdropFilter: 'blur(22px) saturate(135%)',
-                boxShadow: isActive
-                  ? '0 1px 0 0 rgba(255,255,255,0.05) inset, 0 1px 1px 0 rgba(0,255,178,0.16) inset, 0 10px 36px -20px rgba(0,255,178,0.4), 0 10px 30px -18px rgba(2,4,10,0.6)'
-                  : '0 1px 0 0 rgba(255,255,255,0.05) inset, 0 1px 1px 0 rgba(255,255,255,0.12) inset, 0 10px 30px -18px rgba(2,4,10,0.55)',
-              }}
+        {GROUPS.map((g, gi) => (
+          <Fragment key={g.label}>
+            {/* group label — the stack reads: the engine, then the ways in.
+                aria-hidden: the per-tab tag already orients screen readers, so
+                the tablist owns only tabs. */}
+            <p
+              aria-hidden="true"
+              className={`px-1 font-mono text-[10px] uppercase tracking-[0.2em] text-ink-3 ${gi > 0 ? 'pt-2.5' : ''}`}
             >
-              {/* active mint rail */}
-              <span
-                aria-hidden
-                className="pointer-events-none absolute inset-y-2 left-0 w-[2px] rounded-full bg-mint transition-opacity duration-300"
-                style={{ opacity: isActive ? 0.9 : 0 }}
-              />
-              <div className="flex items-center justify-between gap-3 pl-1">
-                <span
-                  className="font-serif text-[1.2rem] leading-none transition-colors duration-300"
-                  style={{ color: isActive ? 'var(--text)' : 'var(--text-2)' }}
+              {g.label}
+            </p>
+            {g.keys.map((key) => {
+              const l = LAYERS.find((x) => x.key === key)!
+              const isActive = l.key === active
+              return (
+                <button
+                  key={l.key}
+                  type="button"
+                  role="tab"
+                  aria-selected={isActive}
+                  aria-controls="krim-layer-detail"
+                  onMouseEnter={() => setActive(l.key)}
+                  onFocus={() => setActive(l.key)}
+                  onClick={() => setActive(l.key)}
+                  className="group relative flex flex-1 items-center overflow-hidden rounded-lg border px-4 py-2 text-left transition-[border-color,box-shadow] duration-300"
+                  style={{
+                    borderColor: isActive ? 'rgba(0,255,178,0.34)' : 'rgba(255,255,255,0.11)',
+                    background: isActive
+                      ? 'linear-gradient(152deg, rgba(0,255,178,0.08) 0%, rgba(0,255,178,0.02) 60%, rgba(255,255,255,0.02) 100%)'
+                      : 'linear-gradient(152deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.014) 46%, rgba(255,255,255,0.024) 100%)',
+                    backdropFilter: 'blur(22px) saturate(135%)',
+                    WebkitBackdropFilter: 'blur(22px) saturate(135%)',
+                    boxShadow: isActive
+                      ? '0 1px 0 0 rgba(255,255,255,0.05) inset, 0 1px 1px 0 rgba(0,255,178,0.16) inset, 0 10px 36px -20px rgba(0,255,178,0.4), 0 10px 30px -18px rgba(2,4,10,0.6)'
+                      : '0 1px 0 0 rgba(255,255,255,0.05) inset, 0 1px 1px 0 rgba(255,255,255,0.12) inset, 0 10px 30px -18px rgba(2,4,10,0.55)',
+                  }}
                 >
-                  {l.name}
-                </span>
-                <span
-                  className="font-mono text-[9px] uppercase tracking-[0.15em] transition-colors duration-300"
-                  style={{ color: isActive ? 'var(--mint)' : 'var(--text-3)' }}
-                >
-                  {l.tag}
-                </span>
-              </div>
-            </button>
-          )
-        })}
+                  {/* active mint rail */}
+                  <span
+                    aria-hidden
+                    className="pointer-events-none absolute inset-y-2 left-0 w-[2px] rounded-full bg-mint transition-opacity duration-300"
+                    style={{ opacity: isActive ? 0.9 : 0 }}
+                  />
+                  <div className="flex items-center justify-between gap-3 pl-1">
+                    <span
+                      className="font-serif text-[1.2rem] leading-none transition-colors duration-300"
+                      style={{ color: isActive ? 'var(--text)' : 'var(--text-2)' }}
+                    >
+                      {l.name}
+                    </span>
+                    <span
+                      className="font-mono text-[9px] uppercase tracking-[0.15em] transition-colors duration-300"
+                      style={{ color: isActive ? 'var(--mint)' : 'var(--text-3)' }}
+                    >
+                      {l.tag}
+                    </span>
+                  </div>
+                </button>
+              )
+            })}
+          </Fragment>
+        ))}
       </div>
 
       {/* ---- right: fixed-height detail card ---- */}
@@ -177,7 +194,7 @@ export default function PlatformExplorer() {
               <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-mint">
                 {layer.tag}
               </p>
-              <h3 className="mt-2.5 font-serif text-[clamp(1.9rem,3vw,2.3rem)] leading-tight text-ink">
+              <h3 className="mt-2.5 font-serif text-display-3 text-ink">
                 {layer.name}
               </h3>
             </div>
@@ -205,7 +222,7 @@ export default function PlatformExplorer() {
             <div className="mt-auto border-t border-white/[0.06] pt-6">
               <Link
                 href={layer.href}
-                className="group inline-flex items-center gap-2.5 rounded-full border border-mint/25 bg-mint/[0.04] px-5 py-2.5 font-mono text-[10px] uppercase tracking-[0.2em] text-mint/90 transition-all duration-300 hover:border-mint/55 hover:bg-mint/[0.10] hover:text-mint hover:shadow-[0_0_26px_-8px_rgba(0,255,178,0.55)]"
+                className="group inline-flex min-h-[44px] items-center gap-2.5 rounded-full border border-mint/25 bg-mint/[0.04] px-5 py-2.5 font-mono text-[10px] uppercase tracking-[0.2em] text-mint/90 transition-all duration-300 hover:border-mint/55 hover:bg-mint/[0.10] hover:text-mint hover:shadow-[0_0_26px_-8px_rgba(0,255,178,0.55)]"
               >
                 Explore {layer.name}
                 <span

@@ -28,7 +28,7 @@ const PILLARS = [
     headline: 'Every decision, in plain words.',
     body: 'The reasoning is recorded as the action happens, readable without a data scientist in the room.',
     points: [
-      { title: 'The reasoning, not just the result.', detail: 'The policy it ran, the validator that cleared it, the logic behind it.' },
+      { title: 'The reasoning behind the result.', detail: 'The policy it ran, the validator that cleared it, the logic behind it.' },
       { title: 'Readable by compliance.', detail: 'Plain language your examiner follows directly.' },
       { title: 'Inspections answered same-day.', detail: 'The evidence exists because the validation did.' },
     ],
@@ -52,10 +52,10 @@ const PILLARS = [
     id: 'trustworthy',
     label: 'Trustworthy',
     hint: 'Cleared before it fires',
-    // gold / amber
-    rgb: '246,186,57',
-    gradOrb: 'radial-gradient(ellipse at 15% 75%, rgba(246,186,57,0.18) 0%, transparent 60%)',
-    headline: 'Validated before it acts.',
+    // gold token — the page's boundary/scrutiny colour
+    rgb: '200,161,74',
+    gradOrb: 'radial-gradient(ellipse at 15% 75%, rgba(200,161,74,0.18) 0%, transparent 60%)',
+    headline: 'Nothing moves unchecked.',
     body: 'Every action clears 33 validators before it can fire.',
     points: [
       { title: '33 validators, pre-execution.', detail: 'Grounding, soundness and permission, on every action.' },
@@ -67,10 +67,11 @@ const PILLARS = [
     id: 'controllable',
     label: 'Controllable',
     hint: 'Stop it in one click',
-    // violet / indigo
-    rgb: '147,112,255',
-    gradOrb: 'radial-gradient(ellipse at 75% 70%, rgba(147,112,255,0.18) 0%, transparent 60%)',
-    headline: 'You remain in control.',
+    // bright ink — a near-monochrome "command" identity; the palette has no
+    // fourth accent, and command is the absence of colour, not another hue
+    rgb: '246,246,244',
+    gradOrb: 'radial-gradient(ellipse at 75% 70%, rgba(246,246,244,0.14) 0%, transparent 60%)',
+    headline: 'The runtime answers to you.',
     body: 'Every co-worker runs inside authority limits you set.',
     points: [
       { title: 'Authority per co-worker.', detail: 'What it decides, escalates, or never touches, set by you.' },
@@ -93,13 +94,24 @@ export default function TrustPillars() {
         <div className="mx-auto max-w-[640px] text-center">
           <Eyebrow>The answer</Eyebrow>
           <h2 className="mt-4 font-serif text-display-1 text-ink">
-            The AI that runs banking.
+            The AI that runs lending.
           </h2>
           <p className="mx-auto mt-6 max-w-[52ch] font-sans text-body-lg text-ink-2">
             No black boxes. Pause, override or roll back from one screen.
           </p>
         </div>
       </Reveal>
+
+      {/* SSR discovery floor: the deep-dive card mounts only the active pillar,
+          so every pillar's substance is server-rendered here for crawlers. */}
+      <ul className="sr-only">
+        {PILLARS.map((pl) => (
+          <li key={pl.id}>
+            {pl.label}: {pl.headline} {pl.body}{' '}
+            {pl.points.map((pt) => `${pt.title} ${pt.detail}`).join(' ')}
+          </li>
+        ))}
+      </ul>
 
       {/* ---- tab cards ---- */}
       <Reveal delay={0.1}>
@@ -115,7 +127,7 @@ export default function TrustPillars() {
                 onMouseEnter={() => setActive(i as Idx)}
                 onFocus={() => setActive(i as Idx)}
                 onClick={() => setActive(i as Idx)}
-                className="group relative h-full w-full overflow-hidden rounded-[20px] p-px text-left outline-none focus-visible:!outline-none focus-visible:ring-2 focus-visible:ring-white/25"
+                className="group relative h-full w-full overflow-hidden rounded-[20px] p-px text-left outline-none focus-visible:!outline-none focus-visible:ring-2 focus-visible:ring-white/60"
                 style={{
                   background: isActive
                     ? `linear-gradient(145deg, rgba(${pillar.rgb},0.65) 0%, rgba(${pillar.rgb},0.18) 55%, rgba(255,255,255,0.07) 100%)`
@@ -129,8 +141,8 @@ export default function TrustPillars() {
                   className="relative h-full overflow-hidden rounded-[19px] p-6 md:p-7"
                   style={{
                     background: isActive
-                      ? `${pillar.gradOrb}, rgba(10,11,15,0.93)`
-                      : `rgba(10,11,15,0.70)`,
+                      ? `${pillar.gradOrb}, rgba(9,9,12,0.93)`
+                      : `rgba(9,9,12,0.70)`,
                     backdropFilter: 'blur(18px)',
                     WebkitBackdropFilter: 'blur(18px)',
                   }}
@@ -150,9 +162,8 @@ export default function TrustPillars() {
 
                   {/* word */}
                   <p
-                    className="mt-5 font-serif leading-none tracking-[-0.01em]"
+                    className="mt-5 font-serif text-display-2 leading-none"
                     style={{
-                      fontSize: 'clamp(1.5rem,2.4vw,1.95rem)',
                       color: isActive ? `rgb(${pillar.rgb})` : 'rgba(255,255,255,0.68)',
                       transition: 'color 0.4s ease',
                     }}
@@ -199,7 +210,7 @@ export default function TrustPillars() {
           <div
             className="relative overflow-hidden rounded-[21px]"
             style={{
-              background: `${p.gradOrb}, rgba(10,11,15,0.92)`,
+              background: `${p.gradOrb}, rgba(9,9,12,0.92)`,
               backdropFilter: 'blur(22px)',
               WebkitBackdropFilter: 'blur(22px)',
               transition: 'background 0.6s ease',
@@ -237,7 +248,7 @@ export default function TrustPillars() {
                   >
                     {p.label}
                   </p>
-                  <h3 className="mt-4 font-serif text-[clamp(1.7rem,2.9vw,2.5rem)] leading-[1.1] tracking-[-0.015em] text-ink">
+                  <h3 className="mt-4 font-serif text-display-3 text-ink">
                     {p.headline}
                   </h3>
                   <p className="mt-5 font-sans text-body leading-[1.72] text-ink-2">

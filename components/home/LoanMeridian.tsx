@@ -1,13 +1,18 @@
 'use client'
 
 /**
- * LoanMeridian — homepage §8 "The lending lifecycle".
+ * LoanMeridian — homepage §9 "Inside the lifecycle": the deep instrument.
+ *
+ * The glanceable version of this section (LifecycleOverview, §2 #lifecycle)
+ * opens the page with the same eight stages and the outcomes; this one is the
+ * proof of depth for readers who have scrolled through the argument — the
+ * interactive horizon, the per-stage console, and the oversight layer. The
+ * three-outcome payoff band moved up into the overview.
  *
  * One continuous current. The cyan→mint line is the loan's life — it enters
  * cyan (in-flow) and resolves toward mint (validated) as KrimOS clears each
- * stage. Gold is the one point the light is held back: underwriting, where the
- * decision stays with the institution; and the oversight layer beneath, which
- * watches every step and never decides.
+ * stage. Gold is reserved for the oversight layer beneath, which watches
+ * every step and never decides.
  *
  * The horizon is HOVER-ACTIVATED: hovering a waypoint pre-highlights it instantly
  * and commits ~90ms later, so a fast cursor sweep settles on the stage you rest on
@@ -36,52 +41,53 @@ const CURRENT = 'linear-gradient(90deg, rgba(57,214,255,0.9) 0%, rgba(0,255,178,
 type Group = { label: string; items: readonly string[] }
 type Stage = {
   n: string; area: string; rgb: string; role: string
-  impact: string; hint: string; groups: readonly Group[]; boundary?: boolean
+  impact: string; groups: readonly Group[]
 }
 
-// Eight stages, lifecycle order. `rgb` samples the cyan→mint current; underwriting
-// is gold (boundary). Every group carries exactly three items — so the console
-// never reflows when you switch stages.
-const STAGES: Stage[] = [
-  { n: '01', area: 'Acquisition', rgb: '57,214,255', role: 'Growth & contact centre', impact: 'Every enquiry answered, in their language.', hint: 'Enquiry · Eligibility',
+// Eight stages, lifecycle order. `rgb` samples the cyan→mint current. Every
+// group carries exactly three items — so the console never reflows when you
+// switch stages. Exported: LifecycleOverview (§2) renders the same stages as
+// the glanceable current — one source of truth.
+export const STAGES: Stage[] = [
+  { n: '01', area: 'Acquisition', rgb: '57,214,255', role: 'Growth & contact centre', impact: 'Every enquiry answered, none left waiting.',
     groups: [
       { label: 'Reach', items: ['Enquiry handling', 'Eligibility pre-check', 'Multilingual outreach'] },
       { label: 'Convert', items: ['Application invite', 'Abandoned re-engagement', 'Channel routing'] },
     ] },
-  { n: '02', area: 'Origination', rgb: '49,220,244', role: 'Credit operations', impact: 'Onboarded at digital speed.', hint: 'KYC · Bureau',
+  { n: '02', area: 'Origination', rgb: '49,220,244', role: 'Credit operations', impact: 'Onboarded at digital speed.',
     groups: [
       { label: 'Intake & identity', items: ['Application capture', 'KYC / KYB', 'Sanctions screening'] },
       { label: 'Documents & data', items: ['Document capture', 'OCR & extraction', 'Bureau pulls'] },
       { label: 'Routing', items: ['Triage & prioritise', 'Stalled-file chase', 'Hand-off to underwriting'] },
     ] },
-  { n: '03', area: 'Underwriting support', rgb: '41,226,233', role: 'Credit risk', impact: 'Underwriters see only the judgment cases.', hint: 'Policy · Evidence',
+  { n: '03', area: 'Underwriting support', rgb: '41,226,233', role: 'Credit risk', impact: 'Underwriters see only the judgment cases.',
     groups: [
       { label: 'Prepare', items: ['File assembly', 'Affordability evidence', 'Income & employment'] },
       { label: 'Check', items: ['Policy & eligibility', 'Adverse-action notices', 'Exception flags'] },
     ] },
-  { n: '04', area: 'Disbursal', rgb: '33,232,222', role: 'Loan operations', impact: 'Agreement to funds, fully checked.', hint: 'E-sign · Funding',
+  { n: '04', area: 'Disbursal', rgb: '33,232,222', role: 'Loan operations', impact: 'Agreement to funds, fully checked.',
     groups: [
       { label: 'Contract', items: ['Agreement generation', 'E-sign', 'Compliance pre-checks'] },
       { label: 'Fund', items: ['Disbursal', 'Autopay enrolment', 'Welcome & first payment'] },
     ] },
-  { n: '05', area: 'Servicing', rgb: '24,237,211', role: 'Servicing & support', impact: 'Every customer, in the language they speak.', hint: 'Payments · Self-serve',
+  { n: '05', area: 'Servicing', rgb: '24,237,211', role: 'Servicing & support', impact: 'Every customer, in the language they speak.',
     groups: [
       { label: 'Money', items: ['Payments & autopay', 'Statements', 'Reconciliation'] },
       { label: 'Care', items: ['Queries & changes', 'Self-serve resolution', 'Multilingual support'] },
       { label: 'Lifecycle', items: ['Renewals & top-ups', 'Account maintenance', 'Human hand-off'] },
     ] },
-  { n: '06', area: 'Collections', rgb: '16,243,200', role: 'Collections & cure', impact: 'Every contact, validated before it fires.', hint: 'Right-party · Plans',
+  { n: '06', area: 'Collections', rgb: '16,243,200', role: 'Collections & cure', impact: 'Every contact inside consent and hours.',
     groups: [
       { label: 'Contact', items: ['Right-party contact', 'Consent & hours checks', 'Frequency caps'] },
       { label: 'Cure', items: ['Payment plans', 'Promise-to-pay', 'Settlement'] },
       { label: 'Stages', items: ['DPD 1–30', 'DPD 31+', 'Early-warning'] },
     ] },
-  { n: '07', area: 'Hardship', rgb: '8,249,189', role: 'Care & complaints', impact: 'Handled with care, inside the rules.', hint: 'Restructure · Disputes',
+  { n: '07', area: 'Hardship', rgb: '8,249,189', role: 'Care & complaints', impact: 'Handled with care, inside the rules.',
     groups: [
       { label: 'Support', items: ['Hardship signposting', 'Restructuring', 'Forbearance'] },
       { label: 'Resolve', items: ['Disputes & complaints', 'Vulnerable routing', 'Case handover'] },
     ] },
-  { n: '08', area: 'Closure', rgb: MINT, role: 'Retention', impact: 'A clean close, and the next conversation.', hint: 'Payoff · Win-back',
+  { n: '08', area: 'Closure', rgb: MINT, role: 'Retention', impact: 'A clean close, and the next conversation.',
     groups: [
       { label: 'Close', items: ['Payoff & settlement', 'NOC / lien release', 'Account closure'] },
       { label: 'Grow', items: ['Win-back', 'Cross-sell', 'Next-product offer'] },
@@ -95,12 +101,6 @@ const OVERSIGHT = [
   { name: 'Fraud & crime', note: 'anomalies surfaced' },
   { name: 'Kupa command', note: 'see, set, step in, prove' },
   { name: 'Reporting & MI', note: 'one source of truth' },
-] as const
-
-const INSTITUTION = [
-  { impact: 'Scale without the headcount.', hi: 'Scale', tag: 'Acquisition to closure.' },
-  { impact: 'Audit evidence in minutes.', hi: 'minutes', tag: 'Assembled on demand.' },
-  { impact: 'Sharper with every loan.', hi: 'Sharper', tag: 'Kovida learns.' },
 ] as const
 
 // A small node sitting on the current — repeated at each band's eyebrow.
@@ -165,15 +165,26 @@ export default function LoanMeridian() {
   return (
     <Section hairline id="who">
       <Reveal>
-        <Eyebrow>The lending lifecycle</Eyebrow>
+        <Eyebrow>Inside the lifecycle</Eyebrow>
         <h2 className="mt-4 max-w-[26ch] font-serif text-display-1 text-ink">
-          One runtime, from first enquiry to final payoff.
+          Every stage, on the record.
         </h2>
         <p className="mt-5 max-w-[56ch] font-sans text-body-lg text-ink-2">
-          AI co-workers run the whole loan as <span className="text-mint">one current</span>, every
-          action validated before it fires, with risk and compliance under every step.
+          Pick a stage to see the work co-workers run there, who it serves, and{' '}
+          <span className="text-gold">the oversight underneath</span>.
         </p>
       </Reveal>
+
+      {/* SSR discovery floor: the console mounts only the active stage, so every
+          stage's substance is server-rendered here for crawlers and readers. */}
+      <ul className="sr-only">
+        {STAGES.map((st) => (
+          <li key={st.n}>
+            {st.area} ({st.role}): {st.impact}{' '}
+            {st.groups.map((g) => `${g.label} — ${g.items.join(', ')}`).join('; ')}
+          </li>
+        ))}
+      </ul>
 
       {/* ===== the horizon — hover or select a stage ===== */}
       <Reveal delay={0.12}>
@@ -190,15 +201,16 @@ export default function LoanMeridian() {
             <div aria-hidden className="absolute left-[6.25%] right-[6.25%] top-[7px] h-[2px] -translate-y-px opacity-40 blur-[6px]" style={{ background: CURRENT }} />
             <div aria-hidden className="absolute left-[6.25%] right-[6.25%] top-[7px] h-px -translate-y-px opacity-90" style={{ background: CURRENT }} />
             {!reduce && (
-              <div aria-hidden className="meridian-flow absolute left-[6.25%] top-[6px] h-px w-[22%] opacity-70" style={{ background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.55), transparent)', mixBlendMode: 'screen' }} />
+              <div aria-hidden className="meridian-flow absolute left-[6.25%] top-[6px] h-px w-[22%] opacity-90" style={{ background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.6), transparent)', mixBlendMode: 'screen' }} />
             )}
-            {/* the traveller — a comet of light that runs to the active node (CSS, SSR-safe) */}
+            {/* the traveller — a comet of light that runs to the active node (CSS, SSR-safe).
+                Sized up so the "current" reads at a glance, not only on close inspection. */}
             <div
               aria-hidden
-              className="pointer-events-none absolute top-[7px] h-[3px] w-[12.5%] -translate-x-1/2 -translate-y-px"
+              className="pointer-events-none absolute top-[7px] h-[4px] w-[15%] -translate-x-1/2 -translate-y-px"
               style={{
                 left: `calc(6.25% + ${active * 12.5}%)`,
-                background: `radial-gradient(closest-side, rgba(${s.rgb},0.95), rgba(${s.rgb},0) 60%)`,
+                background: `radial-gradient(closest-side, rgba(${s.rgb},1), rgba(${s.rgb},0) 62%)`,
                 filter: 'blur(1px)',
                 mixBlendMode: 'screen',
                 transition: reduce ? 'none' : `left 0.55s ${EASE_CSS}, background 0.55s ease`,
@@ -250,12 +262,20 @@ export default function LoanMeridian() {
                     </span>
                     {/* glass waypoint tile — the label sits inside a translucent lozenge that
                         shimmers on hover and is lit-from-within when active. Rail meets the tile
-                        at its top edge (the keel). */}
+                        at its top edge (the keel). The stage number makes the horizon read as a
+                        sequenced instrument and ties each tile to its console readout (01 · …). */}
                     <span
-                      className="wp mt-4 flex min-h-[3.4em] w-full items-center justify-center px-2.5 py-2.5"
+                      className="wp mt-4 flex min-h-[3.4em] w-full flex-col items-center justify-center gap-1 px-2.5 py-2.5"
                       data-active={on ? 'true' : 'false'}
                       style={{ ['--rgb' as string]: st.rgb } as React.CSSProperties}
                     >
+                      <span
+                        aria-hidden
+                        className="font-mono text-[9px] leading-none tracking-[0.24em] transition-colors duration-200"
+                        style={{ color: `rgba(${st.rgb},${on ? 0.95 : pre ? 0.65 : 0.42})` }}
+                      >
+                        {st.n}
+                      </span>
                       <span className={`relative font-serif text-[1.05rem] leading-tight transition-all duration-200 ${on ? 'text-ink tracking-[-0.01em]' : pre ? 'text-ink' : 'text-ink-2 group-hover:text-ink'}`}>
                         {st.area}
                       </span>
@@ -293,13 +313,13 @@ export default function LoanMeridian() {
         </div>
       </div>
 
-      {/* ===== the stack: console → oversight → payoff, one current down the left ===== */}
+      {/* ===== the stack: console → oversight, one current down the left ===== */}
       <div className="relative mt-12 pl-7 sm:pl-9">
-        {/* the vertical current, tracking the active stage → gold → mint */}
+        {/* the vertical current, tracking the active stage → resolving at the gold boundary */}
         <span
           aria-hidden
           className="absolute bottom-2 left-[5.5px] top-2 w-px"
-          style={{ background: `linear-gradient(180deg, rgb(${s.rgb}) 0%, rgba(${GOLD},0.6) 60%, rgb(${MINT}) 100%)`, transition: reduce ? 'none' : 'background 600ms ease' }}
+          style={{ background: `linear-gradient(180deg, rgb(${s.rgb}) 0%, rgba(${GOLD},0.75) 100%)`, transition: reduce ? 'none' : 'background 600ms ease' }}
         />
 
         {/* ---- console — the runtime surface ---- */}
@@ -310,7 +330,7 @@ export default function LoanMeridian() {
               className="relative overflow-hidden rounded-[20px] border p-7 md:p-10"
               style={{
                 borderColor: 'rgba(255,255,255,0.14)',
-                background: `radial-gradient(120% 120% at 0% 0%, rgba(${s.rgb},0.08), transparent 45%), linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.014)), rgba(10,11,15,0.66)`,
+                background: `radial-gradient(120% 120% at 0% 0%, rgba(${s.rgb},0.08), transparent 45%), linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.014)), rgba(9,9,12,0.66)`,
                 backdropFilter: 'blur(26px) saturate(115%)', WebkitBackdropFilter: 'blur(26px) saturate(115%)',
                 boxShadow: `inset 0 1px 0 0 rgba(255,255,255,0.10), inset 0 -40px 80px -60px rgba(${s.rgb},0.2), 0 30px 70px -30px rgba(0,0,0,0.7)`,
                 transition: reduce ? 'none' : 'background 600ms ease, box-shadow 600ms ease',
@@ -335,7 +355,7 @@ export default function LoanMeridian() {
                       {s.n} · {s.area}
                     </p>
                     <p className="mt-2 font-mono text-[11px] uppercase tracking-[0.16em] text-ink-3">{s.role}</p>
-                    <p className="mt-6 max-w-[15ch] font-serif text-[clamp(1.7rem,2.6vw,2.4rem)] leading-[1.08] tracking-[-0.015em] text-ink">
+                    <p className="mt-6 max-w-[15ch] font-serif text-display-3 text-ink">
                       {s.impact}
                     </p>
                   </div>
@@ -344,7 +364,7 @@ export default function LoanMeridian() {
                       one column of exactly 3 chips, so 2-group and 3-group stages reserve the
                       SAME height (identical card); the group count only changes the column count
                       (horizontal). Names never wrap: wide columns + a 14/15px floor. */}
-                  <div className={`grid gap-x-5 self-start ${s.groups.length === 3 ? 'grid-cols-1 sm:grid-cols-3' : 'grid-cols-1 sm:grid-cols-2'}`}>
+                  <div className={`grid gap-x-5 gap-y-8 self-start ${s.groups.length === 3 ? 'grid-cols-1 sm:grid-cols-2 xl:grid-cols-3' : 'grid-cols-1 sm:grid-cols-2'}`}>
                     {s.groups.map((g, gi) => (
                       <div key={g.label} className="flex flex-col" style={{ animation: reduce ? undefined : `cellIn 0.45s cubic-bezier(0.16,1,0.3,1) ${gi * 70}ms both` }}>
                         {/* column header */}
@@ -372,13 +392,13 @@ export default function LoanMeridian() {
 
         {/* ---- oversight (the riverbed, gold) ---- */}
         <Reveal delay={0.2}>
-          <div className="relative mt-16">
+          <div className="relative mt-12">
             <span aria-hidden className="absolute -left-[27px] top-[5px] sm:-left-[35px]"><Node rgb={GOLD} /></span>
             <div
               className="relative overflow-hidden rounded-[20px] border p-8 md:p-10"
               style={{
                 borderColor: 'rgba(255,255,255,0.10)',
-                background: `radial-gradient(130% 120% at 50% 0%, rgba(${GOLD},0.10) 0%, transparent 55%), linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.012)), rgba(10,11,15,0.55)`,
+                background: `radial-gradient(130% 120% at 50% 0%, rgba(${GOLD},0.10) 0%, transparent 55%), linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.012)), rgba(9,9,12,0.55)`,
                 backdropFilter: 'blur(26px) saturate(115%)', WebkitBackdropFilter: 'blur(26px) saturate(115%)',
                 boxShadow: `inset 0 1px 0 0 rgba(${GOLD},0.22), 0 24px 60px -24px rgba(0,0,0,0.6)`,
               }}
@@ -388,7 +408,7 @@ export default function LoanMeridian() {
 
               {/* thesis — single column, headline runs wide and confident */}
               <p className="font-mono text-[11px] uppercase tracking-[0.22em]" style={{ color: `rgba(${GOLD},0.92)` }}>The oversight layer</p>
-              <h3 className="mt-3 max-w-[20ch] font-serif text-[clamp(1.75rem,3vw,2.6rem)] leading-[1.05] tracking-[-0.02em] text-ink">
+              <h3 className="mt-3 max-w-[20ch] font-serif text-display-3 text-ink">
                 Your team stays in control.
               </h3>
               <p className="mt-5 max-w-[60ch] font-sans text-body-lg leading-relaxed text-ink-2">
@@ -410,37 +430,6 @@ export default function LoanMeridian() {
           </div>
         </Reveal>
 
-        {/* ---- payoff (where the current resolves, mint) ---- */}
-        <Reveal delay={0.24}>
-          <div className="relative mt-12">
-            <span aria-hidden className="absolute -left-[27px] top-[5px] sm:-left-[35px]"><Node rgb={MINT} /></span>
-            <div
-              className="relative overflow-hidden rounded-[20px] border p-8 md:p-10"
-              style={{
-                borderColor: 'rgba(255,255,255,0.10)',
-                background: 'linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.012)), rgba(10,11,15,0.55)',
-                backdropFilter: 'blur(26px) saturate(115%)', WebkitBackdropFilter: 'blur(26px) saturate(115%)',
-                boxShadow: 'inset 0 1px 0 0 rgba(255,255,255,0.07), 0 24px 60px -24px rgba(0,0,0,0.6)',
-              }}
-            >
-              <p className="font-mono text-[11px] uppercase tracking-[0.22em] text-ink-3">What it adds up to</p>
-              <div className="mt-7 grid gap-x-8 gap-y-8 md:grid-cols-3">
-                {INSTITUTION.map(({ impact, hi, tag }, i) => {
-                  const [pre, post] = impact.split(hi)
-                  return (
-                    <div key={impact} className={`md:px-8 ${i > 0 ? 'md:border-l md:border-white/[0.08]' : 'md:pl-0'}`}>
-                      <span aria-hidden className="block h-[3px] w-9 rounded-full" style={{ background: 'linear-gradient(90deg, var(--cyan), var(--mint))' }} />
-                      <h3 className="mt-5 min-h-[2.3em] font-serif text-[clamp(1.45rem,2.3vw,1.9rem)] leading-[1.12] text-ink">
-                        {pre}<span className="text-mint">{hi}</span>{post}
-                      </h3>
-                      <p className="mt-4 font-mono text-[11px] uppercase tracking-[0.14em] text-ink-3">{tag}</p>
-                    </div>
-                  )
-                })}
-              </div>
-            </div>
-          </div>
-        </Reveal>
       </div>
     </Section>
   )
