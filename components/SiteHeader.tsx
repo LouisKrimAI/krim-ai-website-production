@@ -1,48 +1,87 @@
 'use client'
 
 /**
- * SiteHeader — sticky glass nav over the orb. The static Krim mark (real
- * committed file) + wordmark at left. Two grouped menus — "KrimOS" (the
- * product, with its layers) and "Domains" — plus flat links. Accessible:
- * each menu is a real button with aria-expanded, the open menu closes on
- * Escape / outside-click, links are focusable. Only one menu open at a time.
+ * SiteHeader — sticky glass nav with a full-width mega-panel.
+ *
+ * Three grouped menus (KrimOS · Domains · Research) share ONE viewport-wide
+ * glass panel that drops beneath the banner on hover: deep blur, layered
+ * mint/cyan ambient tints drifting almost imperceptibly, a luminous bottom
+ * hairline. Each group renders as a rail (eyebrow + serif line + overview
+ * links) beside a grid of destination links. Insights / Trust / Company are
+ * flat links. Accessible: carets are real buttons with aria-expanded, the
+ * panel closes on Escape / outside-click / mouse-leave (short grace), and
+ * every link is focusable. Only one group is active at a time.
  */
 
 import { useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
-import { motion, useReducedMotion } from 'framer-motion'
+import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
 import KrimLogoAnimated from './KrimLogoAnimated'
 
 const OUT_SOFT = [0.16, 1, 0.3, 1] as const
 
-// KrimOS — overview + the layer pages (Kira now also covers the Krimkar app)
-const KRIMOS = [
-  ['Overview', 'The operating system, end to end', '/krimos'],
-  ['Kendra', 'The runtime, validates & learns', '/krimos/kendra'],
-  ['Kriya', 'The vocabulary of actions', '/krimos/kriya'],
-  ['Karta', 'The AI co-workers', '/krimos/karta'],
-  ['Kupa', 'The command center', '/krimos/kupa'],
-  ['Kula', 'For your teams', '/krimos/kula'],
-  ['Kira & Krimkar', 'The customer advisor', '/krimos/kira'],
-] as const
+type MenuKey = 'krimos' | 'domains' | 'research'
 
-const DOMAINS = [
-  ['Lending', '/lending'],
-  ['Government', '/government'],
-  ['Large Enterprise', '/enterprise'],
-  ['MSME', '/msme'],
-] as const
+type PanelLink = { label: string; role: string; href: string }
+type PanelDef = {
+  eyebrow: string
+  line: string
+  overview: { label: string; href: string }
+  secondary?: { label: string; href: string }
+  items: ReadonlyArray<PanelLink>
+  cols: 2 | 3
+}
 
-// Research — the work under the product, with its anchors
-const RESEARCH = [
-  ['Overview', 'The work under the product', '/research'],
-  ['Epistemic AI', 'The category we define', '/epistemic-ai'],
-  ['Kovida', 'The world lending model', '/research/world-lending-model'],
-  ['Safe Agent Harness', 'The harness that makes agents deployable', '/research/safe-agent-harness'],
-  ['Insights', 'Perspectives on AI in banking', '/insights'],
-] as const
+// The three panels — every role line traces to its page's own hero copy.
+const PANELS: Record<MenuKey, PanelDef> = {
+  krimos: {
+    eyebrow: 'The product',
+    line: 'The operating system for lending.',
+    overview: { label: 'Explore KrimOS', href: '/krimos' },
+    secondary: { label: 'The architecture', href: '/architecture' },
+    items: [
+      { label: 'Kendra', role: 'The runtime — validates & learns', href: '/krimos/kendra' },
+      { label: 'Kriya', role: 'The vocabulary of actions', href: '/krimos/kriya' },
+      { label: 'Karta', role: 'The AI co-workers', href: '/krimos/karta' },
+      { label: 'Kupa', role: 'The command center', href: '/krimos/kupa' },
+      { label: 'Kula', role: 'For your teams', href: '/krimos/kula' },
+      { label: 'Kira & Krimkar', role: 'The customer advisor', href: '/krimos/kira' },
+    ],
+    cols: 3,
+  },
+  domains: {
+    eyebrow: 'Where it runs',
+    line: 'For every institution that lends.',
+    overview: { label: 'Start with lending', href: '/lending' },
+    items: [
+      { label: 'Lending', role: 'The whole loan lifecycle, end to end', href: '/lending' },
+      { label: 'Large Enterprise', role: 'Millions of interactions, every one provable', href: '/enterprise' },
+      { label: 'Government', role: 'Public service that answers for every action', href: '/government' },
+      { label: 'MSME', role: 'Regulation-grade AI, at your scale', href: '/msme' },
+    ],
+    cols: 2,
+  },
+  research: {
+    eyebrow: 'The work beneath',
+    line: 'The thinking under the product.',
+    overview: { label: 'Explore the research', href: '/research' },
+    items: [
+      { label: 'Epistemic AI', role: 'The category we define — AI a regulator can read', href: '/epistemic-ai' },
+      { label: 'Kovida', role: 'The world lending model', href: '/research/world-lending-model' },
+      { label: 'Safe Agent Harness', role: 'What makes agents deployable', href: '/research/safe-agent-harness' },
+    ],
+    cols: 3,
+  },
+}
 
-const FLAT_RIGHT = [
+const GROUPS: ReadonlyArray<{ key: MenuKey; label: string; href: string }> = [
+  { key: 'krimos', label: 'KrimOS', href: '/krimos' },
+  { key: 'domains', label: 'Domains', href: '/lending' },
+  { key: 'research', label: 'Research', href: '/research' },
+]
+
+const FLAT = [
+  ['Insights', '/insights'],
   ['Trust', '/trust'],
   ['Company', '/company'],
 ] as const
@@ -50,8 +89,6 @@ const FLAT_RIGHT = [
 const DEMO_HREF = '/contact'
 
 const linkCls = 'font-sans text-[14px] text-ink-2 transition-colors duration-fast hover:text-ink'
-
-type MenuKey = 'krimos' | 'domains' | 'research' | null
 
 function Caret({ open }: { open: boolean }) {
   return (
@@ -61,88 +98,26 @@ function Caret({ open }: { open: boolean }) {
   )
 }
 
-/**
- * A top-level nav group: the LABEL is a link to the overview/hub page, and the
- * caret beside it is a separate button that toggles the dropdown. Mouse users
- * also get hover-to-open on the whole group; keyboard users tab to the link
- * (Enter → navigate) then the caret (Enter/Space → open the menu).
- */
-function NavGroup({
-  menuKey,
-  label,
-  overviewHref,
-  width,
-  items,
-  open,
-  setOpen,
-}: {
-  menuKey: Exclude<MenuKey, null>
-  label: string
-  overviewHref: string
-  width: string
-  items: ReadonlyArray<{ label: string; role?: string; href: string }>
-  open: MenuKey
-  setOpen: (v: MenuKey) => void
-}) {
-  const isOpen = open === menuKey
-  const menuId = `nav-menu-${menuKey}`
-  return (
-    <div
-      className="relative flex items-center"
-      onMouseEnter={() => setOpen(menuKey)}
-      onMouseLeave={() => setOpen(null)}
-    >
-      <Link href={overviewHref} className={linkCls}>
-        {label}
-      </Link>
-      <button
-        type="button"
-        className={`ml-1 flex h-6 w-5 items-center justify-center ${linkCls}`}
-        aria-label={`${label} menu`}
-        aria-haspopup="true"
-        aria-expanded={isOpen}
-        aria-controls={menuId}
-        onClick={() => setOpen(isOpen ? null : menuKey)}
-      >
-        <Caret open={isOpen} />
-      </button>
-      {isOpen && (
-        <div id={menuId} className={`absolute left-1/2 top-full z-50 ${width} -translate-x-1/2 pt-3`}>
-          <div className="overflow-hidden rounded-[14px] border border-strong bg-[rgba(14,15,19,0.97)] p-2 shadow-[0_24px_60px_rgba(0,0,0,0.55)] backdrop-blur-xl">
-            {items.map((it) => (
-              <Link
-                key={it.href}
-                href={it.href}
-                className="block rounded-[10px] px-3.5 py-2.5 transition-colors hover:bg-white/[0.05]"
-                onClick={() => setOpen(null)}
-              >
-                {it.role ? (
-                  <>
-                    <span className="block font-sans text-[15px] text-ink">{it.label}</span>
-                    <span className="mt-0.5 block font-sans text-[13.5px] text-ink-3">{it.role}</span>
-                  </>
-                ) : (
-                  <span className="block font-sans text-[14px] text-ink-2 transition-colors hover:text-ink">
-                    {it.label}
-                  </span>
-                )}
-              </Link>
-            ))}
-          </div>
-        </div>
-      )}
-    </div>
-  )
-}
-
 export default function SiteHeader({ scrollReveal = false }: { scrollReveal?: boolean }) {
   const [menuOpen, setMenuOpen] = useState(false) // mobile sheet
-  const [open, setOpen] = useState<MenuKey>(null) // desktop dropdown (one at a time)
-  const navRef = useRef<HTMLElement>(null)
+  const [open, setOpen] = useState<MenuKey | null>(null) // desktop mega-panel
+  const headerRef = useRef<HTMLElement>(null)
+  const panelRef = useRef<HTMLDivElement>(null)
+  const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
   const reduce = useReducedMotion()
   // On the homepage the banner stays hidden over the hero and is revealed once
   // the visitor scrolls past it. Elsewhere (scrollReveal=false) it's always shown.
   const [shown, setShown] = useState(!scrollReveal)
+
+  const cancelClose = () => {
+    if (closeTimer.current) { clearTimeout(closeTimer.current); closeTimer.current = null }
+  }
+  const openMenu = (key: MenuKey) => { cancelClose(); setOpen(key) }
+  const scheduleClose = () => {
+    cancelClose()
+    closeTimer.current = setTimeout(() => setOpen(null), 140)
+  }
+  const closeNow = () => { cancelClose(); setOpen(null) }
 
   useEffect(() => {
     if (!scrollReveal) return
@@ -152,11 +127,14 @@ export default function SiteHeader({ scrollReveal = false }: { scrollReveal?: bo
     return () => window.removeEventListener('scroll', onScroll)
   }, [scrollReveal])
 
-  // close the open desktop dropdown on outside click / Escape
+  // close the open panel on outside click / Escape
   useEffect(() => {
     if (!open) return
     const onDown = (e: MouseEvent) => {
-      if (navRef.current && !navRef.current.contains(e.target as Node)) setOpen(null)
+      const t = e.target as Node
+      const inHeader = headerRef.current?.contains(t)
+      const inPanel = panelRef.current?.contains(t)
+      if (!inHeader && !inPanel) setOpen(null)
     }
     const onKey = (e: KeyboardEvent) => e.key === 'Escape' && setOpen(null)
     document.addEventListener('mousedown', onDown)
@@ -167,62 +145,57 @@ export default function SiteHeader({ scrollReveal = false }: { scrollReveal?: bo
     }
   }, [open])
 
+  const panel = open ? PANELS[open] : null
+
   return (
+    <>
     <motion.header
+      ref={headerRef}
       className="sticky top-0 z-40 border-b border-soft bg-bg/70 backdrop-blur-md"
       aria-hidden={!shown}
       initial={false}
       animate={{ opacity: shown ? 1 : 0, y: shown || reduce ? 0 : -14 }}
       transition={reduce ? { duration: 0 } : { duration: 0.5, ease: OUT_SOFT }}
       style={{ pointerEvents: shown ? 'auto' : 'none' }}
+      onMouseLeave={scheduleClose}
     >
       <div className="mx-auto flex h-16 max-w-site items-center justify-between px-6 md:px-10">
-        <Link href="/" className="flex items-center" aria-label="Krim — home">
+        <Link href="/" className="flex items-center" aria-label="Krim — home" onMouseEnter={scheduleClose}>
           <KrimLogoAnimated className="h-[26px] w-auto" />
         </Link>
 
-        <nav ref={navRef} className="hidden items-center gap-7 lg:flex" aria-label="Primary">
-          {/* KrimOS — label links to the overview; caret opens the menu */}
-          <NavGroup
-            menuKey="krimos"
-            label="KrimOS"
-            overviewHref="/krimos"
-            width="w-[300px]"
-            items={KRIMOS.map(([label, role, href]) => ({ label, role, href }))}
-            open={open}
-            setOpen={setOpen}
-          />
+        <nav className="hidden items-center gap-7 lg:flex" aria-label="Primary">
+          {GROUPS.map(({ key, label, href }) => {
+            const isOpen = open === key
+            return (
+              <div key={key} className="flex items-center" onMouseEnter={() => openMenu(key)}>
+                <Link href={href} className={`${linkCls} ${isOpen ? 'text-ink' : ''}`} onClick={closeNow}>
+                  {label}
+                </Link>
+                <button
+                  type="button"
+                  className={`ml-1 flex h-6 w-5 items-center justify-center ${linkCls} ${isOpen ? 'text-ink' : ''}`}
+                  aria-label={`${label} menu`}
+                  aria-haspopup="true"
+                  aria-expanded={isOpen}
+                  aria-controls="mega-panel"
+                  onClick={() => (isOpen ? closeNow() : openMenu(key))}
+                >
+                  <Caret open={isOpen} />
+                </button>
+              </div>
+            )
+          })}
 
-          {/* Domains — label links to Lending; caret opens the menu */}
-          <NavGroup
-            menuKey="domains"
-            label="Domains"
-            overviewHref="/lending"
-            width="w-[230px]"
-            items={DOMAINS.map(([label, href]) => ({ label, href }))}
-            open={open}
-            setOpen={setOpen}
-          />
-
-          {/* Research — label links to the overview; caret opens the menu */}
-          <NavGroup
-            menuKey="research"
-            label="Research"
-            overviewHref="/research"
-            width="w-[300px]"
-            items={RESEARCH.map(([label, role, href]) => ({ label, role, href }))}
-            open={open}
-            setOpen={setOpen}
-          />
-
-          {FLAT_RIGHT.map(([label, href]) => (
-            <Link key={href} href={href} className={linkCls}>
+          {FLAT.map(([label, href]) => (
+            <Link key={href} href={href} className={linkCls} onMouseEnter={scheduleClose}>
               {label}
             </Link>
           ))}
 
           <a
             href={DEMO_HREF}
+            onMouseEnter={scheduleClose}
             className="rounded bg-mint px-5 py-2 font-sans text-[13.5px] font-medium text-on-mint transition-colors duration-fast hover:bg-mint-bright"
           >
             Book a demo
@@ -250,25 +223,34 @@ export default function SiteHeader({ scrollReveal = false }: { scrollReveal?: bo
         <nav className="border-t border-soft bg-bg/95 backdrop-blur-md lg:hidden" aria-label="Primary mobile">
           <div className="mx-auto max-w-site px-6 py-5">
             <p className="pb-1 font-mono text-[11px] uppercase tracking-[0.2em] text-ink-3">KrimOS</p>
-            {KRIMOS.map(([label, , href]) => (
-              <Link key={href} href={href} onClick={() => setMenuOpen(false)} className="block py-2 pl-3 font-sans text-[15px] text-ink-2 hover:text-ink">
-                {label}
+            <Link href="/krimos" onClick={() => setMenuOpen(false)} className="block py-2 pl-3 font-sans text-[15px] text-ink-2 hover:text-ink">
+              Overview
+            </Link>
+            {PANELS.krimos.items.map((it) => (
+              <Link key={it.href} href={it.href} onClick={() => setMenuOpen(false)} className="block py-2 pl-3 font-sans text-[15px] text-ink-2 hover:text-ink">
+                {it.label}
               </Link>
             ))}
             <p className="pb-1 pt-3 font-mono text-[11px] uppercase tracking-[0.2em] text-ink-3">Domains</p>
-            {DOMAINS.map(([label, href]) => (
-              <Link key={href} href={href} onClick={() => setMenuOpen(false)} className="block py-2 pl-3 font-sans text-[15px] text-ink-2 hover:text-ink">
-                {label}
+            {PANELS.domains.items.map((it) => (
+              <Link key={it.href} href={it.href} onClick={() => setMenuOpen(false)} className="block py-2 pl-3 font-sans text-[15px] text-ink-2 hover:text-ink">
+                {it.label}
               </Link>
             ))}
             <p className="pb-1 pt-3 font-mono text-[11px] uppercase tracking-[0.2em] text-ink-3">Research</p>
-            {RESEARCH.map(([label, , href]) => (
-              <Link key={href} href={href} onClick={() => setMenuOpen(false)} className="block py-2 pl-3 font-sans text-[15px] text-ink-2 hover:text-ink">
-                {label}
+            <Link href="/research" onClick={() => setMenuOpen(false)} className="block py-2 pl-3 font-sans text-[15px] text-ink-2 hover:text-ink">
+              Overview
+            </Link>
+            {PANELS.research.items.map((it) => (
+              <Link key={it.href} href={it.href} onClick={() => setMenuOpen(false)} className="block py-2 pl-3 font-sans text-[15px] text-ink-2 hover:text-ink">
+                {it.label}
               </Link>
             ))}
             <div className="mt-1">
-              {FLAT_RIGHT.map(([label, href]) => (
+              <Link href="/architecture" onClick={() => setMenuOpen(false)} className="block py-2.5 font-sans text-[15px] text-ink-2 hover:text-ink">
+                Architecture
+              </Link>
+              {FLAT.map(([label, href]) => (
                 <Link key={href} href={href} onClick={() => setMenuOpen(false)} className="block py-2.5 font-sans text-[15px] text-ink-2 hover:text-ink">
                   {label}
                 </Link>
@@ -281,5 +263,96 @@ export default function SiteHeader({ scrollReveal = false }: { scrollReveal?: bo
         </nav>
       )}
     </motion.header>
+
+    {/* ---- the mega-panel: one viewport-wide glass sheet under the banner.
+            A FIXED SIBLING of the header, not a child — the banner's own
+            backdrop-filter makes it a backdrop root, so a child's blur could
+            never sample the page behind it. Out here the 28px blur is real.
+            AnimatePresence handles open/close; the inner content is keyed by
+            group so sliding between triggers crossfades in place instead of
+            re-dropping the sheet. ---- */}
+    <div id="mega-panel" ref={panelRef} className="pointer-events-none fixed inset-x-0 top-16 z-30 hidden lg:block">
+        <AnimatePresence>
+          {panel && open && (
+            <motion.div
+              className="mega-glass pointer-events-auto relative overflow-hidden"
+              initial={reduce ? { opacity: 0 } : { opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={reduce ? { opacity: 0 } : { opacity: 0, y: -6 }}
+              transition={{ duration: reduce ? 0.15 : 0.32, ease: OUT_SOFT }}
+              onMouseEnter={cancelClose}
+              onMouseLeave={scheduleClose}
+            >
+              {/* ambient tints — two soft pools of the house light, drifting */}
+              <div aria-hidden className="mega-ambient absolute -inset-[12%]" />
+              {/* luminous bottom hairline — the sheet's lower edge */}
+              <span
+                aria-hidden
+                className="absolute inset-x-0 bottom-0 h-px"
+                style={{ background: 'linear-gradient(90deg, transparent 4%, rgba(140,255,225,0.28) 50%, transparent 96%)' }}
+              />
+
+              <AnimatePresence mode="wait" initial={false}>
+                <motion.div
+                  key={open}
+                  className="relative mx-auto grid max-w-site grid-cols-[280px_1fr] gap-12 px-6 py-10 md:px-10"
+                  initial={{ opacity: 0, y: 5 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -3 }}
+                  transition={{ duration: 0.2, ease: OUT_SOFT }}
+                >
+                  {/* rail — what this group IS, plus its overview doors */}
+                  <div className="pt-1">
+                    <p className="font-mono text-[10px] uppercase tracking-[0.24em] text-ink-3">{panel.eyebrow}</p>
+                    <p className="mt-3.5 font-serif text-[1.3rem] leading-snug text-ink">{panel.line}</p>
+                    <div className="mt-6 flex flex-col items-start gap-2.5">
+                      <Link
+                        href={panel.overview.href}
+                        onClick={closeNow}
+                        className="group inline-flex items-center gap-2 font-sans text-[13.5px] text-mint/90 transition-colors hover:text-mint"
+                      >
+                        {panel.overview.label}
+                        <span aria-hidden className="transition-transform duration-fast group-hover:translate-x-0.5">→</span>
+                      </Link>
+                      {panel.secondary && (
+                        <Link
+                          href={panel.secondary.href}
+                          onClick={closeNow}
+                          className="group inline-flex items-center gap-2 font-sans text-[13.5px] text-ink-3 transition-colors hover:text-ink"
+                        >
+                          {panel.secondary.label}
+                          <span aria-hidden className="transition-transform duration-fast group-hover:translate-x-0.5">→</span>
+                        </Link>
+                      )}
+                    </div>
+                  </div>
+
+                  {/* destinations — name + role, on a hairline-divided field */}
+                  <div
+                    className={`grid content-start gap-1 border-l border-white/[0.07] pl-10 ${
+                      panel.cols === 3 ? 'grid-cols-3' : 'grid-cols-2'
+                    }`}
+                  >
+                    {panel.items.map((it) => (
+                      <Link
+                        key={it.href + it.label}
+                        href={it.href}
+                        onClick={closeNow}
+                        className="group rounded-[10px] px-4 py-3.5 transition-colors duration-fast hover:bg-white/[0.045]"
+                      >
+                        <span className="block font-serif text-[1.05rem] leading-tight text-ink transition-colors duration-fast group-hover:text-mint">
+                          {it.label}
+                        </span>
+                        <span className="mt-1.5 block font-sans text-[13px] leading-snug text-ink-3">{it.role}</span>
+                      </Link>
+                    ))}
+                  </div>
+                </motion.div>
+              </AnimatePresence>
+            </motion.div>
+          )}
+        </AnimatePresence>
+    </div>
+    </>
   )
 }

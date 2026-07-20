@@ -57,7 +57,19 @@ export default function LifecycleOverview() {
           className="relative mx-auto mt-10 hidden aspect-[2/1] w-full max-w-[1040px] lg:block"
           aria-label="The eight lifecycle stages, one continuous current from first enquiry to final payoff"
         >
-          {/* layer 1 — the current, the dawn, the return (SVG scene) */}
+          {/* layer 0 — the night behind the scene: a soft vignette dims the
+              woven-ring backdrop so the horizon owns its own light. Without
+              this the arc and chips fight the threads behind them. */}
+          <div
+            aria-hidden
+            className="absolute -inset-x-10 -inset-y-8"
+            style={{
+              background:
+                'radial-gradient(64% 66% at 50% 52%, rgba(2,6,10,0.84) 0%, rgba(2,6,10,0.56) 52%, rgba(2,6,10,0.2) 74%, transparent 90%)',
+            }}
+          />
+
+          {/* layer 1 — the current, the dawn, the reflection, the return (SVG scene) */}
           <svg aria-hidden viewBox="0 0 1040 520" preserveAspectRatio="xMidYMid meet" className="absolute inset-0 h-full w-full">
             <defs>
               <linearGradient id="lc-current" x1="0" y1="0" x2="1040" y2="0" gradientUnits="userSpaceOnUse">
@@ -69,14 +81,61 @@ export default function LifecycleOverview() {
                 <stop offset="0.4" stopColor="#00FFB2" stopOpacity="0.28" />
                 <stop offset="1" stopColor="#00FFB2" stopOpacity="0" />
               </radialGradient>
+              <radialGradient id="lc-west">
+                <stop offset="0" stopColor="#39D6FF" stopOpacity="0.32" />
+                <stop offset="1" stopColor="#39D6FF" stopOpacity="0" />
+              </radialGradient>
               <filter id="lc-soft">
                 <feGaussianBlur stdDeviation="6" />
               </filter>
+              {/* the water: reflected light fades with distance from the shore */}
+              <linearGradient id="lc-fade" x1="0" y1="230" x2="0" y2="340" gradientUnits="userSpaceOnUse">
+                <stop offset="0" stopColor="#fff" stopOpacity="0.65" />
+                <stop offset="1" stopColor="#fff" stopOpacity="0" />
+              </linearGradient>
+              <mask id="lc-mirror">
+                <rect x="0" y="230" width="1040" height="140" fill="url(#lc-fade)" />
+              </mask>
             </defs>
 
-            {/* dawn bloom at Closure — the sunrise the whole current runs toward */}
-            <circle cx="949" cy="230" r="150" fill="url(#lc-dawn)" style={{ mixBlendMode: 'screen' }} />
+            {/* the reflection — the whole scene mirrored on still water below
+                the horizon: blurred, faded with depth. This is what turns the
+                figure from diagram into landscape. */}
+            <g mask="url(#lc-mirror)">
+              <g transform="matrix(1 0 0 -1 0 460)">
+                <circle cx="949" cy="230" r="120" fill="url(#lc-dawn)" opacity="0.75" style={{ mixBlendMode: 'screen' }} />
+                <path d="M91 230 A1072 1072 0 0 1 949 230" stroke="url(#lc-current)" strokeWidth="3.5" opacity="0.5" filter="url(#lc-soft)" fill="none" />
+                <path
+                  d="M91 230 A1072 1072 0 0 1 949 230"
+                  stroke="url(#lc-current)"
+                  strokeWidth="1.5"
+                  opacity="0.65"
+                  fill="none"
+                  style={{ filter: 'blur(1.5px)' }}
+                />
+                {/* the comet's shimmer on the water */}
+                <path
+                  className="horizon-glint"
+                  d="M91 230 A1072 1072 0 0 1 949 230"
+                  stroke="#EAFFFA"
+                  strokeWidth="2.5"
+                  strokeLinecap="round"
+                  strokeDasharray="30 900"
+                  opacity="0.5"
+                  fill="none"
+                  style={{ mixBlendMode: 'screen', filter: 'blur(2px)' }}
+                />
+              </g>
+            </g>
+
+            {/* dawn at Closure — the sunrise the whole current runs toward,
+                with its light bleeding along the horizon line */}
+            <circle cx="949" cy="230" r="185" fill="url(#lc-dawn)" style={{ mixBlendMode: 'screen' }} />
+            <ellipse cx="949" cy="230" rx="150" ry="13" fill="url(#lc-dawn)" opacity="0.6" style={{ mixBlendMode: 'screen', filter: 'blur(5px)' }} />
             <circle cx="949" cy="230" r="26" fill="url(#lc-dawn)" style={{ mixBlendMode: 'screen' }} />
+
+            {/* first light in the west — the cool glimmer where enquiry begins */}
+            <circle cx="91" cy="230" r="64" fill="url(#lc-west)" style={{ mixBlendMode: 'screen' }} />
 
             {/* the return — a faint dashed sweep back over the sky: and again */}
             <path
@@ -90,18 +149,30 @@ export default function LifecycleOverview() {
 
             {/* the current — bed · glow · core (the §9 rail grammar, on a horizon) */}
             <path d="M91 230 A1072 1072 0 0 1 949 230" stroke="url(#lc-current)" strokeWidth="1" opacity="0.18" fill="none" />
-            <path d="M91 230 A1072 1072 0 0 1 949 230" stroke="url(#lc-current)" strokeWidth="3" opacity="0.4" filter="url(#lc-soft)" fill="none" />
-            <path d="M91 230 A1072 1072 0 0 1 949 230" stroke="url(#lc-current)" strokeWidth="1.25" opacity="0.9" fill="none" />
+            <path d="M91 230 A1072 1072 0 0 1 949 230" stroke="url(#lc-current)" strokeWidth="3.5" opacity="0.45" filter="url(#lc-soft)" fill="none" />
+            <path d="M91 230 A1072 1072 0 0 1 949 230" stroke="url(#lc-current)" strokeWidth="1.5" opacity="0.95" fill="none" />
 
-            {/* the comet — one slow glint running the loan west→east */}
+            {/* the comet — halo under, bright head over: one loan running
+                west→east and dissolving into the dawn */}
+            <path
+              className="horizon-glint"
+              d="M91 230 A1072 1072 0 0 1 949 230"
+              stroke="#BFFFE9"
+              strokeWidth="7"
+              strokeLinecap="round"
+              strokeDasharray="30 900"
+              opacity="0.5"
+              fill="none"
+              style={{ mixBlendMode: 'screen', filter: 'blur(4px)' }}
+            />
             <path
               className="horizon-glint"
               d="M91 230 A1072 1072 0 0 1 949 230"
               stroke="#EAFFFA"
               strokeWidth="2"
               strokeLinecap="round"
-              strokeDasharray="24 900"
-              opacity="0.85"
+              strokeDasharray="30 900"
+              opacity="0.9"
               fill="none"
               style={{ mixBlendMode: 'screen', filter: 'blur(0.5px)' }}
             />
@@ -125,13 +196,13 @@ export default function LifecycleOverview() {
               >
                 {/* jewel — where the stele meets the current */}
                 <span className="absolute grid h-[14px] w-[14px] -translate-x-1/2 -translate-y-1/2 place-items-center">
-                  <span aria-hidden className="absolute h-[14px] w-[14px] rounded-full" style={{ border: `1px solid rgba(${st.rgb},0.35)` }} />
+                  <span aria-hidden className="absolute h-[14px] w-[14px] rounded-full" style={{ border: `1px solid rgba(${st.rgb},0.4)` }} />
                   <span
                     aria-hidden
                     className="block h-[7px] w-[7px] rounded-full"
                     style={{
-                      background: `radial-gradient(circle at 50% 35%, rgba(255,255,255,0.6), rgba(255,255,255,0) 42%), rgba(${st.rgb},0.9)`,
-                      boxShadow: `0 0 10px rgba(${st.rgb},0.55)`,
+                      background: `radial-gradient(circle at 50% 35%, rgba(255,255,255,0.65), rgba(255,255,255,0) 42%), rgba(${st.rgb},0.95)`,
+                      boxShadow: `0 0 14px rgba(${st.rgb},0.65)`,
                     }}
                   />
                 </span>
@@ -139,26 +210,30 @@ export default function LifecycleOverview() {
                 <span
                   aria-hidden
                   className="absolute left-0 w-px -translate-x-1/2"
-                  style={{ top: `-${lift}px`, height: `${lift}px`, background: `linear-gradient(to top, rgba(${st.rgb},0.5), rgba(${st.rgb},0))` }}
+                  style={{ top: `-${lift}px`, height: `${lift}px`, background: `linear-gradient(to top, rgba(${st.rgb},0.72), rgba(${st.rgb},0))` }}
                 />
                 {/* glass chip — the stage, standing above its stem */}
                 <div
-                  className="lc-chip absolute flex flex-col items-center gap-0.5 whitespace-nowrap px-3.5 py-2 text-center"
+                  className="lc-chip absolute flex flex-col items-center gap-1 whitespace-nowrap px-4 py-2.5 text-center"
                   style={{ transform: `translate(-50%, calc(-100% - ${lift}px))`, ['--rgb' as string]: st.rgb } as React.CSSProperties}
                 >
-                  <span aria-hidden className="font-mono text-[9px] leading-none tracking-[0.24em]" style={{ color: `rgba(${st.rgb},0.72)` }}>
+                  <span aria-hidden className="font-mono text-[9px] leading-none tracking-[0.24em]" style={{ color: `rgba(${st.rgb},0.85)` }}>
                     {st.n}
                   </span>
-                  <span className="font-serif text-[0.95rem] leading-tight text-ink">{st.area}</span>
+                  <span className="font-serif text-[1rem] leading-tight text-ink">{st.area}</span>
                 </div>
               </div>
             )
           })}
 
-          {/* layer 3 — the compounding tag, seated by the dawn */}
-          <div className="absolute left-[88%] top-[82%] flex items-center gap-2">
-            <span aria-hidden className="text-[13px] leading-none text-mint/80">↺</span>
-            <span className="font-mono text-[9px] uppercase tracking-[0.24em] text-mint/70">the cycle compounds</span>
+          {/* layer 3 — the compounding tag: a small glass pill floating on the
+              water beneath the dawn */}
+          <div
+            className="lc-chip absolute left-[88%] top-[70%] flex -translate-x-1/2 items-center gap-2 px-3.5 py-2"
+            style={{ ['--rgb' as string]: '0,255,178' } as React.CSSProperties}
+          >
+            <span aria-hidden className="text-[12px] leading-none text-mint/90">↺</span>
+            <span className="whitespace-nowrap font-mono text-[9px] uppercase tracking-[0.24em] text-mint/80">the cycle compounds</span>
           </div>
         </div>
       </Reveal>
@@ -169,6 +244,15 @@ export default function LifecycleOverview() {
               base. A picture, not a control (§9's mobile rail is the tabs). ---- */}
       <Reveal delay={0.12}>
         <div className="relative mx-auto mt-10 max-w-[440px] pl-1 lg:hidden">
+          {/* the night behind the scene — dims the ring backdrop for legibility */}
+          <div
+            aria-hidden
+            className="absolute -inset-x-6 -inset-y-6"
+            style={{
+              background:
+                'radial-gradient(70% 60% at 50% 50%, rgba(2,6,10,0.78) 0%, rgba(2,6,10,0.42) 60%, transparent 88%)',
+            }}
+          />
           {/* the current — bed · glow · core, vertical */}
           <div aria-hidden className="absolute bottom-16 left-[18px] top-1 w-px opacity-[0.18]" style={{ background: 'linear-gradient(180deg, #39D6FF, #00FFB2)' }} />
           <div aria-hidden className="absolute bottom-16 left-[18px] top-1 w-[3px] -translate-x-[1px] opacity-40 blur-[5px]" style={{ background: 'linear-gradient(180deg, #39D6FF, #00FFB2)' }} />

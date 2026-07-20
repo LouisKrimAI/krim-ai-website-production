@@ -7,6 +7,8 @@
  */
 
 import type { Metadata } from 'next'
+import { Fragment } from 'react'
+import Link from 'next/link'
 import SiteHeader from '@/components/SiteHeader'
 import SiteFooter from '@/components/SiteFooter'
 import Reveal from '@/components/Reveal'
@@ -81,6 +83,15 @@ const PROBLEMS = [
 ]
 
 const DEMO_HREF = '/contact'
+
+// How you start — the pilot ladder (docs/krim-content.md): deep-dive → proof
+// → live. Three glass steps running cyan → mint: the journey arrives at
+// validated, the same colour grammar as the horizon in §2.
+const START_STEPS = [
+  { n: '01', label: 'Two-week deep-dive', rgb: '57,214,255' },
+  { n: '02', label: '30-day proof on your data', rgb: '29,235,217' },
+  { n: '03', label: 'Live in a quarter', rgb: '0,255,178' },
+] as const
 
 export default function HomePage() {
   return (
@@ -243,6 +254,13 @@ export default function HomePage() {
                 <span className="block">40+ connectors into your core, LOS and LMS.</span>
                 <span className="block">Nothing to tear out.</span>
               </p>
+              {/* the systems-buyer's door — how it actually deploys */}
+              <p className="mt-5 font-sans text-[14px] text-ink-3">
+                How it runs inside your walls:{' '}
+                <Link href="/architecture" className="text-ink-2 transition-colors duration-fast hover:text-mint">
+                  the architecture →
+                </Link>
+              </p>
             </Reveal>
           </div>
           <Reveal delay={0.1}>
@@ -263,27 +281,55 @@ export default function HomePage() {
                 on Sovereign Superintelligence and closes powered by it. ---- */}
         <Section hairline id="close">
           <Reveal>
-            <div className="mx-auto max-w-[760px] text-center">
+            <div className="mx-auto max-w-[860px] text-center">
               <Eyebrow>How you start</Eyebrow>
-              <p className="mt-6 font-serif text-[clamp(1.1rem,1.9vw,1.4rem)] leading-relaxed text-ink">
-                Two-week deep-dive <span aria-hidden className="mx-2 text-mint">→</span>
-                30-day proof on your data <span aria-hidden className="mx-2 text-mint">→</span>
-                live in a quarter.
-              </p>
+              {/* three glass steps, cyan → mint — the same chip glass as §2's
+                  horizon, so the page's beads visibly belong to one system */}
+              <div className="mt-8 flex flex-col items-center gap-3 md:flex-row md:justify-center md:gap-0">
+                {START_STEPS.map((s, i) => (
+                  <Fragment key={s.n}>
+                    <div
+                      className="lc-chip relative flex items-baseline gap-3 px-5 py-3"
+                      style={{ ['--rgb' as string]: s.rgb } as React.CSSProperties}
+                    >
+                      <span
+                        aria-hidden
+                        className="font-mono text-[10px] leading-none tracking-[0.24em]"
+                        style={{ color: `rgba(${s.rgb},0.85)` }}
+                      >
+                        {s.n}
+                      </span>
+                      <span className="font-serif text-[1.05rem] leading-tight text-ink">{s.label}</span>
+                    </div>
+                    {i < START_STEPS.length - 1 && (
+                      <span aria-hidden className="rotate-90 text-mint/50 md:mx-4 md:rotate-0">→</span>
+                    )}
+                  </Fragment>
+                ))}
+              </div>
             </div>
           </Reveal>
           <Reveal delay={0.1}>
             <div className="mx-auto mt-20 max-w-[940px] text-center">
               <span aria-hidden className="mx-auto block h-[3px] w-16 rounded-full bg-gradient-to-r from-mint to-cyan" />
-              <h2 className="mt-9 font-serif text-display-hero leading-[1.04] text-ink">
+              {/* display-1, deliberately: the hero owns the page's single
+                  display-hero voice — the close is its echo, not a rival */}
+              <h2 className="mt-9 font-serif text-display-1 text-ink">
                 Watch your operations come <span className="text-grad">alive</span>.
               </h2>
-              <p className="mt-7 font-sans text-[clamp(19px,2.4vw,26px)] leading-snug text-ink-2">
+              <p className="mt-6 font-sans text-body-lg text-ink-2">
                 Powered by sovereign superintelligence.
               </p>
               <div className="mt-10 flex justify-center">
                 <CTA href={DEMO_HREF}>Book a demo</CTA>
               </div>
+              {/* the one door for readers who validate by reading, not booking */}
+              <p className="mt-8 font-sans text-[14px] text-ink-3">
+                Prefer to read first?{' '}
+                <Link href="/epistemic-ai" className="text-ink-2 transition-colors duration-fast hover:text-mint">
+                  The thinking behind KrimOS →
+                </Link>
+              </p>
             </div>
           </Reveal>
         </Section>
