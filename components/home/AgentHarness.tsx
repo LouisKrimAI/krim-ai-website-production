@@ -7,20 +7,23 @@ import { Section, Eyebrow, GlassCard, CTA } from '@/components/ui'
 export default function AgentHarness() {
   return (
     <Section hairline id="harness">
-      <div className="grid items-center gap-12 md:grid-cols-[1fr_1.15fr]">
+      {/* centered header — the homepage convention */}
+      <Reveal>
+        <div className="mx-auto max-w-[760px] text-center">
+          <Eyebrow>Safe agent harness</Eyebrow>
+          <h2 className="mx-auto mt-4 max-w-[26ch] font-serif text-display-1 text-ink">
+            Agents that act. A harness that decides if they should.
+          </h2>
+        </div>
+      </Reveal>
+
+      <div className="mt-12 grid items-center gap-12 md:grid-cols-[1fr_1.15fr]">
 
         <Reveal delay={0.15}>
           <HarnessVideo maxWidth="520px" />
         </Reveal>
 
         <div>
-          <Reveal>
-            <Eyebrow>Safe agent harness</Eyebrow>
-            <h2 className="mt-4 max-w-[24ch] font-serif text-display-1 text-ink">
-              Agents that act. A harness that decides if they should.
-            </h2>
-          </Reveal>
-
           <Reveal delay={0.12}>
             <p className="mt-7 max-w-[52ch] font-sans text-body-lg text-ink-2">
               A bare AI agent will use any tool, in any order, with any parameters — in a

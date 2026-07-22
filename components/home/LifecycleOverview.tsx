@@ -54,7 +54,7 @@ export default function LifecycleOverview() {
               world, one section before Kovida names it. ---- */}
       <Reveal delay={0.12}>
         <div
-          className="relative mx-auto mt-10 hidden aspect-[2/1] w-full max-w-[1040px] lg:block"
+          className="relative mx-auto mt-6 hidden aspect-[1040/330] w-full max-w-[960px] lg:block"
           aria-label="The eight lifecycle stages, one continuous current from first enquiry to final payoff"
         >
           {/* layer 0 — the night behind the scene: a soft vignette dims the
@@ -69,8 +69,10 @@ export default function LifecycleOverview() {
             }}
           />
 
-          {/* layer 1 — the current and the dawn (SVG scene): ONE arc, one light */}
-          <svg aria-hidden viewBox="0 0 1040 520" preserveAspectRatio="xMidYMid meet" className="absolute inset-0 h-full w-full">
+          {/* layer 1 — the current and the dawn (SVG scene): ONE arc, one
+              light. overflow-visible lets the dawn's glow fade past the frame
+              instead of clipping into a hard edge. */}
+          <svg aria-hidden viewBox="0 30 1040 330" preserveAspectRatio="xMidYMid meet" className="absolute inset-0 h-full w-full overflow-visible">
             <defs>
               <linearGradient id="lc-current" x1="0" y1="0" x2="1040" y2="0" gradientUnits="userSpaceOnUse">
                 <stop offset="0" stopColor="#39D6FF" />
@@ -92,8 +94,8 @@ export default function LifecycleOverview() {
 
             {/* dawn at Closure — the sunrise the whole current runs toward,
                 with its light bleeding along the horizon line */}
-            <circle cx="949" cy="230" r="185" fill="url(#lc-dawn)" style={{ mixBlendMode: 'screen' }} />
-            <ellipse cx="949" cy="230" rx="150" ry="13" fill="url(#lc-dawn)" opacity="0.6" style={{ mixBlendMode: 'screen', filter: 'blur(5px)' }} />
+            <circle cx="949" cy="230" r="160" fill="url(#lc-dawn)" style={{ mixBlendMode: 'screen' }} />
+            <ellipse cx="949" cy="230" rx="130" ry="12" fill="url(#lc-dawn)" opacity="0.6" style={{ mixBlendMode: 'screen', filter: 'blur(5px)' }} />
             <circle cx="949" cy="230" r="26" fill="url(#lc-dawn)" style={{ mixBlendMode: 'screen' }} />
 
             {/* first light in the west — the cool glimmer where enquiry begins */}
@@ -132,7 +134,7 @@ export default function LifecycleOverview() {
 
           {/* layer 2 — the steles: jewel on the horizon, hairline stem, glass chip */}
           {[
-            { x: 91, y: 230 }, { x: 209, y: 186 }, { x: 332, y: 156 }, { x: 457, y: 142 },
+            { x: 91, y: 230 }, { x: 204, y: 188 }, { x: 337, y: 155 }, { x: 457, y: 142 },
             { x: 583, y: 142 }, { x: 708, y: 156 }, { x: 831, y: 186 }, { x: 949, y: 230 },
           ].map((p, i) => {
             const st = STAGES[i]
@@ -145,7 +147,7 @@ export default function LifecycleOverview() {
               <div
                 key={st.n}
                 className="absolute"
-                style={{ left: `${(p.x / 1040) * 100}%`, top: `${(p.y / 520) * 100}%` }}
+                style={{ left: `${(p.x / 1040) * 100}%`, top: `${((p.y - 30) / 330) * 100}%` }}
               >
                 {/* jewel — where the stele meets the current */}
                 <span className="absolute grid h-[14px] w-[14px] -translate-x-1/2 -translate-y-1/2 place-items-center">
@@ -167,19 +169,18 @@ export default function LifecycleOverview() {
                 />
                 {/* glass chip — the stage name, nothing else */}
                 <div
-                  className="lc-chip absolute whitespace-nowrap px-3.5 py-2.5 text-center"
+                  className="lc-chip absolute whitespace-nowrap px-3 py-2.5 text-center"
                   style={{ transform: `translate(-50%, calc(-100% - ${lift}px))`, ['--rgb' as string]: st.rgb } as React.CSSProperties}
                 >
-                  <span className="font-serif text-[1rem] leading-tight text-ink">{label}</span>
+                  <span className="font-serif text-[0.95rem] leading-tight text-ink">{label}</span>
                 </div>
               </div>
             )
           })}
 
-          {/* layer 3 — the compounding tag: a small glass pill floating on the
-              water beneath the dawn */}
+          {/* layer 3 — the compounding tag: a small glass pill beneath the dawn */}
           <div
-            className="lc-chip absolute left-[88%] top-[70%] flex -translate-x-1/2 items-center gap-2 px-3.5 py-2"
+            className="lc-chip absolute left-[88%] top-[86%] flex -translate-x-1/2 items-center gap-2 px-3.5 py-2"
             style={{ ['--rgb' as string]: '0,255,178' } as React.CSSProperties}
           >
             <span aria-hidden className="text-[12px] leading-none text-mint/90">↺</span>
@@ -251,11 +252,11 @@ export default function LifecycleOverview() {
       {/* ---- what it adds up to — three outcomes, each on the house glass so
               the words hold against the ring ---- */}
       <Reveal delay={0.18}>
-        <div className="mx-auto mt-14 grid max-w-[960px] gap-4 text-center md:grid-cols-3 lg:gap-5">
+        <div className="mx-auto mt-8 grid max-w-[960px] gap-4 text-center md:grid-cols-3 lg:gap-5">
           {OUTCOMES.map(({ impact, hi, tag }) => {
             const [pre, post] = impact.split(hi)
             return (
-              <GlassCard key={impact} className="flex h-full flex-col justify-center px-7 py-8">
+              <GlassCard key={impact} className="flex h-full flex-col justify-center px-6 py-5">
                 <h3 className="font-serif text-display-2 text-ink">
                   {pre}
                   <span className="text-mint">{hi}</span>
@@ -270,7 +271,7 @@ export default function LifecycleOverview() {
 
       {/* ---- hand-off to the full instrument, deeper in the page ---- */}
       <Reveal delay={0.22}>
-        <div className="mt-12 flex justify-center">
+        <div className="mt-6 flex justify-center">
           <a
             href="#who"
             className="group inline-flex min-h-[44px] items-center gap-2.5 rounded-full border border-mint/25 bg-mint/[0.04] px-5 py-2.5 font-mono text-[10px] uppercase tracking-[0.2em] text-mint/90 transition-all duration-300 hover:border-mint/55 hover:bg-mint/[0.10] hover:text-mint hover:shadow-[0_0_26px_-8px_rgba(0,255,178,0.55)]"

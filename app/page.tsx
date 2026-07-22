@@ -114,14 +114,17 @@ export default function HomePage() {
 
         {/* ---- 4 · Kovida — the world lending model (the flywheel) ---- */}
         <Section hairline id="flywheel">
-          <div className="grid items-center gap-12 md:grid-cols-[1.15fr_1fr]">
+          {/* centered header — the homepage convention */}
+          <Reveal>
+            <div className="mx-auto max-w-[760px] text-center">
+              <Eyebrow>Kovida — the world lending model</Eyebrow>
+              <h2 className="mx-auto mt-4 max-w-[26ch] font-serif text-display-1 text-ink">
+                One model for your whole lending operation.
+              </h2>
+            </div>
+          </Reveal>
+          <div className="mt-12 grid items-center gap-12 md:grid-cols-[1.15fr_1fr]">
             <div>
-              <Reveal>
-                <Eyebrow>Kovida — the world lending model</Eyebrow>
-                <h2 className="mt-4 max-w-[24ch] font-serif text-display-1 text-ink">
-                  One model for your whole lending operation.
-                </h2>
-              </Reveal>
               <Reveal delay={0.12}>
                 <p className="mt-7 max-w-[52ch] font-sans text-body-lg text-ink-2">
                   One runtime runs the whole lifecycle and records every action with its reasoning on
@@ -202,9 +205,11 @@ export default function HomePage() {
         {/* ---- 6 · The challenge ---- */}
         <Section hairline id="challenge">
           <Reveal>
-            <Eyebrow tone="gold">The challenge</Eyebrow>
-            <h2 className="mt-4 font-serif text-display-1 text-ink">What&rsquo;s stopping AI from running banking?</h2>
-            <p className="mt-3 font-sans text-body-lg italic text-ink-3">AI in banking: the pilot that never lands.</p>
+            <div className="mx-auto max-w-[760px] text-center">
+              <Eyebrow tone="gold">The challenge</Eyebrow>
+              <h2 className="mt-4 font-serif text-display-1 text-ink">What&rsquo;s stopping AI from running banking?</h2>
+              <p className="mt-3 font-sans text-body-lg italic text-ink-3">AI in banking: the pilot that never lands.</p>
+            </div>
           </Reveal>
           <div className="mt-14 grid gap-x-10 gap-y-12 md:grid-cols-3">
             {PROBLEMS.map((p, i) => (
@@ -225,14 +230,16 @@ export default function HomePage() {
         {/* ---- 8 · The gate in action — one live example of the validation path ---- */}
         <Section hairline id="intelligence">
           <Reveal>
-            <Eyebrow>Intelligence by policy</Eyebrow>
-            <h2 className="mt-4 max-w-[20ch] font-serif text-display-1 text-ink">
-              One action, meeting the gate.
-            </h2>
-            <p className="mt-6 max-w-[54ch] font-sans text-body-lg text-ink-2">
-              This is the path every action runs. Watch one reach the gate, clear its
-              validators, and carry its verdict into the record.
-            </p>
+            <div className="mx-auto max-w-[760px] text-center">
+              <Eyebrow>Intelligence by policy</Eyebrow>
+              <h2 className="mx-auto mt-4 max-w-[20ch] font-serif text-display-1 text-ink">
+                One action, meeting the gate.
+              </h2>
+              <p className="mx-auto mt-6 max-w-[54ch] font-sans text-body-lg text-ink-2">
+                This is the path every action runs. Watch one reach the gate, clear its
+                validators, and carry its verdict into the record.
+              </p>
+            </div>
           </Reveal>
           <div className="mt-12">
             <PolicyChecks />

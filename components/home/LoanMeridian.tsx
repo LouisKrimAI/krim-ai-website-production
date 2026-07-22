@@ -165,14 +165,16 @@ export default function LoanMeridian() {
   return (
     <Section hairline id="who">
       <Reveal>
-        <Eyebrow>Inside the lifecycle</Eyebrow>
-        <h2 className="mt-4 max-w-[26ch] font-serif text-display-1 text-ink">
-          Every stage, on the record.
-        </h2>
-        <p className="mt-5 max-w-[56ch] font-sans text-body-lg text-ink-2">
-          Pick a stage to see the work co-workers run there, who it serves, and{' '}
-          <span className="text-gold">the oversight underneath</span>.
-        </p>
+        <div className="mx-auto max-w-[760px] text-center">
+          <Eyebrow>Inside the lifecycle</Eyebrow>
+          <h2 className="mx-auto mt-4 max-w-[26ch] font-serif text-display-1 text-ink">
+            Every stage, on the record.
+          </h2>
+          <p className="mx-auto mt-5 max-w-[56ch] font-sans text-body-lg text-ink-2">
+            Pick a stage to see the work co-workers run there, who it serves, and{' '}
+            <span className="text-gold">the oversight underneath</span>.
+          </p>
+        </div>
       </Reveal>
 
       {/* SSR discovery floor: the console mounts only the active stage, so every
