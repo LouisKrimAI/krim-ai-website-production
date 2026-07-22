@@ -513,32 +513,66 @@ html[data-cluster="research"][data-bg-ready] main {
   backdrop-filter: blur(16px) saturate(140%);
   box-shadow:
     inset 0 1px 0 0 rgba(255, 255, 255, 0.1),
-    inset 0 -20px 32px -26px rgba(var(--rgb), 0.52),
+    inset 0 -22px 30px -24px rgba(var(--rgb), 0.62),
+    inset -14px 0 26px -22px rgba(var(--rgb), 0.26),
     0 10px 30px -16px rgba(2, 4, 10, 0.8);
 }
 .lc-chip::before {
-  /* luminous top thread */
+  /* luminous top thread — its tail warms toward the stage's own light,
+     as if the row is lit by the dawn it faces */
   content: '';
   position: absolute;
   inset: 0 0 auto 0;
   height: 1px;
   border-radius: 12px 12px 0 0;
-  background: linear-gradient(90deg, transparent 8%, rgba(255, 255, 255, 0.42) 50%, transparent 92%);
+  background: linear-gradient(90deg, transparent 8%, rgba(255, 255, 255, 0.5) 46%, rgba(var(--rgb), 0.4) 62%, transparent 92%);
   pointer-events: none;
 }
 
 /* ---------- §2 lending horizon ----------
-   One comet running the horizon west→east — the loan's life at first light,
-   dissolving into the dawn bloom at Closure. Compositor-only; reduced motion
-   hides it (the lit arc reads complete on its own). */
-.horizon-glint { animation: horizon-run 11s linear infinite; }
-@keyframes horizon-run {
-  /* offset delta = the dash period (30 + 900) so the loop closes seamlessly */
-  from { stroke-dashoffset: 930; }
-  to { stroke-dashoffset: 0; }
+   The loan's arrival: ONE comet fades in from the western glimmer, cruises,
+   decelerates and dissolves INTO the dawn, then the horizon rests a beat
+   before the next loan sets out. The group carries the fade envelope; the
+   paths carry the eased travel (opacity + stroke-dashoffset only). Reduced
+   motion hides it — the lit arc + dawn read complete on their own. */
+.horizon-comet { animation: comet-envelope 9s ease-in-out infinite; }
+@keyframes comet-envelope {
+  0% { opacity: 0; }   /* nothing on the horizon */
+  7% { opacity: 1; }   /* emerged from the western glimmer */
+  64% { opacity: 1; }  /* cruising */
+  78% { opacity: 0; }  /* dissolved into the dawn */
+  100% { opacity: 0; } /* the horizon rests — one loan at a time */
 }
+.horizon-glint { animation: horizon-run 9s infinite; }
+@keyframes horizon-run {
+  0% { stroke-dashoffset: 930; animation-timing-function: cubic-bezier(0.34, 0, 0.28, 1); }
+  64% { stroke-dashoffset: 250; animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1); }
+  78% { stroke-dashoffset: 60; }  /* parked inside the dawn's radius */
+  100% { stroke-dashoffset: 60; }
+}
+
+/* the dawn breathes — felt, not seen: opacity on the bloom, a hair of scale
+   on the un-blurred core. The section's second and FINAL perpetual loop. */
+.dawn-bloom { animation: dawn-breathe 12s ease-in-out infinite; }
+.dawn-core {
+  animation:
+    dawn-breathe 12s ease-in-out infinite,
+    dawn-swell 12s ease-in-out infinite;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+@keyframes dawn-breathe {
+  0%, 100% { opacity: 0.82; }
+  50% { opacity: 1; }
+}
+@keyframes dawn-swell {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.06); }
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .horizon-glint { animation: none; opacity: 0; }
+  .horizon-comet, .horizon-glint { animation: none; opacity: 0; }
+  .dawn-bloom, .dawn-core { animation: none; }
 }
 
 /* ---------- site banner mega-panel ----------
