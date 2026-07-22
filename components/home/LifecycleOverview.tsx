@@ -129,6 +129,28 @@ export default function LifecycleOverview() {
             <ellipse cx="91" cy="214" rx="78" ry="86" fill="url(#lc-west-glow)" style={{ mixBlendMode: 'screen' }} />
             <ellipse cx="104" cy="230" rx="122" ry="7" fill="url(#lc-west-glow)" opacity="0.7" style={{ mixBlendMode: 'screen', filter: 'blur(6px)' }} />
 
+            {/* the return — a much fainter curve beneath the horizon: what the
+                system learned flowing home from the dawn to the west, closing
+                the cycle. Clearly secondary; the pill sits at its lowest point. */}
+            <path d="M949 230 A1072 1072 0 0 1 91 230" stroke="url(#lc-current)" strokeWidth="2.5" opacity="0.14" filter="url(#lc-soft)" fill="none" />
+            <path d="M949 230 A1072 1072 0 0 1 91 230" stroke="url(#lc-current)" strokeWidth="1" opacity="0.3" fill="none" />
+            {/* the return pulse — the same 9s cycle as the comet: after the
+                loan dissolves into the dawn, a spark of what was learned
+                travels home beneath the horizon. One system, two halves. */}
+            <g className="horizon-return">
+              <path
+                className="horizon-return-glint"
+                d="M949 230 A1072 1072 0 0 1 91 230"
+                stroke="#BFEFFF"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                strokeDasharray="36 894"
+                opacity="0.7"
+                fill="none"
+                style={{ mixBlendMode: 'screen', filter: 'blur(0.5px)' }}
+              />
+            </g>
+
             {/* the current — bed · glow · core (the §9 rail grammar, on a
                 horizon). The core stays crisp end to end; only the halo
                 swells and brightens as the loan validates toward the dawn. */}
@@ -224,9 +246,11 @@ export default function LifecycleOverview() {
             )
           })}
 
-          {/* layer 3 — the compounding tag: a small glass pill beneath the dawn */}
+          {/* layer 3 — the compounding tag: a glass pill seated at the return
+              curve's lowest point, dead centre — the current flows home
+              behind the frosted glass */}
           <div
-            className="lc-chip absolute left-[88%] top-[82%] flex -translate-x-1/2 items-center gap-2 px-3.5 py-2"
+            className="lc-chip absolute left-1/2 top-[96%] flex -translate-x-1/2 -translate-y-1/2 items-center gap-2 px-4 py-2.5"
             style={{ ['--rgb' as string]: '0,255,178' } as React.CSSProperties}
           >
             <span aria-hidden className="text-[12px] leading-none text-mint/90">↺</span>

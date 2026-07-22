@@ -208,7 +208,7 @@ export default function HomePage() {
             <div className="mx-auto max-w-[760px] text-center">
               <Eyebrow tone="gold">The challenge</Eyebrow>
               <h2 className="mt-4 font-serif text-display-1 text-ink">What&rsquo;s stopping AI from running banking?</h2>
-              <p className="mt-3 font-sans text-body-lg italic text-ink-3">AI in banking: the pilot that never lands.</p>
+              <p className="mt-3 font-sans text-body-lg italic text-ink-2">AI in banking: the pilot that never lands.</p>
             </div>
           </Reveal>
           <div className="mt-14 grid gap-x-10 gap-y-12 md:grid-cols-3">

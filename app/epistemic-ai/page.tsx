@@ -220,9 +220,9 @@ export default function EpistemicAIPage() {
             ))}
           </div>
           <Reveal delay={0.15}>
-            <p className="mx-auto mt-10 max-w-[56ch] text-center font-serif text-[1.2rem] italic leading-snug text-ink-2">
+            <p className="mx-auto mt-12 max-w-[44ch] text-center font-serif text-display-2 italic leading-snug text-ink [text-shadow:0_2px_28px_rgba(4,6,12,0.9),0_1px_3px_rgba(4,6,12,0.7)]">
               The AI that wins regulated work isn’t the one that acts alone, or the one that only
-              defends. It’s the one that can <span className="not-italic text-ink">show its work</span>.
+              defends. It’s the one that can <span className="not-italic text-mint">show its work</span>.
             </p>
           </Reveal>
         </Section>
@@ -292,9 +292,12 @@ export default function EpistemicAIPage() {
             ))}
           </div>
           <Reveal delay={0.18}>
-            <p className="mt-10 text-center font-serif text-[1.15rem] italic text-ink-2">
-              Validation is how it justifies. Learning is how it revises. Together, they are one
-              epistemology.
+            {/* the section's closing chord — a pull-quote must carry display
+                weight and hold against the imagery behind it, never float as
+                body-size dim italic */}
+            <p className="mx-auto mt-12 max-w-[40ch] text-center font-serif text-display-2 italic leading-snug text-ink [text-shadow:0_2px_28px_rgba(4,6,12,0.9),0_1px_3px_rgba(4,6,12,0.7)]">
+              Validation is how it <span className="text-mint">justifies</span>. Learning is how it{' '}
+              <span className="text-cyan">revises</span>. Together, they are one epistemology.
             </p>
           </Reveal>
         </Section>
