@@ -140,9 +140,11 @@ export default function TrustPillars() {
                 <div
                   className="relative h-full overflow-hidden rounded-[19px] p-6 md:p-7"
                   style={{
+                    // aligned to the sitewide .glass base (0.80) — the ring
+                    // reads as a hint through every card, never a wall
                     background: isActive
-                      ? `${pillar.gradOrb}, rgba(9,9,12,0.93)`
-                      : `rgba(9,9,12,0.70)`,
+                      ? `${pillar.gradOrb}, rgba(9,11,16,0.84)`
+                      : `rgba(9,11,16,0.8)`,
                     backdropFilter: 'blur(18px)',
                     WebkitBackdropFilter: 'blur(18px)',
                   }}
@@ -210,7 +212,7 @@ export default function TrustPillars() {
           <div
             className="relative overflow-hidden rounded-[21px]"
             style={{
-              background: `${p.gradOrb}, rgba(9,9,12,0.92)`,
+              background: `${p.gradOrb}, rgba(9,11,16,0.84)`,
               backdropFilter: 'blur(22px)',
               WebkitBackdropFilter: 'blur(22px)',
               transition: 'background 0.6s ease',

@@ -11,7 +11,7 @@
  */
 
 import Reveal from '@/components/Reveal'
-import { Section, Eyebrow } from '@/components/ui'
+import { Section, Eyebrow, GlassCard } from '@/components/ui'
 import { STAGES } from './LoanMeridian'
 
 
@@ -31,7 +31,7 @@ export default function LifecycleOverview() {
         <div className="mx-auto max-w-[720px] text-center">
           <Eyebrow>The lending lifecycle</Eyebrow>
           <h2 className="mt-4 font-serif text-display-1 text-ink">
-            One runtime, from first enquiry to final payoff.
+            One operating system, from first enquiry to final payoff.
           </h2>
           <p className="mx-auto mt-6 max-w-[56ch] font-sans text-body-lg text-ink-2">
             AI co-workers carry every loan as{' '}
@@ -69,7 +69,7 @@ export default function LifecycleOverview() {
             }}
           />
 
-          {/* layer 1 — the current, the dawn, the reflection, the return (SVG scene) */}
+          {/* layer 1 — the current and the dawn (SVG scene): ONE arc, one light */}
           <svg aria-hidden viewBox="0 0 1040 520" preserveAspectRatio="xMidYMid meet" className="absolute inset-0 h-full w-full">
             <defs>
               <linearGradient id="lc-current" x1="0" y1="0" x2="1040" y2="0" gradientUnits="userSpaceOnUse">
@@ -88,45 +88,7 @@ export default function LifecycleOverview() {
               <filter id="lc-soft">
                 <feGaussianBlur stdDeviation="6" />
               </filter>
-              {/* the water: reflected light fades with distance from the shore */}
-              <linearGradient id="lc-fade" x1="0" y1="230" x2="0" y2="340" gradientUnits="userSpaceOnUse">
-                <stop offset="0" stopColor="#fff" stopOpacity="0.65" />
-                <stop offset="1" stopColor="#fff" stopOpacity="0" />
-              </linearGradient>
-              <mask id="lc-mirror">
-                <rect x="0" y="230" width="1040" height="140" fill="url(#lc-fade)" />
-              </mask>
             </defs>
-
-            {/* the reflection — the whole scene mirrored on still water below
-                the horizon: blurred, faded with depth. This is what turns the
-                figure from diagram into landscape. */}
-            <g mask="url(#lc-mirror)">
-              <g transform="matrix(1 0 0 -1 0 460)">
-                <circle cx="949" cy="230" r="120" fill="url(#lc-dawn)" opacity="0.75" style={{ mixBlendMode: 'screen' }} />
-                <path d="M91 230 A1072 1072 0 0 1 949 230" stroke="url(#lc-current)" strokeWidth="3.5" opacity="0.5" filter="url(#lc-soft)" fill="none" />
-                <path
-                  d="M91 230 A1072 1072 0 0 1 949 230"
-                  stroke="url(#lc-current)"
-                  strokeWidth="1.5"
-                  opacity="0.65"
-                  fill="none"
-                  style={{ filter: 'blur(1.5px)' }}
-                />
-                {/* the comet's shimmer on the water */}
-                <path
-                  className="horizon-glint"
-                  d="M91 230 A1072 1072 0 0 1 949 230"
-                  stroke="#EAFFFA"
-                  strokeWidth="2.5"
-                  strokeLinecap="round"
-                  strokeDasharray="30 900"
-                  opacity="0.5"
-                  fill="none"
-                  style={{ mixBlendMode: 'screen', filter: 'blur(2px)' }}
-                />
-              </g>
-            </g>
 
             {/* dawn at Closure — the sunrise the whole current runs toward,
                 with its light bleeding along the horizon line */}
@@ -136,16 +98,6 @@ export default function LifecycleOverview() {
 
             {/* first light in the west — the cool glimmer where enquiry begins */}
             <circle cx="91" cy="230" r="64" fill="url(#lc-west)" style={{ mixBlendMode: 'screen' }} />
-
-            {/* the return — a faint dashed sweep back over the sky: and again */}
-            <path
-              d="M949 230 C 820 24, 220 24, 91 230"
-              stroke="url(#lc-current)"
-              strokeWidth="1"
-              strokeDasharray="2 9"
-              opacity="0.22"
-              fill="none"
-            />
 
             {/* the current — bed · glow · core (the §9 rail grammar, on a horizon) */}
             <path d="M91 230 A1072 1072 0 0 1 949 230" stroke="url(#lc-current)" strokeWidth="1" opacity="0.18" fill="none" />
@@ -184,10 +136,11 @@ export default function LifecycleOverview() {
             { x: 583, y: 142 }, { x: 708, y: 156 }, { x: 831, y: 186 }, { x: 949, y: 230 },
           ].map((p, i) => {
             const st = STAGES[i]
-            // stele heights — a skyline rhythm along the horizon, tuned so no
-            // neighbouring chips collide. Underwriting stands tallest: the one
-            // stage where the decision stays with a human.
-            const lift = [46, 58, 110, 46, 58, 46, 58, 46][i]
+            // one calm row: every chip rides the arc at the same height, so
+            // the chips themselves draw a second gentle parallel of the
+            // current. §2 shows the short stage name; §9 carries the full one.
+            const lift = 56
+            const label = st.area === 'Underwriting support' ? 'Underwriting' : st.area
             return (
               <div
                 key={st.n}
@@ -212,15 +165,12 @@ export default function LifecycleOverview() {
                   className="absolute left-0 w-px -translate-x-1/2"
                   style={{ top: `-${lift}px`, height: `${lift}px`, background: `linear-gradient(to top, rgba(${st.rgb},0.72), rgba(${st.rgb},0))` }}
                 />
-                {/* glass chip — the stage, standing above its stem */}
+                {/* glass chip — the stage name, nothing else */}
                 <div
-                  className="lc-chip absolute flex flex-col items-center gap-1 whitespace-nowrap px-4 py-2.5 text-center"
+                  className="lc-chip absolute whitespace-nowrap px-3.5 py-2.5 text-center"
                   style={{ transform: `translate(-50%, calc(-100% - ${lift}px))`, ['--rgb' as string]: st.rgb } as React.CSSProperties}
                 >
-                  <span aria-hidden className="font-mono text-[9px] leading-none tracking-[0.24em]" style={{ color: `rgba(${st.rgb},0.85)` }}>
-                    {st.n}
-                  </span>
-                  <span className="font-serif text-[1rem] leading-tight text-ink">{st.area}</span>
+                  <span className="font-serif text-[1rem] leading-tight text-ink">{label}</span>
                 </div>
               </div>
             )
@@ -271,15 +221,14 @@ export default function LifecycleOverview() {
                     }}
                   />
                 </span>
-                {/* glass chip branching right */}
+                {/* glass chip branching right — the stage name, nothing else */}
                 <div
-                  className="lc-chip relative flex items-baseline gap-2.5 px-3.5 py-2"
+                  className="lc-chip relative px-3.5 py-2"
                   style={{ ['--rgb' as string]: st.rgb } as React.CSSProperties}
                 >
-                  <span aria-hidden className="font-mono text-[8px] leading-none tracking-[0.24em]" style={{ color: `rgba(${st.rgb},0.72)` }}>
-                    {st.n}
+                  <span className="font-serif text-[1rem] leading-tight text-ink">
+                    {st.area === 'Underwriting support' ? 'Underwriting' : st.area}
                   </span>
-                  <span className="font-serif text-[1rem] leading-tight text-ink">{st.area}</span>
                 </div>
               </div>
             ))}
@@ -299,20 +248,21 @@ export default function LifecycleOverview() {
         </div>
       </Reveal>
 
-      {/* ---- what it adds up to — three outcomes, open air, no box ---- */}
+      {/* ---- what it adds up to — three outcomes, each on the house glass so
+              the words hold against the ring ---- */}
       <Reveal delay={0.18}>
-        <div className="mx-auto mt-14 grid max-w-[880px] gap-x-8 gap-y-8 text-center md:grid-cols-3">
+        <div className="mx-auto mt-14 grid max-w-[960px] gap-4 text-center md:grid-cols-3 lg:gap-5">
           {OUTCOMES.map(({ impact, hi, tag }) => {
             const [pre, post] = impact.split(hi)
             return (
-              <div key={impact}>
+              <GlassCard key={impact} className="flex h-full flex-col justify-center px-7 py-8">
                 <h3 className="font-serif text-display-2 text-ink">
                   {pre}
                   <span className="text-mint">{hi}</span>
                   {post}
                 </h3>
-                <p className="mt-2.5 font-mono text-[11px] uppercase tracking-[0.14em] text-ink-3">{tag}</p>
-              </div>
+                <p className="mt-3 font-mono text-[11px] uppercase tracking-[0.14em] text-ink-3">{tag}</p>
+              </GlassCard>
             )
           })}
         </div>

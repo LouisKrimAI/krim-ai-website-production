@@ -1,166 +1,94 @@
 'use client'
 
 /**
- * SiteHeader — the banner as one glass instrument.
+ * SiteHeader — one banner, one sheet.
  *
- * Every item in the banner speaks through the SAME full-width glass sheet:
- * KrimOS / Domains / Research open link grids beside a rail; Insights opens
- * the three latest pieces from the journal; Trust and Company open compact
- * statement panels. The sheet MORPHS — its height animates between contents
- * as the cursor travels the nav, and a woven mint thread slides along the
- * banner's lower edge tracking the open item. The current section is marked
- * in the bar. Facts in panel copy trace to each page's own hero.
- *
- * Engineering notes: the sheet is a FIXED SIBLING of the header, not a
- * child — the banner's own backdrop-filter makes it a backdrop root, so a
- * child's blur could never sample the page behind it. Accessible: triggers
- * carry aria-haspopup/expanded and open on keyboard focus; Escape and
- * outside-click close; every link is a real focusable Link.
+ * Hovering ANY nav item opens the SAME full-width glass sheet: every site
+ * destination in four columns (KrimOS · Domains · Research · Company),
+ * single-line rows, no filler copy. The sheet never changes size. A mint
+ * thread slides under the hovered item; the current section carries a quiet
+ * mark. The sheet is a FIXED SIBLING of the header — the banner's own
+ * backdrop-filter is a backdrop root, so a child's blur could never sample
+ * the page behind it. Accessible: triggers open on keyboard focus and carry
+ * aria-expanded; Escape / outside-click / leave (with grace) close.
  */
 
-import { useEffect, useLayoutEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
 import KrimLogoAnimated from './KrimLogoAnimated'
-import { POSTS } from '@/app/insights/_posts'
 
 const OUT_SOFT = [0.16, 1, 0.3, 1] as const
 
-type MenuKey = 'krimos' | 'domains' | 'research' | 'insights' | 'trust' | 'company'
-
-type PanelDef = {
-  eyebrow: string
-  line: string
-  doors: ReadonlyArray<{ label: string; href: string }>
-  /** destination grid (KrimOS / Domains / Research / Insights) */
-  items?: ReadonlyArray<{ label: string; role: string; href: string }>
-  cols?: 2 | 3
-  /** compact statement panels (Trust / Company) */
-  quote?: string
-}
-
-const LATEST = POSTS.slice(0, 3)
-
-// One entry per banner item — label, destination, which routes light it up,
-// and its sheet. Role lines trace to each page's own hero copy.
-const NAV: ReadonlyArray<{ key: MenuKey; label: string; href: string; match: string[]; panel: PanelDef }> = [
+// The whole site, four columns. Roles only where a name needs translating.
+const COLUMNS: ReadonlyArray<{
+  title: string
+  href: string
+  rows: ReadonlyArray<{ label: string; role?: string; href: string }>
+}> = [
   {
-    key: 'krimos',
-    label: 'KrimOS',
+    title: 'KrimOS',
     href: '/krimos',
-    match: ['/krimos'],
-    panel: {
-      eyebrow: 'The product',
-      line: 'The operating system for lending.',
-      doors: [
-        { label: 'Explore KrimOS', href: '/krimos' },
-        { label: 'The architecture', href: '/architecture' },
-      ],
-      items: [
-        { label: 'Kendra', role: 'The runtime — validates & learns', href: '/krimos/kendra' },
-        { label: 'Kriya', role: 'The vocabulary of actions', href: '/krimos/kriya' },
-        { label: 'Karta', role: 'The AI co-workers', href: '/krimos/karta' },
-        { label: 'Kupa', role: 'The command center', href: '/krimos/kupa' },
-        { label: 'Kula', role: 'For your teams', href: '/krimos/kula' },
-        { label: 'Kira & Krimkar', role: 'The customer advisor', href: '/krimos/kira' },
-      ],
-      cols: 3,
-    },
+    rows: [
+      { label: 'Kendra', role: 'The runtime', href: '/krimos/kendra' },
+      { label: 'Kriya', role: 'The actions', href: '/krimos/kriya' },
+      { label: 'Karta', role: 'The AI co-workers', href: '/krimos/karta' },
+      { label: 'Kupa', role: 'The command center', href: '/krimos/kupa' },
+      { label: 'Kula', role: 'For your teams', href: '/krimos/kula' },
+      { label: 'Kira & Krimkar', role: 'The customer advisor', href: '/krimos/kira' },
+      { label: 'Architecture', href: '/architecture' },
+    ],
   },
   {
-    key: 'domains',
-    label: 'Domains',
+    title: 'Domains',
     href: '/lending',
-    match: ['/lending', '/government', '/enterprise', '/msme'],
-    panel: {
-      eyebrow: 'Where it runs',
-      line: 'For every institution that lends.',
-      doors: [{ label: 'Start with lending', href: '/lending' }],
-      items: [
-        { label: 'Lending', role: 'The whole loan lifecycle, end to end', href: '/lending' },
-        { label: 'Large Enterprise', role: 'Millions of interactions, every one provable', href: '/enterprise' },
-        { label: 'Government', role: 'Public service that answers for every action', href: '/government' },
-        { label: 'MSME', role: 'Regulation-grade AI, at your scale', href: '/msme' },
-      ],
-      cols: 2,
-    },
+    rows: [
+      { label: 'Lending', href: '/lending' },
+      { label: 'Large Enterprise', href: '/enterprise' },
+      { label: 'Government', href: '/government' },
+      { label: 'MSME', href: '/msme' },
+    ],
   },
   {
-    key: 'research',
-    label: 'Research',
+    title: 'Research',
     href: '/research',
-    match: ['/research', '/epistemic-ai'],
-    panel: {
-      eyebrow: 'The work beneath',
-      line: 'The thinking under the product.',
-      doors: [{ label: 'Explore the research', href: '/research' }],
-      items: [
-        { label: 'Epistemic AI', role: 'The category we define — AI a regulator can read', href: '/epistemic-ai' },
-        { label: 'Kovida', role: 'The world lending model', href: '/research/world-lending-model' },
-        { label: 'Safe Agent Harness', role: 'What makes agents deployable', href: '/research/safe-agent-harness' },
-      ],
-      cols: 3,
-    },
+    rows: [
+      { label: 'Epistemic AI', href: '/epistemic-ai' },
+      { label: 'Kovida', role: 'The world lending model', href: '/research/world-lending-model' },
+      { label: 'Safe Agent Harness', href: '/research/safe-agent-harness' },
+    ],
   },
   {
-    key: 'insights',
-    label: 'Insights',
-    href: '/insights',
-    match: ['/insights'],
-    panel: {
-      eyebrow: 'The journal',
-      line: 'Perspectives on AI in banking.',
-      doors: [{ label: 'All insights', href: '/insights' }],
-      items: LATEST.map((p) => ({
-        label: p.title,
-        role: `${p.category} · ${p.readingMinutes} min read`,
-        href: `/insights/${p.slug}`,
-      })),
-      cols: 3,
-    },
-  },
-  {
-    key: 'trust',
-    label: 'Trust',
-    href: '/trust',
-    match: ['/trust'],
-    panel: {
-      eyebrow: 'The posture',
-      line: 'Security, sovereignty, auditability.',
-      doors: [
-        { label: 'Explore trust', href: '/trust' },
-        { label: 'The architecture', href: '/architecture' },
-      ],
-      quote: 'Sovereign by construction. Auditable by default.',
-    },
-  },
-  {
-    key: 'company',
-    label: 'Company',
+    title: 'Company',
     href: '/company',
-    match: ['/company', '/contact'],
-    panel: {
-      eyebrow: 'The company',
-      line: 'Sovereign superintelligence for safe autonomy.',
-      doors: [
-        { label: 'About Krim', href: '/company' },
-        { label: 'Contact', href: '/contact' },
-      ],
-      quote: 'We make AI provable enough to run a bank.',
-    },
+    rows: [
+      { label: 'Insights', href: '/insights' },
+      { label: 'Trust', href: '/trust' },
+      { label: 'About', href: '/company' },
+      { label: 'Contact', href: '/contact' },
+    ],
   },
+]
+
+// Top-bar items — each is a plain link; all of them open the one sheet.
+const NAV: ReadonlyArray<{ label: string; href: string; match: string[] }> = [
+  { label: 'KrimOS', href: '/krimos', match: ['/krimos', '/architecture'] },
+  { label: 'Domains', href: '/lending', match: ['/lending', '/government', '/enterprise', '/msme'] },
+  { label: 'Research', href: '/research', match: ['/research', '/epistemic-ai'] },
+  { label: 'Insights', href: '/insights', match: ['/insights'] },
+  { label: 'Trust', href: '/trust', match: ['/trust'] },
+  { label: 'Company', href: '/company', match: ['/company', '/contact'] },
 ]
 
 const DEMO_HREF = '/contact'
 
 export default function SiteHeader({ scrollReveal = false }: { scrollReveal?: boolean }) {
   const [menuOpen, setMenuOpen] = useState(false) // mobile sheet
-  const [open, setOpen] = useState<MenuKey | null>(null) // desktop sheet
-  const [sheetH, setSheetH] = useState(0)
+  const [open, setOpen] = useState(false) // the one desktop sheet
+  const [hovered, setHovered] = useState<string | null>(null) // thread position
   const headerRef = useRef<HTMLElement>(null)
   const panelRef = useRef<HTMLDivElement>(null)
-  const contentRef = useRef<HTMLDivElement>(null)
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
   const reduce = useReducedMotion()
   const pathname = usePathname()
@@ -171,12 +99,12 @@ export default function SiteHeader({ scrollReveal = false }: { scrollReveal?: bo
   const cancelClose = () => {
     if (closeTimer.current) { clearTimeout(closeTimer.current); closeTimer.current = null }
   }
-  const openMenu = (key: MenuKey) => { cancelClose(); setOpen(key) }
+  const openSheet = (label: string) => { cancelClose(); setHovered(label); setOpen(true) }
   const scheduleClose = () => {
     cancelClose()
-    closeTimer.current = setTimeout(() => setOpen(null), 140)
+    closeTimer.current = setTimeout(() => { setOpen(false); setHovered(null) }, 140)
   }
-  const closeNow = () => { cancelClose(); setOpen(null) }
+  const closeNow = () => { cancelClose(); setOpen(false); setHovered(null) }
 
   useEffect(() => {
     if (!scrollReveal) return
@@ -191,30 +119,18 @@ export default function SiteHeader({ scrollReveal = false }: { scrollReveal?: bo
     if (!open) return
     const onDown = (e: MouseEvent) => {
       const t = e.target as Node
-      if (!headerRef.current?.contains(t) && !panelRef.current?.contains(t)) setOpen(null)
+      if (!headerRef.current?.contains(t) && !panelRef.current?.contains(t)) closeNow()
     }
-    const onKey = (e: KeyboardEvent) => e.key === 'Escape' && setOpen(null)
+    const onKey = (e: KeyboardEvent) => e.key === 'Escape' && closeNow()
     document.addEventListener('mousedown', onDown)
     document.addEventListener('keydown', onKey)
     return () => {
       document.removeEventListener('mousedown', onDown)
       document.removeEventListener('keydown', onKey)
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [open])
 
-  // the sheet morph: measure the active content and animate the sheet to it
-  useLayoutEffect(() => {
-    if (!open) return
-    const el = contentRef.current
-    if (!el) return
-    const measure = () => setSheetH(el.offsetHeight)
-    measure()
-    const ro = new ResizeObserver(measure)
-    ro.observe(el)
-    return () => ro.disconnect()
-  }, [open])
-
-  const active = open ? NAV.find((n) => n.key === open) : null
   const isCurrent = (m: string[]) => m.some((p) => pathname === p || pathname?.startsWith(p + '/'))
 
   return (
@@ -235,27 +151,26 @@ export default function SiteHeader({ scrollReveal = false }: { scrollReveal?: bo
         </Link>
 
         <nav className="hidden h-full items-center gap-7 lg:flex" aria-label="Primary">
-          {NAV.map(({ key, label, href, match }) => {
-            const isOpen = open === key
+          {NAV.map(({ label, href, match }) => {
+            const lit = open && hovered === label
             const current = isCurrent(match)
             return (
-              <div key={key} className="relative flex h-full items-center" onMouseEnter={() => openMenu(key)}>
+              <div key={label} className="relative flex h-full items-center" onMouseEnter={() => openSheet(label)}>
                 <Link
                   href={href}
                   className={`font-sans text-[14px] transition-colors duration-fast ${
-                    isOpen || current ? 'text-ink' : 'text-ink-2 hover:text-ink'
+                    lit || current ? 'text-ink' : 'text-ink-2 hover:text-ink'
                   }`}
                   aria-haspopup="true"
-                  aria-expanded={isOpen}
+                  aria-expanded={open}
                   aria-controls="mega-panel"
-                  onFocus={() => openMenu(key)}
+                  onFocus={() => openSheet(label)}
                   onClick={closeNow}
                 >
                   {label}
                 </Link>
-                {/* the woven thread — one mint filament sliding along the
-                    banner's lower edge, tracking the open sheet */}
-                {isOpen && (
+                {/* the mint thread, sliding under the hovered item */}
+                {lit && (
                   <motion.span
                     layoutId="nav-thread"
                     aria-hidden
@@ -268,7 +183,7 @@ export default function SiteHeader({ scrollReveal = false }: { scrollReveal?: bo
                   />
                 )}
                 {/* quiet mark under the section the visitor is already in */}
-                {!isOpen && current && (
+                {!lit && current && (
                   <span
                     aria-hidden
                     className="pointer-events-none absolute inset-x-2 bottom-0 h-px bg-gradient-to-r from-transparent via-mint/45 to-transparent"
@@ -309,31 +224,19 @@ export default function SiteHeader({ scrollReveal = false }: { scrollReveal?: bo
       {menuOpen && (
         <nav className="border-t border-soft bg-bg/95 backdrop-blur-md lg:hidden" aria-label="Primary mobile">
           <div className="mx-auto max-w-site px-6 py-5">
-            {NAV.filter((n) => n.panel.items && n.key !== 'insights').map((n) => (
-              <div key={n.key}>
-                <p className="pb-1 pt-3 font-mono text-[11px] uppercase tracking-[0.2em] text-ink-3 first:pt-0">{n.label}</p>
-                <Link href={n.href} onClick={() => setMenuOpen(false)} className="block py-2 pl-3 font-sans text-[15px] text-ink-2 hover:text-ink">
+            {COLUMNS.map((col) => (
+              <div key={col.title}>
+                <p className="pb-1 pt-3 font-mono text-[11px] uppercase tracking-[0.2em] text-ink-3 first:pt-0">{col.title}</p>
+                <Link href={col.href} onClick={() => setMenuOpen(false)} className="block py-2 pl-3 font-sans text-[15px] text-ink-2 hover:text-ink">
                   Overview
                 </Link>
-                {n.panel.items!.map((it) => (
-                  <Link key={it.href} href={it.href} onClick={() => setMenuOpen(false)} className="block py-2 pl-3 font-sans text-[15px] text-ink-2 hover:text-ink">
-                    {it.label}
+                {col.rows.map((r) => (
+                  <Link key={r.href + r.label} href={r.href} onClick={() => setMenuOpen(false)} className="block py-2 pl-3 font-sans text-[15px] text-ink-2 hover:text-ink">
+                    {r.label}
                   </Link>
                 ))}
               </div>
             ))}
-            <div className="mt-2 border-t border-soft pt-2">
-              {[
-                ['Insights', '/insights'],
-                ['Trust', '/trust'],
-                ['Company', '/company'],
-                ['Architecture', '/architecture'],
-              ].map(([label, href]) => (
-                <Link key={href} href={href} onClick={() => setMenuOpen(false)} className="block py-2.5 font-sans text-[15px] text-ink-2 hover:text-ink">
-                  {label}
-                </Link>
-              ))}
-            </div>
             <a href={DEMO_HREF} className="mt-4 inline-block rounded bg-mint px-5 py-2.5 font-sans text-[14px] font-medium text-on-mint">
               Book a demo
             </a>
@@ -342,20 +245,18 @@ export default function SiteHeader({ scrollReveal = false }: { scrollReveal?: bo
       )}
     </motion.header>
 
-    {/* ---- the sheet: one viewport-wide pane of glass under the banner,
-            shared by every item. A FIXED SIBLING of the header (the banner's
-            backdrop-filter is a backdrop root — a child's blur could never
-            sample the page). Its height MORPHS between contents; the inner
-            content crossfades. ---- */}
+    {/* ---- the sheet: every destination, one glass pane, one constant size.
+            Fixed sibling of the header (its backdrop-filter would otherwise
+            block the blur). ---- */}
     <div id="mega-panel" ref={panelRef} className="pointer-events-none fixed inset-x-0 top-16 z-30 hidden lg:block">
       <AnimatePresence>
-        {active && open && (
+        {open && (
           <motion.div
             className="mega-glass pointer-events-auto relative overflow-hidden"
-            initial={reduce ? { opacity: 0 } : { height: 0, opacity: 0 }}
-            animate={reduce ? { opacity: 1 } : { height: sheetH || 'auto', opacity: 1 }}
-            exit={reduce ? { opacity: 0 } : { height: 0, opacity: 0 }}
-            transition={{ duration: reduce ? 0.15 : 0.38, ease: OUT_SOFT }}
+            initial={reduce ? { opacity: 0 } : { opacity: 0, y: -8 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={reduce ? { opacity: 0 } : { opacity: 0, y: -6 }}
+            transition={{ duration: reduce ? 0.15 : 0.28, ease: OUT_SOFT }}
             onMouseEnter={cancelClose}
             onMouseLeave={scheduleClose}
           >
@@ -368,68 +269,33 @@ export default function SiteHeader({ scrollReveal = false }: { scrollReveal?: bo
               style={{ background: 'linear-gradient(90deg, transparent 4%, rgba(140,255,225,0.28) 50%, transparent 96%)' }}
             />
 
-            <div ref={contentRef}>
-              <AnimatePresence mode="wait" initial={false}>
-                <motion.div
-                  key={open}
-                  className="relative mx-auto grid max-w-site grid-cols-[280px_1fr] gap-12 px-6 py-9 md:px-10"
-                  initial={{ opacity: 0, y: 5 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -3 }}
-                  transition={{ duration: 0.18, ease: OUT_SOFT }}
-                >
-                  {/* rail — what this group IS, and its doors */}
-                  <div className="pt-1">
-                    <p className="font-mono text-[10px] uppercase tracking-[0.24em] text-ink-3">{active.panel.eyebrow}</p>
-                    <p className="mt-3.5 font-serif text-[1.3rem] leading-snug text-ink">{active.panel.line}</p>
-                    <div className="mt-6 flex flex-col items-start gap-2.5">
-                      {active.panel.doors.map((d, i) => (
-                        <Link
-                          key={d.href + d.label}
-                          href={d.href}
-                          onClick={closeNow}
-                          className={`group inline-flex items-center gap-2 font-sans text-[13.5px] transition-colors ${
-                            i === 0 ? 'text-mint/90 hover:text-mint' : 'text-ink-3 hover:text-ink'
-                          }`}
-                        >
-                          {d.label}
-                          <span aria-hidden className="transition-transform duration-fast group-hover:translate-x-0.5">→</span>
-                        </Link>
-                      ))}
-                    </div>
+            <div className="relative mx-auto grid max-w-site grid-cols-4 gap-10 px-6 py-9 md:px-10">
+              {COLUMNS.map((col) => (
+                <div key={col.title}>
+                  <Link
+                    href={col.href}
+                    onClick={closeNow}
+                    className="font-mono text-[10px] uppercase tracking-[0.24em] text-ink-3 transition-colors duration-fast hover:text-mint"
+                  >
+                    {col.title}
+                  </Link>
+                  <div className="mt-4 flex flex-col">
+                    {col.rows.map((r) => (
+                      <Link
+                        key={r.href + r.label}
+                        href={r.href}
+                        onClick={closeNow}
+                        className="group -mx-3 rounded-[8px] px-3 py-[7px] transition-colors duration-fast hover:bg-white/[0.045]"
+                      >
+                        <span className="font-sans text-[14px] text-ink transition-colors duration-fast group-hover:text-mint">
+                          {r.label}
+                        </span>
+                        {r.role && <span className="ml-2 font-sans text-[12.5px] text-ink-3">{r.role}</span>}
+                      </Link>
+                    ))}
                   </div>
-
-                  {/* right field — a destination grid, or the compact statement */}
-                  {active.panel.items ? (
-                    <div
-                      className={`grid content-start gap-1 border-l border-white/[0.07] pl-10 ${
-                        active.panel.cols === 3 ? 'grid-cols-3' : 'grid-cols-2'
-                      }`}
-                    >
-                      {active.panel.items.map((it) => (
-                        <Link
-                          key={it.href}
-                          href={it.href}
-                          onClick={closeNow}
-                          className="group rounded-[10px] px-4 py-3.5 transition-colors duration-fast hover:bg-white/[0.045]"
-                        >
-                          <span className="block font-serif text-[1.05rem] leading-tight text-ink transition-colors duration-fast group-hover:text-mint">
-                            {it.label}
-                          </span>
-                          <span className="mt-1.5 block font-sans text-[13px] leading-snug text-ink-3">{it.role}</span>
-                        </Link>
-                      ))}
-                    </div>
-                  ) : (
-                    <div className="flex items-center border-l border-white/[0.07] pl-10">
-                      <div>
-                        <span aria-hidden className="block h-[3px] w-12 rounded-full bg-gradient-to-r from-cyan to-mint" />
-                        <p className="mt-4 max-w-[30ch] font-serif text-[1.5rem] leading-snug text-ink">{active.panel.quote}</p>
-                      </div>
-                    </div>
-                  )}
-                </motion.div>
-              </AnimatePresence>
+                </div>
+              ))}
             </div>
           </motion.div>
         )}

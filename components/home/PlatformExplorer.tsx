@@ -130,9 +130,10 @@ export default function PlatformExplorer() {
                   className="group relative flex flex-1 items-center overflow-hidden rounded-lg border px-4 py-2 text-left transition-[border-color,box-shadow] duration-300"
                   style={{
                     borderColor: isActive ? 'rgba(0,255,178,0.34)' : 'rgba(255,255,255,0.11)',
+                    // same dark legible base as .glass — the ring stays a hint
                     background: isActive
-                      ? 'linear-gradient(152deg, rgba(0,255,178,0.08) 0%, rgba(0,255,178,0.02) 60%, rgba(255,255,255,0.02) 100%)'
-                      : 'linear-gradient(152deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.014) 46%, rgba(255,255,255,0.024) 100%)',
+                      ? 'linear-gradient(152deg, rgba(0,255,178,0.08) 0%, rgba(0,255,178,0.02) 60%, rgba(255,255,255,0.02) 100%), rgba(9,11,16,0.8)'
+                      : 'linear-gradient(152deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.014) 46%, rgba(255,255,255,0.024) 100%), rgba(9,11,16,0.8)',
                     backdropFilter: 'blur(22px) saturate(135%)',
                     WebkitBackdropFilter: 'blur(22px) saturate(135%)',
                     boxShadow: isActive

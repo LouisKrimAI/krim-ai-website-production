@@ -142,8 +142,12 @@ h1, h2 { text-wrap: balance; }
 
 .glass {
   position: relative;
+  /* the ONE glass: a white sheen over a dark legible base (rgba 0.80) — the
+     ring backdrop reads as a hint through the pane, never through the words.
+     Every card surface on the site keys off this value. */
   background:
-    linear-gradient(152deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.014) 46%, rgba(255, 255, 255, 0.024) 100%);
+    linear-gradient(152deg, rgba(255, 255, 255, 0.07) 0%, rgba(255, 255, 255, 0.015) 46%, rgba(255, 255, 255, 0.03) 100%),
+    rgba(9, 11, 16, 0.8);
   -webkit-backdrop-filter: blur(22px) saturate(135%);
   backdrop-filter: blur(22px) saturate(135%);
   border: 1px solid rgba(255, 255, 255, 0.1);
