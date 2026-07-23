@@ -555,7 +555,7 @@ html[data-cluster="research"][data-bg-ready] main {
 }
 .horizon-glint { animation: horizon-run 9s infinite; }
 @keyframes horizon-run {
-  0% { stroke-dashoffset: 930; animation-timing-function: cubic-bezier(0.34, 0, 0.28, 1); }
+  0% { stroke-dashoffset: 944; animation-timing-function: cubic-bezier(0.34, 0, 0.28, 1); }
   64% { stroke-dashoffset: 250; animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1); }
   78% { stroke-dashoffset: 60; }  /* parked inside the dawn's radius */
   100% { stroke-dashoffset: 60; }
@@ -574,7 +574,7 @@ html[data-cluster="research"][data-bg-ready] main {
 }
 .horizon-return-glint { animation: return-run 9s infinite; }
 @keyframes return-run {
-  0%, 74% { stroke-dashoffset: 930; animation-timing-function: cubic-bezier(0.3, 0, 0.4, 1); }
+  0%, 74% { stroke-dashoffset: 944; animation-timing-function: cubic-bezier(0.3, 0, 0.4, 1); }
   100% { stroke-dashoffset: 40; }
 }
 

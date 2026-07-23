@@ -118,33 +118,33 @@ export default function LifecycleOverview() {
             {/* breathe lives on the UN-blurred shapes only — scaling a
                 filtered node re-rasters the blur every frame */}
             <g>
-              <ellipse className="dawn-bloom" cx="949" cy="204" rx="150" ry="168" fill="url(#lc-dawn-glow)" style={{ mixBlendMode: 'screen' }} />
-              <ellipse cx="934" cy="230" rx="238" ry="9" fill="url(#lc-dawn-glow)" opacity="0.85" style={{ mixBlendMode: 'screen', filter: 'blur(6px)' }} />
-              <circle className="dawn-core" cx="949" cy="230" r="30" fill="url(#lc-sun)" style={{ mixBlendMode: 'screen' }} />
+              <ellipse className="dawn-bloom" cx="980" cy="204" rx="150" ry="168" fill="url(#lc-dawn-glow)" style={{ mixBlendMode: 'screen' }} />
+              <ellipse cx="966" cy="230" rx="238" ry="9" fill="url(#lc-dawn-glow)" opacity="0.85" style={{ mixBlendMode: 'screen', filter: 'blur(6px)' }} />
+              <circle className="dawn-core" cx="980" cy="230" r="30" fill="url(#lc-sun)" style={{ mixBlendMode: 'screen' }} />
             </g>
 
             {/* cold first light in the west — the dawn's counterweight: a
                 glimmer only, never a disc. Cyan = enquiry, at the exact point
                 the loan enters. */}
-            <ellipse cx="91" cy="214" rx="78" ry="86" fill="url(#lc-west-glow)" style={{ mixBlendMode: 'screen' }} />
-            <ellipse cx="104" cy="230" rx="122" ry="7" fill="url(#lc-west-glow)" opacity="0.7" style={{ mixBlendMode: 'screen', filter: 'blur(6px)' }} />
+            <ellipse cx="60" cy="214" rx="78" ry="86" fill="url(#lc-west-glow)" style={{ mixBlendMode: 'screen' }} />
+            <ellipse cx="74" cy="230" rx="122" ry="7" fill="url(#lc-west-glow)" opacity="0.7" style={{ mixBlendMode: 'screen', filter: 'blur(6px)' }} />
 
             {/* the return — a much fainter curve beneath the horizon: what the
                 system learned flowing home from the dawn to the west, closing
                 the cycle. Clearly secondary; the pill sits at its lowest point. */}
-            <path d="M949 230 A1072 1072 0 0 1 91 230" stroke="url(#lc-current)" strokeWidth="2.5" opacity="0.14" filter="url(#lc-soft)" fill="none" />
-            <path d="M949 230 A1072 1072 0 0 1 91 230" stroke="url(#lc-current)" strokeWidth="1" opacity="0.3" fill="none" />
+            <path d="M980 230 A1246 1246 0 0 1 60 230" stroke="url(#lc-current)" strokeWidth="2.5" opacity="0.14" filter="url(#lc-soft)" fill="none" />
+            <path d="M980 230 A1246 1246 0 0 1 60 230" stroke="url(#lc-current)" strokeWidth="1" opacity="0.3" fill="none" />
             {/* the return pulse — the same 9s cycle as the comet: after the
                 loan dissolves into the dawn, a spark of what was learned
                 travels home beneath the horizon. One system, two halves. */}
             <g className="horizon-return">
               <path
                 className="horizon-return-glint"
-                d="M949 230 A1072 1072 0 0 1 91 230"
+                d="M980 230 A1246 1246 0 0 1 60 230"
                 stroke="#BFEFFF"
                 strokeWidth="1.5"
                 strokeLinecap="round"
-                strokeDasharray="36 894"
+                strokeDasharray="36 908"
                 opacity="0.7"
                 fill="none"
                 style={{ mixBlendMode: 'screen', filter: 'blur(0.5px)' }}
@@ -154,9 +154,9 @@ export default function LifecycleOverview() {
             {/* the current — bed · glow · core (the §9 rail grammar, on a
                 horizon). The core stays crisp end to end; only the halo
                 swells and brightens as the loan validates toward the dawn. */}
-            <path d="M91 230 A1072 1072 0 0 1 949 230" stroke="url(#lc-current)" strokeWidth="1" opacity="0.18" fill="none" />
-            <path d="M91 230 A1072 1072 0 0 1 949 230" stroke="url(#lc-current-glow)" strokeWidth="3.5" filter="url(#lc-soft)" fill="none" />
-            <path d="M91 230 A1072 1072 0 0 1 949 230" stroke="url(#lc-current)" strokeWidth="1.5" opacity="0.95" fill="none" />
+            <path d="M60 230 A1246 1246 0 0 1 980 230" stroke="url(#lc-current)" strokeWidth="1" opacity="0.18" fill="none" />
+            <path d="M60 230 A1246 1246 0 0 1 980 230" stroke="url(#lc-current-glow)" strokeWidth="3.5" filter="url(#lc-soft)" fill="none" />
+            <path d="M60 230 A1246 1246 0 0 1 980 230" stroke="url(#lc-current)" strokeWidth="1.5" opacity="0.95" fill="none" />
 
             {/* the comet — halo under, bright head over: ONE loan sets out
                 from the western glimmer, cruises, decelerates and dissolves
@@ -165,22 +165,22 @@ export default function LifecycleOverview() {
             <g className="horizon-comet">
               <path
                 className="horizon-glint"
-                d="M91 230 A1072 1072 0 0 1 949 230"
+                d="M60 230 A1246 1246 0 0 1 980 230"
                 stroke="#BFEFFF"
                 strokeWidth="7"
                 strokeLinecap="round"
-                strokeDasharray="44 886"
+                strokeDasharray="44 900"
                 opacity="0.5"
                 fill="none"
                 style={{ mixBlendMode: 'screen', filter: 'blur(4px)' }}
               />
               <path
                 className="horizon-glint"
-                d="M91 230 A1072 1072 0 0 1 949 230"
+                d="M60 230 A1246 1246 0 0 1 980 230"
                 stroke="#F6F6F4"
                 strokeWidth="2"
                 strokeLinecap="round"
-                strokeDasharray="44 886"
+                strokeDasharray="44 900"
                 opacity="0.8"
                 fill="none"
                 style={{ mixBlendMode: 'screen', filter: 'blur(0.5px)' }}
@@ -190,8 +190,8 @@ export default function LifecycleOverview() {
 
           {/* layer 2 — the steles: jewel on the horizon, hairline stem, glass chip */}
           {[
-            { x: 91, y: 230 }, { x: 204, y: 188 }, { x: 337, y: 155 }, { x: 457, y: 142 },
-            { x: 583, y: 142 }, { x: 708, y: 156 }, { x: 831, y: 186 }, { x: 949, y: 230 },
+            { x: 60, y: 230 }, { x: 191, y: 186 }, { x: 323, y: 158 }, { x: 454, y: 144 },
+            { x: 586, y: 144 }, { x: 717, y: 158 }, { x: 849, y: 186 }, { x: 980, y: 230 },
           ].map((p, i) => {
             const st = STAGES[i]
             // one calm row: every chip rides the arc at the same height, so
@@ -237,7 +237,7 @@ export default function LifecycleOverview() {
                 />
                 {/* glass chip — the stage name, nothing else */}
                 <div
-                  className="lc-chip absolute whitespace-nowrap px-3 py-2.5 text-center"
+                  className="lc-chip absolute flex h-[42px] w-[116px] items-center justify-center whitespace-nowrap text-center"
                   style={{ transform: `translate(-50%, calc(-100% - ${lift}px))`, ['--rgb' as string]: st.rgb } as React.CSSProperties}
                 >
                   <span className="font-serif text-[0.95rem] leading-tight text-ink">{label}</span>
@@ -294,7 +294,7 @@ export default function LifecycleOverview() {
                 </span>
                 {/* glass chip branching right — the stage name, nothing else */}
                 <div
-                  className="lc-chip relative px-3.5 py-2"
+                  className="lc-chip relative flex h-[40px] w-[190px] items-center justify-center"
                   style={{ ['--rgb' as string]: st.rgb } as React.CSSProperties}
                 >
                   <span className="font-serif text-[0.95rem] leading-tight text-ink">
