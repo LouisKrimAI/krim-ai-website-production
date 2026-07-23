@@ -145,8 +145,8 @@ export default function TrustPillars() {
                     background: isActive
                       ? `${pillar.gradOrb}, rgba(9,11,16,0.84)`
                       : `rgba(9,11,16,0.8)`,
-                    backdropFilter: 'blur(18px)',
-                    WebkitBackdropFilter: 'blur(18px)',
+                    backdropFilter: 'blur(22px) saturate(135%)',
+                    WebkitBackdropFilter: 'blur(22px) saturate(135%)',
                   }}
                 >
                   {/* top accent bar */}
@@ -213,8 +213,8 @@ export default function TrustPillars() {
             className="relative overflow-hidden rounded-[21px]"
             style={{
               background: `${p.gradOrb}, rgba(9,11,16,0.84)`,
-              backdropFilter: 'blur(22px)',
-              WebkitBackdropFilter: 'blur(22px)',
+              backdropFilter: 'blur(22px) saturate(135%)',
+              WebkitBackdropFilter: 'blur(22px) saturate(135%)',
               transition: 'background 0.6s ease',
             }}
           >
