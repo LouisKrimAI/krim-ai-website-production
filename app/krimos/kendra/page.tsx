@@ -8,6 +8,7 @@
  */
 
 import type { Metadata } from 'next'
+import Link from 'next/link'
 import LayerShell from '@/components/krimos/LayerShell'
 import Reveal from '@/components/Reveal'
 import { Section, Eyebrow, GlassCard, CTA } from '@/components/ui'
@@ -304,6 +305,18 @@ export default function KendraPage() {
               </Reveal>
             ))}
           </div>
+          <Reveal delay={0.15}>
+            <p className="mt-10 text-center font-sans text-[14px] text-ink-3">
+              The thinking under the runtime:{' '}
+              <Link href="/epistemic-ai" className="text-ink-2 transition-colors duration-fast hover:text-mint">
+                Epistemic AI →
+              </Link>{' '}
+              <span aria-hidden className="mx-1">·</span>{' '}
+              <Link href="/research/safe-agent-harness" className="text-ink-2 transition-colors duration-fast hover:text-mint">
+                the safe agent harness →
+              </Link>
+            </p>
+          </Reveal>
         </Section>
       </LayerShell>
     </>

@@ -18,9 +18,8 @@ const NAV: Array<[string, Array<[string, string]>]> = [
       ['Kendra', '/krimos/kendra'],
       ['Kriya', '/krimos/kriya'],
       ['Karta', '/krimos/karta'],
-      ['Kupa', '/krimos/kupa'],
-      ['Kula', '/krimos/kula'],
-      ['Kira', '/krimos/kira'],
+      ['Kupa & Kula', '/krimos/kupa'],
+      ['Krimkar & Kira', '/krimkar'],
     ],
   ],
   [

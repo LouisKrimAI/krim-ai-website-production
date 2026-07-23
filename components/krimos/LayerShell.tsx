@@ -15,7 +15,7 @@ import { layerBySlug, prevNext, type Layer, type LayerSlug } from './layers'
 
 function NavCard({ layer, dir }: { layer: Layer; dir: 'prev' | 'next' }) {
   return (
-    <Link href={`/krimos/${layer.slug}`} className="group block h-full">
+    <Link href={layer.href ?? `/krimos/${layer.slug}`} className="group block h-full">
       <div className={`glass lume h-full p-6 md:p-7 ${dir === 'next' ? 'text-right' : ''}`}>
         <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-ink-3">
           {dir === 'prev' ? '← Previous' : 'Next →'}

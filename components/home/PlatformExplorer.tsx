@@ -64,7 +64,7 @@ const LAYERS: Layer[] = [
   },
   {
     key: 'kira',
-    name: 'Kira & Krimkar',
+    name: 'Krimkar & Kira',
     tag: 'For your customers',
     summary: 'The AI your customers talk to.',
     points: [
@@ -72,7 +72,7 @@ const LAYERS: Layer[] = [
       'Speaks their language; acts only within consent.',
       'Hands to a person, with full context, when it matters.',
     ],
-    href: '/krimos/kira',
+    href: '/krimkar',
   },
 ]
 

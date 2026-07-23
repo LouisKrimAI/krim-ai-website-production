@@ -7,7 +7,6 @@
  */
 
 import type { Metadata } from 'next'
-import { Fragment } from 'react'
 import Link from 'next/link'
 import SiteHeader from '@/components/SiteHeader'
 import SiteFooter from '@/components/SiteFooter'
@@ -85,12 +84,27 @@ const PROBLEMS = [
 const DEMO_HREF = '/contact'
 
 // How you start — the pilot ladder (docs/krim-content.md): deep-dive → proof
-// → live. Three glass steps running cyan → mint: the journey arrives at
-// validated, the same colour grammar as the horizon in §2.
+// → live. Cyan → mint: the journey arrives at validated, the same colour
+// grammar as the horizon in §2.
 const START_STEPS = [
-  { n: '01', label: 'Two-week deep-dive', rgb: '57,214,255' },
-  { n: '02', label: '30-day proof on your data', rgb: '29,235,217' },
-  { n: '03', label: 'Live in a quarter', rgb: '0,255,178' },
+  {
+    n: '01',
+    label: 'Two-week deep-dive',
+    detail: 'Your policies, products and systems, mapped with your team.',
+    rgb: '57,214,255',
+  },
+  {
+    n: '02',
+    label: '30-day proof on your data',
+    detail: 'KrimOS runs a real slice of your operation, inside your walls.',
+    rgb: '29,235,217',
+  },
+  {
+    n: '03',
+    label: 'Live in a quarter',
+    detail: 'In production, with your rules and the full record in force.',
+    rgb: '0,255,178',
+  },
 ] as const
 
 export default function HomePage() {
@@ -109,10 +123,36 @@ export default function HomePage() {
                 no detail. The full instrument lives at §9 (#who). ---- */}
         <LifecycleOverview />
 
-        {/* ---- 3 · Safe Agent Harness — who does the work, and why it's safe to let them ---- */}
+        {/* ---- 3 · The challenge ---- */}
+        <Section hairline id="challenge">
+          <Reveal>
+            <div className="mx-auto max-w-[760px] text-center">
+              <Eyebrow tone="gold">The challenge</Eyebrow>
+              <h2 className="mt-4 font-serif text-display-1 text-ink">What&rsquo;s stopping AI from running banking?</h2>
+              <p className="mt-3 font-sans text-body-lg italic text-ink-2">AI in banking: the pilot that never lands.</p>
+            </div>
+          </Reveal>
+          <div className="mt-14 grid gap-x-10 gap-y-12 md:grid-cols-3">
+            {PROBLEMS.map((p, i) => (
+              <Reveal key={p.heading} delay={i * 0.1}>
+                <div>
+                  <span aria-hidden className="block h-[3px] w-10 rounded-full bg-amber/70" />
+                  <h3 className="mt-6 whitespace-pre-line font-serif text-display-2 text-ink">{p.heading}</h3>
+                  <p className="mt-4 max-w-[34ch] font-sans text-body-lg text-ink-2">{p.body}</p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </Section>
+
+        {/* ---- 4 · The answer — trust pillars ---- */}
+        <TrustPillars />
+
+
+        {/* ---- 5 · Safe Agent Harness — who does the work, and why it's safe to let them ---- */}
         <AgentHarness />
 
-        {/* ---- 4 · Kovida — the world lending model (the flywheel) ---- */}
+        {/* ---- 6 · Kovida — the world lending model (the flywheel) ---- */}
         <Section hairline id="flywheel">
           {/* centered header — the homepage convention */}
           <Reveal>
@@ -173,7 +213,7 @@ export default function HomePage() {
           </div>
         </Section>
 
-        {/* ---- 5 · Meet KrimOS — the synthesis: the three powers, shipped as one OS ---- */}
+        {/* ---- 7 · Meet KrimOS — the synthesis: the three powers, shipped as one OS ---- */}
         <Section hairline id="platform">
           <div className="mx-auto max-w-[760px] text-center">
             <Reveal>
@@ -201,31 +241,6 @@ export default function HomePage() {
             </div>
           </Reveal>
         </Section>
-
-        {/* ---- 6 · The challenge ---- */}
-        <Section hairline id="challenge">
-          <Reveal>
-            <div className="mx-auto max-w-[760px] text-center">
-              <Eyebrow tone="gold">The challenge</Eyebrow>
-              <h2 className="mt-4 font-serif text-display-1 text-ink">What&rsquo;s stopping AI from running banking?</h2>
-              <p className="mt-3 font-sans text-body-lg italic text-ink-2">AI in banking: the pilot that never lands.</p>
-            </div>
-          </Reveal>
-          <div className="mt-14 grid gap-x-10 gap-y-12 md:grid-cols-3">
-            {PROBLEMS.map((p, i) => (
-              <Reveal key={p.heading} delay={i * 0.1}>
-                <div>
-                  <span aria-hidden className="block h-[3px] w-10 rounded-full bg-amber/70" />
-                  <h3 className="mt-6 whitespace-pre-line font-serif text-display-2 text-ink">{p.heading}</h3>
-                  <p className="mt-4 max-w-[34ch] font-sans text-body-lg text-ink-2">{p.body}</p>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-        </Section>
-
-        {/* ---- 7 · Trust pillars — the answer to the challenge ---- */}
-        <TrustPillars />
 
         {/* ---- 8 · The gate in action — one live example of the validation path ---- */}
         <Section hairline id="intelligence">
@@ -286,38 +301,45 @@ export default function HomePage() {
                 one breath — three steps, no cards, no section of its own
                 weight. The close is the reinstated original: the page opens
                 on Sovereign Superintelligence and closes powered by it. ---- */}
-        <Section hairline id="close">
+        {/* ---- 11 · How you start — three steps, proof before commitment ---- */}
+        <Section hairline id="start">
           <Reveal>
-            <div className="mx-auto max-w-[860px] text-center">
+            <div className="mx-auto max-w-[760px] text-center">
               <Eyebrow>How you start</Eyebrow>
-              {/* three glass steps, cyan → mint — the same chip glass as §2's
-                  horizon, so the page's beads visibly belong to one system */}
-              <div className="mt-8 flex flex-col items-center gap-3 md:flex-row md:justify-center md:gap-0">
-                {START_STEPS.map((s, i) => (
-                  <Fragment key={s.n}>
-                    <div
-                      className="lc-chip relative flex items-baseline gap-3 px-5 py-3"
-                      style={{ ['--rgb' as string]: s.rgb } as React.CSSProperties}
-                    >
-                      <span
-                        aria-hidden
-                        className="font-mono text-[10px] leading-none tracking-[0.24em]"
-                        style={{ color: `rgba(${s.rgb},0.85)` }}
-                      >
-                        {s.n}
-                      </span>
-                      <span className="font-serif text-[1.05rem] leading-tight text-ink">{s.label}</span>
-                    </div>
-                    {i < START_STEPS.length - 1 && (
-                      <span aria-hidden className="rotate-90 text-mint/50 md:mx-4 md:rotate-0">→</span>
-                    )}
-                  </Fragment>
-                ))}
-              </div>
+              <h2 className="mt-4 font-serif text-display-1 text-ink">
+                Proof on your data before you commit.
+              </h2>
             </div>
           </Reveal>
           <Reveal delay={0.1}>
-            <div className="mx-auto mt-20 max-w-[940px] text-center">
+            <div className="mx-auto mt-12 grid max-w-[960px] gap-4 md:grid-cols-3 lg:gap-5">
+              {START_STEPS.map((st) => (
+                <GlassCard key={st.n} className="h-full p-7">
+                  <div className="flex items-baseline justify-between">
+                    <span
+                      aria-hidden
+                      className="block h-[3px] w-10 rounded-full"
+                      style={{ background: `rgba(${st.rgb},0.8)` }}
+                    />
+                    <span
+                      className="font-mono text-[11px] leading-none tracking-[0.24em]"
+                      style={{ color: `rgba(${st.rgb},0.9)` }}
+                    >
+                      {st.n}
+                    </span>
+                  </div>
+                  <h3 className="mt-5 font-serif text-[1.35rem] leading-tight text-ink">{st.label}</h3>
+                  <p className="mt-3 font-sans text-body text-ink-2">{st.detail}</p>
+                </GlassCard>
+              ))}
+            </div>
+          </Reveal>
+        </Section>
+
+        {/* ---- 12 · Close ---- */}
+        <Section hairline id="close">
+          <Reveal>
+            <div className="mx-auto max-w-[940px] text-center">
               <span aria-hidden className="mx-auto block h-[3px] w-16 rounded-full bg-gradient-to-r from-mint to-cyan" />
               {/* display-1, deliberately: the hero owns the page's single
                   display-hero voice — the close is its echo, not a rival */}

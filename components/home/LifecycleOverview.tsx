@@ -21,8 +21,8 @@ const OUT_SOFT = [0.16, 1, 0.3, 1] as const
 // What it adds up to — the three institutional outcomes (rendered here, above
 // the fold, where the claim earns the scroll; the deep section proves it).
 const OUTCOMES = [
-  { impact: 'Scale without the headcount.', hi: 'Scale', tag: 'Acquisition to closure.' },
-  { impact: 'Audit evidence in minutes.', hi: 'minutes', tag: 'Assembled on demand.' },
+  { impact: 'Scale without the headcount.', hi: 'Scale', tag: 'Co-workers carry the volume.' },
+  { impact: 'Audit evidence in minutes.', hi: 'minutes', tag: 'The record writes itself.' },
   // "The world model" not "Kovida": §2 renders before §4 introduces the name.
   { impact: 'Sharper with every loan.', hi: 'Sharper', tag: 'The world model learns.' },
 ] as const
@@ -33,7 +33,7 @@ export default function LifecycleOverview() {
     <Section hairline id="lifecycle">
       <Reveal>
         <div className="mx-auto max-w-[720px] text-center">
-          <Eyebrow>The lending lifecycle</Eyebrow>
+          <Eyebrow>What KrimOS runs</Eyebrow>
           <h2 className="mt-4 font-serif text-display-1 text-ink">
             One operating system, from first enquiry to final payoff.
           </h2>
@@ -254,7 +254,7 @@ export default function LifecycleOverview() {
             style={{ ['--rgb' as string]: '0,255,178' } as React.CSSProperties}
           >
             <span aria-hidden className="text-[12px] leading-none text-mint/90">↺</span>
-            <span className="whitespace-nowrap font-mono text-[10px] uppercase tracking-[0.24em] text-mint/90">the cycle compounds</span>
+            <span className="whitespace-nowrap font-mono text-[10px] uppercase tracking-[0.24em] text-mint/90">every loan sharpens the next</span>
           </div>
         </div>
       </Reveal>
@@ -313,7 +313,7 @@ export default function LifecycleOverview() {
             />
             <div className="flex items-center gap-2 pt-3">
               <span aria-hidden className="text-[12px] leading-none text-mint/90">↺</span>
-              <span className="font-mono text-[10px] uppercase tracking-[0.24em] text-mint/90">the cycle compounds</span>
+              <span className="font-mono text-[10px] uppercase tracking-[0.24em] text-mint/90">every loan sharpens the next</span>
             </div>
           </div>
         </div>

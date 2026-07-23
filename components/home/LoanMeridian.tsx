@@ -49,12 +49,12 @@ type Stage = {
 // switch stages. Exported: LifecycleOverview (§2) renders the same stages as
 // the glanceable current — one source of truth.
 export const STAGES: Stage[] = [
-  { n: '01', area: 'Acquisition', rgb: '57,214,255', role: 'Growth & contact centre', impact: 'Every enquiry answered, none left waiting.',
+  { n: '01', area: 'Acquisition', rgb: '57,214,255', role: 'Growth & contact centre', impact: 'No enquiry waits, whatever the volume.',
     groups: [
       { label: 'Reach', items: ['Enquiry handling', 'Eligibility pre-check', 'Multilingual outreach'] },
       { label: 'Convert', items: ['Application invite', 'Abandoned re-engagement', 'Channel routing'] },
     ] },
-  { n: '02', area: 'Origination', rgb: '49,220,244', role: 'Credit operations', impact: 'Onboarded at digital speed.',
+  { n: '02', area: 'Origination', rgb: '49,220,244', role: 'Credit operations', impact: 'Complete files, first time — nothing stalls.',
     groups: [
       { label: 'Intake & identity', items: ['Application capture', 'KYC / KYB', 'Sanctions screening'] },
       { label: 'Documents & data', items: ['Document capture', 'OCR & extraction', 'Bureau pulls'] },
@@ -65,24 +65,24 @@ export const STAGES: Stage[] = [
       { label: 'Prepare', items: ['File assembly', 'Affordability evidence', 'Income & employment'] },
       { label: 'Check', items: ['Policy & eligibility', 'Adverse-action notices', 'Exception flags'] },
     ] },
-  { n: '04', area: 'Disbursal', rgb: '33,232,222', role: 'Loan operations', impact: 'Agreement to funds, fully checked.',
+  { n: '04', area: 'Disbursal', rgb: '33,232,222', role: 'Loan operations', impact: 'Funds move the moment every check clears.',
     groups: [
       { label: 'Contract', items: ['Agreement generation', 'E-sign', 'Compliance pre-checks'] },
       { label: 'Fund', items: ['Disbursal', 'Autopay enrolment', 'Welcome & first payment'] },
     ] },
-  { n: '05', area: 'Servicing', rgb: '24,237,211', role: 'Servicing & support', impact: 'Every customer, in the language they speak.',
+  { n: '05', area: 'Servicing', rgb: '24,237,211', role: 'Servicing & support', impact: 'Answers on first contact, day or night.',
     groups: [
       { label: 'Money', items: ['Payments & autopay', 'Statements', 'Reconciliation'] },
       { label: 'Care', items: ['Queries & changes', 'Self-serve resolution', 'Multilingual support'] },
       { label: 'Lifecycle', items: ['Renewals & top-ups', 'Account maintenance', 'Human hand-off'] },
     ] },
-  { n: '06', area: 'Collections', rgb: '16,243,200', role: 'Collections & cure', impact: 'Every contact inside consent and hours.',
+  { n: '06', area: 'Collections', rgb: '16,243,200', role: 'Collections & cure', impact: 'Recovery that never breaks the rules.',
     groups: [
       { label: 'Contact', items: ['Right-party contact', 'Consent & hours checks', 'Frequency caps'] },
       { label: 'Cure', items: ['Payment plans', 'Promise-to-pay', 'Settlement'] },
       { label: 'Stages', items: ['DPD 1–30', 'DPD 31+', 'Early-warning'] },
     ] },
-  { n: '07', area: 'Hardship', rgb: '8,249,189', role: 'Care & complaints', impact: 'Handled with care, inside the rules.',
+  { n: '07', area: 'Hardship', rgb: '8,249,189', role: 'Care & complaints', impact: 'Care at scale, inside the rules.',
     groups: [
       { label: 'Support', items: ['Hardship signposting', 'Restructuring', 'Forbearance'] },
       { label: 'Resolve', items: ['Disputes & complaints', 'Vulnerable routing', 'Case handover'] },
@@ -171,8 +171,8 @@ export default function LoanMeridian() {
             Every stage, on the record.
           </h2>
           <p className="mx-auto mt-5 max-w-[56ch] font-sans text-body-lg text-ink-2">
-            Pick a stage to see the work co-workers run there, who it serves, and{' '}
-            <span className="text-gold">the oversight underneath</span>.
+            Co-workers run each stage under your rules — the work moves faster, and{' '}
+            <span className="text-gold">the proof files itself</span> as it runs.
           </p>
         </div>
       </Reveal>
@@ -266,20 +266,20 @@ export default function LoanMeridian() {
                         shimmers on hover and is lit-from-within when active. Rail meets the tile
                         at its top edge (the keel). The stage number makes the horizon read as a
                         sequenced instrument and ties each tile to its console readout (01 · …). */}
+                    {/* the §2 chip, made selectable: one size, no numbers —
+                        the two lifecycle figures share one visual language */}
                     <span
-                      className="wp mt-4 flex min-h-[3.4em] w-full flex-col items-center justify-center gap-1 px-2.5 py-2.5"
-                      data-active={on ? 'true' : 'false'}
-                      style={{ ['--rgb' as string]: st.rgb } as React.CSSProperties}
+                      className="lc-chip mt-4 flex h-[42px] w-full items-center justify-center px-2 transition-[border-color,box-shadow] duration-300"
+                      style={{
+                        ['--rgb' as string]: st.rgb,
+                        borderColor: on ? `rgba(${st.rgb},0.55)` : undefined,
+                        boxShadow: on
+                          ? `inset 0 1px 0 0 rgba(255,255,255,0.12), inset 0 -22px 30px -24px rgba(${st.rgb},0.72), 0 0 26px -6px rgba(${st.rgb},0.4), 0 10px 30px -16px rgba(2,4,10,0.8)`
+                          : undefined,
+                      } as React.CSSProperties}
                     >
-                      <span
-                        aria-hidden
-                        className="font-mono text-[9px] leading-none tracking-[0.24em] transition-colors duration-200"
-                        style={{ color: `rgba(${st.rgb},${on ? 0.95 : pre ? 0.65 : 0.42})` }}
-                      >
-                        {st.n}
-                      </span>
-                      <span className={`relative font-serif text-[1.05rem] leading-tight transition-all duration-200 ${on ? 'text-ink tracking-[-0.01em]' : pre ? 'text-ink' : 'text-ink-2 group-hover:text-ink'}`}>
-                        {st.area}
+                      <span className={`font-serif text-[0.95rem] leading-tight transition-colors duration-200 ${on ? 'text-ink' : pre ? 'text-ink' : 'text-ink-2 group-hover:text-ink'}`}>
+                        {st.area === 'Underwriting support' ? 'Underwriting' : st.area}
                       </span>
                     </span>
                   </button>

@@ -1,5 +1,5 @@
 /**
- * /krimos/kira — Kira & Krimkar, the customer-facing layer of KrimOS.
+ * /krimkar — Krimkar & Kira, the customer-facing layer of KrimOS.
  * The house-standard layer page: content-first, homepage glass, no devices.
  * Covers BOTH Kira (the AI customer advisor) and Krimkar (the consumer app +
  * public site Kira lives in). Shape: what it is (hero) → one thread across every
@@ -14,15 +14,15 @@ import Reveal from '@/components/Reveal'
 import { Section, Eyebrow, GlassCard } from '@/components/ui'
 
 export const metadata: Metadata = {
-  title: 'Kira — the customer advisor',
+  title: 'Krimkar & Kira — for your customers',
   description:
     'Kira is the AI customer advisor your customers meet in the Krimkar app and across every channel: WhatsApp, voice, chat, SMS and email. One conversation that remembers, in the customer’s own language, always within the rules.',
-  alternates: { canonical: 'https://www.krim.ai/krimos/kira' },
+  alternates: { canonical: 'https://www.krim.ai/krimkar' },
   openGraph: {
-    title: 'Kira — the customer advisor',
+    title: 'Krimkar & Kira — for your customers',
     description:
       'Kira is the AI customer advisor your customers meet in the Krimkar app and across every channel: WhatsApp, voice, chat, SMS and email. One conversation that remembers, in the customer’s own language, always within the rules.',
-    url: 'https://www.krim.ai/krimos/kira',
+    url: 'https://www.krim.ai/krimkar',
   },
 }
 
@@ -32,7 +32,7 @@ const breadcrumbLd = {
   itemListElement: [
     { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.krim.ai' },
     { '@type': 'ListItem', position: 2, name: 'KrimOS', item: 'https://www.krim.ai/krimos' },
-    { '@type': 'ListItem', position: 3, name: 'Kira & Krimkar', item: 'https://www.krim.ai/krimos/kira' },
+    { '@type': 'ListItem', position: 3, name: 'Krimkar & Kira', item: 'https://www.krim.ai/krimkar' },
   ],
 }
 

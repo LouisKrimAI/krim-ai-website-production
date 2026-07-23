@@ -7,7 +7,7 @@
  * with per-pixel alpha = max(R,G,B) × 1.6. Black → transparent. Glowing
  * sphere → fully opaque. No rectangular container visible.
  *
- * Usage: drop anywhere — the video is lazy-loaded via IntersectionObserver
+ * Usage: drop anywhere — the video preloads and plays on mount
  * and loops with a 1.5 s breath between plays.
  */
 
@@ -64,13 +64,13 @@ export default function HarnessVideo({ className = '', maxWidth = '520px' }: Har
       setTimeout(() => video.play().catch(() => {}), 1500)
     })
 
-    const observer = new IntersectionObserver(
-      ([entry]) => { if (entry.isIntersecting) { video.play().catch(() => {}); observer.disconnect() } },
-      { threshold: 0.1 },
-    )
-    observer.observe(canvas)
+    // Start immediately — waiting for scroll-into-view made the orb pop in
+    // late. The clip is small; muted autoplay is permitted everywhere.
+    const kickoff = () => video.play().catch(() => {})
+    if (video.readyState >= 2) kickoff()
+    else video.addEventListener('loadeddata', kickoff, { once: true })
 
-    return () => { stop(); observer.disconnect() }
+    return () => { stop(); video.removeEventListener('loadeddata', kickoff) }
   }, [])
 
   return (
@@ -82,7 +82,7 @@ export default function HarnessVideo({ className = '', maxWidth = '520px' }: Har
       />
       <video
         ref={videoRef}
-        preload="metadata"
+        preload="auto"
         muted
         playsInline
         style={{ position: 'absolute', width: '1px', height: '1px', opacity: 0, pointerEvents: 'none' }}

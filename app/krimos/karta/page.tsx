@@ -10,6 +10,7 @@
  */
 
 import type { Metadata } from 'next'
+import Link from 'next/link'
 import LayerShell from '@/components/krimos/LayerShell'
 import Reveal from '@/components/Reveal'
 import { Section, Eyebrow, GlassCard } from '@/components/ui'
@@ -419,6 +420,12 @@ export default function KartaPage() {
               <p className="mx-auto mt-5 max-w-[50ch] font-sans text-body-lg text-ink-2">
                 Configured by you, governed by the runtime, and sharper with every interaction, so
                 the operation improves the more it runs.
+              </p>
+              <p className="mt-7 font-sans text-[14px] text-ink-3">
+                What makes a co-worker deployable:{' '}
+                <Link href="/research/safe-agent-harness" className="text-ink-2 transition-colors duration-fast hover:text-mint">
+                  the safe agent harness →
+                </Link>
               </p>
             </Reveal>
           </div>

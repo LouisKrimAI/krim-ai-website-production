@@ -24,6 +24,9 @@ const nextConfig = {
     return [
       { source: '/platform', destination: '/krimos', permanent: true },
       { source: '/platform/:slug', destination: '/krimos/:slug', permanent: true },
+      // Kula merged into Kupa (one enterprise seat); Kira & Krimkar moved to /krimkar.
+      { source: '/krimos/kula', destination: '/krimos/kupa', permanent: true },
+      { source: '/krimos/kira', destination: '/krimkar', permanent: true },
     ]
   },
 }

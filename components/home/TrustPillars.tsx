@@ -67,10 +67,10 @@ const PILLARS = [
     id: 'controllable',
     label: 'Controllable',
     hint: 'Stop it in one click',
-    // bright ink — a near-monochrome "command" identity; the palette has no
-    // fourth accent, and command is the absence of colour, not another hue
-    rgb: '246,246,244',
-    gradOrb: 'radial-gradient(ellipse at 75% 70%, rgba(246,246,244,0.14) 0%, transparent 60%)',
+    // ice — the orb-highlight token (#BFEFFF): command as cold, clear light.
+    // Distinct from cyan's saturation, never grey.
+    rgb: '191,239,255',
+    gradOrb: 'radial-gradient(ellipse at 75% 70%, rgba(191,239,255,0.16) 0%, transparent 60%)',
     headline: 'The runtime answers to you.',
     body: 'Every co-worker runs inside authority limits you set.',
     points: [
