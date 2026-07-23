@@ -29,12 +29,12 @@ const DEMO = '/contact'
 export const metadata: Metadata = {
   title: 'Lending',
   description:
-    'KrimOS runs the whole loan lifecycle: every customer conversation and every back-office task on one system that validates each action before it executes, and learns the operation as it runs. Built against RBI, FCA and US lending law by construction.',
+    'KrimOS runs the whole loan lifecycle: every customer conversation and every back-office task on one system that validates each action before it executes, and learns the operation as it runs. RBI, FCA and US lending law encoded in the runtime.',
   alternates: { canonical: 'https://www.krim.ai/lending' },
   openGraph: {
     title: 'Lending — Krim',
     description:
-      'KrimOS runs the whole loan lifecycle: every customer conversation and every back-office task on one system that validates each action before it executes, and learns the operation as it runs. Built against RBI, FCA and US lending law by construction.',
+      'KrimOS runs the whole loan lifecycle: every customer conversation and every back-office task on one system that validates each action before it executes, and learns the operation as it runs. RBI, FCA and US lending law encoded in the runtime.',
     url: 'https://www.krim.ai/lending',
   },
 }
@@ -79,7 +79,7 @@ const LIFECYCLE = [
   },
   {
     stage: 'Closure & re-engagement',
-    customer: 'Payoff, the NOC, the next product conversation.',
+    customer: 'Payoff, the closure paperwork, the next product conversation.',
     back: 'Settlement, reporting and portfolio learning.',
   },
 ]
@@ -185,12 +185,12 @@ export default function LendingPage() {
         <Section id="lifecycle" hairline>
           <Reveal>
             <Eyebrow tone="cyan">End to end</Eyebrow>
-            <h2 className="mt-4 max-w-[22ch] font-serif text-display-1 text-ink">
-              Both sides of the wall, on one system.
+            <h2 className="mt-4 max-w-[26ch] font-serif text-display-1 text-ink">
+              The customer side and the back office, on one system.
             </h2>
             <p className="mt-6 max-w-[60ch] font-sans text-body-lg text-ink-2">
               <span className="text-cyan">Kira</span> meets the customer on every channel;{' '}
-              <span className="text-mint">Karta</span> co-workers do the back-office work. They meet
+              <span className="text-mint">Karta</span> co-workers do the back-office work. Both run
               at every stage, and each action passes the validation gate before it executes.
             </p>
           </Reveal>
@@ -304,7 +304,7 @@ export default function LendingPage() {
             <p className="mt-6 max-w-[60ch] font-sans text-body-lg text-ink-2">
               Three deployments, one architecture. Your data and your regulator decide which.
               Whichever you pick, everything stays inside the perimeter you draw, with{' '}
-              <span className="text-ink">no foreign model in the loop</span>.
+              <span className="text-ink">no foreign API in the loop</span>.
             </p>
           </Reveal>
 
@@ -328,14 +328,15 @@ export default function LendingPage() {
           <Reveal>
             <div className="glass mx-auto max-w-[760px] p-10 text-center md:p-14">
               <h2 className="font-serif text-display-3 leading-tight text-ink">
-                The loan book that pays for itself.
+                Grow the book without growing the cost line.
               </h2>
               <p className="mx-auto mt-5 max-w-[54ch] font-sans text-body-lg text-ink-2">
                 Every conversation handled, every action proven, every outcome compounding into the
                 next. <span className="text-mint">More borrowers reached, more loans closed, and a
                 cost line that finally stops growing with the book.</span>
               </p>
-              <div className="mt-9 flex justify-center">
+              <div className="mt-9 flex flex-wrap items-center justify-center gap-4">
+                <CTA href="/contact">Book a demo</CTA>
                 <CTA href="/krimos" variant="secondary">
                   Explore KrimOS
                 </CTA>

@@ -329,11 +329,11 @@ export default function LoanMeridian() {
           <div className="relative">
             <span aria-hidden className="absolute -left-[27px] top-[5px] sm:-left-[35px]"><Node rgb={s.rgb} /></span>
             <div
-              className="relative overflow-hidden rounded-[20px] border p-7 md:p-10"
+              className="relative overflow-hidden rounded-[20px] border p-8 md:p-10"
               style={{
                 borderColor: 'rgba(255,255,255,0.14)',
-                background: `radial-gradient(120% 120% at 0% 0%, rgba(${s.rgb},0.08), transparent 45%), linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.014)), rgba(9,9,12,0.66)`,
-                backdropFilter: 'blur(26px) saturate(115%)', WebkitBackdropFilter: 'blur(26px) saturate(115%)',
+                background: `radial-gradient(120% 120% at 0% 0%, rgba(${s.rgb},0.08), transparent 45%), linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.014)), rgba(9,11,16,0.8)`,
+                backdropFilter: 'blur(22px) saturate(135%)', WebkitBackdropFilter: 'blur(22px) saturate(135%)',
                 boxShadow: `inset 0 1px 0 0 rgba(255,255,255,0.10), inset 0 -40px 80px -60px rgba(${s.rgb},0.2), 0 30px 70px -30px rgba(0,0,0,0.7)`,
                 transition: reduce ? 'none' : 'background 600ms ease, box-shadow 600ms ease',
               }}
@@ -380,7 +380,7 @@ export default function LoanMeridian() {
                           {g.items.map((name) => (
                             <div key={name} className="op-chip" style={{ ['--rgb' as string]: s.rgb } as React.CSSProperties}>
                               <span aria-hidden className="op-chip__edge" />
-                              <span className={`block font-sans leading-[1.2] tracking-[-0.005em] text-ink ${s.groups.length === 3 ? 'text-[14px]' : 'text-[15px]'}`} style={{ whiteSpace: 'nowrap' }}>{name}</span>
+                              <span className={`block font-sans leading-[1.2] tracking-[-0.005em] text-ink text-[14px]`} style={{ whiteSpace: 'nowrap' }}>{name}</span>
                             </div>
                           ))}
                         </div>
@@ -400,8 +400,8 @@ export default function LoanMeridian() {
               className="relative overflow-hidden rounded-[20px] border p-8 md:p-10"
               style={{
                 borderColor: 'rgba(255,255,255,0.10)',
-                background: `radial-gradient(130% 120% at 50% 0%, rgba(${GOLD},0.10) 0%, transparent 55%), linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.012)), rgba(9,9,12,0.55)`,
-                backdropFilter: 'blur(26px) saturate(115%)', WebkitBackdropFilter: 'blur(26px) saturate(115%)',
+                background: `radial-gradient(130% 120% at 50% 0%, rgba(${GOLD},0.10) 0%, transparent 55%), linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.012)), rgba(9,11,16,0.8)`,
+                backdropFilter: 'blur(22px) saturate(135%)', WebkitBackdropFilter: 'blur(22px) saturate(135%)',
                 boxShadow: `inset 0 1px 0 0 rgba(${GOLD},0.22), 0 24px 60px -24px rgba(0,0,0,0.6)`,
               }}
             >

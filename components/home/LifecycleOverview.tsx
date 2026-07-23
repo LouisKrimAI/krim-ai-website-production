@@ -21,7 +21,7 @@ const OUT_SOFT = [0.16, 1, 0.3, 1] as const
 // What it adds up to — the three institutional outcomes (rendered here, above
 // the fold, where the claim earns the scroll; the deep section proves it).
 const OUTCOMES = [
-  { impact: 'Scale without the headcount.', hi: 'Scale', tag: 'Co-workers carry the volume.' },
+  { impact: 'Scale without the headcount.', hi: 'Scale', tag: 'AI workers carry the volume.' },
   { impact: 'Audit evidence in minutes.', hi: 'minutes', tag: 'The record writes itself.' },
   // "The world model" not "Kovida": §2 renders before §4 introduces the name.
   { impact: 'Sharper with every loan.', hi: 'Sharper', tag: 'The world model learns.' },
@@ -35,12 +35,12 @@ export default function LifecycleOverview() {
         <div className="mx-auto max-w-[720px] text-center">
           <Eyebrow>What KrimOS runs</Eyebrow>
           <h2 className="mt-4 font-serif text-display-1 text-ink">
-            One operating system, from first enquiry to final payoff.
+            One agent operating system, from first enquiry to final payoff.
           </h2>
           <p className="mx-auto mt-6 max-w-[56ch] font-sans text-body-lg text-ink-2">
             AI co-workers carry every loan as{' '}
             <span className="text-mint">one connected current of work</span> — each action
-            validated before it fires, risk and compliance under every step.
+            validated before it fires, risk and compliance checked at every step.
           </p>
         </div>
       </Reveal>
@@ -326,7 +326,7 @@ export default function LifecycleOverview() {
           {OUTCOMES.map(({ impact, hi, tag }) => {
             const [pre, post] = impact.split(hi)
             return (
-              <GlassCard key={impact} className="flex h-full flex-col justify-center px-6 py-5">
+              <GlassCard key={impact} className="flex h-full flex-col justify-center px-7 py-6">
                 <h3 className="font-serif text-display-2 text-ink">
                   {pre}
                   <span className="text-mint">{hi}</span>

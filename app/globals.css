@@ -181,13 +181,16 @@ h1, h2 { text-wrap: balance; }
 
 /* tinted glass — catches the orb's light in one accent per view */
 .glass-cyan {
+  /* tints the ONE glass — never replaces its dark base */
   background:
-    linear-gradient(152deg, rgba(57, 214, 255, 0.075) 0%, rgba(255, 255, 255, 0.014) 60%, rgba(57, 214, 255, 0.028) 100%);
+    linear-gradient(152deg, rgba(57, 214, 255, 0.075) 0%, rgba(255, 255, 255, 0.014) 60%, rgba(57, 214, 255, 0.028) 100%),
+    rgba(9, 11, 16, 0.8);
   border-color: rgba(57, 214, 255, 0.22);
 }
 .glass-mint {
   background:
-    linear-gradient(152deg, rgba(0, 255, 178, 0.075) 0%, rgba(255, 255, 255, 0.014) 60%, rgba(0, 255, 178, 0.03) 100%);
+    linear-gradient(152deg, rgba(0, 255, 178, 0.075) 0%, rgba(255, 255, 255, 0.014) 60%, rgba(0, 255, 178, 0.03) 100%),
+    rgba(9, 11, 16, 0.8);
   border-color: rgba(0, 255, 178, 0.24);
 }
 

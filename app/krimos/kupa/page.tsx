@@ -46,7 +46,7 @@ const PAIR = [
   {
     name: 'Kula',
     tag: 'The way in',
-    body: 'You describe the outcome you want. Kula proposes the governed plan, and nothing runs until you sign off.',
+    body: 'You describe the outcome you want, in plain language. Kula turns it into a plan for your team to approve.',
   },
   {
     name: 'Kupa',
@@ -65,18 +65,18 @@ const FLOW = [
   },
   {
     step: 'Suggest',
-    title: 'Kula proposes a governed plan.',
-    body: 'Segments, flows, co-worker combinations and the policy constraints that bind them, drafted from Kriya primitives. Nothing has run yet.',
+    title: 'Kula drafts the plan.',
+    body: 'The segments, the flows, the co-workers to run them, and the rules that apply.',
   },
   {
     step: 'Act',
-    title: 'It runs only once you sign off.',
-    body: 'The plan is routed through validation and surfaced in Kupa for review. On your approval it executes, every action checked against policy before it fires.',
+    title: 'It runs on your approval.',
+    body: 'The plan clears validation, then comes to Kupa for review. Approve it and it runs, each action checked against policy before it fires.',
   },
   {
     step: 'Learn',
     title: 'Every outcome sharpens the next.',
-    body: 'What the work teaches feeds back through the runtime, so the next plan starts from what the last one learned.',
+    body: 'Outcomes feed back through the runtime, so the next plan starts from what the last one learned.',
   },
 ]
 
@@ -124,9 +124,9 @@ const SCENARIOS = [
       <>
         He reads the answer off the same source of truth, the reasoning attached, then asks Kula to
         tighten the rule, and the change{' '}
-        <span className="text-mint">clears validation before it takes effect</span>. Risk that once
-        surfaced only in a month-end report, he can watch form in real time and tighten while it is
-        still small.
+        <span className="text-mint">clears validation before it takes effect</span>. He watches the
+        risk form in real time instead of finding it in a month-end report, and tightens the rule
+        while it is still small.
       </>
     ),
   },
@@ -178,13 +178,13 @@ export default function KupaKulaPage() {
         {/* ---- 3 · Kula: Ask → Suggest → Act → Learn ---- */}
         <Section hairline>
           <Reveal>
-            <Eyebrow tone="cyan">Kula · How you direct</Eyebrow>
+            <Eyebrow tone="cyan">Kula</Eyebrow>
             <h2 className="mt-4 max-w-[24ch] font-serif text-display-1 text-ink">
-              From a sentence to governed work, without skipping the human.
+              Ask in plain language.
             </h2>
             <p className="mt-6 max-w-[60ch] font-sans text-body-lg text-ink-2">
-              You describe the outcome. Kula proposes the plan, validation checks it, and your people
-              approve it before anything runs. Ask, suggest, act, learn, and round again.
+              You describe the outcome. Kula drafts the plan, checks it against your rules, and{' '}
+              <span className="text-mint">your team approves it</span>. Then it runs.
             </p>
           </Reveal>
           <div className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
@@ -202,9 +202,7 @@ export default function KupaKulaPage() {
           </div>
           <Reveal delay={0.14}>
             <p className="mt-9 max-w-[62ch] font-sans text-body text-ink-3">
-              It never acts on its own. Act stays locked until a person approves, and the runtime
-              validates every action against policy before it fires. Kula is the way in; the
-              governance lives behind it, in{' '}
+              Kula is the way in. The thinking and the rules live behind it, in{' '}
               <Link href="/krimos/kendra" className="text-ink-2 underline-offset-4 transition-colors hover:text-mint hover:underline">
                 Kendra
               </Link>
@@ -218,9 +216,9 @@ export default function KupaKulaPage() {
           <div className="grid items-center gap-12 md:grid-cols-[1fr_1fr]">
             <Reveal>
               <div>
-                <Eyebrow>Kula · A twin for every seat</Eyebrow>
+                <Eyebrow>A twin for every role</Eyebrow>
                 <h2 className="mt-4 max-w-[20ch] font-serif text-display-1 text-ink">
-                  Everyone meets the operation in their own language.
+                  Every role gets its own view.
                 </h2>
                 <p className="mt-7 max-w-[52ch] font-sans text-body-lg text-ink-2">
                   Each user works with a digital twin tuned to their role: the questions they ask,
@@ -230,7 +228,7 @@ export default function KupaKulaPage() {
                 </p>
                 <p className="mt-5 max-w-[52ch] font-sans text-body text-ink-2">
                   From the Chief Risk Officer to the contact-centre floor, every team reads the same
-                  operation through its own twin, and supervises it in Kupa, where the calls that
+                  operation through its own twin, and supervises it in Kupa, where the decisions that
                   matter come back for sign-off.
                 </p>
               </div>
@@ -256,9 +254,9 @@ export default function KupaKulaPage() {
         {/* ---- 5 · Kupa: the four controls ---- */}
         <Section hairline>
           <Reveal>
-            <Eyebrow>Kupa · Where control lives</Eyebrow>
+            <Eyebrow>Kupa</Eyebrow>
             <h2 className="mt-4 max-w-[22ch] font-serif text-display-1 text-ink">
-              Hands on every lever, eyes on every action.
+              You see everything, and can step in anywhere.
             </h2>
             <p className="mt-6 max-w-[58ch] font-sans text-body-lg text-ink-2">
               The co-workers run the operation; <span className="text-ink">you keep the controls</span>.
@@ -283,14 +281,14 @@ export default function KupaKulaPage() {
         {/* ---- 6 · The cockpit — one per operational section + the cross-cutting views ---- */}
         <Section hairline>
           <Reveal>
-            <Eyebrow tone="cyan">Kupa · The cockpit</Eyebrow>
+            <Eyebrow tone="cyan">Kupa · Dashboards</Eyebrow>
             <h2 className="mt-4 max-w-[24ch] font-serif text-display-1 text-ink">
-              One cockpit over the whole operation.
+              The whole operation, on one screen.
             </h2>
             <p className="mt-6 max-w-[62ch] font-sans text-body-lg text-ink-2">
-              Kupa draws from <span className="text-mint">one source of truth</span> and refreshes in
-              seconds. A view for each stage of the lifecycle, and for the concerns that cut across
-              it, with teams composing the ones their seat needs.
+              Kupa draws from <span className="text-mint">one source of truth</span> and refreshes
+              live. A view for each stage of the lifecycle, a view for what cuts across it, and
+              teams compose the ones they need.
             </p>
           </Reveal>
 
@@ -349,7 +347,7 @@ export default function KupaKulaPage() {
             <GlassCard accent className="mx-auto max-w-[820px] p-10 text-center md:p-14">
               <h2 className="font-serif text-display-2 text-ink">Nothing happens out of view.</h2>
               <p className="mx-auto mt-5 max-w-[54ch] font-sans text-body-lg text-ink-2">
-                Your teams ask in their own words and stay in control of every call. Every action{' '}
+                Your teams ask in their own words and stay in control of every decision. Every action is{' '}
                 <span className="text-mint">validated before it fires</span>, supervised where it
                 matters, and on the record after, so the people who answer for the operation can
                 always see what ran, why, and under which rule.

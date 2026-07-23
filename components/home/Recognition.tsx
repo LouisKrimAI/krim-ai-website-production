@@ -25,14 +25,22 @@ export default function Recognition({ className = '' }: { className?: string }) 
         Recognition &amp; programmes
       </p>
       <div
-        className="relative mt-6 overflow-hidden rounded-[24px] border border-white/[0.055] px-7 py-8 backdrop-blur-xl md:px-12 md:py-9"
+        className="relative mt-6 overflow-hidden rounded-[20px] border border-white/10 px-7 py-8 md:px-12 md:py-9"
         style={{
           background:
-            'linear-gradient(157deg, rgba(255,255,255,0.055) 0%, rgba(255,255,255,0.025) 100%)',
+            'linear-gradient(157deg, rgba(255,255,255,0.055) 0%, rgba(255,255,255,0.025) 100%), rgba(9,11,16,0.8)',
+          backdropFilter: 'blur(22px) saturate(135%)',
+          WebkitBackdropFilter: 'blur(22px) saturate(135%)',
           boxShadow:
             'inset 0 1px 0 rgba(255,255,255,0.08), 0 30px 70px -40px rgba(0,0,0,0.65)',
         }}
       >
+        {/* the family's luminous top thread */}
+        <span
+          aria-hidden
+          className="pointer-events-none absolute inset-x-0 top-0 h-px"
+          style={{ background: 'linear-gradient(90deg, transparent 3%, rgba(255,255,255,0.5) 50%, transparent 97%)' }}
+        />
         <div className="flex flex-wrap items-center justify-center gap-10 sm:gap-12 md:gap-14">
           {MARKS.map((m) => (
             <img
