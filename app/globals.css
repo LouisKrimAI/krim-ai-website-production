@@ -563,6 +563,30 @@ html[data-cluster="research"][data-bg-ready] main {
   78% { stroke-dashoffset: 60; }  /* parked inside the dawn's radius */
   100% { stroke-dashoffset: 60; }
 }
+/* mid + tail run the same journey with offsets shifted by their extra dash
+   length, so all three leading edges stay welded into one comet head */
+.horizon-glint-mid { animation: horizon-run-mid 9s infinite; }
+@keyframes horizon-run-mid {
+  0% { stroke-dashoffset: 964; animation-timing-function: cubic-bezier(0.34, 0, 0.28, 1); }
+  64% { stroke-dashoffset: 270; animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1); }
+  78% { stroke-dashoffset: 80; }
+  100% { stroke-dashoffset: 80; }
+}
+.horizon-glint-tail { animation: horizon-run-tail 9s infinite; }
+@keyframes horizon-run-tail {
+  0% { stroke-dashoffset: 996; animation-timing-function: cubic-bezier(0.34, 0, 0.28, 1); }
+  64% { stroke-dashoffset: 302; animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1); }
+  78% { stroke-dashoffset: 112; }
+  100% { stroke-dashoffset: 112; }
+}
+/* the dawn CATCHES the arriving loan: the horizon band brightens for a
+   breath at the dissolve moment — same 9s heartbeat, cause and effect */
+.dawn-band { animation: dawn-catch 9s ease-in-out infinite; }
+@keyframes dawn-catch {
+  0%, 70% { opacity: 0.85; }
+  78% { opacity: 1; }
+  90%, 100% { opacity: 0.85; }
+}
 
 /* the return pulse — the SAME 9s cycle, second half: once the loan has
    dissolved into the dawn (78%), a spark of what was learned travels home
@@ -601,7 +625,8 @@ html[data-cluster="research"][data-bg-ready] main {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .horizon-comet, .horizon-glint, .horizon-return, .horizon-return-glint { animation: none; opacity: 0; }
+  .horizon-comet, .horizon-glint, .horizon-glint-mid, .horizon-glint-tail, .horizon-return, .horizon-return-glint { animation: none; opacity: 0; }
+  .dawn-band { animation: none; }
   .dawn-bloom, .dawn-core { animation: none; }
 }
 

@@ -33,14 +33,15 @@ export default function LifecycleOverview() {
     <Section hairline id="lifecycle">
       <Reveal>
         <div className="mx-auto max-w-[720px] text-center">
-          <Eyebrow>What KrimOS runs</Eyebrow>
+          <Eyebrow>The agent operating system</Eyebrow>
           <h2 className="mt-4 font-serif text-display-1 text-ink">
-            One agent operating system, from first enquiry to final payoff.
+            <span className="text-grad-carved-green">KrimOS</span> runs the whole loan, from
+            first enquiry to final payoff.
           </h2>
-          <p className="mx-auto mt-6 max-w-[56ch] font-sans text-body-lg text-ink-2">
+          <p className="mx-auto mt-6 max-w-[52ch] font-sans text-body-lg text-ink-2">
             AI co-workers carry every loan as{' '}
-            <span className="text-mint">one connected current of work</span> — each action
-            validated before it fires, risk and compliance checked at every step.
+            <span className="text-mint">one connected current of work</span>, every action
+            validated before it fires.
           </p>
         </div>
       </Reveal>
@@ -119,7 +120,7 @@ export default function LifecycleOverview() {
                 filtered node re-rasters the blur every frame */}
             <g>
               <ellipse className="dawn-bloom" cx="980" cy="204" rx="150" ry="168" fill="url(#lc-dawn-glow)" style={{ mixBlendMode: 'screen' }} />
-              <ellipse cx="966" cy="230" rx="238" ry="9" fill="url(#lc-dawn-glow)" opacity="0.85" style={{ mixBlendMode: 'screen', filter: 'blur(6px)' }} />
+              <ellipse className="dawn-band" cx="966" cy="230" rx="238" ry="9" fill="url(#lc-dawn-glow)" opacity="0.85" style={{ mixBlendMode: 'screen', filter: 'blur(6px)' }} />
               <circle className="dawn-core" cx="980" cy="230" r="30" fill="url(#lc-sun)" style={{ mixBlendMode: 'screen' }} />
             </g>
 
@@ -141,7 +142,7 @@ export default function LifecycleOverview() {
               <path
                 className="horizon-return-glint"
                 d="M980 230 A1246 1246 0 0 1 60 230"
-                stroke="#BFEFFF"
+                stroke="url(#lc-current)"
                 strokeWidth="1.5"
                 strokeLinecap="round"
                 strokeDasharray="36 908"
@@ -158,32 +159,45 @@ export default function LifecycleOverview() {
             <path d="M60 230 A1246 1246 0 0 1 980 230" stroke="url(#lc-current-glow)" strokeWidth="3.5" filter="url(#lc-soft)" fill="none" />
             <path d="M60 230 A1246 1246 0 0 1 980 230" stroke="url(#lc-current)" strokeWidth="1.5" opacity="0.95" fill="none" />
 
-            {/* the comet — halo under, bright head over: ONE loan sets out
-                from the western glimmer, cruises, decelerates and dissolves
-                INTO the dawn, then the horizon rests a beat. The group
-                carries the fade envelope; the paths carry the eased travel. */}
+            {/* the comet — no longer a white object crossing the line, but
+                the LINE ITSELF surging: every layer is stroked with the
+                current's own gradient, so the light is cyan as it sets out
+                and mint as it arrives. Three layers make a true comet
+                profile — long soft tail, mid glow, bright head — with
+                leading edges aligned via per-layer offset keyframes. */}
             <g className="horizon-comet">
               <path
-                className="horizon-glint"
+                className="horizon-glint-tail"
                 d="M60 230 A1246 1246 0 0 1 980 230"
-                stroke="#BFEFFF"
-                strokeWidth="7"
+                stroke="url(#lc-current)"
+                strokeWidth="11"
                 strokeLinecap="round"
-                strokeDasharray="44 900"
-                opacity="0.5"
+                strokeDasharray="96 848"
+                opacity="0.24"
                 fill="none"
-                style={{ mixBlendMode: 'screen', filter: 'blur(4px)' }}
+                style={{ mixBlendMode: 'screen', filter: 'blur(5px)' }}
+              />
+              <path
+                className="horizon-glint-mid"
+                d="M60 230 A1246 1246 0 0 1 980 230"
+                stroke="url(#lc-current)"
+                strokeWidth="6"
+                strokeLinecap="round"
+                strokeDasharray="64 880"
+                opacity="0.55"
+                fill="none"
+                style={{ mixBlendMode: 'screen', filter: 'blur(2.5px)' }}
               />
               <path
                 className="horizon-glint"
                 d="M60 230 A1246 1246 0 0 1 980 230"
-                stroke="#F6F6F4"
-                strokeWidth="2"
+                stroke="url(#lc-current)"
+                strokeWidth="3"
                 strokeLinecap="round"
                 strokeDasharray="44 900"
-                opacity="0.8"
+                opacity="1"
                 fill="none"
-                style={{ mixBlendMode: 'screen', filter: 'blur(0.5px)' }}
+                style={{ mixBlendMode: 'screen', filter: 'blur(0.4px)' }}
               />
             </g>
           </svg>
