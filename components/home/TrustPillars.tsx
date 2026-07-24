@@ -67,10 +67,10 @@ const PILLARS = [
     id: 'controllable',
     label: 'Controllable',
     hint: 'Stop it in one click',
-    // ice — the orb-highlight token (#BFEFFF): command as cold, clear light.
-    // Distinct from cyan's saturation, never grey.
-    rgb: '191,239,255',
-    gradOrb: 'radial-gradient(ellipse at 75% 70%, rgba(191,239,255,0.16) 0%, transparent 60%)',
+    // azure — command as steady blue: blends with the cyan family but
+    // reads unmistakably as its own colour, never grey, never purple.
+    rgb: '96,165,250',
+    gradOrb: 'radial-gradient(ellipse at 75% 70%, rgba(96,165,250,0.18) 0%, transparent 60%)',
     headline: 'The runtime answers to you.',
     body: 'Every co-worker runs inside authority limits you set.',
     points: [

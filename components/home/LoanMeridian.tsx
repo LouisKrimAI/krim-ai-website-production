@@ -218,7 +218,7 @@ export default function LoanMeridian() {
                 transition: reduce ? 'none' : `left 0.55s ${EASE_CSS}, background 0.55s ease`,
               }}
             />
-            <div className="relative grid grid-cols-8 gap-x-3 pt-[2px]">
+            <div className="relative grid grid-cols-8 pt-[2px]">
               {STAGES.map((st, i) => {
                 const on = i === active
                 const pre = i === hovered && i !== active
@@ -266,10 +266,16 @@ export default function LoanMeridian() {
                         shimmers on hover and is lit-from-within when active. Rail meets the tile
                         at its top edge (the keel). The stage number makes the horizon read as a
                         sequenced instrument and ties each tile to its console readout (01 · …). */}
+                    {/* stem — the §2 grammar: the chip hangs from its jewel */}
+                    <span
+                      aria-hidden
+                      className="block h-4 w-px"
+                      style={{ background: `linear-gradient(to bottom, rgba(${st.rgb},${on ? 0.8 : 0.4}), rgba(${st.rgb},0.1))`, transition: 'background 0.3s ease' }}
+                    />
                     {/* the §2 chip, made selectable: one size, no numbers —
                         the two lifecycle figures share one visual language */}
                     <span
-                      className="lc-chip mt-4 flex h-[42px] w-full items-center justify-center px-2 transition-[border-color,box-shadow] duration-300"
+                      className="lc-chip flex h-[42px] w-full items-center justify-center px-2 transition-[border-color,box-shadow] duration-300"
                       style={{
                         ['--rgb' as string]: st.rgb,
                         borderColor: on ? `rgba(${st.rgb},0.55)` : undefined,
