@@ -13,7 +13,7 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import LayerShell from '@/components/krimos/LayerShell'
 import Reveal from '@/components/Reveal'
-import { Section, Eyebrow, GlassCard } from '@/components/ui'
+import { Section, Eyebrow, GlassCard, CTA } from '@/components/ui'
 
 export const metadata: Metadata = {
   title: 'Karta — the co-workers',
@@ -421,12 +421,11 @@ export default function KartaPage() {
                 Configured by you, governed by the runtime, and sharper with every interaction, so
                 the operation improves the more it runs.
               </p>
-              <p className="mt-7 font-sans text-[14px] text-ink-3">
-                What makes a co-worker deployable:{' '}
-                <Link href="/research/safe-agent-harness" className="text-ink-2 transition-colors duration-fast hover:text-mint">
-                  the safe agent harness →
-                </Link>
-              </p>
+              <div className="mt-8 flex justify-center">
+                <CTA href="/research/safe-agent-harness" variant="secondary">
+                  Explore the safe agent harness
+                </CTA>
+              </div>
             </Reveal>
           </div>
         </Section>

@@ -306,16 +306,11 @@ export default function KendraPage() {
             ))}
           </div>
           <Reveal delay={0.15}>
-            <p className="mt-10 text-center font-sans text-[14px] text-ink-3">
-              The thinking under the runtime:{' '}
-              <Link href="/epistemic-ai" className="text-ink-2 transition-colors duration-fast hover:text-mint">
-                Epistemic AI →
-              </Link>{' '}
-              <span aria-hidden className="mx-1">·</span>{' '}
-              <Link href="/research/safe-agent-harness" className="text-ink-2 transition-colors duration-fast hover:text-mint">
-                the safe agent harness →
-              </Link>
-            </p>
+            <div className="mt-12 flex justify-center">
+              <CTA href="/epistemic-ai" variant="secondary">
+                Read about Epistemic AI
+              </CTA>
+            </div>
           </Reveal>
         </Section>
       </LayerShell>

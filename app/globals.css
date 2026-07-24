@@ -590,17 +590,17 @@ html[data-cluster="research"][data-bg-ready] main {
    length, so all three leading edges stay welded into one comet head */
 .horizon-glint-mid { animation: horizon-run-mid 9s infinite; }
 @keyframes horizon-run-mid {
+  0% { stroke-dashoffset: 952; animation-timing-function: cubic-bezier(0.34, 0, 0.28, 1); }
+  64% { stroke-dashoffset: 258; animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1); }
+  78% { stroke-dashoffset: 68; }
+  100% { stroke-dashoffset: 68; }
+}
+.horizon-glint-tail { animation: horizon-run-tail 9s infinite; }
+@keyframes horizon-run-tail {
   0% { stroke-dashoffset: 964; animation-timing-function: cubic-bezier(0.34, 0, 0.28, 1); }
   64% { stroke-dashoffset: 270; animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1); }
   78% { stroke-dashoffset: 80; }
   100% { stroke-dashoffset: 80; }
-}
-.horizon-glint-tail { animation: horizon-run-tail 9s infinite; }
-@keyframes horizon-run-tail {
-  0% { stroke-dashoffset: 996; animation-timing-function: cubic-bezier(0.34, 0, 0.28, 1); }
-  64% { stroke-dashoffset: 302; animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1); }
-  78% { stroke-dashoffset: 112; }
-  100% { stroke-dashoffset: 112; }
 }
 /* the dawn CATCHES the arriving loan: the horizon band brightens for a
    breath at the dissolve moment — same 9s heartbeat, cause and effect */

@@ -107,6 +107,11 @@ export default function LifecycleOverview() {
                 <stop offset="0.4" stopColor="#39D6FF" stopOpacity="0.1" />
                 <stop offset="1" stopColor="#39D6FF" stopOpacity="0" />
               </radialGradient>
+              <linearGradient id="lc-haze" x1="0" y1="0" x2="1040" y2="0" gradientUnits="userSpaceOnUse">
+                <stop offset="0" stopColor="#39D6FF" stopOpacity="0.05" />
+                <stop offset="0.6" stopColor="#12E9CE" stopOpacity="0.07" />
+                <stop offset="1" stopColor="#00FFB2" stopOpacity="0.1" />
+              </linearGradient>
               <filter id="lc-soft">
                 <feGaussianBlur stdDeviation="6" />
               </filter>
@@ -129,6 +134,11 @@ export default function LifecycleOverview() {
                 the loan enters. */}
             <ellipse cx="60" cy="214" rx="78" ry="86" fill="url(#lc-west-glow)" style={{ mixBlendMode: 'screen' }} />
             <ellipse cx="74" cy="230" rx="122" ry="7" fill="url(#lc-west-glow)" opacity="0.7" style={{ mixBlendMode: 'screen', filter: 'blur(6px)' }} />
+
+            {/* light haze filling the basin between the horizon and the
+                return — atmosphere, the cue that makes the scene read as a
+                volume instead of two lines */}
+            <ellipse cx="520" cy="234" rx="420" ry="46" fill="url(#lc-haze)" opacity="0.55" style={{ mixBlendMode: 'screen', filter: 'blur(8px)' }} />
 
             {/* the return — a much fainter curve beneath the horizon: what the
                 system learned flowing home from the dawn to the west, closing
@@ -170,23 +180,23 @@ export default function LifecycleOverview() {
                 className="horizon-glint-tail"
                 d="M60 230 A1246 1246 0 0 1 980 230"
                 stroke="url(#lc-current)"
-                strokeWidth="11"
+                strokeWidth="7"
                 strokeLinecap="round"
-                strokeDasharray="96 848"
-                opacity="0.24"
+                strokeDasharray="64 880"
+                opacity="0.2"
                 fill="none"
-                style={{ mixBlendMode: 'screen', filter: 'blur(5px)' }}
+                style={{ mixBlendMode: 'screen', filter: 'blur(3px)' }}
               />
               <path
                 className="horizon-glint-mid"
                 d="M60 230 A1246 1246 0 0 1 980 230"
                 stroke="url(#lc-current)"
-                strokeWidth="6"
+                strokeWidth="4.5"
                 strokeLinecap="round"
-                strokeDasharray="64 880"
+                strokeDasharray="52 892"
                 opacity="0.55"
                 fill="none"
-                style={{ mixBlendMode: 'screen', filter: 'blur(2.5px)' }}
+                style={{ mixBlendMode: 'screen', filter: 'blur(1.8px)' }}
               />
               <path
                 className="horizon-glint"

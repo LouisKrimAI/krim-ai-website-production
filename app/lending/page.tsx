@@ -341,12 +341,6 @@ export default function LendingPage() {
                   Explore KrimOS
                 </CTA>
               </div>
-              <p className="mt-7 font-sans text-[14px] text-ink-3">
-                The model under the lifecycle:{' '}
-                <Link href="/research/world-lending-model" className="text-ink-2 transition-colors duration-fast hover:text-mint">
-                  Kovida, the world lending model →
-                </Link>
-              </p>
             </div>
           </Reveal>
         </Section>

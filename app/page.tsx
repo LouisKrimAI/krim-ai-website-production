@@ -276,13 +276,6 @@ export default function HomePage() {
                 <span className="block">40+ connectors into your core, LOS and LMS.</span>
                 <span className="block">Nothing to tear out.</span>
               </p>
-              {/* the systems-buyer's door — how it actually deploys */}
-              <p className="mt-5 font-sans text-[14px] text-ink-3">
-                How it runs inside your walls:{' '}
-                <Link href="/architecture" className="text-ink-2 transition-colors duration-fast hover:text-mint">
-                  the architecture →
-                </Link>
-              </p>
             </Reveal>
           </div>
           <Reveal delay={0.1}>
@@ -307,7 +300,7 @@ export default function HomePage() {
             <div className="mx-auto max-w-[760px] text-center">
               <Eyebrow>How you start</Eyebrow>
               <h2 className="mt-4 font-serif text-display-1 text-ink">
-                Proof on your data before you commit.
+                From first call to live in a quarter.
               </h2>
             </div>
           </Reveal>
@@ -352,13 +345,6 @@ export default function HomePage() {
               <div className="mt-10 flex justify-center">
                 <CTA href={DEMO_HREF}>Book a demo</CTA>
               </div>
-              {/* the one door for readers who validate by reading, not booking */}
-              <p className="mt-8 font-sans text-[14px] text-ink-3">
-                Prefer to read first?{' '}
-                <Link href="/epistemic-ai" className="text-ink-2 transition-colors duration-fast hover:text-mint">
-                  The thinking behind KrimOS →
-                </Link>
-              </p>
             </div>
           </Reveal>
         </Section>
