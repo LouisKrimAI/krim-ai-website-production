@@ -350,7 +350,7 @@ export default function LifecycleOverview() {
           {OUTCOMES.map(({ impact, hi, tag }) => {
             const [pre, post] = impact.split(hi)
             return (
-              <GlassCard key={impact} className="flex h-full flex-col justify-center px-7 py-6">
+              <GlassCard key={impact} hover className="flex h-full flex-col justify-center px-7 py-6">
                 <h3 className="font-serif text-display-2 text-ink">
                   {pre}
                   <span className="text-mint">{hi}</span>

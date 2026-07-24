@@ -132,14 +132,14 @@ export default function HomePage() {
               <p className="mt-3 font-sans text-body-lg italic text-ink-2">AI in banking: the pilot that never lands.</p>
             </div>
           </Reveal>
-          <div className="mt-14 grid gap-x-10 gap-y-12 md:grid-cols-3">
+          <div className="mt-14 grid gap-5 md:grid-cols-3">
             {PROBLEMS.map((p, i) => (
               <Reveal key={p.heading} delay={i * 0.1}>
-                <div>
-                  <span aria-hidden className="block h-[3px] w-10 rounded-full bg-amber/70" />
+                <GlassCard hover className="flex h-full flex-col p-8">
+                  <span aria-hidden className="block h-[3px] w-12 rounded-full bg-amber/80" />
                   <h3 className="mt-6 whitespace-pre-line font-serif text-display-2 text-ink">{p.heading}</h3>
-                  <p className="mt-4 max-w-[34ch] font-sans text-body-lg text-ink-2">{p.body}</p>
-                </div>
+                  <p className="mt-4 flex-1 font-sans text-body-lg text-ink-2">{p.body}</p>
+                </GlassCard>
               </Reveal>
             ))}
           </div>
@@ -178,12 +178,12 @@ export default function HomePage() {
                 {/* open-air pull-quote (mint bar, no card) — §3 next door already
                     plays the inline-GlassCard move; consecutive viewports shouldn't
                     repeat the same device */}
-                <div className="mt-9 max-w-[34ch]">
+                <GlassCard className="mt-9 max-w-[38ch] p-7">
                   <span aria-hidden className="block h-[3px] w-16 rounded-full bg-gradient-to-r from-cyan to-mint" />
                   <p className="mt-5 font-serif text-display-2 text-ink">
                     Fragmented flows become one intelligence that compounds.
                   </p>
-                </div>
+                </GlassCard>
                 <div className="mt-8">
                   <CTA href="/research/world-lending-model" variant="secondary">
                     Explore Kovida
@@ -300,14 +300,14 @@ export default function HomePage() {
             <div className="mx-auto max-w-[760px] text-center">
               <Eyebrow>How you start</Eyebrow>
               <h2 className="mt-4 font-serif text-display-1 text-ink">
-                From first call to live in a quarter.
+                Next quarter, this is how you operate.
               </h2>
             </div>
           </Reveal>
           <Reveal delay={0.1}>
             <div className="mx-auto mt-12 grid max-w-[960px] gap-4 md:grid-cols-3 lg:gap-5">
               {START_STEPS.map((st) => (
-                <GlassCard key={st.n} className="h-full p-7">
+                <GlassCard key={st.n} hover className="h-full p-7">
                   <div className="flex items-baseline justify-between">
                     <span
                       aria-hidden
