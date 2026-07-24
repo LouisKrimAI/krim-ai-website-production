@@ -277,21 +277,44 @@ h1, h2 { text-wrap: balance; }
   transition:
     border-color var(--dur) var(--ease-standard),
     box-shadow var(--dur) var(--ease-standard),
-    background-color var(--dur) var(--ease-standard),
     transform var(--dur) var(--ease-standard);
 }
+/* NEVER touch background on hover: .glass paints its dark base through the
+   background shorthand, so a background-color override swaps the 0.80 base
+   for near-transparency — the "card goes see-through on hover" bug. The
+   hover story is light: mint rim, inner bloom, lift, and a sheen sweep. */
 .lume:hover {
   border-color: rgba(0, 255, 178, 0.4);
-  background-color: rgba(0, 255, 178, 0.02);
   box-shadow:
     0 1px 1px 0 rgba(255, 255, 255, 0.2) inset,
+    inset 0 0 64px -28px rgba(0, 255, 178, 0.14),
     0 44px 84px -20px rgba(2, 4, 10, 0.78),
     0 0 0 1px rgba(0, 255, 178, 0.28),
     0 14px 64px -14px rgba(0, 255, 178, 0.32);
   transform: translateY(-5px);
 }
+/* the electric sweep — a band of light crosses the pane once per hover */
+.lume.glass::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(105deg, transparent 42%, rgba(255, 255, 255, 0.07) 50%, rgba(0, 255, 178, 0.05) 54%, transparent 62%);
+  background-size: 240% 100%;
+  background-position: 130% 0;
+  pointer-events: none;
+}
+.lume.glass:hover::after {
+  background-position: -30% 0;
+  transition: background-position 0.7s var(--ease-out-soft);
+}
+/* the rim thread brightens under the light */
+.lume.glass:hover::before {
+  background: linear-gradient(90deg, transparent 3%, rgba(255, 255, 255, 0.75) 50%, transparent 97%);
+}
 @media (prefers-reduced-motion: reduce) {
   .lume, .lume:hover { transform: none; }
+  .lume.glass::after, .lume.glass:hover::after { transition: none; background-position: 130% 0; }
 }
 
 /* ---------- orb drift ----------

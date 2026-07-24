@@ -478,6 +478,13 @@ function WovenRingCanvas() {
         skipBeat = !skipBeat
         if (skipBeat) { raf = requestAnimationFrame(frame); return }
       }
+      // Post-settle the backdrop steps back ~15% (0.6 → 0.51 over 2s) so the
+      // glass sections own the light. Arrival plays at full brightness;
+      // non-fresh visits start already settled and get 0.51 from frame one.
+      if (ref.current) {
+        const fade = t <= T_END ? 0 : Math.min(1, (t - T_END) / 2)
+        ref.current.style.opacity = String(0.6 - 0.09 * fade)
+      }
       render(t)
       raf = requestAnimationFrame(frame)
     }
@@ -488,7 +495,7 @@ function WovenRingCanvas() {
     document.addEventListener('visibilitychange', onVisibility)
 
     if (reduceMotion) {
-      ;(function still() { if (!sized && !resize()) { raf = requestAnimationFrame(still); return } render(40.0) })()
+      ;(function still() { if (!sized && !resize()) { raf = requestAnimationFrame(still); return } render(40.0); if (ref.current) ref.current.style.opacity = '0.51' })()
     } else {
       raf = requestAnimationFrame(frame)
     }
