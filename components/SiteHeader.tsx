@@ -18,67 +18,9 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
 import KrimLogoAnimated from './KrimLogoAnimated'
+import { NAV_COLUMNS as COLUMNS, NAV_TOP as NAV } from './nav'
 
 const OUT_SOFT = [0.16, 1, 0.3, 1] as const
-
-// The whole site, four columns. Roles only where a name needs translating.
-const COLUMNS: ReadonlyArray<{
-  title: string
-  href: string
-  rows: ReadonlyArray<{ label: string; role?: string; href: string }>
-}> = [
-  {
-    title: 'KrimOS',
-    href: '/krimos',
-    rows: [
-      { label: 'Kendra', role: 'The runtime', href: '/krimos/kendra' },
-      { label: 'Kriya', role: 'The actions', href: '/krimos/kriya' },
-      { label: 'Karta', role: 'The AI co-workers', href: '/krimos/karta' },
-      { label: 'Kupa & Kula', role: 'Command center, for your teams', href: '/krimos/kupa' },
-      { label: 'Krimkar & Kira', role: 'The customer advisor', href: '/krimkar' },
-      { label: 'Architecture', href: '/architecture' },
-    ],
-  },
-  {
-    title: 'Domains',
-    href: '/lending',
-    rows: [
-      { label: 'Lending', href: '/lending' },
-      { label: 'Large Enterprise', href: '/enterprise' },
-      { label: 'Government', href: '/government' },
-      { label: 'MSME', href: '/msme' },
-    ],
-  },
-  {
-    title: 'Research',
-    href: '/research',
-    rows: [
-      { label: 'Epistemic AI', href: '/epistemic-ai' },
-      { label: 'Kovida', role: 'The world lending model', href: '/research/world-lending-model' },
-      { label: 'Safe Agent Harness', href: '/research/safe-agent-harness' },
-    ],
-  },
-  {
-    title: 'Company',
-    href: '/company',
-    rows: [
-      { label: 'Insights', href: '/insights' },
-      { label: 'Trust', href: '/trust' },
-      { label: 'About', href: '/company' },
-      { label: 'Contact', href: '/contact' },
-    ],
-  },
-]
-
-// Top-bar items — each is a plain link; all of them open the one sheet.
-const NAV: ReadonlyArray<{ label: string; href: string; match: string[] }> = [
-  { label: 'KrimOS', href: '/krimos', match: ['/krimos', '/architecture'] },
-  { label: 'Domains', href: '/lending', match: ['/lending', '/government', '/enterprise', '/msme'] },
-  { label: 'Research', href: '/research', match: ['/research', '/epistemic-ai'] },
-  { label: 'Insights', href: '/insights', match: ['/insights'] },
-  { label: 'Trust', href: '/trust', match: ['/trust'] },
-  { label: 'Company', href: '/company', match: ['/company', '/contact'] },
-]
 
 const DEMO_HREF = '/contact'
 
@@ -269,12 +211,16 @@ export default function SiteHeader({ scrollReveal = false }: { scrollReveal?: bo
             />
 
             <div className="relative mx-auto grid max-w-site grid-cols-4 gap-10 px-6 py-9 md:px-10">
-              {COLUMNS.map((col) => (
-                <div key={col.title}>
+              {COLUMNS.map((col) => {
+                // the hovered top-bar head lights its own column; the rest soften
+                const lit = hovered === col.title
+                const dim = hovered != null && !lit
+                return (
+                <div key={col.title} className={`transition-opacity duration-300 ${dim ? 'opacity-40' : 'opacity-100'}`}>
                   <Link
                     href={col.href}
                     onClick={closeNow}
-                    className="font-mono text-[10px] uppercase tracking-[0.24em] text-ink-3 transition-colors duration-fast hover:text-mint"
+                    className={`font-mono text-[10px] uppercase tracking-[0.24em] transition-colors duration-fast ${lit ? 'text-mint' : 'text-ink-3 hover:text-mint'}`}
                   >
                     {col.title}
                   </Link>
@@ -294,7 +240,8 @@ export default function SiteHeader({ scrollReveal = false }: { scrollReveal?: bo
                     ))}
                   </div>
                 </div>
-              ))}
+                )
+              })}
             </div>
           </motion.div>
         )}

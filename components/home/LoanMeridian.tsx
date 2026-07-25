@@ -94,13 +94,15 @@ export const STAGES: Stage[] = [
     ] },
 ]
 
-// The oversight layer — the operational areas KrimOS covers, shown equally.
+// The oversight layer — human control first (HITL + Kupa), then the
+// cross-cutting functions it covers. Every note traces to docs/krim-content.md.
 const OVERSIGHT = [
+  { name: 'Human-in-the-loop', note: 'low-confidence and high-risk decisions route to a person' },
+  { name: 'Kupa command', note: 'see, set, step in, prove' },
   { name: 'Risk & portfolio', note: 'early-warning, strategy testing' },
   { name: 'Compliance & audit', note: 'evidence by construction' },
-  { name: 'Fraud & crime', note: 'anomalies surfaced' },
-  { name: 'Kupa command', note: 'see, set, step in, prove' },
-  { name: 'Reporting & MI', note: 'one source of truth' },
+  { name: 'Fraud & financial crime', note: 'anomalies surfaced' },
+  { name: 'MIS & reporting', note: 'regulatory submissions on demand' },
 ] as const
 
 // A small node sitting on the current — repeated at each band's eyebrow.
@@ -416,8 +418,8 @@ export default function LoanMeridian() {
 
               {/* thesis — single column, headline runs wide and confident */}
               <p className="font-mono text-[11px] uppercase tracking-[0.22em]" style={{ color: `rgba(${GOLD},0.92)` }}>The oversight layer</p>
-              <h3 className="mt-3 max-w-[20ch] font-serif text-display-3 text-ink">
-                Your team stays in control.
+              <h3 className="mt-3 max-w-[26ch] font-serif text-display-3 text-ink">
+                The AI runs the work. Your people run the bank.
               </h3>
               <p className="mt-5 max-w-[60ch] font-sans text-body-lg leading-relaxed text-ink-2">
                 Everything above runs on the record, monitored and evidenced. KrimOS proves what happened.{' '}
@@ -425,7 +427,7 @@ export default function LoanMeridian() {
               </p>
 
               {/* divider → the coverage areas KrimOS runs, shown equally */}
-              <div className="mt-9 grid grid-cols-2 gap-x-10 gap-y-8 border-t pt-8 sm:grid-cols-3 lg:grid-cols-5" style={{ borderColor: `rgba(${GOLD},0.16)` }}>
+              <div className="mt-9 grid grid-cols-2 gap-x-10 gap-y-8 border-t pt-8 sm:grid-cols-3" style={{ borderColor: `rgba(${GOLD},0.16)` }}>
                 {OVERSIGHT.map((b, i) => (
                   <div key={b.name} style={{ animation: reduce ? undefined : `cellIn 0.4s cubic-bezier(0.16,1,0.3,1) ${i * 50}ms both` }}>
                     <span aria-hidden className="block h-[3px] w-8 rounded-full" style={{ background: `rgba(${GOLD},0.6)` }} />

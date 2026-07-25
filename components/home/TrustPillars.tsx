@@ -93,8 +93,8 @@ export default function TrustPillars() {
       <Reveal>
         <div className="mx-auto max-w-[640px] text-center">
           <Eyebrow>The answer</Eyebrow>
-          <h2 className="mt-4 font-serif text-display-1 text-ink">
-            The AI that runs lending.
+          <h2 className="mx-auto mt-4 max-w-[20ch] font-serif text-display-1 text-ink">
+            It runs lending. And proves every action.
           </h2>
           <p className="mx-auto mt-6 max-w-[52ch] font-sans text-body-lg text-ink-2">
             No black boxes. Pause, override or roll back from one screen.

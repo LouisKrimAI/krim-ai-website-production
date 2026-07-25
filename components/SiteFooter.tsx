@@ -7,51 +7,9 @@
 
 import Link from 'next/link'
 import KrimLogoAnimated from './KrimLogoAnimated'
+import { NAV_COLUMNS } from './nav'
 
 const DEMO_HREF = '/contact'
-
-const NAV: Array<[string, Array<[string, string]>]> = [
-  [
-    'KrimOS',
-    [
-      ['Overview', '/krimos'],
-      ['Kendra', '/krimos/kendra'],
-      ['Kriya', '/krimos/kriya'],
-      ['Karta', '/krimos/karta'],
-      ['Kupa & Kula', '/krimos/kupa'],
-      ['Krimkar & Kira', '/krimkar'],
-    ],
-  ],
-  [
-    'Domains',
-    [
-      ['Lending', '/lending'],
-      ['Government', '/government'],
-      ['Large Enterprise', '/enterprise'],
-      ['MSME', '/msme'],
-    ],
-  ],
-  [
-    'Resources',
-    [
-      ['Epistemic AI', '/epistemic-ai'],
-      ['Kovida', '/research/world-lending-model'],
-      ['Safe Agent Harness', '/research/safe-agent-harness'],
-      ['Research', '/research'],
-      ['Architecture', '/architecture'],
-      ['Trust', '/trust'],
-    ],
-  ],
-  [
-    'Company',
-    [
-      ['About', '/company'],
-      ['Services', '/services'],
-      ['Insights', '/insights'],
-      ['Contact', '/contact'],
-    ],
-  ],
-]
 
 export default function SiteFooter() {
   return (
@@ -78,17 +36,22 @@ export default function SiteFooter() {
 
         {/* compact inline nav */}
         <nav className="mt-12 grid grid-cols-2 gap-x-8 gap-y-8 md:grid-cols-4" aria-label="Footer">
-          {NAV.map(([title, links]) => (
-            <div key={title}>
-              <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-ink-3">{title}</p>
+          {NAV_COLUMNS.map((col) => (
+            <div key={col.title}>
+              <Link
+                href={col.href}
+                className="font-mono text-[11px] uppercase tracking-[0.18em] text-ink-3 transition-colors hover:text-mint"
+              >
+                {col.title}
+              </Link>
               <ul className="mt-3.5 flex flex-col gap-y-2.5">
-                {links.map(([label, href]) => (
-                  <li key={href}>
+                {col.rows.map((r) => (
+                  <li key={r.href}>
                     <Link
-                      href={href}
+                      href={r.href}
                       className="font-sans text-[14.5px] text-ink-2 transition-colors hover:text-ink"
                     >
-                      {label}
+                      {r.label}
                     </Link>
                   </li>
                 ))}

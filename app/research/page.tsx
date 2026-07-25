@@ -131,11 +131,11 @@ export default function ResearchPage() {
             <div className="glass mx-auto max-w-[720px] p-10 text-center md:p-14">
               <span aria-hidden className="mx-auto block h-[2px] w-12 rounded-full bg-gradient-to-r from-mint to-cyan" />
               <h2 className="mt-8 font-serif text-display-3 leading-tight text-ink">
-                See the research run, end to end.
+                Research that ships.
               </h2>
               <p className="mx-auto mt-5 max-w-[46ch] font-sans text-body text-ink-2">
-                The foundations are not a roadmap slide. They are a working runtime
-                your teams can watch validate every action, live.
+                Not a roadmap slide. A working runtime your teams can watch
+                validate every action, the moment it happens.
               </p>
               <div className="mt-9 flex flex-wrap items-center justify-center gap-5">
                 <CTA href={DEMO_HREF}>Book a demo</CTA>
