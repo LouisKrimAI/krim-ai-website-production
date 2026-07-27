@@ -12,7 +12,6 @@
  */
 
 import type { Metadata } from 'next'
-import Link from 'next/link'
 import LayerShell from '@/components/krimos/LayerShell'
 import DashboardExplorer from '@/components/krimos/DashboardExplorer'
 import Reveal from '@/components/Reveal'
@@ -200,15 +199,6 @@ export default function KupaKulaPage() {
               </Reveal>
             ))}
           </div>
-          <Reveal delay={0.14}>
-            <p className="mt-9 max-w-[62ch] font-sans text-body text-ink-3">
-              Kula is the way in. The thinking and the rules live behind it, in{' '}
-              <Link href="/krimos/kendra" className="text-ink-2 underline-offset-4 transition-colors hover:text-mint hover:underline">
-                Kendra
-              </Link>
-              .
-            </p>
-          </Reveal>
         </Section>
 
         {/* ---- 4 · The role-twin — one twin per seat, one source of truth ---- */}
@@ -218,18 +208,16 @@ export default function KupaKulaPage() {
               <div>
                 <Eyebrow>A twin for every role</Eyebrow>
                 <h2 className="mt-4 max-w-[20ch] font-serif text-display-1 text-ink">
-                  Every role gets its own view.
+                  End the argument over whose numbers are right.
                 </h2>
                 <p className="mt-7 max-w-[52ch] font-sans text-body-lg text-ink-2">
-                  Each user works with a digital twin tuned to their role: the questions they ask,
-                  the work they own, the rules they answer to. Underneath sits{' '}
-                  <span className="text-ink">one source of truth</span> across the institution, the
-                  same numbers shaped to each seat.
+                  The Chief Risk Officer, the collections floor and the analyst each work through a
+                  digital twin tuned to their role and their language — over{' '}
+                  <span className="text-ink">one shared source of truth</span>.
                 </p>
                 <p className="mt-5 max-w-[52ch] font-sans text-body text-ink-2">
-                  From the Chief Risk Officer to the contact-centre floor, every team reads the same
-                  operation through its own twin, and supervises it in Kupa, where the decisions that
-                  matter come back for sign-off.
+                  So no one loses a day reconciling spreadsheets, and the number in the board pack is
+                  the number on the floor. The decisions that matter still come back to a person in Kupa.
                 </p>
               </div>
             </Reveal>
