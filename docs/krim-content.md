@@ -1,6 +1,6 @@
 # Krim — content source of truth
 
-Every fact, claim and on-brand line for **krim.ai**, reconciled from two sources: the **Krim sales deck** (lending positioning + marketing copy) and the **Krim Product Memo** (the deeper, more current product detail). Where they differ, the memo wins and the change is flagged. The site and the deck draw from this one file so they never drift. **No Saarthi.ai references anywhere.**
+Every fact, claim and on-brand line for **krim.ai**, reconciled from two sources: the **Krim sales deck** (lending positioning + marketing copy) and the **Krim Product Memo** (the deeper, more current product detail). Where they differ, the memo wins and the change is flagged. The site and the deck draw from this one file so they never drift. **The Saarthi.ai founder credential on the Company page is owner-approved (2026-07-27) — do not flag it; it is Vishwa's real provenance.**
 
 > `[PROVIDE]` = you supply it. `[CONFIRM]` = verify before publishing. `[DECISION]` = a choice the memo forced.
 
@@ -284,8 +284,8 @@ Body: Customer data, model weights, orchestration and telemetry stay inside the 
 - **Managed SaaS** — *fintechs · pilots.* Fully managed in the customer's preferred sovereign cloud region.
 
 **Posture:** end-to-end encryption (rest + transit) · granular RBAC with full audit trail · PII isolation by tenancy · customer-held keys · immutable, cryptographically sealed trail.
-**Compliance footprint:** SOC 2 Type II · ISO 27001 · CERT-In · DPDP · GDPR · EU AI Act readiness — alongside the sectoral frameworks encoded in Krim-Fabric: **US** (FDCPA, Reg F, TCPA, FCRA, ECOA/Reg B, TILA/Reg Z, SCRA, GLBA, UDAAP) · **UK** (FCA Consumer Duty, CONC, Consumer Credit Act 1974, FCA Principles, DISP, UK GDPR, MLR 2017) · **India** (RBI Digital Lending Guidelines, Fair Practices Code, KYC Master Direction, SARFAESI, DPDP Act 2023, TRAI TCCCPR, CIC reporting, RBI recovery-agent norms).
-`[CONFIRM]` Present certifications honestly as **held vs in-progress** — split the list before publishing.
+**Compliance footprint** (frameworks the architecture is *designed around*; owner-approved 2026-07-27 to also list PCI DSS · RBI Cyber Security Framework · IT Act 2000 · NIST AI RMF): SOC 2 Type II · ISO 27001 · CERT-In · DPDP · GDPR · EU AI Act readiness — alongside the sectoral frameworks encoded in Krim-Fabric: **US** (FDCPA, Reg F, TCPA, FCRA, ECOA/Reg B, TILA/Reg Z, SCRA, GLBA, UDAAP) · **UK** (FCA Consumer Duty, CONC, Consumer Credit Act 1974, FCA Principles, DISP, UK GDPR, MLR 2017) · **India** (RBI Digital Lending Guidelines, Fair Practices Code, KYC Master Direction, SARFAESI, DPDP Act 2023, TRAI TCCCPR, CIC reporting, RBI recovery-agent norms).
+**Present as *designed around*, never as certifications held** — the Trust page uses a neutral (non-mint) marker so nothing reads as achieved. Owner confirmed the framing (2026-07-27); no held/in-progress split required while framed as 'designed around'.
 
 ---
 
