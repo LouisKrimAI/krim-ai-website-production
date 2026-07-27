@@ -147,7 +147,7 @@ const CAPABILITIES: [string, string, string][] = [
   ['In the customer’s language', 'They meet people in their own language.', 'language'],
   ['Within the rules', 'Every action clears the validation gate before it fires.', 'rules'],
   ['Hand off to a person', 'A warm transfer with full context, the moment it’s needed.', 'person'],
-  ['At any scale', 'Millions of interactions a day, around the clock, without a queue.', 'scale'],
+  ['At any scale', 'Contact-centre scale, around the clock, without a queue.', 'scale'],
 ]
 
 // the outcomes — qualitative, not promised numbers — [title, body, highlighted word]

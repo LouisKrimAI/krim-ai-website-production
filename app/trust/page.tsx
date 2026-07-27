@@ -283,13 +283,13 @@ export default function TrustPage() {
                 <div className="glass lume flex h-full items-center gap-4 rounded-lg p-5">
                   <span
                     aria-hidden
-                    className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-mint/25 bg-mint/[0.05]"
+                    className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-white/12 bg-white/[0.03]"
                   >
-                    <span className="h-2 w-2 rounded-full bg-mint/70" />
+                    <span className="h-1.5 w-1.5 rounded-full bg-ink-3" />
                   </span>
                   <div>
                     <p className="font-serif text-[1.15rem] leading-tight text-ink">{s.label}</p>
-                    <p className="mt-0.5 font-mono text-[9.5px] uppercase tracking-[0.18em] text-ink-3">
+                    <p className="mt-0.5 font-mono text-[11px] uppercase tracking-[0.16em] text-ink-3">
                       {s.kind}
                     </p>
                   </div>
