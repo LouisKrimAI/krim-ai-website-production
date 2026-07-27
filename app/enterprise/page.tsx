@@ -159,7 +159,7 @@ export default function EnterprisePage() {
         <Section hairline>
           <Reveal>
             <Eyebrow>Use cases</Eyebrow>
-            <h2 className="mt-4 font-serif text-display-1 text-ink">Across customer and back office.</h2>
+            <h2 className="mt-4 max-w-[22ch] font-serif text-display-1 text-ink">The volume work that can&rsquo;t afford a wrong move.</h2>
             <p className="mt-6 max-w-[56ch] font-sans text-body-lg text-ink-2">
               The work an enterprise carries at volume: each action validated before it runs, and
               recorded after.
@@ -183,13 +183,12 @@ export default function EnterprisePage() {
             <Reveal>
               <div>
                 <Eyebrow tone="dim">What changes</Eyebrow>
-                <h2 className="mt-4 max-w-[18ch] font-serif text-display-1 text-ink">
-                  Scale the operation, not the headcount.
+                <h2 className="mt-4 max-w-[20ch] font-serif text-display-1 text-ink">
+                  The operation grows; the headcount holds.
                 </h2>
                 <p className="mt-7 max-w-[52ch] font-sans text-body-lg text-ink-2">
                   One way of working across regions and systems: lower cost to serve, compliance
-                  consistent by construction, and an operation that grows without the team growing in
-                  step.
+                  kept consistent, and an operation that grows without the team growing in step.
                 </p>
                 <p className="mt-6 font-sans text-body text-ink-2">
                   Sovereign by default: on-prem, hybrid or managed.{' '}
@@ -222,6 +221,9 @@ export default function EnterprisePage() {
                 <span className="text-mint"> Every region, every channel, every action held to the
                 same provable bar.</span>
               </p>
+              <div className="mt-9 flex justify-center">
+                <CTA href={DEMO}>Book a demo</CTA>
+              </div>
             </div>
           </Reveal>
         </Section>

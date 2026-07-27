@@ -5,8 +5,8 @@
  *
  * Framing is CONFIDENCE, not compliance: medium-sized firms in any industry
  * aren't heavily regulated, but still can't afford AI that gets it wrong in
- * front of customers or with money. So they get the regulated giants' rigor —
- * managed and affordable.
+ * front of customers or with money. So they get the rigor regulated lending is
+ * built to — managed and affordable.
  *
  * Facts: docs/krim-content.md (search MSME / mid-market / managed SaaS).
  */
@@ -22,12 +22,12 @@ const DEMO_HREF = '/contact'
 export const metadata: Metadata = {
   title: 'MSME',
   description:
-    'Regulation-grade AI workers, now for everyday operations. Medium-sized enterprises automate customer service and back-office work with automation they can actually trust: fully managed, affordable and fast to deploy.',
+    'Regulation-grade AI co-workers, now for everyday operations. Medium-sized enterprises automate customer service and back-office work with automation they can actually trust: fully managed, affordable and fast to deploy.',
   alternates: { canonical: 'https://www.krim.ai/msme' },
   openGraph: {
     title: 'MSME — Krim',
     description:
-      'Regulation-grade AI workers, now for everyday operations. Medium-sized enterprises automate customer service and back-office work with automation they can actually trust: fully managed, affordable and fast to deploy.',
+      'Regulation-grade AI co-workers, now for everyday operations. Medium-sized enterprises automate customer service and back-office work with automation they can actually trust: fully managed, affordable and fast to deploy.',
     url: 'https://www.krim.ai/msme',
   },
 }
@@ -44,11 +44,11 @@ const breadcrumbLd = {
 // ---------------------------------------------------------------- content
 
 // section 4 — why Krim fits. The first card is the heart: every action checked
-// before it acts — the rigor the regulated giants rely on.
+// before it acts — the rigor regulated lending is held to.
 const REASONS = [
   {
     name: 'Automation you can trust',
-    body: 'Every action is checked before it acts and kept on the record, the rigor banks and governments rely on, working for you.',
+    body: 'Every action is checked before it acts and kept on the record, the same rigor regulated lending is built to, working for you.',
   },
   {
     name: 'Managed, affordable, fast',
@@ -87,12 +87,12 @@ const IMPACT = [
     body: 'Automate customer and back-office work without hiring for every new channel, product or season.',
   },
   {
-    name: 'Reliable by construction',
-    body: 'Automation you can put in front of customers and against money, because nothing acts until it’s been checked.',
+    name: 'Safe in front of customers and money',
+    body: 'Every action leaves a record you can stand behind, so you can automate the work that touches customers and cash without losing sleep.',
   },
   {
     name: 'Enterprise-grade, mid-market reach',
-    body: 'The capability the regulated giants run, sized and priced for a growing business.',
+    body: 'The capability built for regulated lending, sized and priced for a growing business.',
   },
 ]
 
@@ -116,7 +116,7 @@ export default function MsmePage() {
             </Reveal>
             <Reveal delay={0.12}>
               <p className="mx-auto mt-7 max-w-[58ch] font-sans text-body-lg text-ink-2">
-                The same validated, auditable, reliable AI workers the regulated giants run,{' '}
+                The same validated, auditable AI co-workers built for regulated lending,{' '}
                 <span className="text-ink">sized for a growing business</span>, and ready for
                 customer service and back-office work you can{' '}
                 <span className="text-mint">actually trust</span>.
@@ -142,6 +142,9 @@ export default function MsmePage() {
                 <h2 className="mt-4 max-w-[20ch] font-serif text-display-1 text-ink">
                   Growth outruns the team.
                 </h2>
+                <p className="mt-6 max-w-[30ch] font-sans text-body-lg text-ink-2">
+                  More customers, more channels, more paperwork — and the same headcount.
+                </p>
               </div>
             </Reveal>
             <Reveal delay={0.12}>
@@ -163,12 +166,11 @@ export default function MsmePage() {
           <Reveal>
             <Eyebrow tone="mint">Why Krim</Eyebrow>
             <h2 className="mt-4 max-w-[24ch] font-serif text-display-1 text-ink">
-              The rigor the giants rely on, made accessible.
+              Bank-grade rigor, made affordable.
             </h2>
             <p className="mt-7 max-w-[58ch] font-sans text-body-lg text-ink-2">
-              Every action checked before it acts, and on the record after. Automation you can{' '}
-              <span className="text-ink">actually trust</span>, deployed for you and getting sharper
-              the longer it runs.
+              The validation that keeps regulated lenders safe, <span className="text-ink">deployed and run
+              for you</span> — and getting sharper the longer it runs.
             </p>
           </Reveal>
 
@@ -196,7 +198,7 @@ export default function MsmePage() {
               The work that eats your week.
             </h2>
             <p className="mt-7 max-w-[58ch] font-sans text-body-lg text-ink-2">
-              The same co-workers that run regulated operations, pointed at the everyday jobs that
+              The same co-workers built for regulated operations, pointed at the everyday jobs that
               never quite get done.
             </p>
           </Reveal>
@@ -279,9 +281,12 @@ export default function MsmePage() {
                 See what it can take off your plate.
               </h2>
               <p className="mx-auto mt-5 max-w-[50ch] font-sans text-body text-ink-2">
-                Tell us the work that eats your week, and we&rsquo;ll show you the same automation the
-                giants trust, sized for you.
+                Tell us the work that eats your week, and we&rsquo;ll show you the same automation regulated
+                lending is built on, sized for you.
               </p>
+              <div className="mt-8 flex justify-center">
+                <CTA href={DEMO_HREF}>Book a demo</CTA>
+              </div>
             </GlassCard>
           </Reveal>
         </Section>

@@ -100,7 +100,7 @@ const USE_CASES = [
 // what the capability makes possible — framed as fit, never as claimed results
 const IMPACT = [
   ['Faster response', 'Routine work runs continuously, so citizens wait less.'],
-  ['Cleared backlogs', 'Casework moves at machine pace, not queue pace.'],
+  ['Cleared backlogs', 'Casework clears at machine pace, around the clock.'],
   ['Lawful by construction', 'No action proceeds without a basis behind it.'],
   ['Every action auditable', 'A complete trail stands ready for inspection.'],
 ]
@@ -273,8 +273,8 @@ export default function GovernmentPage() {
                 </h2>
               </div>
               <p className="flex-1 font-sans text-body text-ink-2">
-                The default for the public sector is the full stack inside your data centre.
-                Nothing leaves the perimeter. Sovereignty is a commitment we hold to by default.
+                The public sector runs the full stack inside its own data centre. Nothing leaves the
+                perimeter — sovereignty holds whatever the deployment.
               </p>
             </GlassCard>
           </Reveal>
@@ -292,6 +292,9 @@ export default function GovernmentPage() {
                 <span className="text-mint">every action on a record the law can read</span> —
                 inside walls that never let it leave.
               </p>
+              <div className="mt-9 flex justify-center">
+                <CTA href={CTA_HREF}>Start a conversation</CTA>
+              </div>
             </div>
           </Reveal>
         </Section>

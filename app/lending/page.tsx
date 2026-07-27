@@ -29,12 +29,12 @@ const DEMO = '/contact'
 export const metadata: Metadata = {
   title: 'Lending',
   description:
-    'KrimOS runs the whole loan lifecycle: every customer conversation and every back-office task on one system that validates each action before it executes, and learns the operation as it runs. RBI, FCA and US lending law encoded in the runtime.',
+    'KrimOS runs the whole loan lifecycle: every customer conversation and every back-office task on one system that validates each action before it executes, and learns the operation as it runs. Lending law encoded in the runtime, across every market you lend in.',
   alternates: { canonical: 'https://www.krim.ai/lending' },
   openGraph: {
     title: 'Lending — Krim',
     description:
-      'KrimOS runs the whole loan lifecycle: every customer conversation and every back-office task on one system that validates each action before it executes, and learns the operation as it runs. RBI, FCA and US lending law encoded in the runtime.',
+      'KrimOS runs the whole loan lifecycle: every customer conversation and every back-office task on one system that validates each action before it executes, and learns the operation as it runs. Lending law encoded in the runtime, across every market you lend in.',
     url: 'https://www.krim.ai/lending',
   },
 }
@@ -101,15 +101,15 @@ const IMPACT = [
 // Three modes, one architecture — krim-content.md · sovereignty & deployment.
 const DEPLOYMENTS = [
   {
-    name: 'Sovereign on-prem',
+    name: 'Sovereign on-prem', aud: 'Default · Tier-1 banks',
     body: 'The full stack inside your own data centre. Model, data and every action stay behind walls you already trust.',
   },
   {
-    name: 'Hybrid',
+    name: 'Hybrid', aud: 'Default · mid-market',
     body: 'Data and inference on-prem; orchestration and updates from Krim cloud. A line drawn where your regulator wants it.',
   },
   {
-    name: 'Managed',
+    name: 'Managed', aud: 'Fintechs · pilots',
     body: 'Run for you in your preferred sovereign cloud region, kept in-jurisdiction.',
   },
 ]
@@ -142,7 +142,7 @@ export default function LendingPage() {
               <div className="mt-10 flex flex-wrap items-center justify-center gap-x-7 gap-y-4">
                 <CTA href={DEMO}>Book a demo</CTA>
                 <CTA href="/krimos" variant="secondary">
-                  See how KrimOS works
+                  Explore KrimOS
                 </CTA>
               </div>
             </Reveal>
@@ -271,7 +271,7 @@ export default function LendingPage() {
                     <p className="font-serif text-[clamp(1.9rem,3vw,2.4rem)] leading-none text-mint">
                       {it.value}
                     </p>
-                    <p className="mt-1.5 font-sans text-[13px] leading-snug text-ink-3">
+                    <p className="mt-1.5 font-sans text-[13px] leading-snug text-ink-2">
                       {it.unit}
                     </p>
                   </div>
@@ -286,9 +286,6 @@ export default function LendingPage() {
                 It sharpens the longer it runs. The first quarter sets your baseline,{' '}
                 <span className="text-mint">gains show by Q2</span>, and by year two it is materially
                 ahead of go-live.
-              </p>
-              <p className="shrink-0 font-mono text-[10px] uppercase tracking-[0.16em] text-ink-3">
-                The learning curve
               </p>
             </GlassCard>
           </Reveal>
@@ -313,7 +310,7 @@ export default function LendingPage() {
               <Reveal key={d.name} delay={0.05 * i}>
                 <GlassCard hover className="flex h-full flex-col p-7">
                   <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-ink-3">
-                    Deployment
+                    {d.aud}
                   </p>
                   <h3 className="mt-3 font-serif text-[1.45rem] leading-tight text-ink">{d.name}</h3>
                   <p className="mt-4 font-sans text-[15px] leading-relaxed text-ink-2">{d.body}</p>
