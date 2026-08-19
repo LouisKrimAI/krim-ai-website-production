@@ -146,10 +146,11 @@ export default function KupaKulaPage() {
               </h1>
             </Reveal>
             <Reveal delay={0.12}>
-              <p className="mx-auto mt-7 max-w-[58ch] font-sans text-body-lg text-ink-2">
-                Ask in <span className="text-mint">plain language</span> and Kula builds the plan.
-                Watch it run, set the rules and step in from{' '}
-                <span className="text-ink">Kupa, the command center</span>.
+              <p className="mx-auto mt-7 max-w-[60ch] font-sans text-body-lg text-ink-2">
+                <span className="text-cyan">Kula</span> turns a{' '}
+                <span className="text-mint">plain-language</span> ask into a plan your team approves;{' '}
+                <span className="text-ink">Kupa</span> is the command center where you watch it run,
+                set the rules and step in.
               </p>
             </Reveal>
           </div>

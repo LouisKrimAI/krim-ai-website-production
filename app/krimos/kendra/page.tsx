@@ -99,14 +99,11 @@ export default function KendraPage() {
               </h1>
             </Reveal>
             <Reveal delay={0.12}>
-              <p className="mx-auto mt-7 max-w-[54ch] font-sans text-body-lg text-ink-2">
-                <span className="block">
-                  Kendra is the runtime of KrimOS, where every co-worker reasons.
-                </span>
-                <span className="block">
-                  It <span className="text-mint">validates each action before it acts</span>, and gets sharper
-                </span>
-                <span className="block">with every outcome it records.</span>
+              <p className="mx-auto mt-7 max-w-[56ch] font-sans text-body-lg text-ink-2">
+                <span className="text-ink">Kendra</span> is the runtime of KrimOS, where every
+                co-worker reasons. It{' '}
+                <span className="text-mint">validates each action before it fires</span>, and gets
+                sharper with every outcome it records.
               </p>
             </Reveal>
           </div>
@@ -150,8 +147,8 @@ export default function KendraPage() {
                 <p className="mt-4 font-sans text-body text-ink-2">
                   Every action and its result land on one record, so Krim-Learn sees what actually
                   worked and feeds it back through ten learning loops. Only patterns that prove out
-                  are shared, always anonymised and opt-out. The system compounds: this quarter’s
-                  baseline sits well behind where it’s expected to by its second year.
+                  are shared, always anonymised and opt-out. The system compounds: it runs materially
+                  sharper by its second year than the day it went live.
                 </p>
               </div>
             </Reveal>
@@ -197,11 +194,8 @@ export default function KendraPage() {
                       className="pointer-events-none absolute inset-0"
                       style={{ background: 'radial-gradient(60% 60% at 50% 50%, rgba(57,214,255,0.16) 0%, rgba(57,214,255,0) 70%)' }}
                     />
-                    <span className="relative font-serif text-[2rem] leading-none text-ink" aria-hidden>
-                      केंद्र
-                    </span>
-                    <p className="relative mt-4 font-serif text-[1.35rem] leading-none text-ink">Kendra</p>
-                    <p className="relative mt-2.5 font-mono text-[10px] uppercase tracking-[0.2em] text-cyan/80">
+                    <p className="relative font-serif text-[2rem] leading-none text-ink">Kendra</p>
+                    <p className="relative mt-3 font-mono text-[10px] uppercase tracking-[0.2em] text-cyan/80">
                       One runtime
                     </p>
                   </div>

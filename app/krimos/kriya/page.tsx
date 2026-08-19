@@ -42,7 +42,7 @@ const PROPERTIES = [
   },
   {
     title: 'Metered as it works',
-    body: 'Every primitive self-meters in Krim Work Units. The cost of an action is explained line by line, not asserted: the same record that bills it.',
+    body: 'Every primitive self-meters in Krim Work Units. The same record that proves what an action did also shows what it cost, line by line.',
   },
   {
     title: 'Logged by construction',
@@ -79,10 +79,10 @@ export default function KriyaPage() {
               </h1>
             </Reveal>
             <Reveal delay={0.12}>
-              <p className="mx-auto mt-7 max-w-[58ch] font-sans text-body-lg text-ink-2">
-                Every action a co-worker takes is one of{' '}
-                <span className="text-mint">500+ validated, credit-native primitives</span>, the
-                atomic operations of regulated lending. The list is finite;{' '}
+              <p className="mx-auto mt-7 max-w-[60ch] font-sans text-body-lg text-ink-2">
+                <span className="text-ink">Kriya</span> is the shared vocabulary of KrimOS:{' '}
+                <span className="text-mint">500+ validated, credit-native primitives</span> — the
+                atomic actions of lending that every co-worker is built from. The list is finite;{' '}
                 <span className="text-ink">what you build from it isn&rsquo;t</span>.
               </p>
             </Reveal>

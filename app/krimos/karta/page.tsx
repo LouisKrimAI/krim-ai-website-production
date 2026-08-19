@@ -214,10 +214,11 @@ export default function KartaPage() {
               </h1>
             </Reveal>
             <Reveal delay={0.12}>
-              <p className="mx-auto mt-7 max-w-[52ch] font-sans text-body-lg text-ink-2">
-                AI co-workers that run the lending operation end to end, from origination to
-                collections, in the <span className="text-mint">customer&rsquo;s own language</span>,
-                and you set how far each one goes.
+              <p className="mx-auto mt-7 max-w-[56ch] font-sans text-body-lg text-ink-2">
+                <span className="text-ink">Karta</span> are the autonomous co-workers of KrimOS.
+                They run the lending operation end to end, from origination to collections, in the{' '}
+                <span className="text-mint">customer&rsquo;s own language</span>, and you set how far
+                each one goes.
               </p>
             </Reveal>
           </div>
@@ -229,12 +230,13 @@ export default function KartaPage() {
             <Reveal>
               <Eyebrow>What they are</Eyebrow>
               <h2 className="mt-4 font-serif text-display-1 text-ink">
-                <span className="text-mint">Autonomous</span> co-workers.
+                Autonomy you <span className="text-mint">set</span>, per workflow.
               </h2>
-              <p className="mx-auto mt-6 max-w-[58ch] font-sans text-body-lg text-ink-2">
-                Each one runs a real part of your operation. You set what it can do and how far it
-                goes, without an engineering cycle, and every action it takes clears the validation
-                gate before it fires.
+              <p className="mx-auto mt-6 max-w-[60ch] font-sans text-body-lg text-ink-2">
+                Each co-worker is composed from validated primitives and configured in plain
+                language, never coded by hand. You set how far it runs on its own, in one of four
+                modes: autonomous, oversight, copilot or human-in-the-loop, per workflow and per
+                segment. A workflow shifts toward autonomy only as measured outcomes earn it.
               </p>
             </Reveal>
           </div>
@@ -370,7 +372,7 @@ export default function KartaPage() {
           <Reveal>
             <div className="mx-auto max-w-[640px] text-center">
               <Eyebrow>Capabilities</Eyebrow>
-              <h2 className="mt-4 font-serif text-display-1 text-ink">What every co-worker can do.</h2>
+              <h2 className="mt-4 font-serif text-display-1 text-ink">Every co-worker takes real action.</h2>
               <p className="mx-auto mt-6 font-sans text-body-lg text-ink-2">
                 The same core abilities, whichever co-worker you put to work.
               </p>

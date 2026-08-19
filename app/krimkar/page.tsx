@@ -48,7 +48,7 @@ const CHANNELS = [
   },
   {
     title: 'In their own words',
-    body: 'Kira speaks the customer’s language, including 50+ Indian languages. It clarifies an ambiguous answer mid-conversation rather than failing the form or routing them away.',
+    body: 'Kira speaks the customer’s language: 50+ global languages, including 12+ Indian. It clarifies an ambiguous answer mid-conversation rather than failing the form or routing them away.',
   },
 ]
 
@@ -67,10 +67,11 @@ export default function KiraPage() {
               </h1>
             </Reveal>
             <Reveal delay={0.12}>
-              <p className="mx-auto mt-7 max-w-[52ch] font-sans text-body-lg text-ink-2">
-                Kira is the AI advisor your customers meet on WhatsApp, voice, chat, SMS, in
-                the Krimkar app. <span className="text-ink">One thread that remembers</span>,
-                in their own language, <span className="text-mint">every action validated</span>.
+              <p className="mx-auto mt-7 max-w-[56ch] font-sans text-body-lg text-ink-2">
+                <span className="text-ink">Krimkar</span> is the app your customers open;{' '}
+                <span className="text-mint">Kira</span> is the AI advisor inside it, and on every
+                channel beyond it. One thread that remembers, in their own language,{' '}
+                <span className="text-mint">every action validated</span>.
               </p>
             </Reveal>
           </div>
@@ -82,12 +83,13 @@ export default function KiraPage() {
             <div className="mx-auto max-w-[640px] text-center">
               <Eyebrow>Two names, one front door</Eyebrow>
               <h2 className="mt-4 font-serif text-display-1 text-ink">
-                <span className="text-mint">Kira</span> lives inside{' '}
-                <span className="text-ink">Krimkar</span>.
+                Self-service, with someone to <span className="text-mint">talk to</span>.
               </h2>
-              <p className="mx-auto mt-6 max-w-[46ch] font-sans text-body text-ink-2">
-                Krimkar is the app customers open. Kira is the advisor they talk to once
-                they&rsquo;re inside, and on every channel beyond it.
+              <p className="mx-auto mt-6 max-w-[52ch] font-sans text-body text-ink-2">
+                Krimkar is where customers check a balance, make a payment or find help on their own
+                time. <span className="text-mint">Kira</span> is the advisor woven through it, and
+                across every channel beyond, so a self-serve tap and a real conversation are the same
+                relationship.
               </p>
             </div>
           </Reveal>
@@ -228,36 +230,6 @@ export default function KiraPage() {
               </p>
             </div>
           </Reveal>
-        </Section>
-
-        {/* ---- The Krimkar app ---- */}
-        <Section hairline>
-          <div className="grid items-center gap-12 md:grid-cols-[1fr_1fr]">
-            <Reveal>
-              <div>
-                <Eyebrow>Krimkar, where they meet</Eyebrow>
-                <h2 className="mt-4 max-w-[22ch] font-serif text-display-1 text-ink">
-                  A place customers come to, on their own time.
-                </h2>
-                <p className="mt-7 max-w-[52ch] font-sans text-body-lg text-ink-2">
-                  Krimkar is the consumer app and public site your customers use to check a balance,
-                  make a payment or sort something out on their own time. It&rsquo;s also where they
-                  meet Kira, so self-service and a real conversation live in the same place, under
-                  one roof.
-                </p>
-              </div>
-            </Reveal>
-            <Reveal delay={0.12}>
-              <GlassCard className="p-8 md:p-10">
-                <p className="font-sans text-body-lg leading-relaxed text-ink-2">
-                  The same relationship, whether they tap through the app or simply ask &mdash;{' '}
-                  <span className="text-ink">
-                    one front door for your customers, carried by one advisor.
-                  </span>
-                </p>
-              </GlassCard>
-            </Reveal>
-          </div>
         </Section>
 
         {/* ---- Closing impact ---- */}
