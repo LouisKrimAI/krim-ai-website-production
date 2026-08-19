@@ -89,20 +89,20 @@ const DEMO_HREF = '/contact'
 const START_STEPS = [
   {
     n: '01',
-    label: 'Two-week deep-dive',
+    label: 'Deep-dive',
     detail: 'Your policies, products and systems, mapped with your team.',
     rgb: '57,214,255',
   },
   {
     n: '02',
-    label: '30-day proof on your data',
-    detail: 'KrimOS runs a real slice of your operation, inside your walls.',
+    label: 'Proof on your data',
+    detail: 'KrimOS runs a real slice of your operation, inside your own walls.',
     rgb: '29,235,217',
   },
   {
     n: '03',
-    label: 'Live in a quarter',
-    detail: 'In production, with your rules and the full record in force.',
+    label: 'In production',
+    detail: 'Live with your rules and the full record in force.',
     rgb: '0,255,178',
   },
 ] as const
@@ -300,7 +300,7 @@ export default function HomePage() {
             <div className="mx-auto max-w-[760px] text-center">
               <Eyebrow>How you start</Eyebrow>
               <h2 className="mt-4 font-serif text-display-1 text-ink">
-                Next quarter, this is how you operate.
+                See it prove itself on your data.
               </h2>
             </div>
           </Reveal>

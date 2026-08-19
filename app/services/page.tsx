@@ -2,7 +2,7 @@
  * /services — engagement: pilot to go-live. STANDALONE page (not LayerShell),
  * built on the homepage/krimos design DNA: SiteHeader + Reveal,
  * calm glass + type, no devices, no hero image.
- * Shape: hero (pilot → go-live in a quarter) → the path (three stages as glass
+ * Shape: hero (pilot → proof → go-live) → the path (three stages as glass
  * cards, each with what happens + a clear exit) → what Krim brings → expansion
  * (the system compounding) → CTA.
  * Facts: docs/krim-content.md (Engagement — pilot to scale, lines 298–303;
@@ -18,12 +18,12 @@ import { Section, Eyebrow, GlassCard, CTA } from '@/components/ui'
 export const metadata: Metadata = {
   title: 'Services',
   description:
-    'From technical deep-dive to production go-live in a quarter: a scoped pilot, proof of value on ring-fenced data measured against your own baseline, then a contracted go-live, one stage at a time.',
+    'From technical deep-dive to production go-live: a scoped pilot, proof of value on ring-fenced data measured against your own baseline, then a contracted go-live, one stage at a time.',
   alternates: { canonical: 'https://www.krim.ai/services' },
   openGraph: {
     title: 'Services — pilot to go-live',
     description:
-      'From technical deep-dive to production go-live in a quarter: a scoped pilot, proof of value on ring-fenced data measured against your own baseline, then a contracted go-live, one stage at a time.',
+      'From technical deep-dive to production go-live: a scoped pilot, proof of value on ring-fenced data measured against your own baseline, then a contracted go-live, one stage at a time.',
     url: 'https://www.krim.ai/services',
   },
 }
@@ -43,28 +43,28 @@ const breadcrumbLd = {
 const STAGES = [
   {
     no: '01',
-    span: '2 weeks',
+    span: 'Scope & security',
     title: 'Technical deep-dive',
     body: 'Our engineers sit with yours for an architecture, security and integration review: how KrimOS reads from and writes to the systems you already run, inside your perimeter.',
     exit: 'A scoped pilot and a signed data-handling envelope.',
   },
   {
     no: '02',
-    span: '30 days',
+    span: 'Your data, ring-fenced',
     title: 'Proof of value',
     body: 'One workflow, usually collections or servicing, runs on synthetic or ring-fenced data. Real co-workers, real validation, no exposure to live records until you are ready.',
     exit: 'Measured outcomes against your own baseline.',
   },
   {
     no: '03',
-    span: '60–90 days',
+    span: 'Into production',
     title: 'Pilot to go-live',
     body: 'The proven workflow moves into production with full audit and governance live: every action validated before it executes, every outcome recorded in the ledger.',
     exit: 'A contracted go-live and an expansion roadmap.',
   },
 ] as const
 
-// What Krim brings — the approach that makes a quarter realistic. Kept to what we
+// What Krim brings — the approach that makes a fast, low-risk start real. Kept to what we
 // can stand behind: no hard exit guarantees, no absolutes on integration.
 const BRINGS = [
   {
@@ -91,7 +91,7 @@ export default function ServicesPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }} />
       <SiteHeader />
       <main className="relative z-10">
-        {/* ---- 1 · Hero — the promise: proof on your own data, in a quarter ---- */}
+        {/* ---- 1 · Hero — the promise: proof on your own data before you commit ---- */}
         <Section className="!pt-24 !pb-24 min-h-[85vh] flex items-center [&>div]:w-full">
           <div className="mx-auto max-w-[860px] text-center">
             <Reveal>
@@ -152,17 +152,16 @@ export default function ServicesPage() {
           </div>
         </Section>
 
-        {/* ---- 3 · What Krim brings — the approach that makes a quarter real ---- */}
+        {/* ---- 3 · What Krim brings — proof at every stage ---- */}
         <Section hairline>
           <Reveal>
             <Eyebrow>What Krim brings</Eyebrow>
             <h2 className="mt-4 max-w-[24ch] font-serif text-display-1 text-ink">
-              Why a quarter is enough, and a leap of faith is not.
+              Proof before you commit, at every stage.
             </h2>
             <p className="mt-6 max-w-[60ch] font-sans text-body-lg text-ink-2">
-              A quarter is realistic because the hard parts (fitting your stack, governing every
-              action, proving the numbers) are how we work from the first week, not promises kept
-              for later.
+              The hard parts — fitting your stack, governing every action, proving the numbers on your
+              own baseline — are how we work from the start, so you see the evidence before you scale.
             </p>
           </Reveal>
           <div className="mt-12 grid gap-5 md:grid-cols-2">

@@ -409,7 +409,7 @@ export default function ArchitecturePage() {
                 See it slot into your architecture.
               </h2>
               <p className="mx-auto mt-5 max-w-[50ch] font-sans text-body text-ink-2">
-                A two-week technical deep-dive covers architecture, security and integration, then a
+                A technical deep-dive covers architecture, security and integration, then a
                 scoped pilot follows on ring-fenced data.
               </p>
               <div className="mt-9 flex justify-center">
