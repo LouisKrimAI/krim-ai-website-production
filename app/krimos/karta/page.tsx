@@ -214,11 +214,9 @@ export default function KartaPage() {
               </h1>
             </Reveal>
             <Reveal delay={0.12}>
-              <p className="mx-auto mt-7 max-w-[56ch] font-sans text-body-lg text-ink-2">
-                <span className="text-ink">Karta</span> are the autonomous co-workers of KrimOS.
-                They run the lending operation end to end, from origination to collections, in the{' '}
-                <span className="text-mint">customer&rsquo;s own language</span>, and you set how far
-                each one goes.
+              <p className="mx-auto mt-7 max-w-[44ch] font-sans text-body-lg text-ink-2">
+                They run the lending operation end to end, in the{' '}
+                <span className="text-mint">customer&rsquo;s own language</span>.
               </p>
             </Reveal>
           </div>
@@ -230,13 +228,14 @@ export default function KartaPage() {
             <Reveal>
               <Eyebrow>What they are</Eyebrow>
               <h2 className="mt-4 font-serif text-display-1 text-ink">
-                Autonomy you <span className="text-mint">set</span>, per workflow.
+                Autonomous co-workers. <span className="text-mint">You set the limits.</span>
               </h2>
-              <p className="mx-auto mt-6 max-w-[60ch] font-sans text-body-lg text-ink-2">
-                Each co-worker is composed from validated primitives and configured in plain
-                language, never coded by hand. You set how far it runs on its own, in one of four
-                modes: autonomous, oversight, copilot or human-in-the-loop, per workflow and per
-                segment. A workflow shifts toward autonomy only as measured outcomes earn it.
+              <p className="mx-auto mt-6 max-w-[62ch] font-sans text-body-lg text-ink-2">
+                Karta are the autonomous co-workers of KrimOS, composed from validated primitives and
+                configured in plain language, never coded by hand. You set how far each one runs on
+                its own, in one of four modes: autonomous, oversight, copilot or human-in-the-loop,
+                per workflow and per segment. A workflow shifts toward autonomy only as measured
+                outcomes earn it.
               </p>
             </Reveal>
           </div>

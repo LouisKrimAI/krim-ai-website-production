@@ -99,10 +99,8 @@ export default function KendraPage() {
               </h1>
             </Reveal>
             <Reveal delay={0.12}>
-              <p className="mx-auto mt-7 max-w-[56ch] font-sans text-body-lg text-ink-2">
-                <span className="text-ink">Kendra</span> is the runtime of KrimOS, where every
-                co-worker reasons. It{' '}
-                <span className="text-mint">validates each action before it fires</span>, and gets
+              <p className="mx-auto mt-7 max-w-[44ch] font-sans text-body-lg text-ink-2">
+                Every action <span className="text-mint">validated before it fires</span>, and
                 sharper with every outcome it records.
               </p>
             </Reveal>
@@ -112,13 +110,14 @@ export default function KendraPage() {
         {/* ---- The two powers ---- */}
         <Section hairline>
           <Reveal>
-            <Eyebrow>Why it earns trust</Eyebrow>
+            <Eyebrow>What Kendra is</Eyebrow>
             <h2 className="mt-4 max-w-[20ch] font-serif text-display-1 text-ink">
               Validated before it acts. Smarter after it acts.
             </h2>
-            <p className="mt-6 max-w-[60ch] font-sans text-body-lg text-ink-2">
-              Two powers live inside Kendra, and each makes the other possible. One keeps the system
-              safe to run; the other makes it worth running for years.
+            <p className="mt-6 max-w-[62ch] font-sans text-body-lg text-ink-2">
+              Kendra is the runtime of KrimOS, the brain every co-worker reasons in. Two powers live
+              inside it, and each makes the other possible: one keeps the system safe to run, the
+              other makes it worth running for years.
             </p>
           </Reveal>
 

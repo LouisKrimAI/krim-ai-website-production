@@ -79,11 +79,9 @@ export default function KriyaPage() {
               </h1>
             </Reveal>
             <Reveal delay={0.12}>
-              <p className="mx-auto mt-7 max-w-[60ch] font-sans text-body-lg text-ink-2">
-                <span className="text-ink">Kriya</span> is the shared vocabulary of KrimOS:{' '}
-                <span className="text-mint">500+ validated, credit-native primitives</span> — the
-                atomic actions of lending that every co-worker is built from. The list is finite;{' '}
-                <span className="text-ink">what you build from it isn&rsquo;t</span>.
+              <p className="mx-auto mt-7 max-w-[44ch] font-sans text-body-lg text-ink-2">
+                A finite set of validated actions, and{' '}
+                <span className="text-mint">endless ways to combine them</span>.
               </p>
             </Reveal>
           </div>
@@ -92,14 +90,14 @@ export default function KriyaPage() {
         {/* ---- What a primitive is ---- */}
         <Section hairline>
           <Reveal>
-            <Eyebrow>What a primitive is</Eyebrow>
+            <Eyebrow>What Kriya is</Eyebrow>
             <h2 className="mt-4 max-w-[24ch] font-serif text-display-1 text-ink">
               The smallest action that already knows the rules.
             </h2>
-            <p className="mt-6 max-w-[60ch] font-sans text-body-lg text-ink-2">
-              A primitive does one thing, like making a call, generating a notice or moving a
-              payment, and carries its own safety inside it. Because the building blocks are
-              validated, everything built from them inherits that safety.
+            <p className="mt-6 max-w-[62ch] font-sans text-body-lg text-ink-2">
+              Kriya is the shared vocabulary of KrimOS: 500+ validated, credit-native primitives. A
+              primitive does one thing, like making a call, generating a notice or moving a payment,
+              and carries its own safety inside it, so everything built from them inherits it.
             </p>
           </Reveal>
           <div className="mt-12 grid gap-5 md:grid-cols-3">

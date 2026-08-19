@@ -67,11 +67,8 @@ export default function KiraPage() {
               </h1>
             </Reveal>
             <Reveal delay={0.12}>
-              <p className="mx-auto mt-7 max-w-[56ch] font-sans text-body-lg text-ink-2">
-                <span className="text-ink">Krimkar</span> is the app your customers open;{' '}
-                <span className="text-mint">Kira</span> is the AI advisor inside it, and on every
-                channel beyond it. One thread that remembers, in their own language,{' '}
-                <span className="text-mint">every action validated</span>.
+              <p className="mx-auto mt-7 max-w-[42ch] font-sans text-body-lg text-ink-2">
+                The advisor your customers meet on every channel, in their own language.
               </p>
             </Reveal>
           </div>
@@ -81,15 +78,14 @@ export default function KiraPage() {
         <Section hairline className="!pt-2">
           <Reveal>
             <div className="mx-auto max-w-[640px] text-center">
-              <Eyebrow>Two names, one front door</Eyebrow>
+              <Eyebrow>The app and the advisor</Eyebrow>
               <h2 className="mt-4 font-serif text-display-1 text-ink">
-                Self-service, with someone to <span className="text-mint">talk to</span>.
+                <span className="text-ink">Krimkar</span> is the app.{' '}
+                <span className="text-mint">Kira</span> is the advisor inside it.
               </h2>
-              <p className="mx-auto mt-6 max-w-[52ch] font-sans text-body text-ink-2">
-                Krimkar is where customers check a balance, make a payment or find help on their own
-                time. <span className="text-mint">Kira</span> is the advisor woven through it, and
-                across every channel beyond, so a self-serve tap and a real conversation are the same
-                relationship.
+              <p className="mx-auto mt-6 max-w-[50ch] font-sans text-body text-ink-2">
+                Krimkar is where your customers check a balance, make a payment or get help. Kira is
+                the AI advisor they talk to inside it, and on every channel beyond.
               </p>
             </div>
           </Reveal>
