@@ -178,7 +178,7 @@ function AgentCard({ name, blurb, accent }: Agent & { accent: 'cyan' | 'mint' })
   const tint = accent === 'cyan' ? 'glass-peak-cyan' : 'glass-peak-mint'
   const rail = accent === 'cyan' ? 'bg-cyan' : 'bg-mint'
   return (
-    <div className={`glass-peak ${tint} relative flex h-full min-h-[8rem] flex-col justify-center p-6 pl-7`}>
+    <div className={`glass-peak ${tint} relative flex h-full min-h-[8rem] flex-col justify-start p-6 pl-7`}>
       <span aria-hidden className={`absolute inset-y-4 left-0 w-[3px] rounded-full ${rail}`} />
       <p className="font-serif text-[1.2rem] leading-snug text-ink">{name}</p>
       <p className="mt-2 line-clamp-3 font-sans text-[13px] leading-relaxed text-ink-2">{blurb}</p>
@@ -380,7 +380,7 @@ export default function KartaPage() {
           <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:auto-rows-fr lg:grid-cols-3">
             {CAPABILITIES.map(([title, line, hiWord], i) => (
               <Reveal key={title} delay={(i % 3) * 0.06} className="h-full">
-                <div className="glass lume flex h-full flex-col justify-center rounded-lg p-7">
+                <div className="glass lume flex h-full flex-col rounded-lg p-7">
                   <h3 className="font-serif text-[1.3rem] leading-tight text-ink">{hl(title, hiWord)}</h3>
                   <p className="mt-2.5 font-sans text-body text-ink-2">{line}</p>
                 </div>
@@ -402,7 +402,7 @@ export default function KartaPage() {
           <div className="mt-12 grid gap-5 md:auto-rows-fr md:grid-cols-2">
             {IMPACTS.map(([title, line, hiWord], i) => (
               <Reveal key={title} delay={(i % 2) * 0.08} className="h-full">
-                <div className="glass lume flex h-full flex-col justify-center rounded-lg p-8">
+                <div className="glass lume flex h-full flex-col rounded-lg p-8">
                   <h3 className="font-serif text-[1.5rem] leading-tight text-ink">{hl(title, hiWord)}</h3>
                   <p className="mt-3 font-sans text-body-lg text-ink-2">{line}</p>
                 </div>

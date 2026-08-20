@@ -184,8 +184,9 @@ export default function WorldLendingModelPage() {
             ))}
             {/* sixth tile — the harness, as the part that acts on the other five */}
             <Reveal delay={0.14}>
-              <div className="glass flex h-full flex-col justify-center p-7 md:p-8" style={{ borderColor: 'rgba(0,255,178,0.45)' }}>
-                <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-mint">+ the agent harness</p>
+              <div className="glass flex h-full flex-col p-7 md:p-8" style={{ borderColor: 'rgba(0,255,178,0.45)' }}>
+                <span aria-hidden className="block h-[3px] w-12 rounded-full bg-mint/70" />
+                <p className="mt-6 font-mono text-[11px] uppercase tracking-[0.18em] text-mint">+ the agent harness</p>
                 <p className="mt-3 font-serif text-[1.2rem] leading-snug text-ink">
                   The layer that carries the model’s predictions into the real world, enforcing every
                   compliance boundary as it acts.
