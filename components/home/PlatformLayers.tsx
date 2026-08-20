@@ -5,7 +5,7 @@
  *
  * KrimOS as an elegant vertical stack of centred glass strata. Top → bottom:
  *
- *   Kupa & Kula · Kira & Krimkar — the two human surfaces (NOT minds):
+ *   Kupa & Kula · Krimkar & Kira — the two human surfaces (NOT minds):
  *                   the enterprise seat and the customer seat
  *   Karta         — the co-workers (operating layer)
  *   Kriya         — the validated vocabulary (operating layer)
@@ -40,10 +40,10 @@ const LAYERS: Layer[] = [
     key: 'faces',
     name: 'Kupa & Kula',
     role: 'Run your operation in plain language. Supervise, configure and audit it from one command center.',
-    tag: 'YOUR TEAMS',
-    name2: 'Kira & Krimkar',
-    role2: 'The AI advisor your customers meet on every channel, in the Krimkar app.',
-    tag2: 'YOUR CUSTOMERS',
+    tag: 'FOR YOUR TEAMS',
+    name2: 'Krimkar & Kira',
+    role2: 'Meet your customers on every channel, in one app, with an AI advisor that remembers.',
+    tag2: 'FOR YOUR CUSTOMERS',
     tone: 'surface',
   },
   {
@@ -64,7 +64,7 @@ const LAYERS: Layer[] = [
     key: 'kendra',
     name: 'Kendra',
     role: 'The brain: the governed runtime where Krim-Nyāya validates every action and Krim-Learn turns every outcome into the next decision’s edge.',
-    tag: 'RUNTIME · NYĀYA · LEARN',
+    tag: 'RUNTIME',
     tone: 'core',
   },
 ]

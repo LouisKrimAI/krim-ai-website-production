@@ -4,7 +4,7 @@
  * Order is the reading order, bottom-up: the runtime, the vocabulary, the
  * co-workers, then the two human-facing surfaces — the enterprise seat
  * (Kupa & Kula, one merged page at /krimos/kupa) and the customer seat
- * (Kira & Krimkar). Krimkar is the consumer app Kira lives in.
+ * (Krimkar & Kira). Krimkar is the consumer app Kira lives in.
  * Facts: docs/krim-content.md · docs/copy/krimos*.md.
  */
 

@@ -94,7 +94,7 @@ These are hard rules added after repeated, avoidable misses. The agent is expect
 - **Highlight the load-bearing words in every section** with the colour grammar (mint = validated/proof/brand · cyan = thinking/proposed · bright `ink` = emphasis). A content section with *zero* inline highlights is almost always under-styled. Aim for a few tasteful, deliberate highlights per section — enough that the key points land at a glance. Never rainbow, never every other word.
 
 ### Naming — be straightforward
-- Pick one clear name for a thing and use it consistently across breadcrumb, page title, nav, hero and body (e.g. decide "Kira" vs "Kira & Krimkar" once). No drift, no ambiguity.
+- Pick one clear name for a thing and use it consistently across breadcrumb, page title, nav, hero and body (e.g. decide "Kira" vs "Krimkar & Kira" once). No drift, no ambiguity.
 
 ### Mandatory self-QA before declaring anything done
 Render every changed view at desktop width (and check mobile) and confirm, fixing anything that fails **without waiting to be told**:
