@@ -131,7 +131,7 @@ export default function GovernmentPage() {
             </Reveal>
             <Reveal delay={0.2}>
               <div className="mt-10 flex justify-center">
-                <CTA href={CTA_HREF}>Start a conversation</CTA>
+                <CTA href={CTA_HREF}>Book a demo</CTA>
               </div>
             </Reveal>
           </div>
@@ -288,12 +288,12 @@ export default function GovernmentPage() {
                 Public service, finally at the pace of public life.
               </h2>
               <p className="mx-auto mt-5 max-w-[54ch] font-sans text-body-lg text-ink-2">
-                Citizens answered in minutes, casework cleared in days, and{' '}
-                <span className="text-mint">every action on a record the law can read</span> —
+                Citizens answered around the clock, casework that clears instead of queuing, and{' '}
+                <span className="text-mint">every action on a record the law can read</span>,
                 inside walls that never let it leave.
               </p>
               <div className="mt-9 flex justify-center">
-                <CTA href={CTA_HREF}>Start a conversation</CTA>
+                <CTA href={CTA_HREF}>Book a demo</CTA>
               </div>
             </div>
           </Reveal>

@@ -218,7 +218,8 @@ export default function ServicesPage() {
               <p className="mx-auto mt-5 max-w-[48ch] font-sans text-body text-ink-2">
                 See KrimOS run on your own data, and a clear path from pilot to go-live.
               </p>
-              <div className="mt-9 flex justify-center">
+              <div className="mt-9 flex flex-wrap items-center justify-center gap-6">
+                <CTA href={DEMO_HREF}>Book a demo</CTA>
                 <CTA href="/trust" variant="secondary">
                   How it deploys
                 </CTA>

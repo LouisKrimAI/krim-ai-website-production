@@ -311,6 +311,9 @@ export default function TrustPage() {
                   Start with an architecture, security and integration review, then see KrimOS run
                   inside the perimeter you already defend.
                 </p>
+                <div className="mt-9 flex justify-center">
+                  <CTA href={DEMO_HREF}>Book a demo</CTA>
+                </div>
               </div>
             </GlassCard>
           </Reveal>

@@ -277,9 +277,10 @@ export default function WorldLendingModelPage() {
                 Built on Kendra, the runtime that validates every action and learns from every
                 outcome.
               </p>
-              <div className="mt-9 flex justify-center">
-                <CTA href="/research" variant="secondary">
-                  Back to research
+              <div className="mt-9 flex flex-wrap items-center justify-center gap-6">
+                <CTA href={DEMO_HREF}>Book a demo</CTA>
+                <CTA href="/research/safe-agent-harness" variant="secondary">
+                  See the agent harness
                 </CTA>
               </div>
             </div>

@@ -19,12 +19,12 @@ import Recognition from '@/components/home/Recognition'
 export const metadata: Metadata = {
   title: 'Company',
   description:
-    'Krim builds KrimOS, the operating system for banking and lending. Every AI action validated before it executes, inside your perimeter, on a single auditable record.',
+    'Krim builds KrimOS, the operating system for lending. Every AI action validated before it executes, inside your perimeter, on a single auditable record.',
   alternates: { canonical: 'https://www.krim.ai/company' },
   openGraph: {
     title: 'Company — Krim',
     description:
-      'Krim builds KrimOS, the operating system for banking and lending. Every AI action validated before it executes, inside your perimeter, on a single auditable record.',
+      'Krim builds KrimOS, the operating system for lending. Every AI action validated before it executes, inside your perimeter, on a single auditable record.',
     url: 'https://www.krim.ai/company',
   },
 }
@@ -184,9 +184,12 @@ export default function CompanyPage() {
             <Reveal>
               <div className="text-center">
                 <Eyebrow>Team</Eyebrow>
-                <h2 className="mt-4 font-serif text-display-1 text-ink">Meet the team.</h2>
+                <h2 className="mt-4 font-serif text-display-1 text-ink">
+                  The team that put AI inside India&rsquo;s banks.
+                </h2>
                 <p className="mx-auto mt-6 max-w-[54ch] font-sans text-body-lg text-ink-2">
-                  Deep experience deploying AI in India&rsquo;s largest BFIs.
+                  A founder and engineers who built and shipped voice AI across the country&rsquo;s
+                  largest banks and lenders.
                 </p>
               </div>
             </Reveal>
@@ -216,7 +219,7 @@ export default function CompanyPage() {
                 <Reveal key={m.name} delay={0.03 * i} className="w-full sm:w-[calc(50%-0.5rem)] lg:w-[calc(33.333%-0.667rem)]">
                   <div className="glass flex h-full flex-col items-center gap-2.5 p-5 text-center">
                     <p className="font-serif text-[1.15rem] leading-tight text-ink">{m.name}</p>
-                    <p className="font-sans text-[14px] text-ink-3">{m.note}</p>
+                    <p className="font-sans text-[14px] text-ink-2">{m.note}</p>
                     <LinkedInLink href={m.linkedin} name={m.name} />
                   </div>
                 </Reveal>
@@ -234,7 +237,7 @@ export default function CompanyPage() {
                 <Reveal key={a.name} delay={0.03 * i} className="w-full sm:w-[calc(50%-0.5rem)] lg:w-[calc(33.333%-0.667rem)]">
                   <div className="glass flex h-full flex-col items-center p-5 text-center">
                     <p className="font-serif text-[1.15rem] leading-tight text-ink">{a.name}</p>
-                    <p className="mt-1 font-sans text-[14px] text-ink-3">{a.note}</p>
+                    <p className="mt-1 font-sans text-[14px] text-ink-2">{a.note}</p>
                     <div className="mt-3.5">
                       <LinkedInLink href={a.linkedin} name={a.name} />
                     </div>
@@ -294,7 +297,8 @@ export default function CompanyPage() {
                 </a>
                 .
               </p>
-              <div className="mt-9 flex justify-center">
+              <div className="mt-9 flex flex-wrap items-center justify-center gap-6">
+                <CTA href={DEMO_HREF}>Book a demo</CTA>
                 <CTA href="/krimos" variant="secondary">
                   Explore KrimOS
                 </CTA>
