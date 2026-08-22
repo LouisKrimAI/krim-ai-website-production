@@ -30,11 +30,11 @@ const mono = IBM_Plex_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.krim.ai'),
   title: {
-    // Every tab carries the same brand line. Home reads "Krim — Safe
-    // Superintelligence"; every other page reads "{Page} — Krim · Safe
-    // Superintelligence". The keyword-rich banking positioning lives in the
+    // Homepage tab title is owner-set (2026-08-22): "Krim - Regulated
+    // Autonomy". Every other page reads "{Page} — Krim · Safe
+    // Superintelligence". The keyword-rich lending positioning lives in the
     // description / OG titles, where it does the SEO work.
-    default: 'Krim - AI your regulator can read',
+    default: 'Krim - Regulated Autonomy',
     template: '%s — Krim · Safe Superintelligence',
   },
   description:
