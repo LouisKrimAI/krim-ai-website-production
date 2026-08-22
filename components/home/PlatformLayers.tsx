@@ -1,26 +1,30 @@
 'use client'
 
 /**
- * PlatformLayers — homepage "one operating system" visual.
+ * PlatformLayers — the KrimOS stack, as one elegant vertical column.
  *
- * KrimOS as an elegant vertical stack of centred glass strata. Top → bottom:
+ * DECK ORDER (KrimOS Introduction · "What's inside KrimOS"), top → bottom —
+ * from the apps people use to the model everything rests on:
  *
- *   Kupa & Kula · Krimkar & Kira — the two human surfaces (NOT minds):
- *                   the enterprise seat and the customer seat
- *   Karta         — the co-workers (operating layer)
- *   Kriya         — the validated vocabulary (operating layer)
- *   Kendra        — the brain: a luminous cyan foundation the stack rests on
+ *   Kupa & Kula     — the command center for your teams
+ *   Krimkar & Kira  — the app and advisor for your customers
+ *   Karta           — the AI co-workers
+ *   Kendra          — the engine, and the validation gate (Krim-Nyāya)
+ *   Kriya           — the library of compliance-encoded actions
+ *   Kovida          — the world lending model, the foundation (gold)
  *
- * Each row is centre-aligned: the name and its label sit together, the
- * explanation reads beneath. Micro-motion (GPU-only): a cyan signal rises
- * from the Kendra core through the strata; the core breathes; hover lifts a
- * layer with a mint edge (.lume). Reduced motion settles instantly.
+ * Every part gets its OWN row (owner rule — no merged double-boxes), and the
+ * stack is never described by count. Names/tags mirror components/krimos/
+ * layers.ts — keep the two in step. Micro-motion (GPU-only): a signal rises
+ * from the Kovida foundation up through the strata; the foundation breathes
+ * gold; hover lifts a layer with a mint edge (.lume). Reduced motion settles
+ * instantly.
  */
 
 import { useState } from 'react'
 import { motion, useReducedMotion } from 'framer-motion'
 
-type Tone = 'surface' | 'operating' | 'core'
+type Tone = 'surface' | 'operating' | 'core' | 'foundation'
 
 type Layer = {
   key: string
@@ -28,22 +32,21 @@ type Layer = {
   role: string
   tag: string
   tone: Tone
-  name2?: string
-  role2?: string
-  tag2?: string
 }
 
-/** Top → bottom: the two human-facing surfaces (enterprise + customer), then the
- *  co-workers, the vocabulary, and the brain the whole stack rests on. */
 const LAYERS: Layer[] = [
   {
-    key: 'faces',
+    key: 'kupa',
     name: 'Kupa & Kula',
-    role: 'Run your operation in plain language. Supervise, configure and audit it from one command center.',
+    role: 'The command center for your teams: run the operation in plain language, and supervise, configure and audit it from one pane.',
     tag: 'FOR YOUR TEAMS',
-    name2: 'Krimkar & Kira',
-    role2: 'Meet your customers on every channel, in one app, with an AI advisor that remembers.',
-    tag2: 'FOR YOUR CUSTOMERS',
+    tone: 'surface',
+  },
+  {
+    key: 'kira',
+    name: 'Krimkar & Kira',
+    role: 'The app and advisor for your customers: every channel, one relationship, an AI advisor that remembers.',
+    tag: 'FOR YOUR CUSTOMERS',
     tone: 'surface',
   },
   {
@@ -54,18 +57,25 @@ const LAYERS: Layer[] = [
     tone: 'operating',
   },
   {
+    key: 'kendra',
+    name: 'Kendra',
+    role: 'The engine that runs every co-worker, and the gate every decision must clear first: Krim-Nyāya validates before anything acts.',
+    tag: 'THE ENGINE & THE GATE',
+    tone: 'core',
+  },
+  {
     key: 'kriya',
     name: 'Kriya',
-    role: 'The validated, credit-native actions every co-worker is built from: 500+ in all.',
-    tag: 'PRIMITIVES',
+    role: 'The library of compliance-encoded actions built for credit: 500+ in all, and every workflow is composed from them.',
+    tag: 'ACTION LIBRARY',
     tone: 'operating',
   },
   {
-    key: 'kendra',
-    name: 'Kendra',
-    role: 'The brain: the governed runtime where Krim-Nyāya validates every action and Krim-Learn turns every outcome into the next decision’s edge.',
-    tag: 'RUNTIME',
-    tone: 'core',
+    key: 'kovida',
+    name: 'Kovida',
+    role: 'The world lending model at the foundation, tuned on your institution’s own recorded outcomes. Every cycle makes the next decision sharper.',
+    tag: 'WORLD LENDING MODEL',
+    tone: 'foundation',
   },
 ]
 
@@ -108,15 +118,15 @@ export default function PlatformLayers() {
         <div
           aria-hidden
           className="pointer-events-none absolute inset-x-0 bottom-[70px] top-2 z-0"
-          style={{ ['--krim-pl-travel' as string]: '360px' }}
+          style={{ ['--krim-pl-travel' as string]: '540px' }}
         >
           <div
             className="krim-pl-signal absolute bottom-0 left-1/2 h-[120px] w-px"
             style={{
               background:
-                'linear-gradient(to top, rgba(57,214,255,0) 0%, rgba(57,214,255,0.85) 50%, rgba(57,214,255,0) 100%)',
+                'linear-gradient(to top, rgba(200,161,74,0) 0%, rgba(57,214,255,0.85) 55%, rgba(57,214,255,0) 100%)',
               filter: 'blur(0.4px)',
-              animation: 'krim-pl-rise 6.5s var(--ease-in-out, cubic-bezier(0.65,0,0.35,1)) infinite',
+              animation: 'krim-pl-rise 7.5s var(--ease-in-out, cubic-bezier(0.65,0,0.35,1)) infinite',
               willChange: 'transform, opacity',
             }}
           />
@@ -124,8 +134,8 @@ export default function PlatformLayers() {
             className="krim-pl-coreline absolute bottom-0 left-1/2 top-0 w-px -translate-x-1/2"
             style={{
               background:
-                'linear-gradient(to top, rgba(57,214,255,0.45) 0%, rgba(57,214,255,0.08) 70%, rgba(57,214,255,0) 100%)',
-              animation: 'krim-pl-coreline 6.5s var(--ease-in-out, cubic-bezier(0.65,0,0.35,1)) infinite',
+                'linear-gradient(to top, rgba(200,161,74,0.4) 0%, rgba(57,214,255,0.12) 40%, rgba(57,214,255,0) 100%)',
+              animation: 'krim-pl-coreline 7.5s var(--ease-in-out, cubic-bezier(0.65,0,0.35,1)) infinite',
             }}
           />
         </div>
@@ -162,25 +172,31 @@ function LayerRow({
 }) {
   const isCore = layer.tone === 'core'
   const isSurface = layer.tone === 'surface'
+  const isFoundation = layer.tone === 'foundation'
   const glassClass = isCore ? 'glass glass-cyan' : isSurface ? 'glass glass-mint' : 'glass'
+  const tagColor = isFoundation
+    ? { color: 'rgba(200,161,74,0.9)' }
+    : isCore
+      ? { color: 'rgba(57,214,255,0.75)' }
+      : undefined
 
   return (
     <motion.div
       initial={reduce ? false : { y: 12 }}
       whileInView={{ y: 0 }}
       viewport={{ once: true, amount: 0.4 }}
-      transition={{ duration: 0.6, ease: EASE, delay: reduce ? 0 : index * 0.08 }}
+      transition={{ duration: 0.6, ease: EASE, delay: reduce ? 0 : index * 0.07 }}
     >
       <div
         className={`lume relative overflow-hidden rounded-lg px-6 py-5 ${glassClass}`}
+        style={isFoundation ? { borderColor: 'rgba(200,161,74,0.38)' } : undefined}
         onMouseEnter={() => onHover(layer.key)}
         onMouseLeave={() => onHover(null)}
         onFocus={() => onHover(layer.key)}
         onBlur={() => onHover(null)}
         tabIndex={0}
         role="group"
-        aria-label={layer.name2 ? `${layer.name} and ${layer.name2}` : `${layer.name} — ${layer.role}`}
-        style={{ outline: 'none' }}
+        aria-label={`${layer.name} — ${layer.role}`}
       >
         {/* mint accent edge on hover — left rail */}
         <span
@@ -189,21 +205,21 @@ function LayerRow({
           style={{ background: 'linear-gradient(to bottom, transparent, var(--mint), transparent)', opacity: isHover ? 0.9 : 0 }}
         />
 
-        {isCore && (
+        {isFoundation && (
           <>
             <div
               aria-hidden
               className="pointer-events-none absolute inset-0"
               style={{
                 background:
-                  'radial-gradient(120% 140% at 50% 120%, rgba(57,214,255,0.16) 0%, rgba(57,214,255,0.04) 45%, rgba(57,214,255,0) 75%)',
+                  'radial-gradient(120% 140% at 50% 120%, rgba(200,161,74,0.16) 0%, rgba(200,161,74,0.04) 45%, rgba(200,161,74,0) 75%)',
               }}
             />
             <span
               aria-hidden
               className="krim-pl-glow pointer-events-none absolute -bottom-6 left-1/2 h-16 w-40 -translate-x-1/2 rounded-full"
               style={{
-                background: 'radial-gradient(closest-side, rgba(57,214,255,0.35), rgba(57,214,255,0))',
+                background: 'radial-gradient(closest-side, rgba(200,161,74,0.35), rgba(200,161,74,0))',
                 animation: reduce ? 'none' : 'krim-pl-breathe 7s var(--ease-in-out, cubic-bezier(0.65,0,0.35,1)) infinite',
                 willChange: 'transform, opacity',
               }}
@@ -211,41 +227,18 @@ function LayerRow({
           </>
         )}
 
-        {layer.name2 ? (
-          <div className="relative grid grid-cols-1 items-start gap-5 sm:grid-cols-2 sm:gap-4">
-            <Face name={layer.name} role={layer.role} tag={layer.tag} />
-            <span aria-hidden className="absolute inset-y-1 left-1/2 hidden w-px -translate-x-1/2 bg-white/10 sm:block" />
-            <Face name={layer.name2} role={layer.role2!} tag={layer.tag2!} />
+        <div className="relative text-center">
+          <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-1">
+            <span className="font-serif text-[1.5rem] leading-none text-ink">{layer.name}</span>
+            <span className="font-mono text-[11px] uppercase tracking-[0.16em] text-ink-3" style={tagColor}>
+              {layer.tag}
+            </span>
           </div>
-        ) : (
-          <div className="relative text-center">
-            <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-1">
-              <span className="font-serif text-[1.5rem] leading-none text-ink">{layer.name}</span>
-              <span
-                className="font-mono text-[11px] uppercase tracking-[0.16em] text-ink-3"
-                style={isCore ? { color: 'rgba(57,214,255,0.75)' } : undefined}
-              >
-                {layer.tag}
-              </span>
-            </div>
-            <p className="mx-auto mt-3 max-w-[52ch] font-sans text-[16.5px] leading-relaxed text-ink-2">
-              {layer.role}
-            </p>
-          </div>
-        )}
+          <p className="mx-auto mt-3 max-w-[52ch] font-sans text-[16.5px] leading-relaxed text-ink-2">
+            {layer.role}
+          </p>
+        </div>
       </div>
     </motion.div>
-  )
-}
-
-function Face({ name, role, tag }: { name: string; role: string; tag: string }) {
-  // Stacked + centred so both faces share one structure — the tag always sits
-  // on its own line beneath the name, regardless of name length (no wrap drift).
-  return (
-    <div className="min-w-0 px-2 text-center">
-      <p className="font-serif text-[1.3rem] leading-none text-ink">{name}</p>
-      <p className="mt-2 font-mono text-[11px] uppercase tracking-[0.18em] text-ink-3">{tag}</p>
-      <p className="mx-auto mt-2.5 max-w-[34ch] font-sans text-[15.5px] leading-normal text-ink-2">{role}</p>
-    </div>
   )
 }

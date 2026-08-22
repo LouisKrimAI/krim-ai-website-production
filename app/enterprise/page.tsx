@@ -1,5 +1,5 @@
 /**
- * /enterprise — the Large Enterprise domain. Content-first, calm glass + type,
+ * /enterprise — the Enterprise domain. Content-first, calm glass + type,
  * no hero image, no hand-built devices (HOUSE-STYLE §0/§7). Standalone shell.
  *
  * The spine only THIS page owns: one system over a sprawling, multi-vendor,
@@ -20,12 +20,12 @@ import { Section, Eyebrow, GlassCard, CTA } from '@/components/ui'
 const DEMO = '/contact'
 
 export const metadata: Metadata = {
-  title: 'Large Enterprise',
+  title: 'Enterprise',
   description:
     'One operating system over your whole estate: KrimOS automates regulated customer and back-office work at scale, with every action validated before it executes, inside your own perimeter, one standard across every region and system.',
   alternates: { canonical: 'https://www.krim.ai/enterprise' },
   openGraph: {
-    title: 'Large Enterprise — KrimOS',
+    title: 'Enterprise — KrimOS',
     description:
       'One operating system over your whole estate: KrimOS automates regulated customer and back-office work at scale, with every action validated before it executes, inside your own perimeter, one standard across every region and system.',
     url: 'https://www.krim.ai/enterprise',
@@ -37,7 +37,7 @@ const breadcrumbLd = {
   '@type': 'BreadcrumbList',
   itemListElement: [
     { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.krim.ai' },
-    { '@type': 'ListItem', position: 2, name: 'Large Enterprise', item: 'https://www.krim.ai/enterprise' },
+    { '@type': 'ListItem', position: 2, name: 'Enterprise', item: 'https://www.krim.ai/enterprise' },
   ],
 }
 
@@ -78,7 +78,7 @@ export default function EnterprisePage() {
         <Section className="!pt-24 !pb-24 min-h-[85vh] flex items-center [&>div]:w-full">
           <div className="mx-auto max-w-[820px] text-center">
             <Reveal>
-              <Eyebrow>Large Enterprise</Eyebrow>
+              <Eyebrow>Enterprise</Eyebrow>
               <h1 className="mt-5 font-serif text-display-hero text-ink">
                 Millions of regulated interactions, every one <span className="text-grad-carved">provable</span>.
               </h1>

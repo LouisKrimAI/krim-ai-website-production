@@ -1,7 +1,7 @@
 /**
  * /krimos — the hub. Answers a buyer's questions in order: what it is (hero),
  * what it does (the end-to-end horizon, shared with the homepage), what's
- * inside (the five layers + doorways), who on my team uses it (the roles),
+ * inside (the stack + doorways), who on my team uses it (the roles),
  * why adopt it (impact), then the ask. Concise and punchy — the layer pages
  * carry the depth. Design DNA from docs/HOUSE-STYLE.md; facts: docs/krim-content.md.
  */
@@ -20,7 +20,7 @@ import { Section, Eyebrow, GlassCard, CTA } from '@/components/ui'
 export const metadata: Metadata = {
   title: 'KrimOS',
   description:
-    'KrimOS is the agent operating system for safe lending operations: AI co-workers that run the whole loan, every action validated before it fires, inside your own perimeter. Built from a validating runtime (Kendra), 500+ credit-native actions (Kriya), the co-workers themselves (Karta), the command center your teams run them from (Kupa & Kula) and the advisor your customers meet (Kira).',
+    'KrimOS is the agent operating system for safe lending operations: AI co-workers that run the whole loan, every action validated before it fires, inside your own perimeter. One stack: the command center for your teams (Kupa & Kula), the app and advisor for your customers (Krimkar & Kira), the AI co-workers (Karta), the engine and validation gate (Kendra & Krim-Nyāya), 500+ compliance-encoded actions (Kriya), and Kovida — the world lending model at the foundation.',
   alternates: { canonical: 'https://www.krim.ai/krimos' },
   openGraph: {
     title: 'KrimOS — the agent operating system for safe lending operations',
@@ -56,6 +56,7 @@ const softwareLd = {
     '500+ validated, credit-native action primitives (Kriya, 20+ domains)',
     'AI co-workers (Karta) that run the lending lifecycle across the contact centre and back office, composed from validated primitives',
     'One runtime that validates every action and learns from every outcome (Kendra)',
+    'Kovida — the world lending model at the foundation, tuned on the institution’s own recorded outcomes',
     'Natural-language command center for teams (Kupa & Kula) and a customer advisor (Kira)',
     'Immutable, metered audit trail (Krim-Ledger, Krim Work Units)',
     'Sovereign deployment: on-prem, hybrid or managed',
@@ -174,13 +175,14 @@ export default function PlatformPage() {
           <LifecycleHorizon />
         </Section>
 
-        {/* ---- 3 · What's inside: the five layers + the doorways ---- */}
+        {/* ---- 3 · What's inside: the stack (deck order, Kovida at the
+                foundation) + the doorways ---- */}
         <Section hairline>
           <Reveal>
             <div className="mx-auto max-w-[760px] text-center">
               <Eyebrow>What&rsquo;s inside</Eyebrow>
               <h2 className="mt-4 font-serif text-display-1 text-ink">
-                Five layers. One accountable system.
+                One stack, from the model to the apps.
               </h2>
               <p className="mx-auto mt-6 max-w-[62ch] font-sans text-body-lg text-ink-2">
                 Most AI is a model with a chat box bolted on. KrimOS runs deeper: a runtime under
@@ -196,7 +198,8 @@ export default function PlatformPage() {
             </div>
           </Reveal>
 
-          {/* the doorways — one glass cell per layer, now with its one-line role */}
+          {/* the doorways — name + tag only: the stack visual directly above
+                already describes every part (no double-description) */}
           <Reveal>
             <div className="mt-16 border-t border-soft pt-12">
               <Eyebrow tone="mint">Go deeper, layer by layer</Eyebrow>
@@ -217,7 +220,6 @@ export default function PlatformPage() {
                     <h3 className="mt-1.5 font-serif text-[1.5rem] leading-tight tracking-[-0.01em] text-ink transition-colors duration-fast group-hover:text-mint-bright">
                       {l.name}
                     </h3>
-                    <p className="mt-2 font-sans text-caption text-ink-2">{l.oneLiner}</p>
                   </Link>
                 ))}
               </div>

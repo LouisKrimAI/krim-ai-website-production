@@ -186,13 +186,12 @@ export default function KriyaPage() {
           <Reveal>
             <GlassCard className="mx-auto max-w-[820px] p-10 text-center md:p-14">
               <h2 className="font-serif text-display-2 text-ink">
-                The layer that gets you past Compliance and Legal.
+                The layer Compliance and Legal can sign off on.
               </h2>
               <p className="mx-auto mt-5 max-w-[52ch] font-sans text-body-lg text-ink-2">
                 Build on a vocabulary that is{' '}
                 <span className="text-mint">validated, metered and logged at the root</span>, and
-                every co-worker you compose is accountable from its first action. Next, the
-                co-workers that put the vocabulary to work.
+                every co-worker you compose is accountable from its first action.
               </p>
             </GlassCard>
           </Reveal>

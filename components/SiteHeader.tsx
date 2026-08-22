@@ -34,8 +34,12 @@ export default function SiteHeader({ scrollReveal = false }: { scrollReveal?: bo
   const reduce = useReducedMotion()
   const pathname = usePathname()
   // On the homepage the banner stays hidden over the hero and is revealed once
-  // the visitor scrolls past it. Elsewhere (scrollReveal=false) it's always shown.
-  const [shown, setShown] = useState(!scrollReveal)
+  // the visitor scrolls past it — OR the moment the pointer travels to the top
+  // of the screen (owner rule: never fiddly; reaching for the banner shows it).
+  // Elsewhere (scrollReveal=false) it's always shown.
+  const [scrolled, setScrolled] = useState(!scrollReveal)
+  const [peek, setPeek] = useState(false)
+  const shown = scrolled || peek || open || menuOpen
 
   const cancelClose = () => {
     if (closeTimer.current) { clearTimeout(closeTimer.current); closeTimer.current = null }
@@ -49,10 +53,21 @@ export default function SiteHeader({ scrollReveal = false }: { scrollReveal?: bo
 
   useEffect(() => {
     if (!scrollReveal) return
-    const onScroll = () => setShown(window.scrollY > window.innerHeight * 0.5)
+    const onScroll = () => setScrolled(window.scrollY > window.innerHeight * 0.5)
+    // Reveal when the pointer reaches the top of the screen; tuck away only
+    // once it has clearly left the banner's neighbourhood (a wide hysteresis
+    // band, so the bar never flickers while you aim at it).
+    const onMove = (e: MouseEvent) => {
+      if (e.clientY <= 80) setPeek(true)
+      else if (e.clientY > 220) setPeek(false)
+    }
     onScroll()
     window.addEventListener('scroll', onScroll, { passive: true })
-    return () => window.removeEventListener('scroll', onScroll)
+    window.addEventListener('mousemove', onMove, { passive: true })
+    return () => {
+      window.removeEventListener('scroll', onScroll)
+      window.removeEventListener('mousemove', onMove)
+    }
   }, [scrollReveal])
 
   // close on outside click / Escape

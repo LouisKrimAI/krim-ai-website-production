@@ -31,7 +31,7 @@ export const NAV_COLUMNS: readonly NavColumn[] = [
     href: '/lending',
     rows: [
       { label: 'Lending', href: '/lending' },
-      { label: 'Large Enterprise', href: '/enterprise' },
+      { label: 'Enterprise', href: '/enterprise' },
       { label: 'Government', href: '/government' },
     ],
   },
