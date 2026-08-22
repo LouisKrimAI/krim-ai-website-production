@@ -33,7 +33,6 @@ export const NAV_COLUMNS: readonly NavColumn[] = [
       { label: 'Lending', href: '/lending' },
       { label: 'Large Enterprise', href: '/enterprise' },
       { label: 'Government', href: '/government' },
-      { label: 'MSME', href: '/msme' },
     ],
   },
   {
@@ -63,7 +62,7 @@ export const NAV_COLUMNS: readonly NavColumn[] = [
 // current-section mark.
 export const NAV_TOP: readonly { label: string; href: string; match: string[] }[] = [
   { label: 'KrimOS', href: '/krimos', match: ['/krimos'] },
-  { label: 'Domains', href: '/lending', match: ['/lending', '/government', '/enterprise', '/msme'] },
+  { label: 'Domains', href: '/lending', match: ['/lending', '/government', '/enterprise'] },
   { label: 'Research', href: '/research', match: ['/research', '/epistemic-ai', '/architecture'] },
   { label: 'Company', href: '/company', match: ['/company', '/contact', '/trust', '/services', '/insights'] },
 ]

@@ -2,11 +2,12 @@
  * /enterprise — the Large Enterprise domain. Content-first, calm glass + type,
  * no hero image, no hand-built devices (HOUSE-STYLE §0/§7). Standalone shell.
  *
- * Reworked for restraint: 6 sections (hero → challenge → why it fits → use cases
- * → impact → close), clean even grids (no col-span hacks), sectors folded into a
- * quiet hero line, deployment compressed to one line that links to /trust (which
- * owns the sovereign/hybrid/managed detail). Sectors are a LOGICAL fit, never
- * claimed customers. Facts: docs/krim-content.md.
+ * The spine only THIS page owns: one system over a sprawling, multi-vendor,
+ * multi-region estate — reads/writes the systems you already run (no rip, no
+ * replace), one audit standard everywhere. §6 "For smaller teams" carries the
+ * former /msme page's one idea (bank-grade rigor, managed + affordable);
+ * /msme permanently redirects here (next.config.mjs). Deployment detail lives
+ * on /trust. Logical fits only, never claimed customers. Facts: docs/krim-content.md.
  */
 
 import type { Metadata } from 'next'
@@ -40,28 +41,31 @@ const breadcrumbLd = {
   ],
 }
 
-// Why it fits — enterprise-specific, not the generic validate/sovereign/learn pitch.
+// Why it fits — the three things only an estate buyer needs to hear. The
+// validation wedge lives in the hero; these carry integration, consistency
+// and evidence instead of repeating it.
 const FITS = [
   {
-    name: 'Over the whole estate',
-    body: 'KrimOS sits over the systems you already run, reading from each and writing back on validated channels. One way of working across all of them, nothing torn out.',
+    name: 'No rip, no replace',
+    body: 'KrimOS reads from and writes back to the systems you already run, core, CRM, dialler, document stores, over 40+ connectors. The estate stays; the work starts connecting.',
   },
   {
     name: 'One standard, every region',
     body: 'The same validated operation in every jurisdiction; only the rules it enforces change. Compliance stays consistent by construction, not by retraining teams.',
   },
   {
-    name: 'Validated before it acts',
-    body: 'Every regulated action is checked against law, policy and context before it executes, so AI can finally act at scale with confidence.',
+    name: 'One record over everything',
+    body: 'Every action across every system and region lands on a single immutable trail, so the estate answers an audit as one operation, not forty exports.',
   },
 ]
 
-// The work an enterprise carries at volume — four, kept distinct.
+// The work only an estate carries — scale + heterogeneity, not the generic
+// service/outbound/back-office trio every vendor lists.
 const USE_CASES = [
-  { name: 'Customer servicing', body: 'Queries, account changes and support across voice, chat and messaging. Routine work self-serves, while humans take the hard cases.' },
-  { name: 'Compliant outbound', body: 'Collections, renewals and statutory notices, with every contact inside consent, contact-window and frequency rules, per jurisdiction.' },
-  { name: 'Back-office processing', body: 'Documents, data and reconciliation at volume, with explicit inputs and outputs logged by construction.' },
-  { name: 'Disputes & complaints', body: 'Logged, tracked and resolved on one thread, each step linked to the policy that applied.' },
+  { name: 'One servicing standard, every brand', body: 'Customers get the same answer at the same bar across brands, regions and channels, however many systems sit underneath.' },
+  { name: 'Policy rollout, estate-wide', body: 'Change a contact rule or a script once and it lands everywhere at once, checked before any action fires under it.' },
+  { name: 'Compliant outbound, per jurisdiction', body: 'Collections, renewals and statutory notices at volume, each contact inside the consent, contact-window and frequency rules of its own market.' },
+  { name: 'Reconciliation across systems', body: 'Payments matched and breaks cleared across the fragmented estate, with explicit inputs and outputs logged by construction.' },
 ]
 
 export default function EnterprisePage() {
@@ -209,7 +213,39 @@ export default function EnterprisePage() {
           </div>
         </Section>
 
-        {/* ---- 6 · Close ---- */}
+        {/* ---- 6 · For smaller teams — the former /msme page, distilled to its
+               one real idea: the same rigor, managed and affordable. ---- */}
+        <Section hairline>
+          <div className="grid items-center gap-12 md:grid-cols-[1fr_1fr]">
+            <Reveal>
+              <div>
+                <Eyebrow tone="mint">For smaller teams</Eyebrow>
+                <h2 className="mt-4 max-w-[20ch] font-serif text-display-1 text-ink">
+                  The same rigor, sized for a growing business.
+                </h2>
+                <p className="mt-7 max-w-[52ch] font-sans text-body-lg text-ink-2">
+                  You don&rsquo;t need an estate to need AI you can trust in front of customers and
+                  money. The same validated co-workers run{' '}
+                  <span className="text-ink">fully managed</span>: hosted and operated for you,
+                  nothing to stand up, <span className="text-mint">priced for a growing business</span>.
+                </p>
+              </div>
+            </Reveal>
+            <Reveal delay={0.12}>
+              <GlassCard className="p-8 md:p-10">
+                <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-mint">
+                  Managed SaaS
+                </p>
+                <p className="mt-5 font-serif text-[clamp(1.3rem,2.2vw,1.7rem)] leading-snug text-ink">
+                  Start with the work that eats your week, and as you grow, it can move inside your
+                  own walls.
+                </p>
+              </GlassCard>
+            </Reveal>
+          </div>
+        </Section>
+
+        {/* ---- 7 · Close ---- */}
         <Section hairline>
           <Reveal>
             <div className="glass mx-auto max-w-[760px] p-10 text-center md:p-14">

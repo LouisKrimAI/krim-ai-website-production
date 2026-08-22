@@ -27,6 +27,8 @@ const nextConfig = {
       // Kula merged into Kupa (one enterprise seat); Kira & Krimkar moved to /krimkar.
       { source: '/krimos/kula', destination: '/krimos/kupa', permanent: true },
       { source: '/krimos/kira', destination: '/krimkar', permanent: true },
+      // MSME folded into Large Enterprise as its "for smaller teams" section (2026-08-22).
+      { source: '/msme', destination: '/enterprise', permanent: true },
     ]
   },
 }

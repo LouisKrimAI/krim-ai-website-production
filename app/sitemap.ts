@@ -22,7 +22,6 @@ const ROUTES: { path: string; priority: number; changeFrequency: Change }[] = [
   { path: '/lending', priority: 0.9, changeFrequency: 'monthly' },
   { path: '/government', priority: 0.8, changeFrequency: 'monthly' },
   { path: '/enterprise', priority: 0.8, changeFrequency: 'monthly' },
-  { path: '/msme', priority: 0.8, changeFrequency: 'monthly' },
   { path: '/epistemic-ai', priority: 0.9, changeFrequency: 'monthly' },
   { path: '/research', priority: 0.8, changeFrequency: 'monthly' },
   { path: '/research/world-lending-model', priority: 0.9, changeFrequency: 'monthly' },
