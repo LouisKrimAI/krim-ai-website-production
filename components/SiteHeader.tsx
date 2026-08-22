@@ -212,11 +212,20 @@ export default function SiteHeader({ scrollReveal = false }: { scrollReveal?: bo
 
             <div className="relative mx-auto grid max-w-site grid-cols-4 gap-10 px-6 py-9 md:px-10">
               {COLUMNS.map((col) => {
-                // the hovered top-bar head lights its own column; the rest soften
+                // one spotlight, following the pointer: the trigger lights its
+                // column on open, and hovering (or tabbing into) any column
+                // moves the light there — the top-bar thread slides to match,
+                // since column titles and trigger labels are the same strings.
+                // Dim stays legible: these are live links, never "disabled".
                 const lit = hovered === col.title
                 const dim = hovered != null && !lit
                 return (
-                <div key={col.title} className={`transition-opacity duration-300 ${dim ? 'opacity-40' : 'opacity-100'}`}>
+                <div
+                  key={col.title}
+                  className={`transition-opacity duration-300 ${dim ? 'opacity-60' : 'opacity-100'}`}
+                  onMouseEnter={() => setHovered(col.title)}
+                  onFocus={() => setHovered(col.title)}
+                >
                   <Link
                     href={col.href}
                     onClick={closeNow}
