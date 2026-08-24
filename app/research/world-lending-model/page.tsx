@@ -34,6 +34,7 @@ export const metadata: Metadata = {
     'Kovida is Krim’s world lending model: a learned, safe model of how lending actually behaves, across borrowers, products, markets, rules and the whole lifecycle. AI agents simulate an action against Kovida and clear it through the compliance gate before they act, from origination to a validated AI underwriter to collections. Every recorded outcome makes the model sharper, inside the institution’s own walls.',
   alternates: { canonical: 'https://www.krim.ai/research/world-lending-model' },
   openGraph: {
+    images: ['/opengraph-image'],
     title: 'Kovida — the world lending model · Krim Research',
     description:
       'Kovida is a learned, safe world model of lending, that AI agents simulate against and clear through the compliance gate before they act, from origination to a validated AI underwriter to collections. Every recorded outcome makes the model sharper, inside the institution’s own walls.',

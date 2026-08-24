@@ -23,6 +23,7 @@ export const metadata: Metadata = {
     'Ask in plain language and Kula builds the governed plan. Kupa is the command center: see every action, set the rules, step in, and prove what happened.',
   alternates: { canonical: 'https://www.krim.ai/krimos/kupa' },
   openGraph: {
+    images: ['/opengraph-image'],
     title: 'Kupa & Kula — for your teams',
     description:
       'Ask in plain language and Kula builds the governed plan. Kupa is the command center: see every action, set the rules, step in, and prove what happened.',

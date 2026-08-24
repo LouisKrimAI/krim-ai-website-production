@@ -23,11 +23,16 @@ export default function Reveal({
 }) {
   const reduce = useReducedMotion()
   return (
+    // HYDRATION RULE: `initial` must not branch on useReducedMotion — the hook
+    // is false during SSR and true on a reduced-motion client's first render,
+    // so `initial={reduce ? false : ...}` mismatches the server style (React
+    // #418). The server always renders the 16px offset; reduced-motion clients
+    // snap to place via the zero-duration transition instead.
     <motion.div
-      initial={reduce ? false : { y: 16 }}
+      initial={{ y: 16 }}
       whileInView={{ y: 0 }}
       viewport={{ once: true, amount: 0.18 }}
-      transition={{ duration: 0.7, ease: EASE, delay }}
+      transition={reduce ? { duration: 0 } : { duration: 0.7, ease: EASE, delay }}
       className={className}
     >
       {children}

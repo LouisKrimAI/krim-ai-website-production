@@ -22,6 +22,7 @@ export const metadata: Metadata = {
     'Insights from Krim: the thinking behind validated, sovereign AI for regulated work. Why pilots stall at the compliance ceiling, what a non-compliant action really costs, and why proof has to come before the action, not after.',
   alternates: { canonical: 'https://www.krim.ai/insights' },
   openGraph: {
+    images: ['/opengraph-image'],
     title: 'Insights — Krim',
     description:
       'Insights from Krim: the thinking behind validated, sovereign AI for regulated work. Why pilots stall at the compliance ceiling, what a non-compliant action really costs, and why proof has to come before the action, not after.',

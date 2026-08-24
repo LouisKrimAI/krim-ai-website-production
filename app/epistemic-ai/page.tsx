@@ -26,6 +26,7 @@ export const metadata: Metadata = {
     'Epistemic AI is the category Krim defines: AI whose every action is validated before it fires, and whose reasoning an auditor can read end to end. Distinct from autonomous AI (which implies no human) and safe AI (which is defensive and does not run the operation).',
   alternates: { canonical: 'https://www.krim.ai/epistemic-ai' },
   openGraph: {
+    images: ['/opengraph-image'],
     title: 'Epistemic AI',
     description:
       'Epistemic AI is the category Krim defines: AI whose every action is validated before it fires, and whose reasoning an auditor can read end to end. Distinct from autonomous AI (which implies no human) and safe AI (which is defensive and does not run the operation).',

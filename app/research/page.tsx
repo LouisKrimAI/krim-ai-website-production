@@ -16,6 +16,7 @@ export const metadata: Metadata = {
     'Research at Krim is the work under the product: making human judgment machine-checkable, learning a model of how a whole lending operation behaves, and treating pre-execution validation as a discipline — proving an action before it acts rather than auditing it after.',
   alternates: { canonical: 'https://www.krim.ai/research' },
   openGraph: {
+    images: ['/opengraph-image'],
     title: 'Research — the work under the product',
     description:
       'Making human judgment machine-checkable, learning a model of how lending behaves, treating pre-execution validation as its own discipline. Research at Krim is the work under the product.',

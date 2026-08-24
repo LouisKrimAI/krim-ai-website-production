@@ -131,10 +131,10 @@ export default function LifecycleHorizon() {
                 key={st.n}
                 className="absolute"
                 style={{ left: `${(p.x / 1040) * 100}%`, top: `${((p.y - 30) / 300) * 100}%` }}
-                initial={reduce ? undefined : { opacity: 0, y: 10 }}
-                whileInView={reduce ? undefined : { opacity: 1, y: 0 }}
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.4 }}
-                transition={{ duration: 0.52, delay: 0.1 + i * 0.07, ease: OUT_SOFT }}
+                transition={reduce ? { duration: 0 } : { duration: 0.52, delay: 0.1 + i * 0.07, ease: OUT_SOFT }}
               >
                 <span className="absolute grid h-[14px] w-[14px] -translate-x-1/2 -translate-y-1/2 place-items-center">
                   <span aria-hidden className="absolute bottom-[1px] h-[3px] w-[10px] rounded-full" style={{ background: `rgba(${st.rgb},0.65)`, filter: 'blur(1px)' }} />

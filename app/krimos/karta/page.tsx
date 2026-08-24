@@ -21,6 +21,7 @@ export const metadata: Metadata = {
     'Karta are the autonomous co-workers of KrimOS. They run the lending operation across the contact centre and the back office, in the customer’s own language, with every action cleared by the validation gate before it fires.',
   alternates: { canonical: 'https://www.krim.ai/krimos/karta' },
   openGraph: {
+    images: ['/opengraph-image'],
     title: 'Karta — the co-workers',
     description:
       'Karta are the autonomous co-workers of KrimOS, running the lending operation across the contact centre and the back office. Built and tuned in Agent Studio — persona, voice, video avatar, workflow and limits — with no engineering cycle.',

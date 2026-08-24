@@ -20,6 +20,7 @@ export const metadata: Metadata = {
     'See KrimOS run on your operation. Book a demo or grab a call directly. Tell us what you are trying to solve and we will come prepared. Routed to sales@krim.ai.',
   alternates: { canonical: 'https://www.krim.ai/contact' },
   openGraph: {
+    images: ['/opengraph-image'],
     title: 'Book a demo — Krim',
     description:
       'See KrimOS run on your operation. Book a demo or grab a call directly. Tell us what you are trying to solve and we will come prepared. Routed to sales@krim.ai.',

@@ -88,7 +88,8 @@ export default function ResearchBackdrop() {
       <div className="absolute left-1/2 top-[calc(51%_-_1cm)] -translate-x-1/2 -translate-y-1/2">
         <motion.div
           style={{ mixBlendMode: 'screen' }}
-          initial={reduce ? { opacity: 0.6, scale: 1 } : { opacity: 0, scale: 0.18 }}
+          // initial must not branch on `reduce` (SSR false vs RM-client true = React #418)
+          initial={{ opacity: 0, scale: 0.18 }}
           animate={orbShown ? { opacity: 0.6, scale: 1 } : { opacity: 0, scale: 0.18 }}
           transition={{ duration: reduce ? 0 : 2.4, ease: [0.16, 1, 0.3, 1] }}
         >

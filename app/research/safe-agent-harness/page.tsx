@@ -30,6 +30,7 @@ export const metadata: Metadata = {
     'A safe agent harness is the control layer around an autonomous AI agent: a constrained action vocabulary, a pre-execution validation gate, and a human command surface, so every action is checked before it can fire.',
   alternates: { canonical: 'https://www.krim.ai/research/safe-agent-harness' },
   openGraph: {
+    images: ['/opengraph-image'],
     title: 'Safe Agent Harness · Krim Research',
     description:
       'The operational control layer that wraps AI agents — constraining what they can do, gating what they propose, and keeping a human in command.',

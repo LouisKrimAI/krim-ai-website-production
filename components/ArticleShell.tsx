@@ -45,6 +45,9 @@ export function articleMetadata(post: Post, overrides?: { title?: string }): Met
       description: post.dek,
       url: `${SITE}/insights/${post.slug}`,
       type: 'article',
+      // A page-level openGraph export replaces the root's resolved object, so
+      // the share image must be restated here or link previews render bare.
+      images: [post.image ?? '/opengraph-image'],
     },
   }
 }

@@ -24,6 +24,7 @@ export const metadata: Metadata = {
     'KrimOS is sovereign by construction: the full stack runs inside your perimeter, on-prem by default, with end-to-end encryption, granular RBAC, customer-held keys and an immutable, cryptographically sealed audit trail. US, UK, India, Nigeria and Brazil frameworks are encoded in the runtime and validated before every action.',
   alternates: { canonical: 'https://www.krim.ai/trust' },
   openGraph: {
+    images: ['/opengraph-image'],
     title: 'Trust — sovereignty, security & deployment',
     description:
       'KrimOS is sovereign by construction: the full stack runs inside your perimeter, on-prem by default, with end-to-end encryption, granular RBAC, customer-held keys and an immutable, cryptographically sealed audit trail. US, UK, India, Nigeria and Brazil frameworks are encoded in the runtime and validated before every action.',

@@ -215,7 +215,7 @@ Body: Krim-Learn coordinates ten learning loops (outcome feedback, error analysi
 
 ### Kira · Krimkar (consumer)
 Headline: **Kira — one relationship, the whole lifecycle.**
-A single AI customer advisor meets the borrower across WhatsApp, voice, IVR, chat, email and SMS — and on the public consumer site and the Krimkar app — one thread, context preserved across channels, from application to payoff. Speaks the customer's language (including 50+ Indian languages), auto-clarifies ambiguous fields mid-conversation, acts only within consent and contact-window rules, and hands off to a human with full context for disputes, hardship or sensitive segments.
+A single AI customer advisor meets the borrower across WhatsApp, voice, IVR, chat, email and SMS — and on the public consumer site and the Krimkar app — one thread, context preserved across channels, from application to payoff. Speaks the customer's language (50+ global languages, including 12+ Indian languages), auto-clarifies ambiguous fields mid-conversation, acts only within consent and contact-window rules, and hands off to a human with full context for disputes, hardship or sensitive segments.
 
 ### Kula · Kupa (enterprise natural-language interface)
 Headline: **Kula — talk to your operation.**

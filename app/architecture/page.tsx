@@ -21,6 +21,7 @@ export const metadata: Metadata = {
     'How KrimOS is built: a complete operating system for lending you can run end to end, or layer onto the systems you keep. Eight Kendra runtime modules (Core, Karya, Fabric, Govern, Nyāya, Learn, Ledger, Sense), a shared substrate of memory tiers, durable orchestration and a 15-entity domain model, a 40+ connector integration fabric, and one architecture that runs sovereign in every market.',
   alternates: { canonical: 'https://www.krim.ai/architecture' },
   openGraph: {
+    images: ['/opengraph-image'],
     title: 'Architecture — KrimOS',
     description:
       'How KrimOS is built: a complete operating system for lending you can run end to end, or layer onto the systems you keep. Eight Kendra runtime modules (Core, Karya, Fabric, Govern, Nyāya, Learn, Ledger, Sense), a shared substrate of memory tiers, durable orchestration and a 15-entity domain model, a 40+ connector integration fabric, and one architecture that runs sovereign in every market.',

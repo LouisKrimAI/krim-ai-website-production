@@ -53,7 +53,7 @@ export default function JurisdictionTabs({ items }: { items: Jurisdiction[] }) {
       <div className="lume glass mt-7 min-h-[180px] rounded-lg p-8 md:p-10">
         <motion.div
           key={active}
-          initial={reduce ? false : { opacity: 0, y: 8 }}
+          initial={{ opacity: 0, y: 8 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: reduce ? 0 : 0.28 }}
         >

@@ -46,7 +46,10 @@ export default function PolicyChecks() {
     show: { transition: { staggerChildren: reduce ? 0 : 0.14, delayChildren: reduce ? 0 : 0.1 } },
   }
   const item = {
-    hidden: reduce ? { y: 0 } : { y: 8 },
+    // `hidden` must not branch on reduce — SSR renders reduce=false and a
+    // reduced-motion client's first render would mismatch (React #418); the
+    // zero-duration `show` transition already settles RM users instantly
+    hidden: { y: 8 },
     show: { y: 0, transition: { duration: reduce ? 0 : 0.5, ease: EASE } },
   }
 

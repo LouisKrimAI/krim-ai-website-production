@@ -32,6 +32,7 @@ export const metadata: Metadata = {
     'KrimOS runs the whole loan lifecycle: every customer conversation and every back-office task on one system that validates each action before it executes, and learns the operation as it runs. Lending law encoded in the runtime, across every market you lend in.',
   alternates: { canonical: 'https://www.krim.ai/lending' },
   openGraph: {
+    images: ['/opengraph-image'],
     title: 'Lending — Krim',
     description:
       'KrimOS runs the whole loan lifecycle: every customer conversation and every back-office task on one system that validates each action before it executes, and learns the operation as it runs. Lending law encoded in the runtime, across every market you lend in.',

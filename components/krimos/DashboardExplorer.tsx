@@ -94,10 +94,10 @@ export default function DashboardExplorer() {
         <AnimatePresence mode="wait">
           <motion.div
             key={active}
-            initial={reduce ? false : { opacity: 0, y: 8 }}
+            initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
             exit={reduce ? { opacity: 0 } : { opacity: 0, y: -8 }}
-            transition={{ duration: 0.26, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: reduce ? 0 : 0.26, ease: [0.16, 1, 0.3, 1] }}
           >
             <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-mint">{d.group}</p>
             <h3 className="mt-3 font-serif text-[clamp(1.8rem,3vw,2.4rem)] leading-tight text-ink">

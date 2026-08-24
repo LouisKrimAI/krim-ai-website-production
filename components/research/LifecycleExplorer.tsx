@@ -130,10 +130,10 @@ export default function LifecycleExplorer() {
         <AnimatePresence mode="wait">
           <motion.div
             key={active}
-            initial={reduce ? false : { opacity: 0, y: 6 }}
+            initial={{ opacity: 0, y: 6 }}
             animate={{ opacity: 1, y: 0 }}
             exit={reduce ? { opacity: 0 } : { opacity: 0, y: -6 }}
-            transition={{ duration: 0.24, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: reduce ? 0 : 0.24, ease: [0.16, 1, 0.3, 1] }}
           >
             <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-mint">
               {STAGES[active].label} · with the model

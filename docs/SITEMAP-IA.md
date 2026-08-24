@@ -52,7 +52,7 @@ Regulated operations couldn't run on AI you can't prove, or risk what leaves you
 
 **/platform/kula** — Hero (talk to your operation) · The enterprise natural-language interface (ask in words; the brain — Kendra — does the thinking) · A digital twin per role (each user gets one tailored to their function) · From intent to governed action (Ask→Suggest→Act→Learn; every step validated) · The Kupa command centre (one real cockpit surface — visibility, queues, kill switches, human oversight) · CTA.
 
-**/platform/kira** — Hero (one relationship, the whole lifecycle) · Always on, every channel (incl. 50+ Indian languages) · Within the rules (consent, contact windows, graceful handoff) · Where it lives (the Krimkar consumer app and the public consumer site) · CTA.
+**/platform/kira** — Hero (one relationship, the whole lifecycle) · Always on, every channel (incl. 50+ global languages, 12+ Indian) · Within the rules (consent, contact windows, graceful handoff) · Where it lives (the Krimkar consumer app and the public consumer site) · CTA.
 
 **/lending** *(flagship — the deep one)* — Hero (run the whole loan lifecycle; validated, and learning) · The problem (two workforces split by a wall; operations are 40–60% of cost-per-loan; you can't deploy AI you can't explain) · The lifecycle (six stages, customer + back-office, scannable) · Compliance by jurisdiction (India RBI/Fair Practices · UK FCA/CONC · US FDCPA/TCPA/Reg F) · By role (the eight twins, light) · Impact (ranges, not commitments; the learning curve) · Deployment fit (on-prem / hybrid) · CTA.
 

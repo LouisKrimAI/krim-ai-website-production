@@ -25,6 +25,7 @@ export const metadata: Metadata = {
     'One operating system over your whole estate: KrimOS automates regulated customer and back-office work at scale, with every action validated before it executes, inside your own perimeter, one standard across every region and system.',
   alternates: { canonical: 'https://www.krim.ai/enterprise' },
   openGraph: {
+    images: ['/opengraph-image'],
     title: 'Enterprise — KrimOS',
     description:
       'One operating system over your whole estate: KrimOS automates regulated customer and back-office work at scale, with every action validated before it executes, inside your own perimeter, one standard across every region and system.',

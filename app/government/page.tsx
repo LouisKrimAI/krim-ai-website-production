@@ -21,6 +21,7 @@ export const metadata: Metadata = {
     'KrimOS fits public-sector work: AI co-workers that automate citizen-facing and back-office operations inside your own jurisdiction, every action resting on a lawful basis, every action kept on an immutable record.',
   alternates: { canonical: 'https://www.krim.ai/government' },
   openGraph: {
+    images: ['/opengraph-image'],
     title: 'Government — Krim',
     description:
       'KrimOS fits public-sector work: AI co-workers that automate citizen-facing and back-office operations inside your own jurisdiction, every action resting on a lawful basis, every action kept on an immutable record.',

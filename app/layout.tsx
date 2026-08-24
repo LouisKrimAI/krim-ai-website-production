@@ -52,6 +52,7 @@ export const metadata: Metadata = {
     siteName: 'Krim',
     type: 'website',
     url: 'https://www.krim.ai',
+    images: ['/opengraph-image'],
   },
   twitter: { card: 'summary_large_image', site: '@TheKrimAI' },
   verification: {

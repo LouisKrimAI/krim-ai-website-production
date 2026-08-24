@@ -77,12 +77,14 @@ export default function HomeHero() {
 
   // soft-materialize helper: a long gentle fade + rise + blur-in, so each
   // element condenses out of the backdrop's mist instead of switching on.
-  // Drift scales DOWN with element size (subline 10, CTAs 8); disabled
-  // (settled / reduced-motion) renders instantly crisp.
+  // Drift scales DOWN with element size (subline 10, CTAs 8).
+  // HYDRATION RULE: `initial` must NOT branch on client-only state (settled /
+  // useReducedMotion) — the server always renders the hidden state, and a
+  // diverging first client render throws React #418 for returning and
+  // reduced-motion visitors. Disabled clients skip the choreography via the
+  // zero-duration transition instead: one imperceptible frame, then crisp.
   const f = (delay: number, duration = 1.4, y = 10) => ({
-    initial: disabled
-      ? { opacity: 1, y: 0, filter: 'blur(0px)' }
-      : { opacity: 0, y, filter: 'blur(6px)' },
+    initial: { opacity: 0, y, filter: 'blur(6px)' },
     animate: { opacity: 1, y: 0, filter: 'blur(0px)' },
     transition: disabled
       ? { duration: 0 }
@@ -91,9 +93,7 @@ export default function HomeHero() {
   // headline lines: slightly deeper blur + a micro-scale (0.995→1) so the big
   // serif blooms into focus with real weight — GPU/paint only, no layout
   const fH = (delay: number, duration = 1.5) => ({
-    initial: disabled
-      ? { opacity: 1, y: 0, scale: 1, filter: 'blur(0px)' }
-      : { opacity: 0, y: 10, scale: 0.995, filter: 'blur(8px)' },
+    initial: { opacity: 0, y: 10, scale: 0.995, filter: 'blur(8px)' },
     animate: { opacity: 1, y: 0, scale: 1, filter: 'blur(0px)' },
     transition: disabled
       ? { duration: 0 }
@@ -107,9 +107,11 @@ export default function HomeHero() {
       <div className="pointer-events-none fixed left-0 right-0 top-0 z-[45]">
         <motion.div
           className="mx-auto flex h-16 max-w-site items-center px-6 md:px-10"
-          initial={{ opacity: disabled ? (scrolledPast ? 0 : 1) : 0 }}
+          // initial always matches the SSR state (hidden); `animate` takes over
+          // post-mount, so disabled clients snap via the duration-0 transition
+          initial={{ opacity: 0 }}
           animate={{ opacity: logoVisible ? 1 : 0 }}
-          transition={reduce ? { duration: 0 } : { duration: 0.9, ease: OUT_SOFT }}
+          transition={disabled ? { duration: 0 } : { duration: 0.9, ease: OUT_SOFT }}
           style={{ pointerEvents: logoVisible ? 'auto' : 'none' }}
         >
           <Link href="/" aria-label="Krim — home">

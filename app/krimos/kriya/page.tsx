@@ -17,6 +17,7 @@ export const metadata: Metadata = {
     'Kriya is the vocabulary of KrimOS: 500+ validated, credit-native primitives, atomic operations that ship with their own checks, metered in KWUs and logged by construction. A finite vocabulary, endless combinations.',
   alternates: { canonical: 'https://www.krim.ai/krimos/kriya' },
   openGraph: {
+    images: ['/opengraph-image'],
     title: 'Kriya — the vocabulary',
     description:
       'Kriya is the vocabulary of KrimOS: 500+ validated, credit-native primitives, atomic operations that ship with their own checks, metered in KWUs and logged by construction. A finite vocabulary, endless combinations.',

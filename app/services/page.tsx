@@ -21,6 +21,7 @@ export const metadata: Metadata = {
     'From technical deep-dive to production go-live: a scoped pilot, proof of value on ring-fenced data measured against your own baseline, then a contracted go-live, one stage at a time.',
   alternates: { canonical: 'https://www.krim.ai/services' },
   openGraph: {
+    images: ['/opengraph-image'],
     title: 'Services — pilot to go-live',
     description:
       'From technical deep-dive to production go-live: a scoped pilot, proof of value on ring-fenced data measured against your own baseline, then a contracted go-live, one stage at a time.',

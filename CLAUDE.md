@@ -113,9 +113,9 @@ Copy is design material, not decoration. Render the route's copy from its deck
 - **Consistent vocabulary through a flow.** A label labels; an example demonstrates.
 - **Errors don't apologise and are never vague.** Empty states invite action.
 - The brand line is "Safe Superintelligence"; homepage tab title is exactly
-  `Krim - Safe Superintelligence`; other pages use `{Page} — Krim`. Keep
-  "superintelligence" to the brand line — body copy for regulated buyers stays
-  concrete and credible.
+  `Krim - Regulated Autonomy` (owner-set 2026-08-24); other pages use
+  `{Page} — Krim · Safe Superintelligence`. Keep "superintelligence" to the
+  brand line — body copy for regulated buyers stays concrete and credible.
 
 ---
 

@@ -23,6 +23,7 @@ export const metadata: Metadata = {
     'KrimOS is the agent operating system for safe lending operations: AI co-workers that run the whole loan, every action validated before it fires, inside your own perimeter. One stack: the command center for your teams (Kupa & Kula), the app and advisor for your customers (Krimkar & Kira), the AI co-workers (Karta), the engine and validation gate (Kendra & Krim-Nyāya), 500+ compliance-encoded actions (Kriya), and Kovida — the world lending model at the foundation.',
   alternates: { canonical: 'https://www.krim.ai/krimos' },
   openGraph: {
+    images: ['/opengraph-image'],
     title: 'KrimOS — the agent operating system for safe lending operations',
     description:
       'AI co-workers that run the whole loan, from first enquiry to final payoff — every action validated before it fires, inside your own perimeter.',

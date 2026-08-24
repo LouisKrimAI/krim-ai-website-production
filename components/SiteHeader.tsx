@@ -91,18 +91,23 @@ export default function SiteHeader({ scrollReveal = false }: { scrollReveal?: bo
 
   return (
     <>
+    {/* the animate VALUES must not branch on `reduce`: useReducedMotion is
+        false during SSR and true on a reduced-motion client's first render,
+        so a reduce-dependent value hydration-mismatches (React #418). The
+        hidden-state y-offset is invisible (opacity 0); reduced motion is
+        honoured via the zero-duration transition instead. */}
     <motion.header
       ref={headerRef}
       className="sticky top-0 z-40 border-b border-soft bg-bg/70 backdrop-blur-md"
       aria-hidden={!shown}
       initial={false}
-      animate={{ opacity: shown ? 1 : 0, y: shown || reduce ? 0 : -14 }}
+      animate={{ opacity: shown ? 1 : 0, y: shown ? 0 : -14 }}
       transition={reduce ? { duration: 0 } : { duration: 0.5, ease: OUT_SOFT }}
       style={{ pointerEvents: shown ? 'auto' : 'none' }}
       onMouseLeave={scheduleClose}
     >
       <div className="mx-auto flex h-16 max-w-site items-center justify-between px-6 md:px-10">
-        <Link href="/" className="flex items-center" aria-label="Krim — home" onMouseEnter={scheduleClose}>
+        <Link href="/" className="flex items-center self-stretch" aria-label="Krim — home" onMouseEnter={scheduleClose}>
           <KrimLogoAnimated className="h-[26px] w-auto" />
         </Link>
 

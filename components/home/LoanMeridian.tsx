@@ -204,20 +204,20 @@ export default function LoanMeridian() {
             <div aria-hidden className="absolute left-[6.25%] right-[6.25%] top-[7px] h-px -translate-y-px opacity-[0.18]" style={{ background: 'linear-gradient(90deg, rgba(57,214,255,0.5), rgba(0,255,178,0.5))' }} />
             <div aria-hidden className="absolute left-[6.25%] right-[6.25%] top-[7px] h-[2px] -translate-y-px opacity-40 blur-[6px]" style={{ background: CURRENT }} />
             <div aria-hidden className="absolute left-[6.25%] right-[6.25%] top-[7px] h-px -translate-y-px opacity-90" style={{ background: CURRENT }} />
-            {!reduce && (
-              <div aria-hidden className="meridian-flow absolute left-[6.25%] top-[6px] h-px w-[22%] opacity-90" style={{ background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.6), transparent)', mixBlendMode: 'screen' }} />
+            {(
+              <div aria-hidden className="meridian-flow motion-reduce:hidden absolute left-[6.25%] top-[6px] h-px w-[22%] opacity-90" style={{ background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.6), transparent)', mixBlendMode: 'screen' }} />
             )}
             {/* the traveller — a comet of light that runs to the active node (CSS, SSR-safe).
                 Sized up so the "current" reads at a glance, not only on close inspection. */}
             <div
               aria-hidden
-              className="pointer-events-none absolute top-[7px] h-[4px] w-[15%] -translate-x-1/2 -translate-y-px"
+              className="pointer-events-none absolute top-[7px] h-[4px] w-[15%] -translate-x-1/2 -translate-y-px motion-reduce:!transition-none"
               style={{
                 left: `calc(6.25% + ${active * 12.5}%)`,
                 background: `radial-gradient(closest-side, rgba(${s.rgb},1), rgba(${s.rgb},0) 62%)`,
                 filter: 'blur(1px)',
                 mixBlendMode: 'screen',
-                transition: reduce ? 'none' : `left 0.55s ${EASE_CSS}, background 0.55s ease`,
+                transition: `left 0.55s ${EASE_CSS}, background 0.55s ease`,
               }}
             />
             <div className="relative grid grid-cols-8 pt-[2px]">
@@ -248,8 +248,8 @@ export default function LoanMeridian() {
                       <span aria-hidden className="absolute h-[22px] w-[22px] rounded-full transition-opacity duration-300" style={{ border: `1px solid rgba(${st.rgb},0.55)`, boxShadow: `0 0 18px 1px rgba(${st.rgb},0.5)`, opacity: on ? 1 : 0 }} />
                       <span aria-hidden className="absolute h-[15px] w-[15px] rounded-full transition-opacity delay-75 duration-300" style={{ border: `1px solid rgba(${st.rgb},0.35)`, opacity: on ? 1 : 0 }} />
                       {/* one-shot validation pulse, fired on each commit (CSS) */}
-                      {on && !reduce && (
-                        <span key={`pulse-${active}`} aria-hidden className="absolute h-[14px] w-[14px] rounded-full" style={{ border: `1px solid rgba(${st.rgb},0.6)`, animation: 'pulseRing 0.62s cubic-bezier(0.16,1,0.3,1) both' }} />
+                      {on && (
+                        <span key={`pulse-${active}`} aria-hidden className="motion-reduce:hidden absolute h-[14px] w-[14px] rounded-full" style={{ border: `1px solid rgba(${st.rgb},0.6)`, animation: 'pulseRing 0.62s cubic-bezier(0.16,1,0.3,1) both' }} />
                       )}
                       {/* keyboard focus ring (replaces the global mint outline) */}
                       <span aria-hidden className="absolute h-[21px] w-[21px] rounded-full opacity-0 transition-opacity group-focus-visible:opacity-100" style={{ boxShadow: '0 0 0 2px rgba(255,255,255,0.6)' }} />
@@ -328,8 +328,8 @@ export default function LoanMeridian() {
         {/* the vertical current, tracking the active stage → resolving at the gold boundary */}
         <span
           aria-hidden
-          className="absolute bottom-2 left-[5.5px] top-2 w-px"
-          style={{ background: `linear-gradient(180deg, rgb(${s.rgb}) 0%, rgba(${GOLD},0.75) 100%)`, transition: reduce ? 'none' : 'background 600ms ease' }}
+          className="absolute bottom-2 left-[5.5px] top-2 w-px motion-reduce:!transition-none"
+          style={{ background: `linear-gradient(180deg, rgb(${s.rgb}) 0%, rgba(${GOLD},0.75) 100%)`, transition: 'background 600ms ease' }}
         />
 
         {/* ---- console — the runtime surface ---- */}
@@ -337,13 +337,13 @@ export default function LoanMeridian() {
           <div className="relative">
             <span aria-hidden className="absolute -left-[27px] top-[5px] sm:-left-[35px]"><Node rgb={s.rgb} /></span>
             <div
-              className="relative overflow-hidden rounded-[20px] border p-8 md:p-10"
+              className="relative overflow-hidden rounded-[20px] border p-8 md:p-10 motion-reduce:!transition-none"
               style={{
                 borderColor: 'rgba(255,255,255,0.14)',
                 background: `radial-gradient(120% 120% at 0% 0%, rgba(${s.rgb},0.08), transparent 45%), linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.014)), rgba(9,11,16,0.8)`,
                 backdropFilter: 'blur(22px) saturate(135%)', WebkitBackdropFilter: 'blur(22px) saturate(135%)',
                 boxShadow: `inset 0 1px 0 0 rgba(255,255,255,0.10), inset 0 -40px 80px -60px rgba(${s.rgb},0.2), 0 30px 70px -30px rgba(0,0,0,0.7)`,
-                transition: reduce ? 'none' : 'background 600ms ease, box-shadow 600ms ease',
+                transition: 'background 600ms ease, box-shadow 600ms ease',
               }}
             >
               {/* HUD — top status strip + corner ticks (the active colour signs the panel) */}
@@ -356,8 +356,8 @@ export default function LoanMeridian() {
               {/* keyed remount → CSS fade (no AnimatePresence state machine to stall) */}
               <div
                 key={s.area}
-                className="relative grid grid-cols-1 items-stretch gap-x-14 gap-y-10 lg:min-h-[200px] lg:grid-cols-[300px_minmax(0,1fr)] lg:gap-y-0"
-                style={{ animation: reduce ? undefined : 'panelIn 0.32s cubic-bezier(0.16,1,0.3,1) both' }}
+                className="relative grid grid-cols-1 items-stretch gap-x-14 gap-y-10 motion-reduce:!animate-none lg:min-h-[200px] lg:grid-cols-[300px_minmax(0,1fr)] lg:gap-y-0"
+                style={{ animation: 'panelIn 0.32s cubic-bezier(0.16,1,0.3,1) both' }}
               >
                   {/* left rail — the stage identity, top-aligned so the id sits in the same place every stage */}
                   <div className="flex flex-col">
@@ -376,7 +376,7 @@ export default function LoanMeridian() {
                       (horizontal). Names never wrap: wide columns + a 14/15px floor. */}
                   <div className={`grid gap-x-5 gap-y-8 self-start ${s.groups.length === 3 ? 'grid-cols-1 sm:grid-cols-2 xl:grid-cols-3' : 'grid-cols-1 sm:grid-cols-2'}`}>
                     {s.groups.map((g, gi) => (
-                      <div key={g.label} className="flex flex-col" style={{ animation: reduce ? undefined : `cellIn 0.45s cubic-bezier(0.16,1,0.3,1) ${gi * 70}ms both` }}>
+                      <div key={g.label} className="flex flex-col motion-reduce:!animate-none" style={{ animation: `cellIn 0.45s cubic-bezier(0.16,1,0.3,1) ${gi * 70}ms both` }}>
                         {/* column header */}
                         <div className="flex items-center gap-2">
                           <span aria-hidden className="h-1 w-1 shrink-0 rounded-full" style={{ background: `rgb(${s.rgb})`, boxShadow: `0 0 8px rgba(${s.rgb},0.7)` }} />
@@ -429,7 +429,7 @@ export default function LoanMeridian() {
               {/* divider → the coverage areas KrimOS runs, shown equally */}
               <div className="mt-9 grid grid-cols-2 gap-x-10 gap-y-8 border-t pt-8 sm:grid-cols-3" style={{ borderColor: `rgba(${GOLD},0.16)` }}>
                 {OVERSIGHT.map((b, i) => (
-                  <div key={b.name} style={{ animation: reduce ? undefined : `cellIn 0.4s cubic-bezier(0.16,1,0.3,1) ${i * 50}ms both` }}>
+                  <div key={b.name} className="motion-reduce:!animate-none" style={{ animation: `cellIn 0.4s cubic-bezier(0.16,1,0.3,1) ${i * 50}ms both` }}>
                     <span aria-hidden className="block h-[3px] w-8 rounded-full" style={{ background: `rgba(${GOLD},0.6)` }} />
                     <p className="mt-4 font-serif text-[1.15rem] leading-tight text-ink">{b.name}</p>
                     <p className="mt-2 font-sans text-[13px] leading-relaxed text-ink-2">{b.note}</p>

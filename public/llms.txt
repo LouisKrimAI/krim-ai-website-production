@@ -1,15 +1,14 @@
 # Krim
 
-> KrimOS is the operating system for banking and lending: AI co-workers whose every action is validated before it executes (Krim-Nyāya, pre-execution validation) and that learn from every recorded outcome (Krim-Learn), all inside the institution's own perimeter. Krim is building toward the full lending stack, including a safe, validated AI underwriter, through Kovida — the world lending model. Tagline: "The AI your regulator can read."
+> KrimOS is the agent operating system for safe lending operations: AI co-workers whose every action is validated before it executes (Krim-Nyāya, pre-execution validation) and that learn from every recorded outcome (Krim-Learn), all inside the institution's own perimeter. Krim is building toward the full lending stack, including a safe, validated AI underwriter, through Kovida — the world lending model. Tagline: "The AI your regulator can read."
 
 ## Platform (KrimOS)
-- [KrimOS](https://www.krim.ai/krimos): one operating system for banking and lending — the whole stack, core to interface.
-- [Kendra](https://www.krim.ai/krimos/kendra): the runtime — validates every action before it fires and learns from every outcome.
+- [KrimOS](https://www.krim.ai/krimos): the agent operating system for safe lending operations — one stack, from the world lending model at the foundation to the apps your teams and customers use.
+- [Kendra](https://www.krim.ai/krimos/kendra): the engine and the validation gate — Krim-Nyāya clears every action before it fires; Krim-Learn learns from every outcome.
 - [Kriya](https://www.krim.ai/krimos/kriya): the vocabulary — 500+ validated, credit-native action primitives across 20+ domains.
 - [Karta](https://www.krim.ai/krimos/karta): the AI co-workers, composed from validated primitives.
-- [Kupa](https://www.krim.ai/krimos/kupa): the command center where teams supervise, configure and audit live work.
-- [Kula](https://www.krim.ai/krimos/kula): the natural-language interface for your teams.
-- [Kira & Krimkar](https://www.krim.ai/krimos/kira): the AI advisor your customers meet, in the Krimkar app.
+- [Kupa & Kula](https://www.krim.ai/krimos/kupa): the command center for your teams — direct the work in plain language; supervise, configure and audit it from one pane.
+- [Krimkar & Kira](https://www.krim.ai/krimkar): the app your customers hold, and the AI advisor inside it — one relationship across every channel.
 
 ## Research
 - [Epistemic AI](https://www.krim.ai/epistemic-ai): the category Krim defines — AI whose every action is validated before it fires and whose reasoning an auditor can read end to end. Built on Navya-Nyāya formal logic.
@@ -20,7 +19,7 @@
 ## Who it's for
 - [Lending](https://www.krim.ai/lending): the first and primary domain.
 - [Government](https://www.krim.ai/government): capability for public-sector operations.
-- [Large Enterprise](https://www.krim.ai/enterprise) and [MSME](https://www.krim.ai/msme).
+- [Enterprise](https://www.krim.ai/enterprise): one estate, one standard — for large institutions and smaller teams alike.
 
 ## Writing
 - [The EU AI Act's High-Risk Clock](https://www.krim.ai/insights/the-eu-ai-act-high-risk-clock): credit scoring is high-risk under the EU AI Act; Articles 10, 12 and 14 read as engineering requirements.
@@ -33,13 +32,14 @@
 - [The automation gap](https://www.krim.ai/insights/the-automation-gap): why the most consequential work still runs by hand.
 - [The cost of being wrong](https://www.krim.ai/insights/the-cost-of-being-wrong): what a non-compliant action costs a lender.
 - [The credit gap is an operations problem](https://www.krim.ai/insights/the-credit-gap-is-an-operations-problem).
+- [The Model Nobody Can Validate](https://www.krim.ai/insights/the-model-nobody-can-validate): RBI's model-risk draft asks for validation almost no AI vendor can evidence — and what real validation looks like.
 - [Audit after the fact is a confession](https://www.krim.ai/insights/audit-after-the-fact-is-a-confession): the case for pre-execution validation.
 - [Sovereignty is not optional](https://www.krim.ai/insights/sovereignty-is-not-optional): why regulated AI must run inside the perimeter.
 
 ## More
 - [Architecture](https://www.krim.ai/architecture): how KrimOS fits the stack you already run.
 - [Trust](https://www.krim.ai/trust): the safety, sovereignty and audit posture.
-- [Services](https://www.krim.ai/services): from technical deep-dive to production go-live in a quarter — scoped pilot, proof of value, contracted go-live.
+- [Services](https://www.krim.ai/services): deep-dive, proof on your own data, then production — proof before you commit, at every stage.
 - [Company](https://www.krim.ai/company) · [Contact](https://www.krim.ai/contact)
 
 ## Notes

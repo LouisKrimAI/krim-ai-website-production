@@ -10,7 +10,7 @@ PRESENTATION: shared glyph, Kira lit; a single conversation thread glowing.
 ## 2 · One thread, every channel
 EYEBROW: ALWAYS ON
 H2: WhatsApp to voice to chat — one conversation.
-COPY: A customer can start on WhatsApp, call in, then pick up on your website — and Kira remembers. One thread, day and night, in 50+ Indian languages and counting.
+COPY: A customer can start on WhatsApp, call in, then pick up on your website — and Kira remembers. One thread, day and night, in 50+ global languages, 12+ of them Indian, and counting.
 PRESENTATION: the signature device — a single thread continuing seamlessly as the channel icon changes around it.
 
 ## 3 · Acts, within the rules

@@ -26,6 +26,7 @@ import { Section, Eyebrow, GlassCard, CTA } from '@/components/ui'
 export const metadata: Metadata = {
   alternates: { canonical: 'https://www.krim.ai' },
   openGraph: {
+    images: ['/opengraph-image'],
     description:
       'KrimOS is the operating system for lending: a world model with AI co-workers that run the whole lifecycle, every action validated before it executes, inside your own walls.',
     url: 'https://www.krim.ai',
@@ -192,8 +193,12 @@ export default function HomePage() {
               </Reveal>
             </div>
             <Reveal delay={0.15}>
-              {/* the flywheel render — a backgroundless cutout floating in the canvas, turning slowly */}
-              <div className="relative mx-auto aspect-square w-full max-w-[520px]">
+              {/* the flywheel render — a backgroundless cutout floating in the
+                  canvas, turning slowly. overflow-clip: the rotating square's
+                  transparent corners sweep past the box and inflate
+                  scrollWidth on mobile (iOS can pan it); the ring itself is
+                  inscribed, so clipping is invisible */}
+              <div className="relative mx-auto aspect-square w-full max-w-[520px] overflow-clip">
                 {/* faint cyan→mint ground glow behind the ring */}
                 <div
                   aria-hidden

@@ -184,7 +184,7 @@ export default function PlatformExplorer() {
         <AnimatePresence mode="wait">
           <motion.div
             key={layer.key}
-            initial={reduce ? false : { opacity: 0, y: 10 }}
+            initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={reduce ? { opacity: 0 } : { opacity: 0, y: -8 }}
             transition={{ duration: reduce ? 0 : 0.28, ease: EASE }}

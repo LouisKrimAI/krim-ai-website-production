@@ -114,7 +114,9 @@ export default function PlatformLayers() {
         }}
       />
 
-      {!reduce && (
+      {/* rendered unconditionally — RM is handled by the CSS media block
+          above (hydration: SSR must match a reduced-motion client's tree) */}
+      {(
         <div
           aria-hidden
           className="pointer-events-none absolute inset-x-0 bottom-[70px] top-2 z-0"
@@ -182,10 +184,10 @@ function LayerRow({
 
   return (
     <motion.div
-      initial={reduce ? false : { y: 12 }}
+      initial={{ y: 12 }}
       whileInView={{ y: 0 }}
       viewport={{ once: true, amount: 0.4 }}
-      transition={{ duration: 0.6, ease: EASE, delay: reduce ? 0 : index * 0.07 }}
+      transition={reduce ? { duration: 0 } : { duration: 0.6, ease: EASE, delay: index * 0.07 }}
     >
       <div
         className={`lume relative overflow-hidden rounded-lg px-6 py-5 ${glassClass}`}
@@ -220,7 +222,7 @@ function LayerRow({
               className="krim-pl-glow pointer-events-none absolute -bottom-6 left-1/2 h-16 w-40 -translate-x-1/2 rounded-full"
               style={{
                 background: 'radial-gradient(closest-side, rgba(200,161,74,0.35), rgba(200,161,74,0))',
-                animation: reduce ? 'none' : 'krim-pl-breathe 7s var(--ease-in-out, cubic-bezier(0.65,0,0.35,1)) infinite',
+                animation: 'krim-pl-breathe 7s var(--ease-in-out, cubic-bezier(0.65,0,0.35,1)) infinite',
                 willChange: 'transform, opacity',
               }}
             />

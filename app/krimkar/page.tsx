@@ -19,6 +19,7 @@ export const metadata: Metadata = {
     'Kira is the AI customer advisor your customers meet in the Krimkar app and across every channel: WhatsApp, voice, chat, SMS and email. One conversation that remembers, in the customer’s own language, always within the rules.',
   alternates: { canonical: 'https://www.krim.ai/krimkar' },
   openGraph: {
+    images: ['/opengraph-image'],
     title: 'Krimkar & Kira — for your customers',
     description:
       'Kira is the AI customer advisor your customers meet in the Krimkar app and across every channel: WhatsApp, voice, chat, SMS and email. One conversation that remembers, in the customer’s own language, always within the rules.',

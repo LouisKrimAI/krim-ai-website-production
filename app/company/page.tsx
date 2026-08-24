@@ -22,6 +22,7 @@ export const metadata: Metadata = {
     'Krim builds KrimOS, the operating system for lending. Every AI action validated before it executes, inside your perimeter, on a single auditable record.',
   alternates: { canonical: 'https://www.krim.ai/company' },
   openGraph: {
+    images: ['/opengraph-image'],
     title: 'Company — Krim',
     description:
       'Krim builds KrimOS, the operating system for lending. Every AI action validated before it executes, inside your perimeter, on a single auditable record.',
@@ -97,7 +98,10 @@ export default function CompanyPage() {
               {/* the Krim anchor line, set as the three-line monument (the
                   homepage's proven hero architecture): the carved word over
                   the dark hollow, white lines above and below */}
-              <h1 className="mt-5 font-serif text-display-hero text-ink">
+              {/* display-hero with a lower floor: at 320px the token's 3rem
+                  minimum clips "Superintelligence"; 2.5rem fits, and above
+                  ~727px the clamp resolves identically to the token */}
+              <h1 className="mt-5 font-serif text-[clamp(2.5rem,6.6vw,5.75rem)] leading-[1.04] tracking-[-0.02em] text-ink">
                 <span className="block">Sovereign</span>
                 <span className="block text-grad-carved">Superintelligence</span>
                 <span className="block">for Safe Autonomy</span>

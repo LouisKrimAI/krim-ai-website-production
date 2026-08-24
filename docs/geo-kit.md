@@ -119,7 +119,7 @@ Sitemap: https://krim.ai/sitemap.xml
     "Immutable, metered audit trail (Krim-Ledger, Krim Work Units)",
     "Federated learning with per-tenant opt-out",
     "Sovereign deployment — on-prem, hybrid or managed",
-    "Multilingual, including 50+ Indian languages",
+    "Multilingual: 50+ global languages, including 12+ Indian languages",
     "40+ connectors; integrates with existing core banking, LOS, voice and data stacks"
   ],
   "offers": { "@type": "Offer", "availability": "https://schema.org/InStock", "url": "https://krim.ai/contact" }

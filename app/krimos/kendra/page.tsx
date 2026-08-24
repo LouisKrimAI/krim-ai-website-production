@@ -19,6 +19,7 @@ export const metadata: Metadata = {
     'Kendra is the runtime of KrimOS, the brain the co-workers think in. Krim-Nyāya validates every action before it executes; Krim-Learn turns every recorded outcome into intelligence. The runtime your regulator can read.',
   alternates: { canonical: 'https://www.krim.ai/krimos/kendra' },
   openGraph: {
+    images: ['/opengraph-image'],
     title: 'Kendra — the runtime',
     description:
       'Kendra is the runtime of KrimOS, the brain the co-workers think in. Krim-Nyāya validates every action before it executes; Krim-Learn turns every recorded outcome into intelligence. The runtime your regulator can read.',
