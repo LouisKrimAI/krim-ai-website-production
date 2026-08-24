@@ -51,6 +51,8 @@ MANIFEST = [
 
     # Already-optimised art — record metadata (dimensions + LQIP) only.
     {"web": "/images/harness/harness-command.webp"},
+    {"web": "/images/harness/harness-core.webp",
+     "src_from": "/images/harness/harness-core.png", "max_w": 1000, "quality": 82},
     {"web": "/images/cinematic/epistemic-ai.webp"},
     {"web": "/images/cinematic/explain-the-decision.webp"},
     {"web": "/images/cinematic/collections-sequence.webp"},

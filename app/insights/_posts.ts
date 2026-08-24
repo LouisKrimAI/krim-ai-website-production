@@ -18,6 +18,15 @@ export type Post = {
 
 export const POSTS: Post[] = [
   {
+    slug: 'the-model-nobody-can-validate',
+    title: 'The Model Nobody Can Validate',
+    dek: 'RBI\u2019s draft model-risk Guidance requires independent validation of every model a lender relies on, whatever the vendor says. The model Indian lending relies on most, the credit bureau score, cannot be validated by anyone who uses it. That is not a drafting slip. It is a structural gap, and RBI is uniquely placed to close it.',
+    category: 'Risk',
+    date: '2026-07-24',
+    readingMinutes: 6,
+    image: '/images/harness/harness-core.webp',
+  },
+  {
     slug: 'the-model-that-learns-the-whole-operation',
     title: 'The Model That Learns the Whole Operation',
     dek: 'Your lending stack is a pile of models that each see one slice. Origination forgets the loan the moment it funds; collections starts cold. Locally smart, globally blind — so the intelligence your operation should build never forms. A world model is the architecture where it does.',
