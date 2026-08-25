@@ -21,7 +21,7 @@ import { Section, Eyebrow, GlassCard, CTA } from '@/components/ui'
 export const metadata: Metadata = {
   title: 'Trust',
   description:
-    'KrimOS is sovereign by construction: the full stack runs inside your perimeter, on-prem by default, with end-to-end encryption, granular RBAC, customer-held keys and an immutable, cryptographically sealed audit trail. US, UK, India, Nigeria and Brazil frameworks are encoded in the runtime and validated before every action.',
+    'Sovereign by construction: KrimOS runs inside your perimeter, with customer-held keys and a sealed audit trail. US, UK, India, Nigeria and Brazil rules encoded.',
   alternates: { canonical: 'https://www.krim.ai/trust' },
   openGraph: {
     images: ['/opengraph-image'],

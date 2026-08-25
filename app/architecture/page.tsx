@@ -18,7 +18,7 @@ import { Section, Eyebrow, GlassCard, CTA } from '@/components/ui'
 export const metadata: Metadata = {
   title: 'Architecture',
   description:
-    'How KrimOS is built: a complete operating system for lending you can run end to end, or layer onto the systems you keep. Eight Kendra runtime modules (Core, Karya, Fabric, Govern, Nyāya, Learn, Ledger, Sense), a shared substrate of memory tiers, durable orchestration and a 15-entity domain model, a 40+ connector integration fabric, and one architecture that runs sovereign in every market.',
+    'How KrimOS is built: eight runtime modules, a durable substrate, a 40+ connector fabric — run it end to end, or layer it onto the systems you keep.',
   alternates: { canonical: 'https://www.krim.ai/architecture' },
   openGraph: {
     images: ['/opengraph-image'],

@@ -31,7 +31,7 @@ import { Section, Eyebrow, GlassCard, CTA } from '@/components/ui'
 export const metadata: Metadata = {
   title: 'Kovida — the world lending model',
   description:
-    'Kovida is Krim’s world lending model: a learned, safe model of how lending actually behaves, across borrowers, products, markets, rules and the whole lifecycle. AI agents simulate an action against Kovida and clear it through the compliance gate before they act, from origination to a validated AI underwriter to collections. Every recorded outcome makes the model sharper, inside the institution’s own walls.',
+    'Kovida is Krim’s world lending model: a learned, safe model of how lending behaves. Agents simulate every action against it and clear the compliance gate before they act.',
   alternates: { canonical: 'https://www.krim.ai/research/world-lending-model' },
   openGraph: {
     images: ['/opengraph-image'],

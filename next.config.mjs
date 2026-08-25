@@ -1,6 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
+  // Don't advertise the framework in response headers.
+  poweredByHeader: false,
   // Serve modern formats from the image optimizer (smaller payloads → better LCP).
   // Requires a runtime that runs the Next image optimizer in production (e.g. Vercel/Node).
   images: {

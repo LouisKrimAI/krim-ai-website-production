@@ -54,21 +54,33 @@ export default function SiteHeader({ scrollReveal = false }: { scrollReveal?: bo
   useEffect(() => {
     if (!scrollReveal) return
     const onScroll = () => setScrolled(window.scrollY > window.innerHeight * 0.5)
-    // Reveal when the pointer reaches the top of the screen; tuck away only
-    // once it has clearly left the banner's neighbourhood (a wide hysteresis
-    // band, so the bar never flickers while you aim at it).
-    const onMove = (e: MouseEvent) => {
-      if (e.clientY <= 80) setPeek(true)
-      else if (e.clientY > 220) setPeek(false)
-    }
     onScroll()
     window.addEventListener('scroll', onScroll, { passive: true })
-    window.addEventListener('mousemove', onMove, { passive: true })
-    return () => {
-      window.removeEventListener('scroll', onScroll)
-      window.removeEventListener('mousemove', onMove)
-    }
+    return () => window.removeEventListener('scroll', onScroll)
   }, [scrollReveal])
+
+  // Owner rule (2026-08-24): the DROP-DOWN opens whenever the pointer reaches
+  // the top of the screen — on every page, hero included — with no need to
+  // hover a nav label first. Wide hysteresis so nothing flickers: open at
+  // ≤80px, tuck the peeked bar away past 220px, and close the sheet only once
+  // the pointer is clearly below it (>520px; leaving the sheet sideways is
+  // handled by its own mouseleave). Touch devices never fire mousemove, so
+  // mobile behaviour is unchanged.
+  useEffect(() => {
+    const onMove = (e: MouseEvent) => {
+      if (e.clientY <= 80) {
+        setPeek(true)
+        cancelClose()
+        setOpen(true) // no column spotlight until a head is hovered
+      } else {
+        if (e.clientY > 220) setPeek(false)
+        if (e.clientY > 520) scheduleClose()
+      }
+    }
+    window.addEventListener('mousemove', onMove, { passive: true })
+    return () => window.removeEventListener('mousemove', onMove)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   // close on outside click / Escape
   useEffect(() => {
@@ -107,7 +119,7 @@ export default function SiteHeader({ scrollReveal = false }: { scrollReveal?: bo
       onMouseLeave={scheduleClose}
     >
       <div className="mx-auto flex h-16 max-w-site items-center justify-between px-6 md:px-10">
-        <Link href="/" className="flex items-center self-stretch" aria-label="Krim — home" onMouseEnter={scheduleClose}>
+        <Link href="/" className="flex items-center self-stretch" aria-label="Krim — home">
           <KrimLogoAnimated className="h-[26px] w-auto" />
         </Link>
 
@@ -158,7 +170,6 @@ export default function SiteHeader({ scrollReveal = false }: { scrollReveal?: bo
 
           <a
             href={DEMO_HREF}
-            onMouseEnter={scheduleClose}
             className="rounded bg-mint px-5 py-2 font-sans text-[13.5px] font-medium text-on-mint transition-colors duration-fast hover:bg-mint-bright"
           >
             Book a demo
