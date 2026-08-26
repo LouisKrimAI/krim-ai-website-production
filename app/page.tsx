@@ -67,7 +67,7 @@ const orgLd = {
     {
       '@type': 'PostalAddress',
       streetAddress:
-        'Aspire Coworks, No. 472/7, Balaji Arcade, 2nd & 3rd Floor, AVS Compound, 20th L Cross Road, AVS Layout, Ejipura, Koramangala 4th Block',
+        'Aspire Coworks, No. 472/7, Balaji Arcade, 2nd & 3rd Floor, 20th L Cross Road, AVS Layout, Ejipura, Koramangala 4th Block',
       addressLocality: 'Bengaluru',
       addressRegion: 'Karnataka',
       postalCode: '560095',

@@ -77,7 +77,7 @@ const OFFICES = [
   },
   {
     city: 'Bengaluru',
-    lines: 'Aspire Coworks, No. 472/7, Balaji Arcade, 2nd & 3rd Floor, AVS Compound, 20th L Cross Road, AVS Layout, Ejipura, Koramangala 4th Block, Bengaluru, Karnataka 560095, India',
+    lines: 'Aspire Coworks, No. 472/7, Balaji Arcade, 2nd & 3rd Floor, 20th L Cross Road, AVS Layout, Ejipura, Koramangala 4th Block, Bengaluru, Karnataka 560095, India',
   },
   {
     city: 'New York',
