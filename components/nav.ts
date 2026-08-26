@@ -5,10 +5,14 @@
  * One spine, four columns. Each column head links to that section's landing
  * page (its overview); the rows are its children. Descriptors (`role`) appear
  * only where a name needs translating — KrimOS layers and the Research work.
- * Order is deliberate: KrimOS bottom-up (runtime → actions → workers → the two
- * human surfaces); Lending first (the wedge); Architecture last in Research
- * (the substrate the science sits on); Trust first among the Company rows
- * (the proof, right behind identity).
+ * Order is deliberate. The KrimOS column MUST match the order of the stack on
+ * /krimos — components/krimos/layers.ts and components/home/PlatformLayers.tsx
+ * (deck order, apps → foundation). A visitor who opens the banner and then
+ * looks at the stack must read the same sequence. Kovida is the stack's
+ * foundation but its page lives under Research, so it is listed there (once —
+ * never twice in one panel). Lending first (the wedge); Architecture last in
+ * Research (the substrate the science sits on); Trust first among the Company
+ * rows (the proof, right behind identity).
  */
 
 export type NavRow = { label: string; role?: string; href: string }
@@ -19,11 +23,11 @@ export const NAV_COLUMNS: readonly NavColumn[] = [
     title: 'KrimOS',
     href: '/krimos',
     rows: [
-      { label: 'Kendra', role: 'the runtime', href: '/krimos/kendra' },
-      { label: 'Kriya', role: 'the actions', href: '/krimos/kriya' },
-      { label: 'Karta', role: 'the AI co-workers', href: '/krimos/karta' },
       { label: 'Kupa & Kula', role: 'for your teams', href: '/krimos/kupa' },
       { label: 'Krimkar & Kira', role: 'for your customers', href: '/krimkar' },
+      { label: 'Karta', role: 'the AI co-workers', href: '/krimos/karta' },
+      { label: 'Kendra', role: 'the engine & the gate', href: '/krimos/kendra' },
+      { label: 'Kriya', role: 'the action library', href: '/krimos/kriya' },
     ],
   },
   {

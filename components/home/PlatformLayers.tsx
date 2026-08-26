@@ -22,6 +22,7 @@
  */
 
 import { useState } from 'react'
+import Link from 'next/link'
 import { motion, useReducedMotion } from 'framer-motion'
 
 type Tone = 'surface' | 'operating' | 'core' | 'foundation'
@@ -32,11 +33,15 @@ type Layer = {
   role: string
   tag: string
   tone: Tone
+  /** the layer's own page — every row is a doorway, so the hub needs no
+   *  separate grid of links underneath */
+  href: string
 }
 
 const LAYERS: Layer[] = [
   {
     key: 'kupa',
+    href: '/krimos/kupa',
     name: 'Kupa & Kula',
     role: 'The command center for your teams: run the operation in plain language, and supervise, configure and audit it from one pane.',
     tag: 'FOR YOUR TEAMS',
@@ -44,6 +49,7 @@ const LAYERS: Layer[] = [
   },
   {
     key: 'kira',
+    href: '/krimkar',
     name: 'Krimkar & Kira',
     role: 'The app and advisor for your customers: every channel, one relationship, an AI advisor that remembers.',
     tag: 'FOR YOUR CUSTOMERS',
@@ -51,6 +57,7 @@ const LAYERS: Layer[] = [
   },
   {
     key: 'karta',
+    href: '/krimos/karta',
     name: 'Karta',
     role: 'The AI co-workers that run the lending lifecycle, each composed from validated primitives and held to measured outcomes.',
     tag: 'CO-WORKERS',
@@ -58,6 +65,7 @@ const LAYERS: Layer[] = [
   },
   {
     key: 'kendra',
+    href: '/krimos/kendra',
     name: 'Kendra',
     role: 'The engine that runs every co-worker, and the gate every decision must clear first: Krim-Nyāya validates before anything acts.',
     tag: 'THE ENGINE & THE GATE',
@@ -65,6 +73,7 @@ const LAYERS: Layer[] = [
   },
   {
     key: 'kriya',
+    href: '/krimos/kriya',
     name: 'Kriya',
     role: 'The library of compliance-encoded actions built for credit: 500+ in all, and every workflow is composed from them.',
     tag: 'ACTION LIBRARY',
@@ -72,6 +81,7 @@ const LAYERS: Layer[] = [
   },
   {
     key: 'kovida',
+    href: '/research/world-lending-model',
     name: 'Kovida',
     role: 'The world lending model at the foundation, tuned on your institution’s own recorded outcomes. Every cycle makes the next decision sharper.',
     tag: 'WORLD LENDING MODEL',
@@ -176,6 +186,16 @@ function LayerRow({
   const isSurface = layer.tone === 'surface'
   const isFoundation = layer.tone === 'foundation'
   const glassClass = isCore ? 'glass glass-cyan' : isSurface ? 'glass glass-mint' : 'glass'
+  const accentBorder = isFoundation
+    ? 'rgba(200,161,74,0.55)'
+    : isCore
+      ? 'rgba(57,214,255,0.5)'
+      : 'rgba(0,255,178,0.5)'
+  const accentGlow = isFoundation
+    ? 'rgba(200,161,74,0.6)'
+    : isCore
+      ? 'rgba(57,214,255,0.55)'
+      : 'rgba(0,255,178,0.55)'
   const tagColor = isFoundation
     ? { color: 'rgba(200,161,74,0.9)' }
     : isCore
@@ -189,16 +209,15 @@ function LayerRow({
       viewport={{ once: true, amount: 0.4 }}
       transition={reduce ? { duration: 0 } : { duration: 0.6, ease: EASE, delay: index * 0.07 }}
     >
-      <div
-        className={`lume relative overflow-hidden rounded-lg px-6 py-5 ${glassClass}`}
+      <Link
+        href={layer.href}
+        aria-label={`${layer.name} — ${layer.role}`}
+        className={`lume group relative block overflow-hidden rounded-lg py-5 pl-6 pr-16 outline-none focus-visible:!outline-none focus-visible:ring-2 focus-visible:ring-mint/70 sm:px-16 ${glassClass}`}
         style={isFoundation ? { borderColor: 'rgba(200,161,74,0.38)' } : undefined}
         onMouseEnter={() => onHover(layer.key)}
         onMouseLeave={() => onHover(null)}
         onFocus={() => onHover(layer.key)}
         onBlur={() => onHover(null)}
-        tabIndex={0}
-        role="group"
-        aria-label={`${layer.name} — ${layer.role}`}
       >
         {/* mint accent edge on hover — left rail */}
         <span
@@ -240,7 +259,20 @@ function LayerRow({
             {layer.role}
           </p>
         </div>
-      </div>
+
+        {/* the doorway: a small arrow seated on the right edge, lighting up
+            with its layer's own colour on hover/focus */}
+        <span
+          aria-hidden
+          className="absolute right-4 top-1/2 grid h-9 w-9 -translate-y-1/2 place-items-center rounded-full border border-white/12 bg-white/[0.03] font-serif text-[1.05rem] leading-none text-ink-3 transition-all duration-fast group-hover:translate-x-0.5 group-hover:text-ink group-focus-visible:translate-x-0.5 sm:right-5"
+          style={{
+            borderColor: isHover ? accentBorder : undefined,
+            boxShadow: isHover ? `0 0 18px -6px ${accentGlow}` : undefined,
+          }}
+        >
+          →
+        </span>
+      </Link>
     </motion.div>
   )
 }

@@ -1,7 +1,7 @@
 /**
  * /krimos — the hub. Answers a buyer's questions in order: what it is (hero),
  * what it does (the end-to-end horizon, shared with the homepage), what's
- * inside (the stack + doorways), who on my team uses it (the roles),
+ * inside (the stack — every row is its own doorway), who uses it (the roles),
  * why adopt it (impact), then the ask. Concise and punchy — the layer pages
  * carry the depth. Design DNA from docs/HOUSE-STYLE.md; facts: docs/krim-content.md.
  */
@@ -14,7 +14,6 @@ import PlatformBackdrop from '@/components/PlatformBackdrop'
 import Reveal from '@/components/Reveal'
 import PlatformLayers from '@/components/home/PlatformLayers'
 import LifecycleHorizon from '@/components/home/LifecycleHorizon'
-import { LAYERS } from '@/components/krimos/layers'
 import { Section, Eyebrow, GlassCard, CTA } from '@/components/ui'
 
 export const metadata: Metadata = {
@@ -199,32 +198,10 @@ export default function PlatformPage() {
             </div>
           </Reveal>
 
-          {/* the doorways — name + tag only: the stack visual directly above
-                already describes every part (no double-description) */}
-          <Reveal>
-            <div className="mt-16 border-t border-soft pt-12">
-              <Eyebrow tone="mint">Go deeper, layer by layer</Eyebrow>
-              <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                {LAYERS.map((l) => (
-                  <Link
-                    key={l.slug}
-                    href={l.href ?? `/krimos/${l.slug}`}
-                    aria-label={`${l.name} — ${l.tag}`}
-                    className="group lume relative flex flex-col overflow-hidden rounded-[var(--r-lg)] border border-white/10 bg-[rgba(10,12,18,0.72)] p-5 outline-none backdrop-blur-xl transition-colors focus-visible:border-mint focus-visible:shadow-[0_0_0_2px_rgba(0,255,178,0.55),0_14px_64px_-14px_rgba(0,255,178,0.32)] md:px-6 md:py-6"
-                  >
-                    {/* signature: a mint rail that grows from the left edge on hover/focus */}
-                    <span
-                      aria-hidden
-                      className="absolute inset-y-0 left-0 w-[3px] origin-top scale-y-0 bg-mint transition-transform duration-[var(--dur)] ease-[cubic-bezier(0.16,1,0.30,1)] group-hover:scale-y-100 group-focus-visible:scale-y-100 motion-reduce:transition-none"
-                    />
-                    <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-mint">{l.tag}</span>
-                    <h3 className="mt-1.5 font-serif text-[1.5rem] leading-tight tracking-[-0.01em] text-ink transition-colors duration-fast group-hover:text-mint-bright">
-                      {l.name}
-                    </h3>
-                  </Link>
-                ))}
-              </div>
-            </div>
+          <Reveal delay={0.2}>
+            <p className="mt-8 text-center font-mono text-[11px] uppercase tracking-[0.2em] text-ink-2">
+              Every layer opens its own page
+            </p>
           </Reveal>
         </Section>
 
