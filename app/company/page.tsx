@@ -335,6 +335,9 @@ export default function CompanyPage() {
               <p className="text-center font-mono text-[11px] uppercase tracking-[0.2em] text-ink-3">
                 Krim SSI Labs · CIN U62010BR2025PTC080620
               </p>
+              <p className="mt-2 text-center font-mono text-[11px] tracking-[0.08em] text-ink-3">
+                House No-179, 1st floor Lane 2 Ramcharit, Patahi (Muzaffarpur), Bandra, Muzaffarpur- 843113, Bihar
+              </p>
               {/* three offices, one row: top-aligned columns so every city
                   label sits on the same baseline regardless of address length */}
               <address className="mx-auto mt-7 grid max-w-[980px] items-start gap-8 not-italic sm:grid-cols-3">
