@@ -46,14 +46,43 @@ const orgLd = {
   description:
     'Krim is a technology research, product and services company. Its product, KrimOS, is the operating system for lending, where every action is validated before it executes.',
   legalName: 'Krim SSI Labs',
-  address: {
-    '@type': 'PostalAddress',
-    streetAddress: '169 Madison Ave STE 15775',
-    addressLocality: 'New York',
-    addressRegion: 'NY',
-    postalCode: '10016',
-    addressCountry: 'US',
+  // CIN = the Indian registrar's company identifier. schema.org has no CIN
+  // property, so it rides as a typed PropertyValue (the documented pattern).
+  identifier: {
+    '@type': 'PropertyValue',
+    propertyID: 'CIN',
+    value: 'U62010BR2025PTC080620',
   },
+  // Both registered offices. An array is schema-valid and lets a consumer
+  // read each one separately.
+  address: [
+    {
+      '@type': 'PostalAddress',
+      streetAddress: '169 Madison Ave STE 15775',
+      addressLocality: 'New York',
+      addressRegion: 'NY',
+      postalCode: '10016',
+      addressCountry: 'US',
+    },
+    {
+      '@type': 'PostalAddress',
+      streetAddress:
+        'Aspire Coworks, No.472/7, Balaji Arcade, 2nd & 3rd Floor, A.V.S Compound, 20th L Cross Road, AVS Layout, Ejipura, Koramangala 4th Block',
+      addressLocality: 'Bengaluru',
+      addressRegion: 'Karnataka',
+      postalCode: '560095',
+      addressCountry: 'IN',
+    },
+    {
+      '@type': 'PostalAddress',
+      streetAddress:
+        'Incubation 04, Second Floor, New Incubation Building (STPI), Patliputra Colony, Rajeev Nagar Road, Near New Government Polytechnic College',
+      addressLocality: 'Patna',
+      addressRegion: 'Bihar',
+      postalCode: '800013',
+      addressCountry: 'IN',
+    },
+  ],
   areaServed: ['US', 'GB', 'IN', 'NG', 'BR'],
   email: 'sales@krim.ai',
   contactPoint: {

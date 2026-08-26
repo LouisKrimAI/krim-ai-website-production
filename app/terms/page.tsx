@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 
 const EFFECTIVE = 'Last updated: 25 June 2026'
 
-const INTRO = `These Terms of Use ("Terms") govern your access to and use of the Krim website at krim.ai (the "Site"), operated by Krim SSI Labs ("Krim", "we", "us", "our") of 169 Madison Ave, STE 15775, New York, NY 10016, United States.
+const INTRO = `These Terms of Use ("Terms") govern your access to and use of the Krim website at krim.ai (the "Site"), operated by Krim SSI Labs ("Krim", "we", "us", "our"), CIN U62010BR2025PTC080620, with offices in New York, United States and in Bengaluru and Patna, India.
 
 By accessing or using the Site, you agree to these Terms. If you do not agree, please do not use the Site.`
 
@@ -114,8 +114,10 @@ You may not assign these Terms without our consent; we may assign them in connec
     body: `Questions about these Terms:
 
 - legal@krim.ai
-- Krim SSI Labs
-- 169 Madison Ave, STE 15775, New York, NY 10016, United States`,
+- Krim SSI Labs (CIN U62010BR2025PTC080620)
+- United States: 169 Madison Ave, STE 15775, New York, NY 10016
+- India (Bengaluru): Aspire Coworks, No.472/7, Balaji Arcade, 2nd & 3rd Floor, A.V.S Compound, 20th L Cross Road, AVS Layout, Ejipura, Koramangala 4th Block, Bengaluru, Karnataka 560095
+- India (Patna): Incubation 04, Second Floor, New Incubation Building (STPI), Patliputra Colony, Rajeev Nagar Road, Near New Government Polytechnic College, Patna 800013, Bihar`,
   },
 ]
 

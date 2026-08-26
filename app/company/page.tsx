@@ -67,6 +67,24 @@ const ADVISORS = [
   { name: 'Srinivas Gopal', note: 'fmr Spotify advisor', linkedin: 'https://www.linkedin.com/in/srinivas-gopal-710a242/' },
 ]
 
+// Offices — the letterhead close. Order follows the company's own collateral
+// (Patna · Bengaluru · New York). Patna is the STPI incubation address, which
+// is also where the CIN is registered (U62010**BR**...).
+const OFFICES = [
+  {
+    city: 'Patna',
+    lines: 'Incubation 04, Second Floor, New Incubation Building (STPI), Patliputra Colony, Rajeev Nagar Road, Near New Government Polytechnic College, Patna 800013, Bihar, India',
+  },
+  {
+    city: 'Bengaluru',
+    lines: 'Aspire Coworks, No.472/7, Balaji Arcade, 2nd & 3rd Floor, A.V.S Compound, 20th L Cross Road, AVS Layout, Ejipura, Koramangala 4th Block, Bengaluru, Karnataka 560095, India',
+  },
+  {
+    city: 'New York',
+    lines: '169 Madison Ave STE 15775, New York, NY 10016, United States',
+  },
+]
+
 // Minimalist LinkedIn link — a small circular icon button (no headshots, no initials).
 function LinkedInLink({ href, name }: { href: string; name: string }) {
   return (
@@ -313,9 +331,25 @@ export default function CompanyPage() {
           {/* legal footprint — deliberately quiet fine print: the registered
               entity and office, closing the page like a letterhead's last line */}
           <Reveal delay={0.14}>
-            <address className="mt-12 text-center font-mono text-[11px] not-italic tracking-[0.08em] text-ink-3">
-              Krim SSI Labs · 169 Madison Ave STE 15775, New York, NY 10016
-            </address>
+            <div className="mt-14 border-t border-soft pt-9">
+              <p className="text-center font-mono text-[11px] uppercase tracking-[0.2em] text-ink-3">
+                Krim SSI Labs · CIN U62010BR2025PTC080620
+              </p>
+              {/* three offices, one row: top-aligned columns so every city
+                  label sits on the same baseline regardless of address length */}
+              <address className="mx-auto mt-7 grid max-w-[980px] items-start gap-8 not-italic sm:grid-cols-3">
+                {OFFICES.map((o) => (
+                  <div key={o.city} className="text-center">
+                    <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-mint/85">
+                      {o.city}
+                    </p>
+                    <p className="mx-auto mt-2.5 max-w-[34ch] font-sans text-[12.5px] leading-relaxed text-ink-2">
+                      {o.lines}
+                    </p>
+                  </div>
+                ))}
+              </address>
+            </div>
           </Reveal>
         </Section>
       </main>

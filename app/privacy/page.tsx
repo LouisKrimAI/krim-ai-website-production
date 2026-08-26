@@ -16,7 +16,7 @@ Krim is a B2B enterprise-software company. Our product, KrimOS, is sold to banks
 
 This policy does not cover any personal data we may process inside the KrimOS product or under a separate written agreement with a customer. That data is governed by that agreement and any related data-processing terms, not by this policy.
 
-In this policy, "Krim", "we", "us", and "our" mean Krim SSI Labs of 169 Madison Ave, STE 15775, New York, NY 10016, United States. For privacy questions, you can reach us at legal@krim.ai.`
+In this policy, "Krim", "we", "us", and "our" mean Krim SSI Labs (CIN U62010BR2025PTC080620), with offices in New York, United States and in Bengaluru and Patna, India, all set out in full under "Contact us" below. For privacy questions, you can reach us at legal@krim.ai.`
 
 const SECTIONS = [
   {
@@ -148,8 +148,10 @@ If you believe a child has provided us personal information, please contact us a
     body: `For any privacy question, or to exercise your rights:
 
 - Privacy contact: legal@krim.ai
-- Krim SSI Labs
-- 169 Madison Ave, STE 15775, New York, NY 10016, United States
+- Krim SSI Labs (CIN U62010BR2025PTC080620)
+- United States: 169 Madison Ave, STE 15775, New York, NY 10016
+- India (Bengaluru): Aspire Coworks, No.472/7, Balaji Arcade, 2nd & 3rd Floor, A.V.S Compound, 20th L Cross Road, AVS Layout, Ejipura, Koramangala 4th Block, Bengaluru, Karnataka 560095
+- India (Patna): Incubation 04, Second Floor, New Incubation Building (STPI), Patliputra Colony, Rajeev Nagar Road, Near New Government Polytechnic College, Patna 800013, Bihar
 
 If you are in India, you may also raise a grievance with us at legal@krim.ai, and we will address it within the timeframes the law requires.`,
   },
