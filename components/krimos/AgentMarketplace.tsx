@@ -49,11 +49,12 @@ type Agent = { name: string; seg: Segment; surface: Surface; blurb: string; avat
 
 const AGENTS: Agent[] = [
   // ---- Origination ----
+  { name: 'Eligibility & pre-qualification', seg: 'orig', surface: 'cc', avatar: 'a14', blurb: 'Answers “what could I borrow?” with an offer checked before it is sent.' },
   { name: 'Application concierge', seg: 'orig', surface: 'cc', avatar: 'a12', blurb: 'Walks applicants through applying, by voice or chat, in their language.' },
   { name: 'Lead follow-up', seg: 'orig', surface: 'cc', avatar: 'a13', blurb: 'Re-engages started-but-unfinished applications across every channel.' },
   { name: 'Decision updates', seg: 'orig', surface: 'cc', avatar: 'b16', blurb: 'Keeps the applicant informed through each step, in plain language.' },
   { name: 'Application processing', seg: 'orig', surface: 'bo', avatar: 'b21', blurb: 'Intakes the application, captures the documents, assembles the file.' },
-  { name: 'Broker & partner desk', seg: 'orig', surface: 'bo', avatar: 'a45', blurb: 'Handles broker and partner queries and keeps their files moving inside your rules.' },
+  { name: 'Broker & partner desk', seg: 'orig', surface: 'bo', avatar: 'a45', blurb: 'Handles broker and partner queries and keeps their files moving.' },
   { name: 'Identity & onboarding', seg: 'orig', surface: 'bo', avatar: 'a31', blurb: 'Verifies identity and clears screening before anything proceeds.' },
   { name: 'Agreements & disbursement', seg: 'orig', surface: 'bo', avatar: 'a36', blurb: 'Generates the agreement, captures e-signature, releases the funds.' },
   // ---- Underwriting & risk ----
@@ -62,7 +63,9 @@ const AGENTS: Agent[] = [
   { name: 'Decline support', seg: 'uw', surface: 'cc', avatar: 'a54', blurb: 'Delivers the outcome with reasons, and the route to reconsider.' },
   { name: 'Borrower profiling', seg: 'uw', surface: 'bo', avatar: 'b34', blurb: 'Builds the single borrower picture the decision rests on.' },
   { name: 'Score & signals', seg: 'uw', surface: 'bo', avatar: 'a33', blurb: 'Assembles income, bureau and behaviour signals to inform your underwriting call.' },
+  { name: 'Collateral & valuation', seg: 'uw', surface: 'bo', avatar: 'a15', blurb: 'Orders and checks the valuation, and confirms security before funds move.' },
   { name: 'Underwriting assembly', seg: 'uw', surface: 'bo', avatar: 'a42', blurb: 'Packages the file, checks and exceptions your underwriter signs off.' },
+  { name: 'Fraud review', seg: 'uw', surface: 'bo', avatar: 'a22', blurb: 'Flags forged documents and synthetic identities before a decision is made.' },
   // ---- Servicing ----
   { name: 'Servicing support', seg: 'serv', surface: 'cc', avatar: 'b12', blurb: 'Answers balances, payments and account changes, or hands to a person.' },
   { name: 'Proactive reminders', seg: 'serv', surface: 'cc', avatar: 'b23', blurb: 'Pre-due nudges on the channel and timing each borrower responds to.' },
@@ -75,6 +78,7 @@ const AGENTS: Agent[] = [
   { name: 'Late-stage collections', seg: 'coll', surface: 'cc', avatar: 'a25', blurb: 'Works deeper arrears with negotiated plans, within authority.' },
   { name: 'Payment arrangements', seg: 'coll', surface: 'cc', avatar: 'a55', blurb: 'Sets up and tracks plans the borrower can actually keep.' },
   { name: 'Recovery & settlement', seg: 'coll', surface: 'bo', avatar: 'a64', blurb: 'Models settlement options and works payoff and recovery through to closure.' },
+  { name: 'Trace & locate', seg: 'coll', surface: 'bo', avatar: 'a24', blurb: 'Finds current contact details for borrowers who have gone quiet.' },
   { name: 'Legal coordination', seg: 'coll', surface: 'bo', avatar: 'b53', blurb: 'Coordinates legal and field recovery, every step inside the rules.' },
   { name: 'Closure & write-off', seg: 'coll', surface: 'bo', avatar: 'b45', blurb: 'Closes the account: final payoff, security release and write-off.' },
   // ---- Hardship & disputes ----
@@ -85,12 +89,13 @@ const AGENTS: Agent[] = [
   { name: 'Hardship & restructuring', seg: 'hard', surface: 'bo', avatar: 'b55', blurb: 'Models restructures and concessions that genuinely fit.' },
   { name: 'Escalation handling', seg: 'hard', surface: 'bo', avatar: 'a56', blurb: 'Routes complex and high-value cases to the right reviewer.' },
   // ---- Risk & oversight ----
-  { name: 'Quality & QA', seg: 'over', surface: 'bo', avatar: 'a52', blurb: 'Reviews recorded conversations for tone, compliance and outcome, and coaches the co-workers.' },
-  { name: 'Consent & preferences', seg: 'over', surface: 'cc', avatar: 'b52', blurb: 'Asks customers how and when they want to be contacted, and honours it on every channel.' },
+  { name: 'Quality & QA', seg: 'over', surface: 'bo', avatar: 'a52', blurb: 'Reviews recorded conversations for tone and outcome, and coaches.' },
+  { name: 'Consent & preferences', seg: 'over', surface: 'cc', avatar: 'b52', blurb: 'Asks how and when each customer wants contact, and honours it.' },
   { name: 'Outcome follow-through', seg: 'over', surface: 'cc', avatar: 'b64', blurb: 'Confirms commitments landed and closes the loop with the customer.' },
   { name: 'Portfolio monitoring', seg: 'over', surface: 'bo', avatar: 'a35', blurb: 'Watches delinquency, roll-rate drift, anomalies and fraud, flags early.' },
   { name: 'Compliance & audit', seg: 'over', surface: 'bo', avatar: 'a43', blurb: 'Keeps every action traceable and the operation ready for examination.' },
   { name: 'Reporting', seg: 'over', surface: 'bo', avatar: 'b25', blurb: 'Turns the record into reporting for ops, risk, compliance and the board.' },
+  { name: 'Bureau & regulatory reporting', seg: 'over', surface: 'bo', avatar: 'a26', blurb: 'Files borrower data and statutory returns to bureaus and regulators.' },
   { name: 'Policy watcher', seg: 'over', surface: 'bo', avatar: 'b46', blurb: 'Watches regulator updates and drafts the rule change for your approval.' },
   { name: 'KYC refresh', seg: 'over', surface: 'bo', avatar: 'a41', blurb: 'Re-verifies identity and documents on schedule, so no file goes stale.' },
 ]
