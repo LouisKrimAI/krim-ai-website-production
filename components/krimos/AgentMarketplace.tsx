@@ -5,7 +5,16 @@
  *
  * A marketplace of specialist co-workers, organised the way the operation is:
  * grouped by lifecycle stage, and inside each stage split into the two
- * surfaces — Customer-facing (cyan) and Back office (mint). The group labels
+ * surfaces — Customer-facing (cyan) and Back office (mint).
+ *
+ * THE TEST for which surface an agent belongs to is the BORROWER, not merely
+ * "does it talk to someone outside": customer-facing means the borrower meets
+ * this agent and its output is a conversation with them; back office means the
+ * borrower never meets it, whoever it deals with. So agents that deal with
+ * external NON-customers — brokers, partners, lawyers, field recovery — are
+ * back office (Broker & partner desk sits beside Legal coordination), and
+ * agents that watch the operation rather than serve a borrower (Quality & QA)
+ * are back office too. The group labels
  * are the legend: they carry the same colour as the avatar rings beneath
  * them, so no card needs its own category caption. Filter chips narrow the
  * floor to one stage; the structure never changes shape. The floor closes on
@@ -43,8 +52,8 @@ const AGENTS: Agent[] = [
   { name: 'Application concierge', seg: 'orig', surface: 'cc', avatar: 'a12', blurb: 'Walks applicants through applying, by voice or chat, in their language.' },
   { name: 'Lead follow-up', seg: 'orig', surface: 'cc', avatar: 'a13', blurb: 'Re-engages started-but-unfinished applications across every channel.' },
   { name: 'Decision updates', seg: 'orig', surface: 'cc', avatar: 'b16', blurb: 'Keeps the applicant informed through each step, in plain language.' },
-  { name: 'Broker & partner desk', seg: 'orig', surface: 'cc', avatar: 'a45', blurb: 'Answers brokers and partners, and keeps their files moving inside your rules.' },
   { name: 'Application processing', seg: 'orig', surface: 'bo', avatar: 'b21', blurb: 'Intakes the application, captures the documents, assembles the file.' },
+  { name: 'Broker & partner desk', seg: 'orig', surface: 'bo', avatar: 'a45', blurb: 'Handles broker and partner queries and keeps their files moving inside your rules.' },
   { name: 'Identity & onboarding', seg: 'orig', surface: 'bo', avatar: 'a31', blurb: 'Verifies identity and clears screening before anything proceeds.' },
   { name: 'Agreements & disbursement', seg: 'orig', surface: 'bo', avatar: 'a36', blurb: 'Generates the agreement, captures e-signature, releases the funds.' },
   // ---- Underwriting & risk ----
