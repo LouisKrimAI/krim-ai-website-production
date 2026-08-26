@@ -116,8 +116,8 @@ You may not assign these Terms without our consent; we may assign them in connec
 - legal@krim.ai
 - Krim SSI Labs (CIN U62010BR2025PTC080620)
 - United States: 169 Madison Ave, STE 15775, New York, NY 10016
-- India (Bengaluru): Aspire Coworks, No.472/7, Balaji Arcade, 2nd & 3rd Floor, A.V.S Compound, 20th L Cross Road, AVS Layout, Ejipura, Koramangala 4th Block, Bengaluru, Karnataka 560095
-- India (Patna): Incubation 04, Second Floor, New Incubation Building (STPI), Patliputra Colony, Rajeev Nagar Road, Near New Government Polytechnic College, Patna 800013, Bihar`,
+- India (Bengaluru): Aspire Coworks, No. 472/7, Balaji Arcade, 2nd & 3rd Floor, AVS Compound, 20th L Cross Road, AVS Layout, Ejipura, Koramangala 4th Block, Bengaluru, Karnataka 560095
+- India (Patna): Incubation 04, 2nd Floor, New Incubation Building (STPI), Patliputra Colony, Rajeev Nagar Road, Patna 800013, Bihar`,
   },
 ]
 

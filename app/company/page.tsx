@@ -73,11 +73,11 @@ const ADVISORS = [
 const OFFICES = [
   {
     city: 'Patna',
-    lines: 'Incubation 04, Second Floor, New Incubation Building (STPI), Patliputra Colony, Rajeev Nagar Road, Near New Government Polytechnic College, Patna 800013, Bihar, India',
+    lines: 'Incubation 04, 2nd Floor, New Incubation Building (STPI), Patliputra Colony, Rajeev Nagar Road, Patna 800013, Bihar, India',
   },
   {
     city: 'Bengaluru',
-    lines: 'Aspire Coworks, No.472/7, Balaji Arcade, 2nd & 3rd Floor, A.V.S Compound, 20th L Cross Road, AVS Layout, Ejipura, Koramangala 4th Block, Bengaluru, Karnataka 560095, India',
+    lines: 'Aspire Coworks, No. 472/7, Balaji Arcade, 2nd & 3rd Floor, AVS Compound, 20th L Cross Road, AVS Layout, Ejipura, Koramangala 4th Block, Bengaluru, Karnataka 560095, India',
   },
   {
     city: 'New York',
@@ -336,7 +336,7 @@ export default function CompanyPage() {
                 Krim SSI Labs · CIN U62010BR2025PTC080620
               </p>
               <p className="mt-2 text-center font-mono text-[11px] tracking-[0.08em] text-ink-3">
-                House No-179, 1st floor Lane 2 Ramcharit, Patahi (Muzaffarpur), Bandra, Muzaffarpur- 843113, Bihar
+                House No. 179, 1st Floor, Lane 2 Ramcharit, Patahi, Bandra, Muzaffarpur 843113, Bihar, India
               </p>
               {/* three offices, one row: top-aligned columns so every city
                   label sits on the same baseline regardless of address length */}

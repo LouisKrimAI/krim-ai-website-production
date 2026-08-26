@@ -67,7 +67,7 @@ const orgLd = {
     {
       '@type': 'PostalAddress',
       streetAddress:
-        'Aspire Coworks, No.472/7, Balaji Arcade, 2nd & 3rd Floor, A.V.S Compound, 20th L Cross Road, AVS Layout, Ejipura, Koramangala 4th Block',
+        'Aspire Coworks, No. 472/7, Balaji Arcade, 2nd & 3rd Floor, AVS Compound, 20th L Cross Road, AVS Layout, Ejipura, Koramangala 4th Block',
       addressLocality: 'Bengaluru',
       addressRegion: 'Karnataka',
       postalCode: '560095',
@@ -76,7 +76,7 @@ const orgLd = {
     {
       '@type': 'PostalAddress',
       streetAddress:
-        'Incubation 04, Second Floor, New Incubation Building (STPI), Patliputra Colony, Rajeev Nagar Road, Near New Government Polytechnic College',
+        'Incubation 04, 2nd Floor, New Incubation Building (STPI), Patliputra Colony, Rajeev Nagar Road',
       addressLocality: 'Patna',
       addressRegion: 'Bihar',
       postalCode: '800013',
