@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 
 const EFFECTIVE = 'Last updated: 25 June 2026'
 
-const INTRO = `These Terms of Use ("Terms") govern your access to and use of the Krim website at krim.ai (the "Site"), operated by Krim AI Inc. ("Krim", "we", "us", "our") of 169 Madison Ave, STE 15775, New York, NY 10016, United States.
+const INTRO = `These Terms of Use ("Terms") govern your access to and use of the Krim website at krim.ai (the "Site"), operated by Krim SSI Labs ("Krim", "we", "us", "our") of 169 Madison Ave, STE 15775, New York, NY 10016, United States.
 
 By accessing or using the Site, you agree to these Terms. If you do not agree, please do not use the Site.`
 
@@ -61,7 +61,7 @@ Please do not send confidential, sensitive, or regulated information through the
     heading: 'Intellectual property and trademarks',
     body: `The Site and its content, including text, graphics, design, logos, and software, are owned by or licensed to Krim and are protected by intellectual-property laws. We grant you a limited, personal, non-exclusive, non-transferable, revocable licence to view the Site for your own informational and business-evaluation purposes. You may not copy, reproduce, republish, modify, distribute, or create derivative works from the Site without our prior written permission, except as allowed by law. All rights not expressly granted are reserved.
 
-"Krim" and "KrimOS", together with the Krim logo and related names and marks, are trademarks of Krim AI Inc. You may not use them without our prior written permission, except to refer to Krim fairly and accurately. Other names and marks are the property of their respective owners.`,
+"Krim" and "KrimOS", together with the Krim logo and related names and marks, are trademarks of Krim SSI Labs. You may not use them without our prior written permission, except to refer to Krim fairly and accurately. Other names and marks are the property of their respective owners.`,
   },
   {
     heading: 'Third-party links and services',
@@ -114,7 +114,7 @@ You may not assign these Terms without our consent; we may assign them in connec
     body: `Questions about these Terms:
 
 - legal@krim.ai
-- Krim AI Inc.
+- Krim SSI Labs
 - 169 Madison Ave, STE 15775, New York, NY 10016, United States`,
   },
 ]

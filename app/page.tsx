@@ -45,7 +45,7 @@ const orgLd = {
   // encoded markets (lib/jurisdictions.ts is the single source).
   description:
     'Krim is a technology research, product and services company. Its product, KrimOS, is the operating system for lending, where every action is validated before it executes.',
-  legalName: 'Krim AI Inc.',
+  legalName: 'Krim SSI Labs',
   address: {
     '@type': 'PostalAddress',
     streetAddress: '169 Madison Ave STE 15775',

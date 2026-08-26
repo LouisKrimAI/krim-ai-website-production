@@ -16,7 +16,7 @@ Krim is a B2B enterprise-software company. Our product, KrimOS, is sold to banks
 
 This policy does not cover any personal data we may process inside the KrimOS product or under a separate written agreement with a customer. That data is governed by that agreement and any related data-processing terms, not by this policy.
 
-In this policy, "Krim", "we", "us", and "our" mean Krim AI Inc. of 169 Madison Ave, STE 15775, New York, NY 10016, United States. For privacy questions, you can reach us at legal@krim.ai.`
+In this policy, "Krim", "we", "us", and "our" mean Krim SSI Labs of 169 Madison Ave, STE 15775, New York, NY 10016, United States. For privacy questions, you can reach us at legal@krim.ai.`
 
 const SECTIONS = [
   {
@@ -148,7 +148,7 @@ If you believe a child has provided us personal information, please contact us a
     body: `For any privacy question, or to exercise your rights:
 
 - Privacy contact: legal@krim.ai
-- Krim AI Inc.
+- Krim SSI Labs
 - 169 Madison Ave, STE 15775, New York, NY 10016, United States
 
 If you are in India, you may also raise a grievance with us at legal@krim.ai, and we will address it within the timeframes the law requires.`,
