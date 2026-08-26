@@ -73,7 +73,7 @@ const ADVISORS = [
 const OFFICES = [
   {
     city: 'Patna',
-    lines: 'Incubation 04, 2nd Floor, New Incubation Building (STPI), Patliputra Colony, Rajeev Nagar Road, Patna 800013, Bihar, India',
+    lines: 'Incubation 04, 2nd Floor, New Incubation Building (STPI), Patliputra Colony, Rajeev Nagar Road, Patna, Bihar 800013, India',
   },
   {
     city: 'Bengaluru',
@@ -336,7 +336,7 @@ export default function CompanyPage() {
                 Krim SSI Labs · CIN U62010BR2025PTC080620
               </p>
               <p className="mt-2 text-center font-mono text-[11px] tracking-[0.08em] text-ink-3">
-                House No. 179, 1st Floor, Lane 2 Ramcharit, Patahi, Bandra, Muzaffarpur 843113, Bihar, India
+                House No. 179, 1st Floor, Lane 2 Ramcharit, Patahi, Bandra, Muzaffarpur, Bihar 843113, India
               </p>
               {/* three offices, one row: top-aligned columns so every city
                   label sits on the same baseline regardless of address length */}

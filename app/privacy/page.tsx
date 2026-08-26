@@ -151,7 +151,7 @@ If you believe a child has provided us personal information, please contact us a
 - Krim SSI Labs (CIN U62010BR2025PTC080620)
 - United States: 169 Madison Ave, STE 15775, New York, NY 10016
 - India (Bengaluru): Aspire Coworks, No. 472/7, Balaji Arcade, 2nd & 3rd Floor, 20th L Cross Road, AVS Layout, Ejipura, Koramangala 4th Block, Bengaluru, Karnataka 560095
-- India (Patna): Incubation 04, 2nd Floor, New Incubation Building (STPI), Patliputra Colony, Rajeev Nagar Road, Patna 800013, Bihar
+- India (Patna): Incubation 04, 2nd Floor, New Incubation Building (STPI), Patliputra Colony, Rajeev Nagar Road, Patna, Bihar 800013
 
 If you are in India, you may also raise a grievance with us at legal@krim.ai, and we will address it within the timeframes the law requires.`,
   },
