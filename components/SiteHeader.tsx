@@ -4,8 +4,8 @@
  * SiteHeader — one banner, one sheet.
  *
  * Hovering ANY nav item opens the SAME full-width glass sheet: every site
- * destination in four columns (KrimOS · Domains · Research · Company),
- * single-line rows, no filler copy. The sheet never changes size. A mint
+ * destination in four columns (KrimOS · Research · Domains · Company — order
+ * owned by components/nav.ts), single-line rows, no filler copy. The sheet never changes size. A mint
  * thread slides under the hovered item; the current section carries a quiet
  * mark. The sheet is a FIXED SIBLING of the header — the banner's own
  * backdrop-filter is a backdrop root, so a child's blur could never sample
@@ -243,41 +243,57 @@ export default function SiteHeader({ scrollReveal = false }: { scrollReveal?: bo
 
             <div className="relative mx-auto grid max-w-site grid-cols-4 gap-10 px-6 py-9 md:px-10">
               {COLUMNS.map((col) => {
-                // one spotlight, following the pointer: the trigger lights its
-                // column on open, and hovering (or tabbing into) any column
-                // moves the light there — the top-bar thread slides to match,
-                // since column titles and trigger labels are the same strings.
-                // Dim stays legible: these are live links, never "disabled".
+                // one spotlight, following the pointer: hovering (or tabbing
+                // into) a TOP-BAR button or a column moves the light there —
+                // the top-bar thread and the column highlight share one
+                // `hovered` value, since column titles and trigger labels are
+                // the same strings. Two-sided: the lit column gets a glass
+                // highlight card (the positive half), its three neighbours
+                // dim to 60% (the negative half) — legible, never "disabled".
                 const lit = hovered === col.title
                 const dim = hovered != null && !lit
                 return (
                 <div
                   key={col.title}
-                  className={`transition-opacity duration-300 ${dim ? 'opacity-60' : 'opacity-100'}`}
+                  className={`relative transition-opacity duration-300 ${dim ? 'opacity-60' : 'opacity-100'}`}
                   onMouseEnter={() => setHovered(col.title)}
                   onFocus={() => setHovered(col.title)}
                 >
-                  <Link
-                    href={col.href}
-                    onClick={closeNow}
-                    className={`font-mono text-[10px] uppercase tracking-[0.24em] transition-colors duration-fast ${lit ? 'text-mint' : 'text-ink-3 hover:text-mint'}`}
-                  >
-                    {col.title}
-                  </Link>
-                  <div className="mt-4 flex flex-col">
-                    {col.rows.map((r) => (
-                      <Link
-                        key={r.href + r.label}
-                        href={r.href}
-                        onClick={closeNow}
-                        className="group -mx-3 rounded-[8px] px-3 py-[7px] transition-colors duration-fast hover:bg-white/[0.045]"
-                      >
-                        <span className="font-sans text-[14px] text-ink transition-colors duration-fast group-hover:text-mint">
-                          {r.label}
-                        </span>
-                        {r.role && <span className="ml-2 font-sans text-[12.5px] text-ink-3">{r.role}</span>}
-                      </Link>
-                    ))}
+                  {/* the positive half of the spotlight — a soft glass card
+                      seated behind the active column, so which section is
+                      "lit" reads at a glance and isn't carried by dimming its
+                      three neighbours alone */}
+                  <span
+                    aria-hidden
+                    className={`pointer-events-none absolute -inset-x-3 -inset-y-4 rounded-[14px] border transition-all duration-300 ${
+                      lit
+                        ? 'border-mint/20 bg-mint/[0.045] opacity-100 shadow-[0_0_28px_-10px_rgba(0,255,178,0.4)]'
+                        : 'border-transparent bg-transparent opacity-0'
+                    }`}
+                  />
+                  <div className="relative">
+                    <Link
+                      href={col.href}
+                      onClick={closeNow}
+                      className={`font-mono text-[10px] uppercase tracking-[0.24em] transition-colors duration-fast ${lit ? 'text-mint' : 'text-ink-3 hover:text-mint'}`}
+                    >
+                      {col.title}
+                    </Link>
+                    <div className="mt-4 flex flex-col">
+                      {col.rows.map((r) => (
+                        <Link
+                          key={r.href + r.label}
+                          href={r.href}
+                          onClick={closeNow}
+                          className="group -mx-3 rounded-[8px] px-3 py-[7px] transition-colors duration-fast hover:bg-white/[0.045]"
+                        >
+                          <span className="font-sans text-[14px] text-ink transition-colors duration-fast group-hover:text-mint">
+                            {r.label}
+                          </span>
+                          {r.role && <span className="ml-2 font-sans text-[12.5px] text-ink-3">{r.role}</span>}
+                        </Link>
+                      ))}
+                    </div>
                   </div>
                 </div>
                 )

@@ -5,12 +5,14 @@
  * One spine, four columns. Each column head links to that section's landing
  * page (its overview); the rows are its children. Descriptors (`role`) appear
  * only where a name needs translating — KrimOS layers and the Research work.
- * Order is deliberate. The KrimOS column MUST match the order of the stack on
- * /krimos — components/krimos/layers.ts and components/home/PlatformLayers.tsx
- * (deck order, apps → foundation). A visitor who opens the banner and then
- * looks at the stack must read the same sequence. Kovida is the stack's
- * foundation but its page lives under Research, so it is listed there (once —
- * never twice in one panel). Lending first (the wedge); Architecture last in
+ * Column order (owner-set 2026-08-31): KrimOS, Research, Domains, Company —
+ * the product, the science behind it, who it's for, then who we are. The
+ * KrimOS column's ROWS must match the order of the stack on /krimos —
+ * components/krimos/layers.ts and components/home/PlatformLayers.tsx (deck
+ * order, apps → foundation). A visitor who opens the banner and then looks at
+ * the stack must read the same sequence. Kovida is the stack's foundation but
+ * its page lives under Research, so it is listed there (once — never twice in
+ * one panel). Lending first among Domains (the wedge); Architecture last in
  * Research (the substrate the science sits on); Trust first among the Company
  * rows (the proof, right behind identity).
  */
@@ -31,15 +33,6 @@ export const NAV_COLUMNS: readonly NavColumn[] = [
     ],
   },
   {
-    title: 'Domains',
-    href: '/lending',
-    rows: [
-      { label: 'Lending', href: '/lending' },
-      { label: 'Enterprise', href: '/enterprise' },
-      { label: 'Government', href: '/government' },
-    ],
-  },
-  {
     title: 'Research',
     href: '/research',
     rows: [
@@ -47,6 +40,15 @@ export const NAV_COLUMNS: readonly NavColumn[] = [
       { label: 'Kovida', role: 'the world lending model', href: '/research/world-lending-model' },
       { label: 'Safe Agent Harness', href: '/research/safe-agent-harness' },
       { label: 'Architecture', role: 'the substrate', href: '/architecture' },
+    ],
+  },
+  {
+    title: 'Domains',
+    href: '/lending',
+    rows: [
+      { label: 'Lending', href: '/lending' },
+      { label: 'Enterprise', href: '/enterprise' },
+      { label: 'Government', href: '/government' },
     ],
   },
   {
@@ -66,7 +68,7 @@ export const NAV_COLUMNS: readonly NavColumn[] = [
 // current-section mark.
 export const NAV_TOP: readonly { label: string; href: string; match: string[] }[] = [
   { label: 'KrimOS', href: '/krimos', match: ['/krimos'] },
-  { label: 'Domains', href: '/lending', match: ['/lending', '/government', '/enterprise'] },
   { label: 'Research', href: '/research', match: ['/research', '/epistemic-ai', '/architecture'] },
+  { label: 'Domains', href: '/lending', match: ['/lending', '/government', '/enterprise'] },
   { label: 'Company', href: '/company', match: ['/company', '/contact', '/trust', '/services', '/insights'] },
 ]
