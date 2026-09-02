@@ -47,7 +47,11 @@ export function articleMetadata(post: Post, overrides?: { title?: string }): Met
       type: 'article',
       // A page-level openGraph export replaces the root's resolved object, so
       // the share image must be restated here or link previews render bare.
-      images: [post.image ?? '/opengraph-image'],
+      // `ogImage` wins when set — it exists specifically because `image` is
+      // sometimes a transparent asset designed to float on the dark canvas,
+      // which renders on a WHITE background in WhatsApp/iMessage/Slack link
+      // previews (they flatten alpha themselves; the page never gets to).
+      images: [post.ogImage ?? post.image ?? '/opengraph-image'],
     },
   }
 }
