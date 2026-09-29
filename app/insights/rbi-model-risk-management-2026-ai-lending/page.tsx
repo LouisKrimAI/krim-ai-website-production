@@ -2,7 +2,8 @@
  * /insights/rbi-model-risk-management-2026-ai-lending — article body + bespoke
  * inline visuals; the scaffold (hero, JSON-LD, panel, keep-reading, sources,
  * CTA) is ArticleShell, driven by app/insights/_posts.ts.
- * Category: Risk. Published during the RBI MRMF consultation window (closes 24 July 2026).
+ * Category: Risk. Published during the RBI MRMF consultation window; updated Sep 2026, after
+ * comments closed on 24 July 2026, to read from the post-consultation vantage point.
  * All facts trace to the RBI Press Release 2026-2027/528 and RBI FREE-AI report.
  */
 
@@ -173,7 +174,7 @@ function Timeline() {
     { date: 'Aug 2024', label: 'First credit-model draft' },
     { date: 'Aug 2025', label: 'FREE-AI report published' },
     { date: 'Jun 2026', label: 'This draft released' },
-    { date: '24 Jul 2026', label: 'Comments close', highlight: true },
+    { date: '24 Jul 2026', label: 'Comments closed', highlight: true },
   ]
 
   return (
@@ -474,7 +475,7 @@ export default function Page() {
               </p>
 
               <h2 className="mt-12 font-serif text-[1.5rem] leading-tight text-ink">
-                Before the window closes
+                What to do now
               </h2>
               <p className="mt-5 font-sans text-body-lg text-ink-2">
                 Three moves, in order of urgency. First: inventory honestly, including the
@@ -554,25 +555,25 @@ export default function Page() {
               </p>
 
               <h2 className="mt-12 font-serif text-[1.5rem] leading-tight text-ink">
-                The window is open — briefly
+                Waiting for the final text is the expensive option
               </h2>
               <p className="mt-5 font-sans text-body-lg text-ink-2">
                 There's a fashionable view that draft guidance can be ignored until it's final. It
                 can't. Once issued, this Guidance supersedes the rule that has governed credit-model
                 risk since 2002, and it binds every regulated lender. The draft is simply the
-                near-final shape of a rule that is coming. The comment window closes 24 July, the
-                last chance to shape how it lands before it does.
+                near-final shape of a rule that is coming. The comment window closed on 24 July. What
+                is left is the wait for the final text, and the work that text already implies.
               </p>
               <p className="mt-5 font-sans text-body text-ink-2">
-                The lenders who treat the next few weeks as a consultation will spend the next two
+                Lenders who wait for the final wording before they start will spend the next two
                 years catching up. The ones who read the draft as the specification it already is
-                will spend that time building.
+                are building now. What it asks for takes a great deal longer to build than to publish.
               </p>
 
               <p className="mt-8 font-sans text-body-lg text-ink-2 italic">
                 Krim builds KrimOS, an agent-native operating system with a pre-execution validation
-                layer for regulated lending. The draft is open for public comment until 24 July. If
-                you use AI in lending, it is worth reading in full and responding to.{' '}
+                layer for regulated lending. The draft closed for public comment on 24 July 2026, and
+                a final text is expected. If you use AI in lending, it is worth reading in full.{' '}
                 <a
                   href={RBI_URL}
                   target="_blank"

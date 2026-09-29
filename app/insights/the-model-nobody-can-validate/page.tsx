@@ -35,8 +35,8 @@ export default function Page() {
         { label: 'RBI — FREE-AI Committee report (August 2025)', href: 'https://www.rbi.org.in/Scripts/PublicationReportDetails.aspx' },
       ]}
       cta={{
-        heading: 'Read our full response.',
-        body: 'We filed five recommendations on the draft Guidance, with every paragraph reference checked against the primary text. The submission is public.',
+        heading: 'Our five recommendations.',
+        body: 'We set out five recommendations on the draft Guidance, with every paragraph reference checked against the primary text. Ask us for them.',
         href: '/contact',
         label: 'Get in touch',
       }}
@@ -50,7 +50,7 @@ export default function Page() {
         </p>
         <p className="mt-5 font-sans text-body text-ink-2">
           That is worth sitting with, because RBI&rsquo;s draft Guidance on Regulatory Principles for
-          Model Risk Management, out for comment until 24 July, asks every regulated entity to do
+          Model Risk Management, which closed for comment on 24 July, asks every regulated entity to do
           precisely that. Paragraph 29 requires all models, including third-party models, to be
           subject to independent validation. Paragraph 46(i) applies it to third-party models{' '}
           <span className="text-ink">notwithstanding any validation, certification or assurance
@@ -75,7 +75,7 @@ export default function Page() {
         <p className="mt-5 font-sans text-body text-ink-2">
           So read paragraph 29 strictly and something uncomfortable follows: on day one, on the
           single most widely used model in Indian lending, near enough every lender in the country
-          is in technical breach. Not because anyone did anything wrong. Because the obligation, as
+          would be in technical breach. Not because anyone did anything wrong. Because the obligation, as
           drafted, cannot be discharged.
         </p>
 
@@ -164,13 +164,13 @@ export default function Page() {
           We have said this to RBI
         </h2>
         <p className="mt-5 font-sans text-body-lg text-ink-2">
-          Krim has filed a response to the consultation. Validation capacity and the models that
-          cannot be opened at source is the first of five recommendations in it, and it is the one we
+          Krim has set out five recommendations on the draft. Validation capacity and the models that
+          cannot be opened at source is the first of them, and it is the one we
           would most want adopted. It is also, for what it is worth, the one with nothing in it for
           us commercially.
         </p>
         <p className="mt-5 font-sans text-body text-ink-2">
-          One of the other five does touch our commercial interest, and we said so in the submission
+          One of the other four does touch our commercial interest, and we say so in our response
           rather than leaving a reader to notice: we build controls that check an action before it
           executes, so a recommendation about pre-execution controls is one we benefit from. Our
           view is that a consultation response should declare that at the point it arises, and should
@@ -179,7 +179,7 @@ export default function Page() {
         </p>
         <p className="mt-5 font-sans text-body text-ink-2">
           The draft is good. Its central provisions deserve to survive consultation intact. The most
-          useful thing anyone can do in the window that remains is point at the places where a right
+          useful thing anyone can do before the final text lands is point at the places where a right
           principle will not survive contact with how Indian lending actually works, and say so
           precisely enough to be fixed.
         </p>

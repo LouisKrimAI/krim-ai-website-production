@@ -40,7 +40,7 @@ export default function Page() {
       ]}
       cta={{
         heading: 'See the harness that ships the agent.',
-        body: 'A constrained action vocabulary, a gate that clears every action before it fires, and a human who can pause any agent in one click. That is what turns a demo into a co-worker.',
+        body: 'A constrained action vocabulary, a gate that clears every action before it fires, and people who stay in command of every decision that matters. That is what turns a demo into a co-worker.',
         href: '/research/safe-agent-harness',
         label: 'Explore the Safe Agent Harness',
       }}
@@ -99,9 +99,9 @@ export default function Page() {
           set is not a mistake it can make, because there is no path to it. It{' '}
           <span className="text-mint">checks</span> every action before the action happens, against
           your policy and the law, and a violation is blocked outright, with no retry and no
-          warn-through. And it <span className="text-cyan">keeps a person in command</span>: your
-          risk and compliance teams watch every in-flight action and can pause or overrule any
-          agent in a single click.
+          warn-through. And it <span className="text-cyan">keeps a person in command</span>: anything
+          the system isn't sure about goes to your risk and compliance teams, with the reason
+          attached, on a review queue with named approvers and deadlines.
         </p>
         <p className="mt-5 font-sans text-body text-ink-2">
           None of that makes the agent smarter. That is the point. The harness is indifferent to
