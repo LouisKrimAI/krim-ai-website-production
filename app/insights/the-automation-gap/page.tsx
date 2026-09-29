@@ -26,7 +26,7 @@ export default function Page() {
       ]}
       cta={{
         heading: 'See automation reach the desk that matters.',
-        body: 'KrimOS validates every action before it fires, so the consequential work can finally run without leaving compliance behind.',
+        body: 'KrimOS checks every outbound contact and money-moving instruction before it goes out, so the consequential work can run with compliance in the path of the action.',
         href: '/krimos',
         label: 'Explore KrimOS',
       }}
@@ -64,8 +64,8 @@ export default function Page() {
         <Reveal>
           <GlassCard accent className="my-10 p-8 md:p-10">
             <p className="font-serif text-[1.5rem] leading-snug text-ink">
-              The blocker isn’t capability. It’s consequence. You cannot ship an action you can
-              only explain after it has fired.
+              The blocker is consequence. You cannot ship an action you can only explain after
+              it has fired.
             </p>
           </GlassCard>
         </Reveal>
@@ -95,11 +95,11 @@ export default function Page() {
           Prove the action, then take it
         </h2>
         <p className="mt-5 font-sans text-body-lg text-ink-2">
-          The way through the ceiling is not a better model. It is a different order of
-          operations. Move the check in front of the action: test every proposed step against
-          law, policy, consent and context <span className="text-ink">before</span> it can
-          fire, and let nothing through that doesn’t clear. What passes carries its reasoning
-          with it; what fails never happens.
+          The way through the ceiling is a different order of operations. Move the check in
+          front of the action: test each outbound step against policy, opt-in and contact
+          rules <span className="text-ink">before</span> it can fire, and block what doesn’t
+          clear. What passes carries its reasoning with it; what fails is stopped, with the
+          reason on record.
         </p>
         <p className="mt-5 font-sans text-body text-ink-2">
           That is the discipline KrimOS is built on:{' '}

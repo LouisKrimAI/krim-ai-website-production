@@ -21,13 +21,13 @@ export default function Page() {
       image={{ alt: 'A sealed record of light on a dark server floor.', objectPosition: '50% 45%', tint: 'cyan' }}
       related={['the-cost-of-being-wrong', 'the-automation-gap']}
       sources={[
-        { label: 'Federal Reserve: SR 11-7 (model risk management)', href: 'https://www.federalreserve.gov/boarddocs/srletters/2011/sr1107.htm' },
+        { label: 'Federal Reserve: SR 11-7 (model risk management; superseded by SR 26-2, April 2026)', href: 'https://www.federalreserve.gov/boarddocs/srletters/2011/sr1107.htm' },
         { label: 'EU AI Act: Annex III (high-risk: creditworthiness)', href: 'https://artificialintelligenceact.eu/annex/3/' },
         { label: 'EU AI Act: Article 14 (human oversight)', href: 'https://artificialintelligenceact.eu/article/14/' },
       ]}
       cta={{
         heading: 'The AI your regulator can read.',
-        body: 'KrimOS proves every action against law, policy, consent and context before it fires, so the record a regulator asks for already exists.',
+        body: 'KrimOS checks every outbound contact and money-moving instruction before it goes out, and writes each decision and its reason to an append-only ledger.',
         href: '/epistemic-ai',
         label: 'What is Epistemic AI?',
       }}
@@ -47,15 +47,15 @@ export default function Page() {
         <p className="mt-5 font-sans text-body-lg text-ink-2">
           Read the supervisory texts closely and they keep pointing the same direction: governance
           belongs in front of the decision, not behind it. US model-risk guidance{' '}
-          (<span className="text-ink">SR 11-7</span>, with OCC 2011-12) puts independent
+          (<span className="text-ink">SR 11-7</span>, now superseded by SR 26-2) has long put independent
           validation and <span className="text-ink">“effective challenge”</span> at the centre
           of model governance: you are expected to have tested the model’s soundness before you
           rely on it. The EU AI Act goes further for this exact domain, classifying AI used to{' '}
           <span className="text-ink">evaluate creditworthiness or produce credit scores</span>{' '}
           as high-risk (Annex III, 5(b); Art. 6(2)) and requiring meaningful{' '}
-          <span className="text-ink">human oversight</span> (Art. 14). Those obligations are set
-          to apply from <span className="text-ink">2 August 2026</span>, though a pending
-          proposal could defer that, so treat the date as the current plan, not a certainty.
+          <span className="text-ink">human oversight</span> (Art. 14). Those obligations now
+          apply from <span className="text-ink">2 December 2027</span>, after a deferral from the
+          original August 2026 date.
         </p>
         <p className="mt-5 font-sans text-body text-ink-2">
           The UK takes a different route to the same place. The FCA and PRA have{' '}
@@ -91,15 +91,14 @@ export default function Page() {
           puts the test in the path of the action: before a step fires, it is checked against
           law, policy, consent and context, and only what clears proceeds, carrying the
           reasoning that cleared it. This is the discipline KrimOS is built on, formalised in
-          its validation runtime, Krim-Nyāya. Every action is{' '}
-          <span className="text-mint">validated before it acts</span>, and the proof exists
-          because it had to exist for the action to happen at all.
+          its validation runtime, Krim-Nyāya. Outbound actions are{' '}
+          <span className="text-mint">validated before they act</span>, and every gate decision
+          is ledgered with its reason.
         </p>
         <p className="mt-5 font-sans text-body text-ink-2">
-          The difference is the difference between a smoke detector and a sprinkler that only
-          reports the fire. An audit trail tells you what burned. Pre-execution validation keeps
-          the match from being struck. It hands you, by construction, exactly the record a
-          regulator asks to see.
+          An audit trail tells you what burned. A check in front of the action keeps the match
+          from being struck, and it hands you the decision record, written as the check runs,
+          which is the record a regulator asks to see.
         </p>
       </Reveal>
     </ArticleShell>
